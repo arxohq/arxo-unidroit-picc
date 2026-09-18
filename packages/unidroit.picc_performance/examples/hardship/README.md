@@ -36,24 +36,24 @@ answers as `origin adjudicated` — not as facts it invented.
 The same holds for the reasonableness of termination or adaptation in article
 6.2.3(4): without that answer the power exists but produces no effect.
 
-## Running it
+## Asking it yourself
+
+From this directory, with the `law` binary on the path:
 
 ```sh
-python3 packs/examples/cases/materialize_deps.py \
-    corpus/laws/org/unidroit/picc-performance/examples/hardship
-python3 corpus/laws/org/unidroit/picc-performance/examples/hardship/check.py
+law ask . --case HardshipAndAdaptation --query-json queries/hardship-exists.json
 ```
 
-The checker asks all nine questions, compares each answer with the expectation
-taken from the text, and then repeats every evaluation on the second
-implementation and from the saved document — the three must agree byte for byte.
+The answer comes back as an evaluation document: the result, the proof graph
+that produced it, the pinned sources behind every rule and the hashes that make
+the run repeatable. Every file listed in `queries/` is a question you can ask.
 
-A single question, with its proof graph:
+The dependencies of the collection travel with it, so nothing is downloaded.
 
-```sh
-law ask corpus/laws/org/unidroit/picc-performance/examples/hardship \
-    --case HardshipAndAdaptation --query-json queries/hardship-exists.json
-```
+Where these packages are maintained, `check.py` asks all of the questions above
+in one go, compares each answer with the expectation taken from the text, and
+then repeats every evaluation on a second implementation and from the saved
+document — the three must agree byte for byte.
 
 ## What this is not
 

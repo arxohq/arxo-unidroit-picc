@@ -1,0 +1,12 @@
+{
+  "queryId": "expiry-set-off-still-available",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-limitation#set_off_still_available",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:expiry:right" }
+    ]
+  }
+}

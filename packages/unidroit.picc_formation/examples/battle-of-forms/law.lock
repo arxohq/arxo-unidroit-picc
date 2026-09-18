@@ -1,0 +1,54 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "examples.unidroit.battle_of_forms",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    },
+    {
+      "features": [],
+      "from": "examples.unidroit.battle_of_forms",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc_formation"
+    },
+    {
+      "features": [],
+      "from": "unidroit.picc_formation",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.0",
+  "lockVersion": "0.1",
+  "packages": [
+    {
+      "contentHash": "sha256:280f0e7f468462a0b8601a303cf667982c238e2f7496d5b6fb14374fd828e789",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc",
+      "namespace": "urn:org:unidroit:clir:picc",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "sha256:b76a19650ce72df269019cff0db71f7e75f75aa7c5b4c44e6ff31fe014eee29f",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc_formation",
+      "namespace": "urn:org:unidroit:clir:picc-formation",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:69bf0503d1679338871a30560d890f98b708b8dc9a838cdd50a63b859f8b1e78",
+  "root": {
+    "contentHash": "sha256:6831578691a5043024ef43f7056461c6a988fefd1896ad9b0993d51175cf39a7",
+    "name": "examples.unidroit.battle_of_forms",
+    "namespace": "urn:law:examples:unidroit:battle-of-forms",
+    "version": "0.1.0"
+  }
+}

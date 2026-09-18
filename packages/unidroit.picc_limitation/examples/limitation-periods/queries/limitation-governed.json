@@ -1,0 +1,12 @@
+{
+  "queryId": "limitation-governed",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-limitation#limitation_governed",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:limitation:right" }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "queryId": "liability-cap-is-part",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-formation#standard_term_is_part_of_contract",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:forms:liability-cap" },
+      { "kind": "entity_ref", "id": "urn:example:picc:forms:contract" }
+    ]
+  }
+}

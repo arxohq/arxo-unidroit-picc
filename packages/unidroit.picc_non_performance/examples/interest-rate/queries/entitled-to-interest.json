@@ -1,0 +1,13 @@
+{
+  "queryId": "entitled-to-interest",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-non-performance#entitled_to_interest",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:interest:invoice" },
+      { "kind": "entity_ref", "id": "urn:example:picc:interest:seller" }
+    ]
+  }
+}

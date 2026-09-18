@@ -1,0 +1,13 @@
+{
+  "queryId": "forum-clause-ineffective",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-formation#term_ineffective",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:forms:hidden-forum-clause" },
+      { "kind": "entity_ref", "id": "urn:example:picc:forms:contract" }
+    ]
+  }
+}

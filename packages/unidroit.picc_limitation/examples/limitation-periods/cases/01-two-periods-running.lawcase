@@ -1,0 +1,45 @@
+language "law.core" version "0.2";
+package examples.unidroit.limitation_periods version "0.1.0";
+namespace "urn:law:examples:unidroit:limitation-periods";
+
+// Case 1. Two limitation periods run at once, counted from different days.
+//
+// THE COUNT BEGINS ON THE DAY AFTER, AND THE TEXT SAYS SO TWICE. Article 10.2
+// opens both periods with "beginning on the day after the day…". The §86 policy
+// of the package is therefore `start_count next_day`, and the arithmetic of the
+// case is not a convention of the model but a reading of the source:
+//
+//   · the obligee knew the facts on 10 March 2020 → the general period of three
+//     years expires on 11 March 2023, NOT on the 10th;
+//   · the right could be exercised from 15 January 2019 → the maximum period of
+//     ten years expires on 16 January 2029.
+//
+// The case asks the wrong day as well, to show that the difference of one day is
+// an answer of the model rather than a footnote: 10 March 2023 comes back
+// NEITHER, because nothing in the canon makes that day the last one.
+
+case TwoPeriodsRunning {
+    context {
+        deadline_policy PICC_LIMITATION;
+        legal_time @2026-09-18;
+        knowledge_time @2026-09-18T12:00:00Z;
+        decision_time @2026-09-18T12:00:00Z;
+        timezone "UTC";
+    }
+
+    const right: unidroit.picc_limitation::Right = entity_ref("urn:example:picc:limitation:right");
+    const contract: unidroit.picc::Contract = entity_ref("urn:example:picc:limitation:contract");
+    const obligee: unidroit.picc::Party = entity_ref("urn:example:picc:limitation:obligee");
+    const obligor: unidroit.picc::Party = entity_ref("urn:example:picc:limitation:obligor");
+
+    assert "right": unidroit.picc_limitation::right_of(right, contract, obligee, obligor) { origin case_input; }
+    assert "governed": unidroit.picc_limitation::right_governed_by_principles(right) { origin case_input; }
+
+    // Article 10.2(1): the facts became known on 10 March 2020.
+    assert "knew": unidroit.picc_limitation::obligee_knew_facts_on(right, @2020-03-10) { origin case_input; }
+    assert "general": unidroit.picc_limitation::general_period(right, 3 calendar_year) { origin case_input; }
+
+    // Article 10.2(2): the right could be exercised from 15 January 2019.
+    assert "exercisable": unidroit.picc_limitation::right_exercisable_from(right, @2019-01-15) { origin case_input; }
+    assert "maximum": unidroit.picc_limitation::maximum_period(right, 10 calendar_year) { origin case_input; }
+}

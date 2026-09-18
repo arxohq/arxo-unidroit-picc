@@ -1,0 +1,12 @@
+{
+  "queryId": "rate-fixed-by-law",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-non-performance#rate_is_fixed_by_law_of_currency_state",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:interest:invoice" }
+    ]
+  }
+}

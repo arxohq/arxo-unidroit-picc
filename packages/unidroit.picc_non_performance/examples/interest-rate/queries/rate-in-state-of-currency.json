@@ -1,0 +1,12 @@
+{
+  "queryId": "rate-in-state-of-currency",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-non-performance#rate_is_bank_rate_in_state_of_currency",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:interest:invoice" }
+    ]
+  }
+}

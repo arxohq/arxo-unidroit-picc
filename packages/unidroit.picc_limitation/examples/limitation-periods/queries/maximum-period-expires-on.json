@@ -1,0 +1,22 @@
+{
+  "queryId": "maximum-period-expires-on",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-limitation#maximum_period_expires_on",
+    "args": [
+      {
+        "kind": "entity_ref",
+        "id": "urn:example:picc:limitation:right"
+      },
+      {
+        "kind": "value",
+        "type": {
+          "name": "urn:law:std#Date"
+        },
+        "value": "2029-01-16"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "queryId": "contract-on-common-terms",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-formation#contract_on_common_terms",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:forms:contract" }
+    ]
+  }
+}

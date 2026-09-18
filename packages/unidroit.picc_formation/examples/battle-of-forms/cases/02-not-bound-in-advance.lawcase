@@ -1,0 +1,33 @@
+language "law.core" version "0.2";
+package examples.unidroit.battle_of_forms version "0.1.0";
+namespace "urn:law:examples:unidroit:battle-of-forms";
+
+// Case 2. The same forms, plus one sentence sent in advance.
+//
+// ARTICLE 2.1.22 ENDS WITH ITS OWN ESCAPE: the knock-out rule does not apply
+// where a party has indicated in advance, or later without undue delay, that it
+// does not intend to be bound by such a contract. The case supplies that
+// indication, and the conclusion about a contract on common terms is defeated —
+// with it goes the answer about every standard term that depended on it.
+//
+// The escape is written as a defeater of the rule, not as a separate norm: the
+// text states one rule with one exception, and the model keeps that shape.
+
+case NotBoundInAdvance {
+    context {
+        legal_time @2026-09-18;
+        knowledge_time @2026-09-18T12:00:00Z;
+        decision_time @2026-09-18T12:00:00Z;
+        timezone "UTC";
+    }
+
+    const contract: unidroit.picc::Contract = entity_ref("urn:example:picc:refusal:contract");
+    const arbitration: unidroit.picc::Term = entity_ref("urn:example:picc:refusal:arbitration-clause");
+
+    assert "forms": unidroit.picc_formation::both_parties_use_standard_terms(contract) { origin case_input; }
+    assert "arbitration-standard": unidroit.picc_formation::standard_term(arbitration, contract) { origin case_input; }
+    assert "arbitration-common": unidroit.picc_formation::standard_terms_common_in_substance(arbitration, contract) { origin case_input; }
+
+    // Article 2.1.22, final words: an advance indication of unwillingness.
+    assert "refusal": unidroit.picc_formation::party_indicated_not_bound(contract) { origin case_input; }
+}

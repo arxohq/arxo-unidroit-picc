@@ -1,0 +1,13 @@
+{
+  "queryId": "no-rate-entitled-to-interest",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-non-performance#entitled_to_interest",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:no-rate:invoice" },
+      { "kind": "entity_ref", "id": "urn:example:picc:no-rate:seller" }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "examples.unidroit.hardship",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    },
+    {
+      "features": [],
+      "from": "examples.unidroit.hardship",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc_performance"
+    },
+    {
+      "features": [],
+      "from": "unidroit.picc_performance",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.0",
+  "lockVersion": "0.1",
+  "packages": [
+    {
+      "contentHash": "sha256:280f0e7f468462a0b8601a303cf667982c238e2f7496d5b6fb14374fd828e789",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc",
+      "namespace": "urn:org:unidroit:clir:picc",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "sha256:70c4568fe59c8106e4c716c611aa51f918ac21ce162457b961c7bc104533b86d",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc_performance",
+      "namespace": "urn:org:unidroit:clir:picc-performance",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:8a09195bca3d1ea4a25f9761e0d078c8540adf7501f19fdebffdc9a182911791",
+  "root": {
+    "contentHash": "sha256:1ea789998edbbde720dfdd9085acbb604bedf7ca4bb13d40d4f467de84245ec7",
+    "name": "examples.unidroit.hardship",
+    "namespace": "urn:law:examples:unidroit:hardship",
+    "version": "0.1.0"
+  }
+}

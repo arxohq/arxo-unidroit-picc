@@ -1,0 +1,38 @@
+language "law.core" version "0.2";
+package examples.unidroit.limitation_periods version "0.1.0";
+namespace "urn:law:examples:unidroit:limitation-periods";
+
+// Case 2. The period has run out and nobody has said a word about it.
+//
+// EXPIRY DOES NOT EXTINGUISH THE RIGHT (article 10.9(1)) and does nothing at all
+// until the obligor asserts it as a defence (article 10.9(2)). Two answers that
+// look contradictory are both correct here: the right is not extinguished, and
+// its exercise is not barred — because the defence was never raised.
+//
+// ARTICLE 10.10 IS THE SAME THOUGHT FROM THE OTHER SIDE: the obligee may still
+// exercise a set-off until the expiry is asserted. The rule reads the silence of
+// the obligor as a fact of the case (`not_known`), not as its denial.
+
+case ExpiryNotInvoked {
+    context {
+        deadline_policy PICC_LIMITATION;
+        legal_time @2026-09-18;
+        knowledge_time @2026-09-18T12:00:00Z;
+        decision_time @2026-09-18T12:00:00Z;
+        timezone "UTC";
+    }
+
+    const right: unidroit.picc_limitation::Right = entity_ref("urn:example:picc:expiry:right");
+    const contract: unidroit.picc::Contract = entity_ref("urn:example:picc:expiry:contract");
+    const obligee: unidroit.picc::Party = entity_ref("urn:example:picc:expiry:obligee");
+    const obligor: unidroit.picc::Party = entity_ref("urn:example:picc:expiry:obligor");
+
+    assert "right": unidroit.picc_limitation::right_of(right, contract, obligee, obligor) { origin case_input; }
+    assert "governed": unidroit.picc_limitation::right_governed_by_principles(right) { origin case_input; }
+
+    // Article 10.9: the period has expired; the obligor has not asserted it.
+    assert "expired": unidroit.picc_limitation::limitation_expired(right) { origin case_input; }
+
+    // Article 10.10: the obligee exercises a set-off all the same.
+    assert "set-off": unidroit.picc_limitation::set_off_exercised(right) { origin case_input; }
+}

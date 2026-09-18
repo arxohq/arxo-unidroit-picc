@@ -1,0 +1,47 @@
+language "law.core" version "0.2";
+package examples.unidroit.battle_of_forms version "0.1.0";
+namespace "urn:law:examples:unidroit:battle-of-forms";
+
+// Case 1. Both parties send their own printed forms, and the forms disagree.
+//
+// THE PRINCIPLES SETTLE THIS BY A RULE, NOT BY A READING. Article 2.1.22: where
+// both parties use standard terms and reach agreement except on those terms, the
+// contract is concluded on the terms agreed and on those standard terms that are
+// COMMON IN SUBSTANCE. The terms that differ knock each other out — the model
+// says nothing about them, which is exactly what "knock-out" means.
+//
+// Article 19 of the 1980 Convention has no such rule, and its silence is read in
+// two ways; on these same facts the Convention would need a choice of reading,
+// while here the answer follows from the text.
+//
+// THE THIRD TERM IS NOT ABOUT THE BATTLE AT ALL. Article 2.1.20 strikes a term
+// the other party could not reasonably have expected, whether or not the forms
+// agree. Whether a term is surprising is evaluative and is answered by the organ.
+
+case KnockOut {
+    context {
+        legal_time @2026-09-18;
+        knowledge_time @2026-09-18T12:00:00Z;
+        decision_time @2026-09-18T12:00:00Z;
+        timezone "UTC";
+    }
+
+    const contract: unidroit.picc::Contract = entity_ref("urn:example:picc:forms:contract");
+    const arbitration: unidroit.picc::Term = entity_ref("urn:example:picc:forms:arbitration-clause");
+    const liability: unidroit.picc::Term = entity_ref("urn:example:picc:forms:liability-cap");
+    const jurisdiction: unidroit.picc::Term = entity_ref("urn:example:picc:forms:hidden-forum-clause");
+
+    // Article 2.1.22: both parties used their own standard terms.
+    assert "forms": unidroit.picc_formation::both_parties_use_standard_terms(contract) { origin case_input; }
+
+    // The arbitration clauses of the two forms say the same thing in substance.
+    assert "arbitration-standard": unidroit.picc_formation::standard_term(arbitration, contract) { origin case_input; }
+    assert "arbitration-common": unidroit.picc_formation::standard_terms_common_in_substance(arbitration, contract) { origin case_input; }
+
+    // The liability caps differ: 100 000 EUR against 25 000 EUR.
+    assert "liability-standard": unidroit.picc_formation::standard_term(liability, contract) { origin case_input; }
+
+    // Article 2.1.20: a forum clause buried in the fine print of one form.
+    assert "forum-standard": unidroit.picc_formation::standard_term(jurisdiction, contract) { origin case_input; }
+    assert "forum-surprising": unidroit.picc_formation::term_could_not_reasonably_be_expected(jurisdiction, contract) { origin adjudicated; }
+}

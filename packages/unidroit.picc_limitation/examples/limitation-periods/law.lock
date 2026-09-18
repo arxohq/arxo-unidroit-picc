@@ -1,0 +1,54 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "examples.unidroit.limitation_periods",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    },
+    {
+      "features": [],
+      "from": "examples.unidroit.limitation_periods",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc_limitation"
+    },
+    {
+      "features": [],
+      "from": "unidroit.picc_limitation",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.0",
+  "lockVersion": "0.1",
+  "packages": [
+    {
+      "contentHash": "sha256:280f0e7f468462a0b8601a303cf667982c238e2f7496d5b6fb14374fd828e789",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc",
+      "namespace": "urn:org:unidroit:clir:picc",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "sha256:e159165f8593f67fff061b3d632d685ace41d4e485c920517733b45bc221b2b3",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc_limitation",
+      "namespace": "urn:org:unidroit:clir:picc-limitation",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:7fb3d6e94fa56f3dfd24f3daefdef158e633b1e472e6540d10faadfff068b684",
+  "root": {
+    "contentHash": "sha256:0267f300640f7c9554531ae7b2662064ba353b29db8950714fc5e2c6ef212de7",
+    "name": "examples.unidroit.limitation_periods",
+    "namespace": "urn:law:examples:unidroit:limitation-periods",
+    "version": "0.1.0"
+  }
+}

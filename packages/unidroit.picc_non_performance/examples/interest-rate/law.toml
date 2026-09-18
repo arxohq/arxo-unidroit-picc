@@ -1,0 +1,26 @@
+# Worked cases over the pinned canon of chapter 7 of the UNIDROIT Principles.
+# The norms stay with their owner package; here there are only facts,
+# questions and answers.
+[package]
+name = "examples.unidroit.interest_rate"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:law:examples:unidroit:interest-rate"
+
+[dependencies]
+"unidroit.picc" = "0.1.0"
+"unidroit.picc_non_performance" = "0.1.0"
+
+[[cases]]
+name = "RateAtPlaceOfPayment"
+path = "cases/01-rate-at-place-of-payment.lawcase"
+
+[[cases]]
+name = "NoRateAnywhere"
+path = "cases/02-no-rate-anywhere.lawcase"
+
+[metadata]
+act = "unidroit-picc-2016-examples-interest-rate"
+title = "Worked cases: the rate of interest for failure to pay, named in three steps by article 7.4.9(2)"
+jurisdiction = "International"
+instrument = "case-collection"

@@ -1,0 +1,54 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "examples.unidroit.interest_rate",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    },
+    {
+      "features": [],
+      "from": "examples.unidroit.interest_rate",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc_non_performance"
+    },
+    {
+      "features": [],
+      "from": "unidroit.picc_non_performance",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.0",
+  "lockVersion": "0.1",
+  "packages": [
+    {
+      "contentHash": "sha256:280f0e7f468462a0b8601a303cf667982c238e2f7496d5b6fb14374fd828e789",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc",
+      "namespace": "urn:org:unidroit:clir:picc",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "sha256:a5ef0c8b3b37b0d6f340ab2fb6e36e074042a61cb92485508dfdf68f7fc3d55f",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc_non_performance",
+      "namespace": "urn:org:unidroit:clir:picc-non-performance",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:dcbaefe207e51d6288217b60a3bb4008b22e0649eeaa5b45597a6b951e6553e9",
+  "root": {
+    "contentHash": "sha256:b65f807c95c583c9fe2575f713a6d2d657eaf4b1c487d9d08c8f2c68d9751aa6",
+    "name": "examples.unidroit.interest_rate",
+    "namespace": "urn:law:examples:unidroit:interest-rate",
+    "version": "0.1.0"
+  }
+}

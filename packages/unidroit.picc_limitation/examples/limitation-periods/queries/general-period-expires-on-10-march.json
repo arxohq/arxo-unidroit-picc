@@ -1,0 +1,22 @@
+{
+  "queryId": "general-period-expires-on-10-march",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-limitation#general_period_expires_on",
+    "args": [
+      {
+        "kind": "entity_ref",
+        "id": "urn:example:picc:limitation:right"
+      },
+      {
+        "kind": "value",
+        "type": {
+          "name": "urn:law:std#Date"
+        },
+        "value": "2023-03-10"
+      }
+    ]
+  }
+}
