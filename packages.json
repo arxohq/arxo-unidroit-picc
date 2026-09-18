@@ -1,10 +1,6 @@
 {
-  "format": "law.spinoff/0.1",
-  "generatedAt": "2026-09-18T05:53:55+00:00",
-  "monorepoCommit": "39599755fab07f250c618b4d185df8c802934969",
-  "selectors": [
-    "unidroit.picc*"
-  ],
+  "format": "law.package-set/0.1",
+  "generatedAt": "2026-09-18T06:00:54+00:00",
   "dependencyMode": "vendored",
   "language": "en",
   "ci": "public",

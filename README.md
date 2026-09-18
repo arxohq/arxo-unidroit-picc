@@ -1,8 +1,9 @@
 # arxo-unidroit-picc
 
-Pinned canon packages spun off from the Arxo monorepo with a single command
-(`apps/registry/spinoff.py`). The norms here are data: they are executed by
-`law`, not by code in this repository.
+Pinned canon, executable as it stands: source text with provenance, the
+model built over it and the scenarios that check its answers. The norms
+here are data — they are executed by `law`; this repository carries no
+rule code of its own.
 
 ## Contents
 
