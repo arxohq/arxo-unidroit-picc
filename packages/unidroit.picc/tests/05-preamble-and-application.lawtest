@@ -1,0 +1,61 @@
+language "law.core" version "0.2";
+package unidroit.picc version "0.1.0";
+namespace "urn:org:unidroit:clir:picc";
+
+// Case 5. The Preamble: when do the Principles apply at all.
+//
+// Expectations from the text: the agreement of the parties makes the Principles
+// GOVERN the contract; a choice of general principles or of no law at all makes
+// them merely APPLICABLE; and they may be used to interpret or supplement both
+// an international uniform law instrument and a rule of domestic law.
+//
+// The two verbs of the Preamble are two heads: a contract the Principles govern
+// and a contract they may be applied to are different situations, and asking
+// one of them about the other comes back NEITHER rather than TRUE.
+
+test "PICC-GEN-05-PREAMBLE-AND-APPLICATION" {
+    given {
+        context {
+            deadline_policy PICC_PARTY_SET_PERIOD;
+            decision_time @2026-09-18T12:00:00Z;
+            knowledge_time @2026-09-18T12:00:00Z;
+            legal_time @2026-09-18;
+            timezone "UTC";
+        }
+
+        assert "a0": parties_agreed_principles_govern(entity_ref("urn:case:picc:pre-1")) { origin case_input; }
+        assert "a1": parties_agreed_general_principles(entity_ref("urn:case:picc:pre-2")) { origin case_input; }
+        assert "a2": no_law_chosen(entity_ref("urn:case:picc:pre-3")) { origin case_input; }
+        assert "a3": uniform_law_instrument(entity_ref("urn:case:picc:cisg")) { origin case_input; }
+        assert "a4": domestic_law(entity_ref("urn:case:picc:civil-code")) { origin case_input; }
+    }
+
+    // Second paragraph: the agreement of the parties binds.
+    evaluate truth(principles_govern_contract(entity_ref("urn:case:picc:pre-1")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PrinciplesGovernByAgreement);
+
+    // A choice of general principles does NOT make them govern — it makes them
+    // applicable, and the distinction is an answer.
+    evaluate truth(principles_govern_contract(entity_ref("urn:case:picc:pre-2")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(principles_may_be_applied(entity_ref("urn:case:picc:pre-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MayApplyOnChoiceOfGeneralPrinciples);
+
+    // Fourth paragraph: no law chosen at all.
+    evaluate truth(principles_may_be_applied(entity_ref("urn:case:picc:pre-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MayApplyWhereNoLawChosen);
+
+    // Fifth and sixth paragraphs: two different texts, one head.
+    evaluate truth(principles_may_interpret_or_supplement(entity_ref("urn:case:picc:cisg")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MayInterpretUniformLaw);
+
+    evaluate truth(principles_may_interpret_or_supplement(entity_ref("urn:case:picc:civil-code")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MayInterpretDomesticLaw);
+}

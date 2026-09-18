@@ -25,5 +25,6 @@ suites = [
   "tests/02-interpretation-of-the-contract.lawtest",
   "tests/03-content-and-price.lawtest",
   "tests/04-notice-and-usages.lawtest",
+  "tests/05-preamble-and-application.lawtest",
 ]
 world = ["unidroit.picc"]

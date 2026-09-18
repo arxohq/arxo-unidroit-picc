@@ -26,7 +26,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:280f0e7f468462a0b8601a303cf667982c238e2f7496d5b6fb14374fd828e789",
+      "contentHash": "sha256:6816a11b28c4585f43cb887334221dffdd3c54892d04690a34fb0679b293292c",
       "features": [
         "core-executable"
       ],
@@ -35,7 +35,7 @@
       "version": "0.1.0"
     },
     {
-      "contentHash": "sha256:e159165f8593f67fff061b3d632d685ace41d4e485c920517733b45bc221b2b3",
+      "contentHash": "sha256:53b6e5929134daff4c99966e2d7cb92e50d0a8f37cd1aa038ed353b61fc90073",
       "features": [
         "core-executable"
       ],
@@ -44,7 +44,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:7fb3d6e94fa56f3dfd24f3daefdef158e633b1e472e6540d10faadfff068b684",
+  "resolutionHash": "sha256:8f2ca31505be56101be7641048dbc1508fab787a4fcc00a938daca4ef27e1e01",
   "root": {
     "contentHash": "sha256:0267f300640f7c9554531ae7b2662064ba353b29db8950714fc5e2c6ef212de7",
     "name": "examples.unidroit.limitation_periods",

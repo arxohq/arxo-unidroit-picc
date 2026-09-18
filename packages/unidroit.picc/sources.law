@@ -47,6 +47,27 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
     local_path "sources/picc-en/en.txt";
 }
+
+// Preamble (Purpose of the Principles). The unit of the instrument that
+// says WHEN the Principles apply at all; it is not an article and carries
+// no number, so the article split does not see it.
+fragment PICC_PREAMBLE_EN in PICC_2016_EN {
+    kind preamble;
+    locator "preamble";
+    text en official """PREAMBLE
+(Purpose of the Principles)
+These Principles set forth general rules for international commercial contracts.
+They shall be applied when the parties have agreed that their contract be governed
+by them.(*)
+They may be applied when the parties have agreed that their contract be governed by
+general principles of law, the lex mercatoria or the like.
+They may be applied when the parties have not chosen any law to govern their
+contract.
+They may be used to interpret or supplement international uniform law instruments.
+They may be used to interpret or supplement domestic law.
+They may serve as a model for national and international legislators.""";
+    content_hash "sha256:e07bc3244f2c94a5e38b08b78a8e6a22a8ce0ffe8eade6e5d2640380641526a1";
+}
 // Article 1.1 (English black-letter rules)
 fragment PICC_ART1_1_EN in PICC_2016_EN {
     kind article;

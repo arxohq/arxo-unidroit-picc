@@ -47,6 +47,7 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
     local_path "sources/picc-en/en.txt";
 }
+
 // Article 8.1 (English black-letter rules)
 fragment PICC_ART8_1_EN in PICC_2016_EN {
     kind article;

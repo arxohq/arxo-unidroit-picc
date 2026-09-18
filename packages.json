@@ -1,6 +1,6 @@
 {
   "format": "law.package-set/0.1",
-  "generatedAt": "2026-09-18T07:38:07+00:00",
+  "generatedAt": "2026-09-18T08:56:56+00:00",
   "dependencyMode": "vendored",
   "language": "en",
   "ci": "public",
@@ -11,15 +11,15 @@
     {
       "name": "unidroit.picc",
       "version": "0.1.0",
-      "contentHash": "sha256:280f0e7f468462a0b8601a303cf667982c238e2f7496d5b6fb14374fd828e789",
+      "contentHash": "sha256:6816a11b28c4585f43cb887334221dffdd3c54892d04690a34fb0679b293292c",
       "dependencies": [],
-      "tests": 4,
+      "tests": 5,
       "outcome": "passed"
     },
     {
       "name": "unidroit.picc_formation",
       "version": "0.1.0",
-      "contentHash": "sha256:b76a19650ce72df269019cff0db71f7e75f75aa7c5b4c44e6ff31fe014eee29f",
+      "contentHash": "sha256:1cc4d504b99c657627472b5eb2dc11777e0fd161d1770b45c842778e6d153d36",
       "dependencies": [
         "unidroit.picc"
       ],
@@ -29,7 +29,7 @@
     {
       "name": "unidroit.picc_limitation",
       "version": "0.1.0",
-      "contentHash": "sha256:e159165f8593f67fff061b3d632d685ace41d4e485c920517733b45bc221b2b3",
+      "contentHash": "sha256:53b6e5929134daff4c99966e2d7cb92e50d0a8f37cd1aa038ed353b61fc90073",
       "dependencies": [
         "unidroit.picc"
       ],
@@ -39,7 +39,7 @@
     {
       "name": "unidroit.picc_non_performance",
       "version": "0.1.0",
-      "contentHash": "sha256:a5ef0c8b3b37b0d6f340ab2fb6e36e074042a61cb92485508dfdf68f7fc3d55f",
+      "contentHash": "sha256:85bb7e4c31a5b0438c4e588aacd8c5129af23cfec850ad3bb806eeeea78b1630",
       "dependencies": [
         "unidroit.picc"
       ],
@@ -49,7 +49,7 @@
     {
       "name": "unidroit.picc_obligations",
       "version": "0.1.0",
-      "contentHash": "sha256:2035b1f6f735e8f23bec0a39f95bba3b5070de112455ee4f7aeef7290cb740cd",
+      "contentHash": "sha256:43e6e66ad1460946fee29b0a170b12da6ee4f7560553945db18d3bd55c2af074",
       "dependencies": [
         "unidroit.picc"
       ],
@@ -59,7 +59,7 @@
     {
       "name": "unidroit.picc_performance",
       "version": "0.1.0",
-      "contentHash": "sha256:70c4568fe59c8106e4c716c611aa51f918ac21ce162457b961c7bc104533b86d",
+      "contentHash": "sha256:5308593dba08bf25c817197b0c1270abda2f8cddc3462be88093bba57c947b0b",
       "dependencies": [
         "unidroit.picc"
       ],
@@ -69,7 +69,7 @@
     {
       "name": "unidroit.picc_validity",
       "version": "0.1.0",
-      "contentHash": "sha256:ca9adc5e90a9155ae7fb4d881d882237af29e39e05a55a0f07e37e0aa8eb8a06",
+      "contentHash": "sha256:2c09030f590189e71005b12ab900c47660822759f76930905d2380b8905fb465",
       "dependencies": [
         "unidroit.picc"
       ],

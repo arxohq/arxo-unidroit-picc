@@ -9,7 +9,7 @@ rule code of its own.
 
 | Package | Version | Scenarios | Dependencies |
 |---|---|---|---|
-| `unidroit.picc` | 0.1.0 | 4 | 0 |
+| `unidroit.picc` | 0.1.0 | 5 | 0 |
 | `unidroit.picc_formation` | 0.1.0 | 4 | 1 |
 | `unidroit.picc_limitation` | 0.1.0 | 3 | 1 |
 | `unidroit.picc_non_performance` | 0.1.0 | 4 | 1 |

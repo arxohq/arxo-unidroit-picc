@@ -1,0 +1,102 @@
+// Preamble (Purpose of the Principles).
+//
+// THE FIRST QUESTION OF ANY READER IS ANSWERED HERE, NOT IN A COMMENT: when do
+// these Principles apply at all? The Preamble names six situations and grades
+// them by two different verbs, and the difference between the verbs is the
+// whole point:
+//
+//   · "They SHALL be applied when the parties have agreed that their contract
+//     be governed by them" — the agreement of the parties binds;
+//   · "They MAY be applied" where the parties chose general principles, the lex
+//     mercatoria or the like, and where they chose no law at all;
+//   · "They MAY be used to interpret or supplement" international uniform law
+//     instruments and domestic law.
+//
+// THREE GROUNDS ARE THREE RULES (§206), not one rule with a list: `why-not`
+// must be able to say WHICH ground failed. The two verbs give two different
+// heads, because a contract that the Principles govern and a contract they may
+// be applied to are different legal situations.
+//
+// THE SIXTH LINE IS NOT A CASE QUESTION. "They may serve as a model for
+// national and international legislators" addresses legislators, not a dispute:
+// no facts of a case make it true or false, and it is declared as a boundary of
+// the catalogue instead of being given a head it does not have.
+
+language "law.core" version "0.2";
+package unidroit.picc version "0.1.0";
+namespace "urn:org:unidroit:clir:picc";
+
+pub entity LawText {
+    label en official "An international uniform law instrument or a rule of domestic law";
+}
+
+// --- What the case presents ---------------------------------------------------
+
+pub relation parties_agreed_principles_govern(c: Contract) kind empirical {
+    label en official "the parties have agreed that their contract be governed by these Principles";
+}
+
+pub relation parties_agreed_general_principles(c: Contract) kind empirical {
+    label en official "the parties have agreed that their contract be governed by general principles of law, the lex mercatoria or the like";
+}
+
+pub relation no_law_chosen(c: Contract) kind empirical {
+    label en official "the parties have not chosen any law to govern their contract";
+}
+
+pub relation uniform_law_instrument(l: LawText) kind empirical {
+    label en official "the text is an international uniform law instrument";
+}
+
+pub relation domestic_law(l: LawText) kind empirical {
+    label en official "the text is a rule of domestic law";
+}
+
+// --- What the Preamble concludes ----------------------------------------------
+
+pub relation principles_govern_contract(c: Contract) kind institutional {
+    label en official "these Principles shall be applied to the contract (Preamble, second paragraph)";
+}
+
+pub relation principles_may_be_applied(c: Contract) kind institutional {
+    label en official "these Principles may be applied to the contract (Preamble, third and fourth paragraphs)";
+}
+
+pub relation principles_may_interpret_or_supplement(l: LawText) kind institutional {
+    label en official "these Principles may be used to interpret or supplement the text (Preamble, fifth and sixth paragraphs)";
+}
+
+@source(PICC_PREAMBLE_EN)
+rule PrinciplesGovernByAgreement(c: Contract) strict {
+    label en official "Preamble. These Principles shall be applied when the parties have agreed that their contract be governed by them";
+    when parties_agreed_principles_govern(c);
+    then principles_govern_contract(c);
+}
+
+@source(PICC_PREAMBLE_EN)
+rule MayApplyOnChoiceOfGeneralPrinciples(c: Contract) strict {
+    label en official "Preamble. These Principles may be applied when the parties have agreed that their contract be governed by general principles of law, the lex mercatoria or the like";
+    when parties_agreed_general_principles(c);
+    then principles_may_be_applied(c);
+}
+
+@source(PICC_PREAMBLE_EN)
+rule MayApplyWhereNoLawChosen(c: Contract) strict {
+    label en official "Preamble. These Principles may be applied when the parties have not chosen any law to govern their contract";
+    when no_law_chosen(c);
+    then principles_may_be_applied(c);
+}
+
+@source(PICC_PREAMBLE_EN)
+rule MayInterpretUniformLaw(l: LawText) strict {
+    label en official "Preamble. These Principles may be used to interpret or supplement international uniform law instruments";
+    when uniform_law_instrument(l);
+    then principles_may_interpret_or_supplement(l);
+}
+
+@source(PICC_PREAMBLE_EN)
+rule MayInterpretDomesticLaw(l: LawText) strict {
+    label en official "Preamble. These Principles may be used to interpret or supplement domestic law";
+    when domestic_law(l);
+    then principles_may_interpret_or_supplement(l);
+}
