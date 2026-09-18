@@ -41,6 +41,7 @@ directory with `law ask .` — nothing is downloaded.
 
 | Collection | Cases | Questions |
 |---|---:|---:|
+| [`packages/unidroit.picc/examples/applying-the-principles`](packages/unidroit.picc/examples/applying-the-principles/README.md) | 2 | 7 |
 | [`packages/unidroit.picc_formation/examples/battle-of-forms`](packages/unidroit.picc_formation/examples/battle-of-forms/README.md) | 2 | 6 |
 | [`packages/unidroit.picc_limitation/examples/limitation-periods`](packages/unidroit.picc_limitation/examples/limitation-periods/README.md) | 2 | 7 |
 | [`packages/unidroit.picc_non_performance/examples/interest-rate`](packages/unidroit.picc_non_performance/examples/interest-rate/README.md) | 2 | 7 |

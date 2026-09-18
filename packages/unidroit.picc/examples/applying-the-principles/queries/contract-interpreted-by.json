@@ -1,0 +1,13 @@
+{
+  "queryId": "contract-interpreted-by",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc#contract_interpreted_by",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:reading:common-intention" },
+      { "kind": "entity_ref", "id": "urn:example:picc:reading:contract" }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "queryId": "exclusion-of-good-faith-ineffective",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc#exclusion_of_good_faith_ineffective",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:apply:chosen" }
+    ]
+  }
+}

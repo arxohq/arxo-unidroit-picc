@@ -1,0 +1,13 @@
+{
+  "queryId": "reading-preferred",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc#reading_preferred",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:reading:against-supplier" },
+      { "kind": "entity_ref", "id": "urn:example:picc:reading:delivery-clause" }
+    ]
+  }
+}

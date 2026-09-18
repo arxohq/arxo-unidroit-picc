@@ -1,0 +1,25 @@
+# Worked cases over the pinned canon of the Preamble and chapters 1 and 4 of
+# the UNIDROIT Principles. The norms stay with their owner package; here there
+# are only facts, questions and answers.
+[package]
+name = "examples.unidroit.applying_the_principles"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:law:examples:unidroit:applying-the-principles"
+
+[dependencies]
+"unidroit.picc" = "0.1.0"
+
+[[cases]]
+name = "DoTheyApply"
+path = "cases/01-do-they-apply.lawcase"
+
+[[cases]]
+name = "ReadingATerm"
+path = "cases/02-reading-a-term.lawcase"
+
+[metadata]
+act = "unidroit-picc-2016-examples-applying-the-principles"
+title = "Worked cases: whether the Principles apply at all (Preamble), the duty of good faith (art. 1.7) and how a term is read (ch. 4)"
+jurisdiction = "International"
+instrument = "case-collection"

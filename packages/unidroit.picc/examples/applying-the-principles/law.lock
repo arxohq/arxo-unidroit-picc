@@ -1,0 +1,31 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "examples.unidroit.applying_the_principles",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.0",
+  "lockVersion": "0.1",
+  "packages": [
+    {
+      "contentHash": "sha256:6816a11b28c4585f43cb887334221dffdd3c54892d04690a34fb0679b293292c",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc",
+      "namespace": "urn:org:unidroit:clir:picc",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:d6b72d9f22d3dc2f215fa6f89cddf5471712e84c5a0ecd414a69343ff6ca11f6",
+  "root": {
+    "contentHash": "sha256:e92b622923eb4307665c9323c9598c8cdd299744361c2ecf6e20a4e84658d384",
+    "name": "examples.unidroit.applying_the_principles",
+    "namespace": "urn:law:examples:unidroit:applying-the-principles",
+    "version": "0.1.0"
+  }
+}

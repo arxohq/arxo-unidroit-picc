@@ -1,0 +1,50 @@
+language "law.core" version "0.2";
+package examples.unidroit.applying_the_principles version "0.1.0";
+namespace "urn:law:examples:unidroit:applying-the-principles";
+
+// Case 1. The first question of any reader: do these Principles apply to me?
+//
+// THE PREAMBLE GRADES THE ANSWER BY ITS VERBS. Two contracts are presented
+// side by side: in one the parties agreed that the Principles govern it, in the
+// other they chose "general principles of law" and nothing more. The first is
+// GOVERNED by the Principles ("shall be applied"), the second is one they MAY
+// be applied to — and asking the first question of the second contract comes
+// back NEITHER, because the Preamble does not say that.
+//
+// WHAT FOLLOWS ONCE THEY APPLY. Article 1.7 puts a duty of good faith on each
+// party towards the other, and article 1.7(2) makes any attempt to exclude it
+// ineffective. The duty is a §123 position with a maintenance goal: it is not
+// a fact of the case but a legal position the document carries, and it is
+// ACTIVE here.
+//
+// Article 1.5 lets the parties derogate from the provisions of the Principles,
+// but that liberty stops exactly where the Principles say otherwise: the same
+// case shows a derogation that works and one that does not.
+
+case DoTheyApply {
+    context {
+        deadline_policy PICC_PARTY_SET_PERIOD;
+        legal_time @2026-09-18;
+        knowledge_time @2026-09-18T12:00:00Z;
+        decision_time @2026-09-18T12:00:00Z;
+        timezone "UTC";
+    }
+
+    const chosen: unidroit.picc::Contract = entity_ref("urn:example:picc:apply:chosen");
+    const lex: unidroit.picc::Contract = entity_ref("urn:example:picc:apply:lex-mercatoria");
+    const alpha: unidroit.picc::Party = entity_ref("urn:example:picc:apply:alpha");
+    const beta: unidroit.picc::Party = entity_ref("urn:example:picc:apply:beta");
+
+    // Preamble, second paragraph: the parties agreed the Principles govern.
+    assert "agreed": unidroit.picc::parties_agreed_principles_govern(chosen) { origin case_input; }
+
+    // Preamble, third paragraph: the other contract names general principles.
+    assert "lex": unidroit.picc::parties_agreed_general_principles(lex) { origin case_input; }
+
+    // Article 1.7: both are parties of the governed contract.
+    assert "alpha": unidroit.picc::party_of(alpha, chosen) { origin case_input; }
+    assert "beta": unidroit.picc::party_of(beta, chosen) { origin case_input; }
+
+    // Article 1.7(2): the contract purports to exclude the duty of good faith.
+    assert "excluded": unidroit.picc::duty_of_good_faith_excluded(chosen) { origin case_input; }
+}

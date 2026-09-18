@@ -1,0 +1,16 @@
+language "law.core" version "0.2";
+package examples.unidroit.applying_the_principles version "0.1.0";
+namespace "urn:law:examples:unidroit:applying-the-principles";
+
+import unidroit.picc version "0.1.0";
+
+// The §86 policy is declared by the package that EXECUTES the case, not by the
+// one that owns the norms (LDC-E1332). These parameters repeat the policy of
+// `unidroit.picc` word for word: article 1.12(1) counts calendar days and does
+// not exclude holidays falling within the period.
+deadline policy PICC_PARTY_SET_PERIOD {
+    start_count same_day;
+    include_end true;
+    roll no_roll;
+    month_end last_day_of_month;
+}
