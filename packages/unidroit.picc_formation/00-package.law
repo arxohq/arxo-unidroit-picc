@@ -1,0 +1,45 @@
+// Глава 2 Принципов: заключение договора и полномочия представителей.
+//
+// ЗАЧЕМ ОТДЕЛЬНЫЙ ПАКЕТ, ЕСЛИ НОРМЫ ЗЕРКАЛЬНЫ ЧАСТИ II КОНВЕНЦИИ. Именно
+// затем, что зеркальны НЕ ПОЛНОСТЬЮ, и различия — предмет сравнения:
+//
+//  · статья 2.1.22 даёт «битву форм» НОРМОЙ (knock-out: договор заключается
+//    на согласованных условиях и на совпадающих по существу стандартных),
+//    тогда как у статьи 19 Конвенции этого правила нет вовсе и практика
+//    читает её двояко — два прочтения §152 в `intl.uncitral.cisg_formation`;
+//  · статья 2.1.12 знает письменное подтверждение с дополнительными
+//    условиями, которого Конвенция не знает;
+//  · статья 2.1.15 знает ответственность за недобросовестные переговоры,
+//    которой в Конвенции нет;
+//  · статья 2.1.20 знает неожиданные условия стандартных форм.
+//
+// СРОК ДЛЯ АКЦЕПТА СЧИТАЕТСЯ ОТ ОТПРАВКИ ОФЕРТЫ (ст. 2.1.8), а не от сдачи
+// телеграммы или даты письма, как у статьи 20 Конвенции: «A period of
+// acceptance fixed by the offeror begins to run from the time that the offer
+// is dispatched». Политика §86 та же, что у хаба, и берётся импортом.
+
+language "law.core" version "0.2";
+package unidroit.picc_formation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-formation";
+
+import unidroit.picc version "0.1.0";
+
+type Party = unidroit.picc::Party;
+type Contract = unidroit.picc::Contract;
+type Term = unidroit.picc::Term;
+type Organ = unidroit.picc::Organ;
+
+deadline policy PICC_ACCEPTANCE_PERIOD {
+    start_count same_day;
+    include_end true;
+    roll no_roll;
+    month_end last_day_of_month;
+}
+
+const Tribunal: Organ = entity_ref("urn:org:unidroit:clir:picc#Tribunal") {
+    label en official "the court or arbitral tribunal seised of the dispute (article 1.11)";
+    label ru unofficial "суд или арбитраж, рассматривающий спор (статья 1.11)";
+};
+
+pub entity Offer { label en official "Offer"; label ru unofficial "Оферта"; }
+pub entity Acceptance { label en official "Acceptance or reply to an offer"; label ru unofficial "Акцепт или ответ на оферту"; }

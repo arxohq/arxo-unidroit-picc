@@ -1,0 +1,1352 @@
+{
+  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "format": "law.package-questions/0.1",
+  "package": "unidroit.picc_formation",
+  "tasks": [
+    {
+      "id": "offer-acceptance",
+      "title": "Заключение договора: оферта, акцепт, сроки и подтверждение (ст. 2.1.1–2.1.12)",
+      "source_units": [
+        "PICC_ART2_1_10_EN",
+        "PICC_ART2_1_10_RU",
+        "PICC_ART2_1_12_EN",
+        "PICC_ART2_1_12_RU",
+        "PICC_ART2_1_13_EN",
+        "PICC_ART2_1_13_RU",
+        "PICC_ART2_1_1_EN",
+        "PICC_ART2_1_1_RU",
+        "PICC_ART2_1_2_EN",
+        "PICC_ART2_1_2_RU",
+        "PICC_ART2_1_3_EN",
+        "PICC_ART2_1_3_RU",
+        "PICC_ART2_1_4_EN",
+        "PICC_ART2_1_4_RU",
+        "PICC_ART2_1_5_EN",
+        "PICC_ART2_1_5_RU",
+        "PICC_ART2_1_6_EN",
+        "PICC_ART2_1_6_RU",
+        "PICC_ART2_1_7_EN",
+        "PICC_ART2_1_7_RU",
+        "PICC_ART2_1_8_EN",
+        "PICC_ART2_1_8_RU",
+        "PICC_ART2_1_9_EN",
+        "PICC_ART2_1_9_RU"
+      ]
+    },
+    {
+      "id": "standard-terms",
+      "title": "Изменённый акцепт, переговоры и стандартные условия (ст. 2.1.11, 2.1.13–2.1.22)",
+      "source_units": [
+        "PICC_ART2_1_11_EN",
+        "PICC_ART2_1_11_RU",
+        "PICC_ART2_1_14_EN",
+        "PICC_ART2_1_14_RU",
+        "PICC_ART2_1_15_EN",
+        "PICC_ART2_1_15_RU",
+        "PICC_ART2_1_16_EN",
+        "PICC_ART2_1_16_RU",
+        "PICC_ART2_1_17_EN",
+        "PICC_ART2_1_17_RU",
+        "PICC_ART2_1_18_EN",
+        "PICC_ART2_1_18_RU",
+        "PICC_ART2_1_19_EN",
+        "PICC_ART2_1_19_RU",
+        "PICC_ART2_1_20_EN",
+        "PICC_ART2_1_20_RU",
+        "PICC_ART2_1_21_EN",
+        "PICC_ART2_1_21_RU",
+        "PICC_ART2_1_22_EN",
+        "PICC_ART2_1_22_RU"
+      ]
+    },
+    {
+      "id": "agency",
+      "title": "Полномочия представителей (ст. 2.2.1–2.2.10)",
+      "source_units": [
+        "PICC_ART2_2_10_EN",
+        "PICC_ART2_2_10_RU",
+        "PICC_ART2_2_1_EN",
+        "PICC_ART2_2_1_RU",
+        "PICC_ART2_2_2_EN",
+        "PICC_ART2_2_2_RU",
+        "PICC_ART2_2_3_EN",
+        "PICC_ART2_2_3_RU",
+        "PICC_ART2_2_4_EN",
+        "PICC_ART2_2_4_RU",
+        "PICC_ART2_2_5_EN",
+        "PICC_ART2_2_5_RU",
+        "PICC_ART2_2_6_EN",
+        "PICC_ART2_2_6_RU",
+        "PICC_ART2_2_7_EN",
+        "PICC_ART2_2_7_RU",
+        "PICC_ART2_2_8_EN",
+        "PICC_ART2_2_8_RU",
+        "PICC_ART2_2_9_EN",
+        "PICC_ART2_2_9_RU"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "acceptance-effective",
+      "task": "offer-acceptance",
+      "question": "Вступил ли акцепт в силу и не отменён ли он (ст. 2.1.6 п. 2, 2.1.10)?",
+      "kind": "truth",
+      "predicate": "acceptance_effective",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "Acceptance",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(acceptance_effective(a: <a>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.6(2) with 2.1.7. An acceptance becomes effective when the indication of assent reaches the offeror in time",
+          "rule": "AcceptanceEffective"
+        },
+        {
+          "summary": "Article 2.1.6(3). The acceptance is effective when the act is performed",
+          "rule": "AcceptanceEffectiveOnPerformance"
+        },
+        {
+          "summary": "Article 2.1.10. An acceptance may be withdrawn if the withdrawal reaches the offeror before or at the same time as the acceptance would have become effective",
+          "rule": "AcceptanceWithdrawn"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_10_EN",
+        "PICC_ART2_1_10_RU",
+        "PICC_ART2_1_6_EN",
+        "PICC_ART2_1_6_RU",
+        "PICC_ART2_1_7_EN"
+      ]
+    },
+    {
+      "id": "acceptance-in-time",
+      "task": "offer-acceptance",
+      "question": "Совершён ли акцепт в срок (ст. 2.1.7, 2.1.9)?",
+      "kind": "truth",
+      "predicate": "acceptance_in_time",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "Acceptance",
+          "role": "bound"
+        },
+        {
+          "name": "o",
+          "type": "Offer",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(acceptance_in_time(a: <a>, o: <o>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.7. An offer must be accepted within the time the offeror has fixed",
+          "rule": "AcceptanceWithinFixedPeriod"
+        },
+        {
+          "summary": "Article 2.1.7. If no time is fixed, the offer must be accepted within a reasonable time",
+          "rule": "AcceptanceWithinReasonableTime"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_7_EN",
+        "PICC_ART2_1_7_RU"
+      ]
+    },
+    {
+      "id": "acceptance-period-ends-on",
+      "task": "offer-acceptance",
+      "question": "Каким днём истекает срок для акцепта (ст. 2.1.8)?",
+      "kind": "truth",
+      "predicate": "acceptance_period_ends_on",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Offer",
+          "role": "bound"
+        },
+        {
+          "name": "day",
+          "type": "Date",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(acceptance_period_ends_on(o: <o>, day: <day>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "source_units": [
+        "PICC_ART2_1_7_EN",
+        "PICC_ART2_1_8_EN"
+      ]
+    },
+    {
+      "id": "acceptance-period-runs-from",
+      "task": "offer-acceptance",
+      "question": "С какого дня течёт срок для акцепта (ст. 2.1.8)?",
+      "kind": "truth",
+      "predicate": "acceptance_period_runs_from",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Offer",
+          "role": "bound"
+        },
+        {
+          "name": "day",
+          "type": "Date",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(acceptance_period_runs_from(o: <o>, day: <day>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.8. A time indicated in the offer is deemed to be the time of dispatch unless the circumstances indicate otherwise",
+          "rule": "IndicatedTimeIsDispatch"
+        },
+        {
+          "summary": "Article 2.1.8. A time indicated in the offer is deemed to be the time of dispatch unless the circumstances indicate otherwise",
+          "rule": "IndicatedTimeIsDispatch/unless/0"
+        },
+        {
+          "summary": "Article 2.1.8. A period of acceptance fixed by the offeror begins to run from the time that the offer is dispatched",
+          "rule": "PeriodRunsFromDispatch"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_8_EN",
+        "PICC_ART2_1_8_RU"
+      ]
+    },
+    {
+      "id": "acceptance-with-modifications",
+      "task": "standard-terms",
+      "question": "Является ли ответ с несущественными изменениями акцептом (ст. 2.1.11 п. 2)?",
+      "kind": "truth",
+      "predicate": "acceptance_with_modifications",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "Acceptance",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(acceptance_with_modifications(a: <a>));",
+      "tests": [
+        "PICCF-02-MODIFIED-ACCEPTANCE-AND-BATTLE-OF-FORMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.11(2). A reply with additional or different terms which do not materially alter the offer constitutes an acceptance unless the offeror objects without undue delay",
+          "rule": "NonMaterialReplyIsAcceptance"
+        },
+        {
+          "summary": "Article 2.1.11(2). A reply with additional or different terms which do not materially alter the offer constitutes an acceptance unless the offeror objects without undue delay",
+          "rule": "NonMaterialReplyIsAcceptance/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_11_EN",
+        "PICC_ART2_1_11_RU"
+      ]
+    },
+    {
+      "id": "act-produces-effects-as-authorised",
+      "task": "agency",
+      "question": "Порождает ли одобренное действие те же последствия, что и действие в пределах полномочий (ст. 2.2.9)?",
+      "kind": "truth",
+      "predicate": "act_produces_effects_as_authorised",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(act_produces_effects_as_authorised(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.2.9(1). An act by an agent that acts without authority may be ratified by the principal",
+          "rule": "RatificationPower"
+        },
+        {
+          "summary": "Article 2.2.9(1). On ratification the act produces the same effects as if it had been carried out with authority",
+          "rule": "RatifiedActIsAuthorised"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_2_9_EN",
+        "PICC_ART2_2_9_RU"
+      ]
+    },
+    {
+      "id": "affects-agent-and-third-party-only",
+      "task": "agency",
+      "question": "Связывает ли действие представителя только его самого и третье лицо (ст. 2.2.4)?",
+      "kind": "truth",
+      "predicate": "affects_agent_and_third_party_only",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(affects_agent_and_third_party_only(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.2.4(1). Where the third party neither knew nor ought to have known of the agency, the acts affect only the relations between the agent and the third party",
+          "rule": "AgencyUndisclosed"
+        },
+        {
+          "summary": "Article 2.2.3(2). Where the agent with the consent of the principal undertakes to become the party to the contract, the acts affect only the relations between the agent and the third party",
+          "rule": "AgentBecomesPartyItself"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_2_3_EN",
+        "PICC_ART2_2_3_RU",
+        "PICC_ART2_2_4_EN",
+        "PICC_ART2_2_4_RU"
+      ]
+    },
+    {
+      "id": "affects-principal-and-third-party",
+      "task": "agency",
+      "question": "Связывает ли действие представителя принципала и третье лицо (ст. 2.2.3)?",
+      "kind": "truth",
+      "predicate": "affects_principal_and_third_party",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(affects_principal_and_third_party(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.2.3(1). Where an agent acts within the scope of its authority and the third party knew or ought to have known of the agency, the acts directly affect the relations between principal and third party",
+          "rule": "AgencyDisclosed"
+        },
+        {
+          "summary": "Article 2.2.3(2). Where the agent undertakes to become the party, the acts do not directly affect the relations between principal and third party",
+          "rule": "UndertakingDisplacesDisclosedAgency"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_2_3_EN",
+        "PICC_ART2_2_3_RU"
+      ]
+    },
+    {
+      "id": "agent-liable-for-damages",
+      "task": "agency",
+      "question": "Отвечает ли представитель перед третьим лицом за действие без полномочий (ст. 2.2.6)?",
+      "kind": "truth",
+      "predicate": "agent_liable_for_damages",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        },
+        {
+          "name": "ag",
+          "type": "Agent",
+          "role": "bound"
+        },
+        {
+          "name": "tp",
+          "type": "ThirdParty",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(agent_liable_for_damages(x: <x>, ag: <ag>, tp: <tp>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.2.6(1). An agent that acts without authority or exceeds it is, failing ratification, liable for damages placing the third party in the same position as if the agent had acted with authority",
+          "rule": "AgentLiableWithoutAuthority"
+        },
+        {
+          "summary": "Article 2.2.6(1). An agent that acts without authority or exceeds it is, failing ratification, liable for damages placing the third party in the same position as if the agent had acted with authority",
+          "rule": "AgentLiableWithoutAuthority/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_2_6_EN",
+        "PICC_ART2_2_6_RU"
+      ]
+    },
+    {
+      "id": "agent-remains-authorised",
+      "task": "agency",
+      "question": "Сохраняет ли представитель полномочия после их прекращения (ст. 2.2.10 п. 2)?",
+      "kind": "truth",
+      "predicate": "agent_remains_authorised",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(agent_remains_authorised(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_10_EN",
+        "PICC_ART2_2_10_RU"
+      ]
+    },
+    {
+      "id": "authority-covers-necessary-acts",
+      "task": "agency",
+      "question": "Охватывают ли полномочия действия, необходимые для достижения цели (ст. 2.2.2 п. 2)?",
+      "kind": "truth",
+      "predicate": "authority_covers_necessary_acts",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(authority_covers_necessary_acts(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_2_EN",
+        "PICC_ART2_2_2_RU"
+      ]
+    },
+    {
+      "id": "contract-concluded",
+      "task": "offer-acceptance",
+      "question": "Заключён ли договор (ст. 2.1.1)?",
+      "kind": "truth",
+      "predicate": "contract_concluded",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_concluded(c: <c>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE",
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.1. A contract may be concluded by the acceptance of an offer",
+          "rule": "ConcludedByAcceptance"
+        },
+        {
+          "summary": "Article 2.1.1. A contract may be concluded by conduct of the parties that is sufficient to show agreement",
+          "rule": "ConcludedByConduct"
+        },
+        {
+          "summary": "Article 2.1.13. Where a party insists that the contract is not concluded until agreement on specific matters is reached, no contract is concluded before that",
+          "rule": "NoContractBeforeAgreementOnMatters"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_13_EN",
+        "PICC_ART2_1_13_RU",
+        "PICC_ART2_1_1_EN",
+        "PICC_ART2_1_1_RU"
+      ]
+    },
+    {
+      "id": "contract-exists-despite-open-term",
+      "task": "standard-terms",
+      "question": "Заключён ли договор, если условие намеренно оставлено открытым (ст. 2.1.14)?",
+      "kind": "truth",
+      "predicate": "contract_exists_despite_open_term",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_exists_despite_open_term(c: <c>));",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.14(2). The existence of the contract is not affected by a later failure to agree on or determine the term, provided that there is a reasonable alternative means of rendering it definite",
+          "rule": "ContractSurvivesUndeterminedTerm"
+        },
+        {
+          "summary": "Article 2.1.14(1). If the parties intend to conclude a contract, an intentionally open term does not prevent the contract from coming into existence",
+          "rule": "OpenTermDoesNotPreventContract"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_14_EN",
+        "PICC_ART2_1_14_RU"
+      ]
+    },
+    {
+      "id": "contract-on-common-terms",
+      "task": "standard-terms",
+      "question": "Заключён ли договор на согласованных и совпадающих по существу стандартных условиях (ст. 2.1.22)?",
+      "kind": "truth",
+      "predicate": "contract_on_common_terms",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_on_common_terms(c: <c>));",
+      "tests": [
+        "PICCF-02-MODIFIED-ACCEPTANCE-AND-BATTLE-OF-FORMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.22. Where both parties use standard terms and reach agreement except on those terms, a contract is concluded on the basis of the agreed terms and of any standard terms which are common in substance",
+          "rule": "KnockOutRule"
+        },
+        {
+          "summary": "Article 2.1.22. Where both parties use standard terms and reach agreement except on those terms, a contract is concluded on the basis of the agreed terms and of any standard terms which are common in substance",
+          "rule": "KnockOutRule/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_22_EN",
+        "PICC_ART2_1_22_RU"
+      ]
+    },
+    {
+      "id": "counter-offer",
+      "task": "standard-terms",
+      "question": "Является ли ответ отклонением оферты и встречной офертой (ст. 2.1.11 п. 1)?",
+      "kind": "truth",
+      "predicate": "counter_offer",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "Acceptance",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(counter_offer(a: <a>));",
+      "tests": [
+        "PICCF-02-MODIFIED-ACCEPTANCE-AND-BATTLE-OF-FORMS"
+      ],
+      "source_units": [
+        "PICC_ART2_1_11_EN",
+        "PICC_ART2_1_11_RU"
+      ]
+    },
+    {
+      "id": "external-relations-governed",
+      "task": "agency",
+      "question": "Регулирует ли раздел внешние отношения представительства (ст. 2.2.1)?",
+      "kind": "truth",
+      "predicate": "external_relations_governed",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(external_relations_governed(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_1_EN",
+        "PICC_ART2_2_1_RU"
+      ]
+    },
+    {
+      "id": "general-rules-on-formation-apply",
+      "task": "standard-terms",
+      "question": "Применяются ли общие правила заключения договора к стандартным условиям (ст. 2.1.19)?",
+      "kind": "truth",
+      "predicate": "general_rules_on_formation_apply",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(general_rules_on_formation_apply(c: <c>));",
+      "tests": [
+        "PICCF-02-MODIFIED-ACCEPTANCE-AND-BATTLE-OF-FORMS"
+      ],
+      "source_units": [
+        "PICC_ART2_1_19_EN",
+        "PICC_ART2_1_19_RU"
+      ]
+    },
+    {
+      "id": "implied-authority-to-appoint-sub-agent",
+      "task": "agency",
+      "question": "Вправе ли представитель назначить заместителя (ст. 2.2.8)?",
+      "kind": "truth",
+      "predicate": "implied_authority_to_appoint_sub_agent",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        },
+        {
+          "name": "ag",
+          "type": "Agent",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(implied_authority_to_appoint_sub_agent(x: <x>, ag: <ag>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_8_EN",
+        "PICC_ART2_2_8_RU"
+      ]
+    },
+    {
+      "id": "informal-modification-ineffective",
+      "task": "standard-terms",
+      "question": "Имеет ли силу изменение договора в иной форме при оговорке о форме (ст. 2.1.18)?",
+      "kind": "truth",
+      "predicate": "informal_modification_ineffective",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(informal_modification_ineffective(c: <c>));",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.18. A contract in writing with a form clause may not be otherwise modified or terminated",
+          "rule": "FormClauseBlocksInformalModification"
+        },
+        {
+          "summary": "Article 2.1.18. A contract in writing with a form clause may not be otherwise modified or terminated",
+          "rule": "FormClauseBlocksInformalModification/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_18_EN",
+        "PICC_ART2_1_18_RU"
+      ]
+    },
+    {
+      "id": "is-acceptance",
+      "task": "offer-acceptance",
+      "question": "Является ли поведение или заявление акцептом (ст. 2.1.6)?",
+      "kind": "truth",
+      "predicate": "is_acceptance",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "Acceptance",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(is_acceptance(a: <a>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.6(3). Where the offeree may indicate assent by performing an act without notice, performing that act is an acceptance",
+          "rule": "AssentByPerformedActIsAcceptance"
+        },
+        {
+          "summary": "Article 2.1.6(1). A statement made by or other conduct of the offeree indicating assent to an offer is an acceptance",
+          "rule": "AssentIsAcceptance"
+        },
+        {
+          "summary": "Article 2.1.9(2). A late acceptance which would have arrived in due time is effective unless the offeror without undue delay objects",
+          "rule": "LateAcceptanceSavedByNormalTransmission"
+        },
+        {
+          "summary": "Article 2.1.9(2). A late acceptance which would have arrived in due time is effective unless the offeror without undue delay objects",
+          "rule": "LateAcceptanceSavedByNormalTransmission/unless/0"
+        },
+        {
+          "summary": "Article 2.1.9(1). A late acceptance is nevertheless effective if without undue delay the offeror so informs the offeree",
+          "rule": "LateAcceptanceSavedByOfferor"
+        },
+        {
+          "summary": "Article 2.1.6(1). Silence or inactivity does not in itself amount to acceptance",
+          "rule": "SilenceIsNotAcceptance"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_6_EN",
+        "PICC_ART2_1_6_RU",
+        "PICC_ART2_1_9_EN",
+        "PICC_ART2_1_9_RU"
+      ]
+    },
+    {
+      "id": "is-offer",
+      "task": "offer-acceptance",
+      "question": "Является ли предложение офертой (ст. 2.1.2)?",
+      "kind": "truth",
+      "predicate": "is_offer",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Offer",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(is_offer(o: <o>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "source_units": [
+        "PICC_ART2_1_2_EN",
+        "PICC_ART2_1_2_RU"
+      ]
+    },
+    {
+      "id": "liable-for-negotiation-losses",
+      "task": "standard-terms",
+      "question": "Отвечает ли сторона за потери от недобросовестных переговоров (ст. 2.1.15)?",
+      "kind": "truth",
+      "predicate": "liable_for_negotiation_losses",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "other",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(liable_for_negotiation_losses(p: <p>, other: <other>, c: <c>));",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.15(3). It is bad faith, in particular, for a party to enter into or continue negotiations when intending not to reach an agreement",
+          "rule": "BadFaithByNoIntentionToAgree"
+        },
+        {
+          "summary": "Article 2.1.15(1). A party is free to negotiate and is not liable for failure to reach an agreement",
+          "rule": "FreeToNegotiateNotLiable"
+        },
+        {
+          "summary": "Article 2.1.15(2). A party who negotiates or breaks off negotiations in bad faith is liable for the losses caused to the other party",
+          "rule": "LiableForBadFaithNegotiations"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_15_EN",
+        "PICC_ART2_1_15_RU"
+      ]
+    },
+    {
+      "id": "no-effect-on-principal",
+      "task": "agency",
+      "question": "Остаётся ли действие без полномочий без последствий для принципала (ст. 2.2.5 п. 1)?",
+      "kind": "truth",
+      "predicate": "no_effect_on_principal",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(no_effect_on_principal(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.2.5(1). Where an agent acts without authority or exceeds its authority, its acts do not affect the legal relations between the principal and the third party",
+          "rule": "ActsWithoutAuthority"
+        },
+        {
+          "summary": "Article 2.2.5(2). Where the principal causes the third party reasonably to believe that the agent has authority, the principal may not invoke the lack of authority",
+          "rule": "ApparentAuthorityBindsPrincipal"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_2_5_EN",
+        "PICC_ART2_2_5_RU"
+      ]
+    },
+    {
+      "id": "non-standard-term-prevails",
+      "task": "standard-terms",
+      "question": "Имеет ли нестандартное условие приоритет над стандартным (ст. 2.1.21)?",
+      "kind": "truth",
+      "predicate": "non_standard_term_prevails",
+      "parameters": [
+        {
+          "name": "other",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(non_standard_term_prevails(other: <other>, t: <t>, c: <c>));",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "source_units": [
+        "PICC_ART2_1_21_EN",
+        "PICC_ART2_1_21_RU"
+      ]
+    },
+    {
+      "id": "offer-effective",
+      "task": "offer-acceptance",
+      "question": "Вступила ли оферта в силу и не отменена ли она (ст. 2.1.3)?",
+      "kind": "truth",
+      "predicate": "offer_effective",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Offer",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(offer_effective(o: <o>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.3(1). An offer becomes effective when it reaches the offeree",
+          "rule": "OfferBecomesEffective"
+        },
+        {
+          "summary": "Article 2.1.5. An offer is terminated when a rejection reaches the offeror",
+          "rule": "OfferTerminatedByRejection"
+        },
+        {
+          "summary": "Article 2.1.3(2). An offer, even if irrevocable, may be withdrawn if the withdrawal reaches the offeree before or at the same time as the offer",
+          "rule": "OfferWithdrawn"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_3_EN",
+        "PICC_ART2_1_3_RU",
+        "PICC_ART2_1_5_EN",
+        "PICC_ART2_1_5_RU"
+      ]
+    },
+    {
+      "id": "offer-revoked",
+      "task": "offer-acceptance",
+      "question": "Отозвана ли оферта (ст. 2.1.4)?",
+      "kind": "truth",
+      "predicate": "offer_revoked",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Offer",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(offer_revoked(o: <o>));",
+      "tests": [
+        "PICCF-01-OFFER-AND-ACCEPTANCE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.4(2)(a). An offer cannot be revoked if it indicates that it is irrevocable",
+          "rule": "IrrevocableByItsTerms"
+        },
+        {
+          "summary": "Article 2.1.4(2)(b). An offer cannot be revoked if it was reasonable for the offeree to rely on it as being irrevocable and the offeree has acted in reliance",
+          "rule": "IrrevocableByReliance"
+        },
+        {
+          "summary": "Article 2.1.4(1). Until a contract is concluded an offer may be revoked if the revocation reaches the offeree before it has dispatched an acceptance",
+          "rule": "OfferRevoked"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_4_EN",
+        "PICC_ART2_1_4_RU"
+      ]
+    },
+    {
+      "id": "principal-may-avoid-contract",
+      "task": "agency",
+      "question": "Вправе ли принципал оспорить договор при конфликте интересов (ст. 2.2.7)?",
+      "kind": "truth",
+      "predicate": "principal_may_avoid_contract",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        },
+        {
+          "name": "pr",
+          "type": "Principal",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(principal_may_avoid_contract(x: <x>, pr: <pr>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.2.7(1). If a contract concluded by an agent involves a conflict of interests of which the third party knew or ought to have known, the principal may avoid the contract",
+          "rule": "ConflictOfInterestsAllowsAvoidance"
+        },
+        {
+          "summary": "Article 2.2.7(1). If a contract concluded by an agent involves a conflict of interests of which the third party knew or ought to have known, the principal may avoid the contract",
+          "rule": "ConflictOfInterestsAllowsAvoidance/unless/0"
+        },
+        {
+          "summary": "Article 2.2.7(2)(b). The principal may not avoid the contract if the agent had disclosed the conflict of interests and the principal had not objected within a reasonable time",
+          "rule": "DisclosedConflictBarsAvoidance"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_2_7_EN",
+        "PICC_ART2_2_7_RU"
+      ]
+    },
+    {
+      "id": "prior-statement-inadmissible",
+      "task": "standard-terms",
+      "question": "Допустимо ли предшествующее заявление как доказательство при оговорке о слиянии (ст. 2.1.17)?",
+      "kind": "truth",
+      "predicate": "prior_statement_inadmissible",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(prior_statement_inadmissible(c: <c>, t: <t>));",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "source_units": [
+        "PICC_ART2_1_17_EN",
+        "PICC_ART2_1_17_RU"
+      ]
+    },
+    {
+      "id": "ratification-ineffective-against-third-party",
+      "task": "agency",
+      "question": "Связывает ли одобрение третье лицо, заявившее отказ до одобрения (ст. 2.2.9 п. 3)?",
+      "kind": "truth",
+      "predicate": "ratification_ineffective_against_third_party",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(ratification_ineffective_against_third_party(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_9_EN",
+        "PICC_ART2_2_9_RU"
+      ]
+    },
+    {
+      "id": "ratification-no-longer-possible",
+      "task": "agency",
+      "question": "Утратил ли принципал возможность одобрить действие по истечении установленного срока (ст. 2.2.9 п. 2)?",
+      "kind": "truth",
+      "predicate": "ratification_no_longer_possible",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(ratification_no_longer_possible(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_9_EN",
+        "PICC_ART2_2_9_RU"
+      ]
+    },
+    {
+      "id": "rights-exercisable-against-owner",
+      "task": "agency",
+      "question": "Может ли третье лицо осуществить права против действительного владельца предприятия (ст. 2.2.4 п. 2)?",
+      "kind": "truth",
+      "predicate": "rights_exercisable_against_owner",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(rights_exercisable_against_owner(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_4_EN",
+        "PICC_ART2_2_4_RU"
+      ]
+    },
+    {
+      "id": "standard-term-is-part-of-contract",
+      "task": "standard-terms",
+      "question": "Входит ли стандартное условие в договор (ст. 2.1.22)?",
+      "kind": "truth",
+      "predicate": "standard_term_is_part_of_contract",
+      "parameters": [
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(standard_term_is_part_of_contract(t: <t>, c: <c>));",
+      "tests": [
+        "PICCF-02-MODIFIED-ACCEPTANCE-AND-BATTLE-OF-FORMS"
+      ],
+      "source_units": [
+        "PICC_ART2_1_22_EN",
+        "PICC_ART2_1_22_RU"
+      ]
+    },
+    {
+      "id": "term-becomes-part-of-contract",
+      "task": "offer-acceptance",
+      "question": "Становится ли условие письменного подтверждения частью договора (ст. 2.1.12)?",
+      "kind": "truth",
+      "predicate": "term_becomes_part_of_contract",
+      "parameters": [
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(term_becomes_part_of_contract(t: <t>, c: <c>));",
+      "tests": [
+        "PICCF-02-MODIFIED-ACCEPTANCE-AND-BATTLE-OF-FORMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.12. Additional or different terms in a writing in confirmation become part of the contract unless they materially alter it or the recipient objects without undue delay",
+          "rule": "ConfirmationTermBecomesPart"
+        },
+        {
+          "summary": "Article 2.1.12. Additional or different terms in a writing in confirmation become part of the contract unless they materially alter it or the recipient objects without undue delay",
+          "rule": "ConfirmationTermBecomesPart/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_12_EN",
+        "PICC_ART2_1_12_RU"
+      ]
+    },
+    {
+      "id": "term-ineffective",
+      "task": "standard-terms",
+      "question": "Имеет ли силу неожиданное стандартное условие (ст. 2.1.20)?",
+      "kind": "truth",
+      "predicate": "term_ineffective",
+      "parameters": [
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(term_ineffective(t: <t>, c: <c>));",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.20. No term contained in standard terms which the other party could not reasonably have expected is effective unless expressly accepted",
+          "rule": "SurprisingTermIneffective"
+        },
+        {
+          "summary": "Article 2.1.20. No term contained in standard terms which the other party could not reasonably have expected is effective unless expressly accepted",
+          "rule": "SurprisingTermIneffective/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_20_EN",
+        "PICC_ART2_1_20_RU"
+      ]
+    },
+    {
+      "id": "term-qualifies-as-standard-term",
+      "task": "standard-terms",
+      "question": "Является ли положение стандартным условием (ст. 2.1.19 п. 2)?",
+      "kind": "truth",
+      "predicate": "term_qualifies_as_standard_term",
+      "parameters": [
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(term_qualifies_as_standard_term(t: <t>, c: <c>));",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "source_units": [
+        "PICC_ART2_1_19_EN",
+        "PICC_ART2_1_19_RU"
+      ]
+    },
+    {
+      "id": "termination-effective-against-third-party",
+      "task": "agency",
+      "question": "Действует ли прекращение полномочий против третьего лица (ст. 2.2.10 п. 1)?",
+      "kind": "truth",
+      "predicate": "termination_effective_against_third_party",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Act",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(termination_effective_against_third_party(x: <x>));",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "source_units": [
+        "PICC_ART2_2_10_EN",
+        "PICC_ART2_2_10_RU"
+      ]
+    },
+    {
+      "id": "pozitsii-keep-confidential",
+      "task": "standard-terms",
+      "question": "Активна ли обязанность хранить конфиденциальность сведений переговоров (ст. 2.1.16)?",
+      "kind": "positions",
+      "norms": [
+        "KeepConfidential"
+      ],
+      "template": "evaluate positions(); expect position(KeepConfidential, <статус>);",
+      "tests": [
+        "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.1.16. Where information is given as confidential in the course of negotiations, the other party is under a duty not to disclose it or use it improperly, whether or not a contract is subsequently concluded",
+          "rule": "DutyOfConfidentiality"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_1_16_EN",
+        "PICC_ART2_1_16_RU"
+      ]
+    },
+    {
+      "id": "pozitsii-ratify",
+      "task": "agency",
+      "question": "Активна ли власть принципала одобрить действие без полномочий (ст. 2.2.9)?",
+      "kind": "positions",
+      "norms": [
+        "Ratify"
+      ],
+      "template": "evaluate positions(); expect position(Ratify, <статус>);",
+      "tests": [
+        "PICCF-04-AGENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 2.2.9(1). An act by an agent that acts without authority may be ratified by the principal",
+          "rule": "RatificationPower"
+        }
+      ],
+      "source_units": [
+        "PICC_ART2_2_9_EN",
+        "PICC_ART2_2_9_RU"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "gr-ne-pravo-gosudarstva-f",
+      "task": "offer-acceptance",
+      "reason_kind": "source_delegates",
+      "question": "Какие императивные нормы применимого права ограничивают заключённый договор?",
+      "source_units": [
+        "PICC_ART2_1_1_EN"
+      ],
+      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`)."
+    },
+    {
+      "id": "gr-otsenochnye-f",
+      "task": "standard-terms",
+      "reason_kind": "case_data",
+      "question": "Существенно ли изменение оферты, недобросовестны ли переговоры и можно ли было ожидать стандартное условие?",
+      "source_units": [
+        "PICC_ART2_1_11_EN",
+        "PICC_ART2_1_15_EN",
+        "PICC_ART2_1_20_EN"
+      ],
+      "limitation": "ОЦЕНОЧНЫЕ ПРИЗНАКИ ГЛАВЫ 2 ИДУТ КАНАЛОМ СУЖДЕНИЯ §47.3 с органом `Tribunal`: существенность изменения оферты и договора (2.1.11, 2.1.12), разумность расчёта на безотзывность (2.1.4), разумность срока акцепта и извещения (2.1.7, 2.1.9), недобросовестность переговоров (2.1.15), ожидаемость стандартного условия (2.1.20), вызванное принципалом разумное убеждение третьего лица (2.2.5 п. 2), неразумность ожидания личного действия представителя (2.2.8). Модель не решает их сама и не подставляет догадку."
+    },
+    {
+      "id": "gr-otlichie-ot-konvencii",
+      "task": "standard-terms",
+      "reason_kind": "case_data",
+      "question": "Какой инструмент применим к договору — Конвенция или Принципы?",
+      "source_units": [
+        "PICC_ART2_1_22_EN",
+        "PICC_ART2_1_8_EN"
+      ],
+      "limitation": "ОТЛИЧИЕ ОТ КОНВЕНЦИИ ЗАПИСАНО НОРМАМИ, А НЕ КОММЕНТАРИЕМ. «Битву форм» Принципы решают правилом knock-out (ст. 2.1.22): договор заключается на согласованных условиях и на совпадающих по существу стандартных. У статьи 19 Конвенции такого правила нет, и её два прочтения §152 живут в `intl.uncitral.cisg_formation`. Срок акцепта Принципы считают от ОТПРАВКИ оферты (ст. 2.1.8), а не от вручения. На одних фактах два инструмента отвечают по-разному, и это наблюдается делами 02 и 01, а не объявляется."
+    },
+    {
+      "id": "gr-net-u-konvencii",
+      "task": "standard-terms",
+      "reason_kind": "source_delegates",
+      "question": "Что отвечает Конвенция о преддоговорной ответственности и стандартных условиях?",
+      "source_units": [
+        "PICC_ART2_1_15_EN"
+      ],
+      "limitation": "ПРЕДДОГОВОРНОЙ ОТВЕТСТВЕННОСТИ, СТАНДАРТНЫХ УСЛОВИЙ И ПРЕДСТАВИТЕЛЬСТВА У КОНВЕНЦИИ НЕТ ВОВСЕ: статьи 2.1.15–2.1.22 и 2.2.1–2.2.10 моста к `intl.uncitral.cisg*` не имеют по существу, а не по недоделке."
+    },
+    {
+      "id": "gr-vnutrennie-otnoshenija",
+      "task": "agency",
+      "reason_kind": "source_delegates",
+      "question": "Каковы обязанности представителя перед принципалом между собой?",
+      "source_units": [
+        "PICC_ART2_2_1_EN"
+      ],
+      "limitation": "ВНУТРЕННИЕ ОТНОШЕНИЯ ПРЕДСТАВИТЕЛЬСТВА НЕ ФОРМАЛИЗОВАНЫ: раздел 2.2 сам объявляет (ст. 2.2.1 п. 2), что регулирует только внешние отношения представителя с третьим лицом; отношения представителя и принципала между собой остаются применимому праву и входом дела."
+    },
+    {
+      "id": "gr-polnomochija-zakona",
+      "task": "agency",
+      "reason_kind": "source_delegates",
+      "question": "Вправе ли орган юридического лица или представитель по закону совершить это действие?",
+      "source_units": [
+        "PICC_ART2_2_1_EN"
+      ],
+      "limitation": "ПОЛНОМОЧИЯ, ПРЕДОСТАВЛЕННЫЕ ЗАКОНОМ, И ПРЕДСТАВИТЕЛЬСТВО ОРГАНАМИ ЮРИДИЧЕСКОГО ЛИЦА ИСКЛЮЧЕНЫ САМИМ ИСТОЧНИКОМ (ст. 2.2.1 п. 3): их условия — вопрос применимого права, а не Принципов."
+    },
+    {
+      "id": "gr-kalendar-f",
+      "task": "offer-acceptance",
+      "reason_kind": "case_data",
+      "question": "Какие дни нерабочие в месте коммерческого предприятия оферента?",
+      "source_units": [
+        "PICC_ART2_1_8_EN"
+      ],
+      "limitation": "КАЛЕНДАРЯ У ПРИНЦИПОВ НЕТ: какие дни нерабочие в месте коммерческого предприятия оферента — факт дела. Политика §86 пакета считает календарными днями, продление на праздник выражено нормой хаба над фактами дела."
+    },
+    {
+      "id": "gr-russkij-tekst-f",
+      "task": "offer-acceptance",
+      "reason_kind": "source_delegates",
+      "question": "Каков официальный текст статьи главы 2?",
+      "source_units": [
+        "PICC_ART2_1_1_EN",
+        "PICC_ART2_1_1_RU"
+      ],
+      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский; первичный якорь §194 — английский black-letter текст."
+    }
+  ],
+  "internal": []
+}

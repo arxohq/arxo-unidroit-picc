@@ -1,0 +1,47 @@
+// Главы 8, 9 и 11 Принципов: зачёт, перемена лиц в обязательстве и
+// множественность сторон.
+//
+// ТРЁХ ЭТИХ ГЛАВ У КОНВЕНЦИИ НЕТ ВОВСЕ. Она не знает ни зачёта, ни уступки
+// прав, ни перевода долга, ни солидарности: её предмет — заключение договора
+// купли-продажи и права сторон по нему. Поэтому пакет отвечает там, где
+// Конвенция молчит по построению, и мост к `intl.uncitral.cisg*` здесь один —
+// статья 7(2) Конвенции, отсылающая к общим принципам.
+//
+// СОЛИДАРНОСТЬ ПРЕЗЮМИРУЕТСЯ (ст. 11.1.2), И ЭТО ПРЕЗУМПЦИЯ, А НЕ ОПРЕДЕЛЕНИЕ:
+// несколько должников по одному обязательству предполагаются солидарными,
+// если обстоятельства не указывают на иное. Записано поражаемым правилом.
+
+language "law.core" version "0.2";
+package unidroit.picc_obligations version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-obligations";
+
+import unidroit.picc version "0.1.0";
+
+type Party = unidroit.picc::Party;
+type Contract = unidroit.picc::Contract;
+type Organ = unidroit.picc::Organ;
+
+const Tribunal: Organ = entity_ref("urn:org:unidroit:clir:picc#Tribunal") {
+    label en official "the court or arbitral tribunal seised of the dispute (article 1.11)";
+    label ru unofficial "суд или арбитраж, рассматривающий спор (статья 1.11)";
+};
+
+pub entity Obligation {
+    label en official "Obligation";
+    label ru unofficial "Обязательство";
+}
+
+pub entity Right {
+    label en official "Right to performance";
+    label ru unofficial "Право на исполнение";
+}
+
+pub entity Notice {
+    label en official "Notice";
+    label ru unofficial "Извещение";
+}
+
+pub relation obligation_between(o: Obligation, obligor: Party, obligee: Party) kind empirical {
+    label en official "the obligation is owed by the obligor to the obligee";
+    label ru unofficial "обязательство лежит на должнике перед кредитором";
+}

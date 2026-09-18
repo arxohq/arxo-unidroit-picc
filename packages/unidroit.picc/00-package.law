@@ -1,0 +1,61 @@
+// Принципы международных коммерческих договоров УНИДРУА (редакция 2016 года)
+// — ХАБ группы `unidroit.picc*`.
+//
+// ЭТО НЕ ПРАВО ГОСУДАРСТВА, И ЭТО СКАЗАНО В МЕТАДАТЕ. `jurisdiction
+// International`, `instrument doctrine`, `legalStatus doctrine`: Принципы
+// применяются, когда стороны о них договорились (преамбула), либо когда суд
+// или арбитраж берёт их как общие принципы права. Норму государства они не
+// заменяют — статья 1.4 прямо оставляет за императивными нормами их силу.
+//
+// ХАБ ДЕРЖИТ ТИПЫ И ОБЩИЕ ПОНЯТИЯ группы: сторона, договор, обязательство,
+// извещение, орган оценочных признаков. Пакеты глав 2, 3, 6, 7, 8–11 берут их
+// алиасом — два типа субъекта в одном пакете заперли бы мосты.
+//
+// ОРГАН НАЗВАН САМИМ ИНСТРУМЕНТОМ. Статья 1.11: «“court” includes an arbitral
+// tribunal» — то есть Принципы говорят о суде и арбитраже как об одном
+// адресате. Поэтому `authority Tribunal` здесь не выбор формализатора, а
+// определение статьи 1.11.
+
+language "law.core" version "0.2";
+package unidroit.picc version "0.1.0";
+namespace "urn:org:unidroit:clir:picc";
+
+// --- Субъекты и предметы ----------------------------------------------------
+
+pub entity Party { label en official "Party"; label ru unofficial "Сторона договора"; }
+pub entity Contract { label en official "Contract"; label ru unofficial "Договор"; }
+pub entity Obligation { label en official "Obligation"; label ru unofficial "Обязательство"; }
+pub entity Term { label en official "Contract term"; label ru unofficial "Условие договора"; }
+pub entity Statement { label en official "Statement or other conduct"; label ru unofficial "Заявление или иное поведение стороны"; }
+pub entity Notice { label en official "Notice"; label ru unofficial "Извещение"; }
+pub entity Usage { label en official "Usage or practice"; label ru unofficial "Обычай или практика"; }
+pub entity Organ { label en official "Court, including an arbitral tribunal (article 1.11)"; label ru unofficial "Суд, включая арбитраж (статья 1.11)"; }
+
+pub relation party_of(p: Party, c: Contract) kind institutional {
+    label en official "the person is a party to the contract";
+    label ru unofficial "лицо является стороной договора";
+}
+
+pub relation obligation_of(o: Obligation, c: Contract, obligor: Party, obligee: Party) kind institutional {
+    label en official "the obligation arises from the contract, owed by the obligor to the obligee";
+    label ru unofficial "обязательство возникает из договора: должник обязан перед кредитором";
+}
+
+pub relation term_of(t: Term, c: Contract) kind institutional {
+    label en official "the term belongs to the contract";
+    label ru unofficial "условие принадлежит договору";
+}
+
+// --- Орган статьи 1.11 -------------------------------------------------------
+
+pub relation court_includes_arbitral_tribunal(who: Organ) kind institutional {
+    label en official "for the purposes of these Principles the court includes an arbitral tribunal";
+    label ru unofficial "для целей Принципов суд включает арбитраж";
+}
+
+assert court_includes_arbitral_tribunal(Tribunal);
+
+const Tribunal: Organ = entity_ref("urn:org:unidroit:clir:picc#Tribunal") {
+    label en official "the court or arbitral tribunal seised of the dispute (article 1.11)";
+    label ru unofficial "суд или арбитраж, рассматривающий спор (статья 1.11)";
+};

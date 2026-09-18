@@ -1,0 +1,963 @@
+{
+  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "format": "law.package-questions/0.1",
+  "package": "unidroit.picc_validity",
+  "tasks": [
+    {
+      "id": "obschie-polozheniya",
+      "title": "Общие положения главы о действительности (ст. 3.1.1–3.1.4)",
+      "source_units": [
+        "PICC_ART3_1_1_EN",
+        "PICC_ART3_1_1_RU",
+        "PICC_ART3_1_2_EN",
+        "PICC_ART3_1_2_RU",
+        "PICC_ART3_1_3_EN",
+        "PICC_ART3_1_3_RU",
+        "PICC_ART3_1_4_EN",
+        "PICC_ART3_1_4_RU"
+      ]
+    },
+    {
+      "id": "osnovaniya-osparivaniya",
+      "title": "Основания оспаривания и последствия оспаривания (ст. 3.2.1–3.2.17)",
+      "source_units": [
+        "PICC_ART3_2_10_EN",
+        "PICC_ART3_2_10_RU",
+        "PICC_ART3_2_11_EN",
+        "PICC_ART3_2_11_RU",
+        "PICC_ART3_2_12_EN",
+        "PICC_ART3_2_12_RU",
+        "PICC_ART3_2_13_EN",
+        "PICC_ART3_2_13_RU",
+        "PICC_ART3_2_14_EN",
+        "PICC_ART3_2_14_RU",
+        "PICC_ART3_2_15_EN",
+        "PICC_ART3_2_15_RU",
+        "PICC_ART3_2_16_EN",
+        "PICC_ART3_2_16_RU",
+        "PICC_ART3_2_17_EN",
+        "PICC_ART3_2_17_RU",
+        "PICC_ART3_2_1_EN",
+        "PICC_ART3_2_1_RU",
+        "PICC_ART3_2_2_EN",
+        "PICC_ART3_2_2_RU",
+        "PICC_ART3_2_3_EN",
+        "PICC_ART3_2_3_RU",
+        "PICC_ART3_2_4_EN",
+        "PICC_ART3_2_4_RU",
+        "PICC_ART3_2_5_EN",
+        "PICC_ART3_2_5_RU",
+        "PICC_ART3_2_6_EN",
+        "PICC_ART3_2_6_RU",
+        "PICC_ART3_2_7_EN",
+        "PICC_ART3_2_7_RU",
+        "PICC_ART3_2_8_EN",
+        "PICC_ART3_2_8_RU",
+        "PICC_ART3_2_9_EN",
+        "PICC_ART3_2_9_RU"
+      ]
+    },
+    {
+      "id": "nezakonnost",
+      "title": "Незаконность: договор, нарушающий императивную норму (ст. 3.3.1, 3.3.2)",
+      "source_units": [
+        "PICC_ART3_2_15_EN",
+        "PICC_ART3_2_15_RU",
+        "PICC_ART3_3_1_EN",
+        "PICC_ART3_3_1_RU",
+        "PICC_ART3_3_2_EN",
+        "PICC_ART3_3_2_RU"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "allowance-in-money-due",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Причитается ли денежное возмещение вместо реституции в натуре (ст. 3.2.15 п. 2, 3)?",
+      "kind": "truth",
+      "predicate": "allowance_in_money_due",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(allowance_in_money_due(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.15(2). If restitution in kind is not possible or appropriate, an allowance has to be made in money whenever reasonable",
+          "rule": "AllowanceInMoney"
+        },
+        {
+          "summary": "Article 3.2.15(2). If restitution in kind is not possible or appropriate, an allowance has to be made in money whenever reasonable",
+          "rule": "AllowanceInMoney/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_15_EN",
+        "PICC_ART3_2_15_RU"
+      ]
+    },
+    {
+      "id": "avoidance-limited-to-terms",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Ограничено ли последствие оспаривания отдельными условиями (ст. 3.2.13)?",
+      "kind": "truth",
+      "predicate": "avoidance_limited_to_terms",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(avoidance_limited_to_terms(c: <c>, t: <t>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.13. Where a ground of avoidance affects only individual terms, the effect of avoidance is limited to those terms",
+          "rule": "PartialAvoidance"
+        },
+        {
+          "summary": "Article 3.2.13. Where a ground of avoidance affects only individual terms, the effect of avoidance is limited to those terms",
+          "rule": "PartialAvoidance/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_13_EN",
+        "PICC_ART3_2_13_RU"
+      ]
+    },
+    {
+      "id": "avoidance-notice-in-time",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Дано ли извещение об оспаривании в срок (ст. 3.2.12)?",
+      "kind": "truth",
+      "predicate": "avoidance_notice_in_time",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(avoidance_notice_in_time(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "source_units": [
+        "PICC_ART3_2_12_EN",
+        "PICC_ART3_2_12_RU"
+      ]
+    },
+    {
+      "id": "avoidance-retroactive",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Действует ли оспаривание с обратной силой (ст. 3.2.14)?",
+      "kind": "truth",
+      "predicate": "avoidance_retroactive",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(avoidance_retroactive(c: <c>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "source_units": [
+        "PICC_ART3_2_14_EN",
+        "PICC_ART3_2_14_RU"
+      ]
+    },
+    {
+      "id": "capacity-not-governed",
+      "task": "obschie-polozheniya",
+      "question": "Регулирует ли глава недееспособность стороны (ст. 3.1.1)?",
+      "kind": "truth",
+      "predicate": "capacity_not_governed",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(capacity_not_governed(c: <c>));",
+      "tests": [
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "source_units": [
+        "PICC_ART3_1_1_EN",
+        "PICC_ART3_1_1_RU"
+      ]
+    },
+    {
+      "id": "chapter-applies-to-declaration",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Применяется ли глава к одностороннему сообщению о намерении (ст. 3.2.17)?",
+      "kind": "truth",
+      "predicate": "chapter_applies_to_declaration",
+      "parameters": [
+        {
+          "name": "d",
+          "type": "Declaration",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(chapter_applies_to_declaration(d: <d>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "source_units": [
+        "PICC_ART3_2_17_EN",
+        "PICC_ART3_2_17_RU"
+      ]
+    },
+    {
+      "id": "contract-adapted-to-fair-dealing",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Адаптирован ли договор или условие к стандартам честной деловой практики (ст. 3.2.7 пп. 2, 3)?",
+      "kind": "truth",
+      "predicate": "contract_adapted_to_fair_dealing",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_adapted_to_fair_dealing(c: <c>));",
+      "tests": [
+        "PICCV-02-FRAUD-THREAT-GROSS-DISPARITY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.7(3). A court may also adapt the contract or term upon the request of the party receiving notice of avoidance, provided that party informs the other promptly and before reliance",
+          "rule": "AdaptationOnRequestOfNotifiedParty"
+        },
+        {
+          "summary": "Article 3.2.7(2). Upon the request of the party entitled to avoidance, a court may adapt the contract or term in order to make it accord with reasonable commercial standards of fair dealing",
+          "rule": "CourtMayAdaptOnRequest"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_7_EN",
+        "PICC_ART3_2_7_RU"
+      ]
+    },
+    {
+      "id": "contract-as-understood-by-mistaken-party",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Считается ли договор заключённым так, как его понимала заблуждавшаяся сторона (ст. 3.2.10 п. 1)?",
+      "kind": "truth",
+      "predicate": "contract_as_understood_by_mistaken_party",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_as_understood_by_mistaken_party(c: <c>));",
+      "tests": [
+        "PICCV-01-MISTAKE"
+      ],
+      "source_units": [
+        "PICC_ART3_2_10_EN",
+        "PICC_ART3_2_10_RU"
+      ]
+    },
+    {
+      "id": "contract-avoided",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Оспорен ли договор извещением (ст. 3.2.11)?",
+      "kind": "truth",
+      "predicate": "contract_avoided",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_avoided(c: <c>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.11. The right of a party to avoid the contract is exercised by notice to the other party",
+          "rule": "AvoidanceExercisedByNotice"
+        },
+        {
+          "summary": "Article 3.2.11. On notice to the other party the contract is avoided",
+          "rule": "NoticeAvoidsContract"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_11_EN",
+        "PICC_ART3_2_11_RU"
+      ]
+    },
+    {
+      "id": "effects-are-those-of-the-rule",
+      "task": "nezakonnost",
+      "question": "Являются ли последствия нарушения теми, что предписаны самой императивной нормой (ст. 3.3.1 п. 1)?",
+      "kind": "truth",
+      "predicate": "effects_are_those_of_the_rule",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(effects_are_those_of_the_rule(c: <c>));",
+      "tests": [
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "source_units": [
+        "PICC_ART3_3_1_EN",
+        "PICC_ART3_3_1_RU"
+      ]
+    },
+    {
+      "id": "exclusion-of-chapter-ineffective",
+      "task": "obschie-polozheniya",
+      "question": "Имеет ли силу попытка исключить императивные положения главы (ст. 3.1.4)?",
+      "kind": "truth",
+      "predicate": "exclusion_of_chapter_ineffective",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(exclusion_of_chapter_ineffective(c: <c>, t: <t>));",
+      "tests": [
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "source_units": [
+        "PICC_ART3_1_4_EN",
+        "PICC_ART3_1_4_RU"
+      ]
+    },
+    {
+      "id": "expenses-compensable",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Возмещаются ли расходы на сохранение полученного исполнения (ст. 3.2.15 п. 4)?",
+      "kind": "truth",
+      "predicate": "expenses_compensable",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(expenses_compensable(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "source_units": [
+        "PICC_ART3_2_15_EN",
+        "PICC_ART3_2_15_RU"
+      ]
+    },
+    {
+      "id": "is-mistake",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Является ли ошибочное предположение заблуждением (ст. 3.2.1, 3.2.3)?",
+      "kind": "truth",
+      "predicate": "is_mistake",
+      "parameters": [
+        {
+          "name": "m",
+          "type": "Mistake",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(is_mistake(m: <m>));",
+      "tests": [
+        "PICCV-01-MISTAKE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.1. Mistake is an erroneous assumption relating to facts or to law existing when the contract was concluded",
+          "rule": "ErroneousAssumptionIsMistake"
+        },
+        {
+          "summary": "Article 3.2.3. An error occurring in the expression or transmission of a declaration is considered to be a mistake of the person from whom the declaration emanated",
+          "rule": "ErrorInTransmissionIsMistake"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_1_EN",
+        "PICC_ART3_2_1_RU",
+        "PICC_ART3_2_3_EN",
+        "PICC_ART3_2_3_RU"
+      ]
+    },
+    {
+      "id": "liable-for-reliance-damages",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Отвечает ли сторона за убытки, зная об основании оспаривания (ст. 3.2.16)?",
+      "kind": "truth",
+      "predicate": "liable_for_reliance_damages",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(liable_for_reliance_damages(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "source_units": [
+        "PICC_ART3_2_16_EN",
+        "PICC_ART3_2_16_RU"
+      ]
+    },
+    {
+      "id": "may-avoid-contract",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Может ли сторона оспорить договор вследствие обмана, угрозы или существенного неравновесия (ст. 3.2.5–3.2.8)?",
+      "kind": "truth",
+      "predicate": "may_avoid_contract",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_avoid_contract(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-02-FRAUD-THREAT-GROSS-DISPARITY",
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.5. A party may avoid the contract when it has been led to conclude it by the other party's fraudulent representation or fraudulent non-disclosure",
+          "rule": "AvoidanceForFraud"
+        },
+        {
+          "summary": "Article 3.2.7(1). A party may avoid the contract if at the time of its conclusion the contract unjustifiably gave the other party an excessive advantage",
+          "rule": "AvoidanceForGrossDisparity"
+        },
+        {
+          "summary": "Article 3.2.6. A party may avoid the contract when it has been led to conclude it by the other party's unjustified threat which is so imminent and serious as to leave no reasonable alternative",
+          "rule": "AvoidanceForThreat"
+        },
+        {
+          "summary": "Article 3.2.9. If the party entitled to avoid confirms the contract after the period for giving notice has begun to run, avoidance is excluded",
+          "rule": "ConfirmationExcludesAvoidance"
+        },
+        {
+          "summary": "Article 3.2.8(1). Where the ground is imputable to a third person for whose acts the other party is responsible, the contract may be avoided under the same conditions",
+          "rule": "ThirdPersonForWhomPartyIsResponsible"
+        },
+        {
+          "summary": "Article 3.2.8(2). Where the ground is imputable to a third person for whose acts the other party is not responsible, the contract may be avoided if that party knew or ought to have known of it",
+          "rule": "ThirdPersonOutsideResponsibility"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_5_EN",
+        "PICC_ART3_2_5_RU",
+        "PICC_ART3_2_6_EN",
+        "PICC_ART3_2_6_RU",
+        "PICC_ART3_2_7_EN",
+        "PICC_ART3_2_7_RU",
+        "PICC_ART3_2_8_EN",
+        "PICC_ART3_2_8_RU",
+        "PICC_ART3_2_9_EN",
+        "PICC_ART3_2_9_RU"
+      ]
+    },
+    {
+      "id": "may-avoid-for-mistake",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Может ли сторона оспорить договор вследствие заблуждения (ст. 3.2.2, 3.2.4)?",
+      "kind": "truth",
+      "predicate": "may_avoid_for_mistake",
+      "parameters": [
+        {
+          "name": "m",
+          "type": "Mistake",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_avoid_for_mistake(m: <m>, p: <p>));",
+      "tests": [
+        "PICCV-01-MISTAKE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.2(2)(b). A party may not avoid the contract where the risk of mistake was assumed or should be borne by it",
+          "rule": "AssumedRiskBarsAvoidance"
+        },
+        {
+          "summary": "Article 3.2.2(1)(a). A party may avoid the contract for a mistake of decisive importance where the other party made, caused or knew of the mistake and it was contrary to fair dealing to leave the party in error",
+          "rule": "AvoidanceForMistakeKnownToOtherParty"
+        },
+        {
+          "summary": "Article 3.2.2(1)(b). A party may avoid the contract for a mistake of decisive importance where the other party had not at the time of avoidance reasonably acted in reliance on the contract",
+          "rule": "AvoidanceForMistakeWithoutReliance"
+        },
+        {
+          "summary": "Article 3.2.2(2)(a). A party may not avoid the contract if it was grossly negligent in committing the mistake",
+          "rule": "GrossNegligenceBarsAvoidance"
+        },
+        {
+          "summary": "Article 3.2.10(2). Where the right to avoidance is lost, the party may no longer avoid the contract for mistake",
+          "rule": "LostRightDefeatsMistakeAvoidance"
+        },
+        {
+          "summary": "Article 3.2.4. A party is not entitled to avoid the contract on the ground of mistake if the circumstances afford, or could have afforded, a remedy for non-performance",
+          "rule": "RemedyForNonPerformanceBarsAvoidance"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_10_EN",
+        "PICC_ART3_2_10_RU",
+        "PICC_ART3_2_2_EN",
+        "PICC_ART3_2_2_RU",
+        "PICC_ART3_2_4_EN",
+        "PICC_ART3_2_4_RU"
+      ]
+    },
+    {
+      "id": "may-avoid-term",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Может ли сторона оспорить отдельное условие договора (ст. 3.2.7 п. 1)?",
+      "kind": "truth",
+      "predicate": "may_avoid_term",
+      "parameters": [
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_avoid_term(t: <t>, c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-02-FRAUD-THREAT-GROSS-DISPARITY"
+      ],
+      "source_units": [
+        "PICC_ART3_2_7_EN",
+        "PICC_ART3_2_7_RU"
+      ]
+    },
+    {
+      "id": "may-claim-restitution",
+      "task": "nezakonnost",
+      "question": "Может ли сторона требовать возврата предоставленного (ст. 3.2.15 п. 1, 3.3.2 п. 3)?",
+      "kind": "truth",
+      "predicate": "may_claim_restitution",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_claim_restitution(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION",
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.3.2(3). If restitution is granted, the rules set out in Article 3.2.15 apply with appropriate adaptations",
+          "rule": "IllegalityRestitutionFollowsArticle3215"
+        },
+        {
+          "summary": "Article 3.2.15(1). On avoidance either party may claim restitution of whatever it has supplied, provided that it concurrently makes restitution of whatever it has received",
+          "rule": "RestitutionOnAvoidance"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_15_EN",
+        "PICC_ART3_2_15_RU",
+        "PICC_ART3_3_2_EN",
+        "PICC_ART3_3_2_RU"
+      ]
+    },
+    {
+      "id": "notice-period-runs-from-assertion",
+      "task": "osnovaniya-osparivaniya",
+      "question": "С какого момента течёт срок на оспаривание отдельного условия (ст. 3.2.12 п. 2)?",
+      "kind": "truth",
+      "predicate": "notice_period_runs_from_assertion",
+      "parameters": [
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(notice_period_runs_from_assertion(t: <t>, c: <c>));",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "source_units": [
+        "PICC_ART3_2_12_EN",
+        "PICC_ART3_2_12_RU"
+      ]
+    },
+    {
+      "id": "remedies-under-contract-available",
+      "task": "nezakonnost",
+      "question": "Доступны ли средства защиты по договору, если императивная норма молчит о последствиях (ст. 3.3.1 п. 2)?",
+      "kind": "truth",
+      "predicate": "remedies_under_contract_available",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(remedies_under_contract_available(c: <c>));",
+      "tests": [
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "source_units": [
+        "PICC_ART3_3_1_EN",
+        "PICC_ART3_3_1_RU"
+      ]
+    },
+    {
+      "id": "restitution-may-be-granted",
+      "task": "nezakonnost",
+      "question": "Может ли быть предоставлена реституция по договору, нарушающему императивную норму (ст. 3.3.2 п. 1)?",
+      "kind": "truth",
+      "predicate": "restitution_may_be_granted",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(restitution_may_be_granted(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "source_units": [
+        "PICC_ART3_3_2_EN",
+        "PICC_ART3_3_2_RU"
+      ]
+    },
+    {
+      "id": "right-to-avoid-lost",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Утрачено ли право на оспаривание (ст. 3.2.10 п. 2)?",
+      "kind": "truth",
+      "predicate": "right_to_avoid_lost",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(right_to_avoid_lost(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-01-MISTAKE"
+      ],
+      "source_units": [
+        "PICC_ART3_2_10_EN",
+        "PICC_ART3_2_10_RU"
+      ]
+    },
+    {
+      "id": "threat-unjustified",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Является ли угроза неоправданной (ст. 3.2.6)?",
+      "kind": "truth",
+      "predicate": "threat_unjustified",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(threat_unjustified(c: <c>, p: <p>));",
+      "tests": [
+        "PICCV-02-FRAUD-THREAT-GROSS-DISPARITY"
+      ],
+      "source_units": [
+        "PICC_ART3_2_6_EN",
+        "PICC_ART3_2_6_RU"
+      ]
+    },
+    {
+      "id": "valid-without-further-requirement",
+      "task": "obschie-polozheniya",
+      "question": "Достаточно ли одного соглашения сторон для заключения, изменения или прекращения договора (ст. 3.1.2)?",
+      "kind": "truth",
+      "predicate": "valid_without_further_requirement",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(valid_without_further_requirement(c: <c>));",
+      "tests": [
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "source_units": [
+        "PICC_ART3_1_2_EN",
+        "PICC_ART3_1_2_RU"
+      ]
+    },
+    {
+      "id": "validity-unaffected",
+      "task": "obschie-polozheniya",
+      "question": "Затрагивают ли первоначальная невозможность и отсутствие права распоряжения действительность договора (ст. 3.1.3)?",
+      "kind": "truth",
+      "predicate": "validity_unaffected",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(validity_unaffected(c: <c>));",
+      "tests": [
+        "PICCV-04-GENERAL-PROVISIONS-AND-ILLEGALITY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.1.3(1). The mere fact that at the time of the conclusion of the contract the performance of the obligation assumed was impossible does not affect the validity of the contract",
+          "rule": "InitialImpossibilityDoesNotAffectValidity"
+        },
+        {
+          "summary": "Article 3.1.3(2). The mere fact that at the time of the conclusion of the contract a party was not entitled to dispose of the assets does not affect the validity of the contract",
+          "rule": "NoRightToDisposeDoesNotAffectValidity"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_1_3_EN",
+        "PICC_ART3_1_3_RU"
+      ]
+    },
+    {
+      "id": "pozitsii-adapt-contract",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Активна ли власть суда адаптировать договор или условие (ст. 3.2.7 п. 2)?",
+      "kind": "positions",
+      "norms": [
+        "AdaptContract"
+      ],
+      "template": "evaluate positions(); expect position(AdaptContract, <статус>);",
+      "tests": [
+        "PICCV-02-FRAUD-THREAT-GROSS-DISPARITY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.7(2). Upon the request of the party entitled to avoidance, a court may adapt the contract or term in order to make it accord with reasonable commercial standards of fair dealing",
+          "rule": "CourtMayAdaptOnRequest"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_7_EN",
+        "PICC_ART3_2_7_RU"
+      ]
+    },
+    {
+      "id": "pozitsii-avoid-by-notice",
+      "task": "osnovaniya-osparivaniya",
+      "question": "Активна ли власть стороны оспорить договор извещением (ст. 3.2.11)?",
+      "kind": "positions",
+      "norms": [
+        "AvoidByNotice"
+      ],
+      "template": "evaluate positions(); expect position(AvoidByNotice, <статус>);",
+      "tests": [
+        "PICCV-03-NOTICE-AND-RESTITUTION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 3.2.11. The right of a party to avoid the contract is exercised by notice to the other party",
+          "rule": "AvoidanceExercisedByNotice"
+        }
+      ],
+      "source_units": [
+        "PICC_ART3_2_11_EN",
+        "PICC_ART3_2_11_RU"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "gr-ne-pravo-gosudarstva-v",
+      "task": "nezakonnost",
+      "reason_kind": "source_delegates",
+      "question": "Какая норма применимого права императивна и что она предписывает при нарушении?",
+      "source_units": [
+        "PICC_ART3_3_1_EN"
+      ],
+      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`)."
+    },
+    {
+      "id": "gr-konvenciya-molchit",
+      "task": "obschie-polozheniya",
+      "reason_kind": "source_delegates",
+      "question": "Что отвечает о действительности договора Конвенция ООН 1980 года?",
+      "source_units": [
+        "PICC_ART3_1_2_EN"
+      ],
+      "limitation": "ЗДЕСЬ КОНВЕНЦИЯ МОЛЧИТ ПО СОБСТВЕННОМУ ЗАЯВЛЕНИЮ: статья 4 подпункт a Конвенции выводит действительность договора и его положений из своего предмета. Глава 3 Принципов отвечает там, где Конвенция отвечать отказывается, и моста между ними по существу нет."
+    },
+    {
+      "id": "gr-deesposobnost",
+      "task": "obschie-polozheniya",
+      "reason_kind": "source_delegates",
+      "question": "Дееспособна ли сторона и каковы последствия её недееспособности?",
+      "source_units": [
+        "PICC_ART3_1_1_EN"
+      ],
+      "limitation": "НЕДЕЕСПОСОБНОСТЬ ГЛАВА НЕ РЕГУЛИРУЕТ (ст. 3.1.1): условия дееспособности стороны — вопрос применимого права и вход дела. Модель отвечает об этом границей, а не выводом."
+    },
+    {
+      "id": "gr-otsenochnye-v",
+      "task": "osnovaniya-osparivaniya",
+      "reason_kind": "case_data",
+      "question": "Существенно ли заблуждение, неминуема ли угроза и чрезмерно ли преимущество?",
+      "source_units": [
+        "PICC_ART3_2_2_EN",
+        "PICC_ART3_2_6_EN",
+        "PICC_ART3_2_7_EN"
+      ],
+      "limitation": "ОЦЕНОЧНЫЕ ПРИЗНАКИ ГЛАВЫ 3 ИДУТ КАНАЛОМ СУЖДЕНИЯ §47.3 с органом `Tribunal`: существенность заблуждения для разумного лица (3.2.2), противоречие честной деловой практике (3.2.2), неминуемость и серьёзность угрозы (3.2.6), чрезмерность и неоправданность преимущества (3.2.7), разумный срок извещения (3.2.12), неразумность сохранения остальной части договора (3.2.13), разумность денежного возмещения (3.2.15), разумность средств защиты и реституции при незаконности (3.3.1, 3.3.2). Модель их не решает и догадку не подставляет."
+    },
+    {
+      "id": "gr-imperativnaya-norma",
+      "task": "nezakonnost",
+      "reason_kind": "source_delegates",
+      "question": "Предписывает ли нарушенная норма последствия для договора сама?",
+      "source_units": [
+        "PICC_ART3_3_1_EN"
+      ],
+      "limitation": "КАКАЯ НОРМА ИМПЕРАТИВНА И ЧТО ОНА ПРЕДПИСЫВАЕТ — ВХОД ДЕЛА: статья 3.3.1 отсылает к самой нарушенной норме, а Принципы вступают лишь там, где она молчит. Перечень таких норм и их последствия в модель не переносятся."
+    },
+    {
+      "id": "gr-perechen-faktorov",
+      "task": "nezakonnost",
+      "reason_kind": "case_data",
+      "question": "Какие ещё факторы учитываются при оценке разумности средств защиты?",
+      "source_units": [
+        "PICC_ART3_3_1_EN",
+        "PICC_ART3_2_7_EN"
+      ],
+      "limitation": "ПЕРЕЧЕНЬ ФАКТОРОВ СТАТЕЙ 3.2.7 И 3.3.1 НЕ ИСЧЕРПЫВАЮЩИЙ («among other factors», «in particular»): семь критериев пункта 3 статьи 3.3.1 и два фактора статьи 3.2.7 названы в запросе суждения, а не разложены отдельными посылками — иначе модель выдала бы за норму собственную полноту."
+    },
+    {
+      "id": "gr-russkij-tekst-v",
+      "task": "obschie-polozheniya",
+      "reason_kind": "source_delegates",
+      "question": "Каков официальный текст статьи 3.1.1 и как он напечатан по-русски?",
+      "source_units": [
+        "PICC_ART3_1_1_EN",
+        "PICC_ART3_1_1_RU"
+      ],
+      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ, И ОХВАТ ЭТОГО ПАКЕТА ЗАДЕВАЕТ КВИРК ПУБЛИКАЦИИ: статья 3.1.1 напечатана по-русски как «Статья 3.1», и единицей русского документа является «3_1». Номер оставлен как напечатан."
+    }
+  ],
+  "internal": []
+}

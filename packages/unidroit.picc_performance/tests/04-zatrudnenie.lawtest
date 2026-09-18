@@ -1,0 +1,87 @@
+language "law.core" version "0.2";
+package unidroit.picc_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-performance";
+
+// Дело 4. Затруднения (6.2.1-6.2.3) — то, чего у Конвенции нет нормой.
+//
+// ОДНИ И ТЕ ЖЕ ФАКТЫ, ДВА ИНСТРУМЕНТА: статья 79 Конвенции дала бы лишь
+// освобождение от ОТВЕТСТВЕННОСТИ, оставив договор нетронутым. Принципы дают
+// право требовать пересмотра и власть суда прекратить или адаптировать
+// договор. Дело предъявляет и границу: принятый риск снимает затруднение.
+
+test "PICCP-04-HARDSHIP" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": performance_became_more_onerous(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "a1": equilibrium_fundamentally_altered(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")) { origin adjudicated; }
+        assert "a2": events_after_conclusion_or_later_known(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "a3": events_could_not_be_taken_into_account(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")) { origin adjudicated; }
+        assert "a4": events_beyond_control(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "a5": renegotiation_requested_without_undue_delay(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "a6": no_agreement_within_reasonable_time(entity_ref("urn:case:piccp:contract-4")) { origin case_input; }
+        assert "a7": termination_or_adaptation_reasonable(entity_ref("urn:case:piccp:contract-4")) { origin adjudicated; }
+        assert "a8": court_adapted(entity_ref("urn:case:piccp:contract-4")) { origin case_input; }
+        assert "a9": performance_became_more_onerous(entity_ref("urn:case:piccp:contract-4b"), entity_ref("urn:case:piccp:buyer")) { origin case_input; }
+        assert "a10": equilibrium_fundamentally_altered(entity_ref("urn:case:piccp:contract-4b"), entity_ref("urn:case:piccp:buyer")) { origin adjudicated; }
+        assert "a11": events_after_conclusion_or_later_known(entity_ref("urn:case:piccp:contract-4b"), entity_ref("urn:case:piccp:buyer")) { origin case_input; }
+        assert "a12": events_could_not_be_taken_into_account(entity_ref("urn:case:piccp:contract-4b"), entity_ref("urn:case:piccp:buyer")) { origin adjudicated; }
+        assert "a13": events_beyond_control(entity_ref("urn:case:piccp:contract-4b"), entity_ref("urn:case:piccp:buyer")) { origin case_input; }
+        assert "a14": risk_of_events_assumed(entity_ref("urn:case:piccp:contract-4b"), entity_ref("urn:case:piccp:buyer")) { origin case_input; }
+        assert "t0": performance_became_more_onerous(entity_ref("urn:case:piccp:contract-4c"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "t1": equilibrium_fundamentally_altered(entity_ref("urn:case:piccp:contract-4c"), entity_ref("urn:case:piccp:seller")) { origin adjudicated; }
+        assert "t2": events_after_conclusion_or_later_known(entity_ref("urn:case:piccp:contract-4c"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "t3": events_could_not_be_taken_into_account(entity_ref("urn:case:piccp:contract-4c"), entity_ref("urn:case:piccp:seller")) { origin adjudicated; }
+        assert "t4": events_beyond_control(entity_ref("urn:case:piccp:contract-4c"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "t5": renegotiation_requested_without_undue_delay(entity_ref("urn:case:piccp:contract-4c"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "t6": no_agreement_within_reasonable_time(entity_ref("urn:case:piccp:contract-4c")) { origin case_input; }
+        assert "t7": termination_or_adaptation_reasonable(entity_ref("urn:case:piccp:contract-4c")) { origin adjudicated; }
+        assert "t8": court_terminated(entity_ref("urn:case:piccp:contract-4c")) { origin case_input; }
+
+    }
+
+    // Удорожание само по себе от исполнения не освобождает (6.2.1).
+    evaluate truth(bound_to_perform_nevertheless(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ContractToBeObserved);
+
+    evaluate truth(hardship_exists(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(HardshipExists);
+
+    // Принятый риск снимает состав затруднения целиком (6.2.2 подпункт d).
+    evaluate truth(hardship_exists(entity_ref("urn:case:piccp:contract-4b"), entity_ref("urn:case:piccp:buyer")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(entitled_to_request_renegotiation(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RenegotiationMayBeRequested);
+
+    // Просьба о пересмотре САМА ПО СЕБЕ исполнение не приостанавливает.
+    evaluate truth(request_does_not_entitle_to_withhold(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RequestDoesNotSuspendPerformance);
+
+    evaluate truth(may_resort_to_court(entity_ref("urn:case:piccp:contract-4"), entity_ref("urn:case:piccp:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ResortToCourtOnFailure);
+
+    // Власть суда §127: адаптировать или прекратить договор.
+    evaluate positions();
+    expect position(AdaptOrTerminateForHardship, ACTIVE);
+
+    evaluate truth(contract_adapted_by_court(entity_ref("urn:case:piccp:contract-4")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CourtAdaptsForHardship);
+
+    // Второй исход той же власти: суд прекращает договор, а не адаптирует его.
+    evaluate truth(contract_terminated_by_court(entity_ref("urn:case:piccp:contract-4c")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CourtTerminatesForHardship);
+}

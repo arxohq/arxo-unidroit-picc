@@ -1,0 +1,1541 @@
+{
+  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "format": "law.package-questions/0.1",
+  "package": "unidroit.picc",
+  "tasks": [
+    {
+      "id": "general-provisions",
+      "title": "Общие положения: свобода, обязательность, императивные нормы, отступление, добросовестность, обычаи, извещения (гл. 1)",
+      "source_units": [
+        "PICC_ART1_10_EN",
+        "PICC_ART1_10_RU",
+        "PICC_ART1_11_EN",
+        "PICC_ART1_11_RU",
+        "PICC_ART1_2_EN",
+        "PICC_ART1_2_RU",
+        "PICC_ART1_3_EN",
+        "PICC_ART1_3_RU",
+        "PICC_ART1_4_EN",
+        "PICC_ART1_4_RU",
+        "PICC_ART1_5_EN",
+        "PICC_ART1_5_RU",
+        "PICC_ART1_6_EN",
+        "PICC_ART1_6_RU",
+        "PICC_ART1_7_EN",
+        "PICC_ART1_7_RU",
+        "PICC_ART1_8_EN",
+        "PICC_ART1_8_RU",
+        "PICC_ART1_9_EN",
+        "PICC_ART1_9_RU"
+      ]
+    },
+    {
+      "id": "computation-of-time",
+      "title": "Исчисление сроков, установленных сторонами (ст. 1.12)",
+      "source_units": [
+        "PICC_ART1_12_EN",
+        "PICC_ART1_12_RU"
+      ]
+    },
+    {
+      "id": "interpretation",
+      "title": "Толкование договора и заявлений сторон (гл. 4)",
+      "source_units": [
+        "PICC_ART4_1_EN",
+        "PICC_ART4_1_RU",
+        "PICC_ART4_2_EN",
+        "PICC_ART4_2_RU",
+        "PICC_ART4_4_EN",
+        "PICC_ART4_5_EN",
+        "PICC_ART4_6_EN",
+        "PICC_ART4_6_RU",
+        "PICC_ART4_7_EN",
+        "PICC_ART4_7_RU",
+        "PICC_ART4_8_EN",
+        "PICC_ART4_8_RU"
+      ]
+    },
+    {
+      "id": "content",
+      "title": "Содержание договора, права третьих лиц и условия (гл. 5)",
+      "source_units": [
+        "PICC_ART1_1_EN",
+        "PICC_ART1_1_RU",
+        "PICC_ART4_3_EN",
+        "PICC_ART4_3_RU",
+        "PICC_ART5_1_1_EN",
+        "PICC_ART5_1_1_RU",
+        "PICC_ART5_1_2_EN",
+        "PICC_ART5_1_2_RU",
+        "PICC_ART5_1_3_EN",
+        "PICC_ART5_1_3_RU",
+        "PICC_ART5_1_4_EN",
+        "PICC_ART5_1_4_RU",
+        "PICC_ART5_1_5_EN",
+        "PICC_ART5_1_5_RU",
+        "PICC_ART5_1_6_EN",
+        "PICC_ART5_1_6_RU",
+        "PICC_ART5_1_7_EN",
+        "PICC_ART5_1_7_RU",
+        "PICC_ART5_1_8_EN",
+        "PICC_ART5_1_8_RU",
+        "PICC_ART5_1_9_EN",
+        "PICC_ART5_1_9_RU",
+        "PICC_ART5_2_1_EN",
+        "PICC_ART5_2_2_EN",
+        "PICC_ART5_2_3_EN",
+        "PICC_ART5_2_3_RU",
+        "PICC_ART5_2_4_EN",
+        "PICC_ART5_2_4_RU",
+        "PICC_ART5_2_5_EN",
+        "PICC_ART5_2_5_RU",
+        "PICC_ART5_2_6_EN",
+        "PICC_ART5_2_6_RU",
+        "PICC_ART5_3_1_EN",
+        "PICC_ART5_3_1_RU",
+        "PICC_ART5_3_2_EN",
+        "PICC_ART5_3_2_RU",
+        "PICC_ART5_3_3_EN",
+        "PICC_ART5_3_3_RU",
+        "PICC_ART5_3_4_EN",
+        "PICC_ART5_3_4_RU",
+        "PICC_ART5_3_5_EN",
+        "PICC_ART5_3_5_RU"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "applicable-price",
+      "task": "content",
+      "question": "Какая цена применима к договору (ст. 5.1.7)?",
+      "kind": "truth",
+      "predicate": "applicable_price",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "amount",
+          "type": "Money",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(applicable_price(c: <c>, amount: <amount>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.1.7(2). Where the price is to be determined by one party and that determination is manifestly unreasonable, a reasonable price shall be substituted notwithstanding any contract term to the contrary",
+          "rule": "ManifestlyUnreasonableDeterminationReplaced"
+        },
+        {
+          "summary": "Article 5.1.7(1). Where a contract does not fix the price, the parties are considered to have made reference to the price generally charged in comparable circumstances",
+          "rule": "PriceByMarket"
+        },
+        {
+          "summary": "Article 5.1.7(1). If no such price is available, a reasonable price applies",
+          "rule": "PriceReasonableWhereNoMarket"
+        },
+        {
+          "summary": "Article 5.1.7(2). A manifestly unreasonable determination does not stand as the applicable price",
+          "rule": "UnreasonableDeterminationDisplaced"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_1_7_EN",
+        "PICC_ART5_1_7_RU"
+      ]
+    },
+    {
+      "id": "beneficiary-may-invoke-clause",
+      "task": "content",
+      "question": "Может ли выгодоприобретатель сослаться на оговорку об ограничении ответственности (ст. 5.2.3)?",
+      "kind": "truth",
+      "predicate": "beneficiary_may_invoke_clause",
+      "parameters": [
+        {
+          "name": "b",
+          "type": "Beneficiary",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(beneficiary_may_invoke_clause(b: <b>, t: <t>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_2_3_EN",
+        "PICC_ART5_2_3_RU"
+      ]
+    },
+    {
+      "id": "beneficiary-right-exists",
+      "task": "content",
+      "question": "Имеет ли выгодоприобретатель право против промитента (ст. 5.2.1, 5.2.2)?",
+      "kind": "truth",
+      "predicate": "beneficiary_right_exists",
+      "parameters": [
+        {
+          "name": "b",
+          "type": "Beneficiary",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(beneficiary_right_exists(b: <b>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Articles 5.2.1 and 5.2.2. The parties may confer a right on a third party who must be identifiable with adequate certainty by the contract",
+          "rule": "BeneficiaryRightExists"
+        },
+        {
+          "summary": "Article 5.2.6. The beneficiary may renounce a right conferred on it",
+          "rule": "RenunciationEndsBeneficiaryRight"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_2_1_EN",
+        "PICC_ART5_2_2_EN",
+        "PICC_ART5_2_6_EN",
+        "PICC_ART5_2_6_RU"
+      ]
+    },
+    {
+      "id": "binding-upon-parties",
+      "task": "general-provisions",
+      "question": "Обязателен ли договор для сторон (ст. 1.3)?",
+      "kind": "truth",
+      "predicate": "binding_upon_parties",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(binding_upon_parties(c: <c>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "source_units": [
+        "PICC_ART1_3_EN",
+        "PICC_ART1_3_RU"
+      ]
+    },
+    {
+      "id": "bound-by-usage",
+      "task": "general-provisions",
+      "question": "Связаны ли стороны обычаем или практикой (ст. 1.9)?",
+      "kind": "truth",
+      "predicate": "bound_by_usage",
+      "parameters": [
+        {
+          "name": "u",
+          "type": "Usage",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(bound_by_usage(u: <u>, c: <c>));",
+      "tests": [
+        "PICC-GEN-04-NOTICE-USAGES-AND-TIME"
+      ],
+      "branches": [
+        {
+          "summary": "Article 1.9(1). The parties are bound by any usage to which they have agreed",
+          "rule": "BoundByAgreedUsage"
+        },
+        {
+          "summary": "Article 1.9(1). The parties are bound by practices which they have established between themselves",
+          "rule": "BoundByEstablishedPractice"
+        },
+        {
+          "summary": "Article 1.9(2). The parties are bound by a usage widely known and regularly observed in the trade concerned, except where its application would be unreasonable",
+          "rule": "BoundByWidelyKnownUsage"
+        },
+        {
+          "summary": "Article 1.9(2). The parties are bound by a usage widely known and regularly observed in the trade concerned, except where its application would be unreasonable",
+          "rule": "BoundByWidelyKnownUsage/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART1_9_EN",
+        "PICC_ART1_9_RU"
+      ]
+    },
+    {
+      "id": "breached-duty-to-preserve-rights",
+      "task": "content",
+      "question": "Нарушила ли сторона обязанность сохранять права другой стороны (ст. 5.3.4)?",
+      "kind": "truth",
+      "predicate": "breached_duty_to_preserve_rights",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "cond",
+          "type": "Condition",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(breached_duty_to_preserve_rights(p: <p>, cond: <cond>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_3_4_EN",
+        "PICC_ART5_3_4_RU"
+      ]
+    },
+    {
+      "id": "circumstance-to-be-regarded",
+      "task": "content",
+      "question": "Учитывается ли обстоятельство при толковании (ст. 4.3)?",
+      "kind": "truth",
+      "predicate": "circumstance_to_be_regarded",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Circumstance",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(circumstance_to_be_regarded(x: <x>, c: <c>));",
+      "tests": [
+        "PICC-GEN-02-INTERPRETATION"
+      ],
+      "source_units": [
+        "PICC_ART4_3_EN",
+        "PICC_ART4_3_RU"
+      ]
+    },
+    {
+      "id": "contract-comes-to-an-end",
+      "task": "content",
+      "question": "Прекращается ли договор при наступлении отменительного условия (ст. 5.3.2)?",
+      "kind": "truth",
+      "predicate": "contract_comes_to_an_end",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_comes_to_an_end(c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.3.2(b). The relevant contract or contractual obligation comes to an end upon fulfilment of a resolutive condition",
+          "rule": "ResolutiveConditionEndsContract"
+        },
+        {
+          "summary": "Article 5.3.2(b). The relevant contract or contractual obligation comes to an end upon fulfilment of a resolutive condition",
+          "rule": "ResolutiveConditionEndsContract/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_3_2_EN",
+        "PICC_ART5_3_2_RU"
+      ]
+    },
+    {
+      "id": "contract-interpreted-by",
+      "task": "interpretation",
+      "question": "По какому прочтению толкуется договор (ст. 4.1)?",
+      "kind": "truth",
+      "predicate": "contract_interpreted_by",
+      "parameters": [
+        {
+          "name": "r",
+          "type": "Reading",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_interpreted_by(r: <r>, c: <c>));",
+      "tests": [
+        "PICC-GEN-02-INTERPRETATION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 4.1(2) (opening words). Where the common intention can be established, the reasonable-persons reading does not apply",
+          "rule": "CommonIntentionDisplacesReasonablePersons"
+        },
+        {
+          "summary": "Article 4.1(1). A contract shall be interpreted according to the common intention of the parties",
+          "rule": "InterpretedByCommonIntention"
+        },
+        {
+          "summary": "Article 4.1(2). If the common intention cannot be established, the contract shall be interpreted according to the meaning reasonable persons of the same kind would give it",
+          "rule": "InterpretedByReasonablePersons"
+        }
+      ],
+      "source_units": [
+        "PICC_ART4_1_EN",
+        "PICC_ART4_1_RU"
+      ]
+    },
+    {
+      "id": "contract-takes-effect",
+      "task": "content",
+      "question": "Вступает ли договор в силу при наступлении отлагательного условия (ст. 5.3.2)?",
+      "kind": "truth",
+      "predicate": "contract_takes_effect",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_takes_effect(c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.3.2(a). The relevant contract or contractual obligation takes effect upon fulfilment of a suspensive condition",
+          "rule": "SuspensiveConditionTakesEffect"
+        },
+        {
+          "summary": "Article 5.3.2(a). The relevant contract or contractual obligation takes effect upon fulfilment of a suspensive condition",
+          "rule": "SuspensiveConditionTakesEffect/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_3_2_EN",
+        "PICC_ART5_3_2_RU"
+      ]
+    },
+    {
+      "id": "contract-terminated-by-notice",
+      "task": "content",
+      "question": "Прекращён ли бессрочный договор извещением (ст. 5.1.8)?",
+      "kind": "truth",
+      "predicate": "contract_terminated_by_notice",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_terminated_by_notice(c: <c>, p: <p>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_1_8_EN",
+        "PICC_ART5_1_8_RU"
+      ]
+    },
+    {
+      "id": "contractual-obligation",
+      "task": "content",
+      "question": "Является ли обязательство договорным (ст. 5.1.1)?",
+      "kind": "truth",
+      "predicate": "contractual_obligation",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contractual_obligation(o: <o>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.1.1. The contractual obligations of the parties may be express",
+          "rule": "ExpressIsContractual"
+        },
+        {
+          "summary": "Article 5.1.1. The contractual obligations of the parties may be implied",
+          "rule": "ImpliedIsContractual"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_1_1_EN",
+        "PICC_ART5_1_1_RU"
+      ]
+    },
+    {
+      "id": "court-includes-arbitral-tribunal",
+      "task": "general-provisions",
+      "question": "Включает ли суд арбитраж для целей Принципов (ст. 1.11)?",
+      "kind": "truth",
+      "predicate": "court_includes_arbitral_tribunal",
+      "parameters": [
+        {
+          "name": "who",
+          "type": "Organ",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(court_includes_arbitral_tribunal(who: <who>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ]
+    },
+    {
+      "id": "defence-available-against-beneficiary",
+      "task": "content",
+      "question": "Может ли промитент заявить возражение против выгодоприобретателя (ст. 5.2.4)?",
+      "kind": "truth",
+      "predicate": "defence_available_against_beneficiary",
+      "parameters": [
+        {
+          "name": "d",
+          "type": "Defence",
+          "role": "bound"
+        },
+        {
+          "name": "b",
+          "type": "Beneficiary",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(defence_available_against_beneficiary(d: <d>, b: <b>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_2_4_EN",
+        "PICC_ART5_2_4_RU"
+      ]
+    },
+    {
+      "id": "derogation-effective",
+      "task": "general-provisions",
+      "question": "Действует ли отступление сторон от положения Принципов (ст. 1.5)?",
+      "kind": "truth",
+      "predicate": "derogation_effective",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(derogation_effective(c: <c>, t: <t>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "branches": [
+        {
+          "summary": "Article 1.5. The parties may derogate from or vary the effect of any of the provisions, except as otherwise provided",
+          "rule": "DerogationEffective"
+        },
+        {
+          "summary": "Article 1.5. The parties may derogate from or vary the effect of any of the provisions, except as otherwise provided",
+          "rule": "DerogationEffective/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART1_5_EN",
+        "PICC_ART1_5_RU"
+      ]
+    },
+    {
+      "id": "exclusion-of-good-faith-ineffective",
+      "task": "general-provisions",
+      "question": "Имеет ли силу попытка исключить обязанность добросовестности (ст. 1.7 п. 2)?",
+      "kind": "truth",
+      "predicate": "exclusion_of_good_faith_ineffective",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(exclusion_of_good_faith_ineffective(c: <c>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "source_units": [
+        "PICC_ART1_7_EN",
+        "PICC_ART1_7_RU"
+      ]
+    },
+    {
+      "id": "factor-determines-kind-of-duty",
+      "task": "content",
+      "question": "Учитывается ли фактор при определении рода обязанности (ст. 5.1.5)?",
+      "kind": "truth",
+      "predicate": "factor_determines_kind_of_duty",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "Circumstance",
+          "role": "bound"
+        },
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(factor_determines_kind_of_duty(x: <x>, o: <o>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_1_5_EN",
+        "PICC_ART5_1_5_RU"
+      ]
+    },
+    {
+      "id": "form-not-required",
+      "task": "general-provisions",
+      "question": "Требуют ли Принципы особой формы договора (ст. 1.2)?",
+      "kind": "truth",
+      "predicate": "form_not_required",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(form_not_required(c: <c>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "source_units": [
+        "PICC_ART1_2_EN",
+        "PICC_ART1_2_RU"
+      ]
+    },
+    {
+      "id": "implied-obligation",
+      "task": "content",
+      "question": "Является ли обязательство подразумеваемым (ст. 5.1.2)?",
+      "kind": "truth",
+      "predicate": "implied_obligation",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(implied_obligation(o: <o>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.1.2(c). Implied obligations stem from good faith and fair dealing",
+          "rule": "ImpliedFromGoodFaith"
+        },
+        {
+          "summary": "Article 5.1.2(a). Implied obligations stem from the nature and purpose of the contract",
+          "rule": "ImpliedFromNatureAndPurpose"
+        },
+        {
+          "summary": "Article 5.1.2(b). Implied obligations stem from practices established between the parties and usages",
+          "rule": "ImpliedFromPracticesAndUsages"
+        },
+        {
+          "summary": "Article 5.1.2(d). Implied obligations stem from reasonableness",
+          "rule": "ImpliedFromReasonableness"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_1_2_EN",
+        "PICC_ART5_1_2_RU"
+      ]
+    },
+    {
+      "id": "inconsistent-behaviour-barred",
+      "task": "general-provisions",
+      "question": "Может ли сторона действовать вопреки вызванному ею пониманию (ст. 1.8)?",
+      "kind": "truth",
+      "predicate": "inconsistent_behaviour_barred",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(inconsistent_behaviour_barred(p: <p>, c: <c>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "source_units": [
+        "PICC_ART1_8_EN",
+        "PICC_ART1_8_RU"
+      ]
+    },
+    {
+      "id": "may-not-rely-on-fulfilment",
+      "task": "content",
+      "question": "Лишена ли сторона права ссылаться на наступление условия (ст. 5.3.3 п. 2)?",
+      "kind": "truth",
+      "predicate": "may_not_rely_on_fulfilment",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "cond",
+          "type": "Condition",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_not_rely_on_fulfilment(p: <p>, cond: <cond>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_3_3_EN",
+        "PICC_ART5_3_3_RU"
+      ]
+    },
+    {
+      "id": "may-not-rely-on-non-fulfilment",
+      "task": "content",
+      "question": "Лишена ли сторона права ссылаться на ненаступление условия (ст. 5.3.3 п. 1)?",
+      "kind": "truth",
+      "predicate": "may_not_rely_on_non_fulfilment",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "cond",
+          "type": "Condition",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_not_rely_on_non_fulfilment(p: <p>, cond: <cond>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_3_3_EN",
+        "PICC_ART5_3_3_RU"
+      ]
+    },
+    {
+      "id": "notice-effective",
+      "task": "general-provisions",
+      "question": "Вступило ли извещение в силу (ст. 1.10)?",
+      "kind": "truth",
+      "predicate": "notice_effective",
+      "parameters": [
+        {
+          "name": "n",
+          "type": "Notice",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(notice_effective(n: <n>, p: <p>));",
+      "tests": [
+        "PICC-GEN-04-NOTICE-USAGES-AND-TIME"
+      ],
+      "source_units": [
+        "PICC_ART1_10_EN",
+        "PICC_ART1_10_RU"
+      ]
+    },
+    {
+      "id": "obligation-performed",
+      "task": "content",
+      "question": "Исполнено ли обязательство по мере своего рода (ст. 5.1.4)?",
+      "kind": "truth",
+      "predicate": "obligation_performed",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(obligation_performed(o: <o>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.1.4(2). To the extent that an obligation involves a duty of best efforts, that party is bound to make such efforts as would be made by a reasonable person of the same kind",
+          "rule": "BestEffortsDutyPerformed"
+        },
+        {
+          "summary": "Article 5.1.4(1). To the extent that an obligation involves a duty to achieve a specific result, that party is bound to achieve that result",
+          "rule": "ResultDutyPerformed"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_1_4_EN",
+        "PICC_ART5_1_4_RU"
+      ]
+    },
+    {
+      "id": "parties-free-to-contract",
+      "task": "content",
+      "question": "Свободны ли лица заключить договор и определить его содержание (ст. 1.1)?",
+      "kind": "truth",
+      "predicate": "parties_free_to_contract",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "other",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(parties_free_to_contract(p: <p>, other: <other>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "source_units": [
+        "PICC_ART1_1_EN",
+        "PICC_ART1_1_RU"
+      ]
+    },
+    {
+      "id": "period-ends-on",
+      "task": "computation-of-time",
+      "question": "Каким днём истекает срок, установленный стороной (ст. 1.12)?",
+      "kind": "truth",
+      "predicate": "period_ends_on",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "day",
+          "type": "Date",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(period_ends_on(c: <c>, day: <day>));",
+      "tests": [
+        "PICC-GEN-04-NOTICE-USAGES-AND-TIME"
+      ],
+      "branches": [
+        {
+          "summary": "Article 1.12(2). The computed last day does not stand where it is a holiday at the place of performance",
+          "rule": "ComputedLastDayYieldsToHoliday"
+        },
+        {
+          "summary": "Article 1.12(1). Official holidays or non-business days occurring during the period are included in calculating it",
+          "rule": "PeriodEndsOn"
+        },
+        {
+          "summary": "Article 1.12(2). If the last day of the period is a holiday or a non-business day at the place of business of the party to perform, the period is extended until the first business day which follows",
+          "rule": "PeriodExtendedByHoliday"
+        },
+        {
+          "summary": "Article 1.12(2). If the last day of the period is a holiday or a non-business day at the place of business of the party to perform, the period is extended until the first business day which follows",
+          "rule": "PeriodExtendedByHoliday/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART1_12_EN",
+        "PICC_ART1_12_RU"
+      ]
+    },
+    {
+      "id": "principles-do-not-restrict-mandatory-rule",
+      "task": "general-provisions",
+      "question": "Ограничивают ли Принципы применение императивной нормы (ст. 1.4)?",
+      "kind": "truth",
+      "predicate": "principles_do_not_restrict_mandatory_rule",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(principles_do_not_restrict_mandatory_rule(c: <c>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "source_units": [
+        "PICC_ART1_4_EN",
+        "PICC_ART1_4_RU"
+      ]
+    },
+    {
+      "id": "quality-sufficient",
+      "task": "content",
+      "question": "Отвечает ли качество исполнения статье 5.1.6?",
+      "kind": "truth",
+      "predicate": "quality_sufficient",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(quality_sufficient(o: <o>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_1_6_EN",
+        "PICC_ART5_1_6_RU"
+      ]
+    },
+    {
+      "id": "reading-conforms-to-canons",
+      "task": "interpretation",
+      "question": "Отвечает ли прочтение канонам статей 4.4 и 4.5?",
+      "kind": "truth",
+      "predicate": "reading_conforms_to_canons",
+      "parameters": [
+        {
+          "name": "r",
+          "type": "Reading",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(reading_conforms_to_canons(r: <r>, c: <c>));",
+      "tests": [
+        "PICC-GEN-02-INTERPRETATION"
+      ],
+      "source_units": [
+        "PICC_ART4_4_EN",
+        "PICC_ART4_5_EN"
+      ]
+    },
+    {
+      "id": "reading-preferred",
+      "task": "interpretation",
+      "question": "Какое прочтение предпочитается (ст. 4.6, 4.7)?",
+      "kind": "truth",
+      "predicate": "reading_preferred",
+      "parameters": [
+        {
+          "name": "r",
+          "type": "Reading",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(reading_preferred(r: <r>, t: <t>));",
+      "tests": [
+        "PICC-GEN-02-INTERPRETATION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 4.6. If contract terms supplied by one party are unclear, an interpretation against that party is preferred",
+          "rule": "ContraProferentem"
+        },
+        {
+          "summary": "Article 4.7. In case of discrepancy between equally authoritative versions there is a preference for the interpretation according to the original version",
+          "rule": "OriginalVersionPreferred"
+        }
+      ],
+      "source_units": [
+        "PICC_ART4_6_EN",
+        "PICC_ART4_6_RU",
+        "PICC_ART4_7_EN",
+        "PICC_ART4_7_RU"
+      ]
+    },
+    {
+      "id": "relevant-place-of-business",
+      "task": "general-provisions",
+      "question": "Какое коммерческое предприятие стороны принимается во внимание (ст. 1.11)?",
+      "kind": "truth",
+      "predicate": "relevant_place_of_business",
+      "parameters": [
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        },
+        {
+          "name": "s",
+          "type": "State",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(relevant_place_of_business(p: <p>, s: <s>));",
+      "tests": [
+        "PICC-GEN-04-NOTICE-USAGES-AND-TIME"
+      ],
+      "branches": [
+        {
+          "summary": "Article 1.11. Where a party has more than one place of business the relevant one is that which has the closest relationship to the contract and its performance",
+          "rule": "ClosestPlaceIsRelevant"
+        },
+        {
+          "summary": "Article 1.11. Where a party has a single place of business that place is the relevant one",
+          "rule": "SinglePlaceIsRelevant"
+        },
+        {
+          "summary": "Article 1.11. Where a party has a single place of business that place is the relevant one",
+          "rule": "SinglePlaceIsRelevant/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART1_11_EN",
+        "PICC_ART1_11_RU"
+      ]
+    },
+    {
+      "id": "relevant-time-zone",
+      "task": "computation-of-time",
+      "question": "Какой часовой пояс применяется к сроку (ст. 1.12 п. 3)?",
+      "kind": "truth",
+      "predicate": "relevant_time_zone",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "zone",
+          "type": "Text",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(relevant_time_zone(c: <c>, zone: <zone>));",
+      "tests": [
+        "PICC-GEN-04-NOTICE-USAGES-AND-TIME"
+      ],
+      "branches": [
+        {
+          "summary": "Article 1.12(3). The relevant time zone is that of the place of business of the party setting the time, unless the circumstances indicate otherwise",
+          "rule": "RelevantTimeZone"
+        },
+        {
+          "summary": "Article 1.12(3). The relevant time zone is that of the place of business of the party setting the time, unless the circumstances indicate otherwise",
+          "rule": "RelevantTimeZone/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART1_12_EN",
+        "PICC_ART1_12_RU"
+      ]
+    },
+    {
+      "id": "restitution-rules-apply-with-adaptations",
+      "task": "content",
+      "question": "Применяются ли правила о реституции при отменительном условии (ст. 5.3.5)?",
+      "kind": "truth",
+      "predicate": "restitution_rules_apply_with_adaptations",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(restitution_rules_apply_with_adaptations(c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_3_5_EN",
+        "PICC_ART5_3_5_RU"
+      ]
+    },
+    {
+      "id": "right-released",
+      "task": "content",
+      "question": "Прекращено ли право кредитора освобождением (ст. 5.1.9)?",
+      "kind": "truth",
+      "predicate": "right_released",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(right_released(o: <o>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.1.9(2). An offer to release a right gratuitously shall be deemed accepted if the obligor does not reject it without delay",
+          "rule": "GratuitousReleaseDeemedAccepted"
+        },
+        {
+          "summary": "Article 5.1.9(2). An offer to release a right gratuitously shall be deemed accepted if the obligor does not reject it without delay",
+          "rule": "GratuitousReleaseDeemedAccepted/unless/0"
+        },
+        {
+          "summary": "Article 5.1.9(1). An obligee may release its right by agreement with the obligor",
+          "rule": "ReleaseByAgreement"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_1_9_EN",
+        "PICC_ART5_1_9_RU"
+      ]
+    },
+    {
+      "id": "rights-may-be-revoked",
+      "task": "content",
+      "question": "Можно ли ещё отозвать права, предоставленные третьему лицу (ст. 5.2.5)?",
+      "kind": "truth",
+      "predicate": "rights_may_be_revoked",
+      "parameters": [
+        {
+          "name": "b",
+          "type": "Beneficiary",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(rights_may_be_revoked(b: <b>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.2.5. The parties may modify or revoke the rights conferred until the beneficiary has accepted them or reasonably acted in reliance on them",
+          "rule": "RevocationUntilAcceptance"
+        },
+        {
+          "summary": "Article 5.2.5. The parties may modify or revoke the rights conferred until the beneficiary has accepted them or reasonably acted in reliance on them",
+          "rule": "RevocationUntilAcceptance/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_2_5_EN",
+        "PICC_ART5_2_5_RU"
+      ]
+    },
+    {
+      "id": "settled-by-underlying-general-principles",
+      "task": "general-provisions",
+      "question": "Разрешается ли вопрос по общим принципам, на которых основаны Принципы (ст. 1.6)?",
+      "kind": "truth",
+      "predicate": "settled_by_underlying_general_principles",
+      "parameters": [
+        {
+          "name": "i",
+          "type": "Issue",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(settled_by_underlying_general_principles(i: <i>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "source_units": [
+        "PICC_ART1_6_EN",
+        "PICC_ART1_6_RU"
+      ]
+    },
+    {
+      "id": "statement-interpreted-by-intention",
+      "task": "interpretation",
+      "question": "Толкуется ли заявление по намерению стороны (ст. 4.2 п. 1)?",
+      "kind": "truth",
+      "predicate": "statement_interpreted_by_intention",
+      "parameters": [
+        {
+          "name": "st",
+          "type": "Statement",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(statement_interpreted_by_intention(st: <st>));",
+      "tests": [
+        "PICC-GEN-02-INTERPRETATION"
+      ],
+      "source_units": [
+        "PICC_ART4_2_EN",
+        "PICC_ART4_2_RU"
+      ]
+    },
+    {
+      "id": "statement-interpreted-by-reasonable-person",
+      "task": "interpretation",
+      "question": "Толкуется ли заявление по пониманию разумного лица (ст. 4.2 п. 2)?",
+      "kind": "truth",
+      "predicate": "statement_interpreted_by_reasonable_person",
+      "parameters": [
+        {
+          "name": "st",
+          "type": "Statement",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(statement_interpreted_by_reasonable_person(st: <st>));",
+      "tests": [
+        "PICC-GEN-02-INTERPRETATION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 4.2(2) (opening words). Where the intention was known to the other party, the reasonable-person reading does not apply",
+          "rule": "IntentionDisplacesReasonablePerson"
+        },
+        {
+          "summary": "Article 4.2(2). If the preceding paragraph is not applicable, statements shall be interpreted according to the meaning a reasonable person would give them",
+          "rule": "StatementByReasonablePerson"
+        }
+      ],
+      "source_units": [
+        "PICC_ART4_2_EN",
+        "PICC_ART4_2_RU"
+      ]
+    },
+    {
+      "id": "term-supplied",
+      "task": "interpretation",
+      "question": "Восполняется ли пропущенное условие договора (ст. 4.8)?",
+      "kind": "truth",
+      "predicate": "term_supplied",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(term_supplied(c: <c>, t: <t>));",
+      "tests": [
+        "PICC-GEN-02-INTERPRETATION"
+      ],
+      "source_units": [
+        "PICC_ART4_8_EN",
+        "PICC_ART4_8_RU"
+      ]
+    },
+    {
+      "id": "valid-condition",
+      "task": "content",
+      "question": "Является ли условие условием в смысле статьи 5.3.1?",
+      "kind": "truth",
+      "predicate": "valid_condition",
+      "parameters": [
+        {
+          "name": "cond",
+          "type": "Condition",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(valid_condition(cond: <cond>, c: <c>));",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "source_units": [
+        "PICC_ART5_3_1_EN",
+        "PICC_ART5_3_1_RU"
+      ]
+    },
+    {
+      "id": "validly-modified-or-terminated",
+      "task": "general-provisions",
+      "question": "Правомерно ли договор изменён или прекращён (ст. 1.3)?",
+      "kind": "truth",
+      "predicate": "validly_modified_or_terminated",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(validly_modified_or_terminated(c: <c>));",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "branches": [
+        {
+          "summary": "Article 1.3. The contract can be modified or terminated as otherwise provided in these Principles",
+          "rule": "ModificationAsProvided"
+        },
+        {
+          "summary": "Article 1.3. The contract can be modified or terminated by agreement",
+          "rule": "ModificationByAgreement"
+        },
+        {
+          "summary": "Article 1.3. The contract can be modified or terminated in accordance with its terms",
+          "rule": "ModificationByTerms"
+        }
+      ],
+      "source_units": [
+        "PICC_ART1_3_EN",
+        "PICC_ART1_3_RU"
+      ]
+    },
+    {
+      "id": "pozitsii-cooperate",
+      "task": "content",
+      "question": "Активна ли обязанность сотрудничать с другой стороной (ст. 5.1.3)?",
+      "kind": "positions",
+      "norms": [
+        "Cooperate"
+      ],
+      "template": "evaluate positions(); expect position(Cooperate, <статус>);",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.1.3. Each party shall co-operate with the other party when such co-operation may reasonably be expected for the performance of that party's obligations",
+          "rule": "DutyToCooperate"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_1_3_EN",
+        "PICC_ART5_1_3_RU"
+      ]
+    },
+    {
+      "id": "pozitsii-good-faith",
+      "task": "general-provisions",
+      "question": "Активна ли обязанность действовать добросовестно (ст. 1.7)?",
+      "kind": "positions",
+      "norms": [
+        "GoodFaith"
+      ],
+      "template": "evaluate positions(); expect position(GoodFaith, <статус>);",
+      "tests": [
+        "PICC-GEN-01-FREEDOM-AND-BINDING"
+      ],
+      "branches": [
+        {
+          "summary": "Article 1.7(1). Each party must act in accordance with good faith and fair dealing in international trade",
+          "rule": "DutyOfGoodFaith"
+        }
+      ],
+      "source_units": [
+        "PICC_ART1_7_EN",
+        "PICC_ART1_7_RU"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "gr-ne-pravo-gosudarstva",
+      "task": "general-provisions",
+      "reason_kind": "source_delegates",
+      "question": "Какие императивные нормы применимы к договору и каким правом они установлены?",
+      "source_units": [
+        "PICC_ART1_4_EN"
+      ],
+      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились (преамбула), либо когда суд или арбитраж берёт их как общие принципы права. Норму государства они не заменяют: статья 1.4 прямо оставляет за императивными нормами их силу, а какие нормы императивны — вопрос применимого права, вход дела."
+    },
+    {
+      "id": "gr-otsenochnye-picc",
+      "task": "interpretation",
+      "reason_kind": "case_data",
+      "question": "Каков смысл, который придали бы договору разумные лица, и неясно ли условие?",
+      "source_units": [
+        "PICC_ART4_1_EN",
+        "PICC_ART4_6_EN"
+      ],
+      "limitation": "ОЦЕНОЧНЫЕ ПРИЗНАКИ главы 1, 4 и 5 идут каналом суждения §47.3 с органом `Tribunal`: добросовестность (1.7), разумность расчёта на понимание (1.8), неразумность применения обычая (1.9), наиболее тесная связь предприятия (1.11), смысл разумных лиц (4.1, 4.2), неясность условия (4.6), надлежащность восполняемого условия (4.8), разумность усилий (5.1.4), качество не ниже среднего (5.1.6), явная неразумность определения цены (5.1.7), разумность срока извещения (5.1.8)."
+    },
+    {
+      "id": "gr-organ-picc",
+      "task": "general-provisions",
+      "reason_kind": "source_delegates",
+      "question": "Какой суд или арбитраж устанавливает оценочные признаки?",
+      "source_units": [
+        "PICC_ART1_11_EN"
+      ],
+      "limitation": "ОРГАН НАЗВАН САМИМ ИНСТРУМЕНТОМ: статья 1.11 определяет, что «court» включает арбитраж. `authority Tribunal` — цитата определения, а не выбор формализатора."
+    },
+    {
+      "id": "gr-prazdnik-otlichie",
+      "task": "computation-of-time",
+      "reason_kind": "case_data",
+      "question": "Указывают ли обстоятельства на иное, чем продление срока на праздник?",
+      "source_units": [
+        "PICC_ART1_12_EN"
+      ],
+      "limitation": "ПРОДЛЕНИЕ СРОКА НА ПРАЗДНИК (ст. 1.12 п. 2) СНАБЖЕНО ОГОВОРКОЙ «unless the circumstances indicate otherwise», которой у статьи 20 пункта 2 Конвенции НЕТ: там продление безусловно. Две нормы о праздниках объединять нельзя, и различие проверяется делом 04, а не комментарием."
+    },
+    {
+      "id": "gr-kalendar-picc",
+      "task": "computation-of-time",
+      "reason_kind": "case_data",
+      "question": "Какие дни нерабочие в месте исполнения и какой часовой пояс применяется?",
+      "source_units": [
+        "PICC_ART1_12_EN"
+      ],
+      "limitation": "КАЛЕНДАРЯ И ЧАСОВЫХ ПОЯСОВ У ПРИНЦИПОВ НЕТ: какие дни нерабочие в месте исполнения и какой пояс у места коммерческого предприятия — факты дела. Политика §86 пакета считает календарными днями, а продление выражено нормой над фактами (политика с переносом потребовала бы календарного снимка §85 в самом пакете)."
+    },
+    {
+      "id": "gr-sosednie-glavy",
+      "task": "content",
+      "reason_kind": "source_delegates",
+      "question": "Где живут нормы о заключении договора, действительности, исполнении и неисполнении?",
+      "source_units": [
+        "PICC_ART5_1_1_EN"
+      ],
+      "limitation": "ГЛАВЫ 2, 3, 6, 7, 8–11 живут в соседних пакетах группы `unidroit.picc*`; хаб держит главы 1, 4, 5 и типы, которыми пользуются все. Перечень раскладки — DECISION-0318, развилка Р3."
+    },
+    {
+      "id": "gr-perechni-otkryty",
+      "task": "interpretation",
+      "reason_kind": "case_data",
+      "question": "Учитывается ли обстоятельство или фактор рода, не названного перечнем?",
+      "source_units": [
+        "PICC_ART4_3_EN",
+        "PICC_ART5_1_5_EN"
+      ],
+      "limitation": "ПЕРЕЧНИ СТАТЕЙ 4.3 И 5.1.5 НЕ ИСЧЕРПЫВАЮЩИЕ («among other factors»): правило признаёт обстоятельство или фактор названного рода, а прочие роды остаются оценке органа и в модель отдельными посылками не входят."
+    },
+    {
+      "id": "gr-russkiy-yakor",
+      "task": "general-provisions",
+      "reason_kind": "source_delegates",
+      "question": "Каков официальный текст статьи и чем отличается русская публикация?",
+      "source_units": [
+        "PICC_ART1_1_EN",
+        "PICC_ART1_1_RU"
+      ],
+      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский. Русская публикация несёт четыре класса квирков нумерации, объявленных в sources/picc-ru/articles.json; из-за одного из них (статья 3.1.1 напечатана как «Статья 3.1») номера единиц двух документов совпадают не полностью."
+    }
+  ],
+  "internal": []
+}

@@ -1,0 +1,161 @@
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+// Дело 4. Убытки (7.4.1-7.4.8, 7.4.10-7.4.13) и проценты (7.4.9).
+//
+// ГЛАВНОЕ: СТАВКА НАЗВАНА ИСТОЧНИКОМ. Статья 78 Конвенции даёт право на
+// проценты, но ставку не называет; статья 7.4.9 пункт 2 называет ПРАВИЛО
+// ВЫБОРА ставки тремя ступенями, и дело предъявляет все три.
+
+test "PICCN-04-DAMAGES-AND-INTEREST" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": obligation_of(entity_ref("urn:case:piccn:o-4"), entity_ref("urn:case:piccn:contract-4"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a1": non_performance_of(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:o-4"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a2": failure_to_perform(entity_ref("urn:case:piccn:n-4")) { origin case_input; }
+        assert "a3": harm_sustained(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a4": harm_established_with_certainty(entity_ref("urn:case:piccn:n-4")) { origin case_input; }
+        assert "a5": harm_was_foreseeable(entity_ref("urn:case:piccn:n-4")) { origin adjudicated; }
+        assert "a6": loss_of_a_chance(entity_ref("urn:case:piccn:n-4")) { origin case_input; }
+        assert "a7": harm_due_in_part_to_aggrieved_party(entity_ref("urn:case:piccn:n-4")) { origin case_input; }
+        assert "a8": harm_could_have_been_reduced(entity_ref("urn:case:piccn:n-4")) { origin case_input; }
+        assert "a9": mitigation_expenses_incurred(entity_ref("urn:case:piccn:n-4")) { origin case_input; }
+        assert "a10": replacement_transaction_made(entity_ref("urn:case:piccn:n-4")) { origin case_input; }
+        assert "a11": obligation_of(entity_ref("urn:case:piccn:o-4b"), entity_ref("urn:case:piccn:contract-4b"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a12": non_performance_of(entity_ref("urn:case:piccn:n-4b"), entity_ref("urn:case:piccn:o-4b"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a13": failure_to_perform(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "a14": harm_sustained(entity_ref("urn:case:piccn:n-4b"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a15": harm_established_with_certainty(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "a16": harm_was_foreseeable(entity_ref("urn:case:piccn:n-4b")) { origin adjudicated; }
+        assert "a17": current_price_exists(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "a18": price_at_place_of_performance(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "a19": amount_not_establishable(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "a20": nature_of_harm_suits_instalments(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "a21": non_monetary_non_performance(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "a22": obligation_of(entity_ref("urn:case:piccn:o-pay"), entity_ref("urn:case:piccn:contract-4"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a23": sum_not_paid_when_due(entity_ref("urn:case:piccn:o-pay")) { origin case_input; }
+        assert "a24": bank_rate_exists_at_place_of_payment(entity_ref("urn:case:piccn:o-pay")) { origin case_input; }
+        assert "a25": greater_harm_from_non_payment(entity_ref("urn:case:piccn:o-pay")) { origin case_input; }
+        assert "a26": obligation_of(entity_ref("urn:case:piccn:o-pay2"), entity_ref("urn:case:piccn:contract-4b"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a27": sum_not_paid_when_due(entity_ref("urn:case:piccn:o-pay2")) { origin case_input; }
+        assert "a28": bank_rate_exists_in_state_of_currency(entity_ref("urn:case:piccn:o-pay2")) { origin case_input; }
+        assert "a29": obligation_of(entity_ref("urn:case:piccn:o-pay3"), entity_ref("urn:case:piccn:contract-4c"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a30": sum_not_paid_when_due(entity_ref("urn:case:piccn:o-pay3")) { origin case_input; }
+        assert "a31": agreed_sum_for_non_performance(entity_ref("urn:case:piccn:contract-4"), entity_ref("urn:case:piccn:term-4")) { origin case_input; }
+        assert "a32": agreed_sum_for_non_performance(entity_ref("urn:case:piccn:contract-4b"), entity_ref("urn:case:piccn:term-4b")) { origin case_input; }
+        assert "a33": agreed_sum_grossly_excessive(entity_ref("urn:case:piccn:contract-4b"), entity_ref("urn:case:piccn:term-4b")) { origin adjudicated; }
+        assert "c0": aggrieved_party(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c1": aggrieved_party(entity_ref("urn:case:piccn:n-4b"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c2": obligee_of(entity_ref("urn:case:piccn:o-pay"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c3": obligee_of(entity_ref("urn:case:piccn:o-pay2"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c4": obligee_of(entity_ref("urn:case:piccn:o-pay3"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+
+        assert "d0": harm_suffered_in_other_currency(entity_ref("urn:case:piccn:n-4b")) { origin case_input; }
+        assert "d1": currency_of_harm_more_appropriate(entity_ref("urn:case:piccn:n-4b")) { origin adjudicated; }
+
+    }
+
+    evaluate truth(right_to_damages(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RightToDamages);
+
+    evaluate truth(full_compensation_due(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FullCompensation);
+
+    evaluate truth(harm_within_foreseeable_scope(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(LiabilityLimitedToForeseeableHarm);
+
+    evaluate truth(compensation_for_loss_of_chance(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CompensationForLossOfChance);
+
+    evaluate truth(difference_to_replacement_recoverable(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ReplacementTransactionProof);
+
+    evaluate truth(difference_to_current_price_recoverable(entity_ref("urn:case:piccn:n-4b"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CurrentPriceProof);
+
+    evaluate truth(current_price_is(entity_ref("urn:case:piccn:n-4b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CurrentPriceAtPlaceOfPerformance);
+
+    evaluate truth(damages_reduced_for_contribution(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ContributionReducesDamages);
+
+    evaluate truth(not_liable_for_avoidable_harm(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MitigationLimitsLiability);
+
+    evaluate truth(mitigation_expenses_recoverable(entity_ref("urn:case:piccn:n-4"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MitigationExpensesRecoverable);
+
+    evaluate truth(assessment_at_discretion_of_court(entity_ref("urn:case:piccn:n-4b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AssessmentAtCourtDiscretion);
+
+    // Ступень 1: ставка места платежа.
+    evaluate truth(entitled_to_interest(entity_ref("urn:case:piccn:o-pay"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(InterestForFailureToPay);
+
+    evaluate truth(rate_is_bank_rate_at_place_of_payment(entity_ref("urn:case:piccn:o-pay")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RateAtPlaceOfPayment);
+
+    // Ступень 2: ставка государства валюты платежа.
+    evaluate truth(rate_is_bank_rate_in_state_of_currency(entity_ref("urn:case:piccn:o-pay2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RateInStateOfCurrency);
+
+    // Ступень 3: ставка, установленная правом государства валюты платежа.
+    evaluate truth(rate_is_fixed_by_law_of_currency_state(entity_ref("urn:case:piccn:o-pay3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RateFixedByLawOfCurrencyState);
+
+    evaluate truth(additional_damages_for_non_payment(entity_ref("urn:case:piccn:o-pay"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AdditionalDamagesForNonPayment);
+
+    evaluate truth(interest_accrues_from_non_performance(entity_ref("urn:case:piccn:n-4b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(InterestOnDamagesAccrues);
+
+    evaluate truth(damages_paid_in_lump_sum(entity_ref("urn:case:piccn:n-4")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DamagesInLumpSum);
+
+    evaluate truth(damages_payable_in_instalments(entity_ref("urn:case:piccn:n-4b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DamagesInInstalments);
+
+    evaluate truth(damages_assessed_in_currency_of_obligation(entity_ref("urn:case:piccn:n-4")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DamagesInCurrencyOfObligation);
+
+    evaluate truth(agreed_sum_payable(entity_ref("urn:case:piccn:contract-4"), entity_ref("urn:case:piccn:term-4")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AgreedSumPayable);
+
+    evaluate truth(agreed_sum_reduced_to_reasonable_amount(entity_ref("urn:case:piccn:contract-4b"), entity_ref("urn:case:piccn:term-4b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(GrosslyExcessiveAgreedSumReduced);
+
+    // Вред понесён в другой валюте и она уместнее — убытки исчисляются в ней.
+    evaluate truth(damages_assessed_in_currency_of_harm(entity_ref("urn:case:piccn:n-4b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DamagesInCurrencyOfHarm);
+}

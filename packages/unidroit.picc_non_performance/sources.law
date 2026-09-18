@@ -1,0 +1,1083 @@
+// Source-модель Принципов международных коммерческих договоров УНИДРУА
+// (редакция 2016 года): закреплённые байты black-letter rules и постатейные
+// фрагменты §194 охвата ЭТОГО пакета.
+//
+// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
+// `corpus/tools/sources/sync/sync_unidroit_picc_fragments.py`; сверка без
+// записи — его же ключом `--check`.
+//
+// ПРАВО НА ВОСПРОИЗВЕДЕНИЕ ПОЛУЧЕНО У ИЗДАТЕЛЯ. Раздел «Copyright notice»
+// правовой страницы УНИДРУА (`unidroit.org/disclaimer/`, проверено
+// 17.09.2026): «Reproduction of the information is authorised, except for
+// commercial purposes, provided the source is duly acknowledged».
+//
+// ПОЧЕМУ ТЕКСТ ОФИЦИАЛЬНЫЙ, А КОПИЯ — НЕТ. `officiality official` говорит о
+// ТЕКСТЕ: английский — один из двух официальных языков инструмента.
+// `materialization_status PINNED_UNOFFICIAL_COPY` говорит о БАЙТАХ:
+// закреплено извлечение из PDF портала издателя. Русский текст — парный
+// `unofficial` якорь: официальным языком инструмента он не является.
+//
+// КОММЕНТАРИИ И ИЛЛЮСТРАЦИИ ИЗДАТЕЛЯ В ЗАКРЕПЛЕНИЕ НЕ ВХОДЯТ: закреплены
+// black-letter rules — сам текст статей.
+//
+// `retrieved_at` — константа, а не момент сборки (DECISION-0005 п. 6).
+
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+source PICC_2016 {
+    kind doctrine;
+    jurisdiction International;
+    number "UNIDROIT Principles of International Commercial Contracts 2016";
+    label en official "UNIDROIT Principles of International Commercial Contracts";
+    label ru unofficial "Принципы международных коммерческих договоров УНИДРУА";
+}
+
+edition PICC_2016_EN of PICC_2016 {
+    label en official "English black-letter rules, 2016 edition";
+    language en;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_EN_TEXT of PICC_2016_EN {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
+    local_path "sources/picc-en/en.txt";
+}
+
+edition PICC_2016_RU of PICC_2016 {
+    label ru unofficial "Русский текст black-letter rules, редакция 2016 года";
+    language ru;
+    officiality unofficial;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_RU_TEXT of PICC_2016_RU {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:89f86961c82987fe324c43d46146cc31aa20e8965511158dcf7fe5b43012066a";
+    local_path "sources/picc-ru/ru.txt";
+}
+
+// Article 7.1.1 (English black-letter rules)
+fragment PICC_ART7_1_1_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_1_1";
+    text en official """ARTICLE 7.1.1
+(Non-performance defined)
+Non-performance is failure by a party to perform any of its obligations under the
+contract, including defective performance or late performance.""";
+    content_hash "sha256:926b8b5894e02e7a6325593a902015370f14022d9b57b5b56b967eafeb85adfb";
+}
+
+// Статья 7.1.1 (русский парный якорь, unofficial)
+fragment PICC_ART7_1_1_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_1_1";
+    text ru unofficial """Статья 7.1.1
+(Определение неисполнения)
+Неисполнением считается невыполнение стороной любого из своих
+обязательств по договору, включая ненадлежащее исполнение и просрочку
+исполнения.""";
+    content_hash "sha256:db62a892c8445c8749bbf8c5a0eb01aeee424079a906ed1076aad7b90c764374";
+}
+
+// Article 7.1.2 (English black-letter rules)
+fragment PICC_ART7_1_2_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_1_2";
+    text en official """ARTICLE 7.1.2
+(Interference by the other party)
+A party may not rely on the non-performance of the other party to the extent that
+such non-performance was caused by the first party’s act or omission or by another
+event for which the first party bears the risk.""";
+    content_hash "sha256:d83690614bc645ce2519082038b84ada549fd258639433e3fa265a6fc45f3bda";
+}
+
+// Статья 7.1.2 (русский парный якорь, unofficial)
+fragment PICC_ART7_1_2_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_1_2";
+    text ru unofficial """Статья 7.1.2
+(Вмешательство другой стороны)
+Сторона не может полагаться на неисполнение, допущенное другой
+стороной, в той мере, в какой такое неисполнение было вызвано действием
+или упущением первой стороны или иным событием, в отношении которого
+первая сторона несет риск.""";
+    content_hash "sha256:0df40a9efdba4ba1c9a68bdcc9fd73e1d50ddfff8c52c4804900eff424a7d0c9";
+}
+
+// Article 7.1.3 (English black-letter rules)
+fragment PICC_ART7_1_3_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_1_3";
+    text en official """ARTICLE 7.1.3
+(Withholding performance)
+(1) Where the parties are to perform simultaneously, either party may withhold
+performance until the other party tenders its performance.
+(2) Where the parties are to perform consecutively, the party that is to perform
+later may withhold its performance until the first party has performed.""";
+    content_hash "sha256:e6fd33892f86336aa943ecc5fa3532f15cd46f68f01d0930bdfa257ebdf96f73";
+}
+
+// Статья 7.1.3 (русский парный якорь, unofficial)
+fragment PICC_ART7_1_3_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_1_3";
+    text ru unofficial """Статья 7.1.3
+(Приостановление исполнения)
+(1) Если стороны должны исполнить свои обязательства
+одновременно, любая из них может приостановить исполнение до тех пор,
+пока другая сторона не предложит свое исполнение.
+(2) Если стороны должны исполнить свои обязательства
+последовательно, сторона, которая должна исполнить позже, может
+приостановить свое исполнение до тех пор, пока другая сторона не
+произведет исполнение.""";
+    content_hash "sha256:6b69865d875c9cb34768b067170c5e834959b4faf52b44e72de605ac61146dd9";
+}
+
+// Article 7.1.4 (English black-letter rules)
+fragment PICC_ART7_1_4_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_1_4";
+    text en official """ARTICLE 7.1.4
+(Cure by non-performing party)
+(1) The non-performing party may, at its own expense, cure any non-performance,
+provided that
+(a) without undue delay, it gives notice indicating the proposed manner and
+timing of the cure;
+(b) cure is appropriate in the circumstances;
+(c) the aggrieved party has no legitimate interest in refusing cure; and
+(d) cure is effected promptly.
+(2) The right to cure is not precluded by notice of termination.
+(3) Upon effective notice of cure, rights of the aggrieved party that are
+inconsistent with the non-performing party’s performance are suspended until the time
+for cure has expired.
+(4) The aggrieved party may withhold performance pending cure.
+(5) Notwithstanding cure, the aggrieved party retains the right to claim damages
+for delay as well as for any harm caused or not prevented by the cure.""";
+    content_hash "sha256:cdddfe5b59270c8cc1a7b736159e2d009b91d4382392db0e199e5598852ed14d";
+}
+
+// Статья 7.1.4 (русский парный якорь, unofficial)
+fragment PICC_ART7_1_4_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_1_4";
+    text ru unofficial """Статья 7.1.4
+(Исправление неисполнившей стороной)
+(1) Неисполнившая сторона может за свой счет исправить любое
+неисполнение, при условии, что:
+(а) она без неоправданной задержки уведомит о предлагаемом способе
+и времени исправления;
+(b) исправление соответствует существующим обстоятельствам;
+(c) потерпевшая сторона не имеет законного интереса отказаться от
+исправления; а также
+(d) исправление осуществляется немедленно.
+(2) Право на исправление не исключается уведомлением о
+прекращении договора.
+(3) При получении надлежащего уведомления об исправлении
+потерпевшая сторона до истечения срока на исправление не может
+осуществить свои права, которые не совместимы с исполнением
+обязательств неисполнившей стороной.
+(4) Потерпевшая сторона может приостановить исполнение своих
+обязательств в ожидании исправления.
+(5) Несмотря на исправление, потерпевшая сторона сохраняет право
+требовать возмещение убытков за просрочку, а также за любой ущерб,
+причиненный или не предотвращенный в результате исправления.""";
+    content_hash "sha256:de860ebd7f93295f88424d5cbce49b5bdd7a10f2ca3c5fe10ed81f363fc7cdb6";
+}
+
+// Article 7.1.5 (English black-letter rules)
+fragment PICC_ART7_1_5_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_1_5";
+    text en official """ARTICLE 7.1.5
+(Additional period for performance)
+(1) In a case of non-performance the aggrieved party may by notice to the other
+party allow an additional period of time for performance.
+(2) During the additional period the aggrieved party may withhold performance of
+its own reciprocal obligations and may claim damages but may not resort to any other
+remedy. If it receives notice from the other party that the latter will not perform within
+that period, or if upon expiry of that period due performance has not been made, the aggrieved party may resort to any of the remedies that may be available under this
+Chapter.
+(3) Where in a case of delay in performance which is not fundamental the
+aggrieved party has given notice allowing an additional period of time of reasonable
+length, it may terminate the contract at the end of that period. If the additional period
+allowed is not of reasonable length it shall be extended to a reasonable length. The
+aggrieved party may in its notice provide that if the other party fails to perform within
+the period allowed by the notice the contract shall automatically terminate.
+(4) Paragraph (3) does not apply where the obligation which has not been
+performed is only a minor part of the contractual obligation of the non-performing party.""";
+    content_hash "sha256:09fc9557d2ed540df9a43b62f70f962cf008cef4b887b5a3bcdd5bcf5e618727";
+}
+
+// Статья 7.1.5 (русский парный якорь, unofficial)
+fragment PICC_ART7_1_5_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_1_5";
+    text ru unofficial """Статья 7.1.5
+(Дополнительный срок для исполнения)
+(1) В случае, когда имеет место неисполнение, потерпевшая сторона
+может путем уведомления другой стороны предоставить дополнительный
+срок для исполнения.
+(2) В течение дополнительного срока потерпевшая сторона может
+приостановить исполнение своих взаимных обязательств и потребовать
+возмещения убытков, однако она не может прибегнуть к любому другому
+средству правовой защиты. Если она получает уведомление от другой
+стороны о том, что последняя не предоставит исполнение в этот срок, либо,
+если по истечении этого срока, надлежащее исполнение не имело места,
+потерпевшая сторона может прибегнуть к любому средству правовой
+защиты, которое предоставлено ей в соответствии с настоящей Главой.
+(3) Если при не имеющей существенного значения просрочке
+исполнения
+потерпевшая
+сторона
+уведомила
+о
+предоставлении
+дополнительного срока разумной продолжительности, она может прекратить
+договор по истечении этого срока. Если предоставленный дополнительный
+срок не имеет разумной продолжительности, то он продлевается до разумной
+продолжительности. Потерпевшая сторона может указать в своем
+уведомлении, что договор будет автоматически прекращен, если другая
+сторона не произведет исполнения в течение предоставленного периода
+времени.
+(4) Пункт (3) не применяется, если неисполненное обязательство
+представляет
+незначительную
+часть
+договорных
+обязательств
+неисполнившей стороны.""";
+    content_hash "sha256:bb0f5e910f4970a5c33d01b710adab50d7eac65a636c69e86e42409c732a6f3a";
+}
+
+// Article 7.1.6 (English black-letter rules)
+fragment PICC_ART7_1_6_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_1_6";
+    text en official """ARTICLE 7.1.6
+(Exemption clauses)
+A clause which limits or excludes one party’s liability for non-performance or which
+permits one party to render performance substantially different from what the other
+party reasonably expected may not be invoked if it would be grossly unfair to do so,
+having regard to the purpose of the contract.""";
+    content_hash "sha256:f337126762c1db3e60eaaaaf82dabfedd5298412db5ecf8c5f540220d2f4345c";
+}
+
+// Статья 7.1.6 (русский парный якорь, unofficial)
+fragment PICC_ART7_1_6_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_1_6";
+    text ru unofficial """Статья 7.1.6
+(Исключительные оговорки)
+Оговорка, которая ограничивает или исключает ответственность
+одной стороны за неисполнение или допускает, чтобы одна сторона
+произвела исполнение, существенно отличающееся от того, что другая
+сторона разумно ожидала, не может быть использована, если ее
+использование привело бы к явной несправедливости, принимая во
+внимание цель договора.""";
+    content_hash "sha256:f55fdb33fffc3893366602f23ab03fad396a72b4ed7389ce23ae576db2e6939a";
+}
+
+// Article 7.1.7 (English black-letter rules)
+fragment PICC_ART7_1_7_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_1_7";
+    text en official """ARTICLE 7.1.7
+(Force majeure)
+(1) Non-performance by a party is excused if that party proves that the nonperformance was due to an impediment beyond its control and that it could not
+reasonably be expected to have taken the impediment into account at the time of the
+conclusion of the contract or to have avoided or overcome it or its consequences.
+(2) When the impediment is only temporary, the excuse shall have effect for such
+period as is reasonable having regard to the effect of the impediment on the performance
+of the contract.
+(3) The party who fails to perform must give notice to the other party of the
+impediment and its effect on its ability to perform. If the notice is not received by the
+other party within a reasonable time after the party who fails to perform knew or ought
+to have known of the impediment, it is liable for damages resulting from such nonreceipt.
+(4) Nothing in this Article prevents a party from exercising a right to terminate the
+contract or to withhold performance or request interest on money due.""";
+    content_hash "sha256:47ce8da1d588328a943bcbc7f3208850910c521556e2b955a38893ce15ac86b0";
+}
+
+// Статья 7.1.7 (русский парный якорь, unofficial)
+fragment PICC_ART7_1_7_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_1_7";
+    text ru unofficial """Статья 7.1.7
+(Непреодолимая сила (форс-мажор)
+(1) Сторона освобождается от ответственности за неисполнение, если
+она докажет, что неисполнение было вызвано препятствием вне ее контроля
+и что от нее нельзя было разумно ожидать принятия этого препятствия в
+расчет при заключении договора либо избежания или преодоления этого
+препятствия или его последствий.
+(2) Если препятствие носит временный характер, освобождение от
+ответственности имеет силу на период времени, который является
+разумным, принимая во внимание влияние препятствия на исполнение
+договора.
+(3) Неисполнившая сторона должна уведомить другую сторону о
+возникновении препятствия и его влиянии на ее способность исполнить
+обязательство. Если уведомление не получено другой стороной в течение
+разумного срока после того, как неисполнившая сторона узнала или должна
+была узнать о препятствии, она несет ответственность за убытки, ставшие
+результатом неполучения уведомления.
+(4) Положения настоящей статьи не препятствуют стороне
+воспользоваться правом прекратить договор или приостановить исполнение,
+либо требовать уплаты процентов годовых.""";
+    content_hash "sha256:e1bce1cd6d55631ef27b2228a0928dd8c2f4443f0f2344dc45c380e5a4321158";
+}
+
+// Article 7.2.1 (English black-letter rules)
+fragment PICC_ART7_2_1_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_2_1";
+    text en official """ARTICLE 7.2.1
+(Performance of monetary obligation)
+Where a party who is obliged to pay money does not do so, the other party may require payment.""";
+    content_hash "sha256:dcd6959d8ac48f86b399c9399abc31a04cca30e3fb8a9a4cf0da4e33c9723e06";
+}
+
+// Статья 7.2.1 (русский парный якорь, unofficial)
+fragment PICC_ART7_2_1_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_2_1";
+    text ru unofficial """Статья 7.2.1
+(Исполнение денежного обязательства)
+Если сторона, обязанная уплатить деньги, не делает
+сторона может потребовать произвести платеж.
+этого, другая""";
+    content_hash "sha256:d717da3a7f03c596eaa85b58db98fe6fe17dee5abc2742bebef0bc3ef726184d";
+}
+
+// Article 7.2.2 (English black-letter rules)
+fragment PICC_ART7_2_2_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_2_2";
+    text en official """ARTICLE 7.2.2
+(Performance of non-monetary obligation)
+Where a party who owes an obligation other than one to pay money does not perform, the other party may require performance, unless
+(a) performance is impossible in law or in fact;
+(b) performance or, where relevant, enforcement is unreasonably burdensome or
+expensive;
+(c) the party entitled to performance may reasonably obtain performance from another source;
+(d) performance is of an exclusively personal character; or
+(e) the party entitled to performance does not require performance within a
+reasonable time after it has, or ought to have, become aware of the non-performance.""";
+    content_hash "sha256:eb289b26b9724bcb3c8d22e5f0b05b9fa716ac774aba75c159b4154b675193d6";
+}
+
+// Статья 7.2.2 (русский парный якорь, unofficial)
+fragment PICC_ART7_2_2_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_2_2";
+    text ru unofficial """Статья 7.2.2
+(Исполнение неденежного обязательства)
+Если сторона, обязательство которой состоит не в уплате денег, не
+исполняет его, другая сторона может потребовать исполнение, кроме
+случаев, когда
+(а) исполнение невозможно юридически или фактически;
+(b) исполнение или, в соответствующих случаях, принудительное
+исполнение, является неразумно обременительным или дорогостоящим;
+(c) сторона, имеющая право на исполнение, может разумно получить
+исполнение из другого источника;
+(d) исполнение носит исключительно личный характер; или
+(e) сторона, имеющая право на исполнение, не требует его в разумный
+срок после того, как она узнала или должна была узнать о неисполнении.""";
+    content_hash "sha256:896b5949d4d7b2b8509ebc01b0dc873e66d678a900f26e670a44d7cf3186940d";
+}
+
+// Article 7.2.3 (English black-letter rules)
+fragment PICC_ART7_2_3_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_2_3";
+    text en official """ARTICLE 7.2.3
+(Repair and replacement of defective performance)
+The right to performance includes in appropriate cases the right to require repair,
+replacement, or other cure of defective performance. The provisions of Articles 7.2.1
+and 7.2.2 apply accordingly.""";
+    content_hash "sha256:c0d570ba13af9379edddec464c922ce1b705679f916124a9833d7edc5a16bcf0";
+}
+
+// Статья 7.2.3 (русский парный якорь, unofficial)
+fragment PICC_ART7_2_3_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_2_3";
+    text ru unofficial """Статья 7.2.3
+(Исправление или замена ненадлежащего исполнения)
+Право на исполнение включает в соответствующих случаях право
+требовать устранения недостатков, замены или иного исправления
+неисполнения. Положения статей 7.2.1 и 7.2.2 применяются соответственно.""";
+    content_hash "sha256:d1945465c43bcd9c27ee0fc740b190d1862b230dcc3c80021b8a20fef4008d4b";
+}
+
+// Article 7.2.4 (English black-letter rules)
+fragment PICC_ART7_2_4_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_2_4";
+    text en official """ARTICLE 7.2.4
+(Judicial penalty)
+(1) Where the court orders a party to perform, it may also direct that this party pay
+a penalty if it does not comply with the order.
+(2) The penalty shall be paid to the aggrieved party unless mandatory provisions
+of the law of the forum provide otherwise. Payment of the penalty to the aggrieved party
+does not exclude any claim for damages.""";
+    content_hash "sha256:1a1f85c41bc87b5b4e30d86a90c6174649d9160fd436126a5ef9e01e1766550a";
+}
+
+// Статья 7.2.4 (русский парный якорь, unofficial)
+fragment PICC_ART7_2_4_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_2_4";
+    text ru unofficial """Статья 7.2.4
+(Судебный штраф)
+(1) Если суд обязывает сторону произвести исполнение, он также
+может предписать ей уплатить штраф, если она не исполнит его решение.
+(2) Штраф должен быть уплачен потерпевшей стороне, если только
+императивные нормы права страны, где находится суд, не устанавливают
+иного. Уплата штрафа потерпевшей стороне не исключает любых
+требований об убытках.""";
+    content_hash "sha256:c3053fbbea0335e20e22d4381776bc19fdc88d4d338e8398900ad35a27d13d3b";
+}
+
+// Article 7.2.5 (English black-letter rules)
+fragment PICC_ART7_2_5_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_2_5";
+    text en official """ARTICLE 7.2.5
+(Change of remedy)
+(1) An aggrieved party who has required performance of a non-monetary obligation and who has not received performance within a period fixed or otherwise within a
+reasonable period of time may invoke any other remedy.
+(2) Where the decision of a court for performance of a non-monetary obligation
+cannot be enforced, the aggrieved party may invoke any other remedy.""";
+    content_hash "sha256:aa26ee0f2d9e247a5f4dfc1bf94363164cf3e39663bf0c01bf8548d32b540b6c";
+}
+
+// Статья 7.2.5 (русский парный якорь, unofficial)
+fragment PICC_ART7_2_5_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_2_5";
+    text ru unofficial """Статья 7.2.5
+(Изменение средств правовой защиты)
+(1) Потерпевшая сторона, потребовавшая исполнения неденежного
+обязательства и не получившая исполнение в установленный срок, или, в
+ином случае, в разумный срок, может прибегнуть к любому другому средству
+правовой защиты.
+(2) Если решение суда об исполнении неденежного обязательства не
+может быть принудительно исполнено, потерпевшая сторона может
+воспользоваться любым другим средством правовой защиты.""";
+    content_hash "sha256:2251bade147992b37c90e5411011c7bcd14ee607aed510817fba2bc6f648ac4b";
+}
+
+// Article 7.3.1 (English black-letter rules)
+fragment PICC_ART7_3_1_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_3_1";
+    text en official """ARTICLE 7.3.1
+(Right to terminate the contract)
+(1) A party may terminate the contract where the failure of the other party to
+perform an obligation under the contract amounts to a fundamental non-performance.
+(2) In determining whether a failure to perform an obligation amounts to a fundamental non-performance regard shall be had, in particular, to whether
+(a) the non-performance substantially deprives the aggrieved party of what it was
+entitled to expect under the contract unless the other party did not foresee and could not
+reasonably have foreseen such result;
+(b) strict compliance with the obligation which has not been performed is of
+essence under the contract;
+(c) the non-performance is intentional or reckless;
+(d) the non-performance gives the aggrieved party reason to believe that it cannot
+rely on the other party’s future performance;
+(e) the non-performing party will suffer disproportionate loss as a result of the
+preparation or performance if the contract is terminated.
+(3) In the case of delay the aggrieved party may also terminate the contract if the
+other party fails to perform before the time allowed it under Article 7.1.5 has expired.""";
+    content_hash "sha256:ff902523dcd782069e2bff7a490aeeecd0a4120bb36f170ea4501c64bdbdaddf";
+}
+
+// Статья 7.3.1 (русский парный якорь, unofficial)
+fragment PICC_ART7_3_1_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_3_1";
+    text ru unofficial """Статья 7.3.1
+(Право на прекращение договора)
+(1) Сторона может прекратить договор, если неисполнение
+договорного обязательства другой стороной является существенным.
+(2) При определении, является ли неисполнение обязательства
+существенным, во внимание должно быть принято, в частности,:
+(а) существенно ли неисполнение лишает потерпевшую сторону того,
+что она имела право ожидать в соответствии с договором, кроме случаев,
+когда другая сторона не предвидела и не могла разумно предвидеть такой
+результат;
+(b) имеет ли принципиальный характер с точки зрения договора
+строгое соблюдение неисполненного обязательства;
+(с) является ли неисполнение умышленным или совершено по
+небрежности;
+(d) дает ли неисполнение потерпевшей стороне основание верить, что
+она не может полагаться на будущее исполнение другой стороны;
+(е) понесет ли неисполнившая сторона несоразмерные потери в
+результате подготовки или осуществления исполнения, если договор будет
+прекращен.
+(3) В случае просрочки потерпевшая сторона может также прекратить
+договор, если другая сторона не исполнит договор до истечения срока,
+предоставленного в соответствии со статьей 7.1.5.""";
+    content_hash "sha256:1e9baeac53aa7142d4ff3ba7a471c1df376ea6ec8c71f836e09d8edf11a15ee8";
+}
+
+// Article 7.3.2 (English black-letter rules)
+fragment PICC_ART7_3_2_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_3_2";
+    text en official """ARTICLE 7.3.2
+(Notice of termination)
+The right of a party to terminate the contract is exercised by notice to the other
+(1)
+party.
+(2) If performance has been offered late or otherwise does not conform to the
+contract the aggrieved party will lose its right to terminate the contract unless it gives
+notice to the other party within a reasonable time after it has or ought to have become
+aware of the offer or of the non-conforming performance.""";
+    content_hash "sha256:5640682d859fb45e11ebd05ed6dfe23ec37336955257e5ed136b7cfaec60be90";
+}
+
+// Статья 7.3.2 (русский парный якорь, unofficial)
+fragment PICC_ART7_3_2_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_3_2";
+    text ru unofficial """Статья 7.3.2
+(Уведомление о прекращении)
+(1) Право стороны прекратить договор осуществляется путем
+уведомления другой стороны.
+(2) Если исполнение было представлено с просрочкой или иным
+образом не соответствует договору, потерпевшая сторона теряет свое право
+прекратить договор, если только она не уведомляет другую сторону в
+разумный срок после того, как она узнала или должна была узнать о
+предложенном исполнении или ненадлежащем исполнении.""";
+    content_hash "sha256:4cf909fd56d99d62446d6a7d260637971c139ec8f13df787ac41315dca1f9354";
+}
+
+// Article 7.3.3 (English black-letter rules)
+fragment PICC_ART7_3_3_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_3_3";
+    text en official """ARTICLE 7.3.3
+(Anticipatory non-performance)
+Where prior to the date for performance by one of the parties it is clear that there
+will be a fundamental non-performance by that party, the other party may terminate the
+contract.""";
+    content_hash "sha256:a300f3f3d6fd4f95ad3ecefee1f143622ccc136b3f37ceceae425ad19cfffd3d";
+}
+
+// Статья 7.3.3 (русский парный якорь, unofficial)
+fragment PICC_ART7_3_3_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_3_3";
+    text ru unofficial """Статья 7.3.3
+(Предвидимое неисполнение)
+Если до наступления срока исполнения стороной становится ясным,
+что будет иметь место существенное неисполнение этой стороной, другая
+сторона может прекратить договор.""";
+    content_hash "sha256:54e96cbca940fb32512bf6fe7648315ed07c43d5b7e59ddb2265b901e369cabe";
+}
+
+// Article 7.3.4 (English black-letter rules)
+fragment PICC_ART7_3_4_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_3_4";
+    text en official """ARTICLE 7.3.4
+(Adequate assurance of due performance)
+A party who reasonably believes that there will be a fundamental non-performance
+by the other party may demand adequate assurance of due performance and may
+meanwhile withhold its own performance. Where this assurance is not provided within a
+reasonable time the party demanding it may terminate the contract.""";
+    content_hash "sha256:0268994de3c858b4185e1df4a41924c93540cd7699996d647c41a299dbb9dd2c";
+}
+
+// Статья 7.3.4 (русский парный якорь, unofficial)
+fragment PICC_ART7_3_4_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_3_4";
+    text ru unofficial """Статья 7.3.4
+(Соответствующее заверение о надлежащем исполнении)
+Сторона, которая разумно полагает, что другой стороной будет
+допущено существенное неисполнение, может потребовать соответствующего
+заверения о надлежащем исполнении и одновременно приостановить свое
+исполнение. Если такое заверение не будет предоставлено в разумный срок
+потребовавшая такое заверение сторона может прекратить договор.""";
+    content_hash "sha256:72ecef24be730c34c0cbaf64ab6149377ec88e777a6faaeeca5525edadaa5ef4";
+}
+
+// Article 7.3.5 (English black-letter rules)
+fragment PICC_ART7_3_5_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_3_5";
+    text en official """ARTICLE 7.3.5
+(Effects of termination in general)
+(1) Termination of the contract releases both parties from their obligation to effect
+and to receive future performance.
+(2) Termination does not preclude a claim for damages for non-performance.
+(3) Termination does not affect any provision in the contract for the settlement of
+disputes or any other term of the contract which is to operate even after termination.""";
+    content_hash "sha256:676679e9662271b812b143de1b109fa868ed25f4f164a5f094c20c81e9dfeb1c";
+}
+
+// Статья 7.3.5 (русский парный якорь, unofficial)
+fragment PICC_ART7_3_5_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_3_5";
+    text ru unofficial """Статья 7.3.5
+(Общие последствия прекращения)
+(1) Прекращение договора освобождает обе стороны от обязательств
+осуществить и получить будущее исполнение.
+(2) Прекращение договора не препятствует праву требовать
+возмещения убытков за неисполнение.
+(3) Прекращение не затрагивает каких-либо положений договора об
+урегулировании споров или любых иных условий договора, которые должны
+действовать даже после его прекращения.""";
+    content_hash "sha256:eb7b55c166228fbcc0b4daa39d91f454662565d8bb3ac426091f180f8e7ec959";
+}
+
+// Article 7.3.6 (English black-letter rules)
+fragment PICC_ART7_3_6_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_3_6";
+    text en official """ARTICLE 7.3.6
+(Restitution with respect to contracts to be performed at one time)
+(1) On termination of a contract to be performed at one time either party may
+claim restitution of whatever it has supplied under the contract, provided that such party
+concurrently makes restitution of whatever it has received under the contract.
+(2) If restitution in kind is not possible or appropriate, an allowance has to be
+made in money whenever reasonable.
+(3) The recipient of the performance does not have to make an allowance in
+money if the impossibility to make restitution in kind is attributable to the other party.
+(4) Compensation may be claimed for expenses reasonably required to preserve or
+maintain the performance received.""";
+    content_hash "sha256:4338eb4648e3573ae3cac55a6acfd6534f3a5c37960fb66a0a0b08adacb8b709";
+}
+
+// Статья 7.3.6 (русский парный якорь, unofficial)
+fragment PICC_ART7_3_6_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_3_6";
+    text ru unofficial """Статья 7.3.6
+(Реституция по договорам, исполняемым однократно)
+(1) При прекращении договора, исполняемого однократно, любая
+сторона может требовать возврата (реституции) всего, что она поставила по
+договору, при условии, что эта сторона одновременно возвращает все, что
+она получила по договору.
+(2) Если реституция в натуре невозможна или нецелесообразна,
+соответствующее возмещение должно быть произведено в денежной форме,
+поскольку это является разумным.
+(3) Получатель исполнения не обязан осуществлять денежное
+возмещение, если невозможность реституции в натуре связана с другой
+стороной.
+(4) За расходы, разумно необходимые для сохранения и содержания
+полученного исполнения, может быть потребована компенсация.""";
+    content_hash "sha256:1edfc2fea38dfb9873a3efad734e102d948b5786e60c45d76785ffd7dbe4b962";
+}
+
+// Article 7.3.7 (English black-letter rules)
+fragment PICC_ART7_3_7_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_3_7";
+    text en official """ARTICLE 7.3.7
+(Restitution with respect to long-term contracts)
+(1) On termination of a long-term contract restitution can only be claimed for the
+period after termination has taken effect, provided the contract is divisible.
+(2) As far as restitution has to be made, the provisions of Article 7.3.6 apply.""";
+    content_hash "sha256:bfedbb8420aebe6df9c79784e6248ffa0b269bde8b33155ba4696ca9a2cce4c2";
+}
+
+// Статья 7.3.7 (русский парный якорь, unofficial)
+fragment PICC_ART7_3_7_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_3_7";
+    text ru unofficial """Статья 7.3.7
+(Реституция по долгосрочным договорам)
+(1) При прекращении долгосрочного договора реституция может быть
+истребована за период после того, как прекращение договора приобрело
+силу, если договор является делимым.
+(2) В случаях, когда должна иметь место реституция, подлежит
+применению статья 7.3.6.""";
+    content_hash "sha256:220be41ea2c18f764fab157067647250e7afa8ab6fad0b6a5114f56e70d68152";
+}
+
+// Article 7.4.1 (English black-letter rules)
+fragment PICC_ART7_4_1_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_1";
+    text en official """ARTICLE 7.4.1
+(Right to damages)
+Any non-performance gives the aggrieved party a right to damages either
+exclusively or in conjunction with any other remedies except where the nonperformance is excused under these Principles.""";
+    content_hash "sha256:c5156d5d5a0f0b0ced1651c3cb3495a7c39811a5b9d1e1c6c89fba80f09d3748";
+}
+
+// Статья 7.4.1 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_1_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_1";
+    text ru unofficial """Статья 7.4.1
+(Право на возмещение убытков)
+Любое неисполнение дает потерпевшей стороне право на возмещение
+убытков исключительно либо в сочетании с любыми другими средствами
+правовой защиты, кроме случаев, когда в соответствии с настоящими
+Принципами ответственность за неисполнение исключается.""";
+    content_hash "sha256:f9fb4efdabbc37fd6b44abc84140f418e3a2fb90a2e9a0c9e256d14e2fcda4a3";
+}
+
+// Article 7.4.2 (English black-letter rules)
+fragment PICC_ART7_4_2_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_2";
+    text en official """ARTICLE 7.4.2
+(Full compensation)
+(1) The aggrieved party is entitled to full compensation for harm sustained as a
+result of the non-performance. Such harm includes both any loss which it suffered and
+any gain of which it was deprived, taking into account any gain to the aggrieved party
+resulting from its avoidance of cost or harm.
+(2) Such harm may be non-pecuniary and includes, for instance, physical
+suffering or emotional distress.""";
+    content_hash "sha256:6112306091ff7a964821da3d349863781780081dc4d884b837ca2bd96415ca62";
+}
+
+// Статья 7.4.2 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_2_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_2";
+    text ru unofficial """Статья 7.4.2
+(Полная компенсация)
+(1) Потерпевшая сторона имеет право на полную компенсацию
+ущерба, возникшего в результате неисполнения. Такой ущерб включает
+любые понесенные стороной потери и всякую выгоду, которой она
+лишилась, и учитывая любую выгоду потерпевшей стороны, полученную ею
+в результате того, что она избежала расходов или ущерба.
+(2) Возмещаемый ущерб может быть нематериальным и включать,
+например, вред здоровью или моральный ущерб.""";
+    content_hash "sha256:fb927c17fe6dc611f98cda0a435245f370ea4e889e82827cb5b1f2916b1d1cd7";
+}
+
+// Article 7.4.3 (English black-letter rules)
+fragment PICC_ART7_4_3_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_3";
+    text en official """ARTICLE 7.4.3
+(Certainty of harm)
+(1) Compensation is due only for harm, including future harm, that is established
+with a reasonable degree of certainty.
+(2) Compensation may be due for the loss of a chance in proportion to the
+probability of its occurrence.
+(3) Where the amount of damages cannot be established with a sufficient degree
+of certainty, the assessment is at the discretion of the court.""";
+    content_hash "sha256:8cea282c36f64b4e9ac0ebbcfa446d8593b85381e56195fa8acf76dd3bc402b9";
+}
+
+// Статья 7.4.3 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_3_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_3";
+    text ru unofficial """Статья 7.4.3
+(Достоверность ущерба)
+(1) Компенсации подлежит только ущерб, включая будущий ущерб,
+который установлен с разумной степенью достоверности.
+(2) Компенсации может подлежать утрата благоприятного случая
+(шанса) пропорционально вероятности его появления.
+(3) Если размер убытков не может быть установлен с разумной
+степенью достоверности, определение их размера осуществляется по
+усмотрению суда.""";
+    content_hash "sha256:594858c22b3e96b82cda77aa6d1798dff634155dbd56fd1e925143c758ba6cc9";
+}
+
+// Article 7.4.4 (English black-letter rules)
+fragment PICC_ART7_4_4_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_4";
+    text en official """ARTICLE 7.4.4
+(Foreseeability of harm)
+The non-performing party is liable only for harm which it foresaw or could
+reasonably have foreseen at the time of the conclusion of the contract as being likely to
+result from its non-performance.""";
+    content_hash "sha256:3f627001c98d2beac772d6fe23173897138d5ace195c2fb653d91ad3e129d061";
+}
+
+// Статья 7.4.4 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_4_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_4";
+    text ru unofficial """Статья 7.4.4
+(Предвидимость ущерба)
+Неисполнившая сторона отвечает только за ущерб, который она
+предвидела или могла разумно предвидеть при заключении договора как
+вероятное последствие ее неисполнения.""";
+    content_hash "sha256:363c2f7d987d14042d000cf23f15f99a94fecc97a25a52a2b877df5ce0692072";
+}
+
+// Article 7.4.5 (English black-letter rules)
+fragment PICC_ART7_4_5_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_5";
+    text en official """ARTICLE 7.4.5
+(Proof of harm in case of replacement transaction)
+Where the aggrieved party has terminated the contract and has made a replacement
+transaction within a reasonable time and in a reasonable manner it may recover the
+difference between the contract price and the price of the replacement transaction as
+well as damages for any further harm.""";
+    content_hash "sha256:5e457c446231166fede653b5fd93517dbd56ead23c6497430acb5a7c531410e8";
+}
+
+// Статья 7.4.5 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_5_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_5";
+    text ru unofficial """Статья 7.4.5
+(Доказательство ущерба в случае заменяющей сделки)
+Если потерпевшая сторона прекратила договор и совершила
+заменяющую сделку в разумный срок и разумным способом, она может
+получить разницу между договорной ценой и ценой заменяющей сделки, а
+также возмещение любого последующего ущерба.""";
+    content_hash "sha256:db427417a3de368705e0cba7593e1ad5bb3c6689a358bdfda19a19be8d831d7d";
+}
+
+// Article 7.4.6 (English black-letter rules)
+fragment PICC_ART7_4_6_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_6";
+    text en official """ARTICLE 7.4.6
+(Proof of harm by current price)
+(1) Where the aggrieved party has terminated the contract and has not made a
+replacement transaction but there is a current price for the performance contracted for, it
+may recover the difference between the contract price and the price current at the time
+the contract is terminated as well as damages for any further harm.
+(2) Current price is the price generally charged for goods delivered or services
+rendered in comparable circumstances at the place where the contract should have been
+performed or, if there is no current price at that place, the current price at such other
+place that appears reasonable to take as a reference.""";
+    content_hash "sha256:4eb0b24ab3a350398ba637cb6e136635aca633953ffb15f96999b29ebc8dcc81";
+}
+
+// Статья 7.4.6 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_6_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_6";
+    text ru unofficial """Статья 7.4.6
+(Доказательство ущерба на основе текущей цены)
+(1) Если потерпевшая сторона прекратила договор и не совершила
+заменяющую сделку, однако в отношении предусмотренного договором
+исполнения имеется текущая цена, сторона может получить разницу между
+договорной ценой и текущей ценой, существующей на момент прекращения
+договора, а также возмещение любого последующего ущерба.
+(2) Текущей ценой является цена, взимаемая обычно за поставленные
+товары или оказанные услуги в сравнимых обстоятельствах в месте, где
+должен быть исполнен договор, либо, если в этом месте отсутствует текущая
+цена, то таковой является текущая цена в таком ином месте, которое
+представляется разумным в качестве справочной информации.""";
+    content_hash "sha256:1795cf35a86cb5dbea3e56cc1b9499cd11ba8f3e6f8b175282289a95e7406a1e";
+}
+
+// Article 7.4.7 (English black-letter rules)
+fragment PICC_ART7_4_7_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_7";
+    text en official """ARTICLE 7.4.7
+(Harm due in part to aggrieved party)
+Where the harm is due in part to an act or omission of the aggrieved party or to another event for which that party bears the risk, the amount of damages shall be reduced
+to the extent that these factors have contributed to the harm, having regard to the
+conduct of each of the parties.""";
+    content_hash "sha256:ad983c6b3d5dcf8580db36ad4ce022398101714367438931bda8a080ddef5e40";
+}
+
+// Статья 7.4.7 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_7_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_7";
+    text ru unofficial """Статья 7.4.7
+(Ущерб, частично причиненный потерпевшей стороной)
+Если ущерб причинен частично в результате действия или упущения
+потерпевшей стороны или другого события, в отношении которого эта
+сторона несет риск, размер возмещаемых убытков должен быть уменьшен в
+той мере, в которой эти обстоятельства способствовали возникновению
+ущерба с учетом поведения каждой из сторон.""";
+    content_hash "sha256:8f6bc1914784b555302df7de701f59a16bbf48815243c7fc0c3857b1b6c7af73";
+}
+
+// Article 7.4.8 (English black-letter rules)
+fragment PICC_ART7_4_8_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_8";
+    text en official """ARTICLE 7.4.8
+(Mitigation of harm)
+(1) The non-performing party is not liable for harm suffered by the aggrieved
+party to the extent that the harm could have been reduced by the latter party’s taking
+reasonable steps.
+(2) The aggrieved party is entitled to recover any expenses reasonably incurred in
+attempting to reduce the harm.""";
+    content_hash "sha256:8f9c39a8940b021dc27913648a4ccaa5aa52c29a7001b3bb2fa75ab0a3a5592a";
+}
+
+// Статья 7.4.8 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_8_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_8";
+    text ru unofficial """Статья 7.4.8
+(Уменьшение ущерба)
+(1) Неисполнившая сторона не отвечает за ущерб, понесенный
+потерпевшей стороной, в той мере, в которой ущерб мог быть уменьшен в
+результате разумных шагов потерпевшей стороны.
+(2) Потерпевшая сторона имеет право на возмещение любых расходов,
+разумно понесенных ею при попытках уменьшить ущерб.""";
+    content_hash "sha256:b8ee526e5de74fd3355d5af023b3bfb83544948587f06d11040e94cfd15fdb70";
+}
+
+// Article 7.4.9 (English black-letter rules)
+fragment PICC_ART7_4_9_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_9";
+    text en official """ARTICLE 7.4.9
+(Interest for failure to pay money)
+(1) If a party does not pay a sum of money when it falls due the aggrieved party is
+entitled to interest upon that sum from the time when payment is due to the time of
+payment whether or not the non-payment is excused.
+(2) The rate of interest shall be the average bank short-term lending rate to prime
+borrowers prevailing for the currency of payment at the place for payment, or where no
+such rate exists at that place, then the same rate in the State of the currency of payment.
+In the absence of such a rate at either place the rate of interest shall be the appropriate
+rate fixed by the law of the State of the currency of payment.
+(3) The aggrieved party is entitled to additional damages if the non-payment
+caused it a greater harm.""";
+    content_hash "sha256:71c5d7a88a9d8709ff3d62600cd37ddb1b2f5a8efad5c62ffd9f422c65440c4f";
+}
+
+// Статья 7.4.9 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_9_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_9";
+    text ru unofficial """Статья 7.4.9
+(Проценты годовых при неплатеже)
+(1) Если сторона не уплачивает денежную сумму при наступлении
+срока платежа, потерпевшая сторона имеет право на проценты годовых на
+эту сумму с момента наступления срока платежа до момента уплаты,
+независимо от того, освобождается ли сторона от ответственности за
+неплатеж.
+(2) Размер процентов годовых должен составлять среднюю
+банковскую ставку по краткосрочному кредитованию первоклассных
+заемщиков, превалирующую в отношении валюты платежа в месте платежа,
+либо, если такая ставка отсутствует в этом месте, то такую же ставку в
+государстве валюты платежа. В отсутствие такой ставки в любом из этих
+мест в качестве ставки процентов годовых должна применяться
+соответствующая ставка, установленная законом государства валюты
+платежа.
+(3) Потерпевшая сторона имеет право на возмещение дополнительных
+убытков, если неплатеж причинил ей больший ущерб.""";
+    content_hash "sha256:378304d5432488565925df5836c1f9a53f79773f13c94cea3dc45c777289f62a";
+}
+
+// Article 7.4.10 (English black-letter rules)
+fragment PICC_ART7_4_10_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_10";
+    text en official """ARTICLE 7.4.10
+(Interest on damages)
+Unless otherwise agreed, interest on damages for non-performance of non-monetary
+obligations accrues as from the time of non-performance.""";
+    content_hash "sha256:0ed7280a77f54dd646e671d30c4ca2c978e1f82a10433f50c146327ef87b6c43";
+}
+
+// Статья 7.4.10 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_10_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_10";
+    text ru unofficial """Статья 7.4.10
+(Проценты годовых на сумму убытков)
+Если не согласовано иного, проценты годовых на сумму убытков,
+выплачиваемых за неисполнение неденежного обязательства, начисляются с
+момента, когда произошло неисполнение.""";
+    content_hash "sha256:3d3b835561cafad57d51aa1cffea3f04821a4f8761122161a70ad43dab5253c2";
+}
+
+// Article 7.4.11 (English black-letter rules)
+fragment PICC_ART7_4_11_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_11";
+    text en official """ARTICLE 7.4.11
+(Manner of monetary redress)
+(1) Damages are to be paid in a lump sum. However, they may be payable in
+instalments where the nature of the harm makes this appropriate.
+(2) Damages to be paid in instalments may be indexed.""";
+    content_hash "sha256:c1778288a4513818e4fdac033e464f0c4eea9dd47ea15320dab893edb4321092";
+}
+
+// Статья 7.4.11 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_11_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_11";
+    text ru unofficial """Статья 7.4.11
+(Способ денежного взыскания)
+(1) Убытки должны быть выплачены в установленной сумме
+полностью. Однако они могут быть выплачены по частям, если характер
+ущерба делает это приемлемым.
+(2) Убытки, выплачиваемые по частям, могут быть индексированы.""";
+    content_hash "sha256:4f3b715e79c3ad79d1cbed5c8e5a0efe69597ba811fb83555f388defd077d35c";
+}
+
+// Article 7.4.12 (English black-letter rules)
+fragment PICC_ART7_4_12_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_12";
+    text en official """ARTICLE 7.4.12
+(Currency in which to assess damages)
+Damages are to be assessed either in the currency in which the monetary obligation
+was expressed or in the currency in which the harm was suffered, whichever is more
+appropriate.""";
+    content_hash "sha256:94153e0865f39bc285e8b2c36397b618fd5a54bc7c29730dc8dafea7dd07753d";
+}
+
+// Статья 7.4.12 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_12_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_12";
+    text ru unofficial """Статья 7.4.12
+(Валюта исчисления убытков)
+Убытки должны быть исчислены либо в валюте, в которой было
+выражено денежное обязательство, либо в валюте, в которой был понесен
+ущерб, в зависимости от того, что более соответствует обстоятельствам.""";
+    content_hash "sha256:3ab4cc87b2e200978e3cb76b170a95bf7f401ebc2b81f4978480709a97f479e3";
+}
+
+// Article 7.4.13 (English black-letter rules)
+fragment PICC_ART7_4_13_EN in PICC_2016_EN {
+    kind article;
+    locator "article/7_4_13";
+    text en official """ARTICLE 7.4.13
+(Agreed payment for non-performance)
+(1) Where the contract provides that a party who does not perform is to pay a
+specified sum to the aggrieved party for such non-performance, the aggrieved party is
+entitled to that sum irrespective of its actual harm.
+(2) However, notwithstanding any agreement to the contrary the specified sum
+may be reduced to a reasonable amount where it is grossly excessive in relation to the
+harm resulting from the non-performance and to the other circumstances.""";
+    content_hash "sha256:91f7d7e940ba8a3964ea0705e32a99c7a4e9797fe20bc53710521aeee55e0bbd";
+}
+
+// Статья 7.4.13 (русский парный якорь, unofficial)
+fragment PICC_ART7_4_13_RU in PICC_2016_RU {
+    kind article;
+    locator "article/7_4_13";
+    text ru unofficial """Статья 7.4.13
+(Согласованный платеж при неисполнении)
+(1) Если договор предусматривает, что неисполнившая сторона
+должна уплатить определенную сумму потерпевшей стороне за допущенное
+нарушение, потерпевшая сторона имеет право получить эту сумму,
+независимо от размера действительно понесенного ею ущерба.
+(2) Однако, независимо от какого-либо соглашения об ином,
+установленная сумма может быть снижена до разумных пределов, если она
+чрезмерно велика с учетом возникшего от неисполнения ущерба и других
+обстоятельств.""";
+    content_hash "sha256:fa643db4e0a6137eee95a032773f7e4162e28e055a6f876b8c66bac4dbdf82f9";
+}

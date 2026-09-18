@@ -1,0 +1,60 @@
+# NOTICE
+
+This repository carries THIRD-PARTY pinned texts. The code licence does not
+extend to them: every publisher sets its own terms of reproduction.
+
+## Terms of reproduction
+
+Модель, сценарии и каталоги — Apache-2.0 (см. LICENSE). ЗАКРЕПЛЁННЫЕ ТЕКСТЫ ПРИНЦИПОВ УНИДРУА 2016 — правообладатель UNIDROIT, Рим: «Reproduction of the information is authorised, except for commercial purposes, provided the source is duly acknowledged» (unidroit.org/disclaimer, проверено 17.09.2026). Коммерческое воспроизведение текстов не разрешено; источник указывается при любом использовании.
+
+They are the same for every package of this set; below is which bytes each
+package pins.
+
+## unidroit.picc — Принципы международных коммерческих договоров УНИДРУА (редакция 2016 года), хаб группы: общие положения (гл. 1), толкование договора (гл. 4), содержание, права третьих лиц и условия (гл. 5)
+
+| Publication | URI | content_hash | Retrieved |
+|---|---|---|---|
+| `PICC_2016_EN_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf | `sha256:2eec79015fdbad52…` | @2026-09-17T12:30:00Z |
+| `PICC_2016_RU_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf | `sha256:89f86961c82987fe…` | @2026-09-17T12:30:00Z |
+
+## unidroit.picc_formation — Принципы международных коммерческих договоров УНИДРУА 2016, глава 2: заключение договора (ст. 2.1.1–2.1.22) и полномочия представителей (ст. 2.2.1–2.2.10)
+
+| Publication | URI | content_hash | Retrieved |
+|---|---|---|---|
+| `PICC_2016_EN_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf | `sha256:2eec79015fdbad52…` | @2026-09-17T12:30:00Z |
+| `PICC_2016_RU_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf | `sha256:89f86961c82987fe…` | @2026-09-17T12:30:00Z |
+
+## unidroit.picc_limitation — Принципы международных коммерческих договоров УНИДРУА 2016, глава 10: исковая давность (ст. 10.1–10.11)
+
+| Publication | URI | content_hash | Retrieved |
+|---|---|---|---|
+| `PICC_2016_EN_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf | `sha256:2eec79015fdbad52…` | @2026-09-17T12:30:00Z |
+| `PICC_2016_RU_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf | `sha256:89f86961c82987fe…` | @2026-09-17T12:30:00Z |
+
+## unidroit.picc_non_performance — Принципы международных коммерческих договоров УНИДРУА 2016, глава 7: неисполнение (ст. 7.1.1–7.4.13)
+
+| Publication | URI | content_hash | Retrieved |
+|---|---|---|---|
+| `PICC_2016_EN_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf | `sha256:2eec79015fdbad52…` | @2026-09-17T12:30:00Z |
+| `PICC_2016_RU_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf | `sha256:89f86961c82987fe…` | @2026-09-17T12:30:00Z |
+
+## unidroit.picc_obligations — Принципы международных коммерческих договоров УНИДРУА 2016, главы 8, 9 и 11: зачёт, уступка прав, перевод обязательств, уступка договоров, множественность должников и кредиторов
+
+| Publication | URI | content_hash | Retrieved |
+|---|---|---|---|
+| `PICC_2016_EN_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf | `sha256:2eec79015fdbad52…` | @2026-09-17T12:30:00Z |
+| `PICC_2016_RU_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf | `sha256:89f86961c82987fe…` | @2026-09-17T12:30:00Z |
+
+## unidroit.picc_performance — Принципы международных коммерческих договоров УНИДРУА 2016, глава 6: исполнение договора (ст. 6.1.1–6.1.17) и затруднения (ст. 6.2.1–6.2.3)
+
+| Publication | URI | content_hash | Retrieved |
+|---|---|---|---|
+| `PICC_2016_EN_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf | `sha256:2eec79015fdbad52…` | @2026-09-17T12:30:00Z |
+| `PICC_2016_RU_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf | `sha256:89f86961c82987fe…` | @2026-09-17T12:30:00Z |
+
+## unidroit.picc_validity — Принципы международных коммерческих договоров УНИДРУА 2016, глава 3: действительность (ст. 3.1.1–3.3.2)
+
+| Publication | URI | content_hash | Retrieved |
+|---|---|---|---|
+| `PICC_2016_EN_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf | `sha256:2eec79015fdbad52…` | @2026-09-17T12:30:00Z |
+| `PICC_2016_RU_TEXT` | https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf | `sha256:89f86961c82987fe…` | @2026-09-17T12:30:00Z |

@@ -1,0 +1,391 @@
+// Статьи 11.1.1-11.2.4. Множественность должников и кредиторов.
+
+language "law.core" version "0.2";
+package unidroit.picc_obligations version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-obligations";
+
+pub relation several_obligors_bound(o: Obligation, obligor: Party) kind empirical {
+    label en official "several obligors are bound by the same obligation towards an obligee and this is one of them";
+    label ru unofficial "несколько должников связаны одним обязательством перед кредитором, и это один из них";
+}
+
+pub relation bound_for_whole_obligation(o: Obligation, obligor: Party) kind empirical {
+    label en official "each obligor is bound for the whole obligation";
+    label ru unofficial "каждый должник связан всем обязательством";
+}
+
+pub relation bound_only_for_share(o: Obligation, obligor: Party) kind empirical {
+    label en official "each obligor is bound only for its share";
+    label ru unofficial "каждый должник связан только своей долей";
+}
+
+pub relation circumstances_indicate_separate(o: Obligation) kind empirical {
+    label en official "the circumstances indicate that the obligations are not joint and several";
+    label ru unofficial "обстоятельства указывают, что обязательства не являются солидарными";
+}
+
+pub relation full_performance_received(o: Obligation) kind empirical {
+    label en official "full performance has been received by the obligee";
+    label ru unofficial "кредитор получил полное исполнение";
+}
+
+pub relation defence_personal_to_obligor(o: Obligation, obligor: Party) kind empirical {
+    label en official "the defence or right of set-off is personal to that obligor or common to all the co-obligors";
+    label ru unofficial "возражение или право на зачёт лично этому должнику или общее для всех содолжников";
+}
+
+pub relation defence_personal_to_other_obligor(o: Obligation, obligor: Party) kind empirical {
+    label en official "the defence or right of set-off is personal to one or several of the other co-obligors";
+    label ru unofficial "возражение или право на зачёт лично одному или нескольким другим содолжникам";
+}
+
+pub relation performance_or_set_off_by_obligor(o: Obligation, obligor: Party) kind empirical {
+    label en official "performance or set-off has been made by that joint and several obligor, or set-off by the obligee against that obligor";
+    label ru unofficial "этот солидарный должник произвёл исполнение или зачёт либо кредитор зачёл против него";
+}
+
+pub relation released_or_settled(o: Obligation, obligor: Party) kind empirical {
+    label en official "the obligee released that joint and several obligor or settled with it";
+    label ru unofficial "кредитор освободил этого солидарного должника или заключил с ним мировое соглашение";
+}
+
+pub relation circumstances_indicate_no_discharge(o: Obligation) kind empirical {
+    label en official "the circumstances indicate that the other obligors are not discharged for the share of the released obligor";
+    label ru unofficial "обстоятельства указывают, что другие должники не освобождаются на долю освобождённого";
+}
+
+pub relation limitation_expired_against_one(o: Obligation, obligor: Party) kind empirical {
+    label en official "the limitation period of the obligee's rights against one joint and several obligor has expired";
+    label ru unofficial "срок исковой давности по правам кредитора против одного солидарного должника истёк";
+}
+
+pub relation proceedings_against_one_obligor(o: Obligation, obligor: Party) kind empirical {
+    label en official "the obligee initiated proceedings under articles 10.5, 10.6 or 10.7 against one joint and several obligor";
+    label ru unofficial "кредитор возбудил разбирательство по статьям 10.5, 10.6 или 10.7 против одного солидарного должника";
+}
+
+pub relation judgment_on_one_obligor(o: Obligation, obligor: Party) kind empirical {
+    label en official "a court decided the liability to the obligee of one joint and several obligor";
+    label ru unofficial "суд разрешил вопрос об ответственности одного солидарного должника перед кредитором";
+}
+
+pub relation judgment_on_personal_grounds(o: Obligation, obligor: Party) kind empirical {
+    label en official "the decision was based on grounds personal to the obligor concerned";
+    label ru unofficial "решение основано на основаниях, личных для этого должника";
+}
+
+pub relation circumstances_indicate_unequal_shares(o: Obligation) kind empirical {
+    label en official "the circumstances indicate that the shares among the obligors are not equal";
+    label ru unofficial "обстоятельства указывают, что доли должников не равны";
+}
+
+pub relation performed_more_than_share(o: Obligation, obligor: Party) kind empirical {
+    label en official "the joint and several obligor has performed more than its share";
+    label ru unofficial "солидарный должник исполнил больше своей доли";
+}
+
+pub relation unable_to_recover_contribution(o: Obligation, obligor: Party) kind empirical {
+    label en official "the obligor is unable, despite all reasonable efforts, to recover contribution from another joint and several obligor";
+    label ru unofficial "должник, несмотря на все разумные усилия, не может взыскать долю с другого солидарного должника";
+}
+
+pub relation several_obligees(o: Obligation, obligee: Party) kind empirical {
+    label en official "several obligees can claim performance of the same obligation from an obligor and this is one of them";
+    label ru unofficial "несколько кредиторов могут требовать исполнения одного обязательства от должника, и это один из них";
+}
+
+pub relation each_obligee_may_claim_whole(o: Obligation) kind empirical {
+    label en official "each obligee can claim the whole performance";
+    label ru unofficial "каждый кредитор может требовать исполнения целиком";
+}
+
+pub relation full_performance_to_one_obligee(o: Obligation, obligee: Party) kind empirical {
+    label en official "full performance of the obligation was made in favour of one of the joint and several obligees";
+    label ru unofficial "полное исполнение обязательства произведено одному из солидарных кредиторов";
+}
+
+pub relation defence_personal_to_obligee(o: Obligation, obligee: Party) kind empirical {
+    label en official "the defence or right of set-off is personal to the obligor's relationship to that obligee or assertable against all co-obligees";
+    label ru unofficial "возражение или зачёт относятся к отношению должника именно с этим кредитором либо могут быть заявлены всем сокредиторам";
+}
+
+pub relation obligee_received_more_than_share(o: Obligation, obligee: Party) kind empirical {
+    label en official "an obligee has received more than its share";
+    label ru unofficial "кредитор получил больше своей доли";
+}
+
+pub relation joint_and_several_obligation(o: Obligation, obligor: Party) kind institutional {
+    label en official "the obligors are jointly and severally bound (articles 11.1.1(a), 11.1.2)";
+    label ru unofficial "должники связаны солидарно (статьи 11.1.1 подпункт a, 11.1.2)";
+}
+
+pub relation separate_obligation(o: Obligation, obligor: Party) kind institutional {
+    label en official "the obligations are separate: each obligor is bound only for its share (article 11.1.1(b))";
+    label ru unofficial "обязательства раздельны: каждый должник связан только своей долей (статья 11.1.1 подпункт b)";
+}
+
+pub relation obligee_may_require_from_any(o: Obligation, obligor: Party) kind institutional {
+    label en official "the obligee may require performance from any one of the joint and several obligors until full performance (article 11.1.3)";
+    label ru unofficial "кредитор может требовать исполнения от любого из солидарных должников до полного исполнения (статья 11.1.3)";
+}
+
+pub relation defence_assertable_by_obligor(o: Obligation, obligor: Party) kind institutional {
+    label en official "the joint and several obligor may assert that defence or right of set-off (articles 11.1.4, 11.1.12)";
+    label ru unofficial "солидарный должник может заявить это возражение или право на зачёт (статьи 11.1.4, 11.1.12)";
+}
+
+pub relation others_discharged_by_performance(o: Obligation, obligor: Party) kind institutional {
+    label en official "performance or set-off by one joint and several obligor discharges the other obligors to that extent (article 11.1.5)";
+    label ru unofficial "исполнение или зачёт одним солидарным должником освобождает других должников в этой части (статья 11.1.5)";
+}
+
+pub relation others_discharged_for_share(o: Obligation, obligor: Party) kind institutional {
+    label en official "release of or settlement with one joint and several obligor discharges the others for that obligor's share (article 11.1.6(1))";
+    label ru unofficial "освобождение солидарного должника или мировое соглашение с ним освобождает других на его долю (статья 11.1.6 пункт 1)";
+}
+
+pub relation other_obligations_unaffected(o: Obligation, obligor: Party) kind institutional {
+    label en official "the expiration of the limitation period against one obligor, or a judgment as to one obligor, does not affect the obligations of the other joint and several obligors (articles 11.1.7(1), 11.1.8(1))";
+    label ru unofficial "истечение давности против одного должника или решение о нём не затрагивает обязательств других солидарных должников (статьи 11.1.7 пункт 1, 11.1.8 пункт 1)";
+}
+
+pub relation suspension_extends_to_others(o: Obligation, obligor: Party) kind institutional {
+    label en official "proceedings against one joint and several obligor suspend the limitation period against the others as well (article 11.1.7(2))";
+    label ru unofficial "разбирательство против одного солидарного должника приостанавливает давность и против остальных (статья 11.1.7 пункт 2)";
+}
+
+pub relation judgment_may_be_relied_on(o: Obligation, obligor: Party) kind institutional {
+    label en official "the other joint and several obligors may rely on the decision unless it was based on grounds personal to the obligor concerned (article 11.1.8(2))";
+    label ru unofficial "другие солидарные должники могут ссылаться на решение, если оно не основано на личных для этого должника основаниях (статья 11.1.8 пункт 2)";
+}
+
+pub relation equal_shares_among_obligors(o: Obligation) kind institutional {
+    label en official "as among themselves, joint and several obligors are bound in equal shares (article 11.1.9)";
+    label ru unofficial "между собой солидарные должники связаны в равных долях (статья 11.1.9)";
+}
+
+pub relation contributory_claim(o: Obligation, obligor: Party) kind institutional {
+    label en official "the obligor who has performed more than its share may claim the excess from the other obligors (articles 11.1.10, 11.1.11(1))";
+    label ru unofficial "должник, исполнивший больше своей доли, может требовать излишек с других должников (статьи 11.1.10, 11.1.11 пункт 1)";
+}
+
+pub relation obligee_has_precedence(o: Obligation, obligor: Party) kind institutional {
+    label en official "an obligee who has not received full performance retains its rights with precedence over co-obligors exercising contributory claims (article 11.1.11(2))";
+    label ru unofficial "кредитор, не получивший полного исполнения, сохраняет права с преимуществом перед содолжниками, предъявляющими регрессные требования (статья 11.1.11 пункт 2)";
+}
+
+pub relation shares_increased_proportionally(o: Obligation, obligor: Party) kind institutional {
+    label en official "where contribution cannot be recovered from one obligor, the shares of the others, including the one who performed, are increased proportionally (article 11.1.13)";
+    label ru unofficial "если долю с одного должника взыскать нельзя, доли остальных, включая исполнившего, увеличиваются пропорционально (статья 11.1.13)";
+}
+
+pub relation joint_and_several_claim(o: Obligation, obligee: Party) kind institutional {
+    label en official "the claims of the obligees are joint and several: each obligee can claim the whole performance (article 11.2.1(b))";
+    label ru unofficial "требования кредиторов солидарны: каждый может требовать исполнения целиком (статья 11.2.1 подпункт b)";
+}
+
+pub relation obligor_discharged_towards_others(o: Obligation, obligee: Party) kind institutional {
+    label en official "full performance in favour of one joint and several obligee discharges the obligor towards the other obligees (article 11.2.2)";
+    label ru unofficial "полное исполнение одному солидарному кредитору освобождает должника перед остальными (статья 11.2.2)";
+}
+
+pub relation defence_assertable_against_obligee(o: Obligation, obligee: Party) kind institutional {
+    label en official "the obligor may assert that defence or right of set-off against that joint and several obligee (article 11.2.3(1))";
+    label ru unofficial "должник может заявить это возражение или зачёт против этого солидарного кредитора (статья 11.2.3 пункт 1)";
+}
+
+pub relation equal_shares_among_obligees(o: Obligation) kind institutional {
+    label en official "as among themselves, joint and several obligees are entitled to equal shares (article 11.2.4(1))";
+    label ru unofficial "между собой солидарные кредиторы имеют право на равные доли (статья 11.2.4 пункт 1)";
+}
+
+pub relation excess_transferred_to_obligees(o: Obligation, obligee: Party) kind institutional {
+    label en official "an obligee who has received more than its share must transfer the excess to the other obligees (article 11.2.4(2))";
+    label ru unofficial "кредитор, получивший больше своей доли, обязан передать излишек другим кредиторам (статья 11.2.4 пункт 2)";
+}
+
+@source(PICC_ART11_1_1_EN, PICC_ART11_1_1_RU)
+rule ObligationsSeparateWhenEachBoundForShare(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.1(b). The obligations are separate when each obligor is bound only for its share";
+    label ru unofficial "Статья 11.1.1 подпункт b. Обязательства раздельны, когда каждый должник связан только своей долей";
+    when several_obligors_bound(o, obligor)
+        and bound_only_for_share(o, obligor);
+    then separate_obligation(o, obligor);
+}
+
+@source(PICC_ART11_1_2_EN, PICC_ART11_1_2_RU)
+rule PresumptionOfJointAndSeveralObligations(o: Obligation, obligor: Party) defeasible {
+    label en official "Articles 11.1.1(a) and 11.1.2. When several obligors are bound by the same obligation they are presumed to be jointly and severally bound, unless the circumstances indicate otherwise";
+    label ru unofficial "Статьи 11.1.1 подпункт a и 11.1.2. Когда несколько должников связаны одним обязательством, они предполагаются связанными солидарно, если обстоятельства не указывают на иное";
+    when several_obligors_bound(o, obligor);
+    then joint_and_several_obligation(o, obligor);
+    unless several_obligors_bound(o, obligor)
+        and circumstances_indicate_separate(o);
+}
+
+@source(PICC_ART11_1_3_EN, PICC_ART11_1_3_RU)
+rule ObligeeMayRequireFromAnyObligor(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.3. When obligors are jointly and severally bound, the obligee may require performance from any one of them until full performance has been received";
+    label ru unofficial "Статья 11.1.3. Когда должники связаны солидарно, кредитор может требовать исполнения от любого из них, пока не получит полного исполнения";
+    when joint_and_several_obligation(o, obligor)
+        and not_known(full_performance_received(o));
+    then obligee_may_require_from_any(o, obligor);
+}
+
+@source(PICC_ART11_1_4_EN, PICC_ART11_1_12_EN)
+rule DefencesOfJointObligor(o: Obligation, obligor: Party) defeasible {
+    label en official "Articles 11.1.4 and 11.1.12. The obligor may assert defences and rights of set-off personal to it or common to all co-obligors, but not those personal to other co-obligors";
+    label ru unofficial "Статьи 11.1.4 и 11.1.12. Должник может заявить возражения и зачёты, личные для него или общие для всех содолжников, но не личные для других содолжников";
+    when joint_and_several_obligation(o, obligor)
+        and defence_personal_to_obligor(o, obligor);
+    then defence_assertable_by_obligor(o, obligor);
+    unless joint_and_several_obligation(o, obligor)
+        and defence_personal_to_other_obligor(o, obligor);
+}
+
+@source(PICC_ART11_1_5_EN, PICC_ART11_1_5_RU)
+rule PerformanceDischargesOthers(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.5. Performance or set-off by a joint and several obligor discharges the other obligors to the extent of the performance or set-off";
+    label ru unofficial "Статья 11.1.5. Исполнение или зачёт солидарным должником освобождает других должников в размере исполнения или зачёта";
+    when joint_and_several_obligation(o, obligor)
+        and performance_or_set_off_by_obligor(o, obligor);
+    then others_discharged_by_performance(o, obligor);
+}
+
+@source(PICC_ART11_1_6_EN, PICC_ART11_1_6_RU)
+rule ReleaseDischargesForShare(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.6(1). Release of or settlement with one joint and several obligor discharges the other obligors for the share of that obligor, unless the circumstances indicate otherwise";
+    label ru unofficial "Статья 11.1.6 пункт 1. Освобождение солидарного должника или мировое соглашение с ним освобождает других должников на его долю, если обстоятельства не указывают на иное";
+    when joint_and_several_obligation(o, obligor)
+        and released_or_settled(o, obligor);
+    then others_discharged_for_share(o, obligor);
+    unless released_or_settled(o, obligor)
+        and circumstances_indicate_no_discharge(o);
+}
+
+@source(PICC_ART11_1_7_EN, PICC_ART11_1_7_RU)
+rule ExpirationAgainstOneDoesNotAffectOthers(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.7(1). Expiration of the limitation period against one joint and several obligor does not affect the obligations of the other obligors or the rights of recourse";
+    label ru unofficial "Статья 11.1.7 пункт 1. Истечение давности против одного солидарного должника не затрагивает обязательств других и прав регресса";
+    when limitation_expired_against_one(o, obligor);
+    then other_obligations_unaffected(o, obligor);
+}
+
+@source(PICC_ART11_1_7_EN, PICC_ART11_1_7_RU)
+rule SuspensionAgainstOneExtendsToOthers(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.7(2). If the obligee initiates proceedings against one joint and several obligor, the running of the limitation period is also suspended against the others";
+    label ru unofficial "Статья 11.1.7 пункт 2. Если кредитор возбуждает разбирательство против одного солидарного должника, течение давности приостанавливается и против остальных";
+    when proceedings_against_one_obligor(o, obligor);
+    then suspension_extends_to_others(o, obligor);
+}
+
+@source(PICC_ART11_1_8_EN, PICC_ART11_1_8_RU)
+rule JudgmentOnOneDoesNotAffectOthers(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.8(1). A decision as to the liability of one joint and several obligor does not affect the obligations of the other obligors or the rights of recourse";
+    label ru unofficial "Статья 11.1.8 пункт 1. Решение об ответственности одного солидарного должника не затрагивает обязательств других и прав регресса";
+    when judgment_on_one_obligor(o, obligor);
+    then other_obligations_unaffected(o, obligor);
+}
+
+@source(PICC_ART11_1_8_EN, PICC_ART11_1_8_RU)
+rule OthersMayRelyOnJudgment(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.8(2). The other joint and several obligors may rely on such a decision, except if it was based on grounds personal to the obligor concerned";
+    label ru unofficial "Статья 11.1.8 пункт 2. Другие солидарные должники могут ссылаться на такое решение, кроме случая, когда оно основано на личных для этого должника основаниях";
+    when judgment_on_one_obligor(o, obligor)
+        and not_known(judgment_on_personal_grounds(o, obligor));
+    then judgment_may_be_relied_on(o, obligor);
+}
+
+@source(PICC_ART11_1_9_EN, PICC_ART11_1_9_RU)
+rule EqualSharesAmongObligors(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.9. As among themselves, joint and several obligors are bound in equal shares, unless the circumstances indicate otherwise";
+    label ru unofficial "Статья 11.1.9. Между собой солидарные должники связаны в равных долях, если обстоятельства не указывают на иное";
+    when joint_and_several_obligation(o, obligor);
+    then equal_shares_among_obligors(o);
+    unless joint_and_several_obligation(o, obligor)
+        and circumstances_indicate_unequal_shares(o);
+}
+
+@source(PICC_ART11_1_12_EN, PICC_ART11_1_12_RU)
+rule DefencesInContributoryClaim(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.12. An obligor against whom a contributory claim is made may raise common defences and rights of set-off available against the obligee and defences personal to itself, but not those personal to other co-obligors";
+    label ru unofficial "Статья 11.1.12. Должник, к которому предъявлено регрессное требование, может выдвинуть общие возражения и зачёты против кредитора и личные свои возражения, но не личные возражения других содолжников";
+    when contributory_claim(o, obligor)
+        and defence_personal_to_obligor(o, obligor);
+    then defence_assertable_by_obligor(o, obligor);
+    unless contributory_claim(o, obligor)
+        and defence_personal_to_other_obligor(o, obligor);
+}
+
+@source(PICC_ART11_1_10_EN, PICC_ART11_1_10_RU)
+rule ContributoryClaimOfPerformingObligor(o: Obligation, obligor: Party) defeasible {
+    label en official "Articles 11.1.10 and 11.1.11(1). An obligor who has performed more than its share may claim the excess from the other obligors and may also exercise the rights of the obligee to recover it";
+    label ru unofficial "Статьи 11.1.10 и 11.1.11 пункт 1. Должник, исполнивший больше своей доли, может требовать излишек с других должников и осуществлять для этого права кредитора";
+    when joint_and_several_obligation(o, obligor)
+        and performed_more_than_share(o, obligor);
+    then contributory_claim(o, obligor);
+}
+
+@source(PICC_ART11_1_11_EN, PICC_ART11_1_11_RU)
+rule ObligeePrecedenceOverContribution(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.11(2). An obligee who has not received full performance retains its rights against the co-obligors with precedence over co-obligors exercising contributory claims";
+    label ru unofficial "Статья 11.1.11 пункт 2. Кредитор, не получивший полного исполнения, сохраняет права к содолжникам с преимуществом перед регрессными требованиями содолжников";
+    when contributory_claim(o, obligor)
+        and not_known(full_performance_received(o));
+    then obligee_has_precedence(o, obligor);
+}
+
+@source(PICC_ART11_1_13_EN, PICC_ART11_1_13_RU)
+rule SharesIncreasedWhenRecoveryImpossible(o: Obligation, obligor: Party) defeasible {
+    label en official "Article 11.1.13. If an obligor who performed more than its share cannot recover contribution, the shares of the others, including the one who performed, are increased proportionally";
+    label ru unofficial "Статья 11.1.13. Если исполнивший больше своей доли должник не может взыскать долю, доли остальных, включая исполнившего, увеличиваются пропорционально";
+    when contributory_claim(o, obligor)
+        and unable_to_recover_contribution(o, obligor);
+    then shares_increased_proportionally(o, obligor);
+}
+
+@source(PICC_ART11_2_1_EN, PICC_ART11_2_1_RU)
+rule JointAndSeveralClaims(o: Obligation, obligee: Party) defeasible {
+    label en official "Article 11.2.1(b). The claims are joint and several when each obligee can claim the whole performance";
+    label ru unofficial "Статья 11.2.1 подпункт b. Требования солидарны, когда каждый кредитор может требовать исполнения целиком";
+    when several_obligees(o, obligee)
+        and each_obligee_may_claim_whole(o);
+    then joint_and_several_claim(o, obligee);
+}
+
+@source(PICC_ART11_2_2_EN, PICC_ART11_2_2_RU)
+rule PerformanceToOneObligeeDischarges(o: Obligation, obligee: Party) defeasible {
+    label en official "Article 11.2.2. Full performance in favour of one of the joint and several obligees discharges the obligor towards the other obligees";
+    label ru unofficial "Статья 11.2.2. Полное исполнение одному из солидарных кредиторов освобождает должника перед остальными";
+    when joint_and_several_claim(o, obligee)
+        and full_performance_to_one_obligee(o, obligee);
+    then obligor_discharged_towards_others(o, obligee);
+}
+
+@source(PICC_ART11_2_3_EN, PICC_ART11_2_3_RU)
+rule DefencesAgainstJointObligee(o: Obligation, obligee: Party) defeasible {
+    label en official "Article 11.2.3(1). The obligor may assert against any of the joint and several obligees the defences and rights of set-off personal to its relationship with that obligee or assertable against all co-obligees";
+    label ru unofficial "Статья 11.2.3 пункт 1. Должник может заявить любому из солидарных кредиторов возражения и зачёты, относящиеся к отношению именно с ним либо заявимые всем сокредиторам";
+    when joint_and_several_claim(o, obligee)
+        and defence_personal_to_obligee(o, obligee);
+    then defence_assertable_against_obligee(o, obligee);
+}
+
+@source(PICC_ART11_2_4_EN, PICC_ART11_2_4_RU)
+rule EqualSharesAmongObligees(o: Obligation, obligee: Party) defeasible {
+    label en official "Article 11.2.4(1). As among themselves, joint and several obligees are entitled to equal shares, unless the circumstances indicate otherwise";
+    label ru unofficial "Статья 11.2.4 пункт 1. Между собой солидарные кредиторы имеют право на равные доли, если обстоятельства не указывают на иное";
+    when joint_and_several_claim(o, obligee);
+    then equal_shares_among_obligees(o);
+    unless joint_and_several_claim(o, obligee)
+        and circumstances_indicate_unequal_shares(o);
+}
+
+@source(PICC_ART11_2_4_EN, PICC_ART11_2_4_RU)
+rule ExcessTransferredToOtherObligees(o: Obligation, obligee: Party) defeasible {
+    label en official "Article 11.2.4(2). An obligee who has received more than its share must transfer the excess to the other obligees to the extent of their respective shares";
+    label ru unofficial "Статья 11.2.4 пункт 2. Кредитор, получивший больше своей доли, обязан передать излишек другим кредиторам соразмерно их долям";
+    when joint_and_several_claim(o, obligee)
+        and obligee_received_more_than_share(o, obligee);
+    then excess_transferred_to_obligees(o, obligee);
+}

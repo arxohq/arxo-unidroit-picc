@@ -1,0 +1,30 @@
+# Манифест §10 — маркер корня пакета (DECISION-0033).
+[package]
+name = "unidroit.picc_non_performance"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:org:unidroit:clir:picc-non-performance"
+
+[metadata]
+act = "unidroit-picc-2016-non-performance"
+title = "Принципы международных коммерческих договоров УНИДРУА 2016, глава 7: неисполнение (ст. 7.1.1–7.4.13)"
+primarySource = "PICC_2016"
+jurisdiction = "International"
+instrument = "doctrine"
+sourceFidelity = "pinned_unofficial_copy"
+issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+legalStatus = "doctrine"
+verifiedAgainstSource = false
+
+[dependencies]
+"unidroit.picc" = "0.1.0"
+
+[[tests]]
+family = "unidroit.picc_non_performance#non-performance"
+suites = [
+  "tests/01-neispolnenie-i-ispravlenie.lawtest",
+  "tests/02-trebovanie-ispolneniya.lawtest",
+  "tests/03-prekraschenie.lawtest",
+  "tests/04-ubytki-i-procenty.lawtest",
+]
+world = ["unidroit.picc_non_performance", "unidroit.picc"]

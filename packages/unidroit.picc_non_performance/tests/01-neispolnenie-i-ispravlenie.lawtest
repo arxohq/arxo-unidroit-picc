@@ -1,0 +1,144 @@
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+// Дело 1. Неисполнение (7.1.1), вмешательство потерпевшей стороны (7.1.2),
+// приостановление (7.1.3), исправление (7.1.4), дополнительный срок (7.1.5),
+// оговорка об освобождении (7.1.6) и непреодолимая сила (7.1.7).
+//
+// СРАВНЕНИЕ С КОНВЕНЦИЕЙ ВИДНО ЗДЕСЬ ДВАЖДЫ: право на исправление НЕ снимается
+// извещением о прекращении (пункт 2 статьи 7.1.4), а освобождение по статье
+// 7.1.7 не мешает прекратить договор и требовать проценты (пункт 4).
+
+test "PICCN-01-NON-PERFORMANCE-AND-CURE" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": obligation_of(entity_ref("urn:case:piccn:o-1"), entity_ref("urn:case:piccn:contract-1"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a1": non_performance_of(entity_ref("urn:case:piccn:n-late"), entity_ref("urn:case:piccn:o-1"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a2": failure_to_perform(entity_ref("urn:case:piccn:n-late")) { origin case_input; }
+        assert "a3": obligation_of(entity_ref("urn:case:piccn:o-2"), entity_ref("urn:case:piccn:contract-1b"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a4": non_performance_of(entity_ref("urn:case:piccn:n-caused"), entity_ref("urn:case:piccn:o-2"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a5": failure_to_perform(entity_ref("urn:case:piccn:n-caused")) { origin case_input; }
+        assert "a6": caused_by_aggrieved_party(entity_ref("urn:case:piccn:n-caused")) { origin case_input; }
+        assert "a7": parties_perform_simultaneously(entity_ref("urn:case:piccn:contract-1")) { origin case_input; }
+        assert "a8": parties_perform_consecutively(entity_ref("urn:case:piccn:contract-1b")) { origin case_input; }
+        assert "a9": cure_notice_given_without_undue_delay(entity_ref("urn:case:piccn:n-late")) { origin case_input; }
+        assert "a10": cure_appropriate_in_circumstances(entity_ref("urn:case:piccn:n-late")) { origin adjudicated; }
+        assert "a11": cure_effected_promptly(entity_ref("urn:case:piccn:n-late")) { origin case_input; }
+        assert "a12": termination_notice_given(entity_ref("urn:case:piccn:n-late")) { origin case_input; }
+        assert "a13": harm_caused_or_not_prevented_by_cure(entity_ref("urn:case:piccn:n-late")) { origin case_input; }
+        assert "a14": obligation_of(entity_ref("urn:case:piccn:o-3"), entity_ref("urn:case:piccn:contract-1c"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a15": non_performance_of(entity_ref("urn:case:piccn:n-delay"), entity_ref("urn:case:piccn:o-3"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a16": failure_to_perform(entity_ref("urn:case:piccn:n-delay")) { origin case_input; }
+        assert "a17": delay_is_not_fundamental(entity_ref("urn:case:piccn:n-delay")) { origin case_input; }
+        assert "a18": additional_period_allowed_by_notice(entity_ref("urn:case:piccn:n-delay")) { origin case_input; }
+        assert "a19": additional_period_of_reasonable_length(entity_ref("urn:case:piccn:n-delay")) { origin adjudicated; }
+        assert "a20": additional_period_expired_without_performance(entity_ref("urn:case:piccn:n-delay")) { origin case_input; }
+        assert "a21": exemption_clause_present(entity_ref("urn:case:piccn:contract-1"), entity_ref("urn:case:piccn:term-1")) { origin case_input; }
+        assert "a22": grossly_unfair_to_invoke(entity_ref("urn:case:piccn:contract-1"), entity_ref("urn:case:piccn:term-1")) { origin adjudicated; }
+        assert "a23": obligation_of(entity_ref("urn:case:piccn:o-4"), entity_ref("urn:case:piccn:contract-1d"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a24": non_performance_of(entity_ref("urn:case:piccn:n-force"), entity_ref("urn:case:piccn:o-4"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a25": failure_to_perform(entity_ref("urn:case:piccn:n-force")) { origin case_input; }
+        assert "a26": impediment_beyond_control(entity_ref("urn:case:piccn:n-force")) { origin case_input; }
+        assert "a27": impediment_unforeseeable_and_unavoidable(entity_ref("urn:case:piccn:n-force")) { origin adjudicated; }
+        assert "a28": impediment_temporary(entity_ref("urn:case:piccn:n-force")) { origin case_input; }
+        assert "b0": party_to_contract(entity_ref("urn:case:piccn:contract-1"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "b1": party_to_contract(entity_ref("urn:case:piccn:contract-1b"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+
+        assert "c0": aggrieved_party(entity_ref("urn:case:piccn:n-late"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c1": aggrieved_party(entity_ref("urn:case:piccn:n-caused"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c2": aggrieved_party(entity_ref("urn:case:piccn:n-delay"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "c3": aggrieved_party(entity_ref("urn:case:piccn:n-force"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+
+        assert "d0": obligation_of(entity_ref("urn:case:piccn:o-5"), entity_ref("urn:case:piccn:contract-1e"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "d1": non_performance_of(entity_ref("urn:case:piccn:n-running"), entity_ref("urn:case:piccn:o-5"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "d2": failure_to_perform(entity_ref("urn:case:piccn:n-running")) { origin case_input; }
+        assert "d3": aggrieved_party(entity_ref("urn:case:piccn:n-running"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "d4": additional_period_allowed_by_notice(entity_ref("urn:case:piccn:n-running")) { origin case_input; }
+
+    }
+
+    evaluate truth(is_non_performance(entity_ref("urn:case:piccn:n-late")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FailureIsNonPerformance);
+
+    evaluate truth(may_rely_on_non_performance(entity_ref("urn:case:piccn:n-late"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RelianceOnNonPerformance);
+
+    // Вмешательство самой потерпевшей стороны снимает ссылку на неисполнение.
+    evaluate truth(may_rely_on_non_performance(entity_ref("urn:case:piccn:n-caused"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(may_withhold_performance(entity_ref("urn:case:piccn:contract-1"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(WithholdingOnSimultaneousPerformance);
+
+    evaluate truth(may_withhold_performance(entity_ref("urn:case:piccn:contract-1b"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(WithholdingOnConsecutivePerformance);
+
+    // Право на исправление СОХРАНЯЕТСЯ, хотя извещение о прекращении дано.
+    evaluate truth(may_cure(entity_ref("urn:case:piccn:n-late"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RightToCure);
+
+    evaluate truth(inconsistent_rights_suspended(entity_ref("urn:case:piccn:n-late")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CureSuspendsInconsistentRights);
+
+    // И всё же убытки за просрочку и за вред, не предотвращённый исправлением,
+    // остаются за потерпевшей стороной.
+    evaluate truth(damages_retained_despite_cure(entity_ref("urn:case:piccn:n-late"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DamagesRetainedDespiteCure);
+
+    evaluate truth(may_resort_to_any_remedy(entity_ref("urn:case:piccn:n-delay"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RemediesRevivedAfterAdditionalPeriod);
+
+    evaluate truth(may_terminate_after_additional_period(entity_ref("urn:case:piccn:n-delay"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationAfterAdditionalPeriodForDelay);
+
+    evaluate truth(clause_may_not_be_invoked(entity_ref("urn:case:piccn:contract-1"), entity_ref("urn:case:piccn:term-1")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(GrosslyUnfairExemptionClause);
+
+    evaluate truth(non_performance_excused(entity_ref("urn:case:piccn:n-force"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ForceMajeureExcusesNonPerformance);
+
+    evaluate truth(excuse_limited_to_reasonable_period(entity_ref("urn:case:piccn:n-force")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TemporaryImpedimentLimitsExcuse);
+
+    evaluate truth(liable_for_damages_from_non_receipt(entity_ref("urn:case:piccn:n-force"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(LiabilityForLateNoticeOfImpediment);
+
+    // Освобождение не мешает прекратить договор и требовать проценты (п. 4) —
+    // у статьи 79 Конвенции такой оговорки нет.
+    evaluate truth(termination_and_interest_preserved(entity_ref("urn:case:piccn:n-force"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ExcuseDoesNotBarTerminationOrInterest);
+
+    // Пока дополнительный срок ТЕЧЁТ, средства защиты ограничены приостановлением
+    // и убытками — иных средств у потерпевшей стороны нет (7.1.5 п. 2).
+    evaluate truth(may_withhold_and_claim_damages_only(entity_ref("urn:case:piccn:n-running"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RemediesLimitedDuringAdditionalPeriod);
+
+    // Пункт 4: на время исправления потерпевшая сторона может приостановить своё
+    // исполнение — право на исправление её не обезоруживает.
+    evaluate truth(may_withhold_pending_cure(entity_ref("urn:case:piccn:n-late"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(WithholdingPendingCure);
+}

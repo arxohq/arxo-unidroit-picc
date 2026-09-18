@@ -1,0 +1,29 @@
+# Манифест §10 — маркер корня пакета (DECISION-0033).
+[package]
+name = "unidroit.picc_limitation"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:org:unidroit:clir:picc-limitation"
+
+[metadata]
+act = "unidroit-picc-2016-limitation"
+title = "Принципы международных коммерческих договоров УНИДРУА 2016, глава 10: исковая давность (ст. 10.1–10.11)"
+primarySource = "PICC_2016"
+jurisdiction = "International"
+instrument = "doctrine"
+sourceFidelity = "pinned_unofficial_copy"
+issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+legalStatus = "doctrine"
+verifiedAgainstSource = false
+
+[dependencies]
+"unidroit.picc" = "0.1.0"
+
+[[tests]]
+family = "unidroit.picc_limitation#limitation"
+suites = [
+  "tests/01-obschiy-i-maksimalnyy-sroki.lawtest",
+  "tests/02-priostanovlenie-i-priznanie.lawtest",
+  "tests/03-posledstviya-istecheniya.lawtest",
+]
+world = ["unidroit.picc_limitation", "unidroit.picc"]

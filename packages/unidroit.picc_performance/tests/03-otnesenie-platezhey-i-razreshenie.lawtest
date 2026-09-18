@@ -1,0 +1,97 @@
+language "law.core" version "0.2";
+package unidroit.picc_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-performance";
+
+// Дело 3. Отнесение платежей (6.1.12, 6.1.13) и публичное разрешение
+// (6.1.14-6.1.17).
+//
+// ОЧЕРЕДЬ КРИТЕРИЕВ — НЕ ПОРЯДОК ЧТЕНИЯ, А ПРИОРИТЕТЫ §116: расходы и
+// проценты идут впереди даже указания должника, а четыре критерия пункта 3
+// вытесняют друг друга в объявленном порядке.
+
+test "PICCP-03-IMPUTATION-AND-PERMISSION" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": several_obligations_to_same_obligee(entity_ref("urn:case:piccp:pay-3"), entity_ref("urn:case:piccp:o-expenses")) { origin case_input; }
+        assert "a1": obligation_is_expenses(entity_ref("urn:case:piccp:o-expenses")) { origin case_input; }
+        assert "a2": several_obligations_to_same_obligee(entity_ref("urn:case:piccp:pay-3"), entity_ref("urn:case:piccp:o-principal")) { origin case_input; }
+        assert "a3": obligor_specified_obligation(entity_ref("urn:case:piccp:pay-3"), entity_ref("urn:case:piccp:o-principal")) { origin case_input; }
+        assert "a4": several_obligations_to_same_obligee(entity_ref("urn:case:piccp:pay-4"), entity_ref("urn:case:piccp:o-first-due")) { origin case_input; }
+        assert "a5": obligation_first_to_fall_due(entity_ref("urn:case:piccp:o-first-due")) { origin case_input; }
+        assert "a6": several_obligations_to_same_obligee(entity_ref("urn:case:piccp:pay-4"), entity_ref("urn:case:piccp:o-least-sec")) { origin case_input; }
+        assert "a7": obligation_with_least_security(entity_ref("urn:case:piccp:o-least-sec")) { origin case_input; }
+        assert "a8": several_obligations_to_same_obligee(entity_ref("urn:case:piccp:pay-5"), entity_ref("urn:case:piccp:o-declared")) { origin case_input; }
+        assert "a9": obligee_declared_imputation(entity_ref("urn:case:piccp:pay-5"), entity_ref("urn:case:piccp:o-declared")) { origin case_input; }
+        assert "a10": obligation_due_and_undisputed(entity_ref("urn:case:piccp:o-declared")) { origin case_input; }
+        assert "a11": non_monetary_imputation(entity_ref("urn:case:piccp:pay-6"), entity_ref("urn:case:piccp:o-nonmoney")) { origin case_input; }
+        assert "a12": obligation_first_to_fall_due(entity_ref("urn:case:piccp:o-nonmoney")) { origin case_input; }
+        assert "a13": permission_required_by_law(entity_ref("urn:case:piccp:perm-a"), entity_ref("urn:case:piccp:contract-3")) { origin case_input; }
+        assert "a14": only_one_party_in_that_state(entity_ref("urn:case:piccp:perm-a"), entity_ref("urn:case:piccp:seller")) { origin case_input; }
+        assert "a15": measures_taken_without_undue_delay(entity_ref("urn:case:piccp:perm-a")) { origin case_input; }
+        assert "a16": permission_neither_granted_nor_refused(entity_ref("urn:case:piccp:perm-a")) { origin case_input; }
+        assert "a17": permission_required_by_law(entity_ref("urn:case:piccp:perm-b"), entity_ref("urn:case:piccp:contract-3b")) { origin case_input; }
+        assert "a18": permission_refused(entity_ref("urn:case:piccp:perm-b")) { origin case_input; }
+        assert "a19": refusal_makes_performance_impossible(entity_ref("urn:case:piccp:perm-b"), entity_ref("urn:case:piccp:contract-3b")) { origin case_input; }
+        assert "a20": permission_required_by_law(entity_ref("urn:case:piccp:perm-c"), entity_ref("urn:case:piccp:contract-3c")) { origin case_input; }
+        assert "a21": permission_refused(entity_ref("urn:case:piccp:perm-c")) { origin case_input; }
+        assert "a22": permission_affects_some_terms_only(entity_ref("urn:case:piccp:perm-c"), entity_ref("urn:case:piccp:term-3c")) { origin case_input; }
+        assert "a23": reasonable_to_uphold_remaining_contract(entity_ref("urn:case:piccp:perm-c"), entity_ref("urn:case:piccp:contract-3c")) { origin adjudicated; }
+    }
+
+    // Расходы погашаются раньше указанного должником основного долга.
+    evaluate truth(payment_imputed_to(entity_ref("urn:case:piccp:pay-3"), entity_ref("urn:case:piccp:o-expenses")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ExpensesDischargedFirst);
+
+    evaluate truth(payment_imputed_to(entity_ref("urn:case:piccp:pay-4"), entity_ref("urn:case:piccp:o-first-due")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ImputationByFirstDue);
+
+    evaluate truth(payment_imputed_to(entity_ref("urn:case:piccp:pay-5"), entity_ref("urn:case:piccp:o-declared")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ImputationByObligeeDeclaration);
+
+    evaluate truth(payment_imputed_to(entity_ref("urn:case:piccp:pay-6"), entity_ref("urn:case:piccp:o-nonmoney")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ImputationOfNonMonetaryPerformance);
+
+    evaluate truth(must_take_measures_for_permission(entity_ref("urn:case:piccp:perm-a"), entity_ref("urn:case:piccp:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SolePartyInStateAppliesForPermission);
+
+    evaluate truth(must_bear_permission_expenses(entity_ref("urn:case:piccp:perm-a"), entity_ref("urn:case:piccp:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ExpensesAndDiligenceOfApplicant);
+
+    evaluate truth(must_notify_of_outcome(entity_ref("urn:case:piccp:perm-a"), entity_ref("urn:case:piccp:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NoticeOfGrantOrRefusal);
+
+    evaluate truth(either_party_may_terminate(entity_ref("urn:case:piccp:perm-a"), entity_ref("urn:case:piccp:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationWhenPermissionSilent);
+
+    evaluate truth(contract_void_for_refusal(entity_ref("urn:case:piccp:perm-b"), entity_ref("urn:case:piccp:contract-3b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RefusalMakesContractVoid);
+
+    evaluate truth(rules_on_non_performance_apply(entity_ref("urn:case:piccp:perm-b"), entity_ref("urn:case:piccp:contract-3b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RefusalLeadsToNonPerformanceRules);
+
+    // Отказ задел лишь часть условий и остальное разумно сохранить —
+    // ничтожны только эти условия, а не договор.
+    evaluate truth(only_terms_void(entity_ref("urn:case:piccp:perm-c"), entity_ref("urn:case:piccp:term-3c")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(OnlyAffectedTermsVoid);
+
+    evaluate truth(contract_void_for_refusal(entity_ref("urn:case:piccp:perm-c"), entity_ref("urn:case:piccp:contract-3c")));
+    expect truth_status == NEITHER;
+}

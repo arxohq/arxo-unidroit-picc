@@ -1,0 +1,234 @@
+// Статьи 7.2.1-7.2.5. Право требовать исполнения.
+//
+// ПЯТЬ ИЗЪЯТИЙ СТАТЬИ 7.2.2 — ПЯТЬ ОТДЕЛЬНЫХ ОБСТОЯТЕЛЬСТВ, А НЕ ОДНО С
+// оговорками: невозможность, чрезмерная обременительность, доступность
+// исполнения из другого источника, личный характер и промедление самого
+// кредитора. Каждое поражает право требовать исполнения самостоятельно.
+
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+pub relation monetary_obligation(o: Obligation) kind empirical {
+    label en official "the obligation is one to pay money";
+    label ru unofficial "обязательство является денежным";
+}
+
+pub relation money_not_paid(o: Obligation) kind empirical {
+    label en official "the party obliged to pay money does not do so";
+    label ru unofficial "сторона, обязанная уплатить деньги, этого не делает";
+}
+
+pub relation non_monetary_not_performed(o: Obligation) kind empirical {
+    label en official "the party who owes an obligation other than one to pay money does not perform";
+    label ru unofficial "сторона, имеющая неденежное обязательство, его не исполняет";
+}
+
+pub relation performance_impossible(o: Obligation) kind empirical {
+    label en official "performance is impossible in law or in fact";
+    label ru unofficial "исполнение невозможно юридически или фактически";
+}
+
+pub external judgment relation performance_unreasonably_burdensome(o: Obligation) {
+    authority Tribunal;
+    label en official "performance or, where relevant, enforcement is unreasonably burdensome or expensive";
+    label ru unofficial "исполнение или, где это существенно, его принудительное осуществление неразумно обременительно или дорого";
+}
+
+pub external judgment relation performance_obtainable_elsewhere(o: Obligation) {
+    authority Tribunal;
+    label en official "the party entitled to performance may reasonably obtain performance from another source";
+    label ru unofficial "сторона, имеющая право на исполнение, может разумно получить исполнение из другого источника";
+}
+
+pub relation performance_exclusively_personal(o: Obligation) kind empirical {
+    label en official "performance is of an exclusively personal character";
+    label ru unofficial "исполнение носит исключительно личный характер";
+}
+
+pub relation performance_not_required_in_time(o: Obligation) kind empirical {
+    label en official "the party entitled to performance does not require performance within a reasonable time after it has, or ought to have, become aware of the non-performance";
+    label ru unofficial "сторона, имеющая право на исполнение, не потребовала его в разумный срок после того, как узнала или должна была узнать о неисполнении";
+}
+
+pub relation defective_performance(o: Obligation) kind empirical {
+    label en official "the performance rendered is defective";
+    label ru unofficial "произведённое исполнение является ненадлежащим";
+}
+
+pub relation repair_appropriate(o: Obligation) kind empirical {
+    label en official "repair, replacement or other cure of the defective performance is appropriate in the case";
+    label ru unofficial "исправление, замена или иное устранение недостатков исполнения уместны в деле";
+}
+
+pub relation court_ordered_performance(o: Obligation) kind empirical {
+    label en official "the court has ordered the party to perform";
+    label ru unofficial "суд вынес решение об исполнении стороной обязательства";
+}
+
+pub relation order_not_complied_with(o: Obligation) kind empirical {
+    label en official "the party has not complied with the court's order to perform";
+    label ru unofficial "сторона не исполнила решение суда об исполнении";
+}
+
+pub relation forum_law_directs_penalty_elsewhere(o: Obligation) kind empirical {
+    label en official "mandatory provisions of the law of the forum provide that the penalty is paid otherwise than to the aggrieved party";
+    label ru unofficial "императивные нормы права страны суда предусматривают уплату неустойки иначе, чем потерпевшей стороне";
+}
+
+pub relation performance_not_received_within_period(o: Obligation) kind empirical {
+    label en official "the aggrieved party who has required performance has not received it within a period fixed or otherwise within a reasonable period of time";
+    label ru unofficial "потерпевшая сторона, потребовавшая исполнения, не получила его в установленный или иной разумный срок";
+}
+
+pub relation judicial_decision_unenforceable(o: Obligation) kind empirical {
+    label en official "the decision of a court for performance of a non-monetary obligation cannot be enforced";
+    label ru unofficial "решение суда об исполнении неденежного обязательства не может быть принудительно исполнено";
+}
+
+pub relation may_require_payment(o: Obligation, p: Party) kind institutional {
+    label en official "the other party may require payment (article 7.2.1)";
+    label ru unofficial "другая сторона может требовать платежа (статья 7.2.1)";
+}
+
+pub relation may_require_performance(o: Obligation, p: Party) kind institutional {
+    label en official "the other party may require performance of the non-monetary obligation (article 7.2.2)";
+    label ru unofficial "другая сторона может требовать исполнения неденежного обязательства (статья 7.2.2)";
+}
+
+pub relation may_require_repair_or_replacement(o: Obligation, p: Party) kind institutional {
+    label en official "the right to performance includes the right to require repair, replacement or other cure of defective performance (article 7.2.3)";
+    label ru unofficial "право на исполнение включает право требовать исправления, замены или иного устранения недостатков исполнения (статья 7.2.3)";
+}
+
+pub relation penalty_may_be_ordered(o: Obligation) kind institutional {
+    label en official "the court may direct that the party pay a penalty if it does not comply with the order (article 7.2.4(1))";
+    label ru unofficial "суд может предписать уплату неустойки на случай неисполнения его решения (статья 7.2.4 пункт 1)";
+}
+
+pub relation penalty_paid_to_aggrieved_party(o: Obligation, p: Party) kind institutional {
+    label en official "the penalty shall be paid to the aggrieved party unless mandatory provisions of the law of the forum provide otherwise (article 7.2.4(2))";
+    label ru unofficial "неустойка уплачивается потерпевшей стороне, если императивные нормы права страны суда не предусматривают иного (статья 7.2.4 пункт 2)";
+}
+
+pub relation may_invoke_another_remedy(o: Obligation, p: Party) kind institutional {
+    label en official "the aggrieved party may invoke any other remedy (article 7.2.5)";
+    label ru unofficial "потерпевшая сторона может прибегнуть к любому другому средству защиты (статья 7.2.5)";
+}
+
+@source(PICC_ART7_2_1_EN, PICC_ART7_2_1_RU)
+rule PaymentMayBeRequired(o: Obligation, c: Contract, p: Party, other: Party) strict {
+    label en official "Article 7.2.1. Where a party who is obliged to pay money does not do so, the other party may require payment";
+    label ru unofficial "Статья 7.2.1. Если сторона, обязанная уплатить деньги, этого не делает, другая сторона может требовать платежа";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and monetary_obligation(o)
+        and money_not_paid(o);
+    then may_require_payment(o, other);
+}
+
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_RU)
+rule PerformanceMayBeRequired(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
+    label en official "Article 7.2.2. Where a party who owes an obligation other than one to pay money does not perform, the other party may require performance";
+    label ru unofficial "Статья 7.2.2. Если сторона, имеющая неденежное обязательство, его не исполняет, другая сторона может требовать исполнения";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and non_monetary_not_performed(o);
+    then may_require_performance(o, other);
+}
+
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_RU)
+rule ImpossibilityBarsPerformanceClaim(o: Obligation, p: Party) defeater {
+    label en official "Article 7.2.2(a). Performance may not be required where performance is impossible in law or in fact";
+    label ru unofficial "Статья 7.2.2 подпункт a. Исполнения нельзя требовать, если оно невозможно юридически или фактически";
+    when obligee_of(o, p)
+        and performance_impossible(o);
+    defeat may_require_performance(o, p);
+}
+
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_RU)
+rule BurdenBarsPerformanceClaim(o: Obligation, p: Party) defeater {
+    label en official "Article 7.2.2(b). Performance may not be required where performance or enforcement is unreasonably burdensome or expensive";
+    label ru unofficial "Статья 7.2.2 подпункт b. Исполнения нельзя требовать, если оно или его принудительное осуществление неразумно обременительно или дорого";
+    when obligee_of(o, p)
+        and performance_unreasonably_burdensome(o);
+    defeat may_require_performance(o, p);
+}
+
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_RU)
+rule CoverBarsPerformanceClaim(o: Obligation, p: Party) defeater {
+    label en official "Article 7.2.2(c). Performance may not be required where the party entitled to performance may reasonably obtain it from another source";
+    label ru unofficial "Статья 7.2.2 подпункт c. Исполнения нельзя требовать, если управомоченная сторона может разумно получить его из другого источника";
+    when obligee_of(o, p)
+        and performance_obtainable_elsewhere(o);
+    defeat may_require_performance(o, p);
+}
+
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_RU)
+rule PersonalCharacterBarsPerformanceClaim(o: Obligation, p: Party) defeater {
+    label en official "Article 7.2.2(d). Performance may not be required where performance is of an exclusively personal character";
+    label ru unofficial "Статья 7.2.2 подпункт d. Исполнения нельзя требовать, если оно носит исключительно личный характер";
+    when obligee_of(o, p)
+        and performance_exclusively_personal(o);
+    defeat may_require_performance(o, p);
+}
+
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_RU)
+rule LateDemandBarsPerformanceClaim(o: Obligation, p: Party) defeater {
+    label en official "Article 7.2.2(e). Performance may not be required where the party entitled to performance does not require it within a reasonable time after becoming aware of the non-performance";
+    label ru unofficial "Статья 7.2.2 подпункт e. Исполнения нельзя требовать, если управомоченная сторона не потребовала его в разумный срок после того, как узнала о неисполнении";
+    when obligee_of(o, p)
+        and performance_not_required_in_time(o);
+    defeat may_require_performance(o, p);
+}
+
+@source(PICC_ART7_2_3_EN, PICC_ART7_2_3_RU)
+rule RepairAndReplacement(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
+    label en official "Article 7.2.3. The right to performance includes in appropriate cases the right to require repair, replacement, or other cure of defective performance";
+    label ru unofficial "Статья 7.2.3. Право на исполнение включает в соответствующих случаях право требовать исправления, замены или иного устранения недостатков исполнения";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and defective_performance(o)
+        and repair_appropriate(o);
+    then may_require_repair_or_replacement(o, other);
+}
+
+@source(PICC_ART7_2_4_EN, PICC_ART7_2_4_RU)
+rule JudicialPenalty(o: Obligation) strict {
+    label en official "Article 7.2.4(1). Where the court orders a party to perform, it may also direct that this party pay a penalty if it does not comply with the order";
+    label ru unofficial "Статья 7.2.4 пункт 1. Вынося решение об исполнении, суд может предписать уплату неустойки на случай его неисполнения";
+    when court_ordered_performance(o);
+    then penalty_may_be_ordered(o);
+}
+
+@source(PICC_ART7_2_4_EN, PICC_ART7_2_4_RU)
+rule PenaltyGoesToAggrievedParty(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
+    label en official "Article 7.2.4(2). The penalty shall be paid to the aggrieved party unless mandatory provisions of the law of the forum provide otherwise";
+    label ru unofficial "Статья 7.2.4 пункт 2. Неустойка уплачивается потерпевшей стороне, если императивные нормы права страны суда не предусматривают иного";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and order_not_complied_with(o);
+    then penalty_paid_to_aggrieved_party(o, other);
+    unless obligee_of(o, other)
+        and forum_law_directs_penalty_elsewhere(o);
+}
+
+@source(PICC_ART7_2_5_EN, PICC_ART7_2_5_RU)
+rule ChangeOfRemedyAfterDelay(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
+    label en official "Article 7.2.5(1). An aggrieved party who has required performance of a non-monetary obligation and has not received it within a fixed or reasonable period may invoke any other remedy";
+    label ru unofficial "Статья 7.2.5 пункт 1. Потерпевшая сторона, потребовавшая исполнения неденежного обязательства и не получившая его в установленный или разумный срок, может прибегнуть к любому другому средству защиты";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and performance_not_received_within_period(o);
+    then may_invoke_another_remedy(o, other);
+}
+
+@source(PICC_ART7_2_5_EN, PICC_ART7_2_5_RU)
+rule ChangeOfRemedyWhenUnenforceable(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
+    label en official "Article 7.2.5(2). Where the decision of a court for performance of a non-monetary obligation cannot be enforced, the aggrieved party may invoke any other remedy";
+    label ru unofficial "Статья 7.2.5 пункт 2. Если решение суда об исполнении неденежного обязательства не может быть принудительно исполнено, потерпевшая сторона может прибегнуть к любому другому средству защиты";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and judicial_decision_unenforceable(o);
+    then may_invoke_another_remedy(o, other);
+}

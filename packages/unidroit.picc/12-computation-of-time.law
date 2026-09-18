@@ -1,0 +1,125 @@
+// Статья 1.12. Исчисление сроков, установленных сторонами.
+//
+// ТРИ ПУНКТА — ТРИ РАЗНЫЕ НОРМЫ, И ОДНА ИЗ НИХ ОТЛИЧАЕТ ПРИНЦИПЫ ОТ КОНВЕНЦИИ.
+// Пункт 1: праздники и нерабочие дни внутри срока не исключаются — тот же
+// календарный счёт, что у статьи 20 CISG. Пункт 2: последний день,
+// пришедшийся на праздник или нерабочий день в месте исполняющей стороны,
+// продлевает срок до первого следующего рабочего дня — НО «unless the
+// circumstances indicate otherwise». Этой оговорки у статьи 20 пункта 2 CISG
+// НЕТ: там продление безусловно. Поэтому здесь дефитер, а там его нет, и
+// объединять две нормы нельзя.
+//
+// Пункт 3: применяется часовой пояс места коммерческого предприятия стороны,
+// УСТАНОВИВШЕЙ срок, — снова с оговоркой «unless the circumstances indicate
+// otherwise». Пояс — факт дела: своего календаря и своих поясов у Принципов
+// нет (та же граница, что у статьи 20 CISG).
+//
+// ПОЛИТИКА §86 ПАКЕТА СЧИТАЕТ КАЛЕНДАРНЫМИ ДНЯМИ. Перенос выражен нормой над
+// фактами дела, а не `roll next_working_day`: тот требует календарного снимка
+// §85 в самом пакете, а календарь Принципам не принадлежит.
+
+language "law.core" version "0.2";
+package unidroit.picc version "0.1.0";
+namespace "urn:org:unidroit:clir:picc";
+
+deadline policy PICC_PARTY_SET_PERIOD {
+    start_count same_day;
+    include_end true;
+    roll no_roll;
+    month_end last_day_of_month;
+}
+
+pub relation period_set_by_party(c: Contract, setter: Party, span: Quantity) kind empirical {
+    label en official "a period set by a party for an act to be performed";
+    label ru unofficial "срок, установленный стороной для совершения действия";
+    key(c, setter);
+}
+
+pub relation period_runs_from(c: Contract, day: Date) kind empirical {
+    label en official "the day from which the period runs";
+    label ru unofficial "день, с которого течёт срок";
+    key(c);
+}
+
+pub relation period_ends_on(c: Contract, day: Date) kind derived {
+    label en official "the last day of the period set by the party (article 1.12)";
+    label ru unofficial "последний день срока, установленного стороной (статья 1.12)";
+}
+
+@source(PICC_ART1_12_EN, PICC_ART1_12_RU)
+rule PeriodEndsOn(c: Contract, setter: Party, start: Date, span: Quantity) defeasible {
+    label en official "Article 1.12(1). Official holidays or non-business days occurring during the period are included in calculating it";
+    label ru unofficial "Статья 1.12 пункт 1. Праздники и нерабочие дни внутри срока при его исчислении не исключаются";
+    when period_runs_from(c, start)
+        and period_set_by_party(c, setter, span);
+    then period_ends_on(c, add_calendar_period(start, span));
+}
+
+pub relation last_day_is_holiday_at_place_of_performance(c: Contract, day: Date) kind empirical {
+    label en official "the last day of the period is an official holiday or a non-business day at the place of business of the party to perform the act";
+    label ru unofficial "последний день срока — праздник или нерабочий день в месте коммерческого предприятия исполняющей стороны";
+}
+
+pub relation first_business_day_after(c: Contract, day: Date, next_day: Date) kind empirical {
+    label en official "the first business day which follows the given day";
+    label ru unofficial "первый следующий рабочий день после названного дня";
+}
+
+pub relation circumstances_indicate_otherwise(c: Contract) kind empirical {
+    label en official "the circumstances indicate otherwise";
+    label ru unofficial "обстоятельства указывают на иное";
+}
+
+@source(PICC_ART1_12_EN, PICC_ART1_12_RU)
+rule PeriodExtendedByHoliday(c: Contract, setter: Party, start: Date,
+                             span: Quantity, next_day: Date) defeasible {
+    label en official "Article 1.12(2). If the last day of the period is a holiday or a non-business day at the place of business of the party to perform, the period is extended until the first business day which follows";
+    label ru unofficial "Статья 1.12 пункт 2. Если последний день срока — праздник или нерабочий день в месте исполняющей стороны, срок продлевается до первого следующего рабочего дня";
+    when period_runs_from(c, start)
+        and period_set_by_party(c, setter, span)
+        and last_day_is_holiday_at_place_of_performance(c, add_calendar_period(start, span))
+        and first_business_day_after(c, add_calendar_period(start, span), next_day);
+    then period_ends_on(c, next_day);
+    // ОГОВОРКА, КОТОРОЙ НЕТ У СТАТЬИ 20 CISG: «unless the circumstances
+    // indicate otherwise». Связывающие конъюнкты — в самой оговорке
+    // (§149-§150, E-0099).
+    unless period_runs_from(c, start)
+        and period_set_by_party(c, setter, span)
+        and first_business_day_after(c, add_calendar_period(start, span), next_day)
+        and circumstances_indicate_otherwise(c);
+}
+
+@source(PICC_ART1_12_EN, PICC_ART1_12_RU)
+rule ComputedLastDayYieldsToHoliday(c: Contract, setter: Party, start: Date,
+                                    span: Quantity) defeater {
+    label en official "Article 1.12(2). The computed last day does not stand where it is a holiday at the place of performance";
+    label ru unofficial "Статья 1.12 пункт 2. Вычисленный последний день не действует, если он приходится на праздник в месте исполнения";
+    when period_runs_from(c, start)
+        and period_set_by_party(c, setter, span)
+        and last_day_is_holiday_at_place_of_performance(c, add_calendar_period(start, span))
+        and not_known(circumstances_indicate_otherwise(c));
+    defeat period_ends_on(c, add_calendar_period(start, span));
+}
+
+// --- Пункт 3: часовой пояс ----------------------------------------------------
+
+pub relation time_zone_of_setter(c: Contract, setter: Party, zone: Text) kind empirical {
+    label en official "the time zone of the place of business of the party setting the time";
+    label ru unofficial "часовой пояс места коммерческого предприятия стороны, установившей срок";
+    key(c, setter);
+}
+
+pub relation relevant_time_zone(c: Contract, zone: Text) kind institutional {
+    label en official "the relevant time zone (article 1.12(3))";
+    label ru unofficial "применимый часовой пояс (статья 1.12 пункт 3)";
+}
+
+@source(PICC_ART1_12_EN, PICC_ART1_12_RU)
+rule RelevantTimeZone(c: Contract, setter: Party, zone: Text) defeasible {
+    label en official "Article 1.12(3). The relevant time zone is that of the place of business of the party setting the time, unless the circumstances indicate otherwise";
+    label ru unofficial "Статья 1.12 пункт 3. Применяется часовой пояс места коммерческого предприятия стороны, установившей срок, если обстоятельства не указывают на иное";
+    when time_zone_of_setter(c, setter, zone);
+    then relevant_time_zone(c, zone);
+    unless time_zone_of_setter(c, setter, zone)
+        and circumstances_indicate_otherwise(c);
+}

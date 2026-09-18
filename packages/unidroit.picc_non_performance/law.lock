@@ -1,0 +1,33 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "unidroit.picc_non_performance",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "unidroit.picc"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.0",
+  "lockVersion": "0.1",
+  "packages": [
+    {
+      "contentHash": "sha256:9a3d8246cdd2151e6ba312e3342359910c4235426bf6fb89f58ad41879f27dc9",
+      "features": [
+        "core-executable"
+      ],
+      "name": "unidroit.picc",
+      "namespace": "urn:org:unidroit:clir:picc",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/unidroit.picc/0.1.0",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:c4be83fa6bcbc13e34147abc9a75ae3f62bbacd829ee91b4d3315c2fbd778428",
+  "root": {
+    "contentHash": "sha256:6b2c1e73301508de4f4fce8edf89974e1fce392893f89e16a39f26e9214f2bc4",
+    "name": "unidroit.picc_non_performance",
+    "namespace": "urn:org:unidroit:clir:picc-non-performance",
+    "version": "0.1.0"
+  }
+}

@@ -1,0 +1,1181 @@
+{
+  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "format": "law.package-questions/0.1",
+  "package": "unidroit.picc_performance",
+  "tasks": [
+    {
+      "id": "ispolnenie",
+      "title": "Исполнение обязательств: срок, порядок, место, платёж, отнесение платежей и публичное разрешение (ст. 6.1.1–6.1.17)",
+      "source_units": [
+        "PICC_ART6_1_10_EN",
+        "PICC_ART6_1_10_RU",
+        "PICC_ART6_1_11_EN",
+        "PICC_ART6_1_11_RU",
+        "PICC_ART6_1_12_EN",
+        "PICC_ART6_1_12_RU",
+        "PICC_ART6_1_13_EN",
+        "PICC_ART6_1_13_RU",
+        "PICC_ART6_1_14_EN",
+        "PICC_ART6_1_14_RU",
+        "PICC_ART6_1_15_EN",
+        "PICC_ART6_1_15_RU",
+        "PICC_ART6_1_16_EN",
+        "PICC_ART6_1_16_RU",
+        "PICC_ART6_1_17_EN",
+        "PICC_ART6_1_17_RU",
+        "PICC_ART6_1_1_EN",
+        "PICC_ART6_1_1_RU",
+        "PICC_ART6_1_2_EN",
+        "PICC_ART6_1_2_RU",
+        "PICC_ART6_1_3_EN",
+        "PICC_ART6_1_3_RU",
+        "PICC_ART6_1_4_EN",
+        "PICC_ART6_1_4_RU",
+        "PICC_ART6_1_5_EN",
+        "PICC_ART6_1_5_RU",
+        "PICC_ART6_1_6_EN",
+        "PICC_ART6_1_6_RU",
+        "PICC_ART6_1_7_EN",
+        "PICC_ART6_1_7_RU",
+        "PICC_ART6_1_8_EN",
+        "PICC_ART6_1_8_RU",
+        "PICC_ART6_1_9_EN",
+        "PICC_ART6_1_9_RU"
+      ]
+    },
+    {
+      "id": "zatrudnenie",
+      "title": "Затруднения: договор соблюдается, состав затруднения и последствия (ст. 6.2.1–6.2.3)",
+      "source_units": [
+        "PICC_ART6_2_1_EN",
+        "PICC_ART6_2_1_RU",
+        "PICC_ART6_2_2_EN",
+        "PICC_ART6_2_2_RU",
+        "PICC_ART6_2_3_EN",
+        "PICC_ART6_2_3_RU"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "acceptance-conditional-on-honour",
+      "task": "ispolnenie",
+      "question": "Принят ли чек или иной инструмент лишь под условием его оплаты (ст. 6.1.7 п. 2)?",
+      "kind": "truth",
+      "predicate": "acceptance_conditional_on_honour",
+      "parameters": [
+        {
+          "name": "pay",
+          "type": "Payment",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(acceptance_conditional_on_honour(pay: <pay>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_7_EN",
+        "PICC_ART6_1_7_RU"
+      ]
+    },
+    {
+      "id": "bound-to-perform-first",
+      "task": "ispolnenie",
+      "question": "Обязана ли сторона, исполнение которой требует времени, исполнить первой (ст. 6.1.4 п. 2)?",
+      "kind": "truth",
+      "predicate": "bound_to_perform_first",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(bound_to_perform_first(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.4(2). To the extent that the performance of only one party requires a period of time, that party is bound to render its performance first, unless the circumstances indicate otherwise",
+          "rule": "LongerPerformanceGoesFirst"
+        },
+        {
+          "summary": "Article 6.1.4(2). To the extent that the performance of only one party requires a period of time, that party is bound to render its performance first, unless the circumstances indicate otherwise",
+          "rule": "LongerPerformanceGoesFirst/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_4_EN",
+        "PICC_ART6_1_4_RU"
+      ]
+    },
+    {
+      "id": "bound-to-perform-nevertheless",
+      "task": "zatrudnenie",
+      "question": "Обязана ли сторона исполнять, если исполнение стало более обременительным (ст. 6.2.1)?",
+      "kind": "truth",
+      "predicate": "bound_to_perform_nevertheless",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(bound_to_perform_nevertheless(c: <c>, p: <p>));",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "source_units": [
+        "PICC_ART6_2_1_EN",
+        "PICC_ART6_2_1_RU"
+      ]
+    },
+    {
+      "id": "bound-to-perform-simultaneously",
+      "task": "ispolnenie",
+      "question": "Обязаны ли стороны исполнить одновременно (ст. 6.1.4 п. 1)?",
+      "kind": "truth",
+      "predicate": "bound_to_perform_simultaneously",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(bound_to_perform_simultaneously(c: <c>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.4(1). To the extent that the performances can be rendered simultaneously, the parties are bound to render them simultaneously unless the circumstances indicate otherwise",
+          "rule": "SimultaneousPerformance"
+        },
+        {
+          "summary": "Article 6.1.4(1). To the extent that the performances can be rendered simultaneously, the parties are bound to render them simultaneously unless the circumstances indicate otherwise",
+          "rule": "SimultaneousPerformance/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_4_EN",
+        "PICC_ART6_1_4_RU"
+      ]
+    },
+    {
+      "id": "contract-adapted-by-court",
+      "task": "zatrudnenie",
+      "question": "Адаптирован ли договор судом при затруднении (ст. 6.2.3 п. 4 подпункт b)?",
+      "kind": "truth",
+      "predicate": "contract_adapted_by_court",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_adapted_by_court(c: <c>));",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.2.3(4)(b). The court may adapt the contract with a view to restoring its equilibrium",
+          "rule": "CourtAdaptsForHardship"
+        },
+        {
+          "summary": "Article 6.2.3(4). If the court finds hardship it may, if reasonable, terminate the contract at a date and on terms to be fixed, or adapt the contract with a view to restoring its equilibrium",
+          "rule": "CourtPowerOnHardship"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_2_3_EN",
+        "PICC_ART6_2_3_RU"
+      ]
+    },
+    {
+      "id": "contract-terminated-by-court",
+      "task": "zatrudnenie",
+      "question": "Прекращён ли договор судом при затруднении (ст. 6.2.3 п. 4 подпункт a)?",
+      "kind": "truth",
+      "predicate": "contract_terminated_by_court",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_terminated_by_court(c: <c>));",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "source_units": [
+        "PICC_ART6_2_3_EN",
+        "PICC_ART6_2_3_RU"
+      ]
+    },
+    {
+      "id": "contract-void-for-refusal",
+      "task": "ispolnenie",
+      "question": "Ничтожен ли договор из-за отказа в публичном разрешении (ст. 6.1.17 п. 1)?",
+      "kind": "truth",
+      "predicate": "contract_void_for_refusal",
+      "parameters": [
+        {
+          "name": "perm",
+          "type": "Permission",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(contract_void_for_refusal(perm: <perm>, c: <c>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.17(1). The refusal of a permission affecting the validity of the contract renders the contract void",
+          "rule": "RefusalMakesContractVoid"
+        },
+        {
+          "summary": "Article 6.1.17(1). The refusal of a permission affecting the validity of the contract renders the contract void",
+          "rule": "RefusalMakesContractVoid/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_17_EN",
+        "PICC_ART6_1_17_RU"
+      ]
+    },
+    {
+      "id": "costs-borne-by-performing-party",
+      "task": "ispolnenie",
+      "question": "Кто несёт издержки исполнения обязательства (ст. 6.1.11)?",
+      "kind": "truth",
+      "predicate": "costs_borne_by_performing_party",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(costs_borne_by_performing_party(o: <o>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_11_EN",
+        "PICC_ART6_1_11_RU"
+      ]
+    },
+    {
+      "id": "either-party-may-terminate",
+      "task": "ispolnenie",
+      "question": "Вправе ли каждая сторона прекратить договор, если разрешение не дано и не отклонено (ст. 6.1.16 п. 1)?",
+      "kind": "truth",
+      "predicate": "either_party_may_terminate",
+      "parameters": [
+        {
+          "name": "perm",
+          "type": "Permission",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(either_party_may_terminate(perm: <perm>, c: <c>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.16(1). If permission is neither granted nor refused within the agreed or a reasonable period although all required measures were taken, either party is entitled to terminate the contract",
+          "rule": "TerminationWhenPermissionSilent"
+        },
+        {
+          "summary": "Article 6.1.16(1). If permission is neither granted nor refused within the agreed or a reasonable period although all required measures were taken, either party is entitled to terminate the contract",
+          "rule": "TerminationWhenPermissionSilent/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_16_EN",
+        "PICC_ART6_1_16_RU"
+      ]
+    },
+    {
+      "id": "entitled-to-request-renegotiation",
+      "task": "zatrudnenie",
+      "question": "Вправе ли потерпевшая сторона требовать пересмотра договора (ст. 6.2.3 п. 1)?",
+      "kind": "truth",
+      "predicate": "entitled_to_request_renegotiation",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(entitled_to_request_renegotiation(c: <c>, p: <p>));",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "source_units": [
+        "PICC_ART6_2_3_EN",
+        "PICC_ART6_2_3_RU"
+      ]
+    },
+    {
+      "id": "expenses-borne-by-obligor",
+      "task": "ispolnenie",
+      "question": "Кто несёт дополнительные расходы от частичного или досрочного исполнения (ст. 6.1.3 п. 2, 6.1.5 п. 3)?",
+      "kind": "truth",
+      "predicate": "expenses_borne_by_obligor",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(expenses_borne_by_obligor(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_3_EN",
+        "PICC_ART6_1_5_EN"
+      ]
+    },
+    {
+      "id": "hardship-exists",
+      "task": "zatrudnenie",
+      "question": "Имеет ли место затруднение (ст. 6.2.2)?",
+      "kind": "truth",
+      "predicate": "hardship_exists",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(hardship_exists(c: <c>, p: <p>));",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "source_units": [
+        "PICC_ART6_2_2_EN",
+        "PICC_ART6_2_2_RU"
+      ]
+    },
+    {
+      "id": "increase-in-expenses-borne-by-party",
+      "task": "ispolnenie",
+      "question": "Кто несёт увеличение расходов от переезда коммерческого предприятия (ст. 6.1.6 п. 2)?",
+      "kind": "truth",
+      "predicate": "increase_in_expenses_borne_by_party",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(increase_in_expenses_borne_by_party(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_6_EN",
+        "PICC_ART6_1_6_RU"
+      ]
+    },
+    {
+      "id": "may-pay-in-currency-of-place",
+      "task": "ispolnenie",
+      "question": "Может ли должник уплатить в валюте места платежа (ст. 6.1.9 п. 1)?",
+      "kind": "truth",
+      "predicate": "may_pay_in_currency_of_place",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_pay_in_currency_of_place(o: <o>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_9_EN",
+        "PICC_ART6_1_9_RU"
+      ]
+    },
+    {
+      "id": "may-perform-within-period",
+      "task": "ispolnenie",
+      "question": "Может ли сторона исполнить в любой момент внутри установленного периода (ст. 6.1.1 подпункт b)?",
+      "kind": "truth",
+      "predicate": "may_perform_within_period",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_perform_within_period(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.1(b). If a period of time is fixed by or determinable from the contract, a party may perform at any time within that period unless circumstances indicate that the other party is to choose a time",
+          "rule": "PerformanceWithinPeriod"
+        },
+        {
+          "summary": "Article 6.1.1(b). If a period of time is fixed by or determinable from the contract, a party may perform at any time within that period unless circumstances indicate that the other party is to choose a time",
+          "rule": "PerformanceWithinPeriod/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_1_EN",
+        "PICC_ART6_1_1_RU"
+      ]
+    },
+    {
+      "id": "may-reject-earlier-performance",
+      "task": "ispolnenie",
+      "question": "Может ли кредитор отклонить досрочное исполнение (ст. 6.1.5 п. 1)?",
+      "kind": "truth",
+      "predicate": "may_reject_earlier_performance",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_reject_earlier_performance(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.5(1). The obligee may reject an earlier performance unless it has no legitimate interest in so doing",
+          "rule": "RejectionOfEarlierPerformance"
+        },
+        {
+          "summary": "Article 6.1.5(1). The obligee may reject an earlier performance unless it has no legitimate interest in so doing",
+          "rule": "RejectionOfEarlierPerformance/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_5_EN",
+        "PICC_ART6_1_5_RU"
+      ]
+    },
+    {
+      "id": "may-reject-partial-performance",
+      "task": "ispolnenie",
+      "question": "Может ли кредитор отклонить предложение исполнить частично (ст. 6.1.3 п. 1)?",
+      "kind": "truth",
+      "predicate": "may_reject_partial_performance",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_reject_partial_performance(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.3(1). The obligee may reject an offer to perform in part, whether or not coupled with an assurance as to the balance, unless it has no legitimate interest in so doing",
+          "rule": "RejectionOfPartialPerformance"
+        },
+        {
+          "summary": "Article 6.1.3(1). The obligee may reject an offer to perform in part, whether or not coupled with an assurance as to the balance, unless it has no legitimate interest in so doing",
+          "rule": "RejectionOfPartialPerformance/unless/0"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_3_EN",
+        "PICC_ART6_1_3_RU"
+      ]
+    },
+    {
+      "id": "may-resort-to-court",
+      "task": "zatrudnenie",
+      "question": "Может ли сторона обратиться в суд, если пересмотр не удался (ст. 6.2.3 п. 3)?",
+      "kind": "truth",
+      "predicate": "may_resort_to_court",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(may_resort_to_court(c: <c>, p: <p>));",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "source_units": [
+        "PICC_ART6_2_3_EN",
+        "PICC_ART6_2_3_RU"
+      ]
+    },
+    {
+      "id": "must-bear-permission-expenses",
+      "task": "ispolnenie",
+      "question": "Кто несёт расходы на получение публичного разрешения (ст. 6.1.15 п. 1)?",
+      "kind": "truth",
+      "predicate": "must_bear_permission_expenses",
+      "parameters": [
+        {
+          "name": "perm",
+          "type": "Permission",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(must_bear_permission_expenses(perm: <perm>, p: <p>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "source_units": [
+        "PICC_ART6_1_15_EN",
+        "PICC_ART6_1_15_RU"
+      ]
+    },
+    {
+      "id": "must-notify-of-outcome",
+      "task": "ispolnenie",
+      "question": "Обязана ли сторона известить о предоставлении разрешения или отказе (ст. 6.1.15 п. 2)?",
+      "kind": "truth",
+      "predicate": "must_notify_of_outcome",
+      "parameters": [
+        {
+          "name": "perm",
+          "type": "Permission",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(must_notify_of_outcome(perm: <perm>, p: <p>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "source_units": [
+        "PICC_ART6_1_15_EN",
+        "PICC_ART6_1_15_RU"
+      ]
+    },
+    {
+      "id": "must-perform-at-fixed-time",
+      "task": "ispolnenie",
+      "question": "Должна ли сторона исполнить в установленный договором срок (ст. 6.1.1 подпункт a)?",
+      "kind": "truth",
+      "predicate": "must_perform_at_fixed_time",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(must_perform_at_fixed_time(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_1_EN",
+        "PICC_ART6_1_1_RU"
+      ]
+    },
+    {
+      "id": "must-perform-at-one-time",
+      "task": "ispolnenie",
+      "question": "Должна ли сторона исполнить единовременно (ст. 6.1.2)?",
+      "kind": "truth",
+      "predicate": "must_perform_at_one_time",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(must_perform_at_one_time(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_2_EN",
+        "PICC_ART6_1_2_RU"
+      ]
+    },
+    {
+      "id": "must-perform-within-reasonable-time",
+      "task": "ispolnenie",
+      "question": "Должна ли сторона исполнить в разумный срок после заключения договора (ст. 6.1.1 подпункт c)?",
+      "kind": "truth",
+      "predicate": "must_perform_within_reasonable_time",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(must_perform_within_reasonable_time(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_1_EN",
+        "PICC_ART6_1_1_RU"
+      ]
+    },
+    {
+      "id": "must-take-measures-for-permission",
+      "task": "ispolnenie",
+      "question": "Кто обязан принять меры для получения публичного разрешения (ст. 6.1.14)?",
+      "kind": "truth",
+      "predicate": "must_take_measures_for_permission",
+      "parameters": [
+        {
+          "name": "perm",
+          "type": "Permission",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(must_take_measures_for_permission(perm: <perm>, p: <p>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.14(b). In any other case the party whose performance requires permission shall take the necessary measures",
+          "rule": "PartyWhosePerformanceNeedsPermission"
+        },
+        {
+          "summary": "Article 6.1.14(a). If only one party has its place of business in that State, that party shall take the measures necessary to obtain the permission",
+          "rule": "SolePartyInStateAppliesForPermission"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_14_EN",
+        "PICC_ART6_1_14_RU"
+      ]
+    },
+    {
+      "id": "obligation-discharged",
+      "task": "ispolnenie",
+      "question": "Прекратилось ли денежное обязательство исполнением (ст. 6.1.8 п. 2)?",
+      "kind": "truth",
+      "predicate": "obligation_discharged",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(obligation_discharged(o: <o>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_8_EN",
+        "PICC_ART6_1_8_RU"
+      ]
+    },
+    {
+      "id": "obligee-may-choose-rate",
+      "task": "ispolnenie",
+      "question": "Может ли кредитор выбрать курс обмена после просрочки должника (ст. 6.1.9 п. 4)?",
+      "kind": "truth",
+      "predicate": "obligee_may_choose_rate",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(obligee_may_choose_rate(o: <o>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_9_EN",
+        "PICC_ART6_1_9_RU"
+      ]
+    },
+    {
+      "id": "obligee-may-require-currency-of-place",
+      "task": "ispolnenie",
+      "question": "Может ли кредитор потребовать платежа в валюте места платежа (ст. 6.1.9 п. 2)?",
+      "kind": "truth",
+      "predicate": "obligee_may_require_currency_of_place",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(obligee_may_require_currency_of_place(o: <o>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_9_EN",
+        "PICC_ART6_1_9_RU"
+      ]
+    },
+    {
+      "id": "only-terms-void",
+      "task": "ispolnenie",
+      "question": "Ничтожны ли только затронутые отказом условия договора (ст. 6.1.17 п. 1)?",
+      "kind": "truth",
+      "predicate": "only_terms_void",
+      "parameters": [
+        {
+          "name": "perm",
+          "type": "Permission",
+          "role": "bound"
+        },
+        {
+          "name": "t",
+          "type": "Term",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(only_terms_void(perm: <perm>, t: <t>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "source_units": [
+        "PICC_ART6_1_17_EN",
+        "PICC_ART6_1_17_RU"
+      ]
+    },
+    {
+      "id": "own-performance-time-unaffected",
+      "task": "ispolnenie",
+      "question": "Затрагивает ли принятие досрочного исполнения срок собственных обязательств (ст. 6.1.5 п. 2)?",
+      "kind": "truth",
+      "predicate": "own_performance_time_unaffected",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(own_performance_time_unaffected(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_5_EN",
+        "PICC_ART6_1_5_RU"
+      ]
+    },
+    {
+      "id": "payment-imputed-to",
+      "task": "ispolnenie",
+      "question": "К какому обязательству относится платёж (ст. 6.1.12, 6.1.13)?",
+      "kind": "truth",
+      "predicate": "payment_imputed_to",
+      "parameters": [
+        {
+          "name": "pay",
+          "type": "Payment",
+          "role": "bound"
+        },
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(payment_imputed_to(pay: <pay>, o: <o>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.12(1). The payment discharges first any expenses",
+          "rule": "ExpensesDischargedFirst"
+        },
+        {
+          "summary": "Article 6.1.12(3)(d). Failing that, payment is imputed to the obligation which has arisen first",
+          "rule": "ImputationByEarliestOrigin"
+        },
+        {
+          "summary": "Article 6.1.12(3)(a). In the absence of imputation, payment is imputed to an obligation which is due or which is the first to fall due",
+          "rule": "ImputationByFirstDue"
+        },
+        {
+          "summary": "Article 6.1.12(3)(b). Failing that, payment is imputed to the obligation for which the obligee has least security",
+          "rule": "ImputationByLeastSecurity"
+        },
+        {
+          "summary": "Article 6.1.12(3)(c). Failing that, payment is imputed to the obligation which is the most burdensome for the obligor",
+          "rule": "ImputationByMostBurdensome"
+        },
+        {
+          "summary": "Article 6.1.12(2). If the obligor makes no specification, the obligee may within a reasonable time declare the obligation to which it imputes the payment, provided that obligation is due and undisputed",
+          "rule": "ImputationByObligeeDeclaration"
+        },
+        {
+          "summary": "Article 6.1.12(1). An obligor owing several monetary obligations may specify at the time of payment the debt to which the payment is to be applied",
+          "rule": "ImputationBySpecification"
+        },
+        {
+          "summary": "Article 6.1.13. Article 6.1.12 applies with appropriate adaptations to the imputation of performance of non-monetary obligations",
+          "rule": "ImputationOfNonMonetaryPerformance"
+        },
+        {
+          "summary": "Article 6.1.12(1). The payment discharges then interest due and finally the principal",
+          "rule": "InterestDischargedSecond"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_12_EN",
+        "PICC_ART6_1_12_RU",
+        "PICC_ART6_1_13_EN",
+        "PICC_ART6_1_13_RU"
+      ]
+    },
+    {
+      "id": "payment-in-currency-of-place-required",
+      "task": "ispolnenie",
+      "question": "В какой валюте платить, если она не названа обязательством (ст. 6.1.10)?",
+      "kind": "truth",
+      "predicate": "payment_in_currency_of_place_required",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(payment_in_currency_of_place_required(o: <o>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_10_EN",
+        "PICC_ART6_1_10_RU"
+      ]
+    },
+    {
+      "id": "payment-may-be-made-in-this-form",
+      "task": "ispolnenie",
+      "question": "Может ли платёж быть произведён в этой форме (ст. 6.1.7 п. 1, 6.1.8 п. 1)?",
+      "kind": "truth",
+      "predicate": "payment_may_be_made_in_this_form",
+      "parameters": [
+        {
+          "name": "pay",
+          "type": "Payment",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(payment_may_be_made_in_this_form(pay: <pay>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.8(1). Unless the obligee has indicated a particular account, payment may be made by a transfer to any of the financial institutions in which the obligee has made it known that it has an account",
+          "rule": "PaymentByTransferToKnownInstitution"
+        },
+        {
+          "summary": "Article 6.1.7(1). Payment may be made in any form used in the ordinary course of business at the place for payment",
+          "rule": "PaymentInOrdinaryForm"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_7_EN",
+        "PICC_ART6_1_7_RU",
+        "PICC_ART6_1_8_EN",
+        "PICC_ART6_1_8_RU"
+      ]
+    },
+    {
+      "id": "performed-at-obligee-place",
+      "task": "ispolnenie",
+      "question": "Исполняется ли денежное обязательство в месте предприятия кредитора (ст. 6.1.6 п. 1 подпункт a)?",
+      "kind": "truth",
+      "predicate": "performed_at_obligee_place",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(performed_at_obligee_place(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_6_EN",
+        "PICC_ART6_1_6_RU"
+      ]
+    },
+    {
+      "id": "performed-at-obligor-place",
+      "task": "ispolnenie",
+      "question": "Исполняется ли неденежное обязательство в месте предприятия должника (ст. 6.1.6 п. 1 подпункт b)?",
+      "kind": "truth",
+      "predicate": "performed_at_obligor_place",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(performed_at_obligor_place(o: <o>));",
+      "tests": [
+        "PICCP-01-TIME-ORDER-AND-PLACE"
+      ],
+      "source_units": [
+        "PICC_ART6_1_6_EN",
+        "PICC_ART6_1_6_RU"
+      ]
+    },
+    {
+      "id": "rate-prevailing-when-due-applies",
+      "task": "ispolnenie",
+      "question": "Какой курс обмена применяется к платежу (ст. 6.1.9 п. 3)?",
+      "kind": "truth",
+      "predicate": "rate_prevailing_when_due_applies",
+      "parameters": [
+        {
+          "name": "o",
+          "type": "Obligation",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(rate_prevailing_when_due_applies(o: <o>));",
+      "tests": [
+        "PICCP-02-PAYMENT-AND-CURRENCY"
+      ],
+      "source_units": [
+        "PICC_ART6_1_9_EN",
+        "PICC_ART6_1_9_RU"
+      ]
+    },
+    {
+      "id": "request-does-not-entitle-to-withhold",
+      "task": "zatrudnenie",
+      "question": "Даёт ли просьба о пересмотре право приостановить исполнение (ст. 6.2.3 п. 2)?",
+      "kind": "truth",
+      "predicate": "request_does_not_entitle_to_withhold",
+      "parameters": [
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        },
+        {
+          "name": "p",
+          "type": "Party",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(request_does_not_entitle_to_withhold(c: <c>, p: <p>));",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "source_units": [
+        "PICC_ART6_2_3_EN",
+        "PICC_ART6_2_3_RU"
+      ]
+    },
+    {
+      "id": "rules-on-non-performance-apply",
+      "task": "ispolnenie",
+      "question": "Применяются ли правила о неисполнении при отказе в разрешении (ст. 6.1.17 п. 2)?",
+      "kind": "truth",
+      "predicate": "rules_on_non_performance_apply",
+      "parameters": [
+        {
+          "name": "perm",
+          "type": "Permission",
+          "role": "bound"
+        },
+        {
+          "name": "c",
+          "type": "Contract",
+          "role": "bound"
+        }
+      ],
+      "template": "evaluate truth(rules_on_non_performance_apply(perm: <perm>, c: <c>));",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "source_units": [
+        "PICC_ART6_1_17_EN",
+        "PICC_ART6_1_17_RU"
+      ]
+    },
+    {
+      "id": "pozitsii-adapt-or-terminate-for-hardship",
+      "task": "zatrudnenie",
+      "question": "Активна ли власть суда прекратить или адаптировать договор при затруднении (ст. 6.2.3 п. 4)?",
+      "kind": "positions",
+      "norms": [
+        "AdaptOrTerminateForHardship"
+      ],
+      "template": "evaluate positions(); expect position(AdaptOrTerminateForHardship, <статус>);",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.2.3(4). If the court finds hardship it may, if reasonable, terminate the contract at a date and on terms to be fixed, or adapt the contract with a view to restoring its equilibrium",
+          "rule": "CourtPowerOnHardship"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_2_3_EN",
+        "PICC_ART6_2_3_RU"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "gr-ne-pravo-gosudarstva-p",
+      "task": "ispolnenie",
+      "reason_kind": "source_delegates",
+      "question": "Какие императивные нормы применимого права ограничивают исполнение договора?",
+      "source_units": [
+        "PICC_ART6_1_14_EN"
+      ],
+      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`)."
+    },
+    {
+      "id": "gr-hardship-net-u-konvencii",
+      "task": "zatrudnenie",
+      "reason_kind": "source_delegates",
+      "question": "Что отвечает Конвенция о пересмотре договора при резком удорожании исполнения?",
+      "source_units": [
+        "PICC_ART6_2_2_EN"
+      ],
+      "limitation": "ЗАТРУДНЕНИЯ — ТО, ЧЕГО У КОНВЕНЦИИ НЕТ НОРМОЙ. Статья 79 Конвенции знает освобождение от ответственности при препятствии вне контроля, но ни пересмотра договора, ни его адаптации судом не предусматривает. Статьи 6.2.1–6.2.3 дают и то и другое; на одних фактах два инструмента отвечают по-разному, и это наблюдается делом 04."
+    },
+    {
+      "id": "gr-otsenochnye-p",
+      "task": "zatrudnenie",
+      "reason_kind": "case_data",
+      "question": "Существенно ли изменилось равновесие договора и разумно ли его адаптировать?",
+      "source_units": [
+        "PICC_ART6_2_2_EN",
+        "PICC_ART6_2_3_EN"
+      ],
+      "limitation": "ОЦЕНОЧНЫЕ ПРИЗНАКИ ГЛАВЫ 6 ИДУТ КАНАЛОМ СУЖДЕНИЯ §47.3 с органом `Tribunal`: отсутствие законного интереса кредитора в отклонении исполнения (6.1.3, 6.1.5), разумность сохранения остальной части договора при частичном разрешении (6.1.16, 6.1.17), существенное изменение равновесия договора и невозможность учесть события при заключении (6.2.2), разумность прекращения или адаптации (6.2.3 п. 4). Модель их не решает и догадку не подставляет."
+    },
+    {
+      "id": "gr-kurs-i-razreshenie",
+      "task": "ispolnenie",
+      "reason_kind": "case_data",
+      "question": "Каков применимый курс обмена и что требует публичное разрешение конкретного государства?",
+      "source_units": [
+        "PICC_ART6_1_9_EN",
+        "PICC_ART6_1_14_EN"
+      ],
+      "limitation": "КУРС ОБМЕНА И СОДЕРЖАНИЕ ПУБЛИЧНОГО РАЗРЕШЕНИЯ — ВХОД ДЕЛА: статьи 6.1.9 и 6.1.14–6.1.17 называют ПРАВИЛО ВЫБОРА (какой курс применяется, кто обязан хлопотать о разрешении), а само число курса и требования конкретного государства приносит дело."
+    },
+    {
+      "id": "gr-otnesenie-proporcionalno",
+      "task": "ispolnenie",
+      "reason_kind": "case_data",
+      "question": "Как отнести платёж, если ни один критерий очереди не применим?",
+      "source_units": [
+        "PICC_ART6_1_12_EN"
+      ],
+      "limitation": "ОЧЕРЕДЬ ОТНЕСЕНИЯ ПЛАТЕЖЕЙ ЗАПИСАНА ПРИОРИТЕТАМИ §116, А НЕ ПОРЯДКОМ ЧТЕНИЯ: расходы и проценты идут впереди указания должника (ст. 6.1.12 п. 1), а четыре критерия пункта 3 вытесняют друг друга в объявленном источником порядке. Пропорциональное отнесение «при неприменимости всех критериев» в модель не входит: это арифметика по неопределённому составу долгов, и дело её не предъявляет."
+    },
+    {
+      "id": "gr-razumnyj-srok-p",
+      "task": "ispolnenie",
+      "reason_kind": "case_data",
+      "question": "Какой срок является разумным для исполнения после заключения договора?",
+      "source_units": [
+        "PICC_ART6_1_1_EN"
+      ],
+      "limitation": "КАЛЕНДАРЯ У ПРИНЦИПОВ НЕТ: «разумный срок» статьи 6.1.1 подпункта c не переводится в дни моделью — он остаётся оценочным признаком или фактом дела."
+    },
+    {
+      "id": "gr-russkij-tekst-p",
+      "task": "ispolnenie",
+      "reason_kind": "source_delegates",
+      "question": "Каков официальный текст статьи главы 6?",
+      "source_units": [
+        "PICC_ART6_1_1_EN",
+        "PICC_ART6_1_1_RU"
+      ],
+      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский; первичный якорь §194 — английский black-letter текст."
+    }
+  ],
+  "internal": []
+}

@@ -1,0 +1,259 @@
+// Глава 4. Толкование договора (ст. 4.1–4.8).
+//
+// ДВА УРОВНЯ ТОЛКОВАНИЯ, И ПОРЯДОК МЕЖДУ НИМИ ТЕКСТУАЛЬНЫЙ. Статья 4.1: общее
+// намерение сторон; если оно не может быть установлено — смысл, который
+// придали бы разумные лица того же рода. Статья 4.2 повторяет ту же пару для
+// заявлений отдельной стороны. Второй уровень отпадает там, где работает
+// первый, и выражено это дефитером, а не приоритетом: «If such an intention
+// cannot be established» — оговорка самого текста.
+//
+// СТАТЬИ 4.4 И 4.5 — КАНОНЫ, А НЕ ПРИЗНАКИ ДЕЛА. Они говорят, КАК читать
+// условие (в свете всего договора; так, чтобы все условия имели силу), и
+// проверяемого признака сами не порождают: предъявить можно только
+// РЕЗУЛЬТАТ прочтения. Поэтому у них головы о прочтении, а факт «прочтение
+// даёт условию силу» приносит дело — ровно как у канонов толкования ВКПМД.
+//
+// CONTRA PROFERENTEM (4.6) И ЯЗЫКОВЫЕ РАСХОЖДЕНИЯ (4.7) — ПРАВИЛА
+// ПРЕДПОЧТЕНИЯ: они не дают значения, а выбирают между уже предложенными
+// прочтениями. Выражены выводом о предпочтении одного прочтения другому.
+
+language "law.core" version "0.2";
+package unidroit.picc version "0.1.0";
+namespace "urn:org:unidroit:clir:picc";
+
+pub entity Reading { label en official "Reading of a contract or term"; label ru unofficial "Прочтение договора или условия"; }
+
+pub relation reading_of_contract(r: Reading, c: Contract) kind empirical {
+    label en official "the reading is a reading of that contract";
+    label ru unofficial "прочтение относится к этому договору";
+}
+
+pub relation reading_of_term(r: Reading, t: Term) kind empirical {
+    label en official "the reading is a reading of that term";
+    label ru unofficial "прочтение относится к этому условию";
+}
+
+// --- Статья 4.1: намерение сторон и разумные лица ---------------------------
+
+pub relation common_intention_established(r: Reading, c: Contract) kind empirical {
+    label en official "the reading gives the common intention of the parties, and that intention can be established";
+    label ru unofficial "прочтение выражает общее намерение сторон, и это намерение может быть установлено";
+}
+
+pub external judgment relation reasonable_persons_meaning(r: Reading, c: Contract) {
+    authority Tribunal;
+    label en official "the reading gives the meaning that reasonable persons of the same kind as the parties would give to the contract in the same circumstances";
+    label ru unofficial "прочтение придаёт договору смысл, который придали бы ему разумные лица того же рода при аналогичных обстоятельствах";
+}
+
+pub relation contract_interpreted_by(r: Reading, c: Contract) kind institutional {
+    label en official "the contract is to be interpreted according to that reading (article 4.1)";
+    label ru unofficial "договор толкуется в соответствии с этим прочтением (статья 4.1)";
+}
+
+@source(PICC_ART4_1_EN, PICC_ART4_1_RU)
+rule InterpretedByCommonIntention(r: Reading, c: Contract) defeasible {
+    label en official "Article 4.1(1). A contract shall be interpreted according to the common intention of the parties";
+    label ru unofficial "Статья 4.1 пункт 1. Договор толкуется в соответствии с общим намерением сторон";
+    when reading_of_contract(r, c)
+        and common_intention_established(r, c);
+    then contract_interpreted_by(r, c);
+}
+
+@source(PICC_ART4_1_EN, PICC_ART4_1_RU)
+rule InterpretedByReasonablePersons(r: Reading, c: Contract) defeasible {
+    label en official "Article 4.1(2). If the common intention cannot be established, the contract shall be interpreted according to the meaning reasonable persons of the same kind would give it";
+    label ru unofficial "Статья 4.1 пункт 2. Если общее намерение установить нельзя, договор толкуется по смыслу, который придали бы разумные лица того же рода";
+    when reading_of_contract(r, c)
+        and reasonable_persons_meaning(r, c);
+    then contract_interpreted_by(r, c);
+}
+
+@source(PICC_ART4_1_EN, PICC_ART4_1_RU)
+rule CommonIntentionDisplacesReasonablePersons(r: Reading, other: Reading, c: Contract) defeater {
+    label en official "Article 4.1(2) (opening words). Where the common intention can be established, the reasonable-persons reading does not apply";
+    label ru unofficial "Статья 4.1 пункт 2 (вводная оговорка). Там, где общее намерение установлено, чтение по разумным лицам отпадает";
+    // Дефитер бьёт ТОЛЬКО чтение по разумным лицам и только когда общее
+    // намерение установлено ДРУГИМ чтением: без `r != other` правило поражало
+    // бы само себя, и вывод о намерении гас вместе с вытесняемым (замер:
+    // дело 02 давало NEITHER вместо TRUE_ONLY).
+    when reading_of_contract(r, c)
+        and reasonable_persons_meaning(r, c)
+        and common_intention_established(other, c)
+        and r != other;
+    defeat contract_interpreted_by(r, c);
+}
+
+// --- Статья 4.2: заявления и поведение стороны -------------------------------
+
+pub relation statement_by_party(st: Statement, p: Party, c: Contract) kind empirical {
+    label en official "the statement or other conduct is that of the party";
+    label ru unofficial "заявление или иное поведение принадлежит этой стороне";
+}
+
+pub relation intention_known_to_other(st: Statement) kind empirical {
+    label en official "the other party knew or could not have been unaware of that party's intention";
+    label ru unofficial "другая сторона знала или не могла не знать о намерении";
+}
+
+pub external judgment relation reasonable_person_meaning_of_statement(st: Statement) {
+    authority Tribunal;
+    label en official "the meaning that a reasonable person of the same kind as the other party would give to the statement in the same circumstances";
+    label ru unofficial "смысл, который придало бы заявлению разумное лицо того же рода при аналогичных обстоятельствах";
+}
+
+pub relation statement_interpreted_by_intention(st: Statement) kind institutional {
+    label en official "the statement is to be interpreted according to the party's intention (article 4.2(1))";
+    label ru unofficial "заявление толкуется в соответствии с намерением стороны (статья 4.2 пункт 1)";
+}
+
+pub relation statement_interpreted_by_reasonable_person(st: Statement) kind institutional {
+    label en official "the statement is to be interpreted according to the understanding of a reasonable person (article 4.2(2))";
+    label ru unofficial "заявление толкуется по пониманию разумного лица (статья 4.2 пункт 2)";
+}
+
+@source(PICC_ART4_2_EN, PICC_ART4_2_RU)
+rule StatementByIntention(st: Statement, p: Party, c: Contract) defeasible {
+    label en official "Article 4.2(1). Statements and other conduct shall be interpreted according to the party's intention if the other party knew or could not have been unaware of it";
+    label ru unofficial "Статья 4.2 пункт 1. Заявления и иное поведение толкуются по намерению стороны, если другая сторона знала или не могла не знать о нём";
+    when statement_by_party(st, p, c)
+        and intention_known_to_other(st);
+    then statement_interpreted_by_intention(st);
+}
+
+@source(PICC_ART4_2_EN, PICC_ART4_2_RU)
+rule StatementByReasonablePerson(st: Statement, p: Party, c: Contract) defeasible {
+    label en official "Article 4.2(2). If the preceding paragraph is not applicable, statements shall be interpreted according to the meaning a reasonable person would give them";
+    label ru unofficial "Статья 4.2 пункт 2. Если предыдущий пункт неприменим, заявления толкуются по смыслу, который придало бы им разумное лицо";
+    when statement_by_party(st, p, c)
+        and reasonable_person_meaning_of_statement(st);
+    then statement_interpreted_by_reasonable_person(st);
+}
+
+@source(PICC_ART4_2_EN, PICC_ART4_2_RU)
+rule IntentionDisplacesReasonablePerson(st: Statement) defeater {
+    label en official "Article 4.2(2) (opening words). Where the intention was known to the other party, the reasonable-person reading does not apply";
+    label ru unofficial "Статья 4.2 пункт 2 (вводная оговорка). Там, где намерение было известно другой стороне, чтение по разумному лицу отпадает";
+    when intention_known_to_other(st);
+    defeat statement_interpreted_by_reasonable_person(st);
+}
+
+// --- Статьи 4.4 и 4.5: два канона --------------------------------------------
+
+pub relation reading_consistent_with_whole_contract(r: Reading, c: Contract) kind empirical {
+    label en official "the reading interprets the terms in the light of the whole contract or statement in which they appear";
+    label ru unofficial "прочтение толкует условия в свете всего договора или заявления, в котором они стоят";
+}
+
+pub relation reading_gives_effect_to_all_terms(r: Reading, c: Contract) kind empirical {
+    label en official "the reading gives effect to all the terms rather than depriving some of them of effect";
+    label ru unofficial "прочтение придаёт силу всем условиям, а не лишает часть из них силы";
+}
+
+pub relation reading_conforms_to_canons(r: Reading, c: Contract) kind institutional {
+    label en official "the reading conforms to the canons of articles 4.4 and 4.5";
+    label ru unofficial "прочтение соответствует канонам статей 4.4 и 4.5";
+}
+
+@source(PICC_ART4_4_EN, PICC_ART4_5_EN)
+rule ReadingConformsToCanons(r: Reading, c: Contract) strict {
+    label en official "Articles 4.4 and 4.5. Terms are to be read in the light of the whole contract and so as to give effect to all of them";
+    label ru unofficial "Статьи 4.4 и 4.5. Условия читаются в свете всего договора и так, чтобы все они имели силу";
+    when reading_consistent_with_whole_contract(r, c)
+        and reading_gives_effect_to_all_terms(r, c);
+    then reading_conforms_to_canons(r, c);
+}
+
+// --- Статья 4.6: contra proferentem ------------------------------------------
+
+pub relation term_supplied_by_party(t: Term, p: Party) kind empirical {
+    label en official "the contract term was supplied by that party";
+    label ru unofficial "условие договора предложено этой стороной";
+}
+
+pub external judgment relation term_unclear(t: Term) {
+    authority Tribunal;
+    label en official "the contract term is unclear";
+    label ru unofficial "условие договора неясно";
+}
+
+pub relation reading_against_supplier(r: Reading, t: Term, p: Party) kind empirical {
+    label en official "the reading is the one against the party that supplied the term";
+    label ru unofficial "прочтение — то, которое против предложившей условие стороны";
+}
+
+pub relation reading_preferred(r: Reading, t: Term) kind institutional {
+    label en official "the reading is preferred (articles 4.6 and 4.7)";
+    label ru unofficial "прочтение предпочитается (статьи 4.6 и 4.7)";
+}
+
+@source(PICC_ART4_6_EN, PICC_ART4_6_RU)
+rule ContraProferentem(r: Reading, t: Term, p: Party) defeasible {
+    label en official "Article 4.6. If contract terms supplied by one party are unclear, an interpretation against that party is preferred";
+    label ru unofficial "Статья 4.6. Если предложенные одной стороной условия неясны, предпочитается толкование против этой стороны";
+    when term_supplied_by_party(t, p)
+        and term_unclear(t)
+        and reading_against_supplier(r, t, p);
+    then reading_preferred(r, t);
+}
+
+// --- Статья 4.7: языковые расхождения ----------------------------------------
+
+pub relation drawn_up_in_several_equally_authoritative_versions(c: Contract) kind empirical {
+    label en official "the contract is drawn up in two or more language versions which are equally authoritative";
+    label ru unofficial "договор составлен на двух или нескольких равно аутентичных языках";
+}
+
+pub relation discrepancy_between_versions(t: Term, c: Contract) kind empirical {
+    label en official "there is a discrepancy between the language versions";
+    label ru unofficial "между языковыми версиями есть расхождение";
+}
+
+pub relation reading_follows_original_version(r: Reading, t: Term, c: Contract) kind empirical {
+    label en official "the reading follows the version in which the contract was originally drawn up";
+    label ru unofficial "прочтение следует версии, на которой договор был первоначально составлен";
+}
+
+@source(PICC_ART4_7_EN, PICC_ART4_7_RU)
+rule OriginalVersionPreferred(r: Reading, t: Term, c: Contract) defeasible {
+    label en official "Article 4.7. In case of discrepancy between equally authoritative versions there is a preference for the interpretation according to the original version";
+    label ru unofficial "Статья 4.7. При расхождении равно аутентичных версий предпочитается толкование по версии, на которой договор был составлен первоначально";
+    when drawn_up_in_several_equally_authoritative_versions(c)
+        and discrepancy_between_versions(t, c)
+        and reading_follows_original_version(r, t, c);
+    then reading_preferred(r, t);
+}
+
+// --- Статья 4.3: относимые обстоятельства ------------------------------------
+//
+// Перечень пункта 4.3 адресован ТОЛКОВАТЕЛЮ: он говорит, что учитывать при
+// применении статей 4.1 и 4.2. Признака дела он не порождает и входит в
+// основание суждения §47.3, а не в посылку правила. Объявлено границей в
+// каталоге вопросов, а не выражено головой, которой у нормы нет.
+
+// --- Статья 4.8: восполнение пропущенного условия ----------------------------
+
+pub relation term_important_but_not_agreed(c: Contract, t: Term) kind empirical {
+    label en official "the parties have not agreed with respect to a term which is important for a determination of their rights and duties";
+    label ru unofficial "стороны не согласовали условие, важное для определения их прав и обязанностей";
+}
+
+pub external judgment relation term_appropriate_in_circumstances(c: Contract, t: Term) {
+    authority Tribunal;
+    label en official "the term is appropriate in the circumstances";
+    label ru unofficial "условие является надлежащим при данных обстоятельствах";
+}
+
+pub relation term_supplied(c: Contract, t: Term) kind institutional {
+    label en official "an appropriate term is supplied (article 4.8)";
+    label ru unofficial "надлежащее условие восполняется (статья 4.8)";
+}
+
+@source(PICC_ART4_8_EN, PICC_ART4_8_RU)
+rule SupplyOmittedTerm(c: Contract, t: Term) defeasible {
+    label en official "Article 4.8(1). Where the parties have not agreed with respect to an important term, a term which is appropriate in the circumstances shall be supplied";
+    label ru unofficial "Статья 4.8 пункт 1. Если стороны не согласовали важное условие, восполняется условие, надлежащее при данных обстоятельствах";
+    when term_important_but_not_agreed(c, t)
+        and term_appropriate_in_circumstances(c, t);
+    then term_supplied(c, t);
+}

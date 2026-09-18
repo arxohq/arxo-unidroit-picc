@@ -1,0 +1,381 @@
+// Статьи 9.1.1-9.1.15. Уступка прав.
+
+language "law.core" version "0.2";
+package unidroit.picc_obligations version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-obligations";
+
+pub relation assignment_of(r: Right, assignor: Party, assignee: Party, obligor: Party) kind empirical {
+    label en official "the right to payment or other performance is transferred by agreement from the assignor to the assignee against the obligor";
+    label ru unofficial "право на платёж или иное исполнение передаётся соглашением от цедента цессионарию против должника";
+}
+
+pub relation special_transfer_rules_apply(r: Right) kind empirical {
+    label en official "the transfer is made under the special rules governing instruments or the transfer of a business";
+    label ru unofficial "передача совершается по особым правилам об оборотных документах или о передаче предприятия";
+}
+
+pub relation non_monetary_right(r: Right) kind empirical {
+    label en official "the right is a right to non-monetary performance";
+    label ru unofficial "право является правом на неденежное исполнение";
+}
+
+pub relation assignment_significantly_more_burdensome(r: Right) kind empirical {
+    label en official "the assignment renders the obligation significantly more burdensome";
+    label ru unofficial "уступка делает обязательство существенно более обременительным";
+}
+
+pub relation partial_assignment(r: Right) kind empirical {
+    label en official "the right is assigned partially";
+    label ru unofficial "право уступается частично";
+}
+
+pub relation right_divisible(r: Right) kind empirical {
+    label en official "the right to other performance is divisible";
+    label ru unofficial "право на иное исполнение делимо";
+}
+
+pub relation future_right_identifiable(r: Right) kind empirical {
+    label en official "the future right, when it comes into existence, can be identified as the right to which the assignment relates";
+    label ru unofficial "будущее право при возникновении может быть определено как право, к которому относится уступка";
+}
+
+pub relation rights_identifiable_without_specification(r: Right) kind empirical {
+    label en official "the rights assigned without individual specification can be identified as rights to which the assignment relates";
+    label ru unofficial "права, уступленные без индивидуального определения, могут быть определены как относящиеся к уступке";
+}
+
+pub relation obligation_essentially_personal(r: Right) kind empirical {
+    label en official "the obligation in the circumstances is of an essentially personal character";
+    label ru unofficial "обязательство при данных обстоятельствах носит существенно личный характер";
+}
+
+pub relation obligor_consented(r: Right) kind empirical {
+    label en official "the obligor has consented to the assignment";
+    label ru unofficial "должник согласился на уступку";
+}
+
+pub relation additional_costs_caused_to_obligor(r: Right) kind empirical {
+    label en official "additional costs were caused to the obligor by the assignment";
+    label ru unofficial "уступкой должнику причинены дополнительные расходы";
+}
+
+pub relation non_assignment_clause(r: Right) kind empirical {
+    label en official "an agreement between the assignor and the obligor limits or prohibits the assignment";
+    label ru unofficial "соглашение между цедентом и должником ограничивает или запрещает уступку";
+}
+
+pub relation monetary_right(r: Right) kind empirical {
+    label en official "the right is a right to the payment of a monetary sum";
+    label ru unofficial "право является правом на уплату денежной суммы";
+}
+
+pub relation assignee_unaware_of_clause(r: Right) kind empirical {
+    label en official "the assignee at the time of the assignment neither knew nor ought to have known of the agreement limiting the assignment";
+    label ru unofficial "цессионарий в момент уступки не знал и не должен был знать о соглашении, ограничивающем уступку";
+}
+
+pub relation notice_of_assignment_received(r: Right) kind empirical {
+    label en official "the obligor has received a notice of the assignment from the assignor or the assignee";
+    label ru unofficial "должник получил извещение об уступке от цедента или цессионария";
+}
+
+pub relation notice_given_by_assignee(r: Right) kind empirical {
+    label en official "the notice of the assignment was given by the assignee";
+    label ru unofficial "извещение об уступке дано цессионарием";
+}
+
+pub relation adequate_proof_provided(r: Right) kind empirical {
+    label en official "adequate proof that the assignment has been made was provided";
+    label ru unofficial "предоставлено надлежащее доказательство совершения уступки";
+}
+
+pub relation successive_assignment_notice_order(r: Right, earlier: Right) kind empirical {
+    label en official "the same right was assigned successively and the notice of that assignment was received earlier";
+    label ru unofficial "то же право уступалось последовательно, и извещение об этой уступке получено раньше";
+}
+
+pub relation defence_against_assignor(r: Right) kind empirical {
+    label en official "the obligor has a defence which it could assert against the assignor";
+    label ru unofficial "у должника есть возражение, которое он мог бы заявить цеденту";
+}
+
+pub relation set_off_available_before_notice(r: Right) kind empirical {
+    label en official "a right of set-off was available to the obligor against the assignor up to the time notice of the assignment was received";
+    label ru unofficial "право на зачёт против цедента было у должника до получения извещения об уступке";
+}
+
+pub relation security_for_assigned_right(r: Right) kind empirical {
+    label en official "a right securing performance of the assigned right exists";
+    label ru unofficial "существует право, обеспечивающее исполнение уступленного права";
+}
+
+pub relation disclosed_to_assignee(r: Right) kind empirical {
+    label en official "the matter was otherwise disclosed to the assignee";
+    label ru unofficial "обстоятельство было иным образом раскрыто цессионарию";
+}
+
+pub relation payment_received_before_notice(r: Right) kind empirical {
+    label en official "the assignor received a payment from the obligor before notice of the assignment was given";
+    label ru unofficial "цедент получил платёж от должника до направления извещения об уступке";
+}
+
+pub relation section_applies_to_assignment(r: Right) kind institutional {
+    label en official "this Section applies to the assignment of the right (articles 9.1.1, 9.1.2)";
+    label ru unofficial "настоящий раздел применяется к уступке права (статьи 9.1.1, 9.1.2)";
+}
+
+pub relation right_assignable(r: Right) kind institutional {
+    label en official "the right may be assigned (articles 9.1.3-9.1.7)";
+    label ru unofficial "право может быть уступлено (статьи 9.1.3-9.1.7)";
+}
+
+pub relation future_right_transferred_at_agreement(r: Right) kind institutional {
+    label en official "the future right is deemed to be transferred at the time of the agreement (article 9.1.5)";
+    label ru unofficial "будущее право считается переданным в момент соглашения (статья 9.1.5)";
+}
+
+pub relation bulk_assignment_effective(r: Right) kind institutional {
+    label en official "rights assigned without individual specification are effectively assigned (article 9.1.6)";
+    label ru unofficial "права, уступленные без индивидуального определения, уступлены действительно (статья 9.1.6)";
+}
+
+pub relation obligor_consent_not_required(r: Right) kind institutional {
+    label en official "the consent of the obligor is not required (article 9.1.7(2))";
+    label ru unofficial "согласие должника не требуется (статья 9.1.7 пункт 2)";
+}
+
+pub relation obligor_entitled_to_costs(r: Right) kind institutional {
+    label en official "the obligor has a right to be compensated for additional costs caused by the assignment (article 9.1.8)";
+    label ru unofficial "должник имеет право на возмещение дополнительных расходов, вызванных уступкой (статья 9.1.8)";
+}
+
+pub relation assignment_effective_despite_clause(r: Right) kind institutional {
+    label en official "the assignment is effective notwithstanding a non-assignment clause (article 9.1.9)";
+    label ru unofficial "уступка действительна несмотря на запрет уступки (статья 9.1.9)";
+}
+
+pub relation discharged_by_paying_assignor(r: Right) kind institutional {
+    label en official "the obligor is discharged by paying the assignor (article 9.1.10(1))";
+    label ru unofficial "должник освобождается, уплатив цеденту (статья 9.1.10 пункт 1)";
+}
+
+pub relation discharged_by_paying_assignee(r: Right) kind institutional {
+    label en official "the obligor is discharged only by paying the assignee (article 9.1.10(2))";
+    label ru unofficial "должник освобождается только уплатой цессионарию (статья 9.1.10 пункт 2)";
+}
+
+pub relation discharged_by_order_of_notices(r: Right, earlier: Right) kind institutional {
+    label en official "the obligor is discharged by paying according to the order in which the notices were received (article 9.1.11)";
+    label ru unofficial "должник освобождается, платя в порядке получения извещений (статья 9.1.11)";
+}
+
+pub relation may_withhold_payment_pending_proof(r: Right) kind institutional {
+    label en official "until adequate proof is provided the obligor may withhold payment and the notice is not effective (article 9.1.12)";
+    label ru unofficial "до предоставления надлежащего доказательства должник может приостановить платёж, а извещение силы не имеет (статья 9.1.12)";
+}
+
+pub relation defence_assertable_against_assignee(r: Right) kind institutional {
+    label en official "the obligor may assert the defence against the assignee (article 9.1.13(1))";
+    label ru unofficial "должник может заявить возражение против цессионария (статья 9.1.13 пункт 1)";
+}
+
+pub relation set_off_assertable_against_assignee(r: Right) kind institutional {
+    label en official "the obligor may exercise against the assignee a right of set-off available against the assignor up to the notice (article 9.1.13(2))";
+    label ru unofficial "должник может осуществить против цессионария зачёт, доступный против цедента до извещения (статья 9.1.13 пункт 2)";
+}
+
+pub relation security_transferred_with_right(r: Right) kind institutional {
+    label en official "the assignment transfers to the assignee the rights securing performance of the right assigned (article 9.1.14)";
+    label ru unofficial "уступка передаёт цессионарию права, обеспечивающие исполнение уступленного права (статья 9.1.14)";
+}
+
+pub relation assignor_undertakes_existence(r: Right) kind institutional {
+    label en official "the assignor undertakes towards the assignee that the right exists and is free from third-party claims (article 9.1.15)";
+    label ru unofficial "цедент отвечает перед цессионарием за существование права и свободу его от притязаний третьих лиц (статья 9.1.15)";
+}
+
+pub relation assignor_reimburses_payment(r: Right) kind institutional {
+    label en official "the assignor will reimburse the assignee for any payment received from the obligor before notice of the assignment (article 9.1.15(f))";
+    label ru unofficial "цедент возмещает цессионарию платёж, полученный от должника до извещения об уступке (статья 9.1.15 подпункт f)";
+}
+
+@source(PICC_ART9_1_1_EN, PICC_ART9_1_1_RU)
+rule AssignmentIsTransferByAgreement(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.1. Assignment of a right means the transfer by agreement of the assignor's right to payment or other performance from a third person";
+    label ru unofficial "Статья 9.1.1. Уступкой права является передача соглашением права цедента на платёж или иное исполнение от третьего лица";
+    when assignment_of(r, assignor, assignee, obligor);
+    then section_applies_to_assignment(r);
+}
+
+@source(PICC_ART9_1_2_EN, PICC_ART9_1_2_RU)
+rule SpecialRulesExcludeSection(r: Right) defeater {
+    label en official "Article 9.1.2. This Section does not apply to transfers made under the special rules governing instruments or the transfer of a business";
+    label ru unofficial "Статья 9.1.2. Настоящий раздел не применяется к передачам по особым правилам об оборотных документах или о передаче предприятия";
+    when special_transfer_rules_apply(r);
+    defeat section_applies_to_assignment(r);
+}
+
+@source(PICC_ART9_1_3_EN, PICC_ART9_1_3_RU)
+rule NonMonetaryRightAssignable(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.3. A right to non-monetary performance may be assigned only if the assignment does not render the obligation significantly more burdensome";
+    label ru unofficial "Статья 9.1.3. Право на неденежное исполнение может быть уступлено, только если уступка не делает обязательство существенно более обременительным";
+    when assignment_of(r, assignor, assignee, obligor)
+        and non_monetary_right(r)
+        and not_known(assignment_significantly_more_burdensome(r));
+    then right_assignable(r);
+}
+
+@source(PICC_ART9_1_4_EN, PICC_ART9_1_4_RU)
+rule MonetaryRightAssignablePartially(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.4(1). A right to the payment of a monetary sum may be assigned partially";
+    label ru unofficial "Статья 9.1.4 пункт 1. Право на уплату денежной суммы может быть уступлено частично";
+    when assignment_of(r, assignor, assignee, obligor)
+        and monetary_right(r)
+        and partial_assignment(r);
+    then right_assignable(r);
+}
+
+@source(PICC_ART9_1_4_EN, PICC_ART9_1_4_RU)
+rule NonMonetaryPartialAssignment(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.4(2). A right to other performance may be assigned partially only if it is divisible and the assignment does not render the obligation significantly more burdensome";
+    label ru unofficial "Статья 9.1.4 пункт 2. Право на иное исполнение может быть уступлено частично, только если оно делимо и уступка не делает обязательство существенно более обременительным";
+    when assignment_of(r, assignor, assignee, obligor)
+        and non_monetary_right(r)
+        and partial_assignment(r)
+        and right_divisible(r)
+        and not_known(assignment_significantly_more_burdensome(r));
+    then right_assignable(r);
+}
+
+@source(PICC_ART9_1_5_EN, PICC_ART9_1_5_RU)
+rule FutureRightTransferredAtAgreement(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.5. A future right is deemed to be transferred at the time of the agreement, provided it can be identified as the right to which the assignment relates";
+    label ru unofficial "Статья 9.1.5. Будущее право считается переданным в момент соглашения, если оно может быть определено как право, к которому относится уступка";
+    when assignment_of(r, assignor, assignee, obligor)
+        and future_right_identifiable(r);
+    then future_right_transferred_at_agreement(r);
+}
+
+@source(PICC_ART9_1_6_EN, PICC_ART9_1_6_RU)
+rule BulkAssignment(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.6. A number of rights may be assigned without individual specification, provided such rights can be identified";
+    label ru unofficial "Статья 9.1.6. Несколько прав могут быть уступлены без индивидуального определения, если они могут быть определены";
+    when assignment_of(r, assignor, assignee, obligor)
+        and rights_identifiable_without_specification(r);
+    then bulk_assignment_effective(r);
+}
+
+@source(PICC_ART9_1_7_EN, PICC_ART9_1_7_RU)
+rule AgreementSufficientWithoutObligorConsent(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.7. A right is assigned by mere agreement between the assignor and the assignee; the consent of the obligor is not required unless the obligation is of an essentially personal character";
+    label ru unofficial "Статья 9.1.7. Право уступается одним соглашением цедента и цессионария; согласие должника не требуется, если обязательство не носит существенно личного характера";
+    when assignment_of(r, assignor, assignee, obligor)
+        and not_known(obligation_essentially_personal(r));
+    then obligor_consent_not_required(r);
+}
+
+@source(PICC_ART9_1_8_EN, PICC_ART9_1_8_RU)
+rule ObligorCompensatedForCosts(r: Right) strict {
+    label en official "Article 9.1.8. The obligor has a right to be compensated by the assignor or the assignee for any additional costs caused by the assignment";
+    label ru unofficial "Статья 9.1.8. Должник имеет право на возмещение цедентом или цессионарием дополнительных расходов, вызванных уступкой";
+    when additional_costs_caused_to_obligor(r);
+    then obligor_entitled_to_costs(r);
+}
+
+@source(PICC_ART9_1_9_EN, PICC_ART9_1_9_RU)
+rule MonetaryAssignmentEffectiveDespiteClause(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.9(1). The assignment of a right to the payment of a monetary sum is effective notwithstanding an agreement limiting or prohibiting such assignment";
+    label ru unofficial "Статья 9.1.9 пункт 1. Уступка права на уплату денежной суммы действительна несмотря на соглашение, ограничивающее или запрещающее уступку";
+    when assignment_of(r, assignor, assignee, obligor)
+        and monetary_right(r)
+        and non_assignment_clause(r);
+    then assignment_effective_despite_clause(r);
+}
+
+@source(PICC_ART9_1_9_EN, PICC_ART9_1_9_RU)
+rule NonMonetaryAssignmentEffectiveIfAssigneeUnaware(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.9(2). The assignment of a right to other performance contrary to a non-assignment agreement is nevertheless effective if the assignee neither knew nor ought to have known of the agreement";
+    label ru unofficial "Статья 9.1.9 пункт 2. Уступка права на иное исполнение вопреки запрету всё же действительна, если цессионарий не знал и не должен был знать о запрете";
+    when assignment_of(r, assignor, assignee, obligor)
+        and non_monetary_right(r)
+        and non_assignment_clause(r)
+        and assignee_unaware_of_clause(r);
+    then assignment_effective_despite_clause(r);
+}
+
+@source(PICC_ART9_1_10_EN, PICC_ART9_1_10_RU)
+rule DischargeByPayingAssignorBeforeNotice(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.10(1). Until the obligor receives a notice of the assignment, it is discharged by paying the assignor";
+    label ru unofficial "Статья 9.1.10 пункт 1. Пока должник не получил извещения об уступке, он освобождается уплатой цеденту";
+    when assignment_of(r, assignor, assignee, obligor)
+        and not_known(notice_of_assignment_received(r));
+    then discharged_by_paying_assignor(r);
+}
+
+@source(PICC_ART9_1_10_EN, PICC_ART9_1_10_RU)
+rule DischargeByPayingAssigneeAfterNotice(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.10(2). After the obligor receives such a notice, it is discharged only by paying the assignee";
+    label ru unofficial "Статья 9.1.10 пункт 2. После получения такого извещения должник освобождается только уплатой цессионарию";
+    when assignment_of(r, assignor, assignee, obligor)
+        and notice_of_assignment_received(r);
+    then discharged_by_paying_assignee(r);
+}
+
+@source(PICC_ART9_1_11_EN, PICC_ART9_1_11_RU)
+rule SuccessiveAssignmentsByNoticeOrder(r: Right, earlier: Right) defeasible {
+    label en official "Article 9.1.11. If the same right has been assigned to successive assignees, the obligor is discharged by paying according to the order in which the notices were received";
+    label ru unofficial "Статья 9.1.11. Если то же право уступлено нескольким цессионариям последовательно, должник освобождается, платя в порядке получения извещений";
+    when successive_assignment_notice_order(r, earlier);
+    then discharged_by_order_of_notices(r, earlier);
+}
+
+@source(PICC_ART9_1_12_EN, PICC_ART9_1_12_RU)
+rule WithholdingPendingProofOfAssignment(r: Right) defeasible {
+    label en official "Article 9.1.12. Where notice is given by the assignee, the obligor may request adequate proof and may withhold payment until it is provided; unless it is provided, the notice is not effective";
+    label ru unofficial "Статья 9.1.12. Если извещение дано цессионарием, должник может потребовать надлежащего доказательства и приостановить платёж до его предоставления; без него извещение силы не имеет";
+    when notice_given_by_assignee(r)
+        and not_known(adequate_proof_provided(r));
+    then may_withhold_payment_pending_proof(r);
+}
+
+@source(PICC_ART9_1_13_EN, PICC_ART9_1_13_RU)
+rule DefencesAgainstAssignee(r: Right) defeasible {
+    label en official "Article 9.1.13(1). The obligor may assert against the assignee all defences that it could assert against the assignor";
+    label ru unofficial "Статья 9.1.13 пункт 1. Должник может заявить против цессионария все возражения, которые мог бы заявить цеденту";
+    when defence_against_assignor(r);
+    then defence_assertable_against_assignee(r);
+}
+
+@source(PICC_ART9_1_13_EN, PICC_ART9_1_13_RU)
+rule SetOffAgainstAssignee(r: Right) defeasible {
+    label en official "Article 9.1.13(2). The obligor may exercise against the assignee any right of set-off available against the assignor up to the time notice of assignment was received";
+    label ru unofficial "Статья 9.1.13 пункт 2. Должник может осуществить против цессионария зачёт, доступный против цедента до получения извещения об уступке";
+    when set_off_available_before_notice(r);
+    then set_off_assertable_against_assignee(r);
+}
+
+@source(PICC_ART9_1_14_EN, PICC_ART9_1_14_RU)
+rule SecurityFollowsAssignedRight(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.14. The assignment of a right transfers to the assignee all rights securing performance of the right assigned";
+    label ru unofficial "Статья 9.1.14. Уступка права передаёт цессионарию все права, обеспечивающие исполнение уступленного права";
+    when assignment_of(r, assignor, assignee, obligor)
+        and security_for_assigned_right(r);
+    then security_transferred_with_right(r);
+}
+
+@source(PICC_ART9_1_15_EN, PICC_ART9_1_15_RU)
+rule AssignorUndertakings(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
+    label en official "Article 9.1.15. The assignor undertakes towards the assignee, except as otherwise disclosed, that the right exists, is assignable and free from third-party claims";
+    label ru unofficial "Статья 9.1.15. Цедент отвечает перед цессионарием, если иное не раскрыто, за то, что право существует, может быть уступлено и свободно от притязаний третьих лиц";
+    when assignment_of(r, assignor, assignee, obligor)
+        and not_known(disclosed_to_assignee(r));
+    then assignor_undertakes_existence(r);
+}
+
+@source(PICC_ART9_1_15_EN, PICC_ART9_1_15_RU)
+rule AssignorReimbursesEarlyPayment(r: Right) strict {
+    label en official "Article 9.1.15(f). The assignor will reimburse the assignee for any payment received from the obligor before notice of the assignment was given";
+    label ru unofficial "Статья 9.1.15 подпункт f. Цедент возмещает цессионарию платёж, полученный от должника до направления извещения об уступке";
+    when payment_received_before_notice(r);
+    then assignor_reimburses_payment(r);
+}

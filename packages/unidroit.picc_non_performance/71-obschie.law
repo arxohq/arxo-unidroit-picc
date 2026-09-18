@@ -1,0 +1,391 @@
+// Статьи 7.1.1-7.1.7. Неисполнение в целом.
+
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+// --- Статья 7.1.1: что такое неисполнение ----------------------------------------
+
+pub relation failure_to_perform(n: NonPerformance) kind empirical {
+    label en official "there is a failure by the party to perform the obligation, including defective performance or late performance";
+    label ru unofficial "сторона не исполнила обязательство, в том числе исполнила ненадлежащим образом или с просрочкой";
+}
+
+pub relation is_non_performance(n: NonPerformance) kind institutional {
+    label en official "the failure constitutes non-performance (article 7.1.1)";
+    label ru unofficial "неисполнением является это нарушение (статья 7.1.1)";
+}
+
+@source(PICC_ART7_1_1_EN, PICC_ART7_1_1_RU)
+rule FailureIsNonPerformance(n: NonPerformance, o: Obligation, p: Party) defeasible {
+    label en official "Article 7.1.1. Non-performance is failure by a party to perform any of its obligations under the contract, including defective performance or late performance";
+    label ru unofficial "Статья 7.1.1. Неисполнением является нарушение стороной любого из своих обязательств по договору, включая ненадлежащее или просроченное исполнение";
+    when non_performance_of(n, o, p)
+        and failure_to_perform(n);
+    then is_non_performance(n);
+}
+
+// --- Статья 7.1.2: вмешательство другой стороны -----------------------------------
+
+pub relation caused_by_aggrieved_party(n: NonPerformance) kind empirical {
+    label en official "the non-performance was caused by the first party's act or omission or by another event for which the first party bears the risk";
+    label ru unofficial "неисполнение вызвано действием или бездействием первой стороны либо иным событием, риск которого она несёт";
+}
+
+pub relation may_rely_on_non_performance(n: NonPerformance, p: Party) kind institutional {
+    label en official "the party may rely on the non-performance of the other party (article 7.1.2)";
+    label ru unofficial "сторона может ссылаться на неисполнение другой стороны (статья 7.1.2)";
+}
+
+@source(PICC_ART7_1_2_EN, PICC_ART7_1_2_RU)
+rule RelianceOnNonPerformance(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
+    label en official "Article 7.1.2. A party may rely on the non-performance of the other party";
+    label ru unofficial "Статья 7.1.2. Сторона может ссылаться на неисполнение другой стороны";
+    when is_non_performance(n)
+        and non_performance_of(n, o, p)
+        and aggrieved_party(n, other);
+    then may_rely_on_non_performance(n, other);
+    // «to the extent that» источника: вмешательство самой стороны снимает ссылку.
+    unless aggrieved_party(n, other)
+        and caused_by_aggrieved_party(n);
+}
+
+// --- Статья 7.1.3: приостановление исполнения -------------------------------------
+
+pub relation parties_perform_simultaneously(c: Contract) kind empirical {
+    label en official "the parties are to perform simultaneously";
+    label ru unofficial "стороны должны исполнить одновременно";
+}
+
+pub relation other_party_tendered_performance(c: Contract) kind empirical {
+    label en official "the other party has tendered its performance";
+    label ru unofficial "другая сторона предложила своё исполнение";
+}
+
+pub relation parties_perform_consecutively(c: Contract) kind empirical {
+    label en official "the parties are to perform consecutively and this party is to perform later";
+    label ru unofficial "стороны исполняют последовательно, и эта сторона исполняет позже";
+}
+
+pub relation first_party_performed(c: Contract) kind empirical {
+    label en official "the party that is to perform first has performed";
+    label ru unofficial "сторона, исполняющая первой, исполнила";
+}
+
+pub relation may_withhold_performance(c: Contract, p: Party) kind institutional {
+    label en official "the party may withhold its performance (article 7.1.3)";
+    label ru unofficial "сторона может приостановить своё исполнение (статья 7.1.3)";
+}
+
+@source(PICC_ART7_1_3_EN, PICC_ART7_1_3_RU)
+rule WithholdingOnSimultaneousPerformance(c: Contract, p: Party) defeasible {
+    label en official "Article 7.1.3(1). Where the parties are to perform simultaneously, either party may withhold performance until the other party tenders its performance";
+    label ru unofficial "Статья 7.1.3 пункт 1. Если стороны исполняют одновременно, каждая может приостановить исполнение, пока другая не предложит своё";
+    when party_to_contract(c, p)
+        and parties_perform_simultaneously(c)
+        and not_known(other_party_tendered_performance(c));
+    then may_withhold_performance(c, p);
+}
+
+@source(PICC_ART7_1_3_EN, PICC_ART7_1_3_RU)
+rule WithholdingOnConsecutivePerformance(c: Contract, p: Party) defeasible {
+    label en official "Article 7.1.3(2). Where the parties are to perform consecutively, the party that is to perform later may withhold its performance until the first party has performed";
+    label ru unofficial "Статья 7.1.3 пункт 2. Если стороны исполняют последовательно, исполняющая позже может приостановить исполнение, пока первая не исполнит";
+    when party_to_contract(c, p)
+        and parties_perform_consecutively(c)
+        and not_known(first_party_performed(c));
+    then may_withhold_performance(c, p);
+}
+
+// --- Статья 7.1.4: исправление неисполнившей стороной ------------------------------
+//
+// ОТЛИЧИЕ ОТ КОНВЕНЦИИ ПРЯМО В ПУНКТЕ 2: право на исправление НЕ снимается
+// извещением о прекращении договора. У статьи 48 Конвенции такого правила нет,
+// и соотношение с расторжением там решается практикой.
+
+pub relation cure_notice_given_without_undue_delay(n: NonPerformance) kind empirical {
+    label en official "the non-performing party gave notice without undue delay indicating the proposed manner and timing of the cure";
+    label ru unofficial "неисполнившая сторона без неоправданной задержки известила о предполагаемых способе и сроке исправления";
+}
+
+pub external judgment relation cure_appropriate_in_circumstances(n: NonPerformance) {
+    authority Tribunal;
+    label en official "cure is appropriate in the circumstances";
+    label ru unofficial "исправление уместно при данных обстоятельствах";
+}
+
+pub external judgment relation aggrieved_party_has_legitimate_interest_in_refusal(n: NonPerformance) {
+    authority Tribunal;
+    label en official "the aggrieved party has a legitimate interest in refusing cure";
+    label ru unofficial "у потерпевшей стороны есть законный интерес в отказе от исправления";
+}
+
+pub relation cure_effected_promptly(n: NonPerformance) kind empirical {
+    label en official "cure is effected promptly";
+    label ru unofficial "исправление произведено незамедлительно";
+}
+
+pub relation termination_notice_given(n: NonPerformance) kind empirical {
+    label en official "notice of termination has been given";
+    label ru unofficial "дано извещение о прекращении договора";
+}
+
+pub relation harm_caused_or_not_prevented_by_cure(n: NonPerformance) kind empirical {
+    label en official "harm was caused by the delay or caused or not prevented by the cure";
+    label ru unofficial "просрочкой причинён вред либо вред причинён или не предотвращён исправлением";
+}
+
+pub relation may_cure(n: NonPerformance, p: Party) kind institutional {
+    label en official "the non-performing party may cure the non-performance at its own expense (article 7.1.4(1))";
+    label ru unofficial "неисполнившая сторона может за свой счёт исправить неисполнение (статья 7.1.4 пункт 1)";
+}
+
+pub relation inconsistent_rights_suspended(n: NonPerformance) kind institutional {
+    label en official "rights of the aggrieved party that are inconsistent with the non-performing party's performance are suspended until the time for cure has expired (article 7.1.4(3))";
+    label ru unofficial "права потерпевшей стороны, несовместимые с исполнением неисполнившей стороны, приостанавливаются до истечения срока на исправление (статья 7.1.4 пункт 3)";
+}
+
+pub relation damages_retained_despite_cure(n: NonPerformance, p: Party) kind institutional {
+    label en official "notwithstanding cure, the aggrieved party retains the right to claim damages for delay and for harm caused or not prevented by the cure (article 7.1.4(5))";
+    label ru unofficial "несмотря на исправление, потерпевшая сторона сохраняет право требовать убытки за просрочку и за вред, причинённый или не предотвращённый исправлением (статья 7.1.4 пункт 5)";
+}
+
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_RU)
+rule RightToCure(n: NonPerformance, o: Obligation, p: Party) defeasible {
+    label en official "Article 7.1.4(1). The non-performing party may at its own expense cure any non-performance where notice is given without undue delay, cure is appropriate, the aggrieved party has no legitimate interest in refusing it and cure is effected promptly";
+    label ru unofficial "Статья 7.1.4 пункт 1. Неисполнившая сторона может за свой счёт исправить неисполнение, если без неоправданной задержки известила о нём, исправление уместно, у потерпевшей стороны нет законного интереса в отказе и исправление произведено незамедлительно";
+    when non_performance_of(n, o, p)
+        and cure_notice_given_without_undue_delay(n)
+        and cure_appropriate_in_circumstances(n)
+        and cure_effected_promptly(n)
+        and not_known(aggrieved_party_has_legitimate_interest_in_refusal(n));
+    then may_cure(n, p);
+    // ПУНКТ 2 ИСТОЧНИКА: извещение о прекращении права на исправление НЕ снимает,
+    // и потому оговорки о нём здесь нет — это не пропуск, а норма.
+}
+
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_RU)
+rule CureSuspendsInconsistentRights(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.1.4(3). Upon effective notice of cure, rights of the aggrieved party that are inconsistent with the non-performing party's performance are suspended until the time for cure has expired";
+    label ru unofficial "Статья 7.1.4 пункт 3. По действительному извещению об исправлении права потерпевшей стороны, несовместимые с исполнением неисполнившей стороны, приостанавливаются до истечения срока исправления";
+    when may_cure(n, p);
+    then inconsistent_rights_suspended(n);
+}
+
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_RU)
+rule DamagesRetainedDespiteCure(n: NonPerformance, o: Obligation, p: Party, other: Party) strict {
+    label en official "Article 7.1.4(5). Notwithstanding cure, the aggrieved party retains the right to claim damages for delay as well as for any harm caused or not prevented by the cure";
+    label ru unofficial "Статья 7.1.4 пункт 5. Несмотря на исправление, потерпевшая сторона сохраняет право требовать убытки за просрочку и за вред, причинённый или не предотвращённый исправлением";
+    when non_performance_of(n, o, p)
+        and aggrieved_party(n, other)
+        and harm_caused_or_not_prevented_by_cure(n);
+    then damages_retained_despite_cure(n, other);
+}
+
+// --- Статья 7.1.5: дополнительный срок для исполнения ------------------------------
+
+pub relation additional_period_allowed_by_notice(n: NonPerformance) kind empirical {
+    label en official "the aggrieved party has by notice allowed an additional period of time for performance";
+    label ru unofficial "потерпевшая сторона извещением предоставила дополнительный срок для исполнения";
+}
+
+pub relation additional_period_expired_without_performance(n: NonPerformance) kind empirical {
+    label en official "upon expiry of the additional period due performance has not been made, or notice of refusal to perform within it was received";
+    label ru unofficial "по истечении дополнительного срока надлежащее исполнение не произведено либо получено извещение об отказе исполнить в этот срок";
+}
+
+pub relation delay_is_not_fundamental(n: NonPerformance) kind empirical {
+    label en official "the case is one of delay in performance which is not fundamental";
+    label ru unofficial "имеет место просрочка исполнения, не являющаяся существенной";
+}
+
+pub external judgment relation additional_period_of_reasonable_length(n: NonPerformance) {
+    authority Tribunal;
+    label en official "the additional period allowed is of reasonable length";
+    label ru unofficial "предоставленный дополнительный срок имеет разумную продолжительность";
+}
+
+pub relation obligation_is_minor_part(n: NonPerformance) kind empirical {
+    label en official "the obligation which has not been performed is only a minor part of the contractual obligation of the non-performing party";
+    label ru unofficial "неисполненное обязательство составляет лишь незначительную часть договорного обязательства неисполнившей стороны";
+}
+
+pub relation may_withhold_and_claim_damages_only(n: NonPerformance, p: Party) kind institutional {
+    label en official "during the additional period the aggrieved party may withhold performance of its own reciprocal obligations and claim damages but may not resort to any other remedy (article 7.1.5(2))";
+    label ru unofficial "в течение дополнительного срока потерпевшая сторона может приостановить исполнение своих встречных обязательств и требовать убытки, но не может прибегнуть к иным средствам защиты (статья 7.1.5 пункт 2)";
+}
+
+pub relation may_resort_to_any_remedy(n: NonPerformance, p: Party) kind institutional {
+    label en official "the aggrieved party may resort to any of the remedies available under this Chapter (article 7.1.5(2))";
+    label ru unofficial "потерпевшая сторона может прибегнуть к любому средству защиты, доступному по настоящей главе (статья 7.1.5 пункт 2)";
+}
+
+pub relation may_terminate_after_additional_period(n: NonPerformance, p: Party) kind institutional {
+    label en official "the aggrieved party may terminate the contract at the end of the additional period (article 7.1.5(3))";
+    label ru unofficial "потерпевшая сторона может прекратить договор по окончании дополнительного срока (статья 7.1.5 пункт 3)";
+}
+
+@source(PICC_ART7_1_5_EN, PICC_ART7_1_5_RU)
+rule RemediesLimitedDuringAdditionalPeriod(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
+    label en official "Article 7.1.5(2). During the additional period the aggrieved party may withhold performance of its own reciprocal obligations and may claim damages but may not resort to any other remedy";
+    label ru unofficial "Статья 7.1.5 пункт 2. В течение дополнительного срока потерпевшая сторона может приостановить исполнение своих встречных обязательств и требовать убытки, но не может прибегнуть к иным средствам защиты";
+    when non_performance_of(n, o, p)
+        and aggrieved_party(n, other)
+        and additional_period_allowed_by_notice(n)
+        and not_known(additional_period_expired_without_performance(n));
+    then may_withhold_and_claim_damages_only(n, other);
+}
+
+@source(PICC_ART7_1_5_EN, PICC_ART7_1_5_RU)
+rule RemediesRevivedAfterAdditionalPeriod(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
+    label en official "Article 7.1.5(2). If performance has not been made upon expiry of the additional period, the aggrieved party may resort to any of the remedies available under this Chapter";
+    label ru unofficial "Статья 7.1.5 пункт 2. Если по истечении дополнительного срока исполнение не произведено, потерпевшая сторона может прибегнуть к любому средству защиты настоящей главы";
+    when non_performance_of(n, o, p)
+        and aggrieved_party(n, other)
+        and additional_period_allowed_by_notice(n)
+        and additional_period_expired_without_performance(n);
+    then may_resort_to_any_remedy(n, other);
+}
+
+@source(PICC_ART7_1_5_EN, PICC_ART7_1_5_RU)
+rule TerminationAfterAdditionalPeriodForDelay(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
+    label en official "Article 7.1.5(3). Where in a case of delay which is not fundamental the aggrieved party has given notice allowing an additional period of reasonable length, it may terminate the contract at the end of that period";
+    label ru unofficial "Статья 7.1.5 пункт 3. Если при несущественной просрочке потерпевшая сторона известила о дополнительном сроке разумной продолжительности, она может прекратить договор по окончании этого срока";
+    when non_performance_of(n, o, p)
+        and aggrieved_party(n, other)
+        and delay_is_not_fundamental(n)
+        and additional_period_allowed_by_notice(n)
+        and additional_period_of_reasonable_length(n)
+        and additional_period_expired_without_performance(n);
+    then may_terminate_after_additional_period(n, other);
+    // Пункт 4: незначительная часть обязательства пункт 3 не задействует.
+    unless aggrieved_party(n, other)
+        and obligation_is_minor_part(n);
+}
+
+// --- Статья 7.1.6: оговорки об освобождении от ответственности ---------------------
+
+pub relation exemption_clause_present(c: Contract, t: Term) kind empirical {
+    label en official "a clause limits or excludes one party's liability for non-performance, or permits one party to render performance substantially different from what the other party reasonably expected";
+    label ru unofficial "условие ограничивает или исключает ответственность стороны за неисполнение либо позволяет ей исполнить существенно иначе, чем разумно ожидала другая сторона";
+}
+
+pub external judgment relation grossly_unfair_to_invoke(c: Contract, t: Term) {
+    authority Tribunal;
+    label en official "it would be grossly unfair to invoke the clause, having regard to the purpose of the contract";
+    label ru unofficial "ссылаться на условие было бы крайне несправедливо с учётом цели договора";
+}
+
+pub relation clause_may_not_be_invoked(c: Contract, t: Term) kind institutional {
+    label en official "the exemption clause may not be invoked (article 7.1.6)";
+    label ru unofficial "на оговорку об освобождении ссылаться нельзя (статья 7.1.6)";
+}
+
+@source(PICC_ART7_1_6_EN, PICC_ART7_1_6_RU)
+rule GrosslyUnfairExemptionClause(c: Contract, t: Term) defeasible {
+    label en official "Article 7.1.6. A clause which limits or excludes liability for non-performance may not be invoked if it would be grossly unfair to do so, having regard to the purpose of the contract";
+    label ru unofficial "Статья 7.1.6. На условие, ограничивающее или исключающее ответственность за неисполнение, ссылаться нельзя, если это было бы крайне несправедливо с учётом цели договора";
+    when exemption_clause_present(c, t)
+        and grossly_unfair_to_invoke(c, t);
+    then clause_may_not_be_invoked(c, t);
+}
+
+// --- Статья 7.1.7: непреодолимая сила ----------------------------------------------
+//
+// БЛИЗКО К СТАТЬЕ 79 КОНВЕНЦИИ, НО НЕ ТОЖДЕСТВЕННО: пункт 4 прямо сохраняет
+// право прекратить договор, приостановить исполнение и требовать проценты,
+// а пересмотр договора живёт не здесь, а в статьях 6.2.1-6.2.3.
+
+pub relation impediment_beyond_control(n: NonPerformance) kind empirical {
+    label en official "the non-performance was due to an impediment beyond the party's control";
+    label ru unofficial "неисполнение вызвано препятствием вне контроля стороны";
+}
+
+pub external judgment relation impediment_unforeseeable_and_unavoidable(n: NonPerformance) {
+    authority Tribunal;
+    label en official "the party could not reasonably be expected to have taken the impediment into account at the time of the conclusion of the contract or to have avoided or overcome it or its consequences";
+    label ru unofficial "от стороны нельзя было разумно ожидать учёта препятствия при заключении договора либо его предотвращения или преодоления его последствий";
+}
+
+pub relation impediment_temporary(n: NonPerformance) kind empirical {
+    label en official "the impediment is only temporary";
+    label ru unofficial "препятствие носит лишь временный характер";
+}
+
+pub relation impediment_notice_received_in_time(n: NonPerformance) kind empirical {
+    label en official "notice of the impediment and its effect was received by the other party within a reasonable time after the party knew or ought to have known of the impediment";
+    label ru unofficial "извещение о препятствии и его влиянии получено другой стороной в разумный срок после того, как сторона узнала или должна была узнать о препятствии";
+}
+
+pub relation non_performance_excused(n: NonPerformance, p: Party) kind institutional {
+    label en official "the non-performance is excused (article 7.1.7(1))";
+    label ru unofficial "неисполнение освобождается от ответственности (статья 7.1.7 пункт 1)";
+}
+
+pub relation excuse_limited_to_reasonable_period(n: NonPerformance) kind institutional {
+    label en official "the excuse has effect only for such period as is reasonable having regard to the effect of the impediment on the performance (article 7.1.7(2))";
+    label ru unofficial "освобождение действует лишь в течение разумного периода с учётом влияния препятствия на исполнение (статья 7.1.7 пункт 2)";
+}
+
+pub relation liable_for_damages_from_non_receipt(n: NonPerformance, p: Party) kind institutional {
+    label en official "the party is liable for damages resulting from the non-receipt of the notice of the impediment (article 7.1.7(3))";
+    label ru unofficial "сторона отвечает за убытки, вызванные неполучением извещения о препятствии (статья 7.1.7 пункт 3)";
+}
+
+pub relation termination_and_interest_preserved(n: NonPerformance, p: Party) kind institutional {
+    label en official "nothing prevents a party from exercising a right to terminate the contract, to withhold performance or to request interest on money due (article 7.1.7(4))";
+    label ru unofficial "ничто не препятствует стороне осуществить право прекратить договор, приостановить исполнение или требовать проценты на причитающиеся деньги (статья 7.1.7 пункт 4)";
+}
+
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_RU)
+rule ForceMajeureExcusesNonPerformance(n: NonPerformance, o: Obligation, p: Party) defeasible {
+    label en official "Article 7.1.7(1). Non-performance is excused if the party proves that it was due to an impediment beyond its control which it could not reasonably be expected to have taken into account, avoided or overcome";
+    label ru unofficial "Статья 7.1.7 пункт 1. Неисполнение освобождается от ответственности, если сторона докажет, что оно вызвано препятствием вне её контроля, которого нельзя было разумно ожидать учесть, предотвратить или преодолеть";
+    when non_performance_of(n, o, p)
+        and impediment_beyond_control(n)
+        and impediment_unforeseeable_and_unavoidable(n);
+    then non_performance_excused(n, p);
+}
+
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_RU)
+rule TemporaryImpedimentLimitsExcuse(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.1.7(2). When the impediment is only temporary, the excuse shall have effect for such period as is reasonable";
+    label ru unofficial "Статья 7.1.7 пункт 2. Если препятствие носит лишь временный характер, освобождение действует в течение разумного периода";
+    when non_performance_excused(n, p)
+        and impediment_temporary(n);
+    then excuse_limited_to_reasonable_period(n);
+}
+
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_RU)
+rule LiabilityForLateNoticeOfImpediment(n: NonPerformance, o: Obligation, p: Party) defeasible {
+    label en official "Article 7.1.7(3). If the notice of the impediment is not received within a reasonable time, the party is liable for damages resulting from such non-receipt";
+    label ru unofficial "Статья 7.1.7 пункт 3. Если извещение о препятствии не получено в разумный срок, сторона отвечает за убытки, вызванные его неполучением";
+    when non_performance_of(n, o, p)
+        and impediment_beyond_control(n)
+        and not_known(impediment_notice_received_in_time(n));
+    then liable_for_damages_from_non_receipt(n, p);
+}
+
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_RU)
+rule ExcuseDoesNotBarTerminationOrInterest(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.1.7(4). Nothing in this Article prevents a party from exercising a right to terminate the contract or to withhold performance or request interest on money due";
+    label ru unofficial "Статья 7.1.7 пункт 4. Ничто в настоящей статье не препятствует стороне осуществить право прекратить договор, приостановить исполнение или требовать проценты на причитающиеся деньги";
+    when non_performance_excused(n, p);
+    then termination_and_interest_preserved(n, p);
+}
+
+// --- Статья 7.1.4 пункт 4: приостановление на время исправления ---------------------
+
+pub relation may_withhold_pending_cure(n: NonPerformance, p: Party) kind institutional {
+    label en official "the aggrieved party may withhold performance pending cure (article 7.1.4(4))";
+    label ru unofficial "потерпевшая сторона может приостановить исполнение на время исправления (статья 7.1.4 пункт 4)";
+}
+
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_RU)
+rule WithholdingPendingCure(n: NonPerformance, p: Party, other: Party) defeasible {
+    label en official "Article 7.1.4(4). The aggrieved party may withhold performance pending cure";
+    label ru unofficial "Статья 7.1.4 пункт 4. Потерпевшая сторона может приостановить исполнение на время исправления";
+    when may_cure(n, p)
+        and aggrieved_party(n, other);
+    then may_withhold_pending_cure(n, other);
+}

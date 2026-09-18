@@ -1,0 +1,96 @@
+language "law.core" version "0.2";
+package unidroit.picc_validity version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-validity";
+
+// Дело 3. Осуществление оспаривания и его последствия: извещение (3.2.11),
+// срок (3.2.12), частичное оспаривание (3.2.13), обратная сила (3.2.14),
+// реституция (3.2.15), убытки (3.2.16), односторонние заявления (3.2.17) и
+// подтверждение договора (3.2.9).
+
+test "PICCV-03-NOTICE-AND-RESTITUTION" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": fraudulent_representation_or_non_disclosure(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a1": notice_of_avoidance_given(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a2": notice_within_reasonable_time(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")) { origin adjudicated; }
+        assert "a3": supplied_under_contract(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a4": makes_concurrent_restitution(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a5": expenses_reasonably_required(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a6": knew_of_ground_for_avoidance(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:seller")) { origin case_input; }
+        assert "a7": restitution_in_kind_impossible(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:seller")) { origin case_input; }
+        assert "a8": allowance_in_money_reasonable(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:seller")) { origin adjudicated; }
+        assert "a9": restitution_in_kind_impossible(entity_ref("urn:case:piccv:contract-3b"), entity_ref("urn:case:piccv:seller")) { origin case_input; }
+        assert "a10": allowance_in_money_reasonable(entity_ref("urn:case:piccv:contract-3b"), entity_ref("urn:case:piccv:seller")) { origin adjudicated; }
+        assert "a11": impossibility_attributable_to_other_party(entity_ref("urn:case:piccv:contract-3b"), entity_ref("urn:case:piccv:seller")) { origin case_input; }
+        assert "a12": ground_affects_individual_terms_only(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:term-3")) { origin case_input; }
+        assert "a13": ground_affects_individual_terms_only(entity_ref("urn:case:piccv:contract-3c"), entity_ref("urn:case:piccv:term-3c")) { origin case_input; }
+        assert "a14": unreasonable_to_uphold_remaining(entity_ref("urn:case:piccv:contract-3c")) { origin adjudicated; }
+        assert "a15": term_asserted_by_other_party(entity_ref("urn:case:piccv:term-3"), entity_ref("urn:case:piccv:contract-3")) { origin case_input; }
+        assert "a16": communication_of_intention(entity_ref("urn:case:piccv:declaration-3"), entity_ref("urn:case:piccv:contract-3")) { origin case_input; }
+        assert "a17": fraudulent_representation_or_non_disclosure(entity_ref("urn:case:piccv:contract-3d"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a18": contract_confirmed_after_period_began(entity_ref("urn:case:piccv:contract-3d"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+    }
+
+    // Право оспорить осуществляется ИЗВЕЩЕНИЕМ — это власть §127, а не факт.
+    evaluate positions();
+    expect position(AvoidByNotice, ACTIVE);
+
+    evaluate truth(contract_avoided(entity_ref("urn:case:piccv:contract-3")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NoticeAvoidsContract);
+
+    evaluate truth(avoidance_notice_in_time(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NoticeGivenInTime);
+
+    evaluate truth(notice_period_runs_from_assertion(entity_ref("urn:case:piccv:term-3"), entity_ref("urn:case:piccv:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PeriodForTermRunsFromAssertion);
+
+    evaluate truth(avoidance_retroactive(entity_ref("urn:case:piccv:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AvoidanceIsRetroactive);
+
+    evaluate truth(may_claim_restitution(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RestitutionOnAvoidance);
+
+    evaluate truth(allowance_in_money_due(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AllowanceInMoney);
+
+    // Если невозможность вызвана другой стороной, денежного возмещения нет.
+    evaluate truth(allowance_in_money_due(entity_ref("urn:case:piccv:contract-3b"), entity_ref("urn:case:piccv:seller")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(expenses_compensable(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ExpensesOfPreservationCompensable);
+
+    evaluate truth(liable_for_reliance_damages(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DamagesIrrespectiveOfAvoidance);
+
+    evaluate truth(avoidance_limited_to_terms(entity_ref("urn:case:piccv:contract-3"), entity_ref("urn:case:piccv:term-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PartialAvoidance);
+
+    // Неразумность сохранения остальной части снимает ограничение условиями.
+    evaluate truth(avoidance_limited_to_terms(entity_ref("urn:case:piccv:contract-3c"), entity_ref("urn:case:piccv:term-3c")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(chapter_applies_to_declaration(entity_ref("urn:case:piccv:declaration-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ChapterAppliesToUnilateralDeclarations);
+
+    // Подтверждение договора исключает оспаривание (3.2.9).
+    evaluate truth(may_avoid_contract(entity_ref("urn:case:piccv:contract-3d"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == NEITHER;
+}

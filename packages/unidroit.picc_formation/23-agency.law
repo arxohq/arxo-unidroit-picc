@@ -1,0 +1,412 @@
+// Статьи 2.2.1–2.2.10. Полномочия представителей.
+//
+// РАЗДЕЛ РЕГУЛИРУЕТ ВНЕШНЕЕ ОТНОШЕНИЕ, И ЭТО СКАЗАНО ПРЯМО. Пункт 2 статьи
+// 2.2.1: он касается только отношений между принципалом или представителем, с
+// одной стороны, и третьим лицом — с другой. Внутреннее отношение принципала и
+// представителя остаётся применимому праву, и это граница из текста, а не
+// умолчание модели.
+//
+// ТРИ ИСХОДА ДЕЙСТВИЯ ПРЕДСТАВИТЕЛЯ, И ТЕКСТ РАЗВОДИТ ИХ ФАКТАМИ: раскрытое
+// представительство (2.2.3) связывает принципала с третьим лицом; нераскрытое
+// (2.2.4) — только представителя; действие без полномочий (2.2.5) не связывает
+// никого, кроме случая видимых полномочий. Это три разные головы, а не одна с
+// оговорками.
+//
+// ОДОБРЕНИЕ (2.2.9) — ВЛАСТЬ §127: принципал своим действием придаёт акту
+// представителя силу, как если бы полномочия были изначально.
+
+language "law.core" version "0.2";
+package unidroit.picc_formation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-formation";
+
+pub entity Agent { label en official "Agent"; label ru unofficial "Представитель"; }
+pub entity Principal { label en official "Principal"; label ru unofficial "Принципал"; }
+pub entity ThirdParty { label en official "Third party"; label ru unofficial "Третье лицо"; }
+pub entity Act { label en official "Act of the agent"; label ru unofficial "Действие представителя"; }
+
+pub relation act_of_agent(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) kind empirical {
+    label en official "the act was done by the agent with respect to a contract with the third party on behalf of the principal";
+    label ru unofficial "действие совершено представителем в отношении договора с третьим лицом от имени принципала";
+}
+
+pub relation within_scope_of_authority(x: Act) kind empirical {
+    label en official "the agent acts within the scope of its authority";
+    label ru unofficial "представитель действует в пределах своих полномочий";
+}
+
+pub relation third_party_knew_of_agency(x: Act) kind empirical {
+    label en official "the third party knew or ought to have known that the agent was acting as an agent";
+    label ru unofficial "третье лицо знало или должно было знать, что представитель действует как представитель";
+}
+
+pub relation affects_principal_and_third_party(x: Act) kind institutional {
+    label en official "the acts of the agent directly affect the legal relations between the principal and the third party (article 2.2.3(1))";
+    label ru unofficial "действия представителя непосредственно затрагивают отношения между принципалом и третьим лицом (статья 2.2.3 пункт 1)";
+}
+
+pub relation affects_agent_and_third_party_only(x: Act) kind institutional {
+    label en official "the acts of the agent affect only the relations between the agent and the third party (article 2.2.4(1))";
+    label ru unofficial "действия представителя затрагивают только отношения между представителем и третьим лицом (статья 2.2.4 пункт 1)";
+}
+
+@source(PICC_ART2_2_3_EN, PICC_ART2_2_3_RU)
+rule AgencyDisclosed(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
+    label en official "Article 2.2.3(1). Where an agent acts within the scope of its authority and the third party knew or ought to have known of the agency, the acts directly affect the relations between principal and third party";
+    label ru unofficial "Статья 2.2.3 пункт 1. Если представитель действует в пределах полномочий и третье лицо знало о представительстве, действия напрямую затрагивают отношения принципала и третьего лица";
+    when act_of_agent(x, ag, pr, tp)
+        and within_scope_of_authority(x)
+        and third_party_knew_of_agency(x);
+    then affects_principal_and_third_party(x);
+}
+
+@source(PICC_ART2_2_4_EN, PICC_ART2_2_4_RU)
+rule AgencyUndisclosed(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
+    label en official "Article 2.2.4(1). Where the third party neither knew nor ought to have known of the agency, the acts affect only the relations between the agent and the third party";
+    label ru unofficial "Статья 2.2.4 пункт 1. Если третье лицо не знало и не должно было знать о представительстве, действия затрагивают только отношения представителя и третьего лица";
+    when act_of_agent(x, ag, pr, tp)
+        and within_scope_of_authority(x)
+        and not_known(third_party_knew_of_agency(x));
+    then affects_agent_and_third_party_only(x);
+}
+
+// --- Статья 2.2.5: действие без полномочий и видимые полномочия ----------------
+
+pub relation acts_without_or_exceeding_authority(x: Act) kind empirical {
+    label en official "the agent acts without authority or exceeds its authority";
+    label ru unofficial "представитель действует без полномочий или с их превышением";
+}
+
+pub external judgment relation principal_caused_reasonable_belief(x: Act) {
+    authority Tribunal;
+    label en official "the principal caused the third party reasonably to believe that the agent had authority and was acting within it";
+    label ru unofficial "принципал дал третьему лицу разумные основания полагать, что представитель имеет полномочия и действует в их пределах";
+}
+
+pub relation no_effect_on_principal(x: Act) kind institutional {
+    label en official "the acts do not affect the legal relations between the principal and the third party (article 2.2.5(1))";
+    label ru unofficial "действия не затрагивают отношения между принципалом и третьим лицом (статья 2.2.5 пункт 1)";
+}
+
+@source(PICC_ART2_2_5_EN, PICC_ART2_2_5_RU)
+rule ActsWithoutAuthority(x: Act) defeasible {
+    label en official "Article 2.2.5(1). Where an agent acts without authority or exceeds its authority, its acts do not affect the legal relations between the principal and the third party";
+    label ru unofficial "Статья 2.2.5 пункт 1. Если представитель действует без полномочий или с их превышением, его действия не затрагивают отношения принципала и третьего лица";
+    when acts_without_or_exceeding_authority(x);
+    then no_effect_on_principal(x);
+}
+
+@source(PICC_ART2_2_5_EN, PICC_ART2_2_5_RU)
+rule ApparentAuthorityBindsPrincipal(x: Act) defeater {
+    label en official "Article 2.2.5(2). Where the principal causes the third party reasonably to believe that the agent has authority, the principal may not invoke the lack of authority";
+    label ru unofficial "Статья 2.2.5 пункт 2. Если принципал дал третьему лицу разумные основания полагать, что представитель имеет полномочия, он не может ссылаться на их отсутствие";
+    when acts_without_or_exceeding_authority(x)
+        and principal_caused_reasonable_belief(x);
+    defeat no_effect_on_principal(x);
+}
+
+// --- Статья 2.2.6: ответственность представителя --------------------------------
+
+pub relation ratified_by_principal(x: Act) kind empirical {
+    label en official "the act has been ratified by the principal";
+    label ru unofficial "действие одобрено принципалом";
+}
+
+pub relation third_party_knew_of_lack_of_authority(x: Act) kind empirical {
+    label en official "the third party knew or ought to have known of the agent's lack of authority";
+    label ru unofficial "третье лицо знало или должно было знать об отсутствии полномочий";
+}
+
+pub relation agent_liable_for_damages(x: Act, ag: Agent, tp: ThirdParty) kind institutional {
+    label en official "the agent is liable for damages that will place the third party in the same position as if the agent had acted with authority (article 2.2.6(1))";
+    label ru unofficial "представитель отвечает за убытки, которые поставят третье лицо в положение, как если бы он действовал с полномочиями (статья 2.2.6 пункт 1)";
+}
+
+@source(PICC_ART2_2_6_EN, PICC_ART2_2_6_RU)
+rule AgentLiableWithoutAuthority(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
+    label en official "Article 2.2.6(1). An agent that acts without authority or exceeds it is, failing ratification, liable for damages placing the third party in the same position as if the agent had acted with authority";
+    label ru unofficial "Статья 2.2.6 пункт 1. Представитель, действующий без полномочий или с их превышением, при отсутствии одобрения отвечает за убытки";
+    when act_of_agent(x, ag, pr, tp)
+        and acts_without_or_exceeding_authority(x)
+        and not_known(ratified_by_principal(x));
+    then agent_liable_for_damages(x, ag, tp);
+    // Связывающий конъюнкт — в самой оговорке (§149-§150, E-0099).
+    unless act_of_agent(x, ag, pr, tp)
+        and third_party_knew_of_lack_of_authority(x);
+}
+
+// --- Статья 2.2.7: конфликт интересов -------------------------------------------
+
+pub relation conflict_of_interests(x: Act) kind empirical {
+    label en official "the contract concluded by the agent involves the agent in a conflict of interests with the principal of which the third party knew or ought to have known";
+    label ru unofficial "договор, заключённый представителем, вовлекает его в конфликт интересов с принципалом, о котором третье лицо знало или должно было знать";
+}
+
+pub relation principal_consented_or_knew(x: Act) kind empirical {
+    label en official "the principal had consented to, or knew or ought to have known of, the agent's involvement in the conflict of interests";
+    label ru unofficial "принципал согласился на участие представителя в конфликте интересов либо знал или должен был знать о нём";
+}
+
+pub relation principal_may_avoid_contract(x: Act, pr: Principal) kind institutional {
+    label en official "the principal may avoid the contract (article 2.2.7(1))";
+    label ru unofficial "принципал может оспорить договор (статья 2.2.7 пункт 1)";
+}
+
+@source(PICC_ART2_2_7_EN, PICC_ART2_2_7_RU)
+rule ConflictOfInterestsAllowsAvoidance(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
+    label en official "Article 2.2.7(1). If a contract concluded by an agent involves a conflict of interests of which the third party knew or ought to have known, the principal may avoid the contract";
+    label ru unofficial "Статья 2.2.7 пункт 1. Если договор вовлекает представителя в конфликт интересов, о котором третье лицо знало, принципал может оспорить договор";
+    when act_of_agent(x, ag, pr, tp)
+        and conflict_of_interests(x);
+    then principal_may_avoid_contract(x, pr);
+    unless act_of_agent(x, ag, pr, tp)
+        and principal_consented_or_knew(x);
+}
+
+// --- Статья 2.2.8: субпредставительство -----------------------------------------
+
+pub external judgment relation not_reasonable_to_expect_agent_to_act_itself(x: Act) {
+    authority Tribunal;
+    label en official "it is not reasonable to expect the agent to perform the acts itself";
+    label ru unofficial "неразумно ожидать, что представитель совершит действия сам";
+}
+
+pub relation implied_authority_to_appoint_sub_agent(x: Act, ag: Agent) kind institutional {
+    label en official "the agent has implied authority to appoint a sub-agent (article 2.2.8)";
+    label ru unofficial "представитель имеет подразумеваемое полномочие назначить субпредставителя (статья 2.2.8)";
+}
+
+@source(PICC_ART2_2_8_EN, PICC_ART2_2_8_RU)
+rule ImpliedAuthorityForSubAgent(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
+    label en official "Article 2.2.8. An agent has implied authority to appoint a sub-agent to perform acts which it is not reasonable to expect the agent to perform itself";
+    label ru unofficial "Статья 2.2.8. Представитель имеет подразумеваемое полномочие назначить субпредставителя для действий, которые неразумно ожидать от него самого";
+    when act_of_agent(x, ag, pr, tp)
+        and not_reasonable_to_expect_agent_to_act_itself(x);
+    then implied_authority_to_appoint_sub_agent(x, ag);
+}
+
+// --- Статья 2.2.9: одобрение как власть §127 -------------------------------------
+
+pub relation act_produces_effects_as_authorised(x: Act) kind institutional {
+    label en official "on ratification the act produces the same effects as if it had initially been carried out with authority (article 2.2.9(1))";
+    label ru unofficial "при одобрении действие производит те же последствия, как если бы оно изначально совершалось с полномочиями (статья 2.2.9 пункт 1)";
+}
+
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_RU)
+rule RatificationPower(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) strict {
+    label en official "Article 2.2.9(1). An act by an agent that acts without authority may be ratified by the principal";
+    label ru unofficial "Статья 2.2.9 пункт 1. Действие представителя без полномочий может быть одобрено принципалом";
+    when act_of_agent(x, ag, pr, tp)
+        and acts_without_or_exceeding_authority(x);
+    then power Ratify {
+        holder pr;
+        over x;
+        exercise ratified_by_principal(x);
+        valid_when acts_without_or_exceeding_authority(x);
+        effect create(act_produces_effects_as_authorised(x));
+    };
+}
+
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_RU)
+rule RatifiedActIsAuthorised(x: Act) defeasible {
+    label en official "Article 2.2.9(1). On ratification the act produces the same effects as if it had been carried out with authority";
+    label ru unofficial "Статья 2.2.9 пункт 1. При одобрении действие производит те же последствия, как если бы совершалось с полномочиями";
+    when ratified_by_principal(x);
+    then act_produces_effects_as_authorised(x);
+}
+
+// --- Статья 2.2.10: прекращение полномочий ---------------------------------------
+
+pub relation authority_terminated(x: Act) kind empirical {
+    label en official "the authority of the agent has been terminated";
+    label ru unofficial "полномочия представителя прекращены";
+}
+
+pub relation third_party_knew_of_termination(x: Act) kind empirical {
+    label en official "the third party knew or ought to have known of the termination of authority";
+    label ru unofficial "третье лицо знало или должно было знать о прекращении полномочий";
+}
+
+pub relation act_necessary_to_prevent_harm(x: Act) kind empirical {
+    label en official "the act is necessary to prevent harm to the principal's interests";
+    label ru unofficial "действие необходимо для предотвращения ущерба интересам принципала";
+}
+
+pub relation termination_effective_against_third_party(x: Act) kind institutional {
+    label en official "the termination of authority is effective in relation to the third party (article 2.2.10(1))";
+    label ru unofficial "прекращение полномочий действует в отношении третьего лица (статья 2.2.10 пункт 1)";
+}
+
+pub relation agent_remains_authorised(x: Act) kind institutional {
+    label en official "the agent remains authorised to perform acts necessary to prevent harm to the principal's interests (article 2.2.10(2))";
+    label ru unofficial "представитель сохраняет полномочия на действия, необходимые для предотвращения ущерба интересам принципала (статья 2.2.10 пункт 2)";
+}
+
+@source(PICC_ART2_2_10_EN, PICC_ART2_2_10_RU)
+rule TerminationEffectiveOnlyIfKnown(x: Act) strict {
+    label en official "Article 2.2.10(1). Termination of authority is not effective in relation to the third party unless the third party knew or ought to have known of it";
+    label ru unofficial "Статья 2.2.10 пункт 1. Прекращение полномочий не действует в отношении третьего лица, если оно о нём не знало и не должно было знать";
+    when authority_terminated(x)
+        and third_party_knew_of_termination(x);
+    then termination_effective_against_third_party(x);
+}
+
+@source(PICC_ART2_2_10_EN, PICC_ART2_2_10_RU)
+rule AgentRemainsAuthorisedToPreventHarm(x: Act) strict {
+    label en official "Article 2.2.10(2). Notwithstanding the termination of its authority, an agent remains authorised to perform the acts necessary to prevent harm to the principal's interests";
+    label ru unofficial "Статья 2.2.10 пункт 2. Несмотря на прекращение полномочий, представитель сохраняет право совершать действия, необходимые для предотвращения ущерба интересам принципала";
+    when authority_terminated(x)
+        and act_necessary_to_prevent_harm(x);
+    then agent_remains_authorised(x);
+}
+
+// --- Статья 2.2.1: предмет раздела и его граница -----------------------------------
+
+pub relation external_relations_governed(x: Act) kind institutional {
+    label en official "this Section governs the relations between the principal or the agent and the third party (article 2.2.1)";
+    label ru unofficial "раздел регулирует отношения между принципалом или представителем и третьим лицом (статья 2.2.1)";
+}
+
+@source(PICC_ART2_2_1_EN, PICC_ART2_2_1_RU)
+rule SectionGovernsExternalRelations(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) strict {
+    label en official "Article 2.2.1. This Section governs the authority of an agent to affect the legal relations of the principal with respect to a contract with a third party";
+    label ru unofficial "Статья 2.2.1. Раздел регулирует полномочия представителя затрагивать правовые отношения принципала по договору с третьим лицом";
+    when act_of_agent(x, ag, pr, tp);
+    then external_relations_governed(x);
+}
+
+// --- Статья 2.2.2: установление и объём полномочий ----------------------------------
+
+pub relation authority_granted_expressly_or_impliedly(x: Act) kind empirical {
+    label en official "the principal's grant of authority to the agent may be express or implied";
+    label ru unofficial "полномочия предоставлены принципалом прямо или подразумеваемо";
+}
+
+pub relation authority_covers_necessary_acts(x: Act) kind institutional {
+    label en official "the agent has authority to perform all acts necessary in the circumstances to achieve the purposes for which the authority was granted (article 2.2.2(2))";
+    label ru unofficial "представитель имеет полномочия совершать все действия, необходимые при данных обстоятельствах для достижения целей, ради которых полномочия предоставлены (статья 2.2.2 пункт 2)";
+}
+
+@source(PICC_ART2_2_2_EN, PICC_ART2_2_2_RU)
+rule AuthorityCoversNecessaryActs(x: Act) strict {
+    label en official "Article 2.2.2. The agent has authority to perform all acts necessary in the circumstances to achieve the purposes for which the authority was granted";
+    label ru unofficial "Статья 2.2.2. Представитель имеет полномочия совершать все действия, необходимые для достижения целей предоставленных полномочий";
+    when authority_granted_expressly_or_impliedly(x);
+    then authority_covers_necessary_acts(x);
+}
+
+// --- Статья 2.2.3 пункт 2: представитель принимает на себя роль стороны ------------
+
+pub relation agent_undertakes_to_be_party(x: Act) kind empirical {
+    label en official "the agent, with the consent of the principal, undertakes to become the party to the contract";
+    label ru unofficial "представитель с согласия принципала принимает на себя роль стороны договора";
+}
+
+@source(PICC_ART2_2_3_EN, PICC_ART2_2_3_RU)
+rule AgentBecomesPartyItself(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
+    label en official "Article 2.2.3(2). Where the agent with the consent of the principal undertakes to become the party to the contract, the acts affect only the relations between the agent and the third party";
+    label ru unofficial "Статья 2.2.3 пункт 2. Если представитель с согласия принципала принимает на себя роль стороны договора, действия затрагивают только отношения представителя и третьего лица";
+    when act_of_agent(x, ag, pr, tp)
+        and agent_undertakes_to_be_party(x);
+    then affects_agent_and_third_party_only(x);
+}
+
+@source(PICC_ART2_2_3_EN, PICC_ART2_2_3_RU)
+rule UndertakingDisplacesDisclosedAgency(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeater {
+    label en official "Article 2.2.3(2). Where the agent undertakes to become the party, the acts do not directly affect the relations between principal and third party";
+    label ru unofficial "Статья 2.2.3 пункт 2. Если представитель принимает на себя роль стороны, действия не затрагивают напрямую отношения принципала и третьего лица";
+    when act_of_agent(x, ag, pr, tp)
+        and agent_undertakes_to_be_party(x);
+    defeat affects_principal_and_third_party(x);
+}
+
+// --- Статья 2.2.4 пункт 2: представитель выдал себя за владельца предприятия -------
+
+pub relation agent_represented_itself_as_owner(x: Act) kind empirical {
+    label en official "the agent, when contracting with the third party on behalf of a business, represents itself to be the owner of that business";
+    label ru unofficial "представитель, заключая договор с третьим лицом от имени предприятия, выдал себя за его владельца";
+}
+
+pub relation real_owner_discovered(x: Act) kind empirical {
+    label en official "the third party has discovered the real owner of the business";
+    label ru unofficial "третье лицо обнаружило действительного владельца предприятия";
+}
+
+pub relation rights_exercisable_against_owner(x: Act) kind institutional {
+    label en official "the third party may exercise also against the real owner the rights it has against the agent (article 2.2.4(2))";
+    label ru unofficial "третье лицо может осуществить против действительного владельца и те права, которые оно имеет против представителя (статья 2.2.4 пункт 2)";
+}
+
+@source(PICC_ART2_2_4_EN, PICC_ART2_2_4_RU)
+rule RightsAgainstRealOwner(x: Act) strict {
+    label en official "Article 2.2.4(2). Upon discovery of the real owner of the business the third party may exercise against the latter the rights it has against the agent";
+    label ru unofficial "Статья 2.2.4 пункт 2. Обнаружив действительного владельца предприятия, третье лицо может осуществить против него права, которые оно имеет против представителя";
+    when agent_represented_itself_as_owner(x)
+        and real_owner_discovered(x);
+    then rights_exercisable_against_owner(x);
+}
+
+// --- Статья 2.2.7 пункт 2 подпункт b: конфликт раскрыт и возражений не было --------
+
+pub relation conflict_disclosed_without_objection(x: Act) kind empirical {
+    label en official "the agent had disclosed the conflict of interests to the principal and the latter had not objected within a reasonable time";
+    label ru unofficial "представитель раскрыл конфликт интересов принципалу, и тот не возразил в разумный срок";
+}
+
+@source(PICC_ART2_2_7_EN, PICC_ART2_2_7_RU)
+rule DisclosedConflictBarsAvoidance(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeater {
+    label en official "Article 2.2.7(2)(b). The principal may not avoid the contract if the agent had disclosed the conflict of interests and the principal had not objected within a reasonable time";
+    label ru unofficial "Статья 2.2.7 пункт 2 подпункт b. Принципал не может оспорить договор, если представитель раскрыл конфликт интересов, а принципал не возразил в разумный срок";
+    when act_of_agent(x, ag, pr, tp)
+        and conflict_disclosed_without_objection(x);
+    defeat principal_may_avoid_contract(x, pr);
+}
+
+// --- Статья 2.2.9 пункты 2 и 3: срок на одобрение и отказ третьего лица ------------
+
+pub relation ratification_period_specified(x: Act) kind empirical {
+    label en official "the third party has by notice to the principal specified a reasonable period of time for ratification";
+    label ru unofficial "третье лицо извещением принципалу установило разумный срок для одобрения";
+}
+
+pub relation not_ratified_within_period(x: Act) kind empirical {
+    label en official "the principal did not ratify within that period of time";
+    label ru unofficial "принципал не одобрил действие в этот срок";
+}
+
+pub relation ratification_no_longer_possible(x: Act) kind institutional {
+    label en official "the principal can no longer ratify the act (article 2.2.9(2))";
+    label ru unofficial "принципал более не может одобрить действие (статья 2.2.9 пункт 2)";
+}
+
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_RU)
+rule RatificationPeriodExpired(x: Act) strict {
+    label en official "Article 2.2.9(2). If the principal does not ratify within the period specified by the third party it can no longer do so";
+    label ru unofficial "Статья 2.2.9 пункт 2. Если принципал не одобрил действие в срок, установленный третьим лицом, он более не может этого сделать";
+    when ratification_period_specified(x)
+        and not_ratified_within_period(x);
+    then ratification_no_longer_possible(x);
+}
+
+pub relation third_party_unaware_of_lack_of_authority(x: Act) kind empirical {
+    label en official "at the time of the agent's act the third party neither knew nor ought to have known of the lack of authority";
+    label ru unofficial "в момент действия представителя третье лицо не знало и не должно было знать об отсутствии полномочий";
+}
+
+pub relation third_party_refused_to_be_bound(x: Act) kind empirical {
+    label en official "the third party has by notice to the principal indicated its refusal to become bound by a ratification";
+    label ru unofficial "третье лицо извещением принципалу заявило об отказе считать себя связанным одобрением";
+}
+
+pub relation ratification_ineffective_against_third_party(x: Act) kind institutional {
+    label en official "the ratification does not bind the third party which refused it before ratification (article 2.2.9(3))";
+    label ru unofficial "одобрение не связывает третье лицо, отказавшееся от него до одобрения (статья 2.2.9 пункт 3)";
+}
+
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_RU)
+rule RefusalBeforeRatification(x: Act) strict {
+    label en official "Article 2.2.9(3). A third party that neither knew nor ought to have known of the lack of authority may, before ratification, indicate its refusal to become bound by a ratification";
+    label ru unofficial "Статья 2.2.9 пункт 3. Третье лицо, не знавшее об отсутствии полномочий, может до одобрения заявить об отказе считать себя связанным одобрением";
+    when third_party_unaware_of_lack_of_authority(x)
+        and third_party_refused_to_be_bound(x);
+    then ratification_ineffective_against_third_party(x);
+}

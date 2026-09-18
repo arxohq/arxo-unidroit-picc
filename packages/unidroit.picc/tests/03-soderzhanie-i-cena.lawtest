@@ -1,0 +1,151 @@
+language "law.core" version "0.2";
+package unidroit.picc version "0.1.0";
+namespace "urn:org:unidroit:clir:picc";
+
+// Дело 3. Глава 5: подразумеваемые обязательства (5.1.2), сотрудничество
+// (5.1.3), два рода обязанности (5.1.4, 5.1.5), качество (5.1.6), цена
+// (5.1.7), прекращение бессрочного договора (5.1.8), освобождение (5.1.9),
+// права третьих лиц (5.2) и условия (5.3).
+//
+// ЦЕНА: договор её не устанавливает, обычная цена — 84 000 EUR, и она
+// применяется. Определение цены одной стороной в 200 000 EUR орган признал
+// явно неразумным — применяется разумная цена 90 000 EUR, а неразумное
+// определение ценой не становится.
+
+test "PICC-GEN-03-CONTENT-AND-PRICE" {
+    given {
+        context {
+            deadline_policy PICC_PARTY_SET_PERIOD;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": party_of(entity_ref("urn:case:picc:alpha"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a1": party_of(entity_ref("urn:case:picc:beta"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a2": stems_from_good_faith(entity_ref("urn:case:picc:obl-3"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a3": co_operation_reasonably_expected(entity_ref("urn:case:picc:beta"), entity_ref("urn:case:picc:contract-3")) { origin adjudicated; }
+        assert "a4": duty_to_achieve_result(entity_ref("urn:case:picc:obl-3b"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a5": result_achieved(entity_ref("urn:case:picc:obl-3b"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a6": duty_of_best_efforts(entity_ref("urn:case:picc:obl-3c"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a7": best_efforts_made(entity_ref("urn:case:picc:obl-3c"), entity_ref("urn:case:picc:contract-3")) { origin adjudicated; }
+        assert "a8": factor_of_listed_kind(entity_ref("urn:case:picc:factor-3"), entity_ref("urn:case:picc:obl-3c")) { origin case_input; }
+        assert "a9": quality_reasonable_and_not_below_average(entity_ref("urn:case:picc:obl-3b"), entity_ref("urn:case:picc:contract-3")) { origin adjudicated; }
+        assert "a10": price_generally_charged(entity_ref("urn:case:picc:contract-3"), 84000 EUR) { origin case_input; }
+        assert "a11": price_determined_by_one_party(entity_ref("urn:case:picc:contract-3b"), entity_ref("urn:case:picc:alpha"), 200000 EUR) { origin case_input; }
+        assert "a12": determination_manifestly_unreasonable(entity_ref("urn:case:picc:contract-3b"), entity_ref("urn:case:picc:alpha")) { origin adjudicated; }
+        assert "a13": reasonable_price(entity_ref("urn:case:picc:contract-3b"), 90000 EUR) { origin adjudicated; }
+        assert "a14": contract_for_indefinite_period(entity_ref("urn:case:picc:contract-3c")) { origin case_input; }
+        assert "a15": party_of(entity_ref("urn:case:picc:alpha"), entity_ref("urn:case:picc:contract-3c")) { origin case_input; }
+        assert "a16": notice_given_reasonable_time_in_advance(entity_ref("urn:case:picc:contract-3c"), entity_ref("urn:case:picc:alpha")) { origin adjudicated; }
+        assert "a17": gratuitous_release_offered(entity_ref("urn:case:picc:obl-3d"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a18": right_conferred_on_beneficiary(entity_ref("urn:case:picc:third-3"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a19": beneficiary_identifiable(entity_ref("urn:case:picc:third-3"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "a20": suspensive_condition(entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
+        assert "a21": future_uncertain_event(entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
+        assert "a22": condition_fulfilled(entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
+        assert "b0": exclusion_clause_in_favour_of_beneficiary(entity_ref("urn:case:picc:term-3x"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "b1": defence_against_promisee(entity_ref("urn:case:picc:defence-3"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
+        assert "b2": resolutive_condition(entity_ref("urn:case:picc:cond-3c"), entity_ref("urn:case:picc:contract-3e")) { origin case_input; }
+        assert "b3": condition_fulfilled(entity_ref("urn:case:picc:cond-3c"), entity_ref("urn:case:picc:contract-3e")) { origin case_input; }
+        assert "b4": brought_about_fulfilment_contrary_to_good_faith(entity_ref("urn:case:picc:alpha"), entity_ref("urn:case:picc:cond-3d"), entity_ref("urn:case:picc:contract-3e")) { origin case_input; }
+        assert "b5": acted_to_prejudice_rights_pending_condition(entity_ref("urn:case:picc:beta"), entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
+        assert "a23": prevented_fulfilment_contrary_to_good_faith(entity_ref("urn:case:picc:beta"), entity_ref("urn:case:picc:cond-3b"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
+    }
+
+    evaluate truth(contractual_obligation(entity_ref("urn:case:picc:obl-3"), entity_ref("urn:case:picc:contract-3")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ImpliedFromGoodFaith);
+
+    evaluate positions();
+    expect position(Cooperate, ACTIVE);
+
+    evaluate truth(obligation_performed(entity_ref("urn:case:picc:obl-3b"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ResultDutyPerformed);
+
+    evaluate truth(obligation_performed(entity_ref("urn:case:picc:obl-3c"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(BestEffortsDutyPerformed);
+
+    evaluate truth(factor_determines_kind_of_duty(entity_ref("urn:case:picc:factor-3"), entity_ref("urn:case:picc:obl-3c")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FactorDeterminesKindOfDuty);
+
+    evaluate truth(quality_sufficient(entity_ref("urn:case:picc:obl-3b"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(QualityWhereNotFixed);
+
+    evaluate truth(applicable_price(entity_ref("urn:case:picc:contract-3"), 84000 EUR));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PriceByMarket);
+
+    evaluate truth(applicable_price(entity_ref("urn:case:picc:contract-3b"), 90000 EUR));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ManifestlyUnreasonableDeterminationReplaced);
+
+    // Явно неразумное определение ценой не становится.
+    evaluate truth(applicable_price(entity_ref("urn:case:picc:contract-3b"), 200000 EUR));
+    expect truth_status == NEITHER;
+
+    evaluate truth(contract_terminated_by_notice(entity_ref("urn:case:picc:contract-3c"), entity_ref("urn:case:picc:alpha")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationOfIndefiniteContract);
+
+    evaluate truth(right_released(entity_ref("urn:case:picc:obl-3d"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(GratuitousReleaseDeemedAccepted);
+
+    evaluate truth(beneficiary_right_exists(entity_ref("urn:case:picc:third-3"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(BeneficiaryRightExists);
+
+    evaluate truth(rights_may_be_revoked(entity_ref("urn:case:picc:third-3"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RevocationUntilAcceptance);
+
+    evaluate truth(valid_condition(entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ValidCondition);
+
+    evaluate truth(contract_takes_effect(entity_ref("urn:case:picc:contract-3d")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensiveConditionTakesEffect);
+
+    evaluate truth(implied_obligation(entity_ref("urn:case:picc:obl-3"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ImpliedFromGoodFaith);
+
+    evaluate truth(beneficiary_may_invoke_clause(entity_ref("urn:case:picc:third-3"), entity_ref("urn:case:picc:term-3x"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(BeneficiaryMayInvokeClause);
+
+    evaluate truth(defence_available_against_beneficiary(entity_ref("urn:case:picc:defence-3"), entity_ref("urn:case:picc:third-3"), entity_ref("urn:case:picc:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DefencesAgainstBeneficiary);
+
+    evaluate truth(contract_comes_to_an_end(entity_ref("urn:case:picc:contract-3e")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ResolutiveConditionEndsContract);
+
+    evaluate truth(restitution_rules_apply_with_adaptations(entity_ref("urn:case:picc:contract-3e")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RestitutionOnResolutiveCondition);
+
+    evaluate truth(may_not_rely_on_fulfilment(entity_ref("urn:case:picc:alpha"), entity_ref("urn:case:picc:cond-3d"), entity_ref("urn:case:picc:contract-3e")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CannotRelyOnProcuredCondition);
+
+    evaluate truth(breached_duty_to_preserve_rights(entity_ref("urn:case:picc:beta"), entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DutyToPreserveRightsBreached);
+
+    evaluate truth(court_includes_arbitral_tribunal(Tribunal));
+    expect truth_status == TRUE_ONLY;
+
+    evaluate truth(may_not_rely_on_non_fulfilment(entity_ref("urn:case:picc:beta"), entity_ref("urn:case:picc:cond-3b"), entity_ref("urn:case:picc:contract-3d")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CannotRelyOnPreventedCondition);
+}

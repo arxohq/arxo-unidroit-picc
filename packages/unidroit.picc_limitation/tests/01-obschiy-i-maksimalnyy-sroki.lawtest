@@ -1,0 +1,75 @@
+language "law.core" version "0.2";
+package unidroit.picc_limitation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-limitation";
+
+// Дело 1. Два срока сразу (10.2) и границы их изменения сторонами (10.3).
+//
+// СЧЁТ ИДЁТ СО СЛЕДУЮЩЕГО ДНЯ — это сказано текстом обеих частей статьи 10.2
+// («beginning on the day after the day…»), и политика §86 пакета выражает
+// именно это: `start_count next_day`. Кредитор узнал о фактах 10 марта 2020
+// года, значит счёт идёт с 11 марта 2020 года и общий трёхлетний срок истекает
+// 11 марта 2023 года; максимальный десятилетний, отсчитанный от 15 января 2019
+// года, — 16 января 2029 года.
+
+test "PICCL-01-GENERAL-AND-MAXIMUM-PERIODS" {
+    given {
+        context {
+            deadline_policy PICC_LIMITATION;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": right_of(entity_ref("urn:case:piccl:right-1"), entity_ref("urn:case:piccl:contract-1"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a1": right_governed_by_principles(entity_ref("urn:case:piccl:right-1")) { origin case_input; }
+        assert "a2": obligee_knew_facts_on(entity_ref("urn:case:piccl:right-1"), @2020-03-10) { origin case_input; }
+        assert "a3": right_exercisable_from(entity_ref("urn:case:piccl:right-1"), @2019-01-15) { origin case_input; }
+        assert "a4": general_period(entity_ref("urn:case:piccl:right-1"), 3 calendar_year) { origin case_input; }
+        assert "a5": maximum_period(entity_ref("urn:case:piccl:right-1"), 10 calendar_year) { origin case_input; }
+        assert "a6": act_other_than_proceedings(entity_ref("urn:case:piccl:right-1b")) { origin case_input; }
+        assert "a7": right_of(entity_ref("urn:case:piccl:right-2"), entity_ref("urn:case:piccl:contract-2"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a8": modification_agreed(entity_ref("urn:case:piccl:right-2")) { origin case_input; }
+        assert "a9": right_of(entity_ref("urn:case:piccl:right-3"), entity_ref("urn:case:piccl:contract-3"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a10": modification_agreed(entity_ref("urn:case:piccl:right-3")) { origin case_input; }
+        assert "a11": general_period_shortened_below_one_year(entity_ref("urn:case:piccl:right-3")) { origin case_input; }
+        assert "a12": right_of(entity_ref("urn:case:piccl:right-4"), entity_ref("urn:case:piccl:contract-4"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a13": modification_agreed(entity_ref("urn:case:piccl:right-4")) { origin case_input; }
+        assert "a14": maximum_period_shortened_below_four_years(entity_ref("urn:case:piccl:right-4")) { origin case_input; }
+        assert "a15": right_of(entity_ref("urn:case:piccl:right-5"), entity_ref("urn:case:piccl:contract-5"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a16": modification_agreed(entity_ref("urn:case:piccl:right-5")) { origin case_input; }
+        assert "a17": maximum_period_extended_beyond_fifteen_years(entity_ref("urn:case:piccl:right-5")) { origin case_input; }
+    }
+
+    evaluate truth(limitation_governed(entity_ref("urn:case:piccl:right-1")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(LimitationGovernsExerciseOfRights);
+
+    // Срок на извещение глава НЕ регулирует — это её собственная граница.
+    evaluate truth(chapter_does_not_govern_notice_time(entity_ref("urn:case:piccl:right-1b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ChapterDoesNotGovernNoticeTime);
+
+    evaluate truth(general_period_expires_on(entity_ref("urn:case:piccl:right-1"), @2023-03-11));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(GeneralPeriodOfThreeYears);
+
+    evaluate truth(maximum_period_expires_on(entity_ref("urn:case:piccl:right-1"), @2029-01-16));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MaximumPeriodOfTenYears);
+
+    evaluate truth(modification_effective(entity_ref("urn:case:piccl:right-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PartiesMayModifyPeriods);
+
+    // Три границы источника — три отдельных отказа.
+    evaluate truth(modification_effective(entity_ref("urn:case:piccl:right-3")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(modification_effective(entity_ref("urn:case:piccl:right-4")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(modification_effective(entity_ref("urn:case:piccl:right-5")));
+    expect truth_status == NEITHER;
+}

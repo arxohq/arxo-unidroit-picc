@@ -1,0 +1,30 @@
+# Манифест §10 — маркер корня пакета (DECISION-0033).
+[package]
+name = "unidroit.picc_obligations"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:org:unidroit:clir:picc-obligations"
+
+[metadata]
+act = "unidroit-picc-2016-obligations"
+title = "Принципы международных коммерческих договоров УНИДРУА 2016, главы 8, 9 и 11: зачёт, уступка прав, перевод обязательств, уступка договоров, множественность должников и кредиторов"
+primarySource = "PICC_2016"
+jurisdiction = "International"
+instrument = "doctrine"
+sourceFidelity = "pinned_unofficial_copy"
+issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+legalStatus = "doctrine"
+verifiedAgainstSource = false
+
+[dependencies]
+"unidroit.picc" = "0.1.0"
+
+[[tests]]
+family = "unidroit.picc_obligations#obligations"
+suites = [
+  "tests/01-zachet.lawtest",
+  "tests/02-ustupka-prav.lawtest",
+  "tests/03-perevod-obyazatelstv-i-ustupka-dogovora.lawtest",
+  "tests/04-mnozhestvennost.lawtest",
+]
+world = ["unidroit.picc_obligations", "unidroit.picc"]

@@ -1,0 +1,337 @@
+// Статьи 9.2.1-9.2.8 и 9.3.1-9.3.7. Перевод обязательств и уступка договоров.
+
+language "law.core" version "0.2";
+package unidroit.picc_obligations version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-obligations";
+
+// --- Раздел 2 главы 9: перевод обязательств ----------------------------------------
+
+pub relation transfer_by_obligors_agreement(o: Obligation, original: Party, new_obligor: Party) kind empirical {
+    label en official "the obligation is transferred by an agreement between the original obligor and the new obligor";
+    label ru unofficial "обязательство переводится соглашением между первоначальным и новым должником";
+}
+
+pub relation assumption_by_obligee_agreement(o: Obligation, obligee: Party, new_obligor: Party) kind empirical {
+    label en official "the new obligor assumes the obligation by an agreement with the obligee";
+    label ru unofficial "новый должник принимает обязательство соглашением с кредитором";
+}
+
+pub relation business_transfer_rules_apply(o: Obligation) kind empirical {
+    label en official "the transfer is made under the special rules governing transfers of obligations in the course of transferring a business";
+    label ru unofficial "перевод совершается по особым правилам о переводе обязательств при передаче предприятия";
+}
+
+pub relation obligee_consented_to_transfer(o: Obligation) kind empirical {
+    label en official "the obligee has consented to the transfer";
+    label ru unofficial "кредитор согласился на перевод";
+}
+
+pub relation obligee_consented_in_advance(o: Obligation) kind empirical {
+    label en official "the obligee gave its consent in advance";
+    label ru unofficial "кредитор дал согласие заранее";
+}
+
+pub relation transfer_notice_given_or_acknowledged(o: Obligation) kind empirical {
+    label en official "a notice of the transfer was given to the obligee or the obligee acknowledged it";
+    label ru unofficial "кредитору дано извещение о переводе либо кредитор его признал";
+}
+
+pub relation original_obligor_discharged_by_obligee(o: Obligation) kind empirical {
+    label en official "the obligee discharged the original obligor";
+    label ru unofficial "кредитор освободил первоначального должника";
+}
+
+pub relation original_obligor_retained(o: Obligation) kind empirical {
+    label en official "the obligee retained the original obligor in case the new obligor does not perform properly";
+    label ru unofficial "кредитор сохранил первоначального должника на случай ненадлежащего исполнения новым должником";
+}
+
+pub relation third_party_performance_agreed(o: Obligation, other: Party) kind empirical {
+    label en official "the obligor contracted with another person that this person will perform the obligation in its place";
+    label ru unofficial "должник договорился с другим лицом, что оно исполнит обязательство вместо него";
+}
+
+pub relation obligation_personal_character(o: Obligation) kind empirical {
+    label en official "the obligation in the circumstances has an essentially personal character";
+    label ru unofficial "обязательство при данных обстоятельствах носит существенно личный характер";
+}
+
+pub relation defence_of_original_obligor(o: Obligation) kind empirical {
+    label en official "the original obligor could assert a defence against the obligee";
+    label ru unofficial "первоначальный должник мог заявить возражение кредитору";
+}
+
+pub relation set_off_of_original_obligor(o: Obligation) kind empirical {
+    label en official "a right of set-off was available to the original obligor against the obligee";
+    label ru unofficial "у первоначального должника было право на зачёт против кредитора";
+}
+
+pub relation security_by_third_person(o: Obligation) kind empirical {
+    label en official "a security for the performance of the obligation was granted by a person other than the new obligor";
+    label ru unofficial "обеспечение исполнения обязательства предоставлено лицом, отличным от нового должника";
+}
+
+pub relation security_provider_agreed_to_continue(o: Obligation) kind empirical {
+    label en official "that other person agreed that the security should continue to be available to the obligee";
+    label ru unofficial "это лицо согласилось, что обеспечение сохраняется для кредитора";
+}
+
+pub relation transfer_effective(o: Obligation) kind institutional {
+    label en official "the transfer of the obligation is effective (articles 9.2.1-9.2.4)";
+    label ru unofficial "перевод обязательства действителен (статьи 9.2.1-9.2.4)";
+}
+
+pub relation obligors_jointly_and_severally_liable(o: Obligation) kind institutional {
+    label en official "the original obligor and the new obligor are jointly and severally liable (article 9.2.5(3))";
+    label ru unofficial "первоначальный и новый должники отвечают солидарно (статья 9.2.5 пункт 3)";
+}
+
+pub relation obligee_retains_claim_against_obligor(o: Obligation) kind institutional {
+    label en official "the obligee retains its claim against the obligor despite third party performance (article 9.2.6(2))";
+    label ru unofficial "кредитор сохраняет требование к должнику несмотря на исполнение третьим лицом (статья 9.2.6 пункт 2)";
+}
+
+pub relation third_party_may_perform(o: Obligation, other: Party) kind institutional {
+    label en official "without the obligee's consent the obligor may contract with another person to perform in its place (article 9.2.6(1))";
+    label ru unofficial "без согласия кредитора должник может договориться с другим лицом об исполнении вместо него (статья 9.2.6 пункт 1)";
+}
+
+pub relation new_obligor_may_assert_defence(o: Obligation) kind institutional {
+    label en official "the new obligor may assert against the obligee all defences of the original obligor (article 9.2.7(1))";
+    label ru unofficial "новый должник может заявить кредитору все возражения первоначального должника (статья 9.2.7 пункт 1)";
+}
+
+pub relation new_obligor_may_not_set_off(o: Obligation) kind institutional {
+    label en official "the new obligor may not exercise against the obligee a right of set-off available to the original obligor (article 9.2.7(2))";
+    label ru unofficial "новый должник не может осуществить против кредитора зачёт, доступный первоначальному должнику (статья 9.2.7 пункт 2)";
+}
+
+pub relation security_discharged_with_original_obligor(o: Obligation) kind institutional {
+    label en official "a security granted by a third person is discharged when the original obligor is discharged (article 9.2.8(2))";
+    label ru unofficial "обеспечение, предоставленное третьим лицом, прекращается с освобождением первоначального должника (статья 9.2.8 пункт 2)";
+}
+
+pub relation obligee_rights_against_new_obligor(o: Obligation) kind institutional {
+    label en official "the obligee may assert against the new obligor all its rights under the contract in respect of the obligation transferred (article 9.2.8(1))";
+    label ru unofficial "кредитор может заявить новому должнику все свои права по договору в отношении переведённого обязательства (статья 9.2.8 пункт 1)";
+}
+
+@source(PICC_ART9_2_1_EN, PICC_ART9_2_3_EN)
+rule TransferByObligorsWithConsent(o: Obligation, original: Party, new_obligor: Party) defeasible {
+    label en official "Article 9.2.1(a) with 9.2.3. An obligation may be transferred by an agreement between the original obligor and the new obligor, which requires the consent of the obligee";
+    label ru unofficial "Статья 9.2.1 подпункт a со статьёй 9.2.3. Обязательство может быть переведено соглашением первоначального и нового должника, которое требует согласия кредитора";
+    when transfer_by_obligors_agreement(o, original, new_obligor)
+        and obligee_consented_to_transfer(o);
+    then transfer_effective(o);
+}
+
+@source(PICC_ART9_2_1_EN, PICC_ART9_2_1_RU)
+rule AssumptionByObligeeAgreement(o: Obligation, obligee: Party, new_obligor: Party) defeasible {
+    label en official "Article 9.2.1(b). An obligation may be transferred by an agreement between the obligee and the new obligor by which the new obligor assumes the obligation";
+    label ru unofficial "Статья 9.2.1 подпункт b. Обязательство может быть переведено соглашением кредитора и нового должника, которым новый должник принимает обязательство";
+    when assumption_by_obligee_agreement(o, obligee, new_obligor);
+    then transfer_effective(o);
+}
+
+@source(PICC_ART9_2_2_EN, PICC_ART9_2_2_RU)
+rule BusinessTransferExcluded(o: Obligation) defeater {
+    label en official "Article 9.2.2. This Section does not apply to transfers of obligations made in the course of transferring a business";
+    label ru unofficial "Статья 9.2.2. Настоящий раздел не применяется к переводу обязательств при передаче предприятия";
+    when business_transfer_rules_apply(o);
+    defeat transfer_effective(o);
+}
+
+@source(PICC_ART9_2_4_EN, PICC_ART9_2_4_RU)
+rule AdvanceConsentEffectiveOnNotice(o: Obligation, original: Party, new_obligor: Party) defeasible {
+    label en official "Article 9.2.4. If the obligee has given its consent in advance, the transfer becomes effective when a notice of the transfer is given to the obligee or when the obligee acknowledges it";
+    label ru unofficial "Статья 9.2.4. Если кредитор дал согласие заранее, перевод вступает в силу с извещением кредитора о переводе или его признанием";
+    when transfer_by_obligors_agreement(o, original, new_obligor)
+        and obligee_consented_in_advance(o)
+        and transfer_notice_given_or_acknowledged(o);
+    then transfer_effective(o);
+}
+
+@source(PICC_ART9_2_5_EN, PICC_ART9_2_5_RU)
+rule JointAndSeveralLiabilityAfterTransfer(o: Obligation) defeasible {
+    label en official "Article 9.2.5(3). Otherwise the original obligor and the new obligor are jointly and severally liable";
+    label ru unofficial "Статья 9.2.5 пункт 3. В остальных случаях первоначальный и новый должники отвечают солидарно";
+    when transfer_effective(o)
+        and not_known(original_obligor_discharged_by_obligee(o))
+        and not_known(original_obligor_retained(o));
+    then obligors_jointly_and_severally_liable(o);
+}
+
+@source(PICC_ART9_2_6_EN, PICC_ART9_2_6_RU)
+rule ThirdPartyPerformanceWithoutConsent(o: Obligation, other: Party) defeasible {
+    label en official "Article 9.2.6(1). Without the obligee's consent, the obligor may contract with another person to perform the obligation in its place, unless the obligation has an essentially personal character";
+    label ru unofficial "Статья 9.2.6 пункт 1. Без согласия кредитора должник может договориться с другим лицом об исполнении вместо него, если обязательство не носит существенно личного характера";
+    when third_party_performance_agreed(o, other)
+        and not_known(obligation_personal_character(o));
+    then third_party_may_perform(o, other);
+}
+
+@source(PICC_ART9_2_6_EN, PICC_ART9_2_6_RU)
+rule ObligeeRetainsClaimDespiteThirdParty(o: Obligation, other: Party) strict {
+    label en official "Article 9.2.6(2). The obligee retains its claim against the obligor";
+    label ru unofficial "Статья 9.2.6 пункт 2. Кредитор сохраняет требование к должнику";
+    when third_party_performance_agreed(o, other);
+    then obligee_retains_claim_against_obligor(o);
+}
+
+@source(PICC_ART9_2_7_EN, PICC_ART9_2_7_RU)
+rule NewObligorAssertsDefences(o: Obligation) defeasible {
+    label en official "Article 9.2.7(1). The new obligor may assert against the obligee all defences which the original obligor could assert";
+    label ru unofficial "Статья 9.2.7 пункт 1. Новый должник может заявить кредитору все возражения, которые мог заявить первоначальный должник";
+    when transfer_effective(o)
+        and defence_of_original_obligor(o);
+    then new_obligor_may_assert_defence(o);
+}
+
+@source(PICC_ART9_2_7_EN, PICC_ART9_2_7_RU)
+rule NewObligorCannotSetOff(o: Obligation) defeasible {
+    label en official "Article 9.2.7(2). The new obligor may not exercise against the obligee any right of set-off available to the original obligor";
+    label ru unofficial "Статья 9.2.7 пункт 2. Новый должник не может осуществить против кредитора зачёт, доступный первоначальному должнику";
+    when transfer_effective(o)
+        and set_off_of_original_obligor(o);
+    then new_obligor_may_not_set_off(o);
+}
+
+@source(PICC_ART9_2_8_EN, PICC_ART9_2_8_RU)
+rule ObligeeRightsAgainstNewObligor(o: Obligation) defeasible {
+    label en official "Article 9.2.8(1). The obligee may assert against the new obligor all its rights to payment or other performance under the contract in respect of the obligation transferred";
+    label ru unofficial "Статья 9.2.8 пункт 1. Кредитор может заявить новому должнику все свои права на платёж или иное исполнение по договору в отношении переведённого обязательства";
+    when transfer_effective(o);
+    then obligee_rights_against_new_obligor(o);
+}
+
+@source(PICC_ART9_2_8_EN, PICC_ART9_2_8_RU)
+rule SecurityOfThirdPersonDischarged(o: Obligation) defeasible {
+    label en official "Article 9.2.8(2). If the original obligor is discharged, a security granted by any person other than the new obligor is discharged, unless that person agrees that it should continue";
+    label ru unofficial "Статья 9.2.8 пункт 2. При освобождении первоначального должника обеспечение, предоставленное иным лицом, прекращается, если это лицо не согласилось на его сохранение";
+    when original_obligor_discharged_by_obligee(o)
+        and security_by_third_person(o)
+        and not_known(security_provider_agreed_to_continue(o));
+    then security_discharged_with_original_obligor(o);
+}
+
+// --- Раздел 3 главы 9: уступка договора --------------------------------------------
+
+pub relation contract_assignment(c: Contract, assignor: Party, assignee: Party, other: Party) kind empirical {
+    label en official "the assignor transfers by agreement its rights and obligations arising out of the contract with the other party";
+    label ru unofficial "цедент передаёт соглашением свои права и обязанности из договора с другой стороной";
+}
+
+pub relation business_transfer_of_contract(c: Contract) kind empirical {
+    label en official "the assignment of the contract is made under the special rules governing transfers of contracts in the course of transferring a business";
+    label ru unofficial "уступка договора совершается по особым правилам о передаче договоров при передаче предприятия";
+}
+
+pub relation other_party_consented(c: Contract) kind empirical {
+    label en official "the other party has consented to the assignment of the contract";
+    label ru unofficial "другая сторона согласилась на уступку договора";
+}
+
+pub relation other_party_consented_in_advance(c: Contract) kind empirical {
+    label en official "the other party gave its consent in advance";
+    label ru unofficial "другая сторона дала согласие заранее";
+}
+
+pub relation assignment_notice_given_or_acknowledged(c: Contract) kind empirical {
+    label en official "a notice of the assignment was given to the other party or the other party acknowledged it";
+    label ru unofficial "другой стороне дано извещение об уступке либо она его признала";
+}
+
+pub relation assignor_discharged(c: Contract) kind empirical {
+    label en official "the other party discharged the assignor";
+    label ru unofficial "другая сторона освободила цедента";
+}
+
+pub relation assignor_retained(c: Contract) kind empirical {
+    label en official "the other party retained the assignor as an obligor in case the assignee does not perform properly";
+    label ru unofficial "другая сторона сохранила цедента должником на случай ненадлежащего исполнения цессионарием";
+}
+
+pub relation assignment_involves_rights(c: Contract) kind empirical {
+    label en official "the assignment of the contract involves an assignment of rights";
+    label ru unofficial "уступка договора включает уступку прав";
+}
+
+pub relation assignment_involves_obligations(c: Contract) kind empirical {
+    label en official "the assignment of the contract involves a transfer of obligations";
+    label ru unofficial "уступка договора включает перевод обязательств";
+}
+
+pub relation contract_assignment_effective(c: Contract) kind institutional {
+    label en official "the assignment of the contract is effective (articles 9.3.1-9.3.4)";
+    label ru unofficial "уступка договора действительна (статьи 9.3.1-9.3.4)";
+}
+
+pub relation assignor_and_assignee_jointly_liable(c: Contract) kind institutional {
+    label en official "otherwise the assignor and the assignee are jointly and severally liable (article 9.3.5(3))";
+    label ru unofficial "в остальных случаях цедент и цессионарий отвечают солидарно (статья 9.3.5 пункт 3)";
+}
+
+pub relation rules_on_rights_apply(c: Contract) kind institutional {
+    label en official "to the extent that the assignment involves an assignment of rights, articles 9.1.13 and 9.1.14 apply accordingly (articles 9.3.6(1), 9.3.7(1))";
+    label ru unofficial "насколько уступка включает уступку прав, соответственно применяются статьи 9.1.13 и 9.1.14 (статьи 9.3.6 пункт 1, 9.3.7 пункт 1)";
+}
+
+pub relation rules_on_obligations_apply(c: Contract) kind institutional {
+    label en official "to the extent that the assignment involves a transfer of obligations, articles 9.2.7 and 9.2.8 apply accordingly (articles 9.3.6(2), 9.3.7(2))";
+    label ru unofficial "насколько уступка включает перевод обязательств, соответственно применяются статьи 9.2.7 и 9.2.8 (статьи 9.3.6 пункт 2, 9.3.7 пункт 2)";
+}
+
+@source(PICC_ART9_3_1_EN, PICC_ART9_3_3_EN)
+rule ContractAssignmentRequiresConsent(c: Contract, assignor: Party, assignee: Party, other: Party) defeasible {
+    label en official "Articles 9.3.1 and 9.3.3. The assignment of a contract is the transfer of the assignor's rights and obligations and requires the consent of the other party";
+    label ru unofficial "Статьи 9.3.1 и 9.3.3. Уступка договора — передача прав и обязанностей цедента, и она требует согласия другой стороны";
+    when contract_assignment(c, assignor, assignee, other)
+        and other_party_consented(c);
+    then contract_assignment_effective(c);
+}
+
+@source(PICC_ART9_3_2_EN, PICC_ART9_3_2_RU)
+rule BusinessContractTransferExcluded(c: Contract) defeater {
+    label en official "Article 9.3.2. This Section does not apply to the assignment of contracts made in the course of transferring a business";
+    label ru unofficial "Статья 9.3.2. Настоящий раздел не применяется к уступке договоров при передаче предприятия";
+    when business_transfer_of_contract(c);
+    defeat contract_assignment_effective(c);
+}
+
+@source(PICC_ART9_3_4_EN, PICC_ART9_3_4_RU)
+rule AdvanceConsentToContractAssignment(c: Contract, assignor: Party, assignee: Party, other: Party) defeasible {
+    label en official "Article 9.3.4. If the other party has given its consent in advance, the assignment becomes effective when a notice is given to the other party or when it acknowledges the assignment";
+    label ru unofficial "Статья 9.3.4. Если другая сторона дала согласие заранее, уступка вступает в силу с извещением её или её признанием";
+    when contract_assignment(c, assignor, assignee, other)
+        and other_party_consented_in_advance(c)
+        and assignment_notice_given_or_acknowledged(c);
+    then contract_assignment_effective(c);
+}
+
+@source(PICC_ART9_3_5_EN, PICC_ART9_3_5_RU)
+rule AssignorAndAssigneeJointlyLiable(c: Contract) defeasible {
+    label en official "Article 9.3.5(3). Otherwise the assignor and the assignee are jointly and severally liable";
+    label ru unofficial "Статья 9.3.5 пункт 3. В остальных случаях цедент и цессионарий отвечают солидарно";
+    when contract_assignment_effective(c)
+        and not_known(assignor_discharged(c))
+        and not_known(assignor_retained(c));
+    then assignor_and_assignee_jointly_liable(c);
+}
+
+@source(PICC_ART9_3_6_EN, PICC_ART9_3_6_RU)
+rule RightsRulesApplyToContractAssignment(c: Contract) defeasible {
+    label en official "Articles 9.3.6(1) and 9.3.7(1). To the extent that the assignment involves an assignment of rights, the rules on defences, set-off and related rights apply accordingly";
+    label ru unofficial "Статьи 9.3.6 пункт 1 и 9.3.7 пункт 1. Насколько уступка включает уступку прав, соответственно применяются правила о возражениях, зачёте и сопутствующих правах";
+    when contract_assignment_effective(c)
+        and assignment_involves_rights(c);
+    then rules_on_rights_apply(c);
+}
+
+@source(PICC_ART9_3_7_EN, PICC_ART9_3_7_RU)
+rule ObligationRulesApplyToContractAssignment(c: Contract) defeasible {
+    label en official "Articles 9.3.6(2) and 9.3.7(2). To the extent that the assignment involves a transfer of obligations, the rules on defences and related rights of the obligee apply accordingly";
+    label ru unofficial "Статьи 9.3.6 пункт 2 и 9.3.7 пункт 2. Насколько уступка включает перевод обязательств, соответственно применяются правила о возражениях и правах кредитора";
+    when contract_assignment_effective(c)
+        and assignment_involves_obligations(c);
+    then rules_on_obligations_apply(c);
+}

@@ -1,0 +1,709 @@
+// Source-модель Принципов международных коммерческих договоров УНИДРУА
+// (редакция 2016 года): закреплённые байты black-letter rules и постатейные
+// фрагменты §194 охвата ЭТОГО пакета.
+//
+// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
+// `corpus/tools/sources/sync/sync_unidroit_picc_fragments.py`; сверка без
+// записи — его же ключом `--check`.
+//
+// ПРАВО НА ВОСПРОИЗВЕДЕНИЕ ПОЛУЧЕНО У ИЗДАТЕЛЯ. Раздел «Copyright notice»
+// правовой страницы УНИДРУА (`unidroit.org/disclaimer/`, проверено
+// 17.09.2026): «Reproduction of the information is authorised, except for
+// commercial purposes, provided the source is duly acknowledged».
+//
+// ПОЧЕМУ ТЕКСТ ОФИЦИАЛЬНЫЙ, А КОПИЯ — НЕТ. `officiality official` говорит о
+// ТЕКСТЕ: английский — один из двух официальных языков инструмента.
+// `materialization_status PINNED_UNOFFICIAL_COPY` говорит о БАЙТАХ:
+// закреплено извлечение из PDF портала издателя. Русский текст — парный
+// `unofficial` якорь: официальным языком инструмента он не является.
+//
+// КОММЕНТАРИИ И ИЛЛЮСТРАЦИИ ИЗДАТЕЛЯ В ЗАКРЕПЛЕНИЕ НЕ ВХОДЯТ: закреплены
+// black-letter rules — сам текст статей.
+//
+// `retrieved_at` — константа, а не момент сборки (DECISION-0005 п. 6).
+
+language "law.core" version "0.2";
+package unidroit.picc_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-performance";
+
+source PICC_2016 {
+    kind doctrine;
+    jurisdiction International;
+    number "UNIDROIT Principles of International Commercial Contracts 2016";
+    label en official "UNIDROIT Principles of International Commercial Contracts";
+    label ru unofficial "Принципы международных коммерческих договоров УНИДРУА";
+}
+
+edition PICC_2016_EN of PICC_2016 {
+    label en official "English black-letter rules, 2016 edition";
+    language en;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_EN_TEXT of PICC_2016_EN {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
+    local_path "sources/picc-en/en.txt";
+}
+
+edition PICC_2016_RU of PICC_2016 {
+    label ru unofficial "Русский текст black-letter rules, редакция 2016 года";
+    language ru;
+    officiality unofficial;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_RU_TEXT of PICC_2016_RU {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:89f86961c82987fe324c43d46146cc31aa20e8965511158dcf7fe5b43012066a";
+    local_path "sources/picc-ru/ru.txt";
+}
+
+// Article 6.1.1 (English black-letter rules)
+fragment PICC_ART6_1_1_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_1";
+    text en official """ARTICLE 6.1.1
+(Time of performance)
+A party must perform its obligations:
+(a) if a time is fixed by or determinable from the contract, at that time;
+(b) if a period of time is fixed by or determinable from the contract, at any time
+within that period unless circumstances indicate that the other party is to choose a time;
+(c) in any other case, within a reasonable time after the conclusion of the contract.""";
+    content_hash "sha256:bff8fd006e4612f1a281fcf268d2e7d3eaa8a2ddc876d02082829dce799b77d0";
+}
+
+// Статья 6.1.1 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_1_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_1";
+    text ru unofficial """Статья 6.1.1
+(Срок исполнения)
+Стороны обязаны исполнить свое обязательство:
+(а) если срок установлен в договоре или может быть определен исходя
+из договора, в этот срок;
+(b) если период времени установлен в договоре или может быть
+определен исходя из договора, в любой срок в рамках этого периода времени,
+если только обстоятельства не указывают на то, что другая сторона вправе
+выбрать срок исполнения;
+(с) в любом другом случае, в течение разумного срока после
+заключения договора.""";
+    content_hash "sha256:e65bfc5e90b3ac378fa14a3f804c6523d77697ba49661da18b242de7562e713c";
+}
+
+// Article 6.1.2 (English black-letter rules)
+fragment PICC_ART6_1_2_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_2";
+    text en official """ARTICLE 6.1.2
+(Performance at one time or in instalments)
+In cases under Article 6.1.1(b) or (c), a party must perform its obligations at one
+time if that performance can be rendered at one time and the circumstances do not
+indicate otherwise.""";
+    content_hash "sha256:7f0aab24fb8756c9c152157c1d3542baf1f0964c13456766fb9ac6f01972008f";
+}
+
+// Статья 6.1.2 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_2_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_2";
+    text ru unofficial """Статья 6.1.2
+(Однократное исполнение или исполнение по частям)
+В случаях, предусмотренных пунктами «b» и «с» статьи 6.1.1, стороны
+должны полностью за один раз исполнить свои обязательства, если
+исполнение может быть осуществлено таким образом и обстоятельства не
+указывают на иное.""";
+    content_hash "sha256:c8457e438b8283afff38a022a24e1bcc80d6d98aee1a3a9fa0af430c89b56548";
+}
+
+// Article 6.1.3 (English black-letter rules)
+fragment PICC_ART6_1_3_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_3";
+    text en official """ARTICLE 6.1.3
+(Partial performance)
+(1) The obligee may reject an offer to perform in part at the time performance is
+due, whether or not such offer is coupled with an assurance as to the balance of the
+performance, unless the obligee has no legitimate interest in so doing.
+(2) Additional expenses caused to the obligee by partial performance are to be
+borne by the obligor without prejudice to any other remedy.""";
+    content_hash "sha256:25765229586b96fa2a6c2b7162b2dc928b500904e27f33f00363fc9870a52367";
+}
+
+// Статья 6.1.3 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_3_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_3";
+    text ru unofficial """Статья 6.1.3
+(Частичное исполнение)
+(1) Кредитор может отказаться от предложения исполнить
+обязательство по частям при наступлении срока исполнения, независимо от
+того, сопровождается ли такое предложение заверением в отношении
+остающейся части исполнения, если только кредитор не имеет законного
+интереса поступить таким образом.
+(2) Дополнительные расходы, причиненные кредитору частичным
+исполнением, возлагаются на должника без ущерба для любых иных средств
+правовой защиты.""";
+    content_hash "sha256:f890617ed081fa30c1b2f2a073da1ddbb4aed3d89973035961de9a4b14b1aca0";
+}
+
+// Article 6.1.4 (English black-letter rules)
+fragment PICC_ART6_1_4_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_4";
+    text en official """ARTICLE 6.1.4
+(Order of performance)
+(1) To the extent that the performances of the parties can be rendered
+simultaneously, the parties are bound to render them simultaneously unless the
+circumstances indicate otherwise.
+(2) To the extent that the performance of only one party requires a period of time,
+that party is bound to render its performance first, unless the circumstances indicate
+otherwise.""";
+    content_hash "sha256:c52985dea3ab664710f5e3a647e55ea6b626932a52752cf0338f75bc14b9646f";
+}
+
+// Статья 6.1.4 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_4_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_4";
+    text ru unofficial """Статья 6.1.4
+(Порядок исполнения)
+(1) В той степени, в которой стороны могут осуществить исполнение
+одновременно, они обязаны осуществить его одновременно, если
+обстоятельства не указывают на иное.
+(2) В той степени, в которой для исполнения лишь одной стороной
+требуется период времени, эта сторона обязана осуществить свое исполнение
+первой, если обстоятельства не указывают на иное.""";
+    content_hash "sha256:023d0ed03e95bb7a39d173fed2dc9a0ce219cc2156013f4f377ccce91ccd4ba4";
+}
+
+// Article 6.1.5 (English black-letter rules)
+fragment PICC_ART6_1_5_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_5";
+    text en official """ARTICLE 6.1.5
+(Earlier performance)
+(1) The obligee may reject an earlier performance unless it has no legitimate
+interest in so doing.
+(2) Acceptance by a party of an earlier performance does not affect the time for
+the performance of its own obligations if that time has been fixed irrespective of the
+performance of the other party’s obligations.
+(3) Additional expenses caused to the obligee by earlier performance are to be
+borne by the obligor, without prejudice to any other remedy.""";
+    content_hash "sha256:f053053ef0ba717722d4525bc0e4f7fdad103f68f92c4155117c38db25148c49";
+}
+
+// Статья 6.1.5 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_5_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_5";
+    text ru unofficial """Статья 6.1.5
+(Досрочное исполнение)
+(1) Кредитор может отказаться от досрочного исполнения, кроме
+случаев, когда он не имеет законного интереса сделать это.
+(2) Принятие стороной досрочного исполнения не влияет на срок
+исполнения своих обязательств, если этот срок был установлен вне
+зависимости от исполнения обязательств другой стороны.
+(3) Дополнительные расходы, причиненные кредитору досрочным
+исполнением, возлагаются на должника без ущерба для любых иных средств
+правовой защиты.""";
+    content_hash "sha256:ccdb01d2d1888779dc33b4298bf018dd823e397f169ce58cd502116baff0b324";
+}
+
+// Article 6.1.6 (English black-letter rules)
+fragment PICC_ART6_1_6_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_6";
+    text en official """ARTICLE 6.1.6
+(Place of performance)
+(1) If the place of performance is neither fixed by, nor determinable from, the
+contract, a party is to perform:
+(a) a monetary obligation, at the obligee’s place of business;
+(b) any other obligation, at its own place of business.
+(2) A party must bear any increase in the expenses incidental to performance
+which is caused by a change in its place of business subsequent to the conclusion of the
+contract.""";
+    content_hash "sha256:e1bca1109f6e2bb2b62f2b88de96b1727490d0c42d7a78bc81559f174bad270b";
+}
+
+// Статья 6.1.6 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_6_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_6";
+    text ru unofficial """Статья 6.1.6
+(Место исполнения)
+(1) Если место исполнения не установлено в договоре или не может
+быть определено исходя из договора, сторона должна исполнить:
+(а) денежное обязательство - в месте, где находится предприятие
+кредитора;
+(b) любое иное обязательство - в месте, где находится ее предприятие.
+(2) Сторона должна нести бремя увеличения связанных с исполнением
+расходов, которое является результатом изменения места нахождения ее
+предприятия, если изменение происходит после заключения договора.""";
+    content_hash "sha256:c20d09f4617f471382994c0d762b3e3dc205a08191338474f7a1a5fcd9ae2462";
+}
+
+// Article 6.1.7 (English black-letter rules)
+fragment PICC_ART6_1_7_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_7";
+    text en official """ARTICLE 6.1.7
+(Payment by cheque or other instrument)
+(1) Payment may be made in any form used in the ordinary course of business at
+the place for payment.
+(2) However, an obligee who accepts, either by virtue of paragraph (1) or
+voluntarily, a cheque, any other order to pay or a promise to pay, is presumed to do so
+only on condition that it will be honoured.""";
+    content_hash "sha256:5a6ff38bf6e67b062015b4f639fdc997e3cf64880d2f044e1cad1d089ce290b0";
+}
+
+// Статья 6.1.7 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_7_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_7";
+    text ru unofficial """Статья 6.1.7
+(Платеж чеком или другим документом)
+(1) Платеж может быть осуществлен в любой форме, используемой в
+ходе обычной деловой практики в месте платежа.
+(2) Однако, кредитор, который либо в силу предыдущего пункта, либо
+добровольно принимает чек, либо другой приказ о платеже или
+обязательство заплатить, предполагается сделавшим это только под
+условием, что по нему действительно будет совершен платеж.""";
+    content_hash "sha256:56cb4129d568d0a142e0ae58cc8dae4b58e4eaf14c20cf8efb317ad317916e90";
+}
+
+// Article 6.1.8 (English black-letter rules)
+fragment PICC_ART6_1_8_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_8";
+    text en official """ARTICLE 6.1.8
+(Payment by funds transfer)
+(1) Unless the obligee has indicated a particular account, payment may be made
+by a transfer to any of the financial institutions in which the obligee has made it known
+that it has an account.
+(2) In case of payment by a transfer the obligation of the obligor is discharged
+when the transfer to the obligee’s financial institution becomes effective.""";
+    content_hash "sha256:e6306723884ee47c83f0017303d2bf66d18dc5e5ec4f19dc91a12f10070fc9bf";
+}
+
+// Статья 6.1.8 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_8_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_8";
+    text ru unofficial """Статья 6.1.8
+(Платеж путем денежного перевода)
+(1) Если только кредитор не указал конкретный счет, платеж может
+быть осуществлен путем денежного перевода в любое финансовое
+учреждение, относительно которого кредитор дал знать, что имеет там счет.
+(2) При платеже путем денежного перевода обязательство должника
+считается выполненным, когда состоялся перевод в финансовое учреждение
+кредитора.""";
+    content_hash "sha256:13b219434d31bc13448ae89715991aa08b2f7b82c9524dfbe267a96daaefdf06";
+}
+
+// Article 6.1.9 (English black-letter rules)
+fragment PICC_ART6_1_9_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_9";
+    text en official """ARTICLE 6.1.9
+(Currency of payment)
+(1) If a monetary obligation is expressed in a currency other than that of the place
+for payment, it may be paid by the obligor in the currency of the place for payment
+unless
+(a) that currency is not freely convertible; or
+(b) the parties have agreed that payment should be made only in the currency in
+which the monetary obligation is expressed.
+(2) If it is impossible for the obligor to make payment in the currency in which the
+monetary obligation is expressed, the obligee may require payment in the currency of
+the place for payment, even in the case referred to in paragraph (1)(b).
+(3) Payment in the currency of the place for payment is to be made according to
+the applicable rate of exchange prevailing there when payment is due.
+(4) However, if the obligor has not paid at the time when payment is due, the
+obligee may require payment according to the applicable rate of exchange prevailing
+either when payment is due or at the time of actual payment.""";
+    content_hash "sha256:8a514c98b59bbf77b38a33df2a6b296127efa71c1fac5fe101ae57f0db9a8e13";
+}
+
+// Статья 6.1.9 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_9_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_9";
+    text ru unofficial """Статья 6.1.9
+(Валюта платежа)
+(1) Если денежное обязательство выражено в иной валюте, чем валюта
+места платежа, оно может быть исполнено должником в валюте места
+платежа, кроме случаев, когда:
+(а) эта валюта не является свободно конвертируемой; или
+(b) стороны договорились, что платеж должен быть осуществлен в
+валюте, в которой выражено денежное обязательство.
+(2) Если для должника невозможно исполнить денежное обязательство
+в валюте, в которой выражено денежное обязательство, кредитор может
+потребовать осуществить платеж в валюте места платежа даже в случае,
+предусмотренном в пункте (1)(b).
+(3) Платеж в валюте места платежа должен быть совершен в
+соответствии с применимым курсом обмена валюты, превалирующим в этом
+месте при наступлении срока платежа.
+(4) Однако, если должник не совершил платеж в срок, когда платеж
+должен быть совершен, кредитор может потребовать совершить платеж в
+соответствии с применимым курсом обмена валюты, превалирующим либо в
+момент наступления срока платежа, либо в момент фактического платежа.""";
+    content_hash "sha256:f3130509a6c32e4a1f67856b2b7916d583b951a855512133ede653618d174d08";
+}
+
+// Article 6.1.10 (English black-letter rules)
+fragment PICC_ART6_1_10_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_10";
+    text en official """ARTICLE 6.1.10
+(Currency not expressed)
+Where a monetary obligation is not expressed in a particular currency, payment must
+be made in the currency of the place where payment is to be made.""";
+    content_hash "sha256:9ef6585464a66e3c397e9af195452677ebcce17ff43731e904e916112e709854";
+}
+
+// Статья 6.1.10 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_10_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_10";
+    text ru unofficial """Статья 6.1.10
+(Неопределенность валюты)
+Если денежное обязательство не выражено в какой-либо конкретной
+валюте, платеж должен быть совершен в валюте места, где должен быть
+совершен платеж.""";
+    content_hash "sha256:b81347ac7ddb6b900f205457b348bdc8f579be3b7a9927f6beb9a70c04f10d0e";
+}
+
+// Article 6.1.11 (English black-letter rules)
+fragment PICC_ART6_1_11_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_11";
+    text en official """ARTICLE 6.1.11
+(Costs of performance)
+Each party shall bear the costs of performance of its obligations.""";
+    content_hash "sha256:383722e046a6161d0e04c95384bd2993716406441f8475219a2e8023ab7f67ee";
+}
+
+// Статья 6.1.11 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_11_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_11";
+    text ru unofficial """Статья 6.1.11
+(Стоимость исполнения)
+Каждая сторона должна нести расходы по исполнению своих
+обязательств.""";
+    content_hash "sha256:d0d5c5de43e9dac238554862ee765cf9bd260456c835e695df67ffd26b1e59d0";
+}
+
+// Article 6.1.12 (English black-letter rules)
+fragment PICC_ART6_1_12_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_12";
+    text en official """ARTICLE 6.1.12
+(Imputation of payments)
+(1) An obligor owing several monetary obligations to the same obligee may
+specify at the time of payment the debt to which it intends the payment to be applied.
+However, the payment discharges first any expenses, then interest due and finally the
+principal.
+(2) If the obligor makes no such specification, the obligee may, within a
+reasonable time after payment, declare to the obligor the obligation to which it imputes
+the payment, provided that the obligation is due and undisputed.
+(3) In the absence of imputation under paragraphs (1) or (2), payment is imputed
+to that obligation which satisfies one of the following criteria in the order indicated:
+(a) an obligation which is due or which is the first to fall due;
+(b) the obligation for which the obligee has least security;
+(c) the obligation which is the most burdensome for the obligor;
+(d) the obligation which has arisen first.
+If none of the preceding criteria applies, payment is imputed to all the obligations
+proportionally.""";
+    content_hash "sha256:cc8eecf6ca7bd1075e6cab74e485c008901dab745c4929b00f357d375c90a399";
+}
+
+// Статья 6.1.12 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_12_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_12";
+    text ru unofficial """Статья 6.1.12
+(Очередность платежей)
+(1) Должник, имеющий несколько денежных обязательств в
+отношении одного кредитора, может в момент совершения платежа указать
+долг, который он намерен погасить. Однако платеж погашает сначала любые
+расходы, затем подлежащие уплате проценты годовых и в заключение
+основную сумму долга.
+(2) Если должник не дает таких указаний, кредитор в течение
+разумного срока после платежа может заявить должнику об обязательстве, к
+которому он относит платежи, при условии, что срок по обязательству уже
+наступил и это обязательство бесспорно.
+(3) В отсутствие очередности платежей, предусмотренной в пунктах (1)
+и (2), платеж относится к тому обязательству, которое удовлетворяет одному
+из следующих критериев в указанном порядке:
+(а) обязательство, срок исполнения которого наступил или наступит
+первым:
+(b) обязательство, по которому кредитор имеет наименьшее
+обеспечение исполнения;
+(c) обязательство, которое наиболее обременительно для должника;
+(d) обязательство, которое возникло первым.
+Если ни один из этих критериев не применяется, платеж
+распределяется пропорционально всем обязательствам.""";
+    content_hash "sha256:519ed9bddd09b1463eb151678da19210b42594ecc7812bae760f71e9dbac897a";
+}
+
+// Article 6.1.13 (English black-letter rules)
+fragment PICC_ART6_1_13_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_13";
+    text en official """ARTICLE 6.1.13
+(Imputation of non-monetary obligations)
+Article 6.1.12 applies with appropriate adaptations to the imputation of performance
+of non-monetary obligations.""";
+    content_hash "sha256:64bf773e8be27cc5530fce973cfe0909f9b1bc472520a413c4425aaf60bc9ba4";
+}
+
+// Статья 6.1.13 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_13_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_13";
+    text ru unofficial """Статья 6.1.13
+(Очередность неденежных обязательств)
+Статья 6.1.12 применяется с учетом необходимой адаптации к
+определению очередности неденежных обязательств.""";
+    content_hash "sha256:9dbe8b84f8d41c2189346d78512f9dd7f416a090ac99556886db79aa25bed1a5";
+}
+
+// Article 6.1.14 (English black-letter rules)
+fragment PICC_ART6_1_14_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_14";
+    text en official """ARTICLE 6.1.14
+(Application for public permission)
+Where the law of a State requires a public permission affecting the validity of the
+contract or its performance and neither that law nor the circumstances indicate otherwise
+(a) if only one party has its place of business in that State, that party shall take the
+measures necessary to obtain the permission;
+(b) in any other case the party whose performance requires permission shall take
+the necessary measures.""";
+    content_hash "sha256:b69218dc0f21dbaba8706ed2f8453ca58bfd02f8180281d24db2023f999b2613";
+}
+
+// Статья 6.1.14 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_14_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_14";
+    text ru unofficial """Статья 6.1.14
+(Обращение за государственным разрешением)
+Если
+законодательство
+какого-либо
+государства
+требует
+государственного разрешения, влияющего на действительность договора или
+его исполнение, и если ни это законодательство, ни обстоятельства не
+указывают на иное, то:
+(а) если только одна сторона имеет свое место деятельности в этом
+государстве, эта сторона должна предпринять все меры, необходимые для
+получения разрешения;
+(b) в любом другом случае сторона, чье исполнение требует
+разрешения, должна предпринять необходимые меры.""";
+    content_hash "sha256:7d2ffb5f0d9c851145af13b29e085a79c2727f6b2a091a6645f7dc549b5ad8b4";
+}
+
+// Article 6.1.15 (English black-letter rules)
+fragment PICC_ART6_1_15_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_15";
+    text en official """ARTICLE 6.1.15
+(Procedure in applying for permission)
+(1) The party required to take the measures necessary to obtain the permission
+shall do so without undue delay and shall bear any expenses incurred.
+(2) That party shall whenever appropriate give the other party notice of the grant
+or refusal of such permission without undue delay.""";
+    content_hash "sha256:dd27e797a15ba17cf39cbfaa0147715d7d1d81f7960f263aaf0e91832e0d220a";
+}
+
+// Статья 6.1.15 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_15_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_15";
+    text ru unofficial """Статья 6.1.15
+(Процедура обращения за разрешением)
+(1) Сторона, которая должна предпринять меры, необходимые для
+получения разрешения, должна это сделать без неоправданной задержки и
+должна нести все связанные с этим расходы.
+(2) Эта сторона должна в соответствующем случае уведомить другую
+сторону о выдаче или отказе в выдаче разрешения без неоправданной
+задержки.""";
+    content_hash "sha256:cc7026a4fff8665e9c558ede675c67b0e969832c8aa3276bc1dd2276bfe5acbd";
+}
+
+// Article 6.1.16 (English black-letter rules)
+fragment PICC_ART6_1_16_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_16";
+    text en official """ARTICLE 6.1.16
+(Permission neither granted nor refused)
+(1) If, notwithstanding the fact that the party responsible has taken all measures
+required, permission is neither granted nor refused within an agreed period or, where no
+period has been agreed, within a reasonable time from the conclusion of the contract,
+either party is entitled to terminate the contract.
+(2) Where the permission affects some terms only, paragraph (1) does not apply
+if, having regard to the circumstances, it is reasonable to uphold the remaining contract
+even if the permission is refused.""";
+    content_hash "sha256:58679220e59fd1edb0d50f29a79e7607cbfa1a3e5e6e1deafe6de97ea07596cb";
+}
+
+// Статья 6.1.16 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_16_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_16";
+    text ru unofficial """Статья 6.1.16
+(Невыдача и отсутствие отказа в выдаче разрешения)
+(1) Если, несмотря на то, что обязанной стороной предприняты все
+необходимые меры, разрешение не было получено и одновременно не было
+отказано в его выдаче в течение согласованного срока, или, если такой срок
+не был согласован, то в течение разумного срока после заключения договора,
+любая сторона вправе прекратить действие договора.
+(2) Если разрешение затрагивает только некоторые условия договора,
+пункт (1) не применяется, если с учетом обстоятельств представляется
+разумным оставить в силе остальную часть договора, даже если было
+отказано в разрешении.""";
+    content_hash "sha256:83750fef4f08a38d03a99aac0ec21ebdce0df462b7d7f6e6ffbeb85df9906348";
+}
+
+// Article 6.1.17 (English black-letter rules)
+fragment PICC_ART6_1_17_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_1_17";
+    text en official """ARTICLE 6.1.17
+(Permission refused)
+(1) The refusal of a permission affecting the validity of the contract renders the
+contract void. If the refusal affects the validity of some terms only, only such terms are
+void if, having regard to the circumstances, it is reasonable to uphold the remaining
+contract.
+(2) Where the refusal of a permission renders the performance of the contract
+impossible in whole or in part, the rules on non-performance apply.""";
+    content_hash "sha256:f61b9a1cac70f042aae53f2ac8fbcb89757222172ef7ac9e53613bb7fff51498";
+}
+
+// Статья 6.1.17 (русский парный якорь, unofficial)
+fragment PICC_ART6_1_17_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_1_17";
+    text ru unofficial """Статья 6.1.17
+(Отказ в выдаче разрешения)
+(1) Отказ в выдаче разрешения, влияющий на действительность
+договора, ведет к недействительности договора. Если отказ влияет на
+действительность только некоторых условий, то только эти условия
+становятся недействительными, если с учетом существующих обстоятельств
+представляется разумным оставить в силе остальную часть договора.
+(2) Если отказ в выдаче разрешения делает исполнение договора
+невозможным полностью или частично, то подлежат применению нормы о
+неисполнении.""";
+    content_hash "sha256:ad6cd422f473b3143503016459cd4d714b099a3587e98ddfda5069b1dc43c5ce";
+}
+
+// Article 6.2.1 (English black-letter rules)
+fragment PICC_ART6_2_1_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_2_1";
+    text en official """ARTICLE 6.2.1
+(Contract to be observed)
+Where the performance of a contract becomes more onerous for one of the parties,
+that party is nevertheless bound to perform its obligations subject to the following
+provisions on hardship.""";
+    content_hash "sha256:b593edafa6273ce950ad6fbbe6513714e34df0658a89940007a82115d9fedce6";
+}
+
+// Статья 6.2.1 (русский парный якорь, unofficial)
+fragment PICC_ART6_2_1_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_2_1";
+    text ru unofficial """Статья 6.2.1
+(Соблюдение договорных обязательств)
+Если исполнение договора становится более обременительным для
+одной из сторон, эта сторона, тем не менее, обязана выполнить свои
+обязательства с соблюдением последующих положений о затруднениях.""";
+    content_hash "sha256:ba3fe57e37eda491f71157f05530cf5bb131a53171bac5f491964680218dc81b";
+}
+
+// Article 6.2.2 (English black-letter rules)
+fragment PICC_ART6_2_2_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_2_2";
+    text en official """ARTICLE 6.2.2
+(Definition of hardship)
+There is hardship where the occurrence of events fundamentally alters the equilibrium of the contract either because the cost of a party’s performance has increased or
+because the value of the performance a party receives has diminished, and
+(a) the events occur or become known to the disadvantaged party after the conclusion of the contract;
+(b) the events could not reasonably have been taken into account by the disadvantaged party at the time of the conclusion of the contract;
+(c) the events are beyond the control of the disadvantaged party; and
+(d) the risk of the events was not assumed by the disadvantaged party.""";
+    content_hash "sha256:0fae6c85ffb47fd090bbd8b0cd86d0e050e1881bfd8c16849aa6fbb5139628e7";
+}
+
+// Статья 6.2.2 (русский парный якорь, unofficial)
+fragment PICC_ART6_2_2_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_2_2";
+    text ru unofficial """Статья 6.2.2
+(Определение затруднений)
+Затруднениями считается случай, когда возникают события,
+существенным образом изменяющие равновесие договорных обязательств
+либо в силу возрастания для стороны стоимости исполнения, либо
+уменьшения ценности получаемого стороной исполнения, и, кроме того,
+(а) эти события возникают или становятся известны потерпевшей
+стороне после заключения договора;
+(b) эти события не могли быть разумно учтены потерпевшей стороной
+при заключении договора;
+(c) эти события находятся вне контроля потерпевшей стороны; и
+(d) риск возникновения этих событий не был принят на себя
+потерпевшей стороной.""";
+    content_hash "sha256:26830dbca4804547092984b9eeb06cc03bd8431367defb8ce4e19da8d53db02e";
+}
+
+// Article 6.2.3 (English black-letter rules)
+fragment PICC_ART6_2_3_EN in PICC_2016_EN {
+    kind article;
+    locator "article/6_2_3";
+    text en official """ARTICLE 6.2.3
+(Effects of hardship)
+(1) In case of hardship the disadvantaged party is entitled to request renegotiations. The request shall be made without undue delay and shall indicate the grounds on
+which it is based.
+(2) The request for renegotiation does not in itself entitle the disadvantaged party
+to withhold performance.
+(3) Upon failure to reach agreement within a reasonable time either party may
+resort to the court.
+(4) If the court finds hardship it may, if reasonable,
+(a) terminate the contract at a date and on terms to be fixed, or
+(b) adapt the contract with a view to restoring its equilibrium.""";
+    content_hash "sha256:3a7f20b6022dc4918d4e5f679ef599c2e28c4e78d44b1023f850849574914a2e";
+}
+
+// Статья 6.2.3 (русский парный якорь, unofficial)
+fragment PICC_ART6_2_3_RU in PICC_2016_RU {
+    kind article;
+    locator "article/6_2_3";
+    text ru unofficial """Статья 6.2.3
+(Последствия затруднений)
+(1) В случае затруднений потерпевшая сторона имеет право
+обратиться с просьбой пересмотреть договорные обязательства. Просьба
+должна быть сделана без неоправданной задержки и должна содержать
+обоснование.
+(2) Просьба о пересмотре, сама по себе, не дает потерпевшей стороне
+право приостановить исполнение.
+(3) При не достижении соглашения в разумный срок любая сторона
+может обратиться в суд.
+(4) Если суд установит наличие затруднений, он может, если найдет это
+разумным:
+(а) прекратить договор с определенной даты и на определенных
+условиях, или
+(b) изменить договор с целью восстановления его равновесия.""";
+    content_hash "sha256:0d6a216d9efb3fe9f251322a0acbce8a5740b8828d4520a3facc85549bce2a57";
+}

@@ -1,0 +1,99 @@
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+// Дело 2. Право требовать исполнения (7.2.1-7.2.5).
+//
+// ПЯТЬ ИЗЪЯТИЙ СТАТЬИ 7.2.2 ПРЕДЪЯВЛЕНЫ ПООТДЕЛЬНОСТИ: каждое само по себе
+// снимает требование исполнения в натуре, и дело показывает это пятью
+// разными обязательствами, а не одним с оговорками.
+
+test "PICCN-02-RIGHT-TO-PERFORMANCE" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": obligation_of(entity_ref("urn:case:piccn:o-money"), entity_ref("urn:case:piccn:contract-2"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a1": monetary_obligation(entity_ref("urn:case:piccn:o-money")) { origin case_input; }
+        assert "a2": money_not_paid(entity_ref("urn:case:piccn:o-money")) { origin case_input; }
+        assert "a3": obligation_of(entity_ref("urn:case:piccn:o-goods"), entity_ref("urn:case:piccn:contract-2"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a4": non_monetary_not_performed(entity_ref("urn:case:piccn:o-goods")) { origin case_input; }
+        assert "a5": obligation_of(entity_ref("urn:case:piccn:o-impossible"), entity_ref("urn:case:piccn:contract-2b"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a6": non_monetary_not_performed(entity_ref("urn:case:piccn:o-impossible")) { origin case_input; }
+        assert "a7": performance_impossible(entity_ref("urn:case:piccn:o-impossible")) { origin case_input; }
+        assert "a8": obligation_of(entity_ref("urn:case:piccn:o-burden"), entity_ref("urn:case:piccn:contract-2c"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a9": non_monetary_not_performed(entity_ref("urn:case:piccn:o-burden")) { origin case_input; }
+        assert "a10": performance_unreasonably_burdensome(entity_ref("urn:case:piccn:o-burden")) { origin adjudicated; }
+        assert "a11": obligation_of(entity_ref("urn:case:piccn:o-cover"), entity_ref("urn:case:piccn:contract-2d"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a12": non_monetary_not_performed(entity_ref("urn:case:piccn:o-cover")) { origin case_input; }
+        assert "a13": performance_obtainable_elsewhere(entity_ref("urn:case:piccn:o-cover")) { origin adjudicated; }
+        assert "a14": obligation_of(entity_ref("urn:case:piccn:o-personal"), entity_ref("urn:case:piccn:contract-2e"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a15": non_monetary_not_performed(entity_ref("urn:case:piccn:o-personal")) { origin case_input; }
+        assert "a16": performance_exclusively_personal(entity_ref("urn:case:piccn:o-personal")) { origin case_input; }
+        assert "a17": obligation_of(entity_ref("urn:case:piccn:o-late"), entity_ref("urn:case:piccn:contract-2f"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a18": non_monetary_not_performed(entity_ref("urn:case:piccn:o-late")) { origin case_input; }
+        assert "a19": performance_not_required_in_time(entity_ref("urn:case:piccn:o-late")) { origin case_input; }
+        assert "a20": defective_performance(entity_ref("urn:case:piccn:o-goods")) { origin case_input; }
+        assert "a21": repair_appropriate(entity_ref("urn:case:piccn:o-goods")) { origin case_input; }
+        assert "a22": court_ordered_performance(entity_ref("urn:case:piccn:o-goods")) { origin case_input; }
+        assert "a23": order_not_complied_with(entity_ref("urn:case:piccn:o-goods")) { origin case_input; }
+        assert "a24": performance_not_received_within_period(entity_ref("urn:case:piccn:o-cover")) { origin case_input; }
+        assert "a25": judicial_decision_unenforceable(entity_ref("urn:case:piccn:o-personal")) { origin case_input; }
+        assert "c0": obligee_of(entity_ref("urn:case:piccn:o-money"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "c1": obligee_of(entity_ref("urn:case:piccn:o-goods"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c2": obligee_of(entity_ref("urn:case:piccn:o-impossible"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c3": obligee_of(entity_ref("urn:case:piccn:o-burden"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c4": obligee_of(entity_ref("urn:case:piccn:o-cover"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c5": obligee_of(entity_ref("urn:case:piccn:o-personal"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c6": obligee_of(entity_ref("urn:case:piccn:o-late"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+
+    }
+
+    evaluate truth(may_require_payment(entity_ref("urn:case:piccn:o-money"), entity_ref("urn:case:piccn:seller")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PaymentMayBeRequired);
+
+    evaluate truth(may_require_performance(entity_ref("urn:case:piccn:o-goods"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PerformanceMayBeRequired);
+
+    evaluate truth(may_require_performance(entity_ref("urn:case:piccn:o-impossible"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(may_require_performance(entity_ref("urn:case:piccn:o-burden"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(may_require_performance(entity_ref("urn:case:piccn:o-cover"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(may_require_performance(entity_ref("urn:case:piccn:o-personal"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(may_require_performance(entity_ref("urn:case:piccn:o-late"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(may_require_repair_or_replacement(entity_ref("urn:case:piccn:o-goods"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RepairAndReplacement);
+
+    evaluate truth(penalty_may_be_ordered(entity_ref("urn:case:piccn:o-goods")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(JudicialPenalty);
+
+    evaluate truth(penalty_paid_to_aggrieved_party(entity_ref("urn:case:piccn:o-goods"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PenaltyGoesToAggrievedParty);
+
+    evaluate truth(may_invoke_another_remedy(entity_ref("urn:case:piccn:o-cover"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ChangeOfRemedyAfterDelay);
+
+    evaluate truth(may_invoke_another_remedy(entity_ref("urn:case:piccn:o-personal"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ChangeOfRemedyWhenUnenforceable);
+}
