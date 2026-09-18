@@ -39,4 +39,4 @@ Code and model: see `LICENSE`. The pinned texts of the publishers keep their
 own terms of reproduction, listed per package in `NOTICE`; those terms are
 not covered by the code licence.
 
-Maintainer: Arxo Law (inji.qaz@gmail.com). Address: https://github.com/arxohq/arxo-unidroit-picc.
+Maintainer: Rifat Dzhumagulov (hi@arxo.io). Address: https://github.com/arxohq/arxo-unidroit-picc.

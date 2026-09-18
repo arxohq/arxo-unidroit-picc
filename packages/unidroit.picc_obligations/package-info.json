@@ -16,6 +16,6 @@
     "tests/04-plurality-of-obligors.lawtest"
   ],
   "license": "The model, the scenarios and the catalogues are Apache-2.0 (see LICENSE). THE PINNED TEXTS OF THE UNIDROIT PRINCIPLES 2016 are the property of UNIDROIT, Rome: \"Reproduction of the information is authorised, except for commercial purposes, provided the source is duly acknowledged\" (unidroit.org/disclaimer, checked 17.09.2026). Reproduction of the texts for commercial purposes is not permitted; the source is to be acknowledged in any use.",
-  "maintainer": "Arxo Law (inji.qaz@gmail.com)",
+  "maintainer": "Rifat Dzhumagulov (hi@arxo.io)",
   "repository": "https://github.com/arxohq/arxo-unidroit-picc"
 }
