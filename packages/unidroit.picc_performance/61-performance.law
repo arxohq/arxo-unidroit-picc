@@ -672,6 +672,24 @@ rule PartyWhosePerformanceNeedsPermission(perm: Permission, c: Contract, p: Part
     then must_take_measures_for_permission(perm, p);
 }
 
+// "SHALL TAKE THE MEASURES" IS A DUTY, AND THE DUTY HAS A BEARER. Article
+// 6.1.14 says WHO must apply for the permission, and 6.1.15(1) says that party
+// must act without undue delay. The position records the bearer and the goal;
+// whether the delay was undue is an evaluative element of the case, and the
+// achievement is checked against the fact the case presents.
+@source(PICC_ART6_1_15_EN, PICC_ART6_1_15_FR)
+rule DutyToApplyForPermission(perm: Permission, p: Party) strict {
+    label en official "Article 6.1.15(1). The party required to take the measures shall do so without undue delay";
+    when must_take_measures_for_permission(perm, p);
+    then duty ApplyForPermission {
+        bearer p;
+        goal achievement {
+            condition measures_taken_without_undue_delay(perm);
+            window [@2016-05-10, infinity);
+        }
+    };
+}
+
 @source(PICC_ART6_1_15_EN, PICC_ART6_1_15_FR)
 rule ExpensesAndDiligenceOfApplicant(perm: Permission, p: Party) defeasible {
     label en official "Article 6.1.15(1). The party required to take the measures shall do so without undue delay and shall bear any expenses incurred";

@@ -308,6 +308,27 @@ rule TemporaryImpedimentLimitsExcuse(n: NonPerformance, p: Party) defeasible {
     then excuse_limited_to_reasonable_period(n);
 }
 
+// "MUST GIVE NOTICE" IS A DUTY WITH A DEADLINE OF ITS OWN. Article 7.1.7(3)
+// obliges the non-performing party to notify the other of the impediment and
+// of its effect, and attaches liability to the failure. The position carries
+// the duty; the liability below is what the model concludes once the failure
+// is established — a duty and its breach are two different statements.
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_FR)
+rule DutyToNotifyOfImpediment(n: NonPerformance, o: Obligation, p: Party, other: Party) strict {
+    label en official "Article 7.1.7(3). The non-performing party must give notice to the other party of the impediment and its effect on its ability to perform";
+    when non_performance_of(n, o, p)
+        and obligee_of(o, other)
+        and impediment_beyond_control(n);
+    then duty NotifyOfImpediment {
+        bearer p;
+        beneficiary other;
+        goal achievement {
+            condition impediment_notice_received_in_time(n);
+            window [@2016-05-10, infinity);
+        }
+    };
+}
+
 @source(PICC_ART7_1_7_EN, PICC_ART7_1_7_FR)
 rule LiabilityForLateNoticeOfImpediment(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.1.7(3). If the notice of the impediment is not received within a reasonable time, the party is liable for damages resulting from such non-receipt";

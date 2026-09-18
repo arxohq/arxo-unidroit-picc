@@ -177,6 +177,26 @@ rule ExpirationDoesNotExtinguishRight(r: Right) strict {
     then right_not_extinguished(r);
 }
 
+// ASSERTING THE EXPIRY IS A §127 POWER, NOT A FACT LIKE ANY OTHER. Article
+// 10.9(2) gives the obligor something it can DO: while it stays silent the
+// right may be exercised, and its assertion changes the legal position of the
+// other party. The power records who holds it, over what, by which act it is
+// exercised, on what condition it is valid and what it creates — the
+// conclusion below then follows from its exercise.
+@source(PICC_ART10_9_EN, PICC_ART10_9_FR)
+rule ObligorMayAssertExpiration(r: Right, c: Contract, obligee: Party, obligor: Party) strict {
+    label en official "Article 10.9(2). For the expiration of the limitation period to have effect, the obligor must assert it as a defence";
+    when right_of(r, c, obligee, obligor)
+        and limitation_expired(r);
+    then power AssertExpiration {
+        holder obligor;
+        over r;
+        exercise expiration_asserted_as_defence(r);
+        valid_when limitation_expired(r);
+        effect create(exercise_barred(r));
+    };
+}
+
 @source(PICC_ART10_9_EN, PICC_ART10_9_FR)
 rule ExpirationNeedsToBeAsserted(r: Right) defeasible {
     label en official "Article 10.9(2). For the expiration of the limitation period to have effect, the obligor must assert it as a defence";

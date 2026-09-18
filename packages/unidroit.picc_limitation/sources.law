@@ -105,13 +105,8 @@ fragment PICC_ART10_2_EN in PICC_2016_EN {
 the obligee knows or ought to know the facts as a result of which the obligee’s right can
 be exercised.
 (2) In any event, the maximum limitation period is ten years beginning on the day
-after the day the right can be exercised.
-(1)
-(2)
-(a)
-(b)
-(c)""";
-    content_hash "sha256:901a757439ad1830c6eb68ae398663fb0e9f62f05c7bb065733d287dbc0f1393";
+after the day the right can be exercised.""";
+    content_hash "sha256:eb56bcb2bd20d61266b7cfce2998e30cdf7ab672b8a7f5e3142e6319d7111a82";
 }
 
 // Article 10.2 (French black-letter rules)
@@ -124,13 +119,8 @@ fragment PICC_ART10_2_FR in PICC_2016_FR {
 du jour où le créancier a connu ou devait connaître les faits lui permettant d’exercer son
 droit.
 2) En toute hypothèse, le délai maximum de prescription est de dix ans à partir du
-lendemain du jour où le droit pouvait être exercé.
-1)
-2)
-a)
-b)
-c)""";
-    content_hash "sha256:d445d12f691725afa80c2a9b5e0c9a9cb56bdfc98282e5a98b08409cfd8beddb";
+lendemain du jour où le droit pouvait être exercé.""";
+    content_hash "sha256:5124eb9f280a021c477b86be2a3e14a7a5bb8ce8e83059749dde71a4f952d9ff";
 }
 
 // Article 10.3 (English black-letter rules)
@@ -308,9 +298,8 @@ as not to expire before one year after the relevant impediment has ceased to exi
 (2) Where the impediment consists of the incapacity or death of the obligee or
 obligor, suspension ceases when a representative for the incapacitated or deceased party
 or its estate has been appointed or a successor has inherited the respective party’s
-position. The additional one-year period under paragraph (1) applies accordingly.
-(1)""";
-    content_hash "sha256:b9a54dd91dfc79ec4bf98444cb5b58126378b1e1786a32452fab0a98aa96a7cb";
+position. The additional one-year period under paragraph (1) applies accordingly.""";
+    content_hash "sha256:f583da7d9350b0bc8e1ef59758f083f25bee0cd084a29821097f3265c61f053a";
 }
 
 // Article 10.8 (French black-letter rules)

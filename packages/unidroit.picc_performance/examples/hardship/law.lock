@@ -26,7 +26,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:d6b1f7b44a69113ed494c0d865ea8fea5349c9820aa496e156d940582fc2c9ae",
+      "contentHash": "sha256:239ee9cd1f5d68803385c9d3e920400ce50e05341ff3d5ebd231bf37cbca2d0b",
       "features": [
         "core-executable"
       ],
@@ -35,7 +35,7 @@
       "version": "0.1.0"
     },
     {
-      "contentHash": "sha256:31557204168a2050e8182d41e45662845bf9e882be0e4f2c5723d9acc734f5c0",
+      "contentHash": "sha256:80ff3bf7692c1db896fd51174828031a2c3fe0778ca1beea64cb00df4487ac97",
       "features": [
         "core-executable"
       ],
@@ -44,7 +44,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:283b7515c712023b8da823d1dff587243fc9a038ea5479b8978bf39326590c52",
+  "resolutionHash": "sha256:37cc41856cbb62616e6a21f6452c3547ecfaa28da6dffac9c677d562c7ef43ef",
   "root": {
     "contentHash": "sha256:1ea789998edbbde720dfdd9085acbb604bedf7ca4bb13d40d4f467de84245ec7",
     "name": "examples.unidroit.hardship",

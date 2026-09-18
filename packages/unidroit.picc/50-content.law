@@ -452,6 +452,37 @@ pub relation breached_duty_to_preserve_rights(p: Party, cond: Condition, c: Cont
     label en official "the party breached the duty to preserve the other party's rights (article 5.3.4)";
 }
 
+pub external judgment relation preserved_rights_pending_condition(p: Party, cond: Condition, c: Contract) {
+    authority Tribunal;
+    label en official "pending fulfilment of the condition the party did not act, contrary to good faith, so as to prejudice the other party's rights in case of fulfilment";
+}
+
+// THE TEXT SAYS "MAY NOT", AND THAT IS A DUTY, NOT A FEATURE OF THE CASE.
+// Article 5.3.4 binds each party while the condition is pending, and the
+// standard it binds them to is evaluative — "contrary to good faith" — so
+// whether the duty was observed is a §47.3 question for the organ of article
+// 1.11, exactly as with the duty of good faith itself (article 1.7).
+//
+// The breach below is a separate conclusion: a position says what is owed, a
+// predicate says what has been established about it, and a case that presents
+// the breach needs the second without waiting for the first.
+@source(PICC_ART5_3_4_EN, PICC_ART5_3_4_FR)
+rule DutyToPreserveRights(p: Party, other: Party, cond: Condition, c: Contract) strict {
+    label en official "Article 5.3.4. Pending fulfilment of a condition, a party may not, contrary to good faith, act so as to prejudice the other party's rights in case of fulfilment";
+    when party_of(p, c)
+        and party_of(other, c)
+        and p != other
+        and valid_condition(cond, c);
+    then duty PreserveRights {
+        bearer p;
+        beneficiary other;
+        goal maintenance {
+            condition preserved_rights_pending_condition(p, cond, c);
+            window [@2016-05-10, infinity);
+        }
+    };
+}
+
 @source(PICC_ART5_3_4_EN, PICC_ART5_3_4_FR)
 rule DutyToPreserveRightsBreached(p: Party, cond: Condition, c: Contract) strict {
     label en official "Article 5.3.4. Pending fulfilment of a condition, a party may not, contrary to good faith, act so as to prejudice the other party's rights in case of fulfilment";

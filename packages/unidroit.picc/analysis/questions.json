@@ -894,6 +894,28 @@
       ]
     },
     {
+      "id": "positions-preserve-rights",
+      "task": "content",
+      "question": "Is the duty to preserve the other party's rights pending a condition active (art. 5.3.4)?",
+      "kind": "positions",
+      "norms": [
+        "PreserveRights"
+      ],
+      "template": "evaluate positions(); expect position(PreserveRights, <status>);",
+      "tests": [
+        "PICC-GEN-03-CONTENT-AND-PRICE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 5.3.4. Pending fulfilment of a condition, a party may not, contrary to good faith, act so as to prejudice the other party's rights in case of fulfilment",
+          "rule": "DutyToPreserveRights"
+        }
+      ],
+      "source_units": [
+        "PICC_ART5_3_4_EN"
+      ]
+    },
+    {
       "id": "pozitsii-cooperate",
       "task": "content",
       "question": "Is the duty to co-operate with the other party active (art. 5.1.3)?",

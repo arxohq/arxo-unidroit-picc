@@ -949,6 +949,50 @@
       ]
     },
     {
+      "id": "positions-apply-for-permission",
+      "task": "ispolnenie",
+      "question": "Is the duty to apply for the public permission without undue delay active (art. 6.1.15(1))?",
+      "kind": "positions",
+      "norms": [
+        "ApplyForPermission"
+      ],
+      "template": "evaluate positions(); expect position(ApplyForPermission, <status>);",
+      "tests": [
+        "PICCP-03-IMPUTATION-AND-PERMISSION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.1.15(1). The party required to take the measures shall do so without undue delay",
+          "rule": "DutyToApplyForPermission"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_1_15_EN"
+      ]
+    },
+    {
+      "id": "pozitsii-adapt-or-terminate-for-hardship",
+      "task": "zatrudnenie",
+      "question": "Is the power of the court to terminate or adapt the contract on hardship active (art. 6.2.3(4))?",
+      "kind": "positions",
+      "norms": [
+        "AdaptOrTerminateForHardship"
+      ],
+      "template": "evaluate positions(); expect position(AdaptOrTerminateForHardship, <status>);",
+      "tests": [
+        "PICCP-04-HARDSHIP"
+      ],
+      "branches": [
+        {
+          "summary": "Article 6.2.3(4). If the court finds hardship it may, if reasonable, terminate the contract at a date and on terms to be fixed, or adapt the contract with a view to restoring its equilibrium",
+          "rule": "CourtPowerOnHardship"
+        }
+      ],
+      "source_units": [
+        "PICC_ART6_2_3_EN"
+      ]
+    },
+    {
       "id": "rate-prevailing-when-due-applies",
       "task": "ispolnenie",
       "question": "Which rate of exchange applies to the payment (art. 6.1.9(3))?",
@@ -1019,28 +1063,6 @@
       ],
       "source_units": [
         "PICC_ART6_1_17_EN"
-      ]
-    },
-    {
-      "id": "pozitsii-adapt-or-terminate-for-hardship",
-      "task": "zatrudnenie",
-      "question": "Is the power of the court to terminate or adapt the contract on hardship active (art. 6.2.3(4))?",
-      "kind": "positions",
-      "norms": [
-        "AdaptOrTerminateForHardship"
-      ],
-      "template": "evaluate positions(); expect position(AdaptOrTerminateForHardship, <status>);",
-      "tests": [
-        "PICCP-04-HARDSHIP"
-      ],
-      "branches": [
-        {
-          "summary": "Article 6.2.3(4). If the court finds hardship it may, if reasonable, terminate the contract at a date and on terms to be fixed, or adapt the contract with a view to restoring its equilibrium",
-          "rule": "CourtPowerOnHardship"
-        }
-      ],
-      "source_units": [
-        "PICC_ART6_2_3_EN"
       ]
     }
   ],

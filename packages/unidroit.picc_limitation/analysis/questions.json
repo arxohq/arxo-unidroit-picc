@@ -370,6 +370,28 @@
       ]
     },
     {
+      "id": "positions-assert-expiration",
+      "task": "priostanovlenie-i-posledstviya",
+      "question": "Is the obligor's power to assert the expiry of the limitation period active (art. 10.9(2))?",
+      "kind": "positions",
+      "norms": [
+        "AssertExpiration"
+      ],
+      "template": "evaluate positions(); expect position(AssertExpiration, <status>);",
+      "tests": [
+        "PICCL-03-EFFECTS-OF-EXPIRATION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 10.9(2). For the expiration of the limitation period to have effect, the obligor must assert it as a defence",
+          "rule": "ObligorMayAssertExpiration"
+        }
+      ],
+      "source_units": [
+        "PICC_ART10_9_EN"
+      ]
+    },
+    {
       "id": "right-not-extinguished",
       "task": "priostanovlenie-i-posledstviya",
       "question": "Is the right extinguished by the expiry of the limitation period (art. 10.9(1))?",

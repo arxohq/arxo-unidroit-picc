@@ -26,7 +26,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:d6b1f7b44a69113ed494c0d865ea8fea5349c9820aa496e156d940582fc2c9ae",
+      "contentHash": "sha256:239ee9cd1f5d68803385c9d3e920400ce50e05341ff3d5ebd231bf37cbca2d0b",
       "features": [
         "core-executable"
       ],
@@ -35,7 +35,7 @@
       "version": "0.1.0"
     },
     {
-      "contentHash": "sha256:90c0fee7bc331416f667c63cf1e2bd35a48a32dbad118aad0a030dffd2d40a97",
+      "contentHash": "sha256:ca2ff9392bd2c40b9ce26dce38a74f10970372dbba95c6bfc5f0fae171404309",
       "features": [
         "core-executable"
       ],
@@ -44,7 +44,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:2d503fb481ba1b5226159baa13467d4136d6676d1d7d09167d19badf28f8ddf9",
+  "resolutionHash": "sha256:112e6bcbd8887633aa17b47dfd873f597b1175384d64bc4d3f7b8d6413c5a919",
   "root": {
     "contentHash": "sha256:b65f807c95c583c9fe2575f713a6d2d657eaf4b1c487d9d08c8f2c68d9751aa6",
     "name": "examples.unidroit.interest_rate",

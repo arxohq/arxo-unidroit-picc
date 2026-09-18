@@ -36,6 +36,11 @@ test "PICCL-03-EFFECTS-OF-EXPIRATION" {
     expect truth_status == TRUE_ONLY;
     expect any_applied(ExpirationDoesNotExtinguishRight);
 
+    // Article 10.9(2): asserting the expiry is something the obligor DOES —
+    // a §127 power whose exercise bars the exercise of the right.
+    evaluate positions();
+    expect position(AssertExpiration, ACTIVE);
+
     evaluate truth(exercise_barred(entity_ref("urn:case:piccl:right-x")));
     expect truth_status == TRUE_ONLY;
     expect any_applied(ExpirationNeedsToBeAsserted);

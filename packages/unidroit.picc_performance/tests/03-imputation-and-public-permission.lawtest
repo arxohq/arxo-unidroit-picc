@@ -66,6 +66,11 @@ test "PICCP-03-IMPUTATION-AND-PERMISSION" {
     expect truth_status == TRUE_ONLY;
     expect any_applied(SolePartyInStateAppliesForPermission);
 
+    // Article 6.1.15(1): the party named by article 6.1.14 carries a duty to
+    // apply without undue delay — a position with a bearer, not a predicate.
+    evaluate positions();
+    expect position(ApplyForPermission, SATISFIED);
+
     evaluate truth(must_bear_permission_expenses(entity_ref("urn:case:piccp:perm-a"), entity_ref("urn:case:piccp:seller")));
     expect truth_status == TRUE_ONLY;
     expect any_applied(ExpensesAndDiligenceOfApplicant);

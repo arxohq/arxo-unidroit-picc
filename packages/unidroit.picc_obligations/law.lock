@@ -12,7 +12,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:d6b1f7b44a69113ed494c0d865ea8fea5349c9820aa496e156d940582fc2c9ae",
+      "contentHash": "sha256:239ee9cd1f5d68803385c9d3e920400ce50e05341ff3d5ebd231bf37cbca2d0b",
       "features": [
         "core-executable"
       ],
@@ -23,7 +23,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:a93dd5417e81db4bf984b2c179045adb7adaf322755c0b6b7303e09ba33fe5a2",
+  "resolutionHash": "sha256:3e56e6f63b8abeb5107f53ae0f9ea51b366f4fe7944764a1ae4686c1b4b75894",
   "root": {
     "contentHash": "sha256:ad95b3280107eacb329d750fdf38988503d6652149d3c6ca310ba1ab21f04e04",
     "name": "unidroit.picc_obligations",

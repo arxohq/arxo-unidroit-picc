@@ -1379,6 +1379,50 @@
       ]
     },
     {
+      "id": "positions-notify-of-impediment",
+      "task": "obschie",
+      "question": "Is the duty to notify the other party of the impediment active (art. 7.1.7(3))?",
+      "kind": "positions",
+      "norms": [
+        "NotifyOfImpediment"
+      ],
+      "template": "evaluate positions(); expect position(NotifyOfImpediment, <status>);",
+      "tests": [
+        "PICCN-01-NON-PERFORMANCE-AND-CURE"
+      ],
+      "branches": [
+        {
+          "summary": "Article 7.1.7(3). The non-performing party must give notice to the other party of the impediment and its effect on its ability to perform",
+          "rule": "DutyToNotifyOfImpediment"
+        }
+      ],
+      "source_units": [
+        "PICC_ART7_1_7_EN"
+      ]
+    },
+    {
+      "id": "pozitsii-terminate-by-notice",
+      "task": "prekraschenie",
+      "question": "Is the power of a party to terminate the contract by notice active (art. 7.3.2(1))?",
+      "kind": "positions",
+      "norms": [
+        "TerminateByNotice"
+      ],
+      "template": "evaluate positions(); expect position(TerminateByNotice, <status>);",
+      "tests": [
+        "PICCN-03-TERMINATION"
+      ],
+      "branches": [
+        {
+          "summary": "Article 7.3.2(1). The right of a party to terminate the contract is exercised by notice to the other party",
+          "rule": "TerminationExercisedByNotice"
+        }
+      ],
+      "source_units": [
+        "PICC_ART7_3_2_EN"
+      ]
+    },
+    {
       "id": "rate-is-bank-rate-at-place-of-payment",
       "task": "ubytki",
       "question": "Does the bank rate at the place for payment apply (art. 7.4.9(2))?",
@@ -1564,28 +1608,6 @@
       ],
       "source_units": [
         "PICC_ART7_1_7_EN"
-      ]
-    },
-    {
-      "id": "pozitsii-terminate-by-notice",
-      "task": "prekraschenie",
-      "question": "Is the power of a party to terminate the contract by notice active (art. 7.3.2(1))?",
-      "kind": "positions",
-      "norms": [
-        "TerminateByNotice"
-      ],
-      "template": "evaluate positions(); expect position(TerminateByNotice, <status>);",
-      "tests": [
-        "PICCN-03-TERMINATION"
-      ],
-      "branches": [
-        {
-          "summary": "Article 7.3.2(1). The right of a party to terminate the contract is exercised by notice to the other party",
-          "rule": "TerminationExercisedByNotice"
-        }
-      ],
-      "source_units": [
-        "PICC_ART7_3_2_EN"
       ]
     }
   ],

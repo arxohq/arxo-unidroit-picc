@@ -709,9 +709,8 @@ fragment PICC_ART9_2_4_EN in PICC_2016_EN {
 (1) The obligee may give its consent in advance.
 (2) If the obligee has given its consent in advance, the transfer of the obligation
 becomes effective when a notice of the transfer is given to the obligee or when the
-obligee acknowledges it.
-(1)""";
-    content_hash "sha256:baf10bd1f065976470cbc8420b95a5f83f6c5e05d488f219a4a8429ebc7c5a71";
+obligee acknowledges it.""";
+    content_hash "sha256:6c6a56e3f2e08156a2fc4863886e11472469a26323536fbede993570f9cadee3";
 }
 
 // Article 9.2.4 (French black-letter rules)
@@ -897,9 +896,8 @@ fragment PICC_ART9_3_3_EN in PICC_2016_EN {
     locator "article/9_3_3";
     text en official """ARTICLE 9.3.3
 (Requirement of consent of the other party)
-The assignment of a contract requires the consent of the other party.
-(1)""";
-    content_hash "sha256:4f2ad457f9b4d56ed58e7a5b0c8e3fe9cf8ddff23736361dfef4f0af13cb1064";
+The assignment of a contract requires the consent of the other party.""";
+    content_hash "sha256:3e3374065c63d6ed9741d4f2d69b5c8ceffa7136a59fe338b93026d6aa79e2c9";
 }
 
 // Article 9.3.3 (French black-letter rules)

@@ -48,6 +48,7 @@ test "PICCN-01-NON-PERFORMANCE-AND-CURE" {
         assert "a26": impediment_beyond_control(entity_ref("urn:case:piccn:n-force")) { origin case_input; }
         assert "a27": impediment_unforeseeable_and_unavoidable(entity_ref("urn:case:piccn:n-force")) { origin adjudicated; }
         assert "a28": impediment_temporary(entity_ref("urn:case:piccn:n-force")) { origin case_input; }
+        assert "a28a": obligee_of(entity_ref("urn:case:piccn:o-4"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
         assert "b0": party_to_contract(entity_ref("urn:case:piccn:contract-1"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
         assert "b1": party_to_contract(entity_ref("urn:case:piccn:contract-1b"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
 
@@ -115,6 +116,11 @@ test "PICCN-01-NON-PERFORMANCE-AND-CURE" {
     evaluate truth(non_performance_excused(entity_ref("urn:case:piccn:n-force"), entity_ref("urn:case:piccn:seller")));
     expect truth_status == TRUE_ONLY;
     expect any_applied(ForceMajeureExcusesNonPerformance);
+
+    // Article 7.1.7(3): the non-performing party owes the other a notice of the
+    // impediment — a duty, and the liability below is what follows from failing it.
+    evaluate positions();
+    expect position(NotifyOfImpediment, ACTIVE);
 
     evaluate truth(excuse_limited_to_reasonable_period(entity_ref("urn:case:piccn:n-force")));
     expect truth_status == TRUE_ONLY;

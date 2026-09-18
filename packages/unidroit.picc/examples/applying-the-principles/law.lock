@@ -12,7 +12,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:d6b1f7b44a69113ed494c0d865ea8fea5349c9820aa496e156d940582fc2c9ae",
+      "contentHash": "sha256:239ee9cd1f5d68803385c9d3e920400ce50e05341ff3d5ebd231bf37cbca2d0b",
       "features": [
         "core-executable"
       ],
@@ -21,7 +21,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:710f15585a19e3f7948d208e84565d36ef279d91a64b70f4a09a681c707f0df0",
+  "resolutionHash": "sha256:04899f454f2d19d7d7b3d74fc28c51ebbff1a56d467e691d4b92a03288dcf182",
   "root": {
     "contentHash": "sha256:e92b622923eb4307665c9323c9598c8cdd299744361c2ecf6e20a4e84658d384",
     "name": "examples.unidroit.applying_the_principles",

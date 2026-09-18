@@ -45,6 +45,8 @@ test "PICC-GEN-03-CONTENT-AND-PRICE" {
         assert "a20": suspensive_condition(entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
         assert "a21": future_uncertain_event(entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
         assert "a22": condition_fulfilled(entity_ref("urn:case:picc:cond-3"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
+        assert "a22a": party_of(entity_ref("urn:case:picc:alpha"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
+        assert "a22b": party_of(entity_ref("urn:case:picc:beta"), entity_ref("urn:case:picc:contract-3d")) { origin case_input; }
         assert "b0": exclusion_clause_in_favour_of_beneficiary(entity_ref("urn:case:picc:term-3x"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
         assert "b1": defence_against_promisee(entity_ref("urn:case:picc:defence-3"), entity_ref("urn:case:picc:contract-3")) { origin case_input; }
         assert "b2": resolutive_condition(entity_ref("urn:case:picc:cond-3c"), entity_ref("urn:case:picc:contract-3e")) { origin case_input; }
@@ -113,6 +115,11 @@ test "PICC-GEN-03-CONTENT-AND-PRICE" {
     evaluate truth(contract_takes_effect(entity_ref("urn:case:picc:contract-3d")));
     expect truth_status == TRUE_ONLY;
     expect any_applied(SuspensiveConditionTakesEffect);
+
+    // Article 5.3.4: while the condition is pending each party owes the other
+    // a duty not to prejudice its rights — a position, not a fact of the case.
+    evaluate positions();
+    expect position(PreserveRights, ACTIVE);
 
     evaluate truth(implied_obligation(entity_ref("urn:case:picc:obl-3"), entity_ref("urn:case:picc:contract-3")));
     expect truth_status == TRUE_ONLY;
