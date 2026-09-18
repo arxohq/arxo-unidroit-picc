@@ -1,40 +1,30 @@
 {
-  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "$comment": "Catalogue of questions of the package (DECISION-0190): each card is a parameterised §172 query template with its evidence of execution, the boundaries carry the verbatim limitation from package-info.json. Gate: check_package_questions.py --only <package> --emit.",
   "format": "law.package-questions/0.1",
   "package": "unidroit.picc_limitation",
+  "language": "en",
   "tasks": [
     {
       "id": "sroki",
-      "title": "Предмет главы, общий и максимальный сроки, их изменение и новый срок от признания (ст. 10.1–10.4)",
+      "title": "Scope of the chapter, the general and the maximum periods, their modification and a new period from acknowledgement (art. 10.1–10.4)",
       "source_units": [
         "PICC_ART10_1_EN",
-        "PICC_ART10_1_RU",
         "PICC_ART10_2_EN",
-        "PICC_ART10_2_RU",
         "PICC_ART10_3_EN",
-        "PICC_ART10_3_RU",
-        "PICC_ART10_4_EN",
-        "PICC_ART10_4_RU"
+        "PICC_ART10_4_EN"
       ]
     },
     {
       "id": "priostanovlenie-i-posledstviya",
-      "title": "Приостановление течения срока и последствия его истечения (ст. 10.5–10.11)",
+      "title": "Suspension of the running of the period and the effects of its expiry (art. 10.5–10.11)",
       "source_units": [
         "PICC_ART10_10_EN",
-        "PICC_ART10_10_RU",
         "PICC_ART10_11_EN",
-        "PICC_ART10_11_RU",
         "PICC_ART10_5_EN",
-        "PICC_ART10_5_RU",
         "PICC_ART10_6_EN",
-        "PICC_ART10_6_RU",
         "PICC_ART10_7_EN",
-        "PICC_ART10_7_RU",
         "PICC_ART10_8_EN",
-        "PICC_ART10_8_RU",
-        "PICC_ART10_9_EN",
-        "PICC_ART10_9_RU"
+        "PICC_ART10_9_EN"
       ]
     }
   ],
@@ -42,7 +32,7 @@
     {
       "id": "arbitral-proceedings-deemed-commenced",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "С какого дня считается начатым арбитражное разбирательство (ст. 10.6 п. 1)?",
+      "question": "From which day are arbitral proceedings deemed to have commenced (art. 10.6(1))?",
       "kind": "truth",
       "predicate": "arbitral_proceedings_deemed_commenced",
       "parameters": [
@@ -57,14 +47,13 @@
         "PICCL-02-SUSPENSION-AND-ACKNOWLEDGEMENT"
       ],
       "source_units": [
-        "PICC_ART10_6_EN",
-        "PICC_ART10_6_RU"
+        "PICC_ART10_6_EN"
       ]
     },
     {
       "id": "chapter-does-not-govern-notice-time",
       "task": "sroki",
-      "question": "Регулирует ли глава срок на извещение или иное действие (ст. 10.1 п. 2)?",
+      "question": "Does the chapter govern the time for a notice or another act (art. 10.1(2))?",
       "kind": "truth",
       "predicate": "chapter_does_not_govern_notice_time",
       "parameters": [
@@ -79,14 +68,13 @@
         "PICCL-01-GENERAL-AND-MAXIMUM-PERIODS"
       ],
       "source_units": [
-        "PICC_ART10_1_EN",
-        "PICC_ART10_1_RU"
+        "PICC_ART10_1_EN"
       ]
     },
     {
       "id": "defence-still-available",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "Можно ли ссылаться на право как на возражение после истечения срока (ст. 10.9 п. 3)?",
+      "question": "May the right still be relied on as a defence after the period has expired (art. 10.9(3))?",
       "kind": "truth",
       "predicate": "defence_still_available",
       "parameters": [
@@ -101,14 +89,13 @@
         "PICCL-03-EFFECTS-OF-EXPIRATION"
       ],
       "source_units": [
-        "PICC_ART10_9_EN",
-        "PICC_ART10_9_RU"
+        "PICC_ART10_9_EN"
       ]
     },
     {
       "id": "exercise-barred",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "Преграждено ли осуществление права истечением срока (ст. 10.9 п. 2)?",
+      "question": "Is the exercise of the right barred by the expiry of the period (art. 10.9(2))?",
       "kind": "truth",
       "predicate": "exercise_barred",
       "parameters": [
@@ -123,14 +110,13 @@
         "PICCL-03-EFFECTS-OF-EXPIRATION"
       ],
       "source_units": [
-        "PICC_ART10_9_EN",
-        "PICC_ART10_9_RU"
+        "PICC_ART10_9_EN"
       ]
     },
     {
       "id": "general-period-expires-on",
       "task": "sroki",
-      "question": "Каким днём истекает общий срок исковой давности (ст. 10.2 п. 1)?",
+      "question": "On which day does the general limitation period expire (art. 10.2(1))?",
       "kind": "truth",
       "predicate": "general_period_expires_on",
       "parameters": [
@@ -150,14 +136,13 @@
         "PICCL-01-GENERAL-AND-MAXIMUM-PERIODS"
       ],
       "source_units": [
-        "PICC_ART10_2_EN",
-        "PICC_ART10_2_RU"
+        "PICC_ART10_2_EN"
       ]
     },
     {
       "id": "general-period-not-expiring-before",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "Ранее какого дня общий срок не может истечь при препятствии (ст. 10.8)?",
+      "question": "Before which day cannot the general period expire where there is an impediment (art. 10.8)?",
       "kind": "truth",
       "predicate": "general_period_not_expiring_before",
       "parameters": [
@@ -177,14 +162,13 @@
         "PICCL-02-SUSPENSION-AND-ACKNOWLEDGEMENT"
       ],
       "source_units": [
-        "PICC_ART10_8_EN",
-        "PICC_ART10_8_RU"
+        "PICC_ART10_8_EN"
       ]
     },
     {
       "id": "limitation-governed",
       "task": "sroki",
-      "question": "Ограничено ли осуществление права сроком исковой давности (ст. 10.1 п. 1)?",
+      "question": "Is the exercise of the right limited by a limitation period (art. 10.1(1))?",
       "kind": "truth",
       "predicate": "limitation_governed",
       "parameters": [
@@ -199,14 +183,13 @@
         "PICCL-01-GENERAL-AND-MAXIMUM-PERIODS"
       ],
       "source_units": [
-        "PICC_ART10_1_EN",
-        "PICC_ART10_1_RU"
+        "PICC_ART10_1_EN"
       ]
     },
     {
       "id": "limitation-suspended",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "Приостановлено ли течение срока исковой давности (ст. 10.5–10.8)?",
+      "question": "Is the running of the limitation period suspended (art. 10.5–10.8)?",
       "kind": "truth",
       "predicate": "limitation_suspended",
       "parameters": [
@@ -248,19 +231,15 @@
       ],
       "source_units": [
         "PICC_ART10_5_EN",
-        "PICC_ART10_5_RU",
         "PICC_ART10_6_EN",
-        "PICC_ART10_6_RU",
         "PICC_ART10_7_EN",
-        "PICC_ART10_7_RU",
-        "PICC_ART10_8_EN",
-        "PICC_ART10_8_RU"
+        "PICC_ART10_8_EN"
       ]
     },
     {
       "id": "maximum-period-does-not-restart",
       "task": "sroki",
-      "question": "Начинается ли максимальный срок заново после признания долга (ст. 10.4 п. 2)?",
+      "question": "Does the maximum period start again after an acknowledgement of the debt (art. 10.4(2))?",
       "kind": "truth",
       "predicate": "maximum_period_does_not_restart",
       "parameters": [
@@ -275,14 +254,13 @@
         "PICCL-02-SUSPENSION-AND-ACKNOWLEDGEMENT"
       ],
       "source_units": [
-        "PICC_ART10_4_EN",
-        "PICC_ART10_4_RU"
+        "PICC_ART10_4_EN"
       ]
     },
     {
       "id": "maximum-period-expires-on",
       "task": "sroki",
-      "question": "Каким днём истекает максимальный срок исковой давности (ст. 10.2 п. 2)?",
+      "question": "On which day does the maximum limitation period expire (art. 10.2(2))?",
       "kind": "truth",
       "predicate": "maximum_period_expires_on",
       "parameters": [
@@ -302,14 +280,13 @@
         "PICCL-01-GENERAL-AND-MAXIMUM-PERIODS"
       ],
       "source_units": [
-        "PICC_ART10_2_EN",
-        "PICC_ART10_2_RU"
+        "PICC_ART10_2_EN"
       ]
     },
     {
       "id": "modification-effective",
       "task": "sroki",
-      "question": "Имеет ли силу изменение сроков сторонами (ст. 10.3)?",
+      "question": "Is a modification of the periods by the parties effective (art. 10.3)?",
       "kind": "truth",
       "predicate": "modification_effective",
       "parameters": [
@@ -342,14 +319,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART10_3_EN",
-        "PICC_ART10_3_RU"
+        "PICC_ART10_3_EN"
       ]
     },
     {
       "id": "new-general-period-expires-on",
       "task": "sroki",
-      "question": "Каким днём истекает новый общий срок после признания долга (ст. 10.4 п. 1)?",
+      "question": "On which day does the new general period expire after an acknowledgement of the debt (art. 10.4(1))?",
       "kind": "truth",
       "predicate": "new_general_period_expires_on",
       "parameters": [
@@ -369,14 +345,13 @@
         "PICCL-02-SUSPENSION-AND-ACKNOWLEDGEMENT"
       ],
       "source_units": [
-        "PICC_ART10_4_EN",
-        "PICC_ART10_4_RU"
+        "PICC_ART10_4_EN"
       ]
     },
     {
       "id": "no-restitution-for-expired-right",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "Можно ли вернуть исполненное по задавненному обязательству (ст. 10.11)?",
+      "question": "May what was performed under a time-barred obligation be reclaimed (art. 10.11)?",
       "kind": "truth",
       "predicate": "no_restitution_for_expired_right",
       "parameters": [
@@ -391,14 +366,13 @@
         "PICCL-03-EFFECTS-OF-EXPIRATION"
       ],
       "source_units": [
-        "PICC_ART10_11_EN",
-        "PICC_ART10_11_RU"
+        "PICC_ART10_11_EN"
       ]
     },
     {
       "id": "right-not-extinguished",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "Прекращается ли право истечением срока исковой давности (ст. 10.9 п. 1)?",
+      "question": "Is the right extinguished by the expiry of the limitation period (art. 10.9(1))?",
       "kind": "truth",
       "predicate": "right_not_extinguished",
       "parameters": [
@@ -413,14 +387,13 @@
         "PICCL-03-EFFECTS-OF-EXPIRATION"
       ],
       "source_units": [
-        "PICC_ART10_9_EN",
-        "PICC_ART10_9_RU"
+        "PICC_ART10_9_EN"
       ]
     },
     {
       "id": "set-off-still-available",
       "task": "priostanovlenie-i-posledstviya",
-      "question": "Можно ли осуществить зачёт до заявления об истечении срока (ст. 10.10)?",
+      "question": "May a set-off be exercised before the expiry is invoked (art. 10.10)?",
       "kind": "truth",
       "predicate": "set_off_still_available",
       "parameters": [
@@ -435,84 +408,72 @@
         "PICCL-03-EFFECTS-OF-EXPIRATION"
       ],
       "source_units": [
-        "PICC_ART10_10_EN",
-        "PICC_ART10_10_RU"
+        "PICC_ART10_10_EN"
       ]
     }
   ],
   "boundaries": [
     {
-      "id": "gr-ne-pravo-gosudarstva-l",
+      "id": "br-not-the-law-of-a-state",
       "task": "sroki",
       "reason_kind": "source_delegates",
-      "question": "Какая императивная норма применимого права устанавливает свой срок давности?",
+      "question": "Which mandatory rule of the applicable law lays down a limitation period of its own?",
       "source_units": [
         "PICC_ART10_1_EN"
       ],
-      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`)."
+      "limitation": "THIS IS NOT THE LAW OF A STATE. The Principles apply when the parties have agreed on them, or when a court or arbitral tribunal takes them as general principles of law; they do not replace the mandatory rules of the applicable law (article 1.4, hub `unidroit.picc`)."
     },
     {
-      "id": "gr-net-u-konvencii-l",
+      "id": "br-convention-has-no-chapter",
       "task": "sroki",
       "reason_kind": "source_delegates",
-      "question": "Что отвечает Конвенция ООН 1980 года об исковой давности?",
+      "question": "What does the 1980 UN Convention answer on limitation?",
       "source_units": [
         "PICC_ART10_2_EN"
       ],
-      "limitation": "У КОНВЕНЦИИ ООН 1980 ГОДА ЭТОЙ ГЛАВЫ НЕТ ВОВСЕ: исковая давность вынесена за её предмет и живёт отдельной Нью-Йоркской конвенцией 1974 года. Моста к `intl.uncitral.cisg*` здесь нет по существу, а не по недоделке."
+      "limitation": "THE 1980 UN CONVENTION HAS NO SUCH CHAPTER AT ALL: limitation is outside its subject matter and lives in the separate 1974 New York Convention. There is no bridge to `intl.uncitral.cisg*` here in substance, not for want of work."
     },
     {
-      "id": "gr-kalendar-l",
+      "id": "br-calendar",
       "task": "sroki",
       "reason_kind": "case_data",
-      "question": "Какие дни считаются при исчислении срока и есть ли нерабочие?",
+      "question": "Which days are counted in the period and are any of them non-business days?",
       "source_units": [
         "PICC_ART10_2_EN"
       ],
-      "limitation": "СЧЁТ ИДЁТ СО СЛЕДУЮЩЕГО ДНЯ, И ЭТО СКАЗАНО ТЕКСТОМ: «beginning on the day after the day…» обеих частей статьи 10.2. Политика §86 пакета — `start_count next_day`, и потому трёхлетний срок от 10 марта 2020 года истекает 11 марта 2023 года, а не 10-го. Календаря рабочих дней у Принципов нет: сроки календарные."
+      "limitation": "THE COUNT BEGINS ON THE NEXT DAY, AND THE TEXT SAYS SO: \"beginning on the day after the day…\" in both parts of article 10.2. The §86 policy of the package is `start_count next_day`, so a three-year period from 10 March 2020 expires on 11 March 2023 and not on the 10th. The Principles have no calendar of business days: the periods are calendar periods."
     },
     {
-      "id": "gr-ostatok-sroka",
+      "id": "br-remaining-period",
       "task": "priostanovlenie-i-posledstviya",
       "reason_kind": "case_data",
-      "question": "Сколько дней срока осталось после окончания приостановления?",
+      "question": "How many days of the period remain after the suspension has ended?",
       "source_units": [
         "PICC_ART10_5_EN",
         "PICC_ART10_8_EN"
       ],
-      "limitation": "ПРИОСТАНОВЛЕНИЕ ЗДЕСЬ — ФАКТ ДЕЛА, А НЕ РАСЧЁТ: модель отвечает, приостановлено ли течение срока и ранее какого дня он не может истечь, но не пересчитывает остаток срока по дням приостановления — источник такого правила не даёт, а придумывать арифметику за него нельзя."
+      "limitation": "SUSPENSION IS A FACT OF THE CASE HERE, NOT A COMPUTATION: the model answers whether the running of the period is suspended and the day before which it cannot expire, but does not recompute the remainder of the period by the days of suspension — the source gives no such rule, and inventing arithmetic for it is not permitted."
     },
     {
-      "id": "gr-pravo-suda",
+      "id": "br-law-of-the-forum",
       "task": "priostanovlenie-i-posledstviya",
       "reason_kind": "source_delegates",
-      "question": "Признаёт ли право суда или арбитража это действие заявлением права?",
+      "question": "Does the law of the court or of the arbitral tribunal treat this act as asserting the right?",
       "source_units": [
         "PICC_ART10_5_EN",
         "PICC_ART10_6_EN"
       ],
-      "limitation": "ЧТО ПРИЗНАЁТСЯ ЗАЯВЛЕНИЕМ ПРАВА В РАЗБИРАТЕЛЬСТВЕ, РЕШАЕТ ПРАВО СУДА ИЛИ АРБИТРАЖА (ст. 10.5, 10.6): это прямая отсылка вовне, и в модель она входит фактом дела."
+      "limitation": "WHAT COUNTS AS ASSERTING A RIGHT IN PROCEEDINGS IS DECIDED BY THE LAW OF THE COURT OR THE ARBITRAL TRIBUNAL (articles 10.5, 10.6): this is a direct reference outwards, and it enters the model as a fact of the case."
     },
     {
-      "id": "gr-granicy-izmeneniya",
+      "id": "br-modification-limits",
       "task": "sroki",
       "reason_kind": "case_data",
-      "question": "Каковы согласованные сторонами сроки в годах?",
+      "question": "What are the periods in years as agreed by the parties?",
       "source_units": [
         "PICC_ART10_3_EN"
       ],
-      "limitation": "ТРИ ГРАНИЦЫ ИЗМЕНЕНИЯ СРОКОВ (ст. 10.3) ПРЕДЪЯВЛЯЮТСЯ ФАКТАМИ ДЕЛА: сокращён ли общий срок менее чем до года, максимальный — менее чем до четырёх лет, продлён ли он более чем до пятнадцати. Сами числа сравнения модель не считает, потому что согласованные сроки приходят данными."
-    },
-    {
-      "id": "gr-russkij-tekst-l",
-      "task": "sroki",
-      "reason_kind": "source_delegates",
-      "question": "Каков официальный текст статьи главы 10?",
-      "source_units": [
-        "PICC_ART10_1_EN",
-        "PICC_ART10_1_RU"
-      ],
-      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский; первичный якорь §194 — английский black-letter текст."
+      "limitation": "THE THREE LIMITS ON MODIFYING THE PERIODS (article 10.3) ARE PRESENTED AS FACTS OF THE CASE: whether the general period has been shortened to less than one year, the maximum period to less than four years, or extended to more than fifteen. The model does not compute the comparisons itself, because the agreed periods arrive as data."
     }
   ],
   "internal": []

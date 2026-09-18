@@ -1,0 +1,525 @@
+// Articles 3.2.1-3.2.17. Grounds for avoidance and the effects of avoidance.
+//
+// ONE HEAD FOR THREE GROUNDS, BUT DIFFERENT PREMISES. Fraud (3.2.5), threat
+// (3.2.6) and gross disparity (3.2.7) give the right to avoid the contract;
+// mistake (3.2.2) leads to a head of its own, because it is defeated by
+// circumstances of its own — gross negligence, an assumed risk and a remedy
+// available for non-performance (3.2.4).
+//
+// THE EVALUATIVE ELEMENTS GO THROUGH THE §47.3 JUDGMENT CHANNEL: whether a
+// reasonable person would have made the mistake material, reasonable commercial
+// standards of fair dealing, whether a threat is unjustified and serious, an
+// excessive advantage, a reasonable time for notice. The model does not decide
+// them by itself.
+
+language "law.core" version "0.2";
+package unidroit.picc_validity version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-validity";
+
+// --- Articles 3.2.1 and 3.2.3: what amounts to a mistake ----------------------
+
+pub relation mistake_of(m: Mistake, c: Contract, p: Party) kind empirical {
+    label en official "the assumption is that of the party in relation to the contract";
+}
+
+pub relation erroneous_assumption_about_facts_or_law(m: Mistake) kind empirical {
+    label en official "the assumption is erroneous and relates to facts or to law existing when the contract was concluded";
+}
+
+pub relation error_in_expression_or_transmission(m: Mistake) kind empirical {
+    label en official "an error occurred in the expression or transmission of a declaration";
+}
+
+pub relation is_mistake(m: Mistake) kind institutional {
+    label en official "the erroneous assumption is a mistake (article 3.2.1)";
+}
+
+@source(PICC_ART3_2_1_EN)
+rule ErroneousAssumptionIsMistake(m: Mistake, c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.1. Mistake is an erroneous assumption relating to facts or to law existing when the contract was concluded";
+    when mistake_of(m, c, p)
+        and erroneous_assumption_about_facts_or_law(m);
+    then is_mistake(m);
+}
+
+@source(PICC_ART3_2_3_EN)
+rule ErrorInTransmissionIsMistake(m: Mistake, c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.3. An error occurring in the expression or transmission of a declaration is considered to be a mistake of the person from whom the declaration emanated";
+    when mistake_of(m, c, p)
+        and error_in_expression_or_transmission(m);
+    then is_mistake(m);
+}
+
+// --- Article 3.2.2: relevant mistake ------------------------------------------
+
+pub external judgment relation mistake_of_decisive_importance(m: Mistake) {
+    authority Tribunal;
+    label en official "the mistake was of such importance that a reasonable person in the same situation would only have concluded the contract on materially different terms or would not have concluded it at all";
+}
+
+pub relation other_party_shared_caused_or_knew(m: Mistake) kind empirical {
+    label en official "the other party made the same mistake, or caused it, or knew or ought to have known of it";
+}
+
+pub external judgment relation contrary_to_fair_dealing_to_leave_in_error(m: Mistake) {
+    authority Tribunal;
+    label en official "it was contrary to reasonable commercial standards of fair dealing to leave the mistaken party in error";
+}
+
+pub relation other_party_had_not_relied(m: Mistake) kind empirical {
+    label en official "the other party had not at the time of avoidance reasonably acted in reliance on the contract";
+}
+
+pub relation grossly_negligent_in_committing_mistake(m: Mistake) kind empirical {
+    label en official "the mistaken party was grossly negligent in committing the mistake";
+}
+
+pub relation risk_of_mistake_borne_by_party(m: Mistake) kind empirical {
+    label en official "the risk of mistake was assumed by, or should be borne by, the mistaken party";
+}
+
+pub relation remedy_for_non_performance_available(m: Mistake) kind empirical {
+    label en official "the circumstances relied upon afford, or could have afforded, a remedy for non-performance";
+}
+
+pub relation may_avoid_for_mistake(m: Mistake, p: Party) kind institutional {
+    label en official "the party may avoid the contract for mistake (article 3.2.2)";
+}
+
+@source(PICC_ART3_2_2_EN)
+rule AvoidanceForMistakeKnownToOtherParty(m: Mistake, c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.2(1)(a). A party may avoid the contract for a mistake of decisive importance where the other party made, caused or knew of the mistake and it was contrary to fair dealing to leave the party in error";
+    when is_mistake(m)
+        and mistake_of(m, c, p)
+        and mistake_of_decisive_importance(m)
+        and other_party_shared_caused_or_knew(m)
+        and contrary_to_fair_dealing_to_leave_in_error(m);
+    then may_avoid_for_mistake(m, p);
+}
+
+@source(PICC_ART3_2_2_EN)
+rule AvoidanceForMistakeWithoutReliance(m: Mistake, c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.2(1)(b). A party may avoid the contract for a mistake of decisive importance where the other party had not at the time of avoidance reasonably acted in reliance on the contract";
+    when is_mistake(m)
+        and mistake_of(m, c, p)
+        and mistake_of_decisive_importance(m)
+        and other_party_had_not_relied(m);
+    then may_avoid_for_mistake(m, p);
+}
+
+@source(PICC_ART3_2_2_EN)
+rule GrossNegligenceBarsAvoidance(m: Mistake, c: Contract, p: Party) defeater {
+    label en official "Article 3.2.2(2)(a). A party may not avoid the contract if it was grossly negligent in committing the mistake";
+    when mistake_of(m, c, p)
+        and grossly_negligent_in_committing_mistake(m);
+    defeat may_avoid_for_mistake(m, p);
+}
+
+@source(PICC_ART3_2_2_EN)
+rule AssumedRiskBarsAvoidance(m: Mistake, c: Contract, p: Party) defeater {
+    label en official "Article 3.2.2(2)(b). A party may not avoid the contract where the risk of mistake was assumed or should be borne by it";
+    when mistake_of(m, c, p)
+        and risk_of_mistake_borne_by_party(m);
+    defeat may_avoid_for_mistake(m, p);
+}
+
+@source(PICC_ART3_2_4_EN)
+rule RemedyForNonPerformanceBarsAvoidance(m: Mistake, c: Contract, p: Party) defeater {
+    label en official "Article 3.2.4. A party is not entitled to avoid the contract on the ground of mistake if the circumstances afford, or could have afforded, a remedy for non-performance";
+    when mistake_of(m, c, p)
+        and remedy_for_non_performance_available(m);
+    defeat may_avoid_for_mistake(m, p);
+}
+
+// --- Articles 3.2.5-3.2.7: fraud, threat, gross disparity ---------------------
+
+pub relation fraudulent_representation_or_non_disclosure(c: Contract, p: Party) kind empirical {
+    label en official "the party was led to conclude the contract by the other party's fraudulent representation, including language or practices, or fraudulent non-disclosure";
+}
+
+pub relation threat_made(c: Contract, p: Party) kind empirical {
+    label en official "the party was led to conclude the contract by the other party's threat";
+}
+
+pub relation threatened_act_wrongful(c: Contract, p: Party) kind empirical {
+    label en official "the act or omission with which the party has been threatened is wrongful in itself, or it is wrongful to use it as a means to obtain the conclusion of the contract";
+}
+
+pub external judgment relation threat_imminent_and_serious(c: Contract, p: Party) {
+    authority Tribunal;
+    label en official "the threat is, having regard to the circumstances, so imminent and serious as to leave the party no reasonable alternative";
+}
+
+pub relation threat_unjustified(c: Contract, p: Party) kind institutional {
+    label en official "the threat is unjustified (article 3.2.6)";
+}
+
+pub relation excessive_advantage_claimed(c: Contract, p: Party) kind empirical {
+    label en official "the contract or an individual term is said to have unjustifiably given the other party an excessive advantage at the time of conclusion";
+}
+
+pub relation took_unfair_advantage(c: Contract) kind empirical {
+    label en official "the other party has taken unfair advantage of the first party's dependence, economic distress, urgent needs, improvidence, ignorance, inexperience or lack of bargaining skill";
+}
+
+pub external judgment relation advantage_excessive_and_unjustifiable(c: Contract) {
+    authority Tribunal;
+    label en official "the contract or term unjustifiably gave the other party an excessive advantage, regard being had among other factors to the taking of unfair advantage and to the nature and purpose of the contract";
+}
+
+pub relation may_avoid_contract(c: Contract, p: Party) kind institutional {
+    label en official "the party may avoid the contract (articles 3.2.5-3.2.8)";
+}
+
+pub relation may_avoid_term(t: Term, c: Contract, p: Party) kind institutional {
+    label en official "the party may avoid an individual term of the contract (article 3.2.7(1))";
+}
+
+@source(PICC_ART3_2_5_EN)
+rule AvoidanceForFraud(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.5. A party may avoid the contract when it has been led to conclude it by the other party's fraudulent representation or fraudulent non-disclosure";
+    when fraudulent_representation_or_non_disclosure(c, p);
+    then may_avoid_contract(c, p);
+}
+
+@source(PICC_ART3_2_6_EN)
+rule ThreatIsUnjustified(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.6. In particular, a threat is unjustified if the act or omission threatened is wrongful in itself, or it is wrongful to use it as a means to obtain the conclusion of the contract";
+    when threat_made(c, p)
+        and threatened_act_wrongful(c, p);
+    then threat_unjustified(c, p);
+}
+
+@source(PICC_ART3_2_6_EN)
+rule AvoidanceForThreat(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.6. A party may avoid the contract when it has been led to conclude it by the other party's unjustified threat which is so imminent and serious as to leave no reasonable alternative";
+    when threat_unjustified(c, p)
+        and threat_imminent_and_serious(c, p);
+    then may_avoid_contract(c, p);
+}
+
+@source(PICC_ART3_2_7_EN)
+rule AvoidanceForGrossDisparity(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.7(1). A party may avoid the contract if at the time of its conclusion the contract unjustifiably gave the other party an excessive advantage";
+    when excessive_advantage_claimed(c, p)
+        and advantage_excessive_and_unjustifiable(c);
+    then may_avoid_contract(c, p);
+}
+
+@source(PICC_ART3_2_7_EN)
+rule AvoidanceOfIndividualTermForGrossDisparity(t: Term, c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.7(1). A party may avoid an individual term of the contract which unjustifiably gave the other party an excessive advantage";
+    when term_asserted_by_other_party(t, c)
+        and excessive_advantage_claimed(c, p)
+        and advantage_excessive_and_unjustifiable(c);
+    then may_avoid_term(t, c, p);
+}
+
+pub relation adaptation_requested_by_entitled_party(c: Contract, p: Party) kind empirical {
+    label en official "the party entitled to avoidance has requested the court to adapt the contract or term";
+}
+
+pub relation adaptation_requested_after_notice(c: Contract) kind empirical {
+    label en official "the party receiving notice of avoidance informed the other party of its request for adaptation promptly after receiving the notice and before the other party has reasonably acted in reliance on it";
+}
+
+pub relation contract_adapted_to_fair_dealing(c: Contract) kind institutional {
+    label en official "the contract or term has been adapted so as to accord with reasonable commercial standards of fair dealing (article 3.2.7(2))";
+}
+
+pub relation adaptation_ordered(c: Contract) kind empirical {
+    label en official "the court has adapted the contract or term";
+}
+
+@source(PICC_ART3_2_7_EN)
+rule CourtMayAdaptOnRequest(c: Contract, p: Party) strict {
+    label en official "Article 3.2.7(2). Upon the request of the party entitled to avoidance, a court may adapt the contract or term in order to make it accord with reasonable commercial standards of fair dealing";
+    when adaptation_requested_by_entitled_party(c, p);
+    then power AdaptContract {
+        holder Tribunal;
+        over c;
+        exercise adaptation_ordered(c);
+        valid_when adaptation_requested_by_entitled_party(c, p);
+        effect create(contract_adapted_to_fair_dealing(c));
+    };
+}
+
+@source(PICC_ART3_2_7_EN)
+rule AdaptationOnRequestOfNotifiedParty(c: Contract) defeasible {
+    label en official "Article 3.2.7(3). A court may also adapt the contract or term upon the request of the party receiving notice of avoidance, provided that party informs the other promptly and before reliance";
+    when adaptation_requested_after_notice(c)
+        and adaptation_ordered(c);
+    then contract_adapted_to_fair_dealing(c);
+}
+
+// --- Article 3.2.8: third persons ---------------------------------------------
+
+pub relation ground_imputable_to_third_person(c: Contract, p: Party) kind empirical {
+    label en official "fraud, threat, gross disparity or a party's mistake is imputable to, or known or ought to be known by, a third person";
+}
+
+pub relation other_party_responsible_for_third_person(c: Contract) kind empirical {
+    label en official "the other party is responsible for the acts of that third person";
+}
+
+pub relation other_party_knew_of_ground(c: Contract) kind empirical {
+    label en official "the other party knew or ought to have known of the fraud, threat or disparity";
+}
+
+@source(PICC_ART3_2_8_EN)
+rule ThirdPersonForWhomPartyIsResponsible(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.8(1). Where the ground is imputable to a third person for whose acts the other party is responsible, the contract may be avoided under the same conditions";
+    when ground_imputable_to_third_person(c, p)
+        and other_party_responsible_for_third_person(c);
+    then may_avoid_contract(c, p);
+}
+
+@source(PICC_ART3_2_8_EN)
+rule ThirdPersonOutsideResponsibility(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.8(2). Where the ground is imputable to a third person for whose acts the other party is not responsible, the contract may be avoided if that party knew or ought to have known of it";
+    when ground_imputable_to_third_person(c, p)
+        and other_party_knew_of_ground(c);
+    then may_avoid_contract(c, p);
+}
+
+// --- Articles 3.2.9 and 3.2.10: confirmation and loss of the right ------------
+
+pub relation contract_confirmed_after_period_began(c: Contract, p: Party) kind empirical {
+    label en official "the party entitled to avoid expressly or impliedly confirmed the contract after the period of time for giving notice of avoidance had begun to run";
+}
+
+@source(PICC_ART3_2_9_EN)
+rule ConfirmationExcludesAvoidance(c: Contract, p: Party) defeater {
+    label en official "Article 3.2.9. If the party entitled to avoid confirms the contract after the period for giving notice has begun to run, avoidance is excluded";
+    when contract_confirmed_after_period_began(c, p);
+    defeat may_avoid_contract(c, p);
+}
+
+pub relation other_party_performs_as_understood(c: Contract, p: Party) kind empirical {
+    label en official "the other party declared itself willing to perform, or performed, the contract as it was understood by the party entitled to avoidance, promptly and before reliance on a notice of avoidance";
+}
+
+pub relation contract_as_understood_by_mistaken_party(c: Contract) kind institutional {
+    label en official "the contract is considered to have been concluded as the party entitled to avoidance understood it (article 3.2.10(1))";
+}
+
+pub relation right_to_avoid_lost(c: Contract, p: Party) kind institutional {
+    label en official "the right to avoidance is lost and any earlier notice of avoidance is ineffective (article 3.2.10(2))";
+}
+
+@source(PICC_ART3_2_10_EN)
+rule ContractStandsAsUnderstood(c: Contract, p: Party) strict {
+    label en official "Article 3.2.10(1). Where the other party declares itself willing to perform or performs the contract as understood by the party entitled to avoidance, the contract is considered to have been concluded as that party understood it";
+    when other_party_performs_as_understood(c, p);
+    then contract_as_understood_by_mistaken_party(c);
+}
+
+@source(PICC_ART3_2_10_EN)
+rule RightToAvoidLost(c: Contract, p: Party) strict {
+    label en official "Article 3.2.10(2). After such a declaration or performance the right to avoidance is lost and any earlier notice of avoidance is ineffective";
+    when other_party_performs_as_understood(c, p);
+    then right_to_avoid_lost(c, p);
+}
+
+@source(PICC_ART3_2_10_EN)
+rule LostRightDefeatsMistakeAvoidance(m: Mistake, c: Contract, p: Party) defeater {
+    label en official "Article 3.2.10(2). Where the right to avoidance is lost, the party may no longer avoid the contract for mistake";
+    when mistake_of(m, c, p)
+        and right_to_avoid_lost(c, p);
+    defeat may_avoid_for_mistake(m, p);
+}
+
+// --- Articles 3.2.11 and 3.2.12: notice of avoidance and its time limit -------
+
+pub relation notice_of_avoidance_given(c: Contract, p: Party) kind empirical {
+    label en official "the party has given notice of avoidance to the other party";
+}
+
+pub relation contract_avoided(c: Contract) kind institutional {
+    label en official "the contract has been avoided by notice (article 3.2.11)";
+}
+
+@source(PICC_ART3_2_11_EN)
+rule AvoidanceExercisedByNotice(c: Contract, p: Party) strict {
+    label en official "Article 3.2.11. The right of a party to avoid the contract is exercised by notice to the other party";
+    when may_avoid_contract(c, p);
+    then power AvoidByNotice {
+        holder p;
+        over c;
+        exercise notice_of_avoidance_given(c, p);
+        valid_when may_avoid_contract(c, p);
+        effect create(contract_avoided(c));
+    };
+}
+
+@source(PICC_ART3_2_11_EN)
+rule NoticeAvoidsContract(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.11. On notice to the other party the contract is avoided";
+    when may_avoid_contract(c, p)
+        and notice_of_avoidance_given(c, p);
+    then contract_avoided(c);
+}
+
+pub external judgment relation notice_within_reasonable_time(c: Contract, p: Party) {
+    authority Tribunal;
+    label en official "notice of avoidance was given within a reasonable time, having regard to the circumstances, after the avoiding party knew or could not have been unaware of the relevant facts or became capable of acting freely";
+}
+
+pub relation term_asserted_by_other_party(t: Term, c: Contract) kind empirical {
+    label en official "the individual term has been asserted by the other party";
+}
+
+pub relation avoidance_notice_in_time(c: Contract, p: Party) kind institutional {
+    label en official "the notice of avoidance was given in time (article 3.2.12(1))";
+}
+
+pub relation notice_period_runs_from_assertion(t: Term, c: Contract) kind institutional {
+    label en official "the period of time for giving notice of avoidance of the term begins to run when that term is asserted by the other party (article 3.2.12(2))";
+}
+
+@source(PICC_ART3_2_12_EN)
+rule NoticeGivenInTime(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.12(1). Notice of avoidance shall be given within a reasonable time after the avoiding party knew of the relevant facts or became capable of acting freely";
+    when notice_of_avoidance_given(c, p)
+        and notice_within_reasonable_time(c, p);
+    then avoidance_notice_in_time(c, p);
+}
+
+@source(PICC_ART3_2_12_EN)
+rule PeriodForTermRunsFromAssertion(t: Term, c: Contract) strict {
+    label en official "Article 3.2.12(2). Where an individual term may be avoided under Article 3.2.7, the period for giving notice begins to run when that term is asserted by the other party";
+    when term_asserted_by_other_party(t, c);
+    then notice_period_runs_from_assertion(t, c);
+}
+
+// --- Articles 3.2.13 and 3.2.14: partial avoidance and retroactive effect -----
+
+pub relation ground_affects_individual_terms_only(c: Contract, t: Term) kind empirical {
+    label en official "the ground of avoidance affects only individual terms of the contract";
+}
+
+pub external judgment relation unreasonable_to_uphold_remaining(c: Contract) {
+    authority Tribunal;
+    label en official "having regard to the circumstances, it is unreasonable to uphold the remaining contract";
+}
+
+pub relation avoidance_limited_to_terms(c: Contract, t: Term) kind institutional {
+    label en official "the effect of avoidance is limited to those terms (article 3.2.13)";
+}
+
+pub relation avoidance_retroactive(c: Contract) kind institutional {
+    label en official "avoidance takes effect retroactively (article 3.2.14)";
+}
+
+@source(PICC_ART3_2_13_EN)
+rule PartialAvoidance(c: Contract, t: Term) defeasible {
+    label en official "Article 3.2.13. Where a ground of avoidance affects only individual terms, the effect of avoidance is limited to those terms";
+    when ground_affects_individual_terms_only(c, t);
+    then avoidance_limited_to_terms(c, t);
+    unless ground_affects_individual_terms_only(c, t)
+        and unreasonable_to_uphold_remaining(c);
+}
+
+@source(PICC_ART3_2_14_EN)
+rule AvoidanceIsRetroactive(c: Contract) defeasible {
+    label en official "Article 3.2.14. Avoidance takes effect retroactively";
+    when contract_avoided(c);
+    then avoidance_retroactive(c);
+}
+
+// --- Article 3.2.15: restitution ----------------------------------------------
+
+pub relation supplied_under_contract(c: Contract, p: Party) kind empirical {
+    label en official "the party has supplied something under the contract or the part of it avoided";
+}
+
+pub relation makes_concurrent_restitution(c: Contract, p: Party) kind empirical {
+    label en official "the party concurrently makes restitution of whatever it has received under the contract or the part of it avoided";
+}
+
+pub relation restitution_in_kind_impossible(c: Contract, p: Party) kind empirical {
+    label en official "restitution in kind is not possible or appropriate";
+}
+
+pub external judgment relation allowance_in_money_reasonable(c: Contract, p: Party) {
+    authority Tribunal;
+    label en official "an allowance in money is reasonable in the circumstances";
+}
+
+pub relation impossibility_attributable_to_other_party(c: Contract, p: Party) kind empirical {
+    label en official "the impossibility to make restitution in kind is attributable to the other party";
+}
+
+pub relation expenses_reasonably_required(c: Contract, p: Party) kind empirical {
+    label en official "expenses were reasonably required to preserve or maintain the performance received";
+}
+
+pub relation may_claim_restitution(c: Contract, p: Party) kind institutional {
+    label en official "the party may claim restitution of whatever it has supplied (article 3.2.15(1))";
+}
+
+pub relation allowance_in_money_due(c: Contract, p: Party) kind institutional {
+    label en official "an allowance in money has to be made (article 3.2.15(2))";
+}
+
+pub relation expenses_compensable(c: Contract, p: Party) kind institutional {
+    label en official "compensation may be claimed for expenses reasonably required to preserve or maintain the performance received (article 3.2.15(4))";
+}
+
+@source(PICC_ART3_2_15_EN)
+rule RestitutionOnAvoidance(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.15(1). On avoidance either party may claim restitution of whatever it has supplied, provided that it concurrently makes restitution of whatever it has received";
+    when contract_avoided(c)
+        and supplied_under_contract(c, p)
+        and makes_concurrent_restitution(c, p);
+    then may_claim_restitution(c, p);
+}
+
+@source(PICC_ART3_2_15_EN)
+rule AllowanceInMoney(c: Contract, p: Party) defeasible {
+    label en official "Article 3.2.15(2). If restitution in kind is not possible or appropriate, an allowance has to be made in money whenever reasonable";
+    when restitution_in_kind_impossible(c, p)
+        and allowance_in_money_reasonable(c, p);
+    then allowance_in_money_due(c, p);
+    unless restitution_in_kind_impossible(c, p)
+        and impossibility_attributable_to_other_party(c, p);
+}
+
+@source(PICC_ART3_2_15_EN)
+rule ExpensesOfPreservationCompensable(c: Contract, p: Party) strict {
+    label en official "Article 3.2.15(4). Compensation may be claimed for expenses reasonably required to preserve or maintain the performance received";
+    when expenses_reasonably_required(c, p);
+    then expenses_compensable(c, p);
+}
+
+// --- Articles 3.2.16 and 3.2.17: damages and unilateral declarations ----------
+
+pub relation knew_of_ground_for_avoidance(c: Contract, p: Party) kind empirical {
+    label en official "the party knew or ought to have known of the ground for avoidance";
+}
+
+pub relation liable_for_reliance_damages(c: Contract, p: Party) kind institutional {
+    label en official "the party is liable for damages so as to put the other party in the position in which it would have been if it had not concluded the contract (article 3.2.16)";
+}
+
+@source(PICC_ART3_2_16_EN)
+rule DamagesIrrespectiveOfAvoidance(c: Contract, p: Party) strict {
+    label en official "Article 3.2.16. Irrespective of whether or not the contract has been avoided, the party who knew or ought to have known of the ground for avoidance is liable for damages";
+    when knew_of_ground_for_avoidance(c, p);
+    then liable_for_reliance_damages(c, p);
+}
+
+pub relation communication_of_intention(d: Declaration, c: Contract) kind empirical {
+    label en official "the communication of intention is addressed by one party to the other";
+}
+
+pub relation chapter_applies_to_declaration(d: Declaration) kind institutional {
+    label en official "the provisions of this Chapter apply with appropriate adaptations to the communication of intention (article 3.2.17)";
+}
+
+@source(PICC_ART3_2_17_EN)
+rule ChapterAppliesToUnilateralDeclarations(d: Declaration, c: Contract) strict {
+    label en official "Article 3.2.17. The provisions of this Chapter apply with appropriate adaptations to any communication of intention addressed by one party to the other";
+    when communication_of_intention(d, c);
+    then chapter_applies_to_declaration(d);
+}

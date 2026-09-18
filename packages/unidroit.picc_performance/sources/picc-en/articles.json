@@ -1,5 +1,5 @@
 {
-  "$comment": "Учёт полноты §33.1 по единице деления инструмента — СТАТЬЕ («ARTICLE 2.1.11» прописными отдельной строкой, название следующей строкой в скобках). Единица объявлена явно: unit=en_article_upper_dotted. Номер учёта — с подчёркиванием («2.1.11» → «2_1_11»), приём en_article_dotted. Номера охвата записаны С ПОДЧЁРКИВАНИЕМ («2_1_11»): так их приводит конвенция, и так их читают обе меры §33.1.",
+  "$comment": "§33.1 completeness accounting by the dividing unit of the instrument — the ARTICLE (\"ARTICLE 2.1.11\" in capitals on a line of its own, the title in brackets on the next line). The unit is declared explicitly: unit=en_article_upper_dotted. The accounting number uses underscores (\"2.1.11\" → \"2_1_11\"), the en_article_dotted convention. The scope numbers are written WITH UNDERSCORES (\"2_1_11\"): that is the form the convention produces and the form both §33.1 measures read.",
   "document": "en.txt",
   "unit": "en_article_upper_dotted",
   "scope": [
@@ -25,5 +25,5 @@
     "6_2_3"
   ],
   "declared": {},
-  "note": "Охват ЭТОГО пакета — глава 6 (исполнение договора и затруднения). Остальные главы принадлежат соседним пакетам группы `unidroit.picc*` (DECISION-0318, развилка Р3). Английский black-letter текст — первичный якорь фрагментов §194."
+  "note": "The scope of THIS package is chapter 6 of the Principles: performance of obligations and hardship. The bytes are the same as the hub's and are verified against it byte for byte by the generator."
 }

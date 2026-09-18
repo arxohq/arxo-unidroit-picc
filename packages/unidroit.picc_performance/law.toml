@@ -1,4 +1,4 @@
-# Манифест §10 — маркер корня пакета (DECISION-0033).
+# §10 manifest — the marker of the package root (DECISION-0033).
 [package]
 name = "unidroit.picc_performance"
 version = "0.1.0"
@@ -7,12 +7,12 @@ namespace = "urn:org:unidroit:clir:picc-performance"
 
 [metadata]
 act = "unidroit-picc-2016-performance"
-title = "Принципы международных коммерческих договоров УНИДРУА 2016, глава 6: исполнение договора (ст. 6.1.1–6.1.17) и затруднения (ст. 6.2.1–6.2.3)"
+title = "UNIDROIT Principles of International Commercial Contracts 2016, chapter 6: performance (art. 6.1.1–6.1.17) and hardship (art. 6.2.1–6.2.3)"
 primarySource = "PICC_2016"
 jurisdiction = "International"
 instrument = "doctrine"
 sourceFidelity = "pinned_unofficial_copy"
-issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+issuer = "International Institute for the Unification of Private Law (UNIDROIT), Rome"
 legalStatus = "doctrine"
 verifiedAgainstSource = false
 
@@ -22,9 +22,9 @@ verifiedAgainstSource = false
 [[tests]]
 family = "unidroit.picc_performance#performance"
 suites = [
-  "tests/01-srok-poryadok-i-mesto.lawtest",
-  "tests/02-platezh-i-valyuta.lawtest",
-  "tests/03-otnesenie-platezhey-i-razreshenie.lawtest",
-  "tests/04-zatrudnenie.lawtest",
+  "tests/01-time-order-and-place.lawtest",
+  "tests/02-payment-and-currency.lawtest",
+  "tests/03-imputation-and-public-permission.lawtest",
+  "tests/04-hardship.lawtest",
 ]
 world = ["unidroit.picc_performance", "unidroit.picc"]

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Версионная поставка law-cli + package.py; установка только по внешнему SHA-256.
+"""Pinned delivery of law-cli + package.py; installed only against an external SHA-256.
 
-Python 3.12+, стандартная библиотека. Для download нужен gh с доступом
-к Releases указанного репозитория; install работает с локальным архивом.
-Никакие файлы из архива не исполняются при установке.
+Python 3.12+, standard library only. `download` needs gh with access to the Releases
+of the named repository; `install` works from a local archive. No file from the
+archive is executed during installation.
 """
 from __future__ import annotations
 
@@ -38,9 +38,9 @@ def validate_lock(lock: dict) -> dict:
     if not isinstance(lock, dict) or set(lock) != {
         "format", "version", "target", "sourceCommit", "repository", "tag", "asset", "sha256"
     } or lock["format"] != "law.package-toolchain-lock/0.1":
-        raise ValueError("неподдержанный формат toolchain lock")
+        raise ValueError("unsupported toolchain lock format")
     if not all(isinstance(v, str) for v in lock.values()):
-        raise ValueError("поля toolchain lock должны быть строками")
+        raise ValueError("toolchain lock fields must be strings")
     if (not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", lock["version"])
             or not re.fullmatch(r"[a-f0-9]{40}", lock["sourceCommit"])
             or not re.fullmatch(r"[a-f0-9]{64}", lock["sha256"])
@@ -48,7 +48,7 @@ def validate_lock(lock: dict) -> dict:
             or lock["target"] != TARGET
             or lock["tag"] != f"law-package-tools@{lock['version']}"
             or lock["asset"] != f"law-package-tools-{lock['version']}-{TARGET}.zip"):
-        raise ValueError("неверные координаты/хэши toolchain lock")
+        raise ValueError("invalid toolchain lock coordinates or hashes")
     return lock
 
 
@@ -60,16 +60,16 @@ def pack(root: Path, binary: Path, version: str, commit: str, repository: str, o
     payloads = {"law-cli": binary.read_bytes(),
                 "package.py": (root / "apps/registry/package.py").read_bytes(),
                 "LICENSE": (root / "LICENSE").read_bytes()}
-    # ELF64 little endian, AMD64. Статическую линковку проверяет readelf в build job.
+    # ELF64 little endian, AMD64. Static linking is checked by readelf in the build job.
     binary_header = payloads["law-cli"][:20]
     if binary_header[:6] != b"\x7fELF\x02\x01" or binary_header[18:20] != b"\x3e\x00":
-        raise ValueError("ожидается Linux ELF64 x86_64 law-cli")
+        raise ValueError("a Linux ELF64 x86_64 law-cli is expected")
     manifest = {"format": "law.package-toolchain/0.1", "version": version,
                 "target": TARGET, "sourceCommit": commit,
                 "files": {name: sha(data) for name, data in sorted(payloads.items())}}
     payloads["toolchain.json"] = encoded(manifest)
     out.parent.mkdir(parents=True, exist_ok=True)
-    # 'x': опубликованные байты не перезаписываются даже локально.
+    # 'x': published bytes are never overwritten, not even locally.
     with zipfile.ZipFile(out, "x", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, data in sorted(payloads.items()):
             info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
@@ -84,27 +84,27 @@ def pack(root: Path, binary: Path, version: str, commit: str, repository: str, o
 def install(archive: Path, lock: dict, out: Path) -> dict:
     validate_lock(lock)
     if platform.system() != "Linux" or platform.machine() not in {"x86_64", "amd64"}:
-        raise ValueError("этот выпуск поддерживает только Linux x86_64")
+        raise ValueError("this release supports Linux x86_64 only")
     if out.exists() or out.is_symlink():
-        raise ValueError("каталог установки должен быть новым")
+        raise ValueError("the installation directory must be a new one")
     if archive.stat().st_size > MAX_ARCHIVE or sha(archive.read_bytes()) != lock["sha256"]:
-        raise ValueError("SHA-256/размер архива не соответствует пину")
+        raise ValueError("archive SHA-256 or size does not match the pin")
     with zipfile.ZipFile(archive) as bundle:
         entries = bundle.infolist()
         names = [entry.filename for entry in entries]
         if len(names) != 4 or set(names) != FILES | {"toolchain.json"}:
-            raise ValueError("недопустимые пути/состав/дубликаты в архиве")
+            raise ValueError("invalid paths, contents or duplicates in the archive")
         if sum(entry.file_size for entry in entries) > MAX_UNPACKED:
-            raise ValueError("превышен размер распакованных файлов")
+            raise ValueError("the unpacked size limit is exceeded")
         if any(stat.S_IFMT(entry.external_attr >> 16) != stat.S_IFREG for entry in entries):
-            raise ValueError("в архиве разрешены только обычные файлы")
+            raise ValueError("only regular files are allowed in the archive")
         payloads = {name: bundle.read(name) for name in names}
     manifest = json.loads(payloads.pop("toolchain.json"))
     expected = {"format": "law.package-toolchain/0.1",
                 **{key: lock[key] for key in ("version", "target", "sourceCommit")},
                 "files": {name: sha(data) for name, data in sorted(payloads.items())}}
     if manifest != expected:
-        raise ValueError("состав/identity/хэши файлов тулчейна расходятся с пином")
+        raise ValueError("toolchain file set, identity or hashes diverge from the pin")
     out.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="law-toolchain-", dir=out.parent) as temp:
         staged = Path(temp) / "tools"
@@ -151,7 +151,7 @@ def main() -> None:
                       else download(lock, args.out))
         print(encoded(result).decode(), end="")
     except (OSError, ValueError, zipfile.BadZipFile, subprocess.SubprocessError) as error:
-        parser.exit(1, f"toolchain: ОТКАЗ: {error}\n")
+        parser.exit(1, f"toolchain: REFUSED: {error}\n")
 
 
 if __name__ == "__main__":

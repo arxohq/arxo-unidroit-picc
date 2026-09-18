@@ -1,133 +1,119 @@
-// Глава 5. Содержание договора, права третьих лиц и условия
-// (ст. 5.1.1–5.3.5).
+// Chapter 5. Content of the contract, third party rights and conditions
+// (articles 5.1.1–5.3.5).
 //
-// ПОДРАЗУМЕВАЕМЫЕ ОБЯЗАТЕЛЬСТВА (5.1.2) — ЧЕТЫРЕ ОСНОВАНИЯ, И КАЖДОЕ СВОЁ
-// (§206): природа и цель договора, установившаяся практика и обычаи,
-// добросовестность, разумность. В одном правиле они были бы неразличимы для
-// `why-not`.
+// IMPLIED OBLIGATIONS (5.1.2) REST ON FOUR GROUNDS, EACH ITS OWN (§206): the
+// nature and purpose of the contract, practices established between the parties
+// and usages, good faith and fair dealing, reasonableness. Merged into one rule
+// they would be indistinguishable to `why-not`.
 //
-// ДВА РОДА ОБЯЗАННОСТИ (5.1.4) — РАЗНЫЕ МЕРЫ ИСПОЛНЕНИЯ. Обязанность достичь
-// результата исполнена, когда результат достигнут; обязанность приложить
-// максимальные усилия — когда приложены усилия разумного лица того же рода.
-// Второе оценочно и идёт каналом §47.3; первое — предъявляемый факт.
-//
-// ЦЕНА ПРИ ОТСУТСТВИИ УСЛОВИЯ О НЕЙ (5.1.7) ПОВТОРЯЕТ СТАТЬЮ 55 CISG, НО С
-// ДОБАВКОЙ: если обычной цены нет, подразумевается РАЗУМНАЯ цена, а
-// определение цены одной стороной, «явно неразумное», заменяется разумной
-// ценой независимо от условия договора. «Явно неразумное» — канал §47.3.
-//
-// УСЛОВИЯ (5.3) — ДВА РОДА С ПРОТИВОПОЛОЖНЫМ ЭФФЕКТОМ: отлагательное даёт
-// силу при наступлении события, отменительное прекращает. Помеха наступлению
-// или, наоборот, вызов события вопреки добросовестности лишает сторону права
-// ссылаться на (не)наступление — это поражение, а не отдельная норма.
+// TWO KINDS OF DUTY (5.1.4) HAVE DIFFERENT MEASURES OF PERFORMANCE. A duty to
+// achieve a specific result is performed when the result is achieved; a duty of
+// best efforts — when the efforts of a reasonable person of the same kind have
+// been made. The second is evaluative and goes through the §47.3 channel; the
+// first is a fact to be presented.
 
+// PRICE WHERE THE CONTRACT IS SILENT (5.1.7) REPEATS ARTICLE 55 CISG, WITH AN
+// ADDITION: where no such price is available, a REASONABLE price is implied, and
+// a determination of the price by one party that is "manifestly unreasonable" is
+// replaced by a reasonable price regardless of any term to the contrary. The
+// "manifestly unreasonable" element goes through the §47.3 channel.
+
+// CONDITIONS (5.3) ARE TWO KINDS WITH OPPOSITE EFFECT: a suspensive condition
+// gives effect on the occurrence of the event, a resolutive one puts an end to
+// it. Interference with the occurrence, or conversely causing the event contrary
+// to good faith, deprives the party of the right to rely on the (non-)occurrence
+// — a defeat rather than a separate norm.
 language "law.core" version "0.2";
 package unidroit.picc version "0.1.0";
 namespace "urn:org:unidroit:clir:picc";
 
-// --- Статьи 5.1.1 и 5.1.2: явные и подразумеваемые обязательства -------------
+// --- Articles 5.1.1 and 5.1.2: express and implied obligations ---------------
 
 pub relation express_obligation(o: Obligation, c: Contract) kind empirical {
     label en official "the contractual obligation is express";
-    label ru unofficial "договорное обязательство выражено прямо";
 }
 
 pub relation stems_from_nature_and_purpose(o: Obligation, c: Contract) kind empirical {
     label en official "the obligation stems from the nature and purpose of the contract";
-    label ru unofficial "обязательство вытекает из природы и цели договора";
 }
 
 pub relation stems_from_practices_and_usages(o: Obligation, c: Contract) kind empirical {
     label en official "the obligation stems from practices established between the parties and usages";
-    label ru unofficial "обязательство вытекает из установившейся между сторонами практики и обычаев";
 }
 
 pub relation stems_from_good_faith(o: Obligation, c: Contract) kind empirical {
     label en official "the obligation stems from good faith and fair dealing";
-    label ru unofficial "обязательство вытекает из добросовестности и честной деловой практики";
 }
 
 pub external judgment relation stems_from_reasonableness(o: Obligation, c: Contract) {
     authority Tribunal;
     label en official "the obligation stems from reasonableness";
-    label ru unofficial "обязательство вытекает из разумности";
 }
 
 pub relation implied_obligation(o: Obligation, c: Contract) kind institutional {
     label en official "the obligation is an implied contractual obligation (article 5.1.2)";
-    label ru unofficial "обязательство является подразумеваемым договорным обязательством (статья 5.1.2)";
 }
 
 pub relation contractual_obligation(o: Obligation, c: Contract) kind institutional {
     label en official "the obligation is a contractual obligation of the parties (article 5.1.1)";
-    label ru unofficial "обязательство является договорным обязательством сторон (статья 5.1.1)";
 }
 
-@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_RU)
+@source(PICC_ART5_1_2_EN)
 rule ImpliedFromNatureAndPurpose(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(a). Implied obligations stem from the nature and purpose of the contract";
-    label ru unofficial "Статья 5.1.2 подпункт a. Подразумеваемые обязательства вытекают из природы и цели договора";
     when stems_from_nature_and_purpose(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_RU)
+@source(PICC_ART5_1_2_EN)
 rule ImpliedFromPracticesAndUsages(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(b). Implied obligations stem from practices established between the parties and usages";
-    label ru unofficial "Статья 5.1.2 подпункт b. Подразумеваемые обязательства вытекают из практики сторон и обычаев";
     when stems_from_practices_and_usages(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_RU)
+@source(PICC_ART5_1_2_EN)
 rule ImpliedFromGoodFaith(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(c). Implied obligations stem from good faith and fair dealing";
-    label ru unofficial "Статья 5.1.2 подпункт c. Подразумеваемые обязательства вытекают из добросовестности";
     when stems_from_good_faith(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_RU)
+@source(PICC_ART5_1_2_EN)
 rule ImpliedFromReasonableness(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(d). Implied obligations stem from reasonableness";
-    label ru unofficial "Статья 5.1.2 подпункт d. Подразумеваемые обязательства вытекают из разумности";
     when stems_from_reasonableness(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_1_EN, PICC_ART5_1_1_RU)
+@source(PICC_ART5_1_1_EN)
 rule ExpressIsContractual(o: Obligation, c: Contract) strict {
     label en official "Article 5.1.1. The contractual obligations of the parties may be express";
-    label ru unofficial "Статья 5.1.1. Договорные обязательства сторон могут быть выражены прямо";
     when express_obligation(o, c);
     then contractual_obligation(o, c);
 }
 
-@source(PICC_ART5_1_1_EN, PICC_ART5_1_1_RU)
+@source(PICC_ART5_1_1_EN)
 rule ImpliedIsContractual(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.1. The contractual obligations of the parties may be implied";
-    label ru unofficial "Статья 5.1.1. Договорные обязательства сторон могут быть подразумеваемыми";
     when implied_obligation(o, c);
     then contractual_obligation(o, c);
 }
 
-// --- Статья 5.1.3: сотрудничество --------------------------------------------
+// --- Article 5.1.3: co-operation between the parties -------------------------
 
 pub external judgment relation co_operation_reasonably_expected(p: Party, c: Contract) {
     authority Tribunal;
     label en official "co-operation may reasonably be expected for the performance of that party's obligations";
-    label ru unofficial "сотрудничество разумно ожидаемо для исполнения обязательств стороны";
 }
 
 pub relation co_operated(p: Party, c: Contract) kind empirical {
     label en official "the party co-operated with the other party";
-    label ru unofficial "сторона сотрудничала с другой стороной";
 }
 
-@source(PICC_ART5_1_3_EN, PICC_ART5_1_3_RU)
+@source(PICC_ART5_1_3_EN)
 rule DutyToCooperate(p: Party, other: Party, c: Contract) strict {
     label en official "Article 5.1.3. Each party shall co-operate with the other party when such co-operation may reasonably be expected for the performance of that party's obligations";
-    label ru unofficial "Статья 5.1.3. Каждая сторона должна сотрудничать с другой, когда такое сотрудничество разумно ожидаемо для исполнения её обязательств";
     when party_of(p, c)
         and party_of(other, c)
         and p != other
@@ -142,318 +128,271 @@ rule DutyToCooperate(p: Party, other: Party, c: Contract) strict {
     };
 }
 
-// --- Статья 5.1.4: два рода обязанности ---------------------------------------
+// --- Article 5.1.4: two kinds of duty -----------------------------------------
 
 pub relation duty_to_achieve_result(o: Obligation, c: Contract) kind empirical {
     label en official "the obligation involves a duty to achieve a specific result";
-    label ru unofficial "обязательство включает обязанность достичь определённого результата";
 }
 
 pub relation result_achieved(o: Obligation, c: Contract) kind empirical {
     label en official "the specific result has been achieved";
-    label ru unofficial "определённый результат достигнут";
 }
 
 pub relation duty_of_best_efforts(o: Obligation, c: Contract) kind empirical {
     label en official "the obligation involves a duty of best efforts in the performance of an activity";
-    label ru unofficial "обязательство включает обязанность приложить максимальные усилия при осуществлении деятельности";
 }
 
 pub external judgment relation best_efforts_made(o: Obligation, c: Contract) {
     authority Tribunal;
     label en official "such efforts have been made as would be made by a reasonable person of the same kind in the same circumstances";
-    label ru unofficial "приложены усилия, какие приложило бы разумное лицо того же рода при аналогичных обстоятельствах";
 }
 
 pub relation obligation_performed(o: Obligation, c: Contract) kind institutional {
     label en official "the obligation has been performed as required by article 5.1.4";
-    label ru unofficial "обязательство исполнено так, как требует статья 5.1.4";
 }
 
-@source(PICC_ART5_1_4_EN, PICC_ART5_1_4_RU)
+@source(PICC_ART5_1_4_EN)
 rule ResultDutyPerformed(o: Obligation, c: Contract) strict {
     label en official "Article 5.1.4(1). To the extent that an obligation involves a duty to achieve a specific result, that party is bound to achieve that result";
-    label ru unofficial "Статья 5.1.4 пункт 1. Поскольку обязательство включает обязанность достичь результата, сторона обязана его достичь";
     when duty_to_achieve_result(o, c)
         and result_achieved(o, c);
     then obligation_performed(o, c);
 }
 
-@source(PICC_ART5_1_4_EN, PICC_ART5_1_4_RU)
+@source(PICC_ART5_1_4_EN)
 rule BestEffortsDutyPerformed(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.4(2). To the extent that an obligation involves a duty of best efforts, that party is bound to make such efforts as would be made by a reasonable person of the same kind";
-    label ru unofficial "Статья 5.1.4 пункт 2. Поскольку обязательство включает обязанность максимальных усилий, сторона обязана приложить усилия разумного лица того же рода";
     when duty_of_best_efforts(o, c)
         and best_efforts_made(o, c);
     then obligation_performed(o, c);
 }
 
-// --- Статья 5.1.6: качество исполнения ----------------------------------------
+// --- Article 5.1.6: quality of performance ------------------------------------
 
 pub relation quality_fixed_by_contract(o: Obligation, c: Contract) kind empirical {
     label en official "the quality of performance is fixed by, or determinable from, the contract";
-    label ru unofficial "качество исполнения установлено договором или определимо из него";
 }
 
 pub external judgment relation quality_reasonable_and_not_below_average(o: Obligation, c: Contract) {
     authority Tribunal;
     label en official "the quality rendered is reasonable and not less than average in the circumstances";
-    label ru unofficial "качество исполнения разумно и не ниже среднего при данных обстоятельствах";
 }
 
 pub relation quality_sufficient(o: Obligation, c: Contract) kind institutional {
     label en official "the quality of performance satisfies article 5.1.6";
-    label ru unofficial "качество исполнения отвечает статье 5.1.6";
 }
 
-@source(PICC_ART5_1_6_EN, PICC_ART5_1_6_RU)
+@source(PICC_ART5_1_6_EN)
 rule QualityWhereNotFixed(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.6. Where the quality of performance is neither fixed by nor determinable from the contract, a party is bound to render a performance of a quality that is reasonable and not less than average in the circumstances";
-    label ru unofficial "Статья 5.1.6. Если качество исполнения договором не установлено и из него не определимо, сторона обязана исполнить с качеством разумным и не ниже среднего";
     when not_known(quality_fixed_by_contract(o, c))
         and quality_reasonable_and_not_below_average(o, c);
     then quality_sufficient(o, c);
 }
 
-// --- Статья 5.1.7: определение цены -------------------------------------------
+// --- Article 5.1.7: price determination ---------------------------------------
 
 pub relation price_fixed_by_contract(c: Contract) kind empirical {
     label en official "the contract fixes or makes provision for determining the price";
-    label ru unofficial "договор устанавливает цену или предусматривает порядок её определения";
 }
 
 pub relation price_generally_charged(c: Contract, amount: Money) kind empirical {
     label en official "the price generally charged at the time of the conclusion of the contract for such performance in comparable circumstances in the trade concerned";
-    label ru unofficial "цена, обычно взимавшаяся в момент заключения договора за такое исполнение при сравнимых обстоятельствах";
     key(c);
 }
 
 pub external judgment relation reasonable_price(c: Contract, amount: Money) {
     authority Tribunal;
     label en official "a reasonable price for the performance";
-    label ru unofficial "разумная цена за исполнение";
 }
 
 pub relation price_determined_by_one_party(c: Contract, p: Party, amount: Money) kind empirical {
     label en official "the price is to be determined by one party and that party determined it at this amount";
-    label ru unofficial "цена определяется одной стороной, и она определила её в этом размере";
     key(c, p);
 }
 
 pub external judgment relation determination_manifestly_unreasonable(c: Contract, p: Party) {
     authority Tribunal;
     label en official "the determination of the price by that party is manifestly unreasonable";
-    label ru unofficial "определение цены этой стороной явно неразумно";
 }
 
 pub relation applicable_price(c: Contract, amount: Money) kind institutional {
     label en official "the price applicable to the contract (article 5.1.7)";
-    label ru unofficial "цена, применимая к договору (статья 5.1.7)";
 }
 
-@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_RU)
+@source(PICC_ART5_1_7_EN)
 rule PriceByMarket(c: Contract, amount: Money) defeasible {
     label en official "Article 5.1.7(1). Where a contract does not fix the price, the parties are considered to have made reference to the price generally charged in comparable circumstances";
-    label ru unofficial "Статья 5.1.7 пункт 1. Если договор цены не устанавливает, считается, что стороны подразумевали обычно взимаемую цену при сравнимых обстоятельствах";
     when price_generally_charged(c, amount)
         and not_known(price_fixed_by_contract(c));
     then applicable_price(c, amount);
 }
 
-@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_RU)
+@source(PICC_ART5_1_7_EN)
 rule PriceReasonableWhereNoMarket(c: Contract, amount: Money) defeasible {
     label en official "Article 5.1.7(1). If no such price is available, a reasonable price applies";
-    label ru unofficial "Статья 5.1.7 пункт 1. Если такой цены нет, применяется разумная цена";
     when reasonable_price(c, amount)
         and not_known(price_fixed_by_contract(c));
     then applicable_price(c, amount);
 }
 
-@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_RU)
+@source(PICC_ART5_1_7_EN)
 rule ManifestlyUnreasonableDeterminationReplaced(c: Contract, p: Party, amount: Money) defeasible {
     label en official "Article 5.1.7(2). Where the price is to be determined by one party and that determination is manifestly unreasonable, a reasonable price shall be substituted notwithstanding any contract term to the contrary";
-    label ru unofficial "Статья 5.1.7 пункт 2. Если цена определяется одной стороной и её определение явно неразумно, применяется разумная цена независимо от условия договора об ином";
     when determination_manifestly_unreasonable(c, p)
         and reasonable_price(c, amount);
     then applicable_price(c, amount);
 }
 
-@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_RU)
+@source(PICC_ART5_1_7_EN)
 rule UnreasonableDeterminationDisplaced(c: Contract, p: Party, amount: Money) defeater {
     label en official "Article 5.1.7(2). A manifestly unreasonable determination does not stand as the applicable price";
-    label ru unofficial "Статья 5.1.7 пункт 2. Явно неразумное определение ценой не становится";
     when price_determined_by_one_party(c, p, amount)
         and determination_manifestly_unreasonable(c, p);
     defeat applicable_price(c, amount);
 }
 
-// --- Статья 5.1.8: договор на неопределённый срок -----------------------------
+// --- Article 5.1.8: contract for an indefinite period -------------------------
 
 pub relation contract_for_indefinite_period(c: Contract) kind empirical {
     label en official "the contract is for an indefinite period";
-    label ru unofficial "договор заключён на неопределённый срок";
 }
 
 pub external judgment relation notice_given_reasonable_time_in_advance(c: Contract, p: Party) {
     authority Tribunal;
     label en official "notice was given a reasonable time in advance";
-    label ru unofficial "извещение дано за разумное время заранее";
 }
 
 pub relation contract_terminated_by_notice(c: Contract, p: Party) kind institutional {
     label en official "the contract is terminated by notice (article 5.1.8)";
-    label ru unofficial "договор прекращён извещением (статья 5.1.8)";
 }
 
-@source(PICC_ART5_1_8_EN, PICC_ART5_1_8_RU)
+@source(PICC_ART5_1_8_EN)
 rule TerminationOfIndefiniteContract(c: Contract, p: Party) defeasible {
     label en official "Article 5.1.8. A contract for an indefinite period may be terminated by either party by giving notice a reasonable time in advance";
-    label ru unofficial "Статья 5.1.8. Договор на неопределённый срок может быть прекращён любой стороной извещением за разумное время заранее";
     when contract_for_indefinite_period(c)
         and party_of(p, c)
         and notice_given_reasonable_time_in_advance(c, p);
     then contract_terminated_by_notice(c, p);
 }
 
-// --- Статья 5.1.9: освобождение от обязательства соглашением ------------------
+// --- Article 5.1.9: release by agreement --------------------------------------
 
 pub relation release_agreed(o: Obligation, c: Contract) kind empirical {
     label en official "the obligee released its right by agreement with the obligor";
-    label ru unofficial "кредитор освободил должника соглашением с ним";
 }
 
 pub relation gratuitous_release_offered(o: Obligation, c: Contract) kind empirical {
     label en official "an offer to release a right gratuitously has been made and the obligor became aware of it";
-    label ru unofficial "сделано предложение безвозмездно освободить от права, и должник о нём узнал";
 }
 
 pub relation obligor_rejected_without_delay(o: Obligation, c: Contract) kind empirical {
     label en official "the obligor rejected the offer without delay";
-    label ru unofficial "должник отклонил предложение без промедления";
 }
 
 pub relation right_released(o: Obligation, c: Contract) kind institutional {
     label en official "the obligee's right has been released (article 5.1.9)";
-    label ru unofficial "право кредитора прекращено освобождением (статья 5.1.9)";
 }
 
-@source(PICC_ART5_1_9_EN, PICC_ART5_1_9_RU)
+@source(PICC_ART5_1_9_EN)
 rule ReleaseByAgreement(o: Obligation, c: Contract) strict {
     label en official "Article 5.1.9(1). An obligee may release its right by agreement with the obligor";
-    label ru unofficial "Статья 5.1.9 пункт 1. Кредитор может освободить должника соглашением с ним";
     when release_agreed(o, c);
     then right_released(o, c);
 }
 
-@source(PICC_ART5_1_9_EN, PICC_ART5_1_9_RU)
+@source(PICC_ART5_1_9_EN)
 rule GratuitousReleaseDeemedAccepted(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.9(2). An offer to release a right gratuitously shall be deemed accepted if the obligor does not reject it without delay";
-    label ru unofficial "Статья 5.1.9 пункт 2. Предложение безвозмездно освободить от права считается принятым, если должник не отклонит его без промедления";
     when gratuitous_release_offered(o, c);
     then right_released(o, c);
     unless gratuitous_release_offered(o, c)
         and obligor_rejected_without_delay(o, c);
 }
 
-// --- Раздел 5.2: договоры в пользу третьих лиц --------------------------------
+// --- Section 5.2: contracts for the benefit of third parties ------------------
 
-pub entity Beneficiary { label en official "Beneficiary of a contract in favour of a third party"; label ru unofficial "Выгодоприобретатель по договору в пользу третьего лица"; }
+pub entity Beneficiary { label en official "Beneficiary of a contract in favour of a third party"; }
 
 pub relation right_conferred_on_beneficiary(b: Beneficiary, c: Contract) kind empirical {
     label en official "the parties conferred a right on the third party by express or implied agreement";
-    label ru unofficial "стороны предоставили право третьему лицу прямым или подразумеваемым соглашением";
 }
 
 pub relation beneficiary_identifiable(b: Beneficiary, c: Contract) kind empirical {
     label en official "the beneficiary is identifiable with adequate certainty by the contract";
-    label ru unofficial "выгодоприобретатель определим с достаточной определённостью из договора";
 }
 
 pub relation beneficiary_accepted_or_relied(b: Beneficiary, c: Contract) kind empirical {
     label en official "the beneficiary has accepted the right or reasonably acted in reliance on it";
-    label ru unofficial "выгодоприобретатель принял право или разумно действовал, полагаясь на него";
 }
 
 pub relation beneficiary_renounced(b: Beneficiary, c: Contract) kind empirical {
     label en official "the beneficiary renounced the right conferred on it";
-    label ru unofficial "выгодоприобретатель отказался от предоставленного ему права";
 }
 
 pub relation beneficiary_right_exists(b: Beneficiary, c: Contract) kind institutional {
     label en official "the beneficiary has a right against the promisor (articles 5.2.1, 5.2.2)";
-    label ru unofficial "выгодоприобретатель имеет право против промитента (статьи 5.2.1, 5.2.2)";
 }
 
 pub relation rights_may_be_revoked(b: Beneficiary, c: Contract) kind institutional {
     label en official "the parties may still modify or revoke the rights conferred (article 5.2.5)";
-    label ru unofficial "стороны ещё могут изменить или отозвать предоставленные права (статья 5.2.5)";
 }
 
 @source(PICC_ART5_2_1_EN, PICC_ART5_2_2_EN)
 rule BeneficiaryRightExists(b: Beneficiary, c: Contract) defeasible {
     label en official "Articles 5.2.1 and 5.2.2. The parties may confer a right on a third party who must be identifiable with adequate certainty by the contract";
-    label ru unofficial "Статьи 5.2.1 и 5.2.2. Стороны могут предоставить право третьему лицу, которое должно быть определимо из договора с достаточной определённостью";
     when right_conferred_on_beneficiary(b, c)
         and beneficiary_identifiable(b, c);
     then beneficiary_right_exists(b, c);
 }
 
-@source(PICC_ART5_2_6_EN, PICC_ART5_2_6_RU)
+@source(PICC_ART5_2_6_EN)
 rule RenunciationEndsBeneficiaryRight(b: Beneficiary, c: Contract) defeater {
     label en official "Article 5.2.6. The beneficiary may renounce a right conferred on it";
-    label ru unofficial "Статья 5.2.6. Выгодоприобретатель может отказаться от предоставленного ему права";
     when beneficiary_renounced(b, c);
     defeat beneficiary_right_exists(b, c);
 }
 
-@source(PICC_ART5_2_5_EN, PICC_ART5_2_5_RU)
+@source(PICC_ART5_2_5_EN)
 rule RevocationUntilAcceptance(b: Beneficiary, c: Contract) defeasible {
     label en official "Article 5.2.5. The parties may modify or revoke the rights conferred until the beneficiary has accepted them or reasonably acted in reliance on them";
-    label ru unofficial "Статья 5.2.5. Стороны могут изменить или отозвать предоставленные права, пока выгодоприобретатель их не принял и разумно на них не положился";
     when right_conferred_on_beneficiary(b, c);
     then rights_may_be_revoked(b, c);
     unless right_conferred_on_beneficiary(b, c)
         and beneficiary_accepted_or_relied(b, c);
 }
 
-// --- Раздел 5.3: условия -------------------------------------------------------
+// --- Section 5.3: conditions ---------------------------------------------------
 
-pub entity Condition { label en official "Condition"; label ru unofficial "Условие (отлагательное или отменительное)"; }
+pub entity Condition { label en official "Condition"; }
 
 pub relation suspensive_condition(cond: Condition, c: Contract) kind empirical {
     label en official "the contract or obligation is made conditional upon a future uncertain event so that it only takes effect if the event occurs";
-    label ru unofficial "договор или обязательство поставлены под отлагательное условие";
 }
 
 pub relation resolutive_condition(cond: Condition, c: Contract) kind empirical {
     label en official "the contract or obligation is made conditional so that it comes to an end if the event occurs";
-    label ru unofficial "договор или обязательство поставлены под отменительное условие";
 }
 
 pub relation condition_fulfilled(cond: Condition, c: Contract) kind empirical {
     label en official "the condition has been fulfilled";
-    label ru unofficial "условие наступило";
 }
 
 pub relation parties_agreed_otherwise_on_conditions(c: Contract) kind empirical {
     label en official "the parties have agreed otherwise as regards the effect of conditions";
-    label ru unofficial "стороны договорились об ином в отношении действия условий";
 }
 
 pub relation contract_takes_effect(c: Contract) kind institutional {
     label en official "the contract or contractual obligation takes effect (article 5.3.2(a))";
-    label ru unofficial "договор или договорное обязательство вступает в силу (статья 5.3.2 подпункт a)";
 }
 
 pub relation contract_comes_to_an_end(c: Contract) kind institutional {
     label en official "the contract or contractual obligation comes to an end (article 5.3.2(b))";
-    label ru unofficial "договор или договорное обязательство прекращается (статья 5.3.2 подпункт b)";
 }
 
-@source(PICC_ART5_3_2_EN, PICC_ART5_3_2_RU)
+@source(PICC_ART5_3_2_EN)
 rule SuspensiveConditionTakesEffect(cond: Condition, c: Contract) defeasible {
     label en official "Article 5.3.2(a). The relevant contract or contractual obligation takes effect upon fulfilment of a suspensive condition";
-    label ru unofficial "Статья 5.3.2 подпункт a. Договор или обязательство вступает в силу при наступлении отлагательного условия";
     when suspensive_condition(cond, c)
         and condition_fulfilled(cond, c);
     then contract_takes_effect(c);
@@ -461,10 +400,9 @@ rule SuspensiveConditionTakesEffect(cond: Condition, c: Contract) defeasible {
         and parties_agreed_otherwise_on_conditions(c);
 }
 
-@source(PICC_ART5_3_2_EN, PICC_ART5_3_2_RU)
+@source(PICC_ART5_3_2_EN)
 rule ResolutiveConditionEndsContract(cond: Condition, c: Contract) defeasible {
     label en official "Article 5.3.2(b). The relevant contract or contractual obligation comes to an end upon fulfilment of a resolutive condition";
-    label ru unofficial "Статья 5.3.2 подпункт b. Договор или обязательство прекращается при наступлении отменительного условия";
     when resolutive_condition(cond, c)
         and condition_fulfilled(cond, c);
     then contract_comes_to_an_end(c);
@@ -472,215 +410,189 @@ rule ResolutiveConditionEndsContract(cond: Condition, c: Contract) defeasible {
         and parties_agreed_otherwise_on_conditions(c);
 }
 
-// --- Статья 5.3.3: помеха наступлению условия ---------------------------------
+// --- Article 5.3.3: interference with conditions ------------------------------
 
 pub relation prevented_fulfilment_contrary_to_good_faith(p: Party, cond: Condition, c: Contract) kind empirical {
     label en official "fulfilment of the condition was prevented by that party contrary to the duty of good faith and fair dealing or the duty of co-operation";
-    label ru unofficial "наступлению условия помешала эта сторона вопреки обязанности добросовестности или сотрудничества";
 }
 
 pub relation brought_about_fulfilment_contrary_to_good_faith(p: Party, cond: Condition, c: Contract) kind empirical {
     label en official "fulfilment of the condition was brought about by that party contrary to the duty of good faith and fair dealing or the duty of co-operation";
-    label ru unofficial "наступление условия вызвала эта сторона вопреки обязанности добросовестности или сотрудничества";
 }
 
 pub relation may_not_rely_on_non_fulfilment(p: Party, cond: Condition, c: Contract) kind institutional {
     label en official "that party may not rely on the non-fulfilment of the condition (article 5.3.3(1))";
-    label ru unofficial "эта сторона не может ссылаться на ненаступление условия (статья 5.3.3 пункт 1)";
 }
 
 pub relation may_not_rely_on_fulfilment(p: Party, cond: Condition, c: Contract) kind institutional {
     label en official "that party may not rely on the fulfilment of the condition (article 5.3.3(2))";
-    label ru unofficial "эта сторона не может ссылаться на наступление условия (статья 5.3.3 пункт 2)";
 }
 
-@source(PICC_ART5_3_3_EN, PICC_ART5_3_3_RU)
+@source(PICC_ART5_3_3_EN)
 rule CannotRelyOnPreventedCondition(p: Party, cond: Condition, c: Contract) strict {
     label en official "Article 5.3.3(1). A party who prevented fulfilment contrary to good faith may not rely on the non-fulfilment of the condition";
-    label ru unofficial "Статья 5.3.3 пункт 1. Сторона, помешавшая наступлению условия вопреки добросовестности, не может ссылаться на его ненаступление";
     when prevented_fulfilment_contrary_to_good_faith(p, cond, c);
     then may_not_rely_on_non_fulfilment(p, cond, c);
 }
 
-@source(PICC_ART5_3_3_EN, PICC_ART5_3_3_RU)
+@source(PICC_ART5_3_3_EN)
 rule CannotRelyOnProcuredCondition(p: Party, cond: Condition, c: Contract) strict {
     label en official "Article 5.3.3(2). A party who brought about fulfilment contrary to good faith may not rely on the fulfilment of the condition";
-    label ru unofficial "Статья 5.3.3 пункт 2. Сторона, вызвавшая наступление условия вопреки добросовестности, не может ссылаться на его наступление";
     when brought_about_fulfilment_contrary_to_good_faith(p, cond, c);
     then may_not_rely_on_fulfilment(p, cond, c);
 }
 
-// --- Статья 5.3.4: обязанность сохранять права --------------------------------
+// --- Article 5.3.4: duty to preserve rights -----------------------------------
 
 pub relation acted_to_prejudice_rights_pending_condition(p: Party, cond: Condition, c: Contract) kind empirical {
     label en official "pending fulfilment of the condition the party acted so as to prejudice the other party's rights in case of fulfilment";
-    label ru unofficial "до наступления условия сторона действовала так, что ущемила права другой стороны на случай наступления";
 }
 
 pub relation breached_duty_to_preserve_rights(p: Party, cond: Condition, c: Contract) kind institutional {
     label en official "the party breached the duty to preserve the other party's rights (article 5.3.4)";
-    label ru unofficial "сторона нарушила обязанность сохранять права другой стороны (статья 5.3.4)";
 }
 
-@source(PICC_ART5_3_4_EN, PICC_ART5_3_4_RU)
+@source(PICC_ART5_3_4_EN)
 rule DutyToPreserveRightsBreached(p: Party, cond: Condition, c: Contract) strict {
     label en official "Article 5.3.4. Pending fulfilment of a condition, a party may not, contrary to good faith, act so as to prejudice the other party's rights in case of fulfilment";
-    label ru unofficial "Статья 5.3.4. До наступления условия сторона не может вопреки добросовестности действовать так, чтобы ущемить права другой стороны на случай наступления";
     when acted_to_prejudice_rights_pending_condition(p, cond, c);
     then breached_duty_to_preserve_rights(p, cond, c);
 }
 
-// --- Статья 5.3.5: реституция при отменительном условии ------------------------
+// --- Article 5.3.5: restitution on a resolutive condition ---------------------
 
 pub relation retroactive_resolutive_condition_agreed(cond: Condition, c: Contract) kind empirical {
     label en official "the parties have agreed that the resolutive condition is to operate retroactively";
-    label ru unofficial "стороны договорились, что отменительное условие действует ретроактивно";
 }
 
 pub relation restitution_rules_apply_with_adaptations(c: Contract) kind institutional {
     label en official "the rules on restitution apply with appropriate adaptations (article 5.3.5)";
-    label ru unofficial "правила о реституции применяются с необходимой адаптацией (статья 5.3.5)";
 }
 
-@source(PICC_ART5_3_5_EN, PICC_ART5_3_5_RU)
+@source(PICC_ART5_3_5_EN)
 rule RestitutionOnResolutiveCondition(cond: Condition, c: Contract) strict {
     label en official "Article 5.3.5. On fulfilment of a resolutive condition the rules on restitution apply with appropriate adaptations";
-    label ru unofficial "Статья 5.3.5. При наступлении отменительного условия правила о реституции применяются с необходимой адаптацией";
     when resolutive_condition(cond, c)
         and condition_fulfilled(cond, c);
     then restitution_rules_apply_with_adaptations(c);
 }
 
 
-// --- Статьи, оставшиеся без собственного вывода до этой правки ---------------
+// --- Articles that had no conclusion of their own before this change ---------
 //
-// Четыре из них — определения и перечни, которые сами признака дела не
-// порождают, но БЕЗ головы остаются «только текстом» и выпадают из меры
-// §33.1. Ниже они выражены тем, что действительно утверждают.
+// Four of them are definitions and lists that produce no feature of the case by
+// themselves, but WITHOUT a head they remain "text only" and drop out of the
+// §33.1 measure. Below they are expressed by what they do assert.
 
-// Статья 1.1: свобода договора. Утверждение нормы — сторонам МОЖНО заключить
-// договор и определить его содержание, и это правовая возможность, а не факт.
+// Article 1.1: freedom of contract. What the norm asserts is that the parties
+// MAY conclude a contract and determine its content — a legal possibility, not
+// a fact.
+
 pub relation parties_free_to_contract(p: Party, other: Party) kind institutional {
     label en official "the parties are free to enter into a contract and to determine its content (article 1.1)";
-    label ru unofficial "стороны свободны заключить договор и определить его содержание (статья 1.1)";
 }
 
 pub relation negotiating(p: Party, other: Party) kind empirical {
     label en official "the persons are negotiating with each other";
-    label ru unofficial "лица ведут переговоры друг с другом";
 }
 
-@source(PICC_ART1_1_EN, PICC_ART1_1_RU)
+@source(PICC_ART1_1_EN)
 rule FreedomOfContract(p: Party, other: Party) strict {
     label en official "Article 1.1. The parties are free to enter into a contract and to determine its content";
-    label ru unofficial "Статья 1.1. Стороны свободны заключить договор и определить его содержание";
     when negotiating(p, other);
     then parties_free_to_contract(p, other);
 }
 
-// Статья 4.3: перечень относимых обстоятельств. Норма говорит, что при
-// применении статей 4.1 и 4.2 учитываются ВСЕ обстоятельства, включая шесть
-// названных. Проверяемый признак у неё один: учтено ли обстоятельство
-// названного рода.
-pub entity Circumstance { label en official "Relevant circumstance"; label ru unofficial "Относимое обстоятельство"; }
+// Article 4.3: the list of relevant circumstances. The norm says that in
+// applying articles 4.1 and 4.2 ALL circumstances are taken into account,
+// including the six named ones. It has a single checkable feature: whether a
+// circumstance of a named kind has been taken into account.
+pub entity Circumstance { label en official "Relevant circumstance"; }
 
 pub relation circumstance_of_listed_kind(x: Circumstance, c: Contract) kind empirical {
     label en official "the circumstance is of a kind listed in article 4.3 (preliminary negotiations, practices, subsequent conduct, nature and purpose, trade meaning, usages)";
-    label ru unofficial "обстоятельство относится к роду, названному статьёй 4.3 (переговоры, практика, последующее поведение, природа и цель договора, торговое значение, обычаи)";
 }
 
 pub relation circumstance_to_be_regarded(x: Circumstance, c: Contract) kind institutional {
     label en official "regard shall be had to that circumstance in applying articles 4.1 and 4.2 (article 4.3)";
-    label ru unofficial "это обстоятельство учитывается при применении статей 4.1 и 4.2 (статья 4.3)";
 }
 
-@source(PICC_ART4_3_EN, PICC_ART4_3_RU)
+@source(PICC_ART4_3_EN)
 rule CircumstanceToBeRegarded(x: Circumstance, c: Contract) strict {
     label en official "Article 4.3. In applying Articles 4.1 and 4.2, regard shall be had to all the circumstances, including those listed";
-    label ru unofficial "Статья 4.3. При применении статей 4.1 и 4.2 учитываются все обстоятельства, включая названные";
     when circumstance_of_listed_kind(x, c);
     then circumstance_to_be_regarded(x, c);
 }
 
-// Статья 5.1.5: чем определяется род обязанности. Признак дела — фактор из
-// перечня; вывод — что он учитывается при отнесении обязанности к роду.
+// Article 5.1.5: what determines the kind of duty. The feature of the case is a
+// factor from the list; the conclusion is that it is taken into account when
+// classifying the duty.
+
 pub relation factor_of_listed_kind(x: Circumstance, o: Obligation) kind empirical {
     label en official "the factor is of a kind listed in article 5.1.5 (the way the obligation is expressed, the contractual price, the degree of risk, the ability of the other party to influence performance)";
-    label ru unofficial "фактор относится к роду, названному статьёй 5.1.5 (формулировка обязательства, цена договора, степень риска, возможность другой стороны влиять на исполнение)";
 }
 
 pub relation factor_determines_kind_of_duty(x: Circumstance, o: Obligation) kind institutional {
     label en official "regard shall be had to that factor in determining the kind of duty involved (article 5.1.5)";
-    label ru unofficial "этот фактор учитывается при определении рода обязанности (статья 5.1.5)";
 }
 
-@source(PICC_ART5_1_5_EN, PICC_ART5_1_5_RU)
+@source(PICC_ART5_1_5_EN)
 rule FactorDeterminesKindOfDuty(x: Circumstance, o: Obligation) strict {
     label en official "Article 5.1.5. In determining the extent to which an obligation involves a duty of best efforts or a duty to achieve a specific result, regard shall be had to the listed factors";
-    label ru unofficial "Статья 5.1.5. При определении того, включает ли обязательство обязанность максимальных усилий или достижения результата, учитываются названные факторы";
     when factor_of_listed_kind(x, o);
     then factor_determines_kind_of_duty(x, o);
 }
 
-// Статья 5.2.3: право выгодоприобретателя включает право сослаться на
-// оговорку об исключении или ограничении его ответственности.
+// Article 5.2.3: the right of the beneficiary includes the right to invoke a
+// clause that excludes or limits its liability.
 pub relation exclusion_clause_in_favour_of_beneficiary(t: Term, c: Contract) kind empirical {
     label en official "the contract contains a clause which excludes or limits the liability of the beneficiary";
-    label ru unofficial "договор содержит оговорку, исключающую или ограничивающую ответственность выгодоприобретателя";
 }
 
 pub relation beneficiary_may_invoke_clause(b: Beneficiary, t: Term, c: Contract) kind institutional {
     label en official "the beneficiary may invoke the exclusion or limitation clause (article 5.2.3)";
-    label ru unofficial "выгодоприобретатель может сослаться на оговорку об исключении или ограничении ответственности (статья 5.2.3)";
 }
 
-@source(PICC_ART5_2_3_EN, PICC_ART5_2_3_RU)
+@source(PICC_ART5_2_3_EN)
 rule BeneficiaryMayInvokeClause(b: Beneficiary, t: Term, c: Contract) defeasible {
     label en official "Article 5.2.3. The conferment of rights in the beneficiary includes the right to invoke a clause in the contract which excludes or limits the liability of the beneficiary";
-    label ru unofficial "Статья 5.2.3. Предоставление прав выгодоприобретателю включает право сослаться на оговорку договора, исключающую или ограничивающую его ответственность";
     when beneficiary_right_exists(b, c)
         and exclusion_clause_in_favour_of_beneficiary(t, c);
     then beneficiary_may_invoke_clause(b, t, c);
 }
 
-// Статья 5.2.4: возражения промитента против выгодоприобретателя.
-pub entity Defence { label en official "Defence of the promisor"; label ru unofficial "Возражение промитента"; }
+// Article 5.2.4: defences of the promisor against the beneficiary.
+pub entity Defence { label en official "Defence of the promisor"; }
 
 pub relation defence_against_promisee(d: Defence, c: Contract) kind empirical {
     label en official "the promisor could assert that defence against the promisee";
-    label ru unofficial "промитент мог бы заявить это возражение против промиссара";
 }
 
 pub relation defence_available_against_beneficiary(d: Defence, b: Beneficiary, c: Contract) kind institutional {
     label en official "the promisor may assert that defence against the beneficiary (article 5.2.4)";
-    label ru unofficial "промитент может заявить это возражение против выгодоприобретателя (статья 5.2.4)";
 }
 
-@source(PICC_ART5_2_4_EN, PICC_ART5_2_4_RU)
+@source(PICC_ART5_2_4_EN)
 rule DefencesAgainstBeneficiary(d: Defence, b: Beneficiary, c: Contract) defeasible {
     label en official "Article 5.2.4. The promisor may assert against the beneficiary all defences which the promisor could assert against the promisee";
-    label ru unofficial "Статья 5.2.4. Промитент может заявить против выгодоприобретателя все возражения, какие он мог бы заявить против промиссара";
     when beneficiary_right_exists(b, c)
         and defence_against_promisee(d, c);
     then defence_available_against_beneficiary(d, b, c);
 }
 
-// Статья 5.3.1: два рода условий. Норма определяет, ЧТО является условием, и
-// проверяемый признак у неё есть: событие будущее и неопределённое.
+// Article 5.3.1: two kinds of condition. The norm defines WHAT a condition is,
+// and it does have a checkable feature: the event is future and uncertain.
 pub relation future_uncertain_event(cond: Condition, c: Contract) kind empirical {
     label en official "the contract or contractual obligation is made conditional upon the occurrence of a future uncertain event";
-    label ru unofficial "договор или договорное обязательство поставлены в зависимость от наступления будущего неопределённого события";
 }
 
 pub relation valid_condition(cond: Condition, c: Contract) kind institutional {
     label en official "the condition is a condition within the meaning of article 5.3.1";
-    label ru unofficial "условие является условием в смысле статьи 5.3.1";
 }
 
-@source(PICC_ART5_3_1_EN, PICC_ART5_3_1_RU)
+@source(PICC_ART5_3_1_EN)
 rule ValidCondition(cond: Condition, c: Contract) strict {
     label en official "Article 5.3.1. A contract or a contractual obligation may be made conditional upon the occurrence of a future uncertain event";
-    label ru unofficial "Статья 5.3.1. Договор или договорное обязательство могут быть поставлены в зависимость от наступления будущего неопределённого события";
     when future_uncertain_event(cond, c);
     then valid_condition(cond, c);
 }

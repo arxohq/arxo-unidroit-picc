@@ -1,4 +1,4 @@
-# Манифест §10 — маркер корня пакета (DECISION-0033).
+# §10 manifest — the marker of the package root (DECISION-0033).
 [package]
 name = "unidroit.picc_non_performance"
 version = "0.1.0"
@@ -7,12 +7,12 @@ namespace = "urn:org:unidroit:clir:picc-non-performance"
 
 [metadata]
 act = "unidroit-picc-2016-non-performance"
-title = "Принципы международных коммерческих договоров УНИДРУА 2016, глава 7: неисполнение (ст. 7.1.1–7.4.13)"
+title = "UNIDROIT Principles of International Commercial Contracts 2016, chapter 7: non-performance (art. 7.1.1–7.4.13)"
 primarySource = "PICC_2016"
 jurisdiction = "International"
 instrument = "doctrine"
 sourceFidelity = "pinned_unofficial_copy"
-issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+issuer = "International Institute for the Unification of Private Law (UNIDROIT), Rome"
 legalStatus = "doctrine"
 verifiedAgainstSource = false
 
@@ -22,9 +22,9 @@ verifiedAgainstSource = false
 [[tests]]
 family = "unidroit.picc_non_performance#non-performance"
 suites = [
-  "tests/01-neispolnenie-i-ispravlenie.lawtest",
-  "tests/02-trebovanie-ispolneniya.lawtest",
-  "tests/03-prekraschenie.lawtest",
-  "tests/04-ubytki-i-procenty.lawtest",
+  "tests/01-non-performance-and-cure.lawtest",
+  "tests/02-right-to-performance.lawtest",
+  "tests/03-termination.lawtest",
+  "tests/04-damages-and-interest.lawtest",
 ]
 world = ["unidroit.picc_non_performance", "unidroit.picc"]

@@ -1,0 +1,78 @@
+language "law.core" version "0.2";
+package unidroit.picc version "0.1.0";
+namespace "urn:org:unidroit:clir:picc";
+
+// Case 4. Notice (1.10), usages (1.9), place of business (1.11) and computation
+// of time (1.12).
+//
+// THE MAIN EXPECTATION IS THE DIFFERENCE FROM THE CONVENTION. The extension of
+// the last day over a holiday in article 1.12(2) carries the proviso "unless the
+// circumstances indicate otherwise", which article 20(2) CISG does not have:
+// contract 4b presents it, and the extension does not apply. The period is the
+// same in both contracts — 30 days from 02.03.2026, last day 01.04.2026.
+
+test "PICC-GEN-04-NOTICE-USAGES-AND-TIME" {
+    given {
+        context {
+            deadline_policy PICC_PARTY_SET_PERIOD;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": notice_given_by_appropriate_means(entity_ref("urn:case:picc:notice-4"), entity_ref("urn:case:picc:contract-4")) { origin case_input; }
+        assert "a1": notice_reached_person(entity_ref("urn:case:picc:notice-4"), entity_ref("urn:case:picc:beta")) { origin case_input; }
+        assert "a2": usage_agreed(entity_ref("urn:case:picc:usage-4a"), entity_ref("urn:case:picc:contract-4")) { origin case_input; }
+        assert "a3": usage_widely_known_in_trade(entity_ref("urn:case:picc:usage-4b"), entity_ref("urn:case:picc:contract-4")) { origin case_input; }
+        assert "a4": usage_widely_known_in_trade(entity_ref("urn:case:picc:usage-4c"), entity_ref("urn:case:picc:contract-4")) { origin case_input; }
+        assert "a5": application_of_usage_unreasonable(entity_ref("urn:case:picc:usage-4c"), entity_ref("urn:case:picc:contract-4")) { origin adjudicated; }
+        assert "a6": place_of_business_in(entity_ref("urn:case:picc:alpha"), entity_ref("urn:case:picc:state-x")) { origin case_input; }
+        assert "a7": period_runs_from(entity_ref("urn:case:picc:contract-4"), @2026-03-02) { origin case_input; }
+        assert "a8": period_set_by_party(entity_ref("urn:case:picc:contract-4"), entity_ref("urn:case:picc:alpha"), 30 calendar_day) { origin case_input; }
+        assert "a9": last_day_is_holiday_at_place_of_performance(entity_ref("urn:case:picc:contract-4"), @2026-04-01) { origin case_input; }
+        assert "a10": first_business_day_after(entity_ref("urn:case:picc:contract-4"), @2026-04-01, @2026-04-02) { origin case_input; }
+        assert "a11": period_runs_from(entity_ref("urn:case:picc:contract-4b"), @2026-03-02) { origin case_input; }
+        assert "a12": period_set_by_party(entity_ref("urn:case:picc:contract-4b"), entity_ref("urn:case:picc:alpha"), 30 calendar_day) { origin case_input; }
+        assert "a13": last_day_is_holiday_at_place_of_performance(entity_ref("urn:case:picc:contract-4b"), @2026-04-01) { origin case_input; }
+        assert "a14": first_business_day_after(entity_ref("urn:case:picc:contract-4b"), @2026-04-01, @2026-04-02) { origin case_input; }
+        assert "a15": circumstances_indicate_otherwise(entity_ref("urn:case:picc:contract-4b")) { origin case_input; }
+        assert "a16": time_zone_of_setter(entity_ref("urn:case:picc:contract-4"), entity_ref("urn:case:picc:alpha"), "Europe/Rome") { origin case_input; }
+    }
+
+    evaluate truth(notice_effective(entity_ref("urn:case:picc:notice-4"), entity_ref("urn:case:picc:beta")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NoticeEffectiveOnReceipt);
+
+    evaluate truth(bound_by_usage(entity_ref("urn:case:picc:usage-4a"), entity_ref("urn:case:picc:contract-4")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(BoundByAgreedUsage);
+
+    evaluate truth(bound_by_usage(entity_ref("urn:case:picc:usage-4b"), entity_ref("urn:case:picc:contract-4")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(BoundByWidelyKnownUsage);
+
+    // Unreasonableness of applying a usage removes the binding effect.
+    evaluate truth(bound_by_usage(entity_ref("urn:case:picc:usage-4c"), entity_ref("urn:case:picc:contract-4")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(relevant_place_of_business(entity_ref("urn:case:picc:alpha"), entity_ref("urn:case:picc:state-x")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SinglePlaceIsRelevant);
+
+    // The extension over a holiday applies…
+    evaluate truth(period_ends_on(entity_ref("urn:case:picc:contract-4"), @2026-04-02));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PeriodExtendedByHoliday);
+
+    // …and does NOT apply where the circumstances indicate otherwise: article
+    // 20(2) of the Convention has no such proviso.
+    evaluate truth(period_ends_on(entity_ref("urn:case:picc:contract-4b"), @2026-04-01));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PeriodEndsOn);
+
+    evaluate truth(relevant_time_zone(entity_ref("urn:case:picc:contract-4"), "Europe/Rome"));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RelevantTimeZone);
+}

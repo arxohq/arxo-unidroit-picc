@@ -1,0 +1,74 @@
+language "law.core" version "0.2";
+package unidroit.picc_formation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-formation";
+
+// Case 2. Modified acceptance (2.1.11), a writing in confirmation (2.1.12) and
+// the "battle of forms" (2.1.22).
+//
+// THE MAIN EXPECTATION IS THE DIFFERENCE FROM THE CONVENTION. The Principles
+// state the knock-out AS A RULE: where both parties use standard terms, the
+// contract is concluded on the terms agreed and on those standard terms that are
+// common in substance. Article 19 of the Convention has no such rule, and
+// practice reads it in two ways — two §152 readings in
+// `intl.uncitral.cisg_formation`. On the same facts the instruments answer
+// differently, and that is observed rather than asserted.
+
+test "PICCF-02-MODIFIED-ACCEPTANCE-AND-BATTLE-OF-FORMS" {
+    given {
+        context {
+            deadline_policy PICC_ACCEPTANCE_PERIOD;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": reply_to(entity_ref("urn:case:piccf:reply-2a"), entity_ref("urn:case:piccf:offer-2")) { origin case_input; }
+        assert "a1": reply_contains_modifications(entity_ref("urn:case:piccf:reply-2a")) { origin case_input; }
+        assert "a2": materially_alters_the_offer(entity_ref("urn:case:piccf:reply-2a")) { origin adjudicated; }
+        assert "a3": reply_to(entity_ref("urn:case:piccf:reply-2b"), entity_ref("urn:case:piccf:offer-2")) { origin case_input; }
+        assert "a4": reply_contains_modifications(entity_ref("urn:case:piccf:reply-2b")) { origin case_input; }
+        assert "a6": confirmation_sent_within_reasonable_time(entity_ref("urn:case:piccf:contract-2"), entity_ref("urn:case:piccf:term-2")) { origin case_input; }
+        assert "a8": both_parties_use_standard_terms(entity_ref("urn:case:piccf:contract-2")) { origin case_input; }
+        assert "a9": standard_term(entity_ref("urn:case:piccf:st-common"), entity_ref("urn:case:piccf:contract-2")) { origin case_input; }
+        assert "a10": standard_terms_common_in_substance(entity_ref("urn:case:piccf:st-common"), entity_ref("urn:case:piccf:contract-2")) { origin case_input; }
+        assert "a11": standard_term(entity_ref("urn:case:piccf:st-conflicting"), entity_ref("urn:case:piccf:contract-2")) { origin case_input; }
+        assert "a12": both_parties_use_standard_terms(entity_ref("urn:case:piccf:contract-2b")) { origin case_input; }
+        assert "a13": party_indicated_not_bound(entity_ref("urn:case:piccf:contract-2b")) { origin case_input; }
+    }
+
+    evaluate truth(counter_offer(entity_ref("urn:case:piccf:reply-2a")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MaterialReplyIsCounterOffer);
+
+    evaluate truth(acceptance_with_modifications(entity_ref("urn:case:piccf:reply-2b")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NonMaterialReplyIsAcceptance);
+
+    evaluate truth(term_becomes_part_of_contract(entity_ref("urn:case:piccf:term-2"), entity_ref("urn:case:piccf:contract-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ConfirmationTermBecomesPart);
+
+    // The knock-out AS A RULE: the contract stands on the terms agreed and on the
+    // standard terms common in substance.
+    evaluate truth(contract_on_common_terms(entity_ref("urn:case:piccf:contract-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(KnockOutRule);
+
+    evaluate truth(standard_term_is_part_of_contract(entity_ref("urn:case:piccf:st-common"), entity_ref("urn:case:piccf:contract-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CommonStandardTermsSurvive);
+
+    // A standard term that is not common in substance does not enter the contract.
+    evaluate truth(standard_term_is_part_of_contract(entity_ref("urn:case:piccf:st-conflicting"), entity_ref("urn:case:piccf:contract-2")));
+    expect truth_status == NEITHER;
+
+    // An advance declaration of unwillingness to be bound removes the rule.
+    evaluate truth(contract_on_common_terms(entity_ref("urn:case:piccf:contract-2b")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(general_rules_on_formation_apply(entity_ref("urn:case:piccf:contract-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(GeneralRulesApplyToStandardTerms);
+}

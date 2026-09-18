@@ -1,22 +1,24 @@
-// Глава 2 Принципов: заключение договора и полномочия представителей.
+// Chapter 2 of the Principles: formation of the contract and authority of agents.
 //
-// ЗАЧЕМ ОТДЕЛЬНЫЙ ПАКЕТ, ЕСЛИ НОРМЫ ЗЕРКАЛЬНЫ ЧАСТИ II КОНВЕНЦИИ. Именно
-// затем, что зеркальны НЕ ПОЛНОСТЬЮ, и различия — предмет сравнения:
+// WHY A SEPARATE PACKAGE IF THE RULES MIRROR PART II OF THE CONVENTION. Precisely
+// because they mirror it INCOMPLETELY, and the differences are the point of the
+// comparison:
+//  · article 2.1.22 states the "battle of forms" AS A RULE (knock-out: the
+//    contract is concluded on the terms agreed and on the standard terms that
+//    are common in substance), whereas article 19 of the Convention has no such
+//    rule at all and practice reads it in two ways — two §152 readings in
+//    `intl.uncitral.cisg_formation`;
+//  · article 2.1.12 knows the writing in confirmation with additional terms,
+//    which the Convention does not;
+//  · article 2.1.15 knows liability for negotiations in bad faith, which the
+//    Convention does not;
+//  · article 2.1.20 knows surprising terms in standard forms.
 //
-//  · статья 2.1.22 даёт «битву форм» НОРМОЙ (knock-out: договор заключается
-//    на согласованных условиях и на совпадающих по существу стандартных),
-//    тогда как у статьи 19 Конвенции этого правила нет вовсе и практика
-//    читает её двояко — два прочтения §152 в `intl.uncitral.cisg_formation`;
-//  · статья 2.1.12 знает письменное подтверждение с дополнительными
-//    условиями, которого Конвенция не знает;
-//  · статья 2.1.15 знает ответственность за недобросовестные переговоры,
-//    которой в Конвенции нет;
-//  · статья 2.1.20 знает неожиданные условия стандартных форм.
-//
-// СРОК ДЛЯ АКЦЕПТА СЧИТАЕТСЯ ОТ ОТПРАВКИ ОФЕРТЫ (ст. 2.1.8), а не от сдачи
-// телеграммы или даты письма, как у статьи 20 Конвенции: «A period of
-// acceptance fixed by the offeror begins to run from the time that the offer
-// is dispatched». Политика §86 та же, что у хаба, и берётся импортом.
+// THE PERIOD FOR ACCEPTANCE RUNS FROM THE DISPATCH OF THE OFFER (article 2.1.8),
+// not from the handing in of a telegram or the date of a letter as under article
+// 20 of the Convention: "A period of acceptance fixed by the offeror begins to
+// run from the time that the offer is dispatched". The §86 policy is the same as
+// the hub's and comes in by import.
 
 language "law.core" version "0.2";
 package unidroit.picc_formation version "0.1.0";
@@ -38,8 +40,7 @@ deadline policy PICC_ACCEPTANCE_PERIOD {
 
 const Tribunal: Organ = entity_ref("urn:org:unidroit:clir:picc#Tribunal") {
     label en official "the court or arbitral tribunal seised of the dispute (article 1.11)";
-    label ru unofficial "суд или арбитраж, рассматривающий спор (статья 1.11)";
 };
 
-pub entity Offer { label en official "Offer"; label ru unofficial "Оферта"; }
-pub entity Acceptance { label en official "Acceptance or reply to an offer"; label ru unofficial "Акцепт или ответ на оферту"; }
+pub entity Offer { label en official "Offer"; }
+pub entity Acceptance { label en official "Acceptance or reply to an offer"; }

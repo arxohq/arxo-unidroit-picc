@@ -12,7 +12,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:9a3d8246cdd2151e6ba312e3342359910c4235426bf6fb89f58ad41879f27dc9",
+      "contentHash": "sha256:280f0e7f468462a0b8601a303cf667982c238e2f7496d5b6fb14374fd828e789",
       "features": [
         "core-executable"
       ],
@@ -23,7 +23,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:6fd21a223bac71505bf27f035190142fa93602dfd5ecfc7300ddc0cca58007d5",
+  "resolutionHash": "sha256:b442b1450e33231d97759043bd39bd083943dc5c6b3a8b45727b29223258fa10",
   "root": {
     "contentHash": "sha256:84f380c6dee8804699ca43e1ac4bc299c32b64ac0959bb330336938edfa0bf61",
     "name": "unidroit.picc_limitation",

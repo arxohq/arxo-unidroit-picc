@@ -1,265 +1,228 @@
-// Статьи 2.1.1–2.1.12. Оферта, акцепт, срок и запоздавший акцепт.
+// Articles 2.1.1–2.1.12. Offer, acceptance, the period for acceptance and a late acceptance.
 //
-// ДВА СПОСОБА ЗАКЛЮЧЕНИЯ (2.1.1), И ВТОРОГО У КОНВЕНЦИИ НЕТ ПРЯМО: договор
-// может быть заключён акцептом оферты ЛИБО поведением сторон, достаточным
-// для того, чтобы показать соглашение. Два основания — два правила (§206).
+// TWO MODES OF CONCLUSION (2.1.1), AND THE CONVENTION DOES NOT STATE THE SECOND
+// EXPRESSLY: a contract may be concluded by the acceptance of an offer OR by
+// conduct of the parties that is sufficient to show agreement. Two grounds —
+// two rules (§206).
 //
-// СРОК ТЕЧЁТ ОТ ОТПРАВКИ ОФЕРТЫ (2.1.8), а указанное в оферте время
-// считается временем отправки, «unless the circumstances indicate
-// otherwise». У статьи 20 Конвенции начало отсчёта иное (сдача телеграммы,
-// дата письма, дата конверта) — сравнение живёт в сквозном семействе, а не в
-// общей норме.
+// THE PERIOD RUNS FROM THE DISPATCH OF THE OFFER (2.1.8), and a time indicated
+// in the offer counts as the time of dispatch, "unless the circumstances
+// indicate otherwise". Article 20 of the Convention starts the count elsewhere
+// (handing in of a telegram, the date of a letter, the date of the envelope) —
+// that comparison lives in the cross-cutting family, not in a shared rule.
 //
-// «БЕЗ НЕОПРАВДАННОЙ ЗАДЕРЖКИ» И «НЕМЕДЛЕННО» — ОЦЕНОЧНЫЕ ПРИЗНАКИ, а не
-// нулевые сроки (DECISION-0194): устная оферта акцептуется немедленно,
-// «unless the circumstances indicate otherwise», и это тоже оговорка.
+// "WITHOUT UNDUE DELAY" AND "IMMEDIATELY" ARE EVALUATIVE ELEMENTS, not zero
+// periods (DECISION-0194): an oral offer must be accepted immediately,
+// "unless the circumstances indicate otherwise", which is a proviso as well.
 
 language "law.core" version "0.2";
 package unidroit.picc_formation version "0.1.0";
 namespace "urn:org:unidroit:clir:picc-formation";
 
-// --- Статья 2.1.1: способы заключения ----------------------------------------
+// --- Article 2.1.1: modes of conclusion ---------------------------------------
 
 pub relation conduct_sufficient_to_show_agreement(c: Contract) kind empirical {
     label en official "the conduct of the parties is sufficient to show agreement";
-    label ru unofficial "поведение сторон достаточно, чтобы показать соглашение";
 }
 
 pub relation contract_concluded(c: Contract) kind institutional {
     label en official "the contract is concluded (article 2.1.1)";
-    label ru unofficial "договор заключён (статья 2.1.1)";
 }
 
 pub relation concluded_by_acceptance(c: Contract, a: Acceptance) kind empirical {
     label en official "the contract is concluded by that acceptance";
-    label ru unofficial "договор заключается этим акцептом";
 }
 
-// --- Статья 2.1.2: что является офертой ---------------------------------------
+// --- Article 2.1.2: what amounts to an offer ----------------------------------
 
 pub relation proposal_sufficiently_definite(o: Offer) kind empirical {
     label en official "the proposal for concluding a contract is sufficiently definite";
-    label ru unofficial "предложение о заключении договора достаточно определённо";
 }
 
 pub relation proposal_indicates_intention_to_be_bound(o: Offer) kind empirical {
     label en official "the proposal indicates the intention of the offeror to be bound in case of acceptance";
-    label ru unofficial "предложение выражает намерение оферента считать себя связанным в случае акцепта";
 }
 
 pub relation is_offer(o: Offer) kind institutional {
     label en official "the proposal constitutes an offer (article 2.1.2)";
-    label ru unofficial "предложение является офертой (статья 2.1.2)";
 }
 
-@source(PICC_ART2_1_2_EN, PICC_ART2_1_2_RU)
+@source(PICC_ART2_1_2_EN)
 rule ProposalIsOffer(o: Offer) defeasible {
     label en official "Article 2.1.2. A proposal for concluding a contract constitutes an offer if it is sufficiently definite and indicates the intention of the offeror to be bound";
-    label ru unofficial "Статья 2.1.2. Предложение о заключении договора является офертой, если оно достаточно определённо и выражает намерение оферента считать себя связанным";
     when proposal_sufficiently_definite(o)
         and proposal_indicates_intention_to_be_bound(o);
     then is_offer(o);
 }
 
-// --- Статья 2.1.3: вступление оферты в силу и её отмена -----------------------
+// --- Article 2.1.3: when an offer becomes effective and its withdrawal --------
 
 pub relation offer_reached_offeree(o: Offer) kind empirical {
     label en official "the offer reaches the offeree";
-    label ru unofficial "оферта достигает адресата";
 }
 
 pub relation withdrawal_reached_before_or_with_offer(o: Offer) kind empirical {
     label en official "the withdrawal reaches the offeree before or at the same time as the offer";
-    label ru unofficial "сообщение об отмене достигает адресата раньше оферты или одновременно с ней";
 }
 
 pub relation offer_effective(o: Offer) kind institutional {
     label en official "the offer becomes effective (article 2.1.3(1))";
-    label ru unofficial "оферта вступает в силу (статья 2.1.3 пункт 1)";
 }
 
-@source(PICC_ART2_1_3_EN, PICC_ART2_1_3_RU)
+@source(PICC_ART2_1_3_EN)
 rule OfferBecomesEffective(o: Offer) defeasible {
     label en official "Article 2.1.3(1). An offer becomes effective when it reaches the offeree";
-    label ru unofficial "Статья 2.1.3 пункт 1. Оферта вступает в силу, когда она достигает адресата";
     when offer_reached_offeree(o);
     then offer_effective(o);
 }
 
-@source(PICC_ART2_1_3_EN, PICC_ART2_1_3_RU)
+@source(PICC_ART2_1_3_EN)
 rule OfferWithdrawn(o: Offer) defeater {
     label en official "Article 2.1.3(2). An offer, even if irrevocable, may be withdrawn if the withdrawal reaches the offeree before or at the same time as the offer";
-    label ru unofficial "Статья 2.1.3 пункт 2. Оферта, даже безотзывная, может быть отменена, если отмена достигает адресата не позднее самой оферты";
     when withdrawal_reached_before_or_with_offer(o);
     defeat offer_effective(o);
 }
 
-// --- Статьи 2.1.4 и 2.1.5: отзыв и отклонение ---------------------------------
+// --- Articles 2.1.4 and 2.1.5: revocation and rejection -----------------------
 
 pub relation revocation_reached_before_dispatch_of_acceptance(o: Offer) kind empirical {
     label en official "the revocation reaches the offeree before it has dispatched an acceptance";
-    label ru unofficial "сообщение об отзыве достигает адресата до отправки им акцепта";
 }
 
 pub relation offer_states_irrevocability(o: Offer) kind empirical {
     label en official "the offer indicates, whether by stating a fixed time for acceptance or otherwise, that it is irrevocable";
-    label ru unofficial "оферта указывает, в том числе установлением срока для акцепта, что она безотзывна";
 }
 
 pub external judgment relation reasonable_to_rely_on_irrevocability(o: Offer) {
     authority Tribunal;
     label en official "it was reasonable for the offeree to rely on the offer as being irrevocable";
-    label ru unofficial "для адресата было разумным полагаться на безотзывность оферты";
 }
 
 pub relation offeree_acted_in_reliance(o: Offer) kind empirical {
     label en official "the offeree has acted in reliance on the offer";
-    label ru unofficial "адресат оферты действовал, полагаясь на неё";
 }
 
 pub relation rejection_reached_offeror(o: Offer) kind empirical {
     label en official "a rejection reaches the offeror";
-    label ru unofficial "сообщение об отклонении достигает оферента";
 }
 
 pub relation offer_revoked(o: Offer) kind institutional {
     label en official "the offer is revoked (article 2.1.4(1))";
-    label ru unofficial "оферта отозвана (статья 2.1.4 пункт 1)";
 }
 
-@source(PICC_ART2_1_4_EN, PICC_ART2_1_4_RU)
+@source(PICC_ART2_1_4_EN)
 rule OfferRevoked(o: Offer) defeasible {
     label en official "Article 2.1.4(1). Until a contract is concluded an offer may be revoked if the revocation reaches the offeree before it has dispatched an acceptance";
-    label ru unofficial "Статья 2.1.4 пункт 1. Пока договор не заключён, оферта может быть отозвана, если отзыв достигает адресата до отправки им акцепта";
     when revocation_reached_before_dispatch_of_acceptance(o);
     then offer_revoked(o);
 }
 
-@source(PICC_ART2_1_4_EN, PICC_ART2_1_4_RU)
+@source(PICC_ART2_1_4_EN)
 rule IrrevocableByItsTerms(o: Offer) defeater {
     label en official "Article 2.1.4(2)(a). An offer cannot be revoked if it indicates that it is irrevocable";
-    label ru unofficial "Статья 2.1.4 пункт 2 подпункт a. Оферта не может быть отозвана, если она указывает на свою безотзывность";
     when offer_states_irrevocability(o);
     defeat offer_revoked(o);
 }
 
-@source(PICC_ART2_1_4_EN, PICC_ART2_1_4_RU)
+@source(PICC_ART2_1_4_EN)
 rule IrrevocableByReliance(o: Offer) defeater {
     label en official "Article 2.1.4(2)(b). An offer cannot be revoked if it was reasonable for the offeree to rely on it as being irrevocable and the offeree has acted in reliance";
-    label ru unofficial "Статья 2.1.4 пункт 2 подпункт b. Оферта не может быть отозвана, если полагаться на её безотзывность было разумно и адресат так и действовал";
     when reasonable_to_rely_on_irrevocability(o)
         and offeree_acted_in_reliance(o);
     defeat offer_revoked(o);
 }
 
-@source(PICC_ART2_1_5_EN, PICC_ART2_1_5_RU)
+@source(PICC_ART2_1_5_EN)
 rule OfferTerminatedByRejection(o: Offer) defeater {
     label en official "Article 2.1.5. An offer is terminated when a rejection reaches the offeror";
-    label ru unofficial "Статья 2.1.5. Оферта прекращается, когда отклонение достигает оферента";
     when rejection_reached_offeror(o);
     defeat offer_effective(o);
 }
 
-// --- Статья 2.1.6: способ акцепта ---------------------------------------------
+// --- Article 2.1.6: mode of acceptance ----------------------------------------
 
 pub relation reply_to(a: Acceptance, o: Offer) kind empirical {
     label en official "the reply is a reply to that offer";
-    label ru unofficial "ответ дан на эту оферту";
 }
 
 pub relation indicates_assent(a: Acceptance) kind empirical {
     label en official "a statement made by or other conduct of the offeree indicates assent to the offer";
-    label ru unofficial "заявление или иное поведение адресата выражает согласие с офертой";
 }
 
 pub relation silence_or_inactivity_only(a: Acceptance) kind empirical {
     label en official "there is silence or inactivity only";
-    label ru unofficial "имеет место только молчание или бездействие";
 }
 
 pub relation assent_reached_offeror(a: Acceptance) kind empirical {
     label en official "the indication of assent reaches the offeror";
-    label ru unofficial "выражение согласия достигает оферента";
 }
 
 pub relation is_acceptance(a: Acceptance) kind institutional {
     label en official "the reply is an acceptance (article 2.1.6(1))";
-    label ru unofficial "ответ является акцептом (статья 2.1.6 пункт 1)";
 }
 
 pub relation acceptance_effective(a: Acceptance) kind institutional {
     label en official "the acceptance becomes effective (article 2.1.6(2))";
-    label ru unofficial "акцепт вступает в силу (статья 2.1.6 пункт 2)";
 }
 
-@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_RU)
+@source(PICC_ART2_1_6_EN)
 rule AssentIsAcceptance(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.6(1). A statement made by or other conduct of the offeree indicating assent to an offer is an acceptance";
-    label ru unofficial "Статья 2.1.6 пункт 1. Заявление или иное поведение адресата, выражающее согласие с офертой, является акцептом";
     when reply_to(a, o)
         and indicates_assent(a);
     then is_acceptance(a);
 }
 
-@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_RU)
+@source(PICC_ART2_1_6_EN)
 rule SilenceIsNotAcceptance(a: Acceptance, o: Offer) strict {
     label en official "Article 2.1.6(1). Silence or inactivity does not in itself amount to acceptance";
-    label ru unofficial "Статья 2.1.6 пункт 1. Молчание или бездействие само по себе акцептом не является";
     when reply_to(a, o)
         and silence_or_inactivity_only(a);
     then not is_acceptance(a);
 }
 
-// --- Статьи 2.1.7 и 2.1.8: срок для акцепта -----------------------------------
+// --- Articles 2.1.7 and 2.1.8: the period for acceptance ----------------------
 
 pub relation acceptance_period(o: Offer, span: Quantity) kind empirical {
     label en official "the period of acceptance fixed by the offeror";
-    label ru unofficial "срок для акцепта, установленный оферентом";
     key(o);
 }
 
 pub relation offer_dispatched_on(o: Offer, day: Date) kind empirical {
     label en official "the day on which the offer is dispatched";
-    label ru unofficial "день отправки оферты";
     key(o);
 }
 
 pub relation time_indicated_in_offer(o: Offer, day: Date) kind empirical {
     label en official "the time indicated in the offer, deemed to be the time of dispatch";
-    label ru unofficial "время, указанное в оферте, считающееся временем отправки";
     key(o);
 }
 
 pub relation circumstances_indicate_otherwise(o: Offer) kind empirical {
     label en official "the circumstances indicate otherwise";
-    label ru unofficial "обстоятельства указывают на иное";
 }
 
 pub relation acceptance_period_runs_from(o: Offer, day: Date) kind institutional {
     label en official "the day from which the period of acceptance begins to run (article 2.1.8)";
-    label ru unofficial "день, с которого начинает течь срок для акцепта (статья 2.1.8)";
 }
 
 pub relation acceptance_period_ends_on(o: Offer, day: Date) kind derived {
     label en official "the last day of the period of acceptance";
-    label ru unofficial "последний день срока для акцепта";
 }
 
-@source(PICC_ART2_1_8_EN, PICC_ART2_1_8_RU)
+@source(PICC_ART2_1_8_EN)
 rule PeriodRunsFromDispatch(o: Offer, day: Date) defeasible {
     label en official "Article 2.1.8. A period of acceptance fixed by the offeror begins to run from the time that the offer is dispatched";
-    label ru unofficial "Статья 2.1.8. Срок для акцепта, установленный оферентом, начинает течь с момента отправки оферты";
     when offer_dispatched_on(o, day);
     then acceptance_period_runs_from(o, day);
 }
 
-@source(PICC_ART2_1_8_EN, PICC_ART2_1_8_RU)
+@source(PICC_ART2_1_8_EN)
 rule IndicatedTimeIsDispatch(o: Offer, day: Date) defeasible {
     label en official "Article 2.1.8. A time indicated in the offer is deemed to be the time of dispatch unless the circumstances indicate otherwise";
-    label ru unofficial "Статья 2.1.8. Время, указанное в оферте, считается временем отправки, если обстоятельства не указывают на иное";
     when time_indicated_in_offer(o, day);
     then acceptance_period_runs_from(o, day);
-    // Связывающий конъюнкт — в самой оговорке (§149-§150, E-0099).
+    // The binding conjunct belongs in the clause itself (§149-§150, E-0099).
     unless time_indicated_in_offer(o, day)
         and circumstances_indicate_otherwise(o);
 }
@@ -267,7 +230,6 @@ rule IndicatedTimeIsDispatch(o: Offer, day: Date) defeasible {
 @source(PICC_ART2_1_7_EN, PICC_ART2_1_8_EN)
 rule AcceptancePeriodEnds(o: Offer, start: Date, span: Quantity) defeasible {
     label en official "Articles 2.1.7 and 2.1.8. The last day of the period of acceptance fixed by the offeror";
-    label ru unofficial "Статьи 2.1.7 и 2.1.8. Последний день срока для акцепта, установленного оферентом";
     when acceptance_period_runs_from(o, start)
         and acceptance_period(o, span);
     then acceptance_period_ends_on(o, add_calendar_period(start, span));
@@ -275,25 +237,21 @@ rule AcceptancePeriodEnds(o: Offer, start: Date, span: Quantity) defeasible {
 
 pub relation acceptance_reached_offeror_on(a: Acceptance, day: Date) kind empirical {
     label en official "the day on which the indication of assent reached the offeror";
-    label ru unofficial "день, в который согласие достигло оферента";
     key(a);
 }
 
 pub external judgment relation within_reasonable_time(a: Acceptance) {
     authority Tribunal;
     label en official "the offer was accepted within a reasonable time having regard to the circumstances, including the rapidity of the means of communication employed";
-    label ru unofficial "оферта акцептована в разумный срок с учётом обстоятельств, включая скорость использованных средств связи";
 }
 
 pub relation acceptance_in_time(a: Acceptance, o: Offer) kind institutional {
     label en official "the acceptance was made within the time allowed (article 2.1.7)";
-    label ru unofficial "акцепт совершён в допустимый срок (статья 2.1.7)";
 }
 
-@source(PICC_ART2_1_7_EN, PICC_ART2_1_7_RU)
+@source(PICC_ART2_1_7_EN)
 rule AcceptanceWithinFixedPeriod(a: Acceptance, o: Offer, received: Date, last: Date) defeasible {
     label en official "Article 2.1.7. An offer must be accepted within the time the offeror has fixed";
-    label ru unofficial "Статья 2.1.7. Оферта должна быть акцептована в срок, установленный оферентом";
     when reply_to(a, o)
         and acceptance_reached_offeror_on(a, received)
         and acceptance_period_ends_on(o, last)
@@ -301,10 +259,9 @@ rule AcceptanceWithinFixedPeriod(a: Acceptance, o: Offer, received: Date, last: 
     then acceptance_in_time(a, o);
 }
 
-@source(PICC_ART2_1_7_EN, PICC_ART2_1_7_RU)
+@source(PICC_ART2_1_7_EN)
 rule AcceptanceWithinReasonableTime(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.7. If no time is fixed, the offer must be accepted within a reasonable time";
-    label ru unofficial "Статья 2.1.7. Если срок не установлен, оферта должна быть акцептована в разумный срок";
     when reply_to(a, o)
         and within_reasonable_time(a);
     then acceptance_in_time(a, o);
@@ -313,7 +270,6 @@ rule AcceptanceWithinReasonableTime(a: Acceptance, o: Offer) defeasible {
 @source(PICC_ART2_1_6_EN, PICC_ART2_1_7_EN)
 rule AcceptanceEffective(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.6(2) with 2.1.7. An acceptance becomes effective when the indication of assent reaches the offeror in time";
-    label ru unofficial "Статья 2.1.6 пункт 2 со статьёй 2.1.7. Акцепт вступает в силу, когда согласие достигает оферента в срок";
     when is_acceptance(a)
         and reply_to(a, o)
         and assent_reached_offeror(a)
@@ -321,44 +277,38 @@ rule AcceptanceEffective(a: Acceptance, o: Offer) defeasible {
     then acceptance_effective(a);
 }
 
-// --- Статья 2.1.9: запоздавший акцепт -----------------------------------------
+// --- Article 2.1.9: late acceptance -------------------------------------------
 
 pub relation acceptance_late(a: Acceptance) kind empirical {
     label en official "the acceptance is late";
-    label ru unofficial "акцепт запоздал";
 }
 
 pub external judgment relation offeror_informed_without_undue_delay(a: Acceptance) {
     authority Tribunal;
     label en official "without undue delay the offeror so informs the offeree or gives notice to that effect";
-    label ru unofficial "оферент без неоправданной задержки известил адресата или направил соответствующее уведомление";
 }
 
 pub relation communication_shows_normal_transmission(a: Acceptance) kind empirical {
     label en official "the communication containing the late acceptance shows that if its transmission had been normal it would have reached the offeror in due time";
-    label ru unofficial "из сообщения с запоздавшим акцептом видно, что при нормальной пересылке оно пришло бы вовремя";
 }
 
 pub external judgment relation offeror_objected_without_undue_delay(a: Acceptance) {
     authority Tribunal;
     label en official "the offeror without undue delay informs the offeree that it considers its offer as having lapsed";
-    label ru unofficial "оферент без неоправданной задержки известил адресата, что считает свою оферту утратившей силу";
 }
 
-@source(PICC_ART2_1_9_EN, PICC_ART2_1_9_RU)
+@source(PICC_ART2_1_9_EN)
 rule LateAcceptanceSavedByOfferor(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.9(1). A late acceptance is nevertheless effective if without undue delay the offeror so informs the offeree";
-    label ru unofficial "Статья 2.1.9 пункт 1. Запоздавший акцепт тем не менее действует, если оферент без неоправданной задержки известит об этом адресата";
     when reply_to(a, o)
         and acceptance_late(a)
         and offeror_informed_without_undue_delay(a);
     then is_acceptance(a);
 }
 
-@source(PICC_ART2_1_9_EN, PICC_ART2_1_9_RU)
+@source(PICC_ART2_1_9_EN)
 rule LateAcceptanceSavedByNormalTransmission(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.9(2). A late acceptance which would have arrived in due time is effective unless the offeror without undue delay objects";
-    label ru unofficial "Статья 2.1.9 пункт 2. Запоздавший акцепт, который пришёл бы вовремя при нормальной пересылке, действует, если оферент без неоправданной задержки не возразит";
     when reply_to(a, o)
         and acceptance_late(a)
         and communication_shows_normal_transmission(a);
@@ -367,69 +317,60 @@ rule LateAcceptanceSavedByNormalTransmission(a: Acceptance, o: Offer) defeasible
         and offeror_objected_without_undue_delay(a);
 }
 
-// --- Статья 2.1.10: отмена акцепта --------------------------------------------
+// --- Article 2.1.10: withdrawal of acceptance ---------------------------------
 
 pub relation acceptance_withdrawal_in_time(a: Acceptance) kind empirical {
     label en official "the withdrawal reaches the offeror before or at the same time as the acceptance would have become effective";
-    label ru unofficial "отмена достигает оферента не позднее момента, когда акцепт вступил бы в силу";
 }
 
-@source(PICC_ART2_1_10_EN, PICC_ART2_1_10_RU)
+@source(PICC_ART2_1_10_EN)
 rule AcceptanceWithdrawn(a: Acceptance) defeater {
     label en official "Article 2.1.10. An acceptance may be withdrawn if the withdrawal reaches the offeror before or at the same time as the acceptance would have become effective";
-    label ru unofficial "Статья 2.1.10. Акцепт может быть отменён, если отмена достигает оферента не позднее момента вступления акцепта в силу";
     when acceptance_withdrawal_in_time(a);
     defeat acceptance_effective(a);
 }
 
-@source(PICC_ART2_1_1_EN, PICC_ART2_1_1_RU)
+@source(PICC_ART2_1_1_EN)
 rule ConcludedByAcceptance(c: Contract, a: Acceptance) defeasible {
     label en official "Article 2.1.1. A contract may be concluded by the acceptance of an offer";
-    label ru unofficial "Статья 2.1.1. Договор может быть заключён акцептом оферты";
     when concluded_by_acceptance(c, a)
         and acceptance_effective(a);
     then contract_concluded(c);
 }
 
-@source(PICC_ART2_1_1_EN, PICC_ART2_1_1_RU)
+@source(PICC_ART2_1_1_EN)
 rule ConcludedByConduct(c: Contract) defeasible {
     label en official "Article 2.1.1. A contract may be concluded by conduct of the parties that is sufficient to show agreement";
-    label ru unofficial "Статья 2.1.1. Договор может быть заключён поведением сторон, достаточным, чтобы показать соглашение";
     when conduct_sufficient_to_show_agreement(c);
     then contract_concluded(c);
 }
 
-// --- Статья 2.1.12: письменное подтверждение -----------------------------------
+// --- Article 2.1.12: writings in confirmation ---------------------------------
 //
-// Нормы, которой у Конвенции нет: дополнительные или отличные условия
-// письменного подтверждения СТАНОВЯТСЯ частью договора, если они существенно
-// его не меняют и получатель без неоправданной задержки не возразит.
+// A rule the Convention does not have: additional or different terms of a
+// writing in confirmation BECOME part of the contract unless they materially
+// alter it and the recipient objects without undue delay.
 
 pub relation confirmation_sent_within_reasonable_time(c: Contract, t: Term) kind empirical {
     label en official "a writing purporting to be a confirmation of the contract was sent within a reasonable time after its conclusion and contains that additional or different term";
-    label ru unofficial "письменное подтверждение договора отправлено в разумный срок после его заключения и содержит это дополнительное или отличное условие";
 }
 
 pub external judgment relation materially_alters_the_contract(t: Term, c: Contract) {
     authority Tribunal;
     label en official "the term materially alters the contract";
-    label ru unofficial "условие существенно изменяет договор";
 }
 
 pub relation recipient_objected_without_undue_delay(t: Term, c: Contract) kind empirical {
     label en official "the recipient, without undue delay, objects to the discrepancy";
-    label ru unofficial "получатель без неоправданной задержки возразил против расхождения";
 }
 
 pub relation term_becomes_part_of_contract(t: Term, c: Contract) kind institutional {
     label en official "the term becomes part of the contract (article 2.1.12)";
-    label ru unofficial "условие становится частью договора (статья 2.1.12)";
 }
 
-@source(PICC_ART2_1_12_EN, PICC_ART2_1_12_RU)
+@source(PICC_ART2_1_12_EN)
 rule ConfirmationTermBecomesPart(t: Term, c: Contract) defeasible {
     label en official "Article 2.1.12. Additional or different terms in a writing in confirmation become part of the contract unless they materially alter it or the recipient objects without undue delay";
-    label ru unofficial "Статья 2.1.12. Дополнительные или отличные условия письменного подтверждения становятся частью договора, если они существенно его не меняют и получатель без неоправданной задержки не возразит";
     when confirmation_sent_within_reasonable_time(c, t)
         and not_known(materially_alters_the_contract(t, c));
     then term_becomes_part_of_contract(t, c);
@@ -437,37 +378,33 @@ rule ConfirmationTermBecomesPart(t: Term, c: Contract) defeasible {
         and recipient_objected_without_undue_delay(t, c);
 }
 
-// --- Статья 2.1.6 пункт 3: акцепт совершением действия без извещения -------------
+// --- Article 2.1.6(3): acceptance by performing an act without notice ---------
 //
-// Оферта, установившаяся практика сторон или обычай могут позволять адресату
-// выразить согласие совершением действия. Тогда акцепт вступает в силу не
-// получением, а СОВЕРШЕНИЕМ ДЕЙСТВИЯ, и это отдельная голова, а не оговорка к
-// пункту 2.
+// The offer, practices established between the parties or a usage may allow the
+// offeree to indicate assent by performing an act. Acceptance is then effective
+// not on receipt but ON THE PERFORMANCE OF THE ACT, and that is a head of its
+// own rather than a proviso to paragraph 2.
 
 pub relation assent_by_act_permitted(a: Acceptance) kind empirical {
     label en official "by virtue of the offer or as a result of practices which the parties have established between themselves or of usage, the offeree may indicate assent by performing an act without notice to the offeror";
-    label ru unofficial "в силу оферты, установившейся между сторонами практики или обычая адресат может выразить согласие совершением действия без извещения оферента";
 }
 
 pub relation act_of_assent_performed(a: Acceptance) kind empirical {
     label en official "the act indicating assent has been performed";
-    label ru unofficial "действие, выражающее согласие, совершено";
 }
 
-@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_RU)
+@source(PICC_ART2_1_6_EN)
 rule AssentByPerformedActIsAcceptance(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.6(3). Where the offeree may indicate assent by performing an act without notice, performing that act is an acceptance";
-    label ru unofficial "Статья 2.1.6 пункт 3. Если адресат может выразить согласие совершением действия без извещения, совершение действия является акцептом";
     when reply_to(a, o)
         and assent_by_act_permitted(a)
         and act_of_assent_performed(a);
     then is_acceptance(a);
 }
 
-@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_RU)
+@source(PICC_ART2_1_6_EN)
 rule AcceptanceEffectiveOnPerformance(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.6(3). The acceptance is effective when the act is performed";
-    label ru unofficial "Статья 2.1.6 пункт 3. Акцепт вступает в силу в момент совершения действия";
     when reply_to(a, o)
         and assent_by_act_permitted(a)
         and act_of_assent_performed(a);

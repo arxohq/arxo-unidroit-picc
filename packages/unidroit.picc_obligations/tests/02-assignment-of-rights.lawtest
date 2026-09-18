@@ -1,0 +1,145 @@
+language "law.core" version "0.2";
+package unidroit.picc_obligations version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-obligations";
+
+// Case 2. Assignment of rights (9.1.1-9.1.15).
+//
+// A PROHIBITION ON ASSIGNMENT WORKS DIFFERENTLY FOR MONEY AND FOR OTHER
+// PERFORMANCE: the assignment of a right to payment is effective DESPITE the
+// prohibition (article 9.1.9(1)), while the assignment of a non-monetary right is
+// effective only if the assignee did not know of the prohibition (paragraph 2).
+
+test "PICCO-02-ASSIGNMENT-OF-RIGHTS" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": assignment_of(entity_ref("urn:case:picco:right-m"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a1": monetary_right(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a2": non_assignment_clause(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a3": partial_assignment(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a4": additional_costs_caused_to_obligor(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a5": security_for_assigned_right(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a6": defence_against_assignor(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a7": set_off_available_before_notice(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a8": payment_received_before_notice(entity_ref("urn:case:picco:right-m")) { origin case_input; }
+        assert "a9": assignment_of(entity_ref("urn:case:picco:right-n"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a10": non_monetary_right(entity_ref("urn:case:picco:right-n")) { origin case_input; }
+        assert "a11": non_assignment_clause(entity_ref("urn:case:picco:right-n")) { origin case_input; }
+        assert "a12": assignee_unaware_of_clause(entity_ref("urn:case:picco:right-n")) { origin case_input; }
+        assert "a13": assignment_of(entity_ref("urn:case:picco:right-nk"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a14": non_monetary_right(entity_ref("urn:case:picco:right-nk")) { origin case_input; }
+        assert "a15": non_assignment_clause(entity_ref("urn:case:picco:right-nk")) { origin case_input; }
+        assert "a16": assignment_of(entity_ref("urn:case:picco:right-b"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a17": non_monetary_right(entity_ref("urn:case:picco:right-b")) { origin case_input; }
+        assert "a18": assignment_significantly_more_burdensome(entity_ref("urn:case:picco:right-b")) { origin case_input; }
+        assert "a19": assignment_of(entity_ref("urn:case:picco:right-p"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a20": non_monetary_right(entity_ref("urn:case:picco:right-p")) { origin case_input; }
+        assert "a21": partial_assignment(entity_ref("urn:case:picco:right-p")) { origin case_input; }
+        assert "a22": right_divisible(entity_ref("urn:case:picco:right-p")) { origin case_input; }
+        assert "a23": assignment_of(entity_ref("urn:case:picco:right-f"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a24": future_right_identifiable(entity_ref("urn:case:picco:right-f")) { origin case_input; }
+        assert "a25": rights_identifiable_without_specification(entity_ref("urn:case:picco:right-f")) { origin case_input; }
+        assert "a26": assignment_of(entity_ref("urn:case:picco:right-pers"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a27": obligation_essentially_personal(entity_ref("urn:case:picco:right-pers")) { origin case_input; }
+        assert "a28": special_transfer_rules_apply(entity_ref("urn:case:picco:right-sp")) { origin case_input; }
+        assert "a29": assignment_of(entity_ref("urn:case:picco:right-sp"), entity_ref("urn:case:picco:assignor"), entity_ref("urn:case:picco:assignee"), entity_ref("urn:case:picco:obligor")) { origin case_input; }
+        assert "a30": notice_of_assignment_received(entity_ref("urn:case:picco:right-n")) { origin case_input; }
+        assert "a31": notice_given_by_assignee(entity_ref("urn:case:picco:right-nk")) { origin case_input; }
+        assert "a32": successive_assignment_notice_order(entity_ref("urn:case:picco:right-m"), entity_ref("urn:case:picco:right-n")) { origin case_input; }
+    }
+
+    evaluate truth(section_applies_to_assignment(entity_ref("urn:case:picco:right-m")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AssignmentIsTransferByAgreement);
+
+    // The section excludes the special rules on negotiable instruments and the transfer of a business.
+    evaluate truth(section_applies_to_assignment(entity_ref("urn:case:picco:right-sp")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(right_assignable(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MonetaryRightAssignablePartially);
+
+    evaluate truth(right_assignable(entity_ref("urn:case:picco:right-p")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NonMonetaryPartialAssignment);
+
+    // A significantly more burdensome obligation removes the assignment of a non-monetary right.
+    evaluate truth(right_assignable(entity_ref("urn:case:picco:right-b")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(future_right_transferred_at_agreement(entity_ref("urn:case:picco:right-f")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FutureRightTransferredAtAgreement);
+
+    evaluate truth(bulk_assignment_effective(entity_ref("urn:case:picco:right-f")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(BulkAssignment);
+
+    evaluate truth(obligor_consent_not_required(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AgreementSufficientWithoutObligorConsent);
+
+    // An exclusively personal character of the obligation requires the obligor's consent.
+    evaluate truth(obligor_consent_not_required(entity_ref("urn:case:picco:right-pers")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(obligor_entitled_to_costs(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ObligorCompensatedForCosts);
+
+    // A right to payment: the assignment is effective DESPITE the prohibition.
+    evaluate truth(assignment_effective_despite_clause(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MonetaryAssignmentEffectiveDespiteClause);
+
+    // A non-monetary right: only if the assignee did not know of the prohibition.
+    evaluate truth(assignment_effective_despite_clause(entity_ref("urn:case:picco:right-n")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NonMonetaryAssignmentEffectiveIfAssigneeUnaware);
+
+    evaluate truth(assignment_effective_despite_clause(entity_ref("urn:case:picco:right-nk")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(discharged_by_paying_assignor(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DischargeByPayingAssignorBeforeNotice);
+
+    evaluate truth(discharged_by_paying_assignee(entity_ref("urn:case:picco:right-n")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DischargeByPayingAssigneeAfterNotice);
+
+    evaluate truth(discharged_by_order_of_notices(entity_ref("urn:case:picco:right-m"), entity_ref("urn:case:picco:right-n")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuccessiveAssignmentsByNoticeOrder);
+
+    evaluate truth(may_withhold_payment_pending_proof(entity_ref("urn:case:picco:right-nk")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(WithholdingPendingProofOfAssignment);
+
+    evaluate truth(defence_assertable_against_assignee(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DefencesAgainstAssignee);
+
+    evaluate truth(set_off_assertable_against_assignee(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SetOffAgainstAssignee);
+
+    evaluate truth(security_transferred_with_right(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SecurityFollowsAssignedRight);
+
+    evaluate truth(assignor_undertakes_existence(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AssignorUndertakings);
+
+    evaluate truth(assignor_reimburses_payment(entity_ref("urn:case:picco:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AssignorReimbursesEarlyPayment);
+}

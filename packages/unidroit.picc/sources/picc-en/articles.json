@@ -1,5 +1,5 @@
 {
-  "$comment": "Учёт полноты §33.1 по единице деления инструмента — СТАТЬЕ («ARTICLE 2.1.11» прописными отдельной строкой, название следующей строкой в скобках). Единица объявлена явно: unit=en_article_upper_dotted. Номер учёта — с подчёркиванием («2.1.11» → «2_1_11»), приём en_article_dotted. Номера охвата записаны С ПОДЧЁРКИВАНИЕМ («2_1_11»): так их приводит конвенция, и так их читают обе меры §33.1.",
+  "$comment": "§33.1 completeness accounting by the dividing unit of the instrument — the ARTICLE (\"ARTICLE 2.1.11\" in capitals on a line of its own, the title in brackets on the next line). The unit is declared explicitly: unit=en_article_upper_dotted. The accounting number uses underscores (\"2.1.11\" → \"2_1_11\"), the en_article_dotted convention. The scope numbers are written WITH UNDERSCORES (\"2_1_11\"): that is the form the convention produces and the form both §33.1 measures read.",
   "document": "en.txt",
   "unit": "en_article_upper_dotted",
   "scope": [
@@ -45,5 +45,5 @@
     "5_3_5"
   ],
   "declared": {},
-  "note": "Охват ЭТОГО пакета — главы 1 (общие положения), 4 (толкование договора) и 5 (содержание, права третьих лиц, условия): хаб группы `unidroit.picc*`. Остальные главы принадлежат соседним пакетам той же группы, каждый со своей копией тех же байтов и своим охватом (DECISION-0318, развилка Р3). Английский black-letter текст — первичный якорь фрагментов §194 (развилка Р1 вариант (a))."
+  "note": "The scope of THIS package is chapters 1, 4 and 5 of the Principles: general provisions, interpretation of the contract, and content, third party rights and conditions. It is the hub of the `unidroit.picc*` group; the other chapters belong to the neighbouring packages of the same group, each with its own copy of the same bytes and its own scope."
 }

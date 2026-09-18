@@ -1,18 +1,20 @@
-// Глава 10 Принципов: исковая давность.
+// Chapter 10 of the Principles: limitation periods.
 //
-// У КОНВЕНЦИИ ЭТОЙ ГЛАВЫ НЕТ ВОВСЕ. Исковая давность вынесена за пределы
-// Конвенции 1980 года (отдельная Нью-Йоркская конвенция 1974 года об исковой
-// давности в международной купле-продаже товаров); Принципы дают собственный
-// режим, и потому глава 10 — ещё один ответ там, где Конвенция молчит.
+// THE CONVENTION HAS NO SUCH CHAPTER AT ALL. Limitation is left outside the 1980
+// Convention (a separate 1974 New York Convention deals with the limitation
+// period in the international sale of goods); the Principles provide a regime of
+// their own, which makes chapter 10 one more answer where the Convention is
+// silent.
 //
-// ДВА СРОКА СРАЗУ, И ОНИ СЧИТАЮТСЯ ОТ РАЗНЫХ ДНЕЙ: общий — три года со дня,
-// СЛЕДУЮЩЕГО за днём, когда кредитор узнал или должен был узнать о фактах;
-// максимальный — десять лет со дня, СЛЕДУЮЩЕГО за днём, когда право может
-// быть осуществлено. Политика §86 пакета считает от следующего дня, и это
-// свойство текста, а не умолчание модели.
+// TWO PERIODS RUN AT ONCE, AND THEY ARE COUNTED FROM DIFFERENT DAYS: the general
+// period is three years beginning on the day AFTER the day the obligee knew or
+// ought to have known the facts; the maximum period is ten years beginning on
+// the day AFTER the day the right could be exercised. The §86 policy of this
+// package counts from the next day, and that is a property of the text rather
+// than a default of the model.
 //
-// ИСТЕЧЕНИЕ ДАВНОСТИ ПРАВО НЕ ПРЕКРАЩАЕТ (ст. 10.9 п. 1): оно действует
-// только как возражение должника и только будучи заявленным.
+// EXPIRY DOES NOT EXTINGUISH THE RIGHT (article 10.9(1)): it operates only as a
+// defence of the obligor, and only if invoked.
 
 language "law.core" version "0.2";
 package unidroit.picc_limitation version "0.1.0";
@@ -33,15 +35,12 @@ deadline policy PICC_LIMITATION {
 
 const Tribunal: Organ = entity_ref("urn:org:unidroit:clir:picc#Tribunal") {
     label en official "the court or arbitral tribunal seised of the dispute (article 1.11)";
-    label ru unofficial "суд или арбитраж, рассматривающий спор (статья 1.11)";
 };
 
 pub entity Right {
     label en official "Right governed by the Principles";
-    label ru unofficial "Право, регулируемое Принципами";
 }
 
 pub relation right_of(r: Right, c: Contract, obligee: Party, obligor: Party) kind empirical {
     label en official "the right belongs to the obligee against the obligor under that contract";
-    label ru unofficial "право принадлежит кредитору против должника по этому договору";
 }

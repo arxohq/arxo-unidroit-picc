@@ -1,15 +1,17 @@
-// Главы 8, 9 и 11 Принципов: зачёт, перемена лиц в обязательстве и
-// множественность сторон.
+// Chapters 8, 9 and 11 of the Principles: set-off, assignment of rights and
+// transfer of obligations, and plurality of obligors and of obligees.
 //
-// ТРЁХ ЭТИХ ГЛАВ У КОНВЕНЦИИ НЕТ ВОВСЕ. Она не знает ни зачёта, ни уступки
-// прав, ни перевода долга, ни солидарности: её предмет — заключение договора
-// купли-продажи и права сторон по нему. Поэтому пакет отвечает там, где
-// Конвенция молчит по построению, и мост к `intl.uncitral.cisg*` здесь один —
-// статья 7(2) Конвенции, отсылающая к общим принципам.
+// THE CONVENTION HAS NONE OF THESE THREE CHAPTERS. It knows neither set-off nor
+// assignment of rights, nor transfer of obligations, nor solidarity: its subject
+// is the formation of a contract of sale and the rights of the parties under it.
+// The package therefore answers where the Convention is silent by construction,
+// and the single bridge to `intl.uncitral.cisg*` is article 7(2) of the
+// Convention, which refers to general principles.
 //
-// СОЛИДАРНОСТЬ ПРЕЗЮМИРУЕТСЯ (ст. 11.1.2), И ЭТО ПРЕЗУМПЦИЯ, А НЕ ОПРЕДЕЛЕНИЕ:
-// несколько должников по одному обязательству предполагаются солидарными,
-// если обстоятельства не указывают на иное. Записано поражаемым правилом.
+// SOLIDARITY IS PRESUMED (article 11.1.2), AND THAT IS A PRESUMPTION, NOT A
+// DEFINITION: where several obligors are bound by the same obligation they are
+// presumed to be jointly and severally bound, unless the circumstances indicate
+// otherwise. Written as a defeasible rule.
 
 language "law.core" version "0.2";
 package unidroit.picc_obligations version "0.1.0";
@@ -23,25 +25,20 @@ type Organ = unidroit.picc::Organ;
 
 const Tribunal: Organ = entity_ref("urn:org:unidroit:clir:picc#Tribunal") {
     label en official "the court or arbitral tribunal seised of the dispute (article 1.11)";
-    label ru unofficial "суд или арбитраж, рассматривающий спор (статья 1.11)";
 };
 
 pub entity Obligation {
     label en official "Obligation";
-    label ru unofficial "Обязательство";
 }
 
 pub entity Right {
     label en official "Right to performance";
-    label ru unofficial "Право на исполнение";
 }
 
 pub entity Notice {
     label en official "Notice";
-    label ru unofficial "Извещение";
 }
 
 pub relation obligation_between(o: Obligation, obligor: Party, obligee: Party) kind empirical {
     label en official "the obligation is owed by the obligor to the obligee";
-    label ru unofficial "обязательство лежит на должнике перед кредитором";
 }

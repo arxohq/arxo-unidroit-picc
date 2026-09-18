@@ -1,0 +1,402 @@
+// Articles 7.4.1-7.4.13. Damages.
+//
+// THE RATE OF INTEREST IS NAMED BY THE SOURCE (article 7.4.9(2)), AND THAT IS A
+// DIRECT ANSWER TO THE SILENCE OF ARTICLE 78 OF THE CONVENTION: the average bank
+// short-term lending rate to prime borrowers prevailing for the currency of
+// payment at the place for payment. The NUMBER itself remains a fact of the
+// case — the Principles name the RULE OF CHOICE, not the amount; the head
+// therefore says which rate applies and substitutes no guess.
+
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+pub relation harm_sustained(n: NonPerformance, p: Party) kind empirical {
+    label en official "the aggrieved party sustained harm as a result of the non-performance";
+}
+
+pub relation harm_established_with_certainty(n: NonPerformance) kind empirical {
+    label en official "the harm, including future harm, is established with a reasonable degree of certainty";
+}
+
+pub relation loss_of_a_chance(n: NonPerformance) kind empirical {
+    label en official "the harm consists in the loss of a chance";
+}
+
+pub relation amount_not_establishable(n: NonPerformance) kind empirical {
+    label en official "the amount of damages cannot be established with a sufficient degree of certainty";
+}
+
+pub external judgment relation harm_was_foreseeable(n: NonPerformance) {
+    authority Tribunal;
+    label en official "the non-performing party foresaw or could reasonably have foreseen the harm at the time of the conclusion of the contract as being likely to result from its non-performance";
+}
+
+pub relation replacement_transaction_made(n: NonPerformance) kind empirical {
+    label en official "the aggrieved party terminated the contract and made a replacement transaction within a reasonable time and in a reasonable manner";
+}
+
+pub relation current_price_exists(n: NonPerformance) kind empirical {
+    label en official "there is a current price for the performance contracted for";
+}
+
+pub relation harm_due_in_part_to_aggrieved_party(n: NonPerformance) kind empirical {
+    label en official "the harm is due in part to an act or omission of the aggrieved party or to another event for which that party bears the risk";
+}
+
+pub relation harm_could_have_been_reduced(n: NonPerformance) kind empirical {
+    label en official "the harm could have been reduced by the aggrieved party's taking reasonable steps";
+}
+
+pub relation mitigation_expenses_incurred(n: NonPerformance) kind empirical {
+    label en official "the aggrieved party reasonably incurred expenses in attempting to reduce the harm";
+}
+
+pub relation sum_not_paid_when_due(o: Obligation) kind empirical {
+    label en official "a party does not pay a sum of money when it falls due";
+}
+
+pub relation bank_rate_exists_at_place_of_payment(o: Obligation) kind empirical {
+    label en official "an average bank short-term lending rate to prime borrowers exists for the currency of payment at the place for payment";
+}
+
+pub relation bank_rate_exists_in_state_of_currency(o: Obligation) kind empirical {
+    label en official "such a rate exists in the State of the currency of payment";
+}
+
+pub relation greater_harm_from_non_payment(o: Obligation) kind empirical {
+    label en official "the non-payment caused the aggrieved party a greater harm";
+}
+
+pub relation non_monetary_non_performance(n: NonPerformance) kind empirical {
+    label en official "the non-performance concerns a non-monetary obligation";
+}
+
+pub relation nature_of_harm_suits_instalments(n: NonPerformance) kind empirical {
+    label en official "the nature of the harm makes payment of damages in instalments appropriate";
+}
+
+pub relation agreed_sum_for_non_performance(c: Contract, t: Term) kind empirical {
+    label en official "the contract provides that a party who does not perform is to pay a specified sum to the aggrieved party for such non-performance";
+}
+
+pub external judgment relation agreed_sum_grossly_excessive(c: Contract, t: Term) {
+    authority Tribunal;
+    label en official "the specified sum is grossly excessive in relation to the harm resulting from the non-performance and to the other circumstances";
+}
+
+pub relation right_to_damages(n: NonPerformance, p: Party) kind institutional {
+    label en official "the non-performance gives the aggrieved party a right to damages (article 7.4.1)";
+}
+
+pub relation full_compensation_due(n: NonPerformance, p: Party) kind institutional {
+    label en official "the aggrieved party is entitled to full compensation for the harm sustained, including non-pecuniary harm (article 7.4.2)";
+}
+
+pub relation compensation_for_loss_of_chance(n: NonPerformance, p: Party) kind institutional {
+    label en official "compensation may be due for the loss of a chance in proportion to the probability of its occurrence (article 7.4.3(2))";
+}
+
+pub relation assessment_at_discretion_of_court(n: NonPerformance) kind institutional {
+    label en official "where the amount of damages cannot be established with sufficient certainty, the assessment is at the discretion of the court (article 7.4.3(3))";
+}
+
+pub relation difference_to_replacement_recoverable(n: NonPerformance, p: Party) kind institutional {
+    label en official "the aggrieved party may recover the difference between the contract price and the price of the replacement transaction as well as damages for any further harm (article 7.4.5)";
+}
+
+pub relation difference_to_current_price_recoverable(n: NonPerformance, p: Party) kind institutional {
+    label en official "the aggrieved party may recover the difference between the contract price and the price current at the time of termination as well as damages for any further harm (article 7.4.6)";
+}
+
+pub relation damages_reduced_for_contribution(n: NonPerformance, p: Party) kind institutional {
+    label en official "the amount of damages is reduced to the extent that the aggrieved party's act, omission or risk contributed to the harm (article 7.4.7)";
+}
+
+pub relation not_liable_for_avoidable_harm(n: NonPerformance, p: Party) kind institutional {
+    label en official "the non-performing party is not liable for harm to the extent that it could have been reduced by reasonable steps of the aggrieved party (article 7.4.8(1))";
+}
+
+pub relation mitigation_expenses_recoverable(n: NonPerformance, p: Party) kind institutional {
+    label en official "the aggrieved party is entitled to recover expenses reasonably incurred in attempting to reduce the harm (article 7.4.8(2))";
+}
+
+pub relation entitled_to_interest(o: Obligation, p: Party) kind institutional {
+    label en official "the aggrieved party is entitled to interest upon the sum from the time when payment is due to the time of payment, whether or not the non-payment is excused (article 7.4.9(1))";
+}
+
+pub relation rate_is_bank_rate_at_place_of_payment(o: Obligation) kind institutional {
+    label en official "the rate of interest is the average bank short-term lending rate to prime borrowers prevailing for the currency of payment at the place for payment (article 7.4.9(2))";
+}
+
+pub relation rate_is_bank_rate_in_state_of_currency(o: Obligation) kind institutional {
+    label en official "where no such rate exists at the place for payment, the rate is the same rate in the State of the currency of payment (article 7.4.9(2))";
+}
+
+pub relation rate_is_fixed_by_law_of_currency_state(o: Obligation) kind institutional {
+    label en official "in the absence of such a rate at either place, the rate is the appropriate rate fixed by the law of the State of the currency of payment (article 7.4.9(2))";
+}
+
+pub relation additional_damages_for_non_payment(o: Obligation, p: Party) kind institutional {
+    label en official "the aggrieved party is entitled to additional damages if the non-payment caused it a greater harm (article 7.4.9(3))";
+}
+
+pub relation interest_accrues_from_non_performance(n: NonPerformance) kind institutional {
+    label en official "interest on damages for non-performance of non-monetary obligations accrues as from the time of non-performance (article 7.4.10)";
+}
+
+pub relation damages_paid_in_lump_sum(n: NonPerformance) kind institutional {
+    label en official "damages are to be paid in a lump sum (article 7.4.11(1))";
+}
+
+pub relation damages_payable_in_instalments(n: NonPerformance) kind institutional {
+    label en official "damages may be payable in instalments where the nature of the harm makes this appropriate, and may be indexed (article 7.4.11)";
+}
+
+pub relation agreed_sum_payable(c: Contract, t: Term) kind institutional {
+    label en official "the aggrieved party is entitled to the specified sum irrespective of its actual harm (article 7.4.13(1))";
+}
+
+pub relation agreed_sum_reduced_to_reasonable_amount(c: Contract, t: Term) kind institutional {
+    label en official "the specified sum may be reduced to a reasonable amount where it is grossly excessive (article 7.4.13(2))";
+}
+
+@source(PICC_ART7_4_1_EN)
+rule RightToDamages(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
+    label en official "Article 7.4.1. Any non-performance gives the aggrieved party a right to damages, except where the non-performance is excused under these Principles";
+    when is_non_performance(n)
+        and non_performance_of(n, o, p)
+        and aggrieved_party(n, other)
+        and not_known(non_performance_excused(n, p));
+    then right_to_damages(n, other);
+}
+
+@source(PICC_ART7_4_2_EN)
+rule FullCompensation(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.2. The aggrieved party is entitled to full compensation for harm sustained, which may be non-pecuniary";
+    when right_to_damages(n, p)
+        and harm_sustained(n, p)
+        and harm_established_with_certainty(n)
+        and harm_was_foreseeable(n);
+    then full_compensation_due(n, p);
+}
+
+@source(PICC_ART7_4_3_EN)
+rule CompensationForLossOfChance(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.3(2). Compensation may be due for the loss of a chance in proportion to the probability of its occurrence";
+    when right_to_damages(n, p)
+        and loss_of_a_chance(n);
+    then compensation_for_loss_of_chance(n, p);
+}
+
+@source(PICC_ART7_4_3_EN)
+rule AssessmentAtCourtDiscretion(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.3(3). Where the amount of damages cannot be established with a sufficient degree of certainty, the assessment is at the discretion of the court";
+    when right_to_damages(n, p)
+        and amount_not_establishable(n);
+    then assessment_at_discretion_of_court(n);
+}
+
+@source(PICC_ART7_4_5_EN)
+rule ReplacementTransactionProof(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.5. Where the aggrieved party has terminated the contract and made a replacement transaction within a reasonable time and in a reasonable manner, it may recover the difference in price as well as damages for any further harm";
+    when right_to_damages(n, p)
+        and replacement_transaction_made(n);
+    then difference_to_replacement_recoverable(n, p);
+}
+
+@source(PICC_ART7_4_6_EN)
+rule CurrentPriceProof(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.6(1). Where the aggrieved party has terminated the contract without a replacement transaction but there is a current price, it may recover the difference between the contract price and the current price";
+    when right_to_damages(n, p)
+        and current_price_exists(n)
+        and not_known(replacement_transaction_made(n));
+    then difference_to_current_price_recoverable(n, p);
+}
+
+@source(PICC_ART7_4_7_EN)
+rule ContributionReducesDamages(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.7. Where the harm is due in part to an act or omission of the aggrieved party or to an event for which it bears the risk, the damages are reduced accordingly";
+    when right_to_damages(n, p)
+        and harm_due_in_part_to_aggrieved_party(n);
+    then damages_reduced_for_contribution(n, p);
+}
+
+@source(PICC_ART7_4_8_EN)
+rule MitigationLimitsLiability(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.8(1). The non-performing party is not liable for harm to the extent that it could have been reduced by the aggrieved party's taking reasonable steps";
+    when right_to_damages(n, p)
+        and harm_could_have_been_reduced(n);
+    then not_liable_for_avoidable_harm(n, p);
+}
+
+@source(PICC_ART7_4_8_EN)
+rule MitigationExpensesRecoverable(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.8(2). The aggrieved party is entitled to recover any expenses reasonably incurred in attempting to reduce the harm";
+    when right_to_damages(n, p)
+        and mitigation_expenses_incurred(n);
+    then mitigation_expenses_recoverable(n, p);
+}
+
+@source(PICC_ART7_4_9_EN)
+rule InterestForFailureToPay(o: Obligation, c: Contract, p: Party, other: Party) strict {
+    label en official "Article 7.4.9(1). If a party does not pay a sum of money when it falls due the aggrieved party is entitled to interest from the time when payment is due to the time of payment, whether or not the non-payment is excused";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and sum_not_paid_when_due(o);
+    then entitled_to_interest(o, other);
+}
+
+@source(PICC_ART7_4_9_EN)
+rule RateAtPlaceOfPayment(o: Obligation) defeasible {
+    label en official "Article 7.4.9(2). The rate of interest shall be the average bank short-term lending rate to prime borrowers prevailing for the currency of payment at the place for payment";
+    when sum_not_paid_when_due(o)
+        and bank_rate_exists_at_place_of_payment(o);
+    then rate_is_bank_rate_at_place_of_payment(o);
+}
+
+@source(PICC_ART7_4_9_EN)
+rule RateInStateOfCurrency(o: Obligation) defeasible {
+    label en official "Article 7.4.9(2). Where no such rate exists at the place for payment, the rate is the same rate in the State of the currency of payment";
+    when sum_not_paid_when_due(o)
+        and bank_rate_exists_in_state_of_currency(o)
+        and not_known(bank_rate_exists_at_place_of_payment(o));
+    then rate_is_bank_rate_in_state_of_currency(o);
+}
+
+@source(PICC_ART7_4_9_EN)
+rule RateFixedByLawOfCurrencyState(o: Obligation) defeasible {
+    label en official "Article 7.4.9(2). In the absence of such a rate at either place the rate of interest shall be the appropriate rate fixed by the law of the State of the currency of payment";
+    when sum_not_paid_when_due(o)
+        and not_known(bank_rate_exists_at_place_of_payment(o))
+        and not_known(bank_rate_exists_in_state_of_currency(o));
+    then rate_is_fixed_by_law_of_currency_state(o);
+}
+
+@source(PICC_ART7_4_9_EN)
+rule AdditionalDamagesForNonPayment(o: Obligation, c: Contract, p: Party, other: Party) strict {
+    label en official "Article 7.4.9(3). The aggrieved party is entitled to additional damages if the non-payment caused it a greater harm";
+    when obligation_of(o, c, p)
+        and obligee_of(o, other)
+        and greater_harm_from_non_payment(o);
+    then additional_damages_for_non_payment(o, other);
+}
+
+@source(PICC_ART7_4_10_EN)
+rule InterestOnDamagesAccrues(n: NonPerformance, o: Obligation, p: Party) defeasible {
+    label en official "Article 7.4.10. Unless otherwise agreed, interest on damages for non-performance of non-monetary obligations accrues as from the time of non-performance";
+    when non_performance_of(n, o, p)
+        and non_monetary_non_performance(n);
+    then interest_accrues_from_non_performance(n);
+}
+
+@source(PICC_ART7_4_11_EN)
+rule DamagesInLumpSum(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.11(1). Damages are to be paid in a lump sum";
+    when full_compensation_due(n, p)
+        and not_known(nature_of_harm_suits_instalments(n));
+    then damages_paid_in_lump_sum(n);
+}
+
+@source(PICC_ART7_4_11_EN)
+rule DamagesInInstalments(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.11. Damages may be payable in instalments where the nature of the harm makes this appropriate, and such damages may be indexed";
+    when full_compensation_due(n, p)
+        and nature_of_harm_suits_instalments(n);
+    then damages_payable_in_instalments(n);
+}
+
+@source(PICC_ART7_4_13_EN)
+rule AgreedSumPayable(c: Contract, t: Term) defeasible {
+    label en official "Article 7.4.13(1). Where the contract provides for a specified sum for non-performance, the aggrieved party is entitled to that sum irrespective of its actual harm";
+    when agreed_sum_for_non_performance(c, t);
+    then agreed_sum_payable(c, t);
+}
+
+@source(PICC_ART7_4_13_EN)
+rule GrosslyExcessiveAgreedSumReduced(c: Contract, t: Term) defeasible {
+    label en official "Article 7.4.13(2). Notwithstanding any agreement to the contrary the specified sum may be reduced to a reasonable amount where it is grossly excessive";
+    when agreed_sum_for_non_performance(c, t)
+        and agreed_sum_grossly_excessive(c, t);
+    then agreed_sum_reduced_to_reasonable_amount(c, t);
+}
+
+// --- Articles 7.4.4, 7.4.6(2) and 7.4.12: foreseeability, current price, currency
+
+pub relation harm_within_foreseeable_scope(n: NonPerformance, p: Party) kind institutional {
+    label en official "the non-performing party is liable only for harm which it foresaw or could reasonably have foreseen at the time of the conclusion of the contract (article 7.4.4)";
+}
+
+@source(PICC_ART7_4_4_EN)
+rule LiabilityLimitedToForeseeableHarm(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
+    label en official "Article 7.4.4. The non-performing party is liable only for harm which it foresaw or could reasonably have foreseen at the time of the conclusion of the contract as being likely to result from its non-performance";
+    when non_performance_of(n, o, p)
+        and aggrieved_party(n, other)
+        and harm_sustained(n, other)
+        and harm_was_foreseeable(n);
+    then harm_within_foreseeable_scope(n, p);
+}
+
+pub relation price_at_place_of_performance(n: NonPerformance) kind empirical {
+    label en official "a price is generally charged for goods delivered or services rendered in comparable circumstances at the place where the contract should have been performed";
+}
+
+pub external judgment relation reference_place_reasonable(n: NonPerformance) {
+    authority Tribunal;
+    label en official "the other place taken as a reference for the current price appears reasonable";
+}
+
+pub relation current_price_is(n: NonPerformance) kind institutional {
+    label en official "the current price is the price generally charged at the place of performance or, failing that, at another place reasonable to take as a reference (article 7.4.6(2))";
+}
+
+@source(PICC_ART7_4_6_EN)
+rule CurrentPriceAtPlaceOfPerformance(n: NonPerformance) defeasible {
+    label en official "Article 7.4.6(2). Current price is the price generally charged for goods delivered or services rendered in comparable circumstances at the place where the contract should have been performed";
+    when current_price_exists(n)
+        and price_at_place_of_performance(n);
+    then current_price_is(n);
+}
+
+@source(PICC_ART7_4_6_EN)
+rule CurrentPriceAtReferencePlace(n: NonPerformance) defeasible {
+    label en official "Article 7.4.6(2). If there is no current price at the place of performance, the current price at such other place as appears reasonable to take as a reference applies";
+    when current_price_exists(n)
+        and reference_place_reasonable(n)
+        and not_known(price_at_place_of_performance(n));
+    then current_price_is(n);
+}
+
+pub relation harm_suffered_in_other_currency(n: NonPerformance) kind empirical {
+    label en official "the harm was suffered in a currency other than that in which the monetary obligation was expressed";
+}
+
+pub external judgment relation currency_of_harm_more_appropriate(n: NonPerformance) {
+    authority Tribunal;
+    label en official "the currency in which the harm was suffered is the more appropriate one for assessing damages";
+}
+
+pub relation damages_assessed_in_currency_of_obligation(n: NonPerformance) kind institutional {
+    label en official "damages are to be assessed in the currency in which the monetary obligation was expressed (article 7.4.12)";
+}
+
+pub relation damages_assessed_in_currency_of_harm(n: NonPerformance) kind institutional {
+    label en official "damages are to be assessed in the currency in which the harm was suffered (article 7.4.12)";
+}
+
+@source(PICC_ART7_4_12_EN)
+rule DamagesInCurrencyOfObligation(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.12. Damages are to be assessed in the currency in which the monetary obligation was expressed, whichever is more appropriate";
+    when full_compensation_due(n, p)
+        and not_known(currency_of_harm_more_appropriate(n));
+    then damages_assessed_in_currency_of_obligation(n);
+}
+
+@source(PICC_ART7_4_12_EN)
+rule DamagesInCurrencyOfHarm(n: NonPerformance, p: Party) defeasible {
+    label en official "Article 7.4.12. Damages are to be assessed in the currency in which the harm was suffered where that is more appropriate";
+    when full_compensation_due(n, p)
+        and harm_suffered_in_other_currency(n)
+        and currency_of_harm_more_appropriate(n);
+    then damages_assessed_in_currency_of_harm(n);
+}

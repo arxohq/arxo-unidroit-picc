@@ -1,0 +1,162 @@
+// Articles 10.1-10.4. Scope of the chapter, the two periods and their modification.
+
+language "law.core" version "0.2";
+package unidroit.picc_limitation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-limitation";
+
+// --- Article 10.1: scope of the chapter ---------------------------------------
+
+pub relation right_governed_by_principles(r: Right) kind empirical {
+    label en official "the exercise of the right is governed by the Principles";
+}
+
+pub relation act_other_than_proceedings(r: Right) kind empirical {
+    label en official "the time in question is one for giving notice or performing an act other than the institution of legal proceedings";
+}
+
+pub relation limitation_governed(r: Right) kind institutional {
+    label en official "the exercise of the right is barred by the expiration of a limitation period under this Chapter (article 10.1(1))";
+}
+
+pub relation chapter_does_not_govern_notice_time(r: Right) kind institutional {
+    label en official "this Chapter does not govern the time for giving notice or performing an act other than the institution of legal proceedings (article 10.1(2))";
+}
+
+@source(PICC_ART10_1_EN)
+rule LimitationGovernsExerciseOfRights(r: Right) defeasible {
+    label en official "Article 10.1(1). The exercise of rights governed by the Principles is barred by the expiration of a limitation period according to the rules of this Chapter";
+    when right_governed_by_principles(r);
+    then limitation_governed(r);
+}
+
+@source(PICC_ART10_1_EN)
+rule ChapterDoesNotGovernNoticeTime(r: Right) strict {
+    label en official "Article 10.1(2). This Chapter does not govern the time within which a party must give notice or perform any act other than the institution of legal proceedings";
+    when act_other_than_proceedings(r);
+    then chapter_does_not_govern_notice_time(r);
+}
+
+// --- Article 10.2: the general and the maximum limitation periods -------------
+
+pub relation obligee_knew_facts_on(r: Right, day: Date) kind empirical {
+    label en official "the day on which the obligee knows or ought to know the facts as a result of which its right can be exercised";
+}
+
+pub relation right_exercisable_from(r: Right, day: Date) kind empirical {
+    label en official "the day on which the right can be exercised";
+}
+
+pub relation general_period(r: Right, span: Quantity) kind empirical {
+    label en official "the general limitation period applicable to the right";
+}
+
+pub relation maximum_period(r: Right, span: Quantity) kind empirical {
+    label en official "the maximum limitation period applicable to the right";
+}
+
+pub relation general_period_expires_on(r: Right, day: Date) kind derived {
+    label en official "the last day of the general limitation period (article 10.2(1))";
+}
+
+pub relation maximum_period_expires_on(r: Right, day: Date) kind derived {
+    label en official "the last day of the maximum limitation period (article 10.2(2))";
+}
+
+@source(PICC_ART10_2_EN)
+rule GeneralPeriodOfThreeYears(r: Right, start: Date, span: Quantity) defeasible {
+    label en official "Article 10.2(1). The general limitation period is three years beginning on the day after the day the obligee knows or ought to know the facts as a result of which the right can be exercised";
+    when obligee_knew_facts_on(r, start)
+        and general_period(r, span);
+    then general_period_expires_on(r, add_calendar_period(start, span));
+}
+
+@source(PICC_ART10_2_EN)
+rule MaximumPeriodOfTenYears(r: Right, start: Date, span: Quantity) defeasible {
+    label en official "Article 10.2(2). In any event, the maximum limitation period is ten years beginning on the day after the day the right can be exercised";
+    when right_exercisable_from(r, start)
+        and maximum_period(r, span);
+    then maximum_period_expires_on(r, add_calendar_period(start, span));
+}
+
+// --- Article 10.3: modification of the periods by the parties -----------------
+//
+// THREE BOUNDARIES IN THE SOURCE ARE THREE SEPARATE HEADS: the general period
+// may not be shortened to less than one year, the maximum period to less than
+// four years, nor extended to more than fifteen years.
+
+pub relation modification_agreed(r: Right) kind empirical {
+    label en official "the parties have agreed to modify the limitation periods";
+}
+
+pub relation general_period_shortened_below_one_year(r: Right) kind empirical {
+    label en official "the agreed general limitation period is shorter than one year";
+}
+
+pub relation maximum_period_shortened_below_four_years(r: Right) kind empirical {
+    label en official "the agreed maximum limitation period is shorter than four years";
+}
+
+pub relation maximum_period_extended_beyond_fifteen_years(r: Right) kind empirical {
+    label en official "the agreed maximum limitation period is longer than fifteen years";
+}
+
+pub relation modification_effective(r: Right) kind institutional {
+    label en official "the modification of the limitation periods by the parties is effective (article 10.3)";
+}
+
+@source(PICC_ART10_3_EN)
+rule PartiesMayModifyPeriods(r: Right) defeasible {
+    label en official "Article 10.3. The parties may modify the limitation periods";
+    when modification_agreed(r);
+    then modification_effective(r);
+}
+
+@source(PICC_ART10_3_EN)
+rule GeneralPeriodFloorOfOneYear(r: Right) defeater {
+    label en official "Article 10.3(a). The parties may not shorten the general limitation period to less than one year";
+    when general_period_shortened_below_one_year(r);
+    defeat modification_effective(r);
+}
+
+@source(PICC_ART10_3_EN)
+rule MaximumPeriodFloorOfFourYears(r: Right) defeater {
+    label en official "Article 10.3(b). The parties may not shorten the maximum limitation period to less than four years";
+    when maximum_period_shortened_below_four_years(r);
+    defeat modification_effective(r);
+}
+
+@source(PICC_ART10_3_EN)
+rule MaximumPeriodCeilingOfFifteenYears(r: Right) defeater {
+    label en official "Article 10.3(c). The parties may not extend the maximum limitation period to more than fifteen years";
+    when maximum_period_extended_beyond_fifteen_years(r);
+    defeat modification_effective(r);
+}
+
+// --- Article 10.4: a new period from acknowledgement of the debt --------------
+
+pub relation acknowledged_on(r: Right, day: Date) kind empirical {
+    label en official "the day on which the obligor acknowledges the right of the obligee before the expiration of the general limitation period";
+}
+
+pub relation new_general_period_expires_on(r: Right, day: Date) kind derived {
+    label en official "the last day of the new general limitation period beginning after the acknowledgement (article 10.4(1))";
+}
+
+pub relation maximum_period_does_not_restart(r: Right) kind institutional {
+    label en official "the maximum limitation period does not begin to run again, but may be exceeded by a new general limitation period (article 10.4(2))";
+}
+
+@source(PICC_ART10_4_EN)
+rule AcknowledgementStartsNewGeneralPeriod(r: Right, day: Date, span: Quantity) defeasible {
+    label en official "Article 10.4(1). Where the obligor acknowledges the right before the expiration of the general limitation period, a new general limitation period begins on the day after the acknowledgement";
+    when acknowledged_on(r, day)
+        and general_period(r, span);
+    then new_general_period_expires_on(r, add_calendar_period(day, span));
+}
+
+@source(PICC_ART10_4_EN)
+rule MaximumPeriodDoesNotRestart(r: Right, day: Date) strict {
+    label en official "Article 10.4(2). The maximum limitation period does not begin to run again, but may be exceeded by the beginning of a new general limitation period";
+    when acknowledged_on(r, day);
+    then maximum_period_does_not_restart(r);
+}

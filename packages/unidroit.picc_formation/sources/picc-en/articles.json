@@ -1,5 +1,5 @@
 {
-  "$comment": "Учёт полноты §33.1 по единице деления инструмента — СТАТЬЕ («ARTICLE 2.1.11» прописными отдельной строкой, название следующей строкой в скобках). Единица объявлена явно: unit=en_article_upper_dotted. Номер учёта — с подчёркиванием («2.1.11» → «2_1_11»), приём en_article_dotted. Номера охвата записаны С ПОДЧЁРКИВАНИЕМ («2_1_11»): так их приводит конвенция, и так их читают обе меры §33.1.",
+  "$comment": "§33.1 completeness accounting by the dividing unit of the instrument — the ARTICLE (\"ARTICLE 2.1.11\" in capitals on a line of its own, the title in brackets on the next line). The unit is declared explicitly: unit=en_article_upper_dotted. The accounting number uses underscores (\"2.1.11\" → \"2_1_11\"), the en_article_dotted convention. The scope numbers are written WITH UNDERSCORES (\"2_1_11\"): that is the form the convention produces and the form both §33.1 measures read.",
   "document": "en.txt",
   "unit": "en_article_upper_dotted",
   "scope": [
@@ -37,5 +37,5 @@
     "2_2_10"
   ],
   "declared": {},
-  "note": "Охват ЭТОГО пакета — глава 2 Принципов: заключение договора (раздел 1) и полномочия представителей (раздел 2). Байты те же, что у хаба org/unidroit/picc, и сверяются с ним побайтно генератором corpus/tools/sources/sync/sync_unidroit_picc_fragments.py."
+  "note": "The scope of THIS package is chapter 2 of the Principles: formation of the contract (section 1) and authority of agents (section 2). The bytes are the same as the hub's and are verified against it byte for byte by the generator."
 }

@@ -1,0 +1,89 @@
+language "law.core" version "0.2";
+package unidroit.picc_limitation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-limitation";
+
+// Case 2. Suspension of the running of the period (10.5-10.8) and a new period
+// from an acknowledgement of the debt (10.4).
+
+test "PICCL-02-SUSPENSION-AND-ACKNOWLEDGEMENT" {
+    given {
+        context {
+            deadline_policy PICC_LIMITATION;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": right_of(entity_ref("urn:case:piccl:right-j"), entity_ref("urn:case:piccl:contract-j"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a1": judicial_act_asserting_right(entity_ref("urn:case:piccl:right-j")) { origin case_input; }
+        assert "a2": right_of(entity_ref("urn:case:piccl:right-i"), entity_ref("urn:case:piccl:contract-i"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a3": right_asserted_in_insolvency(entity_ref("urn:case:piccl:right-i")) { origin case_input; }
+        assert "a4": right_of(entity_ref("urn:case:piccl:right-d"), entity_ref("urn:case:piccl:contract-d"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a5": right_asserted_in_dissolution(entity_ref("urn:case:piccl:right-d")) { origin case_input; }
+        assert "a6": right_of(entity_ref("urn:case:piccl:right-a"), entity_ref("urn:case:piccl:contract-a"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a7": arbitral_act_asserting_right(entity_ref("urn:case:piccl:right-a")) { origin case_input; }
+        assert "a8": request_for_adjudication_reached_obligor(entity_ref("urn:case:piccl:right-a")) { origin case_input; }
+        assert "a9": right_of(entity_ref("urn:case:piccl:right-m"), entity_ref("urn:case:piccl:contract-m"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a10": amicable_settlement_proceedings(entity_ref("urn:case:piccl:right-m")) { origin case_input; }
+        assert "a11": right_of(entity_ref("urn:case:piccl:right-done"), entity_ref("urn:case:piccl:contract-done"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a12": judicial_act_asserting_right(entity_ref("urn:case:piccl:right-done")) { origin case_input; }
+        assert "a13": proceedings_terminated(entity_ref("urn:case:piccl:right-done")) { origin case_input; }
+        assert "a14": right_of(entity_ref("urn:case:piccl:right-f"), entity_ref("urn:case:piccl:contract-f"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a15": impediment_beyond_control(entity_ref("urn:case:piccl:right-f")) { origin case_input; }
+        assert "a16": impediment_ceased_on(entity_ref("urn:case:piccl:right-f"), @2025-06-01) { origin case_input; }
+        assert "a17": additional_year(entity_ref("urn:case:piccl:right-f"), 1 calendar_year) { origin case_input; }
+        assert "a18": right_of(entity_ref("urn:case:piccl:right-ack"), entity_ref("urn:case:piccl:contract-ack"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a19": acknowledged_on(entity_ref("urn:case:piccl:right-ack"), @2024-02-29) { origin case_input; }
+        assert "a20": general_period(entity_ref("urn:case:piccl:right-ack"), 3 calendar_year) { origin case_input; }
+    }
+
+    evaluate truth(limitation_suspended(entity_ref("urn:case:piccl:right-j")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensionByJudicialAct);
+
+    evaluate truth(limitation_suspended(entity_ref("urn:case:piccl:right-i")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensionByInsolvencyClaim);
+
+    evaluate truth(limitation_suspended(entity_ref("urn:case:piccl:right-d")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensionByDissolutionClaim);
+
+    evaluate truth(limitation_suspended(entity_ref("urn:case:piccl:right-a")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensionByArbitralAct);
+
+    evaluate truth(arbitral_proceedings_deemed_commenced(entity_ref("urn:case:piccl:right-a")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ArbitrationCommencesOnRequest);
+
+    // Alternative dispute resolution suspends the period as proceedings do.
+    evaluate truth(limitation_suspended(entity_ref("urn:case:piccl:right-m")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensionByAmicableSettlementProceedings);
+
+    // The end of the proceedings removes the suspension.
+    evaluate truth(limitation_suspended(entity_ref("urn:case:piccl:right-done")));
+    expect truth_status == NEITHER;
+
+    // An impediment beyond control: the period does not expire before one year after its end.
+    evaluate truth(general_period_not_expiring_before(entity_ref("urn:case:piccl:right-f"), @2026-06-02));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensionByImpediment);
+
+    evaluate truth(limitation_suspended(entity_ref("urn:case:piccl:right-f")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SuspensionByIncapacityEndsOnAppointment);
+
+    // Acknowledgement of the debt on 29 February of a leap year: the count runs
+    // from 1 March 2024, and the new three-year period expires on 1 March 2027.
+    evaluate truth(new_general_period_expires_on(entity_ref("urn:case:piccl:right-ack"), @2027-03-01));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AcknowledgementStartsNewGeneralPeriod);
+
+    evaluate truth(maximum_period_does_not_restart(entity_ref("urn:case:piccl:right-ack")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MaximumPeriodDoesNotRestart);
+}

@@ -1,4 +1,4 @@
-# Манифест §10 — маркер корня пакета (DECISION-0033).
+# §10 manifest — the marker of the package root (DECISION-0033).
 [package]
 name = "unidroit.picc"
 version = "0.1.0"
@@ -7,23 +7,23 @@ namespace = "urn:org:unidroit:clir:picc"
 
 [metadata]
 act = "unidroit-picc-2016"
-title = "Принципы международных коммерческих договоров УНИДРУА (редакция 2016 года), хаб группы: общие положения (гл. 1), толкование договора (гл. 4), содержание, права третьих лиц и условия (гл. 5)"
+title = "UNIDROIT Principles of International Commercial Contracts (2016 edition), hub of the group: general provisions (ch. 1), interpretation (ch. 4), content, third party rights and conditions (ch. 5)"
 primarySource = "PICC_2016"
 jurisdiction = "International"
 instrument = "doctrine"
 sourceFidelity = "pinned_unofficial_copy"
-issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+issuer = "International Institute for the Unification of Private Law (UNIDROIT), Rome"
 legalStatus = "doctrine"
-# verifiedAgainstSource: закреплены black-letter rules с портала издателя;
-# печатного издания в руках не держали.
+# verifiedAgainstSource: the black-letter rules are pinned from the
+# publisher's portal; no printed edition was consulted.
 verifiedAgainstSource = false
 
 [[tests]]
 family = "unidroit.picc#general"
 suites = [
-  "tests/01-svoboda-i-obyazatelnost.lawtest",
-  "tests/02-tolkovanie-dogovora.lawtest",
-  "tests/03-soderzhanie-i-cena.lawtest",
-  "tests/04-izveschenie-i-obychai.lawtest",
+  "tests/01-freedom-and-binding-force.lawtest",
+  "tests/02-interpretation-of-the-contract.lawtest",
+  "tests/03-content-and-price.lawtest",
+  "tests/04-notice-and-usages.lawtest",
 ]
 world = ["unidroit.picc"]

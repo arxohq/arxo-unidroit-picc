@@ -1,26 +1,24 @@
-// Source-модель Принципов международных коммерческих договоров УНИДРУА
-// (редакция 2016 года): закреплённые байты black-letter rules и постатейные
-// фрагменты §194 охвата ЭТОГО пакета.
+// Source model of the UNIDROIT Principles of International Commercial Contracts
+// (2016 edition): the pinned bytes of the black-letter rules and the §194
+// article fragments within the scope of THIS package.
 //
-// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
-// `corpus/tools/sources/sync/sync_unidroit_picc_fragments.py`; сверка без
-// записи — его же ключом `--check`.
+// GENERATED FILE. It is written by its generator only; the generator verifies
+// it without writing under its own `--check` key.
 //
-// ПРАВО НА ВОСПРОИЗВЕДЕНИЕ ПОЛУЧЕНО У ИЗДАТЕЛЯ. Раздел «Copyright notice»
-// правовой страницы УНИДРУА (`unidroit.org/disclaimer/`, проверено
-// 17.09.2026): «Reproduction of the information is authorised, except for
-// commercial purposes, provided the source is duly acknowledged».
+// PERMISSION TO REPRODUCE COMES FROM THE PUBLISHER. The "Copyright notice"
+// section of the UNIDROIT legal page (`unidroit.org/disclaimer/`, checked
+// 17.09.2026): "Reproduction of the information is authorised, except for
+// commercial purposes, provided the source is duly acknowledged".
 //
-// ПОЧЕМУ ТЕКСТ ОФИЦИАЛЬНЫЙ, А КОПИЯ — НЕТ. `officiality official` говорит о
-// ТЕКСТЕ: английский — один из двух официальных языков инструмента.
-// `materialization_status PINNED_UNOFFICIAL_COPY` говорит о БАЙТАХ:
-// закреплено извлечение из PDF портала издателя. Русский текст — парный
-// `unofficial` якорь: официальным языком инструмента он не является.
+// WHY THE TEXT IS OFFICIAL AND THE COPY IS NOT. `officiality official` speaks
+// of the TEXT: English is one of the two official languages of the instrument.
+// `materialization_status PINNED_UNOFFICIAL_COPY` speaks of the BYTES: what is
+// pinned is an extraction from the PDF on the publisher's portal.
 //
-// КОММЕНТАРИИ И ИЛЛЮСТРАЦИИ ИЗДАТЕЛЯ В ЗАКРЕПЛЕНИЕ НЕ ВХОДЯТ: закреплены
-// black-letter rules — сам текст статей.
+// THE PUBLISHER'S COMMENTS AND ILLUSTRATIONS ARE NOT PINNED: what is pinned is
+// the black-letter rules — the text of the articles themselves.
 //
-// `retrieved_at` — константа, а не момент сборки (DECISION-0005 п. 6).
+// `retrieved_at` is a constant, not the moment of the build (DECISION-0005 §6).
 
 language "law.core" version "0.2";
 package unidroit.picc version "0.1.0";
@@ -31,7 +29,6 @@ source PICC_2016 {
     jurisdiction International;
     number "UNIDROIT Principles of International Commercial Contracts 2016";
     label en official "UNIDROIT Principles of International Commercial Contracts";
-    label ru unofficial "Принципы международных коммерческих договоров УНИДРУА";
 }
 
 edition PICC_2016_EN of PICC_2016 {
@@ -50,24 +47,6 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
     local_path "sources/picc-en/en.txt";
 }
-
-edition PICC_2016_RU of PICC_2016 {
-    label ru unofficial "Русский текст black-letter rules, редакция 2016 года";
-    language ru;
-    officiality unofficial;
-    adopted @2016-05-10;
-    in_force @2016-05-10;
-    materialization_status PINNED_UNOFFICIAL_COPY;
-}
-
-publication PICC_2016_RU_TEXT of PICC_2016_RU {
-    media_type "text/plain; charset=utf-8";
-    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf";
-    retrieved_at @2026-09-17T12:30:00Z;
-    content_hash "sha256:89f86961c82987fe324c43d46146cc31aa20e8965511158dcf7fe5b43012066a";
-    local_path "sources/picc-ru/ru.txt";
-}
-
 // Article 1.1 (English black-letter rules)
 fragment PICC_ART1_1_EN in PICC_2016_EN {
     kind article;
@@ -76,16 +55,6 @@ fragment PICC_ART1_1_EN in PICC_2016_EN {
 (Freedom of contract)
 The parties are free to enter into a contract and to determine its content.""";
     content_hash "sha256:ccfb452be654cb7859eb3cff10a279d03c64407b2f31c6e2f4a583ae929a7ccf";
-}
-
-// Статья 1.1 (русский парный якорь, unofficial)
-fragment PICC_ART1_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_1";
-    text ru unofficial """Статья 1.1
-(Свобода договора)
-Стороны свободны вступать в договор и определять его содержание.""";
-    content_hash "sha256:ffa1d514d376e28fc8973aaec96b947d5e5cb26bb9fc2ca8bb84dca88286acb5";
 }
 
 // Article 1.2 (English black-letter rules)
@@ -100,19 +69,6 @@ witnesses.""";
     content_hash "sha256:25c081f39d2ee05202b3f19401aff1b9f39b6c9295915ba8df40631118216df0";
 }
 
-// Статья 1.2 (русский парный якорь, unofficial)
-fragment PICC_ART1_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_2";
-    text ru unofficial """Статья 1.2
-(Свобода формы)
-Настоящие Принципы не устанавливают никаких требований о том,
-что договор, заявление или любое другое действие должны быть совершены
-или подтверждены в какой-либо особой форме. Их существование может
-быть доказано любым способом, включая свидетельские показания.""";
-    content_hash "sha256:937a28f4e13be10cf3cfcae7efe7345393a008c9da7efaf47571345445206e5a";
-}
-
 // Article 1.3 (English black-letter rules)
 fragment PICC_ART1_3_EN in PICC_2016_EN {
     kind article;
@@ -125,22 +81,6 @@ these Principles.""";
     content_hash "sha256:60371b0c3c97bcafd04abaef63213228dc4139218943d8468617bdb171c77ce2";
 }
 
-// Статья 1.3 (русский парный якорь, unofficial)
-fragment PICC_ART1_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_3";
-    text ru unofficial """Статья 1.3
-(Обязательность договора)
-Договор, заключенный надлежащим образом, является обязательным
-для сторон. Он может быть изменен или прекращен только в соответствии с
-(*) Стороны, желающие предусмотреть, что их соглашение будет регулироваться Принципами, могут
-использовать одну из типовых оговорок, содержащихся в издании Model Clauses for the Use of the Unidroit
-Principles of International Commercial Contracts (см. unidroit.org/instruments/commercial-contracts/upicc-modelclauses)
-его условиями или по соглашению сторон или иным образом в соответствии
-с настоящими Принципами.""";
-    content_hash "sha256:15ed109cce50751ff104762b4395ab92546f78dbe5df3677365e17491a8a190f";
-}
-
 // Article 1.4 (English black-letter rules)
 fragment PICC_ART1_4_EN in PICC_2016_EN {
     kind article;
@@ -151,19 +91,6 @@ Nothing in these Principles shall restrict the application of mandatory rules, w
 of national, international or supranational origin, which are applicable in accordance
 with the relevant rules of private international law.""";
     content_hash "sha256:e815a446c6e48c433f36f1d2d1c6d28cb5a0d00f6049a63011013fe7f5bd39ed";
-}
-
-// Статья 1.4 (русский парный якорь, unofficial)
-fragment PICC_ART1_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_4";
-    text ru unofficial """Статья 1.4
-(Обязательные (императивные) положения)
-Никакие нормы настоящих Принципов не ограничивают применение
-обязательных (императивных) положений национального, международного
-или наднационального происхождения, которые подлежат применению в
-силу соответствующих норм международного частного права.""";
-    content_hash "sha256:6e4629d2b83d84285feec73abc44e6a1097e3e0699be9ce4e9272265831c81c5";
 }
 
 // Article 1.5 (English black-letter rules)
@@ -180,18 +107,6 @@ the Model Clauses for the use of the UNIDROIT Principles of International Commer
     content_hash "sha256:2e6f1a50701e5080862acaacb6b4fc7e8e11110d5f9a8719986514df7d3cfb68";
 }
 
-// Статья 1.5 (русский парный якорь, unofficial)
-fragment PICC_ART1_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_5";
-    text ru unofficial """Статья 1.5
-(Исключение или изменение сторонами)
-Стороны могут исключить применение настоящих Принципов,
-отступать от них или изменять содержание любого из их положений, если
-иное не предусмотрено в Принципах.""";
-    content_hash "sha256:8bdf0c396a509ed54ff074bef2694b0abda0698f3a3dd43fa709cd100e2e0662";
-}
-
 // Article 1.6 (English black-letter rules)
 fragment PICC_ART1_6_EN in PICC_2016_EN {
     kind article;
@@ -206,21 +121,6 @@ are as far as possible to be settled in accordance with their underlying general
     content_hash "sha256:d3fc2cb2f29764ce5fd5f5aca515dd473f4d4566e2f3438547a0747719a1b9f0";
 }
 
-// Статья 1.6 (русский парный якорь, unofficial)
-fragment PICC_ART1_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_6";
-    text ru unofficial """Статья 1.6
-(Толкование и дополнение Принципов)
-(1) При толковании настоящих Принципов надлежит учитывать их
-международный характер и цели, включая необходимость содействовать
-достижению единообразия в их применении.
-(2) Вопросы, охватываемые сферой настоящих Принципов, но
-которые прямо в них не разрешены, подлежат разрешению в соответствии с
-их основополагающими общими принципами.""";
-    content_hash "sha256:3d6087d5309010f89a5a787f9db29f95d6a05f36c70f4b95f8dc1e1996ccc1f6";
-}
-
 // Article 1.7 (English black-letter rules)
 fragment PICC_ART1_7_EN in PICC_2016_EN {
     kind article;
@@ -233,18 +133,6 @@ international trade.
     content_hash "sha256:03517edcfe3b83b31293674f2d66d9994ccf9b488bb268e08419aff43a8d8cd3";
 }
 
-// Статья 1.7 (русский парный якорь, unofficial)
-fragment PICC_ART1_7_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_7";
-    text ru unofficial """Статья 1.7
-(Добросовестность и честная деловая практика)
-(1) Каждая сторона обязана действовать в соответствии с
-добросовестностью и честной деловой практикой в международной торговле.
-(2) Стороны не вправе исключить или ограничить эту обязанность.""";
-    content_hash "sha256:f3d323a9903aab4ff9b137c53efbc5bf7d490c6c2df20ec6d0ef633f453bd19b";
-}
-
 // Article 1.8 (English black-letter rules)
 fragment PICC_ART1_8_EN in PICC_2016_EN {
     kind article;
@@ -254,19 +142,6 @@ fragment PICC_ART1_8_EN in PICC_2016_EN {
 A party cannot act inconsistently with an understanding it has caused the other party
 to have and upon which that other party reasonably has acted in reliance to its detriment.""";
     content_hash "sha256:25b250f491d21560ed8a8e6d3078090cc419d96660bb3fd874c491b93f12b1c8";
-}
-
-// Статья 1.8 (русский парный якорь, unofficial)
-fragment PICC_ART1_8_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_8";
-    text ru unofficial """Статья 1.8
-(Несовместимое поведение)
-Сторона не может поступать несовместимо с пониманием, которое она
-вызвала у другой стороны и на основе которого эта другая сторона,
-полагаясь на это понимание, совершила разумные действия, что привело к
-неблагоприятному для нее положению.""";
-    content_hash "sha256:20de05f471b8faac34d17679dec49f7ed9942d57409a5e83b7c59b8a53abf2c4";
 }
 
 // Article 1.9 (English black-letter rules)
@@ -283,22 +158,6 @@ the application of such a usage would be unreasonable.""";
     content_hash "sha256:6eaa1ca642b646a04e303f769b9ee2d0215e16e478ff9b9d73392598a4976cf9";
 }
 
-// Статья 1.9 (русский парный якорь, unofficial)
-fragment PICC_ART1_9_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_9";
-    text ru unofficial """Статья 1.9
-(Обычаи и практика)
-(1) Стороны связаны любым обычаем, относительно которого они
-договорились, и практикой, которую они установили в своих
-взаимоотношениях.
-(2) Стороны связаны обычаем, который широко известен и постоянно
-соблюдается в международной торговле сторонами в соответствующей
-области торговли, кроме случаев, когда применение такого обычая было бы
-неразумным.""";
-    content_hash "sha256:2c3be85961a19a7f74aa11956eb49e60aa8c4d589fdbf24810602bdc6228ce69";
-}
-
 // Article 1.10 (English black-letter rules)
 fragment PICC_ART1_10_EN in PICC_2016_EN {
     kind article;
@@ -313,24 +172,6 @@ that person orally or delivered at that person’s place of business or mailing 
 (4) For the purpose of this Article “notice” includes a declaration, demand,
 request or any other communication of intention.""";
     content_hash "sha256:f1b9cbacb9c75a46c21b6742fdc448c08384bb93152d0d8fb204142c12e94b87";
-}
-
-// Статья 1.10 (русский парный якорь, unofficial)
-fragment PICC_ART1_10_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_10";
-    text ru unofficial """Статья 1.10
-(Уведомление)
-(1) Когда требуется уведомление, оно может быть направлено любым
-способом, соответствующим обстоятельствам.
-(2) Уведомление считается действительным, когда оно достигает лицо,
-которому оно направлено.
-(3) Для целей пункта 2 уведомление "достигает" лицо, когда оно дано
-этому лицу устно или доставлено этому лицу в месте нахождения его
-предприятия или по его почтовому адресу.
-(4) Для целей настоящей статьи "уведомление" включает заявление,
-требование, запрос или любое другое сообщение намерения.""";
-    content_hash "sha256:41517df0b2b792a879f2d766d0128d78b8813b792842c797590be0c02fb280ac";
 }
 
 // Article 1.11 (English black-letter rules)
@@ -360,32 +201,6 @@ information contained therein and is capable of being reproduced in tangible for
     content_hash "sha256:32fe9bfd9c087bd82be091182f046e70c75f00c990ff89a41d5b53e38f39a672";
 }
 
-// Статья 1.11 (русский парный якорь, unofficial)
-fragment PICC_ART1_11_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_11";
-    text ru unofficial """Статья 1.11
-(Определения)
-В настоящих Принципах:
-- "суд" включает арбитражный суд (трибунал);
-- если сторона имеет более одного места, где она ведет свою
-деятельность, ее надлежащим «местом деятельности» считается то, которое,
-с учетом обстоятельств, известных сторонам или предполагавшихся ими в
-любое время до или в момент заключения договора, имеет наиболее тесную
-связь с договором и его исполнением;
-- «долгосрочный договор» относится к договору, который должен
-быть исполнен в течение периода времени и который обычно включает в
-себя, в различной степени, сложный характер сделки и длящиеся отношения
-между сторонами;
-- "должник" относится к стороне, которая должна исполнить
-обязательство, а - "кредитор" относится к стороне, которая имеет право
-получить исполнение этого обязательства;
-- "письменная форма" означает любой вид сообщения, который
-сохраняет запись информации, содержащейся в нем, и способный быть
-воспроизведенным в осязаемом виде.""";
-    content_hash "sha256:4460bfb566c25e72982dbaa0967a902434ed00eb74e6f7886ac8958c75af3c41";
-}
-
 // Article 1.12 (English black-letter rules)
 fragment PICC_ART1_12_EN in PICC_2016_EN {
     kind article;
@@ -400,25 +215,6 @@ the first business day which follows, unless the circumstances indicate otherwis
 (3) The relevant time zone is that of the place of business of the party setting the
 time, unless the circumstances indicate otherwise.""";
     content_hash "sha256:1e1ef7047821d8e9fc18f761c4bddb0737fdff028383a9b4ada59264ef3cd227";
-}
-
-// Статья 1.12 (русский парный якорь, unofficial)
-fragment PICC_ART1_12_RU in PICC_2016_RU {
-    kind article;
-    locator "article/1_12";
-    text ru unofficial """Статья 1.12
-(Исчисление сроков, устанавливаемых сторонами)
-(1) Официальные праздники или нерабочие дни, приходящиеся на
-срок, установленный сторонами для совершения какого-либо действия,
-включаются в этот срок.
-(2) Однако, если последним днем срока в месте деятельности стороны,
-которая должна совершить действие, является официальный праздник или
-нерабочий день, то срок продлевается до первого следующего рабочего дня,
-если иное не следует из обстоятельств.
-(3) Если иное не следует из обстоятельств, во внимание принимается
-тот часовой пояс, где находится место деятельности стороны,
-устанавливающей срок.""";
-    content_hash "sha256:94947bb19e606ecd94939581edcabf335cdbb446de5590224505a6ab5696be04";
 }
 
 // Article 4.1 (English black-letter rules)
@@ -436,21 +232,6 @@ give to it in the same circumstances.""";
     content_hash "sha256:745496f6633e99926c50f3bfbd388d95fa3274108f55825ce2d820150ca80c34";
 }
 
-// Статья 4.1 (русский парный якорь, unofficial)
-fragment PICC_ART4_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_1";
-    text ru unofficial """Статья 4.1
-(Намерение сторон)
-(1)
-Договор должен толковаться в соответствии с общими
-намерениями сторон.
-(2) Если такое намерение не может быть выявлено, договор должен
-толковаться в соответствии со значением, которое аналогичные сторонам
-разумные лица придавали бы договору в таких же обстоятельствах.""";
-    content_hash "sha256:7843aac7da703ca32d49975d1739a6e45f6a29bb6d287b84635600272e427892";
-}
-
 // Article 4.2 (English black-letter rules)
 fragment PICC_ART4_2_EN in PICC_2016_EN {
     kind article;
@@ -464,22 +245,6 @@ intention.
 shall be interpreted according to the meaning that a reasonable person of the same kind
 as the other party would give to it in the same circumstances.""";
     content_hash "sha256:f5be70d03fd5d4683267c30e3a235af5befa51e946aa2618d881e5a4a96158c3";
-}
-
-// Статья 4.2 (русский парный якорь, unofficial)
-fragment PICC_ART4_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_2";
-    text ru unofficial """Статья 4.2
-(Толкование заявлений и иных действий)
-(1) Заявления и иные действия стороны должны толковаться в
-соответствии с намерениями этой стороны, если другая сторона знала или не
-могла не знать об этих намерениях.
-(2) Если предыдущий пункт не подлежит применению, заявления или
-иные действия должны толковаться в соответствии со знанием, которое
-аналогичное другой стороне разумное лицо придавало бы им в таких же
-обстоятельствах.""";
-    content_hash "sha256:0081b91d96079e60f22d026feff2d15bdfddf839c38c11c1aa001ab8f78a96b1";
 }
 
 // Article 4.3 (English black-letter rules)
@@ -499,31 +264,6 @@ including
     content_hash "sha256:184c0408a9cd98237eab348222e9b0ea8276e8e9999cf25054fa348fe0013736";
 }
 
-// Статья 4.3 (русский парный якорь, unofficial)
-fragment PICC_ART4_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_3";
-    text ru unofficial """Статья 4.3
-(Принимаемые во внимание обстоятельства)
-При применении статей 4.1 и 4.2 во внимание должны быть приняты
-все обстоятельства, включая:
-(а) предварительные переговоры между сторонами;
-(b)
-практику,
-которую
-стороны
-установили
-в
-своих
-взаимоотношениях;
-(c) поведение сторон после заключения договора;
-(d) характер и цель договора;
-(e) общепринятое в соответствующей области предпринимательской
-деятельности значение условий и выражений;
-(f) обычаи.""";
-    content_hash "sha256:8b90e036c0a3041a7e9525bb4452569d2f50a38f766fcc33fd9674cfc0d07493";
-}
-
 // Article 4.4 (English black-letter rules)
 fragment PICC_ART4_4_EN in PICC_2016_EN {
     kind article;
@@ -533,17 +273,6 @@ fragment PICC_ART4_4_EN in PICC_2016_EN {
 Terms and expressions shall be interpreted in the light of the whole contract or
 statement in which they appear.""";
     content_hash "sha256:fde11ae5a0cc1193ec46ca226c38cd5b95a2b77406f93f50c29f8a6aa8112fa6";
-}
-
-// Статья 4.4 (русский парный якорь, unofficial)
-fragment PICC_ART4_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_4";
-    text ru unofficial """Статья 4.4
-(Общие ссылки на договор или заявления)
-Условия и выражения должны толковаться в свете всего договора или
-заявления, где они появляются.""";
-    content_hash "sha256:86dbfa265c976b3daab11e0464d8e880c9d8ddec30f318f8dd0e769d276edc3a";
 }
 
 // Article 4.5 (English black-letter rules)
@@ -557,17 +286,6 @@ deprive some of them of effect.""";
     content_hash "sha256:e6aa96b13450899ce660662222842cfdc51c5d87dc9623bad66f67d782abe5e2";
 }
 
-// Статья 4.5 (русский парный якорь, unofficial)
-fragment PICC_ART4_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_5";
-    text ru unofficial """Статья 4.5
-(Систематическое толкование)
-Условия договора должны толковаться таким образом, чтобы все они
-имели действие, а не лишать силы какие-либо из них.""";
-    content_hash "sha256:8bb3ba2661954ed2fb2f93e9788fe8bfe9ead10d072009c7a157d6934460767f";
-}
-
 // Article 4.6 (English black-letter rules)
 fragment PICC_ART4_6_EN in PICC_2016_EN {
     kind article;
@@ -577,18 +295,6 @@ fragment PICC_ART4_6_EN in PICC_2016_EN {
 If contract terms supplied by one party are unclear, an interpretation against that
 party is preferred.""";
     content_hash "sha256:42798b90407c68cf4b377c726180f319bed4a520b43a8653c4fd778acffde7ed";
-}
-
-// Статья 4.6 (русский парный якорь, unofficial)
-fragment PICC_ART4_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_6";
-    text ru unofficial """Статья 4.6
-(Правило "contra proferentem")
-Если условия договора, выдвинутые одной стороной, являются не
-ясными, то предпочтение отдается толкованию, которое противоположно
-интересам этой стороны.""";
-    content_hash "sha256:8e9ff0b7f2f05967d4e991550c58aba2edc586b26366c8da6a0a1b117ec6f258";
 }
 
 // Article 4.7 (English black-letter rules)
@@ -601,19 +307,6 @@ Where a contract is drawn up in two or more language versions which are equally
 authoritative there is, in case of discrepancy between the versions, a preference for the
 interpretation according to a version in which the contract was originally drawn up.""";
     content_hash "sha256:15f60bbf6f02742d5c0e43f477f494a3eb242eab1e817147c6f0e4cc37d07dd2";
-}
-
-// Статья 4.7 (русский парный якорь, unofficial)
-fragment PICC_ART4_7_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_7";
-    text ru unofficial """Статья 4.7
-(Лингвистические расхождения)
-Если договор составлен на двух или более языках, и каждый из его
-текстов имеет одинаковую силу, то в случае расхождения между текстами,
-предпочтение отдается толкованию в соответствии с вариантом текста
-договора, который был составлен первоначально.""";
-    content_hash "sha256:1cd57d9c811f9f192f962db7fe902a36061510d32c0f33079cb8d920ac9bc12e";
 }
 
 // Article 4.8 (English black-letter rules)
@@ -634,25 +327,6 @@ factors, to
     content_hash "sha256:86646cb219d6d667a1c741a80ff8779993077a661111a0a1e039bda8624a9ea1";
 }
 
-// Статья 4.8 (русский парный якорь, unofficial)
-fragment PICC_ART4_8_RU in PICC_2016_RU {
-    kind article;
-    locator "article/4_8";
-    text ru unofficial """Статья 4.8
-(Восполнение опущенного условия)
-(1) Если стороны договора не пришли к соглашению в том, что
-является важным для определения их прав и обязанностей, то договор
-восполняется условием, представляющимся соответствующим при данных
-обстоятельствах.
-(2) При определении, какое условие является соответствующим,
-должны быть, помимо прочих факторов, приняты во внимание:
-(а) намерение сторон;
-(b) характер и цель договора;
-(с) добросовестность и честная деловая практика;
-(d) разумность.""";
-    content_hash "sha256:00f6ef1e4c1930b4c0800601958f2eedbef5857070959e76d06977cade9cdd6c";
-}
-
 // Article 5.1.1 (English black-letter rules)
 fragment PICC_ART5_1_1_EN in PICC_2016_EN {
     kind article;
@@ -661,21 +335,6 @@ fragment PICC_ART5_1_1_EN in PICC_2016_EN {
 (Express and implied obligations)
 The contractual obligations of the parties may be express or implied.""";
     content_hash "sha256:2c5a275e66aac586fcc5e7c549b127955c2b026587b9206b59234b3895b71420";
-}
-
-// Статья 5.1.1 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_1";
-    text ru unofficial """Статья 5.1.1
-(Прямые и подразумеваемые обязательства)
-Договорные
-обязательства
-могут
-быть
-прямыми
-подразумеваемыми.""";
-    content_hash "sha256:89c56ed3434ba6968264f37a66552167605b0341a4cbb406ca8d127d70cd1ea2";
 }
 
 // Article 5.1.2 (English black-letter rules)
@@ -692,28 +351,6 @@ Implied obligations stem from
     content_hash "sha256:e8225dece81b7ed4fb6b937462db303d2979c801037ca2487557b3374fe1e0f2";
 }
 
-// Статья 5.1.2 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_2";
-    text ru unofficial """Статья 5.1.2
-(Подразумеваемые обязательства)
-Подразумеваемые обязательства вытекают из:
-(а) характера и цели договора;
-(b)
-практики,
-которую
-стороны
-установили
-взаимоотношениях;
-(c) добросовестности и честной деловой практики;
-(d) разумности.
-в
-или
-своих""";
-    content_hash "sha256:91f06823be8bf7d31e7766a29e9e0cbe6496847af4e959837a6bd66cd6618890";
-}
-
 // Article 5.1.3 (English black-letter rules)
 fragment PICC_ART5_1_3_EN in PICC_2016_EN {
     kind article;
@@ -723,18 +360,6 @@ fragment PICC_ART5_1_3_EN in PICC_2016_EN {
 Each party shall cooperate with the other party when such co-operation may
 reasonably be expected for the performance of that party’s obligations.""";
     content_hash "sha256:66e4928018d097f4f2bf9040115d0639703eefb1ded7b0afdd249b82649a8f12";
-}
-
-// Статья 5.1.3 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_3";
-    text ru unofficial """Статья 5.1.3
-(Сотрудничество между сторонами)
-Каждая сторона должна сотрудничать с другой стороной, если такое
-сотрудничество можно разумно ожидать в связи с исполнением обязательств
-этой стороны.""";
-    content_hash "sha256:06f397aad84ad932e2478964b6ecbbfb00912c50985dd9d749569b3e50c914cb";
 }
 
 // Article 5.1.4 (English black-letter rules)
@@ -750,23 +375,6 @@ result, that party is bound to achieve that result.
 performance of an activity, that party is bound to make such efforts as would be made
 by a reasonable person of the same kind in the same circumstances.""";
     content_hash "sha256:afc2057c2b7325786fe526acfae229ffdded3de46bb5f29d1233d567006c52c6";
-}
-
-// Статья 5.1.4 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_4";
-    text ru unofficial """Статья 5.1.4.
-(Обязанность достичь определенного результата. Обязанность проявлять
-максимальные усилия)
-(1) В той мере, в какой обязательство стороны включает в себя
-обязанность достичь определенного результата, эта сторона обязана достичь
-этого результата.
-(2) В той мере, в какой обязательство стороны включает в себя
-обязанность проявлять максимальные усилия при выполнении каких-либо
-действий, эта сторона обязана предпринять усилия, которые предпринимало
-бы аналогичное ей разумное лицо в таких же обстоятельствах.""";
-    content_hash "sha256:9c3a396ed7d6d74f4760e0d48487de02aa3d09e093e8b3fb1ceb4f1208551418";
 }
 
 // Article 5.1.5 (English black-letter rules)
@@ -785,23 +393,6 @@ shall be had, among other factors, to
     content_hash "sha256:f2b55e3f16c06da858add7c84d510240b46a4ac300a4a08aa88662fe9dda08c7";
 }
 
-// Статья 5.1.5 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_5";
-    text ru unofficial """Статья 5.1.5
-(Определение содержания имеющейся обязанности)
-При определении меры, в какой обязательство стороны включает в
-себя обязанность проявлять максимальные усилия при выполнении какихлибо действий или обязанность достичь определенного результата, во
-внимание должны быть приняты, помимо прочих факторов:
-(a) способ, которым выражено обязательство в договоре;
-(b) договорная цена и другие условия договора;
-(c) степень риска, присутствующего обычно при достижении
-определенного результата;
-(d) способность другой стороны влиять на исполнение обязательства.""";
-    content_hash "sha256:3577537b445765db07c67c1c34aceb4574df3069e05f9c7321a14167c0a9a4d5";
-}
-
 // Article 5.1.6 (English black-letter rules)
 fragment PICC_ART5_1_6_EN in PICC_2016_EN {
     kind article;
@@ -812,19 +403,6 @@ Where the quality of performance is neither fixed by, nor determinable from, the
 contract a party is bound to render a performance of a quality that is reasonable and not
 less than average in the circumstances.""";
     content_hash "sha256:a05edb480340c6d58771dfba691b450286043a86db915dd1dc76e462da4ba80b";
-}
-
-// Статья 5.1.6 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_6";
-    text ru unofficial """Статья 5.1.6
-(Определение качества исполнения)
-Если качество исполнения не установлено договором или не может
-быть определено на основе договора, сторона обязана осуществить
-исполнение, имеющее разумное качество и которое не ниже среднего уровня,
-учитывая конкретные обстоятельства.""";
-    content_hash "sha256:0fede4d9719af4a2c5156b1ed73b103aa58885f5c005d19deefe13f97e7c1e1f";
 }
 
 // Article 5.1.7 (English black-letter rules)
@@ -849,36 +427,6 @@ substitute.""";
     content_hash "sha256:8438ba0fa8ad1ef34f7ab247b9003fcbd012a490826a74a0a6408356d748b5d0";
 }
 
-// Статья 5.1.7 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_7_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_7";
-    text ru unofficial """Статья 5.1.7
-(Определение цены)
-(1) Если в договоре не устанавливается цена или не
-предусматривается порядок ее определения, считается, что стороны при
-отсутствии какого-либо указания об ином, подразумевают ссылку на цену,
-которая в момент заключения договора обычно за такое исполнение в
-сравнимых
-обстоятельствах
-в
-соответствующей
-области
-предпринимательской деятельности, или, если такая цена отсутствует, то
-ссылка на разумную цену.
-(2) Если цена должна быть определена одной стороной и такое
-определение оказывается явно неразумным, то, несмотря на любое условие
-договора об обратном, цена должна быть заменена разумной ценой.
-(3) Если цена должна быть установлена одной стороной или третьим
-лицом и эта сторона или третье лицо не делает этого, ценой договора должна
-быть разумная цена.
-(4) Если цена должна быть установлена путем ссылки на факторы,
-которые не существуют или прекратили свое существование или не могут
-быть установлены, вместо них должны рассматриваться факторы,
-являющиеся наиболее близким эквивалентом.""";
-    content_hash "sha256:bb361e8dc51fde84a837a84cf51da135bf168e5182126ee9f7aa7bed2d130340";
-}
-
 // Article 5.1.8 (English black-letter rules)
 fragment PICC_ART5_1_8_EN in PICC_2016_EN {
     kind article;
@@ -891,19 +439,6 @@ restitution, the provisions in Articles 7.3.5 and 7.3.7 apply.""";
     content_hash "sha256:53f1ad8407f7a80b3843d2fd1abe068fc7a1895381f32aa6cf94d9bac01ccf8c";
 }
 
-// Статья 5.1.8 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_8_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_8";
-    text ru unofficial """Статья 5.1.8
-(Прекращение договора на неопределенный срок)
-Договор на неопределенный срок может быть прекращен любой
-стороной путем уведомления, сделанного предварительно в разумный срок.
-В отношении общих последствий прекращения и реституции, применяются
-положения статей 7.3.5 и 7.3.7.""";
-    content_hash "sha256:b4080d5d517ba88171366be0f24e83a0b558f2f9aec64cd9c23c8550ffa9e730";
-}
-
 // Article 5.1.9 (English black-letter rules)
 fragment PICC_ART5_1_9_EN in PICC_2016_EN {
     kind article;
@@ -914,20 +449,6 @@ fragment PICC_ART5_1_9_EN in PICC_2016_EN {
 (2) An offer to release a right gratuitously shall be deemed accepted if the obligor
 does not reject the offer without delay after having become aware of it.""";
     content_hash "sha256:dcb9a2d0fcfafd01f69379204c2f44482a1d5b27b71779420412315f4741c4e0";
-}
-
-// Статья 5.1.9 (русский парный якорь, unofficial)
-fragment PICC_ART5_1_9_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_1_9";
-    text ru unofficial """Статья 5.1.9
-(Соглашение об отказе от права)
-(1) Кредитор может отказаться от своего права путем соглашения с
-должником.
-(2) Предложение о безвозмездном отказе от права считается принятым,
-если должник не отклонил предложение немедленно после ознакомления с
-ним.""";
-    content_hash "sha256:7463ec79304d3df8e551545ed66c53d2e97f44bb21b577ccb8cbc8d1bad54284";
 }
 
 // Article 5.2.1 (English black-letter rules)
@@ -944,21 +465,6 @@ limitations under the agreement.""";
     content_hash "sha256:7570b5389fbcabf40a266e1e5909e24b83052dd3ba712959746caca92f69e235";
 }
 
-// Статья 5.2.1 (русский парный якорь, unofficial)
-fragment PICC_ART5_2_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_2_1";
-    text ru unofficial """Статья 5.2.1
-(Договоры в пользу третьих лиц)
-(1) Стороны договора («должник» и «кредитор») могут путем прямого
-или подразумеваемого соглашения наделить правом третье лицо
-(«бенефициара»).
-(2) Существование и содержание права бенефициара по отношению к
-должнику и кредитору устанавливаются соглашением сторон и зависят от
-условий и ограничений, предусмотренных соглашением.""";
-    content_hash "sha256:cd3ce3875e2b6791c65d1b2e0d668c7d44cf1d41ec6ff61cb12baf05833414ac";
-}
-
 // Article 5.2.2 (English black-letter rules)
 fragment PICC_ART5_2_2_EN in PICC_2016_EN {
     kind article;
@@ -968,18 +474,6 @@ fragment PICC_ART5_2_2_EN in PICC_2016_EN {
 The beneficiary must be identifiable with adequate certainty by the contract but need
 not be in existence at the time the contract is made.""";
     content_hash "sha256:74bf890ac6f2359e206b7a4860532decf6581d79de8b66ad77a5255de45d8ca5";
-}
-
-// Статья 5.2.2 (русский парный якорь, unofficial)
-fragment PICC_ART5_2_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_2_2";
-    text ru unofficial """Статья 5.2.2
-(Обозначение третьего лица)
-Бенефициар должен быть обозначен в договоре с достаточной
-определенностью, но не обязательно должен существовать в момент
-заключения договора.""";
-    content_hash "sha256:e67522c6637c08e1f9f3c8e306349aaa2f58eef252dd32b65dda631e93a2b1b8";
 }
 
 // Article 5.2.3 (English black-letter rules)
@@ -993,18 +487,6 @@ the contract which excludes or limits the liability of the beneficiary.""";
     content_hash "sha256:daceeadc10c2170c61d6530e85e47af2e6159534d8da2445c703332a7252d198";
 }
 
-// Статья 5.2.3 (русский парный якорь, unofficial)
-fragment PICC_ART5_2_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_2_3";
-    text ru unofficial """Статья 5.2.3
-(Оговорки об исключении и ограничении ответственности)
-Право, которым наделен бенефициар, включает право сослаться на
-имеющееся в договоре условие, исключающее или ограничивающее
-ответственность бенефициара.""";
-    content_hash "sha256:0fdbd9befd9681956f7cfde184fcc7a8d1fdbd04fdc29f3bf8a68d00d9f903c0";
-}
-
 // Article 5.2.4 (English black-letter rules)
 fragment PICC_ART5_2_4_EN in PICC_2016_EN {
     kind article;
@@ -1014,17 +496,6 @@ fragment PICC_ART5_2_4_EN in PICC_2016_EN {
 The promisor may assert against the beneficiary all defences which the promisor
 could assert against the promisee.""";
     content_hash "sha256:a5f5a87464f59f4c3bdcb5316a7b02c5f237aa10a9f4efb70cb3d4fa601b8b78";
-}
-
-// Статья 5.2.4 (русский парный якорь, unofficial)
-fragment PICC_ART5_2_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_2_4";
-    text ru unofficial """Статья 5.2.4
-(Возражения)
-Должник может выдвигать против бенефициара все те возражения,
-которые он мог бы выдвинуть против кредитора.""";
-    content_hash "sha256:607a219c5b408db2b4c4b0353ce651becc370a6ecdfa7d9e0afa8483fbf646af";
 }
 
 // Article 5.2.5 (English black-letter rules)
@@ -1039,18 +510,6 @@ them.""";
     content_hash "sha256:8af280b56d6e500313811a17fb03e19b7ece890c7b75c8e6fc405e0262d4c4d1";
 }
 
-// Статья 5.2.5 (русский парный якорь, unofficial)
-fragment PICC_ART5_2_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_2_5";
-    text ru unofficial """Статья 5.2.5
-(Отзыв прав)
-Стороны могут изменить права, предоставленные договором
-бенефициару, или отозвать их до того, как бенефициар принял права или
-разумным образом совершил действия, полагаясь на их наличие.""";
-    content_hash "sha256:dc8d2805f92ab4125b61b5ad0dc641001175a415d0c2185743e1a63ac505e52c";
-}
-
 // Article 5.2.6 (English black-letter rules)
 fragment PICC_ART5_2_6_EN in PICC_2016_EN {
     kind article;
@@ -1059,16 +518,6 @@ fragment PICC_ART5_2_6_EN in PICC_2016_EN {
 (Renunciation)
 The beneficiary may renounce a right conferred on it.""";
     content_hash "sha256:77ef1cd8ebfd717102b59b981bfedd274903ef1a1146a738784400bae9731409";
-}
-
-// Статья 5.2.6 (русский парный якорь, unofficial)
-fragment PICC_ART5_2_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_2_6";
-    text ru unofficial """Статья 5.2.5.
-(Отказ от права)
-Бенефициар может отказаться от предоставленного ему права.""";
-    content_hash "sha256:b04964732ccb7b88664f54af01a94fdceffb134f2f0f0673952559f0c405dfdb";
 }
 
 // Article 5.3.1 (English black-letter rules)
@@ -1084,21 +533,6 @@ effect if the event occurs (suspensive condition) or comes to an end if the even
     content_hash "sha256:ff2d9c2be36cbc902cea931ea6efe49fd1a6df03c73e38293e97222527ee1b10";
 }
 
-// Статья 5.3.1 (русский парный якорь, unofficial)
-fragment PICC_ART5_3_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_3_1";
-    text ru unofficial """Статья 5.3.1.
-(Виды условий)
-Договор или договорное обязательство может быть обусловлено
-наступлением будущего неопределенного события таким образом, что
-договор или договорное обязательство вступит в силу только, если это
-событие произойдет (отлагательное условие), или, если это событие
-произойдет, то договор или договорное обязательство прекратит свое
-существование (отменительное условие).""";
-    content_hash "sha256:46afe7419de3fdfa24a15b4c9f39bc56d2b18f9bffd3ad57513e988ae2689c2f";
-}
-
 // Article 5.3.2 (English black-letter rules)
 fragment PICC_ART5_3_2_EN in PICC_2016_EN {
     kind article;
@@ -1111,20 +545,6 @@ suspensive condition;
 (b) the relevant contract or contractual obligation comes to an end upon fulfilment
 of a resolutive condition.""";
     content_hash "sha256:622588927aba3224ee992f443605902157322c56cfc1abcbcb92fe5347dfcb9c";
-}
-
-// Статья 5.3.2 (русский парный якорь, unofficial)
-fragment PICC_ART5_3_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_3_2";
-    text ru unofficial """Статья 5.3.2
-(Последствия условий)
-Если стороны не договорились об ином:
-(а) соответствующий договор или договорное обязательство
-приобретает силу после выполнения отлагательного условия;
-(b) соответствующий договор или договорное обязательство
-прекращает свое действие после выполнения отменительного условия.""";
-    content_hash "sha256:1e52f21f654759d1f8e0b759bb4ad3f511e131c4072b34c0d42ff42a939b41c2";
 }
 
 // Article 5.3.3 (English black-letter rules)
@@ -1142,22 +562,6 @@ fulfilment of the condition.""";
     content_hash "sha256:2550217f895266d6538181ca342e6d43916317ee86426161a90fad124b07bfb2";
 }
 
-// Статья 5.3.3 (русский парный якорь, unofficial)
-fragment PICC_ART5_3_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_3_3";
-    text ru unofficial """Статья 5.3.3
-(Вмешательство в условие)
-(1) Если выполнению условия препятствует сторона в нарушение
-обязанности добросовестности и честной деловой практики или обязанности
-сотрудничества, эта сторона не может полагаться на невыполнение этого
-условия.
-(2) Если выполнению условия способствовала сторона в нарушение
-обязанности добросовестности и честной деловой практики или обязанности
-сотрудничества, эта сторона не может полагаться на выполнение условия.""";
-    content_hash "sha256:b9795da6cb8c216f031408ed2f775038f45221c4414b9cd27120db7539770bd2";
-}
-
 // Article 5.3.4 (English black-letter rules)
 fragment PICC_ART5_3_4_EN in PICC_2016_EN {
     kind article;
@@ -1168,19 +572,6 @@ Pending fulfilment of a condition, a party may not, contrary to the duty to act 
 accordance with good faith and fair dealing, act so as to prejudice the other party’s
 rights in case of fulfilment of the condition.""";
     content_hash "sha256:206a5dd5b2bb2d11b29984ecc25d95863eec863ccf4210e15ea889a60da42f14";
-}
-
-// Статья 5.3.4 (русский парный якорь, unofficial)
-fragment PICC_ART5_3_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_3_4";
-    text ru unofficial """Статья 5.3.4
-(Обязанность сохранять права)
-В ожидании выполнения условия сторона не может в нарушение
-обязанности добросовестности и честной деловой практики совершать такие
-действия, которые нанесут ущерб правам другой стороны в случае
-выполнения условия.""";
-    content_hash "sha256:ee8ddd8a98e4c4321db552f66987abc7d9d4eb6c4294c428ae4033092bafc650";
 }
 
 // Article 5.3.5 (English black-letter rules)
@@ -1195,19 +586,4 @@ Articles 7.3.6 and 7.3.7 apply with appropriate adaptations.
 retroactively, the rules on restitution set out in Article 3.2.15 apply with appropriate
 adaptations.""";
     content_hash "sha256:df006651f4e2a86c153aede91dbd6904d424ddeda2c2fb79d61a2da49c882350";
-}
-
-// Статья 5.3.5 (русский парный якорь, unofficial)
-fragment PICC_ART5_3_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/5_3_5";
-    text ru unofficial """Статья 5.3.5
-(Реституция в случае выполнения отменительного условия)
-(1) При выполнении отменительного условия положения о
-реституции, предусмотренные статьями 7.3.6 и 7.3.7, применяются с
-соответствующими поправками.
-(2) Если стороны договорились, что отменительное условие действует
-с обратной силой, положения о реституции, установленные в статье 3.2.15,
-применяются с соответствующими поправками.""";
-    content_hash "sha256:a0aced9482f1a4dd3fa683d70b0892640d9fe8ceae6378416c881d559a1d7a67";
 }

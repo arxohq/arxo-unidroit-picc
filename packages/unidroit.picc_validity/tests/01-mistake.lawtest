@@ -1,0 +1,78 @@
+language "law.core" version "0.2";
+package unidroit.picc_validity version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-validity";
+
+// Case 1. Mistake: what amounts to one (3.2.1, 3.2.3), when it gives the right
+// to avoid the contract (3.2.2(1)) and what removes that right (3.2.2(2), 3.2.4,
+// 3.2.10).
+//
+// HERE THE CONVENTION IS SILENT BY ITS OWN DECLARATION: article 4(a) takes the
+// validity of the contract out of its subject matter. Only this instrument
+// answers, and the case shows exactly how.
+
+test "PICCV-01-MISTAKE" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": mistake_of(entity_ref("urn:case:piccv:m-known"), entity_ref("urn:case:piccv:contract-1"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a1": erroneous_assumption_about_facts_or_law(entity_ref("urn:case:piccv:m-known")) { origin case_input; }
+        assert "a2": mistake_of_decisive_importance(entity_ref("urn:case:piccv:m-known")) { origin adjudicated; }
+        assert "a3": other_party_shared_caused_or_knew(entity_ref("urn:case:piccv:m-known")) { origin case_input; }
+        assert "a4": contrary_to_fair_dealing_to_leave_in_error(entity_ref("urn:case:piccv:m-known")) { origin adjudicated; }
+        assert "a5": mistake_of(entity_ref("urn:case:piccv:m-negligent"), entity_ref("urn:case:piccv:contract-1b"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a6": erroneous_assumption_about_facts_or_law(entity_ref("urn:case:piccv:m-negligent")) { origin case_input; }
+        assert "a7": mistake_of_decisive_importance(entity_ref("urn:case:piccv:m-negligent")) { origin adjudicated; }
+        assert "a8": other_party_had_not_relied(entity_ref("urn:case:piccv:m-negligent")) { origin case_input; }
+        assert "a9": grossly_negligent_in_committing_mistake(entity_ref("urn:case:piccv:m-negligent")) { origin case_input; }
+        assert "a10": mistake_of(entity_ref("urn:case:piccv:m-transmission"), entity_ref("urn:case:piccv:contract-1c"), entity_ref("urn:case:piccv:seller")) { origin case_input; }
+        assert "a11": error_in_expression_or_transmission(entity_ref("urn:case:piccv:m-transmission")) { origin case_input; }
+        assert "a12": mistake_of_decisive_importance(entity_ref("urn:case:piccv:m-transmission")) { origin adjudicated; }
+        assert "a13": other_party_had_not_relied(entity_ref("urn:case:piccv:m-transmission")) { origin case_input; }
+        assert "a14": remedy_for_non_performance_available(entity_ref("urn:case:piccv:m-transmission")) { origin case_input; }
+        assert "a15": mistake_of(entity_ref("urn:case:piccv:m-cured"), entity_ref("urn:case:piccv:contract-1d"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a16": erroneous_assumption_about_facts_or_law(entity_ref("urn:case:piccv:m-cured")) { origin case_input; }
+        assert "a17": mistake_of_decisive_importance(entity_ref("urn:case:piccv:m-cured")) { origin adjudicated; }
+        assert "a18": other_party_had_not_relied(entity_ref("urn:case:piccv:m-cured")) { origin case_input; }
+        assert "a19": other_party_performs_as_understood(entity_ref("urn:case:piccv:contract-1d"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+    }
+
+    evaluate truth(is_mistake(entity_ref("urn:case:piccv:m-known")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ErroneousAssumptionIsMistake);
+
+    // An error in transmission is a mistake of the person from whom the statement emanated (3.2.3).
+    evaluate truth(is_mistake(entity_ref("urn:case:piccv:m-transmission")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ErrorInTransmissionIsMistake);
+
+    evaluate truth(may_avoid_for_mistake(entity_ref("urn:case:piccv:m-known"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AvoidanceForMistakeKnownToOtherParty);
+
+    // Gross negligence of the mistaken party removes the right (3.2.2(2)(a)).
+    evaluate truth(may_avoid_for_mistake(entity_ref("urn:case:piccv:m-negligent"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == NEITHER;
+
+    // A remedy available for non-performance removes it as well (3.2.4).
+    evaluate truth(may_avoid_for_mistake(entity_ref("urn:case:piccv:m-transmission"), entity_ref("urn:case:piccv:seller")));
+    expect truth_status == NEITHER;
+
+    // Performance as the mistaken party understood it: the contract is treated as
+    // concluded on that understanding and the right to avoid is lost (3.2.10).
+    evaluate truth(contract_as_understood_by_mistaken_party(entity_ref("urn:case:piccv:contract-1d")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ContractStandsAsUnderstood);
+
+    evaluate truth(right_to_avoid_lost(entity_ref("urn:case:piccv:contract-1d"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RightToAvoidLost);
+
+    evaluate truth(may_avoid_for_mistake(entity_ref("urn:case:piccv:m-cured"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == NEITHER;
+}

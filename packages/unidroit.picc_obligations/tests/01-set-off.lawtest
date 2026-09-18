@@ -1,0 +1,94 @@
+language "law.core" version "0.2";
+package unidroit.picc_obligations version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-obligations";
+
+// Case 1. Set-off (8.1-8.5).
+//
+// THE CONVENTION HAS NO SET-OFF AT ALL: its subject is the contract of sale and
+// the rights of the parties under it, and it does not know the discharge of
+// cross obligations by set-off. Here it exists, and with a §127 power: set-off
+// is effected BY NOTICE.
+
+test "PICCO-01-SET-OFF" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": obligation_between(entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:alpha"), entity_ref("urn:case:picco:beta")) { origin case_input; }
+        assert "a1": obligation_between(entity_ref("urn:case:picco:other"), entity_ref("urn:case:picco:beta"), entity_ref("urn:case:picco:alpha")) { origin case_input; }
+        assert "a2": mutual_obligations(entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:other")) { origin case_input; }
+        assert "a3": entitled_to_perform_own_obligation(entity_ref("urn:case:picco:own")) { origin case_input; }
+        assert "a4": other_obligation_ascertained_and_due(entity_ref("urn:case:picco:other")) { origin case_input; }
+        assert "a5": notice_of_set_off_sent(entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:other")) { origin case_input; }
+        assert "a6": obligations_differ_in_amount(entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:other")) { origin case_input; }
+        assert "a7": set_off_notice_given(entity_ref("urn:case:picco:notice-1"), entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:other")) { origin case_input; }
+        assert "a8": notice_specifies_obligations(entity_ref("urn:case:picco:notice-1")) { origin case_input; }
+        assert "a9": mutual_obligations(entity_ref("urn:case:picco:own-2"), entity_ref("urn:case:picco:other-2")) { origin case_input; }
+        assert "a10": obligations_from_same_contract(entity_ref("urn:case:picco:own-2"), entity_ref("urn:case:picco:other-2")) { origin case_input; }
+        assert "a11": entitled_to_perform_own_obligation(entity_ref("urn:case:picco:own-2")) { origin case_input; }
+        assert "a12": different_currencies(entity_ref("urn:case:picco:own-3"), entity_ref("urn:case:picco:other-3")) { origin case_input; }
+        assert "a13": both_currencies_freely_convertible(entity_ref("urn:case:picco:own-3"), entity_ref("urn:case:picco:other-3")) { origin case_input; }
+        assert "a14": entitled_to_perform_own_obligation(entity_ref("urn:case:picco:own-3")) { origin case_input; }
+        assert "a15": other_obligation_ascertained_and_due(entity_ref("urn:case:picco:other-3")) { origin case_input; }
+        assert "a16": different_currencies(entity_ref("urn:case:picco:own-4"), entity_ref("urn:case:picco:other-4")) { origin case_input; }
+        assert "a17": both_currencies_freely_convertible(entity_ref("urn:case:picco:own-4"), entity_ref("urn:case:picco:other-4")) { origin case_input; }
+        assert "a18": entitled_to_perform_own_obligation(entity_ref("urn:case:picco:own-4")) { origin case_input; }
+        assert "a19": other_obligation_ascertained_and_due(entity_ref("urn:case:picco:other-4")) { origin case_input; }
+        assert "a20": agreed_payment_in_specified_currency(entity_ref("urn:case:picco:own-4")) { origin case_input; }
+        assert "a21": set_off_notice_given(entity_ref("urn:case:picco:notice-2"), entity_ref("urn:case:picco:own-2"), entity_ref("urn:case:picco:other-2")) { origin case_input; }
+        assert "a22": other_party_declared_obligation(entity_ref("urn:case:picco:notice-2"), entity_ref("urn:case:picco:other-2")) { origin case_input; }
+        assert "a23": set_off_notice_given(entity_ref("urn:case:picco:notice-3"), entity_ref("urn:case:picco:own-3"), entity_ref("urn:case:picco:other-3")) { origin case_input; }
+    }
+
+    evaluate truth(may_set_off(entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:other")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SetOffConditions);
+
+    // Within ONE contract a set-off works even against a claim that is not ascertained.
+    evaluate truth(may_set_off(entity_ref("urn:case:picco:own-2"), entity_ref("urn:case:picco:other-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SetOffWithinSameContract);
+
+    evaluate truth(may_set_off(entity_ref("urn:case:picco:own-3"), entity_ref("urn:case:picco:other-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ForeignCurrencySetOff);
+
+    // An agreement to pay in one currency only removes set-off across currencies.
+    evaluate truth(may_set_off(entity_ref("urn:case:picco:own-4"), entity_ref("urn:case:picco:other-4")));
+    expect truth_status == NEITHER;
+
+    // The right of set-off is exercised by notice — a §127 power.
+    evaluate positions();
+    expect position(SetOffByNotice, ACTIVE);
+
+    evaluate truth(obligations_discharged_by_set_off(entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:other")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SetOffDischargesObligations);
+
+    evaluate truth(discharged_up_to_lesser_amount(entity_ref("urn:case:picco:own"), entity_ref("urn:case:picco:other")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SetOffUpToLesserAmount);
+
+    evaluate truth(set_off_effective_from_notice(entity_ref("urn:case:picco:notice-1")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SetOffEffectiveFromNotice);
+
+    evaluate truth(set_off_relates_to(entity_ref("urn:case:picco:notice-1"), entity_ref("urn:case:picco:other")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NoticeSpecifiesObligation);
+
+    // A notice that does not specify the obligation: the other party specifies it.
+    evaluate truth(set_off_relates_to(entity_ref("urn:case:picco:notice-2"), entity_ref("urn:case:picco:other-2")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DeclarationByOtherParty);
+
+    // Neither specification nor declaration — the set-off is proportional to all obligations.
+    evaluate truth(set_off_relates_proportionally(entity_ref("urn:case:picco:notice-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ProportionalSetOff);
+}

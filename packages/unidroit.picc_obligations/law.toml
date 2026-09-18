@@ -1,4 +1,4 @@
-# Манифест §10 — маркер корня пакета (DECISION-0033).
+# §10 manifest — the marker of the package root (DECISION-0033).
 [package]
 name = "unidroit.picc_obligations"
 version = "0.1.0"
@@ -7,12 +7,12 @@ namespace = "urn:org:unidroit:clir:picc-obligations"
 
 [metadata]
 act = "unidroit-picc-2016-obligations"
-title = "Принципы международных коммерческих договоров УНИДРУА 2016, главы 8, 9 и 11: зачёт, уступка прав, перевод обязательств, уступка договоров, множественность должников и кредиторов"
+title = "UNIDROIT Principles of International Commercial Contracts 2016, chapters 8, 9 and 11: set-off, assignment of rights, transfer of obligations, assignment of contracts, plurality of obligors and of obligees"
 primarySource = "PICC_2016"
 jurisdiction = "International"
 instrument = "doctrine"
 sourceFidelity = "pinned_unofficial_copy"
-issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+issuer = "International Institute for the Unification of Private Law (UNIDROIT), Rome"
 legalStatus = "doctrine"
 verifiedAgainstSource = false
 
@@ -22,9 +22,9 @@ verifiedAgainstSource = false
 [[tests]]
 family = "unidroit.picc_obligations#obligations"
 suites = [
-  "tests/01-zachet.lawtest",
-  "tests/02-ustupka-prav.lawtest",
-  "tests/03-perevod-obyazatelstv-i-ustupka-dogovora.lawtest",
-  "tests/04-mnozhestvennost.lawtest",
+  "tests/01-set-off.lawtest",
+  "tests/02-assignment-of-rights.lawtest",
+  "tests/03-transfer-of-obligations-and-assignment-of-contracts.lawtest",
+  "tests/04-plurality-of-obligors.lawtest",
 ]
 world = ["unidroit.picc_obligations", "unidroit.picc"]

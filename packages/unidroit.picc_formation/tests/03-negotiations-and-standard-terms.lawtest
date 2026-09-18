@@ -1,0 +1,100 @@
+language "law.core" version "0.2";
+package unidroit.picc_formation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-formation";
+
+// Case 3. Terms left open (2.1.13, 2.1.14), negotiations in bad faith (2.1.15),
+// confidentiality (2.1.16), merger and no-oral-modification clauses (2.1.17,
+// 2.1.18), surprising terms (2.1.20) and the prevalence of a non-standard term
+// (2.1.21).
+//
+// The Convention has none of these rules: it is silent both on pre-contractual
+// liability and on standard terms. That is the substantive difference between
+// the two instruments, and the reason the Principles are formalised alongside.
+
+test "PICCF-03-NEGOTIATIONS-AND-STANDARD-TERMS" {
+    given {
+        context {
+            deadline_policy PICC_ACCEPTANCE_PERIOD;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": intend_to_conclude_contract(entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "a1": term_deliberately_left_open(entity_ref("urn:case:piccf:contract-3"), entity_ref("urn:case:piccf:term-3open")) { origin case_input; }
+        assert "a2": party_insists_on_agreement_on_matters(entity_ref("urn:case:piccf:contract-3b")) { origin case_input; }
+        assert "a3": conduct_sufficient_to_show_agreement(entity_ref("urn:case:piccf:contract-3b")) { origin case_input; }
+        assert "a4": negotiations_broken_off(entity_ref("urn:case:piccf:alpha"), entity_ref("urn:case:piccf:beta"), entity_ref("urn:case:piccf:contract-3c")) { origin case_input; }
+        assert "a5": entered_negotiations_without_intention_to_agree(entity_ref("urn:case:piccf:alpha"), entity_ref("urn:case:piccf:contract-3c")) { origin case_input; }
+        assert "a6": information_given_as_confidential(entity_ref("urn:case:piccf:beta"), entity_ref("urn:case:piccf:alpha"), entity_ref("urn:case:piccf:contract-3c")) { origin case_input; }
+        assert "a7": merger_clause_present(entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "a8": prior_statement_offered_as_evidence(entity_ref("urn:case:piccf:contract-3"), entity_ref("urn:case:piccf:term-3prior")) { origin case_input; }
+        assert "a9": form_clause_present(entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "a10": standard_term(entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "a11": term_could_not_reasonably_be_expected(entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:contract-3")) { origin adjudicated; }
+        assert "a12": standard_term(entity_ref("urn:case:piccf:term-3accepted"), entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "a13": term_could_not_reasonably_be_expected(entity_ref("urn:case:piccf:term-3accepted"), entity_ref("urn:case:piccf:contract-3")) { origin adjudicated; }
+        assert "a14": term_expressly_accepted(entity_ref("urn:case:piccf:term-3accepted"), entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "a15": conflict_with_non_standard_term(entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:term-3negotiated"), entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "n0": term_not_determined_afterwards(entity_ref("urn:case:piccf:contract-3"), entity_ref("urn:case:piccf:term-3open")) { origin case_input; }
+        assert "n1": alternative_means_reasonable(entity_ref("urn:case:piccf:contract-3"), entity_ref("urn:case:piccf:term-3open")) { origin adjudicated; }
+        assert "n2": negotiations_broken_off(entity_ref("urn:case:piccf:gamma"), entity_ref("urn:case:piccf:delta"), entity_ref("urn:case:piccf:contract-3d")) { origin case_input; }
+        assert "n3": prepared_in_advance_for_general_use(entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+        assert "n4": used_without_negotiation(entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:contract-3")) { origin case_input; }
+
+    }
+
+    evaluate truth(contract_exists_despite_open_term(entity_ref("urn:case:piccf:contract-3")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(OpenTermDoesNotPreventContract);
+
+    // Insistence on agreement upon specific matters keeps the contract unconcluded
+    // until agreement is reached.
+    evaluate truth(contract_concluded(entity_ref("urn:case:piccf:contract-3b")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(liable_for_negotiation_losses(entity_ref("urn:case:piccf:alpha"), entity_ref("urn:case:piccf:beta"), entity_ref("urn:case:piccf:contract-3c")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(BadFaithByNoIntentionToAgree);
+
+    evaluate positions();
+    expect position(KeepConfidential, ACTIVE);
+
+    evaluate truth(prior_statement_inadmissible(entity_ref("urn:case:piccf:contract-3"), entity_ref("urn:case:piccf:term-3prior")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(MergerClauseExcludesPriorStatements);
+
+    evaluate truth(informal_modification_ineffective(entity_ref("urn:case:piccf:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FormClauseBlocksInformalModification);
+
+    evaluate truth(term_ineffective(entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SurprisingTermIneffective);
+
+    // A term expressly accepted keeps its effect.
+    evaluate truth(term_ineffective(entity_ref("urn:case:piccf:term-3accepted"), entity_ref("urn:case:piccf:contract-3")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(non_standard_term_prevails(entity_ref("urn:case:piccf:term-3negotiated"), entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NonStandardTermPrevails);
+
+    // Article 2.1.14(2): the term is still undetermined, but there is another
+    // reasonable means of rendering it determinate — the contract exists.
+    evaluate truth(contract_exists_despite_open_term(entity_ref("urn:case:piccf:contract-3")));
+    expect any_applied(ContractSurvivesUndeterminedTerm);
+
+    // Article 2.1.15(1): negotiations were broken off and no bad faith is presented
+    // — there is NO liability, and this is an assertion of the contrary, not silence.
+    evaluate truth(liable_for_negotiation_losses(entity_ref("urn:case:piccf:gamma"), entity_ref("urn:case:piccf:delta"), entity_ref("urn:case:piccf:contract-3d")));
+    expect truth_status == FALSE_ONLY;
+    expect any_applied(FreeToNegotiateNotLiable);
+
+    // Article 2.1.19(2): the definition of a standard term is a rule, not a comment.
+    evaluate truth(term_qualifies_as_standard_term(entity_ref("urn:case:piccf:term-3surprise"), entity_ref("urn:case:piccf:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ProvisionQualifiesAsStandardTerm);
+}

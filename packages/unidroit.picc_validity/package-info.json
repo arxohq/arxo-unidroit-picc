@@ -1,22 +1,21 @@
 {
   "format": "law.package-info/0.1",
-  "purpose": "Исполнение главы 3 Принципов международных коммерческих договоров УНИДРУА (редакция 2016 года): общие положения о действительности (ст. 3.1.1–3.1.4), основания оспаривания — заблуждение, обман, угроза, существенное неравновесие, третьи лица — и последствия оспаривания (ст. 3.2.1–3.2.17), незаконность договора, нарушающего императивную норму (ст. 3.3.1, 3.3.2). Типы стороны, договора, условия и орган оценочных признаков берутся у хаба `unidroit.picc`. Пакет отвечает ровно там, где Конвенция ООН 1980 года отвечать отказывается (статья 4 подпункт a). Перечень запросов и границ — analysis/questions.json и QUESTIONS.md.",
+  "purpose": "Execution of chapter 3 of the UNIDROIT Principles of International Commercial Contracts (2016 edition): general provisions on validity (art. 3.1.1–3.1.4), the grounds for avoidance — mistake, fraud, threat, gross disparity, third persons — and the effects of avoidance (art. 3.2.1–3.2.17), and illegality of a contract infringing a mandatory rule (art. 3.3.1, 3.3.2). The types for party, contract, term and the organ of evaluative elements come from the hub `unidroit.picc`. The package answers exactly where the 1980 UN Convention declines to answer (article 4(a)). The list of questions and boundaries is in analysis/questions.json and QUESTIONS.md.",
   "limitations": [
-    "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`).",
-    "ЗДЕСЬ КОНВЕНЦИЯ МОЛЧИТ ПО СОБСТВЕННОМУ ЗАЯВЛЕНИЮ: статья 4 подпункт a Конвенции выводит действительность договора и его положений из своего предмета. Глава 3 Принципов отвечает там, где Конвенция отвечать отказывается, и моста между ними по существу нет.",
-    "НЕДЕЕСПОСОБНОСТЬ ГЛАВА НЕ РЕГУЛИРУЕТ (ст. 3.1.1): условия дееспособности стороны — вопрос применимого права и вход дела. Модель отвечает об этом границей, а не выводом.",
-    "ОЦЕНОЧНЫЕ ПРИЗНАКИ ГЛАВЫ 3 ИДУТ КАНАЛОМ СУЖДЕНИЯ §47.3 с органом `Tribunal`: существенность заблуждения для разумного лица (3.2.2), противоречие честной деловой практике (3.2.2), неминуемость и серьёзность угрозы (3.2.6), чрезмерность и неоправданность преимущества (3.2.7), разумный срок извещения (3.2.12), неразумность сохранения остальной части договора (3.2.13), разумность денежного возмещения (3.2.15), разумность средств защиты и реституции при незаконности (3.3.1, 3.3.2). Модель их не решает и догадку не подставляет.",
-    "КАКАЯ НОРМА ИМПЕРАТИВНА И ЧТО ОНА ПРЕДПИСЫВАЕТ — ВХОД ДЕЛА: статья 3.3.1 отсылает к самой нарушенной норме, а Принципы вступают лишь там, где она молчит. Перечень таких норм и их последствия в модель не переносятся.",
-    "ПЕРЕЧЕНЬ ФАКТОРОВ СТАТЕЙ 3.2.7 И 3.3.1 НЕ ИСЧЕРПЫВАЮЩИЙ («among other factors», «in particular»): семь критериев пункта 3 статьи 3.3.1 и два фактора статьи 3.2.7 названы в запросе суждения, а не разложены отдельными посылками — иначе модель выдала бы за норму собственную полноту.",
-    "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ, И ОХВАТ ЭТОГО ПАКЕТА ЗАДЕВАЕТ КВИРК ПУБЛИКАЦИИ: статья 3.1.1 напечатана по-русски как «Статья 3.1», и единицей русского документа является «3_1». Номер оставлен как напечатан."
+    "THIS IS NOT THE LAW OF A STATE. The Principles apply when the parties have agreed on them, or when a court or arbitral tribunal takes them as general principles of law; they do not replace the mandatory rules of the applicable law (article 1.4, hub `unidroit.picc`).",
+    "HERE THE CONVENTION IS SILENT BY ITS OWN DECLARATION: article 4(a) takes the validity of the contract and of its provisions out of its subject matter. Chapter 3 of the Principles answers where the Convention declines to, and in substance there is no bridge between them.",
+    "THE CHAPTER DOES NOT DEAL WITH CAPACITY (article 3.1.1): the conditions of a party's capacity are a question of the applicable law and an input of the case. The model answers this with a boundary rather than a conclusion.",
+    "THE EVALUATIVE ELEMENTS OF CHAPTER 3 GO THROUGH THE §47.3 JUDGMENT CHANNEL with the organ `Tribunal`: whether a reasonable person would have made the mistake material (3.2.2), a departure from reasonable commercial standards of fair dealing (3.2.2), the imminence and gravity of a threat (3.2.6), an excessive and unjustified advantage (3.2.7), a reasonable time for notice (3.2.12), the unreasonableness of upholding the remaining contract (3.2.13), a reasonable allowance in money (3.2.15), the reasonableness of remedies and of restitution in the case of illegality (3.3.1, 3.3.2). The model neither decides them nor substitutes a guess.",
+    "WHICH RULE IS MANDATORY AND WHAT IT PRESCRIBES IS AN INPUT OF THE CASE: article 3.3.1 refers to the infringed rule itself, and the Principles step in only where it is silent. Neither the list of such rules nor their effects is carried into the model.",
+    "THE LISTS OF FACTORS IN ARTICLES 3.2.7 AND 3.3.1 ARE NOT EXHAUSTIVE (\"among other factors\", \"in particular\"): the seven criteria of article 3.3.1(3) and the two factors of article 3.2.7 are named in the request for a judgment rather than spread into separate premises — otherwise the model would pass off its own completeness as the rule."
   ],
   "examples": [
-    "tests/01-zabluzhdenie.lawtest",
-    "tests/02-obman-ugroza-i-nesorazmernost.lawtest",
-    "tests/03-ospar-i-restituciya.lawtest",
-    "tests/04-nezakonnost.lawtest"
+    "tests/01-mistake.lawtest",
+    "tests/02-fraud-threat-and-gross-disparity.lawtest",
+    "tests/03-avoidance-and-restitution.lawtest",
+    "tests/04-illegality.lawtest"
   ],
-  "license": "Модель, сценарии и каталоги — Apache-2.0 (см. LICENSE). ЗАКРЕПЛЁННЫЕ ТЕКСТЫ ПРИНЦИПОВ УНИДРУА 2016 — правообладатель UNIDROIT, Рим: «Reproduction of the information is authorised, except for commercial purposes, provided the source is duly acknowledged» (unidroit.org/disclaimer, проверено 17.09.2026). Коммерческое воспроизведение текстов не разрешено; источник указывается при любом использовании.",
+  "license": "The model, the scenarios and the catalogues are Apache-2.0 (see LICENSE). THE PINNED TEXTS OF THE UNIDROIT PRINCIPLES 2016 are the property of UNIDROIT, Rome: \"Reproduction of the information is authorised, except for commercial purposes, provided the source is duly acknowledged\" (unidroit.org/disclaimer, checked 17.09.2026). Reproduction of the texts for commercial purposes is not permitted; the source is to be acknowledged in any use.",
   "maintainer": "Arxo Law (inji.qaz@gmail.com)",
   "repository": "https://github.com/arxohq/arxo-unidroit-picc"
 }

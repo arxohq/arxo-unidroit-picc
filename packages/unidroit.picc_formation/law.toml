@@ -1,4 +1,4 @@
-# Манифест §10 — маркер корня пакета (DECISION-0033).
+# §10 manifest — the marker of the package root (DECISION-0033).
 [package]
 name = "unidroit.picc_formation"
 version = "0.1.0"
@@ -7,12 +7,12 @@ namespace = "urn:org:unidroit:clir:picc-formation"
 
 [metadata]
 act = "unidroit-picc-2016-formation"
-title = "Принципы международных коммерческих договоров УНИДРУА 2016, глава 2: заключение договора (ст. 2.1.1–2.1.22) и полномочия представителей (ст. 2.2.1–2.2.10)"
+title = "UNIDROIT Principles of International Commercial Contracts 2016, chapter 2: formation (art. 2.1.1–2.1.22) and authority of agents (art. 2.2.1–2.2.10)"
 primarySource = "PICC_2016"
 jurisdiction = "International"
 instrument = "doctrine"
 sourceFidelity = "pinned_unofficial_copy"
-issuer = "Международный институт унификации частного права (УНИДРУА), Рим"
+issuer = "International Institute for the Unification of Private Law (UNIDROIT), Rome"
 legalStatus = "doctrine"
 verifiedAgainstSource = false
 
@@ -22,9 +22,9 @@ verifiedAgainstSource = false
 [[tests]]
 family = "unidroit.picc_formation#formation"
 suites = [
-  "tests/01-oferta-i-akcept.lawtest",
-  "tests/02-izmenennyy-akcept-i-bitva-form.lawtest",
-  "tests/03-peregovory-i-standartnye-uslovija.lawtest",
-  "tests/04-polnomochija-predstavitelej.lawtest",
+  "tests/01-offer-and-acceptance.lawtest",
+  "tests/02-modified-acceptance-and-battle-of-forms.lawtest",
+  "tests/03-negotiations-and-standard-terms.lawtest",
+  "tests/04-authority-of-agents.lawtest",
 ]
 world = ["unidroit.picc_formation", "unidroit.picc"]

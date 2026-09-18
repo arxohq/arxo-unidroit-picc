@@ -1,214 +1,187 @@
-// Глава 1. Общие положения (ст. 1.1–1.12).
+// Chapter 1. General provisions (articles 1.1–1.12).
 //
-// СВОБОДА ДОГОВОРА И ЕГО ОБЯЗАТЕЛЬНОСТЬ — НОРМЫ, А НЕ ПРЕАМБУЛА. Статья 1.1
-// даёт сторонам свободу заключить договор и определить его содержание; статья
-// 1.3 делает действительно заключённый договор обязательным и называет ТРИ
-// способа его изменить или прекратить: по его условиям, соглашением сторон
-// либо как предусмотрено самими Принципами. Три способа — три правила (§206).
+// FREEDOM OF CONTRACT AND ITS BINDING CHARACTER ARE RULES, NOT A PREAMBLE.
+// Article 1.1 gives the parties the freedom to enter into a contract and to
+// determine its content; article 1.3 makes a validly concluded contract binding
+// and names THREE ways to modify or terminate it: by its own terms, by agreement
+// of the parties, or as otherwise provided in the Principles. Three ways — three
+// rules (§206).
 //
-// СТАТЬЯ 1.4 — ГРАНИЦА, И ОНА НАЗВАНА ТЕКСТОМ. «Nothing in these Principles
-// shall restrict the application of mandatory rules»: императивные нормы
-// национального, международного и наднационального происхождения Принципами
-// не ограничиваются. Какие именно нормы императивны — вопрос применимого
-// права, а не Принципов; вход дела, а не вывод пакета.
+// ARTICLE 1.4 IS A BOUNDARY, AND THE TEXT NAMES IT. "Nothing in these Principles
+// shall restrict the application of mandatory rules": mandatory rules of
+// national, international or supranational origin are not restricted by the
+// Principles. Which rules are mandatory is a question of the applicable law, not
+// of the Principles; an input of the case, not an output of the package.
 //
-// СТАТЬЯ 1.5 — ПОРАЖЕНИЕ, А НЕ УМОЛЧАНИЕ: стороны могут исключить применение
-// Принципов или отступить от любого положения, «except as otherwise provided
-// in the Principles». Изъятие из изъятия — статья 1.7(2): от обязанности
-// добросовестности отступить нельзя.
+// ARTICLE 1.5 IS A DEFEAT, NOT A DEFAULT: the parties may exclude the
+// application of the Principles or derogate from any provision, "except as
+// otherwise provided in the Principles". The exception to the exception is
+// article 1.7(2): the duty of good faith cannot be derogated from.
 //
-// ДОБРОСОВЕСТНОСТЬ (ст. 1.7) — ОБЯЗАННОСТЬ §123 С ЦЕЛЬЮ ПОДДЕРЖАНИЯ, а не
-// признак дела: «Each party MUST act in accordance with good faith and fair
-// dealing». Оценку соблюдения даёт орган (канал §47.3), но сама обязанность
-// существует независимо от оценки.
+// GOOD FAITH (article 1.7) IS A §123 DUTY WITH A MAINTENANCE PURPOSE, not a
+// feature of the case: "Each party MUST act in accordance with good faith and
+// fair dealing". The organ assesses compliance (the §47.3 channel), but the duty
+// itself exists independently of that assessment.
 
 language "law.core" version "0.2";
 package unidroit.picc version "0.1.0";
 namespace "urn:org:unidroit:clir:picc";
 
-// --- Статьи 1.1 и 1.3 --------------------------------------------------------
+// --- Articles 1.1 and 1.3 ----------------------------------------------------
 
 pub relation contract_validly_entered_into(c: Contract) kind empirical {
     label en official "the contract has been validly entered into";
-    label ru unofficial "договор заключён действительным образом";
 }
 
 pub relation modified_by_its_terms(c: Contract) kind empirical {
     label en official "the contract is modified or terminated in accordance with its terms";
-    label ru unofficial "договор изменён или прекращён в соответствии с его условиями";
 }
 
 pub relation modified_by_agreement(c: Contract) kind empirical {
     label en official "the contract is modified or terminated by agreement of the parties";
-    label ru unofficial "договор изменён или прекращён соглашением сторон";
 }
 
 pub relation modified_as_provided_by_principles(c: Contract) kind empirical {
     label en official "the contract is modified or terminated as otherwise provided in these Principles";
-    label ru unofficial "договор изменён или прекращён так, как предусмотрено самими Принципами";
 }
 
 pub relation binding_upon_parties(c: Contract) kind institutional {
     label en official "the contract is binding upon the parties (article 1.3)";
-    label ru unofficial "договор обязателен для сторон (статья 1.3)";
 }
 
 pub relation validly_modified_or_terminated(c: Contract) kind institutional {
     label en official "the contract has been validly modified or terminated (article 1.3)";
-    label ru unofficial "договор изменён или прекращён правомерно (статья 1.3)";
 }
 
-@source(PICC_ART1_3_EN, PICC_ART1_3_RU)
+@source(PICC_ART1_3_EN)
 rule ContractIsBinding(c: Contract) defeasible {
     label en official "Article 1.3. A contract validly entered into is binding upon the parties";
-    label ru unofficial "Статья 1.3. Действительно заключённый договор обязателен для сторон";
     when contract_validly_entered_into(c);
     then binding_upon_parties(c);
 }
 
-@source(PICC_ART1_3_EN, PICC_ART1_3_RU)
+@source(PICC_ART1_3_EN)
 rule ModificationByTerms(c: Contract) strict {
     label en official "Article 1.3. The contract can be modified or terminated in accordance with its terms";
-    label ru unofficial "Статья 1.3. Договор может быть изменён или прекращён в соответствии с его условиями";
     when modified_by_its_terms(c);
     then validly_modified_or_terminated(c);
 }
 
-@source(PICC_ART1_3_EN, PICC_ART1_3_RU)
+@source(PICC_ART1_3_EN)
 rule ModificationByAgreement(c: Contract) strict {
     label en official "Article 1.3. The contract can be modified or terminated by agreement";
-    label ru unofficial "Статья 1.3. Договор может быть изменён или прекращён соглашением сторон";
     when modified_by_agreement(c);
     then validly_modified_or_terminated(c);
 }
 
-@source(PICC_ART1_3_EN, PICC_ART1_3_RU)
+@source(PICC_ART1_3_EN)
 rule ModificationAsProvided(c: Contract) strict {
     label en official "Article 1.3. The contract can be modified or terminated as otherwise provided in these Principles";
-    label ru unofficial "Статья 1.3. Договор может быть изменён или прекращён так, как предусмотрено Принципами";
     when modified_as_provided_by_principles(c);
     then validly_modified_or_terminated(c);
 }
 
-// --- Статья 1.2: форма не требуется -----------------------------------------
+// --- Article 1.2: no form required -------------------------------------------
 
 pub relation form_not_required(c: Contract) kind institutional {
     label en official "nothing requires the contract to be made in or evidenced by a particular form (article 1.2)";
-    label ru unofficial "Принципы не требуют, чтобы договор совершался или подтверждался в особой форме (статья 1.2)";
 }
 
-@source(PICC_ART1_2_EN, PICC_ART1_2_RU)
+@source(PICC_ART1_2_EN)
 rule NoFormRequired(c: Contract) defeasible {
     label en official "Article 1.2. Nothing in these Principles requires a contract to be made in or evidenced by a particular form";
-    label ru unofficial "Статья 1.2. Ничто в Принципах не требует, чтобы договор совершался или подтверждался в особой форме";
     when contract_validly_entered_into(c);
     then form_not_required(c);
 }
 
-// --- Статья 1.4: императивные нормы -----------------------------------------
+// --- Article 1.4: mandatory rules --------------------------------------------
 
 pub relation mandatory_rule_applies(c: Contract) kind empirical {
     label en official "a mandatory rule of national, international or supranational origin applies in accordance with the relevant rules of private international law";
-    label ru unofficial "императивная норма национального, международного или наднационального происхождения применима согласно нормам международного частного права";
 }
 
 pub relation principles_do_not_restrict_mandatory_rule(c: Contract) kind institutional {
     label en official "these Principles do not restrict the application of the mandatory rule (article 1.4)";
-    label ru unofficial "Принципы не ограничивают применение императивной нормы (статья 1.4)";
 }
 
-@source(PICC_ART1_4_EN, PICC_ART1_4_RU)
+@source(PICC_ART1_4_EN)
 rule MandatoryRulesUnrestricted(c: Contract) strict {
     label en official "Article 1.4. Nothing in these Principles restricts the application of mandatory rules";
-    label ru unofficial "Статья 1.4. Ничто в Принципах не ограничивает применение императивных норм";
     when mandatory_rule_applies(c);
     then principles_do_not_restrict_mandatory_rule(c);
 }
 
-// --- Статья 1.5: исключение и отступление сторон -----------------------------
+// --- Article 1.5: exclusion and derogation by the parties --------------------
 
 pub relation parties_excluded_principles(c: Contract) kind empirical {
     label en official "the parties have excluded the application of these Principles";
-    label ru unofficial "стороны исключили применение Принципов";
 }
 
 pub relation parties_derogated_from_provision(c: Contract, t: Term) kind empirical {
     label en official "the parties have derogated from or varied the effect of a provision of these Principles";
-    label ru unofficial "стороны отступили от положения Принципов или изменили его действие";
 }
 
 pub relation provision_not_subject_to_derogation(t: Term) kind empirical {
     label en official "the provision is one from which the Principles do not allow derogation";
-    label ru unofficial "от этого положения Принципы отступить не позволяют";
 }
 
 pub relation derogation_effective(c: Contract, t: Term) kind institutional {
     label en official "the derogation by the parties is effective (article 1.5)";
-    label ru unofficial "отступление сторон действует (статья 1.5)";
 }
 
-@source(PICC_ART1_5_EN, PICC_ART1_5_RU)
+@source(PICC_ART1_5_EN)
 rule DerogationEffective(c: Contract, t: Term) defeasible {
     label en official "Article 1.5. The parties may derogate from or vary the effect of any of the provisions, except as otherwise provided";
-    label ru unofficial "Статья 1.5. Стороны могут отступить от любого положения Принципов или изменить его действие, если Принципами не предусмотрено иное";
     when parties_derogated_from_provision(c, t);
     then derogation_effective(c, t);
-    // Связывающий конъюнкт — в самой оговорке (§149-§150, E-0099).
+    // The binding conjunct belongs in the clause itself (§149-§150, E-0099).
     unless parties_derogated_from_provision(c, t)
         and provision_not_subject_to_derogation(t);
 }
 
-// --- Статья 1.6: толкование самих Принципов ---------------------------------
+// --- Article 1.6: interpretation of the Principles themselves ----------------
 
-pub entity Issue { label en official "Issue arising under the Principles"; label ru unofficial "Вопрос, возникающий по Принципам"; }
+pub entity Issue { label en official "Issue arising under the Principles"; }
 
 pub relation issue_of(i: Issue, c: Contract) kind empirical {
     label en official "the issue arises under that contract";
-    label ru unofficial "вопрос возник по этому договору";
 }
 
 pub relation within_scope_of_principles(i: Issue) kind empirical {
     label en official "the issue is within the scope of these Principles";
-    label ru unofficial "вопрос относится к предмету Принципов";
 }
 
 pub relation expressly_settled_by_principles(i: Issue) kind empirical {
     label en official "the issue is expressly settled by these Principles";
-    label ru unofficial "вопрос прямо разрешён Принципами";
 }
 
 pub relation settled_by_underlying_general_principles(i: Issue) kind institutional {
     label en official "the issue is to be settled in accordance with the underlying general principles (article 1.6(2))";
-    label ru unofficial "вопрос подлежит разрешению в соответствии с общими принципами, на которых основаны Принципы (статья 1.6 пункт 2)";
 }
 
-@source(PICC_ART1_6_EN, PICC_ART1_6_RU)
+@source(PICC_ART1_6_EN)
 rule GapSettledByUnderlyingPrinciples(i: Issue, c: Contract) strict {
     label en official "Article 1.6(2). Issues within the scope of these Principles but not expressly settled by them are as far as possible to be settled in accordance with their underlying general principles";
-    label ru unofficial "Статья 1.6 пункт 2. Вопросы предмета Принципов, прямо ими не разрешённые, разрешаются по общим принципам, на которых они основаны";
     when issue_of(i, c)
         and within_scope_of_principles(i)
         and not_known(expressly_settled_by_principles(i));
     then settled_by_underlying_general_principles(i);
 }
 
-// --- Статья 1.7: добросовестность -------------------------------------------
+// --- Article 1.7: good faith and fair dealing --------------------------------
 
 pub external judgment relation acted_in_good_faith(p: Party, c: Contract) {
     authority Tribunal;
     label en official "the party acted in accordance with good faith and fair dealing in international trade";
-    label ru unofficial "сторона действовала в соответствии с добросовестностью и честной деловой практикой в международной торговле";
 }
 
 pub relation duty_of_good_faith_excluded(c: Contract) kind empirical {
     label en official "the parties purported to exclude or limit the duty of good faith and fair dealing";
-    label ru unofficial "стороны попытались исключить или ограничить обязанность добросовестности";
 }
 
-@source(PICC_ART1_7_EN, PICC_ART1_7_RU)
+@source(PICC_ART1_7_EN)
 rule DutyOfGoodFaith(c: Contract, p: Party, other: Party) strict {
     label en official "Article 1.7(1). Each party must act in accordance with good faith and fair dealing in international trade";
-    label ru unofficial "Статья 1.7 пункт 1. Каждая сторона обязана действовать в соответствии с добросовестностью и честной деловой практикой в международной торговле";
     when party_of(p, c)
         and party_of(other, c)
         and p != other;
@@ -224,174 +197,149 @@ rule DutyOfGoodFaith(c: Contract, p: Party, other: Party) strict {
 
 pub relation exclusion_of_good_faith_ineffective(c: Contract) kind institutional {
     label en official "the purported exclusion of the duty of good faith is ineffective (article 1.7(2))";
-    label ru unofficial "попытка исключить обязанность добросовестности силы не имеет (статья 1.7 пункт 2)";
 }
 
-@source(PICC_ART1_7_EN, PICC_ART1_7_RU)
+@source(PICC_ART1_7_EN)
 rule GoodFaithCannotBeExcluded(c: Contract) strict {
     label en official "Article 1.7(2). The parties may not exclude or limit the duty of good faith and fair dealing";
-    label ru unofficial "Статья 1.7 пункт 2. Стороны не могут исключить или ограничить обязанность добросовестности";
     when duty_of_good_faith_excluded(c);
     then exclusion_of_good_faith_ineffective(c);
 }
 
-// --- Статья 1.8: противоречивое поведение -----------------------------------
+// --- Article 1.8: inconsistent behaviour --------------------------------------
 
 pub relation caused_understanding(p: Party, other: Party, c: Contract) kind empirical {
     label en official "the party caused the other party to have an understanding";
-    label ru unofficial "сторона вызвала у другой стороны определённое понимание";
 }
 
 pub external judgment relation reasonably_acted_in_reliance(other: Party, c: Contract) {
     authority Tribunal;
     label en official "the other party reasonably acted in reliance on that understanding to its detriment";
-    label ru unofficial "другая сторона разумно действовала в расчёте на это понимание себе в ущерб";
 }
 
 pub relation acted_inconsistently(p: Party, c: Contract) kind empirical {
     label en official "the party acted inconsistently with that understanding";
-    label ru unofficial "сторона действовала вопреки этому пониманию";
 }
 
 pub relation inconsistent_behaviour_barred(p: Party, c: Contract) kind institutional {
     label en official "the party cannot act inconsistently with the understanding it has caused (article 1.8)";
-    label ru unofficial "сторона не может действовать вопреки вызванному ею пониманию (статья 1.8)";
 }
 
-@source(PICC_ART1_8_EN, PICC_ART1_8_RU)
+@source(PICC_ART1_8_EN)
 rule InconsistentBehaviourBarred(p: Party, other: Party, c: Contract) strict {
     label en official "Article 1.8. A party cannot act inconsistently with an understanding it has caused the other party to have and upon which that other party reasonably has acted in reliance to its detriment";
-    label ru unofficial "Статья 1.8. Сторона не может действовать вопреки пониманию, которое она вызвала у другой стороны и в расчёте на которое та разумно действовала себе в ущерб";
     when caused_understanding(p, other, c)
         and reasonably_acted_in_reliance(other, c)
         and acted_inconsistently(p, c);
     then inconsistent_behaviour_barred(p, c);
 }
 
-// --- Статья 1.9: обычаи и практика ------------------------------------------
+// --- Article 1.9: usages and practices ---------------------------------------
 
 pub relation usage_agreed(u: Usage, c: Contract) kind empirical {
     label en official "the parties have agreed to the usage";
-    label ru unofficial "стороны договорились об обычае";
 }
 
 pub relation practice_established(u: Usage, c: Contract) kind empirical {
     label en official "the parties have established the practice between themselves";
-    label ru unofficial "стороны установили практику в своих взаимных отношениях";
 }
 
 pub relation usage_widely_known_in_trade(u: Usage, c: Contract) kind empirical {
     label en official "the usage is widely known to and regularly observed in international trade by parties in the particular trade concerned";
-    label ru unofficial "обычай широко известен и постоянно соблюдается в международной торговле сторонами в соответствующей области";
 }
 
 pub external judgment relation application_of_usage_unreasonable(u: Usage, c: Contract) {
     authority Tribunal;
     label en official "the application of such a usage would be unreasonable";
-    label ru unofficial "применение такого обычая было бы неразумным";
 }
 
 pub relation bound_by_usage(u: Usage, c: Contract) kind institutional {
     label en official "the parties are bound by the usage or practice (article 1.9)";
-    label ru unofficial "стороны связаны обычаем или практикой (статья 1.9)";
 }
 
-@source(PICC_ART1_9_EN, PICC_ART1_9_RU)
+@source(PICC_ART1_9_EN)
 rule BoundByAgreedUsage(u: Usage, c: Contract) strict {
     label en official "Article 1.9(1). The parties are bound by any usage to which they have agreed";
-    label ru unofficial "Статья 1.9 пункт 1. Стороны связаны обычаем, о котором они договорились";
     when usage_agreed(u, c);
     then bound_by_usage(u, c);
 }
 
-@source(PICC_ART1_9_EN, PICC_ART1_9_RU)
+@source(PICC_ART1_9_EN)
 rule BoundByEstablishedPractice(u: Usage, c: Contract) strict {
     label en official "Article 1.9(1). The parties are bound by practices which they have established between themselves";
-    label ru unofficial "Статья 1.9 пункт 1. Стороны связаны практикой, которую они установили между собой";
     when practice_established(u, c);
     then bound_by_usage(u, c);
 }
 
-@source(PICC_ART1_9_EN, PICC_ART1_9_RU)
+@source(PICC_ART1_9_EN)
 rule BoundByWidelyKnownUsage(u: Usage, c: Contract) defeasible {
     label en official "Article 1.9(2). The parties are bound by a usage widely known and regularly observed in the trade concerned, except where its application would be unreasonable";
-    label ru unofficial "Статья 1.9 пункт 2. Стороны связаны широко известным и постоянно соблюдаемым обычаем, кроме случаев, когда его применение было бы неразумным";
     when usage_widely_known_in_trade(u, c);
     then bound_by_usage(u, c);
     unless usage_widely_known_in_trade(u, c)
         and application_of_usage_unreasonable(u, c);
 }
 
-// --- Статья 1.10: извещения --------------------------------------------------
+// --- Article 1.10: notice ----------------------------------------------------
 
 pub relation notice_given_by_appropriate_means(n: Notice, c: Contract) kind empirical {
     label en official "the notice was given by a means appropriate to the circumstances";
-    label ru unofficial "извещение дано способом, надлежащим при данных обстоятельствах";
 }
 
 pub relation notice_reached_person(n: Notice, p: Party) kind empirical {
     label en official "the notice was given to that person orally or delivered at that person's place of business or mailing address";
-    label ru unofficial "извещение сообщено лицу устно либо доставлено по месту его коммерческого предприятия или почтовому адресу";
 }
 
 pub relation notice_effective(n: Notice, p: Party) kind institutional {
     label en official "the notice is effective (article 1.10(2))";
-    label ru unofficial "извещение вступило в силу (статья 1.10 пункт 2)";
 }
 
-@source(PICC_ART1_10_EN, PICC_ART1_10_RU)
+@source(PICC_ART1_10_EN)
 rule NoticeEffectiveOnReceipt(n: Notice, p: Party, c: Contract) strict {
     label en official "Article 1.10(2)-(3). A notice is effective when it reaches the person to whom it is given";
-    label ru unofficial "Статья 1.10 пункты 2 и 3. Извещение вступает в силу, когда оно достигает лица, которому дано";
     when notice_given_by_appropriate_means(n, c)
         and notice_reached_person(n, p);
     then notice_effective(n, p);
 }
 
-// --- Статья 1.11: определения -------------------------------------------------
+// --- Article 1.11: definitions -----------------------------------------------
 //
-// Определение «места коммерческого предприятия» — норма выбора: у стороны с
-// несколькими предприятиями во внимание принимается то, которое имеет
-// наиболее тесную связь с договором и его исполнением. Признак оценочный,
-// поэтому канал §47.3 — как и у статьи 10 CISG.
+// The definition of "place of business" is a rule of selection: for a party with
+// more than one place of business, the relevant one is that which has the
+// closest relationship to the contract and its performance. The element is
+// evaluative, hence the §47.3 channel — as with article 10 CISG.
 
-pub entity State { label en official "State"; label ru unofficial "Государство"; }
+pub entity State { label en official "State"; }
 
 pub relation place_of_business_in(p: Party, s: State) kind empirical {
     label en official "the party has a place of business in that State";
-    label ru unofficial "коммерческое предприятие стороны находится в этом государстве";
 }
 
 pub relation has_multiple_places_of_business(p: Party) kind empirical {
     label en official "the party has more than one place of business";
-    label ru unofficial "сторона имеет более одного коммерческого предприятия";
 }
 
 pub external judgment relation closest_relationship_to_contract(p: Party, s: State) {
     authority Tribunal;
     label en official "the place of business has the closest relationship to the contract and its performance";
-    label ru unofficial "коммерческое предприятие имеет наиболее тесную связь с договором и его исполнением";
 }
 
 pub relation relevant_place_of_business(p: Party, s: State) kind institutional {
     label en official "the relevant place of business of the party (article 1.11)";
-    label ru unofficial "коммерческое предприятие стороны, принимаемое во внимание (статья 1.11)";
 }
 
-@source(PICC_ART1_11_EN, PICC_ART1_11_RU)
+@source(PICC_ART1_11_EN)
 rule SinglePlaceIsRelevant(p: Party, s: State) defeasible {
     label en official "Article 1.11. Where a party has a single place of business that place is the relevant one";
-    label ru unofficial "Статья 1.11. У стороны с одним коммерческим предприятием во внимание принимается оно";
     when place_of_business_in(p, s);
     then relevant_place_of_business(p, s);
     unless place_of_business_in(p, s)
         and has_multiple_places_of_business(p);
 }
 
-@source(PICC_ART1_11_EN, PICC_ART1_11_RU)
+@source(PICC_ART1_11_EN)
 rule ClosestPlaceIsRelevant(p: Party, s: State) defeasible {
     label en official "Article 1.11. Where a party has more than one place of business the relevant one is that which has the closest relationship to the contract and its performance";
-    label ru unofficial "Статья 1.11. У стороны с несколькими предприятиями во внимание принимается наиболее тесно связанное с договором";
     when has_multiple_places_of_business(p)
         and place_of_business_in(p, s)
         and closest_relationship_to_contract(p, s);

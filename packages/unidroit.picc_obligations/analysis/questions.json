@@ -1,130 +1,83 @@
 {
-  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "$comment": "Catalogue of questions of the package (DECISION-0190): each card is a parameterised §172 query template with its evidence of execution, the boundaries carry the verbatim limitation from package-info.json. Gate: check_package_questions.py --only <package> --emit.",
   "format": "law.package-questions/0.1",
   "package": "unidroit.picc_obligations",
+  "language": "en",
   "tasks": [
     {
       "id": "mnozhestvennost",
-      "title": "Множественность должников и кредиторов (ст. 11.1.1–11.2.4)",
+      "title": "Plurality of obligors and of obligees (art. 11.1.1–11.2.4)",
       "source_units": [
         "PICC_ART11_1_10_EN",
-        "PICC_ART11_1_10_RU",
         "PICC_ART11_1_11_EN",
-        "PICC_ART11_1_11_RU",
         "PICC_ART11_1_12_EN",
-        "PICC_ART11_1_12_RU",
         "PICC_ART11_1_13_EN",
-        "PICC_ART11_1_13_RU",
         "PICC_ART11_1_1_EN",
-        "PICC_ART11_1_1_RU",
         "PICC_ART11_1_2_EN",
-        "PICC_ART11_1_2_RU",
         "PICC_ART11_1_3_EN",
-        "PICC_ART11_1_3_RU",
         "PICC_ART11_1_4_EN",
         "PICC_ART11_1_5_EN",
-        "PICC_ART11_1_5_RU",
         "PICC_ART11_1_6_EN",
-        "PICC_ART11_1_6_RU",
         "PICC_ART11_1_7_EN",
-        "PICC_ART11_1_7_RU",
         "PICC_ART11_1_8_EN",
-        "PICC_ART11_1_8_RU",
         "PICC_ART11_1_9_EN",
-        "PICC_ART11_1_9_RU",
         "PICC_ART11_2_1_EN",
-        "PICC_ART11_2_1_RU",
         "PICC_ART11_2_2_EN",
-        "PICC_ART11_2_2_RU",
         "PICC_ART11_2_3_EN",
-        "PICC_ART11_2_3_RU",
-        "PICC_ART11_2_4_EN",
-        "PICC_ART11_2_4_RU"
+        "PICC_ART11_2_4_EN"
       ]
     },
     {
       "id": "zachet",
-      "title": "Зачёт: условия, валюта, извещение и последствия (ст. 8.1–8.5)",
+      "title": "Set-off: conditions, currency, notice and effects (art. 8.1–8.5)",
       "source_units": [
         "PICC_ART8_1_EN",
-        "PICC_ART8_1_RU",
         "PICC_ART8_2_EN",
-        "PICC_ART8_2_RU",
         "PICC_ART8_3_EN",
-        "PICC_ART8_3_RU",
         "PICC_ART8_4_EN",
-        "PICC_ART8_4_RU",
-        "PICC_ART8_5_EN",
-        "PICC_ART8_5_RU"
+        "PICC_ART8_5_EN"
       ]
     },
     {
       "id": "ustupka-prav",
-      "title": "Уступка прав: предмет, уступаемость, запреты, извещение должника и гарантии цедента (ст. 9.1.1–9.1.15)",
+      "title": "Assignment of rights: scope, assignability, prohibitions, notice to the obligor and the assignor's undertakings (art. 9.1.1–9.1.15)",
       "source_units": [
         "PICC_ART9_1_10_EN",
-        "PICC_ART9_1_10_RU",
         "PICC_ART9_1_11_EN",
-        "PICC_ART9_1_11_RU",
         "PICC_ART9_1_12_EN",
-        "PICC_ART9_1_12_RU",
         "PICC_ART9_1_13_EN",
-        "PICC_ART9_1_13_RU",
         "PICC_ART9_1_14_EN",
-        "PICC_ART9_1_14_RU",
         "PICC_ART9_1_15_EN",
-        "PICC_ART9_1_15_RU",
         "PICC_ART9_1_1_EN",
-        "PICC_ART9_1_1_RU",
         "PICC_ART9_1_2_EN",
-        "PICC_ART9_1_2_RU",
         "PICC_ART9_1_3_EN",
-        "PICC_ART9_1_3_RU",
         "PICC_ART9_1_4_EN",
-        "PICC_ART9_1_4_RU",
         "PICC_ART9_1_5_EN",
-        "PICC_ART9_1_5_RU",
         "PICC_ART9_1_6_EN",
-        "PICC_ART9_1_6_RU",
         "PICC_ART9_1_7_EN",
-        "PICC_ART9_1_7_RU",
         "PICC_ART9_1_8_EN",
-        "PICC_ART9_1_8_RU",
-        "PICC_ART9_1_9_EN",
-        "PICC_ART9_1_9_RU"
+        "PICC_ART9_1_9_EN"
       ]
     },
     {
       "id": "perevod-obyazatelstv",
-      "title": "Перевод обязательств и уступка договоров (ст. 9.2.1–9.3.7)",
+      "title": "Transfer of obligations and assignment of contracts (art. 9.2.1–9.3.7)",
       "source_units": [
         "PICC_ART9_2_1_EN",
-        "PICC_ART9_2_1_RU",
         "PICC_ART9_2_2_EN",
-        "PICC_ART9_2_2_RU",
         "PICC_ART9_2_3_EN",
         "PICC_ART9_2_4_EN",
-        "PICC_ART9_2_4_RU",
         "PICC_ART9_2_5_EN",
-        "PICC_ART9_2_5_RU",
         "PICC_ART9_2_6_EN",
-        "PICC_ART9_2_6_RU",
         "PICC_ART9_2_7_EN",
-        "PICC_ART9_2_7_RU",
         "PICC_ART9_2_8_EN",
-        "PICC_ART9_2_8_RU",
         "PICC_ART9_3_1_EN",
         "PICC_ART9_3_2_EN",
-        "PICC_ART9_3_2_RU",
         "PICC_ART9_3_3_EN",
         "PICC_ART9_3_4_EN",
-        "PICC_ART9_3_4_RU",
         "PICC_ART9_3_5_EN",
-        "PICC_ART9_3_5_RU",
         "PICC_ART9_3_6_EN",
-        "PICC_ART9_3_6_RU",
-        "PICC_ART9_3_7_EN",
-        "PICC_ART9_3_7_RU"
+        "PICC_ART9_3_7_EN"
       ]
     }
   ],
@@ -132,7 +85,7 @@
     {
       "id": "assignment-effective-despite-clause",
       "task": "ustupka-prav",
-      "question": "Действительна ли уступка вопреки договорному запрету (ст. 9.1.9)?",
+      "question": "Is the assignment effective despite a contractual prohibition (art. 9.1.9)?",
       "kind": "truth",
       "predicate": "assignment_effective_despite_clause",
       "parameters": [
@@ -157,14 +110,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART9_1_9_EN",
-        "PICC_ART9_1_9_RU"
+        "PICC_ART9_1_9_EN"
       ]
     },
     {
       "id": "assignor-and-assignee-jointly-liable",
       "task": "perevod-obyazatelstv",
-      "question": "Отвечают ли цедент и цессионарий солидарно после уступки договора (ст. 9.3.5 п. 3)?",
+      "question": "Are the assignor and the assignee jointly and severally liable after the assignment of a contract (art. 9.3.5(3))?",
       "kind": "truth",
       "predicate": "assignor_and_assignee_jointly_liable",
       "parameters": [
@@ -179,14 +131,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_3_5_EN",
-        "PICC_ART9_3_5_RU"
+        "PICC_ART9_3_5_EN"
       ]
     },
     {
       "id": "assignor-reimburses-payment",
       "task": "ustupka-prav",
-      "question": "Возмещает ли цедент цессионарию платёж, полученный до извещения (ст. 9.1.15 подпункт f)?",
+      "question": "Does the assignor reimburse the assignee for a payment received before notice (art. 9.1.15(f))?",
       "kind": "truth",
       "predicate": "assignor_reimburses_payment",
       "parameters": [
@@ -201,14 +152,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_15_EN",
-        "PICC_ART9_1_15_RU"
+        "PICC_ART9_1_15_EN"
       ]
     },
     {
       "id": "assignor-undertakes-existence",
       "task": "ustupka-prav",
-      "question": "Отвечает ли цедент за существование и чистоту уступленного права (ст. 9.1.15)?",
+      "question": "Does the assignor undertake the existence and the freedom of the assigned right (art. 9.1.15)?",
       "kind": "truth",
       "predicate": "assignor_undertakes_existence",
       "parameters": [
@@ -223,14 +173,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_15_EN",
-        "PICC_ART9_1_15_RU"
+        "PICC_ART9_1_15_EN"
       ]
     },
     {
       "id": "bulk-assignment-effective",
       "task": "ustupka-prav",
-      "question": "Действительна ли уступка прав без индивидуального определения (ст. 9.1.6)?",
+      "question": "Is an assignment of rights without individual identification effective (art. 9.1.6)?",
       "kind": "truth",
       "predicate": "bulk_assignment_effective",
       "parameters": [
@@ -245,14 +194,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_6_EN",
-        "PICC_ART9_1_6_RU"
+        "PICC_ART9_1_6_EN"
       ]
     },
     {
       "id": "contract-assignment-effective",
       "task": "perevod-obyazatelstv",
-      "question": "Действительна ли уступка договора (ст. 9.3.1–9.3.4)?",
+      "question": "Is the assignment of the contract effective (art. 9.3.1–9.3.4)?",
       "kind": "truth",
       "predicate": "contract_assignment_effective",
       "parameters": [
@@ -283,16 +231,14 @@
       "source_units": [
         "PICC_ART9_3_1_EN",
         "PICC_ART9_3_2_EN",
-        "PICC_ART9_3_2_RU",
         "PICC_ART9_3_3_EN",
-        "PICC_ART9_3_4_EN",
-        "PICC_ART9_3_4_RU"
+        "PICC_ART9_3_4_EN"
       ]
     },
     {
       "id": "contributory-claim",
       "task": "mnozhestvennost",
-      "question": "Может ли исполнивший больше своей доли должник требовать излишек с других (ст. 11.1.10, 11.1.11 п. 1)?",
+      "question": "May an obligor that performed more than its share claim the excess from the others (art. 11.1.10, 11.1.11(1))?",
       "kind": "truth",
       "predicate": "contributory_claim",
       "parameters": [
@@ -312,14 +258,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_10_EN",
-        "PICC_ART11_1_10_RU"
+        "PICC_ART11_1_10_EN"
       ]
     },
     {
       "id": "defence-assertable-against-assignee",
       "task": "ustupka-prav",
-      "question": "Может ли должник заявить цессионарию возражение против цедента (ст. 9.1.13 п. 1)?",
+      "question": "May the obligor assert against the assignee a defence it has against the assignor (art. 9.1.13(1))?",
       "kind": "truth",
       "predicate": "defence_assertable_against_assignee",
       "parameters": [
@@ -334,14 +279,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_13_EN",
-        "PICC_ART9_1_13_RU"
+        "PICC_ART9_1_13_EN"
       ]
     },
     {
       "id": "defence-assertable-against-obligee",
       "task": "mnozhestvennost",
-      "question": "Может ли должник заявить возражение солидарному кредитору (ст. 11.2.3 п. 1)?",
+      "question": "May the obligor assert a defence against a joint and several obligee (art. 11.2.3(1))?",
       "kind": "truth",
       "predicate": "defence_assertable_against_obligee",
       "parameters": [
@@ -361,14 +305,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_2_3_EN",
-        "PICC_ART11_2_3_RU"
+        "PICC_ART11_2_3_EN"
       ]
     },
     {
       "id": "defence-assertable-by-obligor",
       "task": "mnozhestvennost",
-      "question": "Может ли солидарный должник заявить это возражение или зачёт (ст. 11.1.4, 11.1.12)?",
+      "question": "May a joint and several obligor assert this defence or set-off (art. 11.1.4, 11.1.12)?",
       "kind": "truth",
       "predicate": "defence_assertable_by_obligor",
       "parameters": [
@@ -407,14 +350,13 @@
       ],
       "source_units": [
         "PICC_ART11_1_12_EN",
-        "PICC_ART11_1_12_RU",
         "PICC_ART11_1_4_EN"
       ]
     },
     {
       "id": "discharged-by-order-of-notices",
       "task": "ustupka-prav",
-      "question": "В каком порядке должник освобождается при нескольких уступках (ст. 9.1.11)?",
+      "question": "In which order is the obligor discharged where there are several assignments (art. 9.1.11)?",
       "kind": "truth",
       "predicate": "discharged_by_order_of_notices",
       "parameters": [
@@ -434,14 +376,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_11_EN",
-        "PICC_ART9_1_11_RU"
+        "PICC_ART9_1_11_EN"
       ]
     },
     {
       "id": "discharged-by-paying-assignee",
       "task": "ustupka-prav",
-      "question": "Освобождается ли должник уплатой цессионарию (ст. 9.1.10 п. 2)?",
+      "question": "Is the obligor discharged by paying the assignee (art. 9.1.10(2))?",
       "kind": "truth",
       "predicate": "discharged_by_paying_assignee",
       "parameters": [
@@ -456,14 +397,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_10_EN",
-        "PICC_ART9_1_10_RU"
+        "PICC_ART9_1_10_EN"
       ]
     },
     {
       "id": "discharged-by-paying-assignor",
       "task": "ustupka-prav",
-      "question": "Освобождается ли должник уплатой цеденту до извещения (ст. 9.1.10 п. 1)?",
+      "question": "Is the obligor discharged by paying the assignor before notice (art. 9.1.10(1))?",
       "kind": "truth",
       "predicate": "discharged_by_paying_assignor",
       "parameters": [
@@ -478,14 +418,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_10_EN",
-        "PICC_ART9_1_10_RU"
+        "PICC_ART9_1_10_EN"
       ]
     },
     {
       "id": "discharged-up-to-lesser-amount",
       "task": "zachet",
-      "question": "В каком размере зачёт прекращает обязательства (ст. 8.5 п. 2)?",
+      "question": "To what extent does the set-off discharge the obligations (art. 8.5(2))?",
       "kind": "truth",
       "predicate": "discharged_up_to_lesser_amount",
       "parameters": [
@@ -505,14 +444,13 @@
         "PICCO-01-SET-OFF"
       ],
       "source_units": [
-        "PICC_ART8_5_EN",
-        "PICC_ART8_5_RU"
+        "PICC_ART8_5_EN"
       ]
     },
     {
       "id": "equal-shares-among-obligees",
       "task": "mnozhestvennost",
-      "question": "Равны ли доли солидарных кредиторов между собой (ст. 11.2.4 п. 1)?",
+      "question": "Are the shares of joint and several obligees equal between themselves (art. 11.2.4(1))?",
       "kind": "truth",
       "predicate": "equal_shares_among_obligees",
       "parameters": [
@@ -537,14 +475,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART11_2_4_EN",
-        "PICC_ART11_2_4_RU"
+        "PICC_ART11_2_4_EN"
       ]
     },
     {
       "id": "equal-shares-among-obligors",
       "task": "mnozhestvennost",
-      "question": "Равны ли доли солидарных должников между собой (ст. 11.1.9)?",
+      "question": "Are the shares of joint and several obligors equal between themselves (art. 11.1.9)?",
       "kind": "truth",
       "predicate": "equal_shares_among_obligors",
       "parameters": [
@@ -569,14 +506,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART11_1_9_EN",
-        "PICC_ART11_1_9_RU"
+        "PICC_ART11_1_9_EN"
       ]
     },
     {
       "id": "excess-transferred-to-obligees",
       "task": "mnozhestvennost",
-      "question": "Обязан ли кредитор передать излишек другим кредиторам (ст. 11.2.4 п. 2)?",
+      "question": "Must an obligee transfer the excess to the other obligees (art. 11.2.4(2))?",
       "kind": "truth",
       "predicate": "excess_transferred_to_obligees",
       "parameters": [
@@ -596,14 +532,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_2_4_EN",
-        "PICC_ART11_2_4_RU"
+        "PICC_ART11_2_4_EN"
       ]
     },
     {
       "id": "future-right-transferred-at-agreement",
       "task": "ustupka-prav",
-      "question": "С какого момента считается переданным будущее право (ст. 9.1.5)?",
+      "question": "From which moment is a future right regarded as transferred (art. 9.1.5)?",
       "kind": "truth",
       "predicate": "future_right_transferred_at_agreement",
       "parameters": [
@@ -618,14 +553,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_5_EN",
-        "PICC_ART9_1_5_RU"
+        "PICC_ART9_1_5_EN"
       ]
     },
     {
       "id": "joint-and-several-claim",
       "task": "mnozhestvennost",
-      "question": "Солидарны ли требования нескольких кредиторов (ст. 11.2.1 подпункт b)?",
+      "question": "Are the claims of several obligees joint and several (art. 11.2.1(b))?",
       "kind": "truth",
       "predicate": "joint_and_several_claim",
       "parameters": [
@@ -645,14 +579,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_2_1_EN",
-        "PICC_ART11_2_1_RU"
+        "PICC_ART11_2_1_EN"
       ]
     },
     {
       "id": "joint-and-several-obligation",
       "task": "mnozhestvennost",
-      "question": "Солидарны ли обязательства нескольких должников (ст. 11.1.1 подпункт a, 11.1.2)?",
+      "question": "Are the obligations of several obligors joint and several (art. 11.1.1(a), 11.1.2)?",
       "kind": "truth",
       "predicate": "joint_and_several_obligation",
       "parameters": [
@@ -682,14 +615,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART11_1_2_EN",
-        "PICC_ART11_1_2_RU"
+        "PICC_ART11_1_2_EN"
       ]
     },
     {
       "id": "judgment-may-be-relied-on",
       "task": "mnozhestvennost",
-      "question": "Могут ли другие солидарные должники ссылаться на решение суда (ст. 11.1.8 п. 2)?",
+      "question": "May the other joint and several obligors rely on a decision of the court (art. 11.1.8(2))?",
       "kind": "truth",
       "predicate": "judgment_may_be_relied_on",
       "parameters": [
@@ -709,14 +641,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_8_EN",
-        "PICC_ART11_1_8_RU"
+        "PICC_ART11_1_8_EN"
       ]
     },
     {
       "id": "may-set-off",
       "task": "zachet",
-      "question": "Может ли сторона произвести зачёт (ст. 8.1, 8.2)?",
+      "question": "May a party effect a set-off (art. 8.1, 8.2)?",
       "kind": "truth",
       "predicate": "may_set_off",
       "parameters": [
@@ -751,15 +682,13 @@
       ],
       "source_units": [
         "PICC_ART8_1_EN",
-        "PICC_ART8_1_RU",
-        "PICC_ART8_2_EN",
-        "PICC_ART8_2_RU"
+        "PICC_ART8_2_EN"
       ]
     },
     {
       "id": "may-withhold-payment-pending-proof",
       "task": "ustupka-prav",
-      "question": "Может ли должник приостановить платёж до доказательства уступки (ст. 9.1.12)?",
+      "question": "May the obligor withhold payment until proof of the assignment (art. 9.1.12)?",
       "kind": "truth",
       "predicate": "may_withhold_payment_pending_proof",
       "parameters": [
@@ -774,14 +703,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_12_EN",
-        "PICC_ART9_1_12_RU"
+        "PICC_ART9_1_12_EN"
       ]
     },
     {
       "id": "new-obligor-may-assert-defence",
       "task": "perevod-obyazatelstv",
-      "question": "Может ли новый должник заявить кредитору возражения первоначального (ст. 9.2.7 п. 1)?",
+      "question": "May the new obligor assert against the obligee the defences of the original obligor (art. 9.2.7(1))?",
       "kind": "truth",
       "predicate": "new_obligor_may_assert_defence",
       "parameters": [
@@ -796,14 +724,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_2_7_EN",
-        "PICC_ART9_2_7_RU"
+        "PICC_ART9_2_7_EN"
       ]
     },
     {
       "id": "new-obligor-may-not-set-off",
       "task": "perevod-obyazatelstv",
-      "question": "Переходит ли к новому должнику право на зачёт первоначального (ст. 9.2.7 п. 2)?",
+      "question": "Does the right of set-off of the original obligor pass to the new obligor (art. 9.2.7(2))?",
       "kind": "truth",
       "predicate": "new_obligor_may_not_set_off",
       "parameters": [
@@ -818,14 +745,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_2_7_EN",
-        "PICC_ART9_2_7_RU"
+        "PICC_ART9_2_7_EN"
       ]
     },
     {
       "id": "obligations-discharged-by-set-off",
       "task": "zachet",
-      "question": "Прекращает ли зачёт обязательства (ст. 8.5 п. 1)?",
+      "question": "Does the set-off discharge the obligations (art. 8.5(1))?",
       "kind": "truth",
       "predicate": "obligations_discharged_by_set_off",
       "parameters": [
@@ -856,15 +782,13 @@
       ],
       "source_units": [
         "PICC_ART8_3_EN",
-        "PICC_ART8_3_RU",
-        "PICC_ART8_5_EN",
-        "PICC_ART8_5_RU"
+        "PICC_ART8_5_EN"
       ]
     },
     {
       "id": "obligee-has-precedence",
       "task": "mnozhestvennost",
-      "question": "Имеет ли кредитор преимущество перед регрессными требованиями содолжников (ст. 11.1.11 п. 2)?",
+      "question": "Does the obligee have precedence over the recourse claims of co-obligors (art. 11.1.11(2))?",
       "kind": "truth",
       "predicate": "obligee_has_precedence",
       "parameters": [
@@ -884,14 +808,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_11_EN",
-        "PICC_ART11_1_11_RU"
+        "PICC_ART11_1_11_EN"
       ]
     },
     {
       "id": "obligee-may-require-from-any",
       "task": "mnozhestvennost",
-      "question": "Может ли кредитор требовать исполнения от любого солидарного должника (ст. 11.1.3)?",
+      "question": "May the obligee require performance from any joint and several obligor (art. 11.1.3)?",
       "kind": "truth",
       "predicate": "obligee_may_require_from_any",
       "parameters": [
@@ -911,14 +834,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_3_EN",
-        "PICC_ART11_1_3_RU"
+        "PICC_ART11_1_3_EN"
       ]
     },
     {
       "id": "obligee-retains-claim-against-obligor",
       "task": "perevod-obyazatelstv",
-      "question": "Сохраняет ли кредитор требование к должнику при исполнении третьим лицом (ст. 9.2.6 п. 2)?",
+      "question": "Does the obligee retain the claim against the obligor where a third person performs (art. 9.2.6(2))?",
       "kind": "truth",
       "predicate": "obligee_retains_claim_against_obligor",
       "parameters": [
@@ -933,14 +855,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_2_6_EN",
-        "PICC_ART9_2_6_RU"
+        "PICC_ART9_2_6_EN"
       ]
     },
     {
       "id": "obligee-rights-against-new-obligor",
       "task": "perevod-obyazatelstv",
-      "question": "Какие права кредитор может заявить новому должнику (ст. 9.2.8 п. 1)?",
+      "question": "Which rights may the obligee assert against the new obligor (art. 9.2.8(1))?",
       "kind": "truth",
       "predicate": "obligee_rights_against_new_obligor",
       "parameters": [
@@ -955,14 +876,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_2_8_EN",
-        "PICC_ART9_2_8_RU"
+        "PICC_ART9_2_8_EN"
       ]
     },
     {
       "id": "obligor-consent-not-required",
       "task": "ustupka-prav",
-      "question": "Требуется ли согласие должника на уступку права (ст. 9.1.7 п. 2)?",
+      "question": "Is the obligor's consent required for the assignment of a right (art. 9.1.7(2))?",
       "kind": "truth",
       "predicate": "obligor_consent_not_required",
       "parameters": [
@@ -977,14 +897,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_7_EN",
-        "PICC_ART9_1_7_RU"
+        "PICC_ART9_1_7_EN"
       ]
     },
     {
       "id": "obligor-discharged-towards-others",
       "task": "mnozhestvennost",
-      "question": "Освобождается ли должник перед остальными кредиторами исполнением одному (ст. 11.2.2)?",
+      "question": "Is the obligor discharged towards the other obligees by performing to one (art. 11.2.2)?",
       "kind": "truth",
       "predicate": "obligor_discharged_towards_others",
       "parameters": [
@@ -1004,14 +923,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_2_2_EN",
-        "PICC_ART11_2_2_RU"
+        "PICC_ART11_2_2_EN"
       ]
     },
     {
       "id": "obligor-entitled-to-costs",
       "task": "ustupka-prav",
-      "question": "Возмещаются ли должнику дополнительные расходы от уступки (ст. 9.1.8)?",
+      "question": "Are the obligor's additional costs caused by the assignment reimbursed (art. 9.1.8)?",
       "kind": "truth",
       "predicate": "obligor_entitled_to_costs",
       "parameters": [
@@ -1026,14 +944,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_8_EN",
-        "PICC_ART9_1_8_RU"
+        "PICC_ART9_1_8_EN"
       ]
     },
     {
       "id": "obligors-jointly-and-severally-liable",
       "task": "perevod-obyazatelstv",
-      "question": "Отвечают ли первоначальный и новый должники солидарно (ст. 9.2.5 п. 3)?",
+      "question": "Are the original and the new obligor jointly and severally liable (art. 9.2.5(3))?",
       "kind": "truth",
       "predicate": "obligors_jointly_and_severally_liable",
       "parameters": [
@@ -1048,14 +965,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_2_5_EN",
-        "PICC_ART9_2_5_RU"
+        "PICC_ART9_2_5_EN"
       ]
     },
     {
       "id": "other-obligations-unaffected",
       "task": "mnozhestvennost",
-      "question": "Затрагивает ли давность или решение по одному должнику обязательства других (ст. 11.1.7 п. 1, 11.1.8 п. 1)?",
+      "question": "Do limitation or a decision concerning one obligor affect the obligations of the others (art. 11.1.7(1), 11.1.8(1))?",
       "kind": "truth",
       "predicate": "other_obligations_unaffected",
       "parameters": [
@@ -1086,15 +1002,13 @@
       ],
       "source_units": [
         "PICC_ART11_1_7_EN",
-        "PICC_ART11_1_7_RU",
-        "PICC_ART11_1_8_EN",
-        "PICC_ART11_1_8_RU"
+        "PICC_ART11_1_8_EN"
       ]
     },
     {
       "id": "others-discharged-by-performance",
       "task": "mnozhestvennost",
-      "question": "Освобождает ли исполнение одним солидарным должником остальных (ст. 11.1.5)?",
+      "question": "Does performance by one joint and several obligor discharge the others (art. 11.1.5)?",
       "kind": "truth",
       "predicate": "others_discharged_by_performance",
       "parameters": [
@@ -1114,14 +1028,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_5_EN",
-        "PICC_ART11_1_5_RU"
+        "PICC_ART11_1_5_EN"
       ]
     },
     {
       "id": "others-discharged-for-share",
       "task": "mnozhestvennost",
-      "question": "Освобождает ли освобождение одного должника остальных на его долю (ст. 11.1.6 п. 1)?",
+      "question": "Does the release of one obligor discharge the others to the extent of its share (art. 11.1.6(1))?",
       "kind": "truth",
       "predicate": "others_discharged_for_share",
       "parameters": [
@@ -1151,14 +1064,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART11_1_6_EN",
-        "PICC_ART11_1_6_RU"
+        "PICC_ART11_1_6_EN"
       ]
     },
     {
       "id": "right-assignable",
       "task": "ustupka-prav",
-      "question": "Может ли право быть уступлено (ст. 9.1.3, 9.1.4)?",
+      "question": "May the right be assigned (art. 9.1.3, 9.1.4)?",
       "kind": "truth",
       "predicate": "right_assignable",
       "parameters": [
@@ -1188,15 +1100,13 @@
       ],
       "source_units": [
         "PICC_ART9_1_3_EN",
-        "PICC_ART9_1_3_RU",
-        "PICC_ART9_1_4_EN",
-        "PICC_ART9_1_4_RU"
+        "PICC_ART9_1_4_EN"
       ]
     },
     {
       "id": "rules-on-obligations-apply",
       "task": "perevod-obyazatelstv",
-      "question": "Применяются ли к уступке договора правила о переводе обязательств (ст. 9.3.6 п. 2, 9.3.7 п. 2)?",
+      "question": "Do the rules on the transfer of obligations apply to the assignment of a contract (art. 9.3.6(2), 9.3.7(2))?",
       "kind": "truth",
       "predicate": "rules_on_obligations_apply",
       "parameters": [
@@ -1211,14 +1121,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_3_7_EN",
-        "PICC_ART9_3_7_RU"
+        "PICC_ART9_3_7_EN"
       ]
     },
     {
       "id": "rules-on-rights-apply",
       "task": "perevod-obyazatelstv",
-      "question": "Применяются ли к уступке договора правила об уступке прав (ст. 9.3.6 п. 1, 9.3.7 п. 1)?",
+      "question": "Do the rules on the assignment of rights apply to the assignment of a contract (art. 9.3.6(1), 9.3.7(1))?",
       "kind": "truth",
       "predicate": "rules_on_rights_apply",
       "parameters": [
@@ -1233,14 +1142,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_3_6_EN",
-        "PICC_ART9_3_6_RU"
+        "PICC_ART9_3_6_EN"
       ]
     },
     {
       "id": "section-applies-to-assignment",
       "task": "ustupka-prav",
-      "question": "Применяется ли раздел об уступке прав к этой передаче (ст. 9.1.1, 9.1.2)?",
+      "question": "Does the section on the assignment of rights apply to this transfer (art. 9.1.1, 9.1.2)?",
       "kind": "truth",
       "predicate": "section_applies_to_assignment",
       "parameters": [
@@ -1266,15 +1174,13 @@
       ],
       "source_units": [
         "PICC_ART9_1_1_EN",
-        "PICC_ART9_1_1_RU",
-        "PICC_ART9_1_2_EN",
-        "PICC_ART9_1_2_RU"
+        "PICC_ART9_1_2_EN"
       ]
     },
     {
       "id": "security-discharged-with-original-obligor",
       "task": "perevod-obyazatelstv",
-      "question": "Прекращается ли обеспечение третьего лица с освобождением первоначального должника (ст. 9.2.8 п. 2)?",
+      "question": "Is a security granted by a third person discharged with the release of the original obligor (art. 9.2.8(2))?",
       "kind": "truth",
       "predicate": "security_discharged_with_original_obligor",
       "parameters": [
@@ -1289,14 +1195,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_2_8_EN",
-        "PICC_ART9_2_8_RU"
+        "PICC_ART9_2_8_EN"
       ]
     },
     {
       "id": "security-transferred-with-right",
       "task": "ustupka-prav",
-      "question": "Переходит ли обеспечение вместе с уступленным правом (ст. 9.1.14)?",
+      "question": "Is the security transferred together with the assigned right (art. 9.1.14)?",
       "kind": "truth",
       "predicate": "security_transferred_with_right",
       "parameters": [
@@ -1311,14 +1216,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_14_EN",
-        "PICC_ART9_1_14_RU"
+        "PICC_ART9_1_14_EN"
       ]
     },
     {
       "id": "separate-obligation",
       "task": "mnozhestvennost",
-      "question": "Раздельны ли обязательства нескольких должников (ст. 11.1.1 подпункт b)?",
+      "question": "Are the obligations of several obligors separate (art. 11.1.1(b))?",
       "kind": "truth",
       "predicate": "separate_obligation",
       "parameters": [
@@ -1338,14 +1242,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_1_EN",
-        "PICC_ART11_1_1_RU"
+        "PICC_ART11_1_1_EN"
       ]
     },
     {
       "id": "set-off-assertable-against-assignee",
       "task": "ustupka-prav",
-      "question": "Может ли должник зачесть против цессионария требование к цеденту (ст. 9.1.13 п. 2)?",
+      "question": "May the obligor set off against the assignee a claim it has against the assignor (art. 9.1.13(2))?",
       "kind": "truth",
       "predicate": "set_off_assertable_against_assignee",
       "parameters": [
@@ -1360,14 +1263,13 @@
         "PICCO-02-ASSIGNMENT-OF-RIGHTS"
       ],
       "source_units": [
-        "PICC_ART9_1_13_EN",
-        "PICC_ART9_1_13_RU"
+        "PICC_ART9_1_13_EN"
       ]
     },
     {
       "id": "set-off-effective-from-notice",
       "task": "zachet",
-      "question": "С какого момента зачёт вступает в силу (ст. 8.5 п. 3)?",
+      "question": "From which moment does the set-off take effect (art. 8.5(3))?",
       "kind": "truth",
       "predicate": "set_off_effective_from_notice",
       "parameters": [
@@ -1382,14 +1284,13 @@
         "PICCO-01-SET-OFF"
       ],
       "source_units": [
-        "PICC_ART8_5_EN",
-        "PICC_ART8_5_RU"
+        "PICC_ART8_5_EN"
       ]
     },
     {
       "id": "set-off-relates-proportionally",
       "task": "zachet",
-      "question": "Относится ли зачёт ко всем обязательствам пропорционально (ст. 8.4 п. 2)?",
+      "question": "Does the set-off relate to all the obligations proportionally (art. 8.4(2))?",
       "kind": "truth",
       "predicate": "set_off_relates_proportionally",
       "parameters": [
@@ -1404,14 +1305,13 @@
         "PICCO-01-SET-OFF"
       ],
       "source_units": [
-        "PICC_ART8_4_EN",
-        "PICC_ART8_4_RU"
+        "PICC_ART8_4_EN"
       ]
     },
     {
       "id": "set-off-relates-to",
       "task": "zachet",
-      "question": "К какому обязательству относится зачёт (ст. 8.4)?",
+      "question": "To which obligation does the set-off relate (art. 8.4)?",
       "kind": "truth",
       "predicate": "set_off_relates_to",
       "parameters": [
@@ -1441,14 +1341,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART8_4_EN",
-        "PICC_ART8_4_RU"
+        "PICC_ART8_4_EN"
       ]
     },
     {
       "id": "shares-increased-proportionally",
       "task": "mnozhestvennost",
-      "question": "Увеличиваются ли доли остальных, если взыскать долю нельзя (ст. 11.1.13)?",
+      "question": "Are the shares of the others increased where a share cannot be recovered (art. 11.1.13)?",
       "kind": "truth",
       "predicate": "shares_increased_proportionally",
       "parameters": [
@@ -1468,14 +1367,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_13_EN",
-        "PICC_ART11_1_13_RU"
+        "PICC_ART11_1_13_EN"
       ]
     },
     {
       "id": "suspension-extends-to-others",
       "task": "mnozhestvennost",
-      "question": "Приостанавливается ли давность против остальных солидарных должников (ст. 11.1.7 п. 2)?",
+      "question": "Is limitation suspended against the other joint and several obligors as well (art. 11.1.7(2))?",
       "kind": "truth",
       "predicate": "suspension_extends_to_others",
       "parameters": [
@@ -1495,14 +1393,13 @@
         "PICCO-04-PLURALITY"
       ],
       "source_units": [
-        "PICC_ART11_1_7_EN",
-        "PICC_ART11_1_7_RU"
+        "PICC_ART11_1_7_EN"
       ]
     },
     {
       "id": "third-party-may-perform",
       "task": "perevod-obyazatelstv",
-      "question": "Может ли должник поручить исполнение третьему лицу (ст. 9.2.6 п. 1)?",
+      "question": "May the obligor entrust performance to a third person (art. 9.2.6(1))?",
       "kind": "truth",
       "predicate": "third_party_may_perform",
       "parameters": [
@@ -1522,14 +1419,13 @@
         "PICCO-03-TRANSFER-AND-CONTRACT-ASSIGNMENT"
       ],
       "source_units": [
-        "PICC_ART9_2_6_EN",
-        "PICC_ART9_2_6_RU"
+        "PICC_ART9_2_6_EN"
       ]
     },
     {
       "id": "transfer-effective",
       "task": "perevod-obyazatelstv",
-      "question": "Действителен ли перевод обязательства (ст. 9.2.1–9.2.4)?",
+      "question": "Is the transfer of the obligation effective (art. 9.2.1–9.2.4)?",
       "kind": "truth",
       "predicate": "transfer_effective",
       "parameters": [
@@ -1563,23 +1459,20 @@
       ],
       "source_units": [
         "PICC_ART9_2_1_EN",
-        "PICC_ART9_2_1_RU",
         "PICC_ART9_2_2_EN",
-        "PICC_ART9_2_2_RU",
         "PICC_ART9_2_3_EN",
-        "PICC_ART9_2_4_EN",
-        "PICC_ART9_2_4_RU"
+        "PICC_ART9_2_4_EN"
       ]
     },
     {
       "id": "pozitsii-set-off-by-notice",
       "task": "zachet",
-      "question": "Активна ли власть стороны произвести зачёт извещением (ст. 8.3)?",
+      "question": "Is the power of a party to effect a set-off by notice active (art. 8.3)?",
       "kind": "positions",
       "norms": [
         "SetOffByNotice"
       ],
-      "template": "evaluate positions(); expect position(SetOffByNotice, <статус>);",
+      "template": "evaluate positions(); expect position(SetOffByNotice, <status>);",
       "tests": [
         "PICCO-01-SET-OFF"
       ],
@@ -1590,86 +1483,74 @@
         }
       ],
       "source_units": [
-        "PICC_ART8_3_EN",
-        "PICC_ART8_3_RU"
+        "PICC_ART8_3_EN"
       ]
     }
   ],
   "boundaries": [
     {
-      "id": "gr-ne-pravo-gosudarstva-o",
+      "id": "br-not-the-law-of-a-state",
       "task": "zachet",
       "reason_kind": "source_delegates",
-      "question": "Какие императивные нормы применимого права ограничивают зачёт или уступку?",
+      "question": "Which mandatory rules of the applicable law restrict set-off or assignment?",
       "source_units": [
         "PICC_ART8_1_EN"
       ],
-      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`)."
+      "limitation": "THIS IS NOT THE LAW OF A STATE. The Principles apply when the parties have agreed on them, or when a court or arbitral tribunal takes them as general principles of law; they do not replace the mandatory rules of the applicable law (article 1.4, hub `unidroit.picc`)."
     },
     {
-      "id": "gr-net-u-konvencii-o",
+      "id": "br-convention-has-no-rules",
       "task": "ustupka-prav",
       "reason_kind": "source_delegates",
-      "question": "Что отвечает Конвенция ООН 1980 года об уступке требования и зачёте?",
+      "question": "What does the 1980 UN Convention answer on the assignment of a claim and on set-off?",
       "source_units": [
         "PICC_ART9_1_1_EN"
       ],
-      "limitation": "НИ ЗАЧЁТА, НИ УСТУПКИ, НИ СОЛИДАРНОСТИ У КОНВЕНЦИИ ООН 1980 ГОДА НЕТ ВОВСЕ: её предмет — заключение договора международной купли-продажи и права сторон по нему. Моста к `intl.uncitral.cisg*` здесь нет по существу, а не по недоделке; путь к этим главам открывает статья 7(2) Конвенции."
+      "limitation": "THE 1980 UN CONVENTION HAS NEITHER SET-OFF NOR ASSIGNMENT NOR SOLIDARITY AT ALL: its subject is the formation of a contract for the international sale of goods and the rights of the parties under it. There is no bridge to `intl.uncitral.cisg*` here in substance, not for want of work; the way to these chapters is opened by article 7(2) of the Convention."
     },
     {
-      "id": "gr-osobye-pravila",
+      "id": "br-special-rules",
       "task": "perevod-obyazatelstv",
       "reason_kind": "source_delegates",
-      "question": "Как передаются оборотные документы и обязательства при передаче предприятия?",
+      "question": "How are negotiable instruments and obligations transferred on the transfer of a business?",
       "source_units": [
         "PICC_ART9_1_2_EN",
         "PICC_ART9_2_2_EN",
         "PICC_ART9_3_2_EN"
       ],
-      "limitation": "ОСОБЫЕ ПРАВИЛА ОБ ОБОРОТНЫХ ДОКУМЕНТАХ И О ПЕРЕДАЧЕ ПРЕДПРИЯТИЯ ИСТОЧНИК ИСКЛЮЧАЕТ САМ (ст. 9.1.2, 9.2.2, 9.3.2): их условия — вопрос применимого права и вход дела."
+      "limitation": "SPECIAL RULES ON NEGOTIABLE INSTRUMENTS AND ON THE TRANSFER OF A BUSINESS ARE EXCLUDED BY THE SOURCE ITSELF (articles 9.1.2, 9.2.2, 9.3.2): their conditions are a question of the applicable law and an input of the case."
     },
     {
-      "id": "gr-razmery-doley",
+      "id": "br-shares-and-amounts",
       "task": "mnozhestvennost",
       "reason_kind": "case_data",
-      "question": "Каковы доли должников и суммы обязательств в деньгах?",
+      "question": "What are the shares of the obligors and the amounts of the obligations in money?",
       "source_units": [
         "PICC_ART11_1_9_EN",
         "PICC_ART8_5_EN"
       ],
-      "limitation": "РАЗМЕРЫ ДОЛЕЙ И СУММ МОДЕЛЬ НЕ СЧИТАЕТ: статьи 8.5, 11.1.9–11.1.13 и 11.2.4 называют правило (в размере меньшего обязательства, в равных долях, пропорционально), но числа приносит дело. Пропорциональное отнесение зачёта (ст. 8.4 п. 2) по той же причине объявляется, а не вычисляется."
+      "limitation": "THE MODEL DOES NOT COMPUTE SHARES AND AMOUNTS: articles 8.5, 11.1.9–11.1.13 and 11.2.4 name the rule (to the extent of the lesser obligation, in equal shares, proportionally), while the numbers are brought by the case. Proportional imputation of a set-off (article 8.4(2)) is declared rather than computed for the same reason."
     },
     {
-      "id": "gr-lichnyy-harakter",
+      "id": "br-personal-character",
       "task": "ustupka-prav",
       "reason_kind": "case_data",
-      "question": "Носит ли обязательство существенно личный характер и утяжеляет ли его уступка?",
+      "question": "Is the obligation of an exclusively personal character and does the assignment make it more burdensome?",
       "source_units": [
         "PICC_ART9_1_3_EN",
         "PICC_ART9_1_7_EN"
       ],
-      "limitation": "СУЩЕСТВЕННО ЛИЧНЫЙ ХАРАКТЕР ОБЯЗАТЕЛЬСТВА (ст. 9.1.7, 9.2.6) И СУЩЕСТВЕННОЕ УТЯЖЕЛЕНИЕ ОБЯЗАТЕЛЬСТВА УСТУПКОЙ (ст. 9.1.3, 9.1.4) — ФАКТЫ ДЕЛА: обе оценки приносит дело, а не выводит модель."
+      "limitation": "AN EXCLUSIVELY PERSONAL CHARACTER OF AN OBLIGATION (articles 9.1.7, 9.2.6) AND A SIGNIFICANTLY MORE BURDENSOME OBLIGATION CAUSED BY AN ASSIGNMENT (articles 9.1.3, 9.1.4) ARE FACTS OF THE CASE: both assessments are brought by the case, not derived by the model."
     },
     {
-      "id": "gr-obstoyatelstva-razdelnosti",
+      "id": "br-separate-obligations",
       "task": "mnozhestvennost",
       "reason_kind": "case_data",
-      "question": "Какие обстоятельства указывают на раздельность обязательств?",
+      "question": "Which circumstances indicate that the obligations are separate?",
       "source_units": [
         "PICC_ART11_1_2_EN"
       ],
-      "limitation": "СОЛИДАРНОСТЬ ПРЕЗЮМИРУЕТСЯ (ст. 11.1.2), И ОПРОВЕРГАЮТ ЕЁ ОБСТОЯТЕЛЬСТВА ДЕЛА. Какие именно обстоятельства указывают на раздельность, источник не перечисляет — это заявление дела."
-    },
-    {
-      "id": "gr-russkij-tekst-o",
-      "task": "zachet",
-      "reason_kind": "source_delegates",
-      "question": "Каков официальный текст статьи глав 8, 9 и 11?",
-      "source_units": [
-        "PICC_ART8_1_EN",
-        "PICC_ART8_1_RU"
-      ],
-      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский; первичный якорь §194 — английский black-letter текст."
+      "limitation": "SOLIDARITY IS PRESUMED (article 11.1.2), AND THE CIRCUMSTANCES OF THE CASE REBUT IT. The source does not enumerate which circumstances indicate separate obligations — that is an assertion of the case."
     }
   ],
   "internal": []

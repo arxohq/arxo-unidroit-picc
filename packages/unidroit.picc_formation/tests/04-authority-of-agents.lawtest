@@ -1,0 +1,141 @@
+language "law.core" version "0.2";
+package unidroit.picc_formation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-formation";
+
+// Case 4. Authority of agents (2.2.1–2.2.10).
+//
+// Three outcomes on the same kinds of facts: disclosed agency binds the
+// principal; undisclosed agency binds the agent alone; an act without authority
+// does not bind the principal, but apparent authority removes that. Ratification
+// by the principal (2.2.9) is a §127 power with an effect of its own.
+
+test "PICCF-04-AGENCY" {
+    given {
+        context {
+            deadline_policy PICC_ACCEPTANCE_PERIOD;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": act_of_agent(entity_ref("urn:case:piccf:act-disclosed"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:principal"), entity_ref("urn:case:piccf:third")) { origin case_input; }
+        assert "a1": within_scope_of_authority(entity_ref("urn:case:piccf:act-disclosed")) { origin case_input; }
+        assert "a2": third_party_knew_of_agency(entity_ref("urn:case:piccf:act-disclosed")) { origin case_input; }
+        assert "a3": act_of_agent(entity_ref("urn:case:piccf:act-undisclosed"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:principal"), entity_ref("urn:case:piccf:third")) { origin case_input; }
+        assert "a4": within_scope_of_authority(entity_ref("urn:case:piccf:act-undisclosed")) { origin case_input; }
+        assert "a5": act_of_agent(entity_ref("urn:case:piccf:act-unauthorised"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:principal"), entity_ref("urn:case:piccf:third")) { origin case_input; }
+        assert "a6": acts_without_or_exceeding_authority(entity_ref("urn:case:piccf:act-unauthorised")) { origin case_input; }
+        assert "a7": act_of_agent(entity_ref("urn:case:piccf:act-apparent"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:principal"), entity_ref("urn:case:piccf:third")) { origin case_input; }
+        assert "a8": acts_without_or_exceeding_authority(entity_ref("urn:case:piccf:act-apparent")) { origin case_input; }
+        assert "a9": principal_caused_reasonable_belief(entity_ref("urn:case:piccf:act-apparent")) { origin adjudicated; }
+        assert "a10": act_of_agent(entity_ref("urn:case:piccf:act-ratified"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:principal"), entity_ref("urn:case:piccf:third")) { origin case_input; }
+        assert "a11": acts_without_or_exceeding_authority(entity_ref("urn:case:piccf:act-ratified")) { origin case_input; }
+        assert "a12": ratified_by_principal(entity_ref("urn:case:piccf:act-ratified")) { origin case_input; }
+        assert "a13": conflict_of_interests(entity_ref("urn:case:piccf:act-disclosed")) { origin case_input; }
+        assert "a14": not_reasonable_to_expect_agent_to_act_itself(entity_ref("urn:case:piccf:act-disclosed")) { origin adjudicated; }
+        assert "a15": authority_terminated(entity_ref("urn:case:piccf:act-undisclosed")) { origin case_input; }
+        assert "a16": third_party_knew_of_termination(entity_ref("urn:case:piccf:act-undisclosed")) { origin case_input; }
+        assert "a17": act_necessary_to_prevent_harm(entity_ref("urn:case:piccf:act-unauthorised")) { origin case_input; }
+        assert "a18": authority_terminated(entity_ref("urn:case:piccf:act-unauthorised")) { origin case_input; }
+        assert "a19": authority_granted_expressly_or_impliedly(entity_ref("urn:case:piccf:act-disclosed")) { origin case_input; }
+        assert "n0": act_of_agent(entity_ref("urn:case:piccf:act-undertaking"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:principal"), entity_ref("urn:case:piccf:third")) { origin case_input; }
+        assert "n1": within_scope_of_authority(entity_ref("urn:case:piccf:act-undertaking")) { origin case_input; }
+        assert "n2": third_party_knew_of_agency(entity_ref("urn:case:piccf:act-undertaking")) { origin case_input; }
+        assert "n3": agent_undertakes_to_be_party(entity_ref("urn:case:piccf:act-undertaking")) { origin case_input; }
+        assert "n4": agent_represented_itself_as_owner(entity_ref("urn:case:piccf:act-undisclosed")) { origin case_input; }
+        assert "n5": real_owner_discovered(entity_ref("urn:case:piccf:act-undisclosed")) { origin case_input; }
+        assert "n6": conflict_disclosed_without_objection(entity_ref("urn:case:piccf:act-apparent")) { origin case_input; }
+        assert "n7": conflict_of_interests(entity_ref("urn:case:piccf:act-apparent")) { origin case_input; }
+        assert "n8": ratification_period_specified(entity_ref("urn:case:piccf:act-unauthorised")) { origin case_input; }
+        assert "n9": not_ratified_within_period(entity_ref("urn:case:piccf:act-unauthorised")) { origin case_input; }
+        assert "n10": third_party_unaware_of_lack_of_authority(entity_ref("urn:case:piccf:act-unauthorised")) { origin case_input; }
+        assert "n11": third_party_refused_to_be_bound(entity_ref("urn:case:piccf:act-unauthorised")) { origin case_input; }
+
+    }
+
+    evaluate truth(affects_principal_and_third_party(entity_ref("urn:case:piccf:act-disclosed")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AgencyDisclosed);
+
+    evaluate truth(affects_agent_and_third_party_only(entity_ref("urn:case:piccf:act-undisclosed")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AgencyUndisclosed);
+
+    evaluate truth(no_effect_on_principal(entity_ref("urn:case:piccf:act-unauthorised")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ActsWithoutAuthority);
+
+    // Apparent authority removes the conclusion that there is no effect.
+    evaluate truth(no_effect_on_principal(entity_ref("urn:case:piccf:act-apparent")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(agent_liable_for_damages(entity_ref("urn:case:piccf:act-unauthorised"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:third")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AgentLiableWithoutAuthority);
+
+    // A ratified act gives rise to no liability of the agent.
+    evaluate truth(agent_liable_for_damages(entity_ref("urn:case:piccf:act-ratified"), entity_ref("urn:case:piccf:agent"), entity_ref("urn:case:piccf:third")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(act_produces_effects_as_authorised(entity_ref("urn:case:piccf:act-ratified")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RatifiedActIsAuthorised);
+
+    evaluate positions();
+    expect position(Ratify, ACTIVE);
+
+    evaluate truth(principal_may_avoid_contract(entity_ref("urn:case:piccf:act-disclosed"), entity_ref("urn:case:piccf:principal")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ConflictOfInterestsAllowsAvoidance);
+
+    evaluate truth(implied_authority_to_appoint_sub_agent(entity_ref("urn:case:piccf:act-disclosed"), entity_ref("urn:case:piccf:agent")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ImpliedAuthorityForSubAgent);
+
+    evaluate truth(termination_effective_against_third_party(entity_ref("urn:case:piccf:act-undisclosed")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationEffectiveOnlyIfKnown);
+
+    evaluate truth(agent_remains_authorised(entity_ref("urn:case:piccf:act-unauthorised")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AgentRemainsAuthorisedToPreventHarm);
+
+    evaluate truth(external_relations_governed(entity_ref("urn:case:piccf:act-disclosed")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SectionGovernsExternalRelations);
+
+    evaluate truth(authority_covers_necessary_acts(entity_ref("urn:case:piccf:act-disclosed")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AuthorityCoversNecessaryActs);
+
+    // Article 2.2.3(2): with the principal's consent the agent becomes a party
+    // itself — disclosed agency is displaced.
+    evaluate truth(affects_agent_and_third_party_only(entity_ref("urn:case:piccf:act-undertaking")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AgentBecomesPartyItself);
+
+    evaluate truth(affects_principal_and_third_party(entity_ref("urn:case:piccf:act-undertaking")));
+    expect truth_status == NEITHER;
+
+    // Article 2.2.4(2): the agent held itself out as the owner of the business.
+    evaluate truth(rights_exercisable_against_owner(entity_ref("urn:case:piccf:act-undisclosed")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RightsAgainstRealOwner);
+
+    // Article 2.2.7(2)(b): the conflict was disclosed and not objected to —
+    // avoidance is removed.
+    evaluate truth(principal_may_avoid_contract(entity_ref("urn:case:piccf:act-apparent"), entity_ref("urn:case:piccf:principal")));
+    expect truth_status == NEITHER;
+
+    // Article 2.2.9(2)-(3): the time for ratification expired; the third party
+    // refused to regard itself as bound by a ratification.
+    evaluate truth(ratification_no_longer_possible(entity_ref("urn:case:piccf:act-unauthorised")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RatificationPeriodExpired);
+
+    evaluate truth(ratification_ineffective_against_third_party(entity_ref("urn:case:piccf:act-unauthorised")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RefusalBeforeRatification);
+}

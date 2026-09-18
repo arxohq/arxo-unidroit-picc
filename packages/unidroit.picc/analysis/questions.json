@@ -1,106 +1,71 @@
 {
-  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "$comment": "Catalogue of questions of the package (DECISION-0190): each card is a parameterised §172 query template with its evidence of execution, the boundaries carry the verbatim limitation from package-info.json. Gate: check_package_questions.py --only <package> --emit.",
   "format": "law.package-questions/0.1",
   "package": "unidroit.picc",
+  "language": "en",
   "tasks": [
     {
       "id": "general-provisions",
-      "title": "Общие положения: свобода, обязательность, императивные нормы, отступление, добросовестность, обычаи, извещения (гл. 1)",
+      "title": "General provisions: freedom, binding character, mandatory rules, derogation, good faith, usages, notice (ch. 1)",
       "source_units": [
         "PICC_ART1_10_EN",
-        "PICC_ART1_10_RU",
         "PICC_ART1_11_EN",
-        "PICC_ART1_11_RU",
         "PICC_ART1_2_EN",
-        "PICC_ART1_2_RU",
         "PICC_ART1_3_EN",
-        "PICC_ART1_3_RU",
         "PICC_ART1_4_EN",
-        "PICC_ART1_4_RU",
         "PICC_ART1_5_EN",
-        "PICC_ART1_5_RU",
         "PICC_ART1_6_EN",
-        "PICC_ART1_6_RU",
         "PICC_ART1_7_EN",
-        "PICC_ART1_7_RU",
         "PICC_ART1_8_EN",
-        "PICC_ART1_8_RU",
-        "PICC_ART1_9_EN",
-        "PICC_ART1_9_RU"
+        "PICC_ART1_9_EN"
       ]
     },
     {
       "id": "computation-of-time",
-      "title": "Исчисление сроков, установленных сторонами (ст. 1.12)",
+      "title": "Computation of time set by the parties (art. 1.12)",
       "source_units": [
-        "PICC_ART1_12_EN",
-        "PICC_ART1_12_RU"
+        "PICC_ART1_12_EN"
       ]
     },
     {
       "id": "interpretation",
-      "title": "Толкование договора и заявлений сторон (гл. 4)",
+      "title": "Interpretation of the contract and of the parties' statements (ch. 4)",
       "source_units": [
         "PICC_ART4_1_EN",
-        "PICC_ART4_1_RU",
         "PICC_ART4_2_EN",
-        "PICC_ART4_2_RU",
         "PICC_ART4_4_EN",
         "PICC_ART4_5_EN",
         "PICC_ART4_6_EN",
-        "PICC_ART4_6_RU",
         "PICC_ART4_7_EN",
-        "PICC_ART4_7_RU",
-        "PICC_ART4_8_EN",
-        "PICC_ART4_8_RU"
+        "PICC_ART4_8_EN"
       ]
     },
     {
       "id": "content",
-      "title": "Содержание договора, права третьих лиц и условия (гл. 5)",
+      "title": "Content of the contract, third party rights and conditions (ch. 5)",
       "source_units": [
         "PICC_ART1_1_EN",
-        "PICC_ART1_1_RU",
         "PICC_ART4_3_EN",
-        "PICC_ART4_3_RU",
         "PICC_ART5_1_1_EN",
-        "PICC_ART5_1_1_RU",
         "PICC_ART5_1_2_EN",
-        "PICC_ART5_1_2_RU",
         "PICC_ART5_1_3_EN",
-        "PICC_ART5_1_3_RU",
         "PICC_ART5_1_4_EN",
-        "PICC_ART5_1_4_RU",
         "PICC_ART5_1_5_EN",
-        "PICC_ART5_1_5_RU",
         "PICC_ART5_1_6_EN",
-        "PICC_ART5_1_6_RU",
         "PICC_ART5_1_7_EN",
-        "PICC_ART5_1_7_RU",
         "PICC_ART5_1_8_EN",
-        "PICC_ART5_1_8_RU",
         "PICC_ART5_1_9_EN",
-        "PICC_ART5_1_9_RU",
         "PICC_ART5_2_1_EN",
         "PICC_ART5_2_2_EN",
         "PICC_ART5_2_3_EN",
-        "PICC_ART5_2_3_RU",
         "PICC_ART5_2_4_EN",
-        "PICC_ART5_2_4_RU",
         "PICC_ART5_2_5_EN",
-        "PICC_ART5_2_5_RU",
         "PICC_ART5_2_6_EN",
-        "PICC_ART5_2_6_RU",
         "PICC_ART5_3_1_EN",
-        "PICC_ART5_3_1_RU",
         "PICC_ART5_3_2_EN",
-        "PICC_ART5_3_2_RU",
         "PICC_ART5_3_3_EN",
-        "PICC_ART5_3_3_RU",
         "PICC_ART5_3_4_EN",
-        "PICC_ART5_3_4_RU",
-        "PICC_ART5_3_5_EN",
-        "PICC_ART5_3_5_RU"
+        "PICC_ART5_3_5_EN"
       ]
     }
   ],
@@ -108,7 +73,7 @@
     {
       "id": "applicable-price",
       "task": "content",
-      "question": "Какая цена применима к договору (ст. 5.1.7)?",
+      "question": "Which price applies to the contract (art. 5.1.7)?",
       "kind": "truth",
       "predicate": "applicable_price",
       "parameters": [
@@ -146,14 +111,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_1_7_EN",
-        "PICC_ART5_1_7_RU"
+        "PICC_ART5_1_7_EN"
       ]
     },
     {
       "id": "beneficiary-may-invoke-clause",
       "task": "content",
-      "question": "Может ли выгодоприобретатель сослаться на оговорку об ограничении ответственности (ст. 5.2.3)?",
+      "question": "May the beneficiary invoke a clause limiting liability (art. 5.2.3)?",
       "kind": "truth",
       "predicate": "beneficiary_may_invoke_clause",
       "parameters": [
@@ -178,14 +142,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_2_3_EN",
-        "PICC_ART5_2_3_RU"
+        "PICC_ART5_2_3_EN"
       ]
     },
     {
       "id": "beneficiary-right-exists",
       "task": "content",
-      "question": "Имеет ли выгодоприобретатель право против промитента (ст. 5.2.1, 5.2.2)?",
+      "question": "Does the beneficiary have a right against the promisor (art. 5.2.1, 5.2.2)?",
       "kind": "truth",
       "predicate": "beneficiary_right_exists",
       "parameters": [
@@ -217,14 +180,13 @@
       "source_units": [
         "PICC_ART5_2_1_EN",
         "PICC_ART5_2_2_EN",
-        "PICC_ART5_2_6_EN",
-        "PICC_ART5_2_6_RU"
+        "PICC_ART5_2_6_EN"
       ]
     },
     {
       "id": "binding-upon-parties",
       "task": "general-provisions",
-      "question": "Обязателен ли договор для сторон (ст. 1.3)?",
+      "question": "Is the contract binding upon the parties (art. 1.3)?",
       "kind": "truth",
       "predicate": "binding_upon_parties",
       "parameters": [
@@ -239,14 +201,13 @@
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
       "source_units": [
-        "PICC_ART1_3_EN",
-        "PICC_ART1_3_RU"
+        "PICC_ART1_3_EN"
       ]
     },
     {
       "id": "bound-by-usage",
       "task": "general-provisions",
-      "question": "Связаны ли стороны обычаем или практикой (ст. 1.9)?",
+      "question": "Are the parties bound by a usage or a practice (art. 1.9)?",
       "kind": "truth",
       "predicate": "bound_by_usage",
       "parameters": [
@@ -284,14 +245,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART1_9_EN",
-        "PICC_ART1_9_RU"
+        "PICC_ART1_9_EN"
       ]
     },
     {
       "id": "breached-duty-to-preserve-rights",
       "task": "content",
-      "question": "Нарушила ли сторона обязанность сохранять права другой стороны (ст. 5.3.4)?",
+      "question": "Has a party breached the duty to preserve the other party's rights (art. 5.3.4)?",
       "kind": "truth",
       "predicate": "breached_duty_to_preserve_rights",
       "parameters": [
@@ -316,14 +276,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_3_4_EN",
-        "PICC_ART5_3_4_RU"
+        "PICC_ART5_3_4_EN"
       ]
     },
     {
       "id": "circumstance-to-be-regarded",
       "task": "content",
-      "question": "Учитывается ли обстоятельство при толковании (ст. 4.3)?",
+      "question": "Is the circumstance to be regarded in interpretation (art. 4.3)?",
       "kind": "truth",
       "predicate": "circumstance_to_be_regarded",
       "parameters": [
@@ -343,14 +302,13 @@
         "PICC-GEN-02-INTERPRETATION"
       ],
       "source_units": [
-        "PICC_ART4_3_EN",
-        "PICC_ART4_3_RU"
+        "PICC_ART4_3_EN"
       ]
     },
     {
       "id": "contract-comes-to-an-end",
       "task": "content",
-      "question": "Прекращается ли договор при наступлении отменительного условия (ст. 5.3.2)?",
+      "question": "Does the contract come to an end on the occurrence of a resolutive condition (art. 5.3.2)?",
       "kind": "truth",
       "predicate": "contract_comes_to_an_end",
       "parameters": [
@@ -375,14 +333,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_3_2_EN",
-        "PICC_ART5_3_2_RU"
+        "PICC_ART5_3_2_EN"
       ]
     },
     {
       "id": "contract-interpreted-by",
       "task": "interpretation",
-      "question": "По какому прочтению толкуется договор (ст. 4.1)?",
+      "question": "By which reading is the contract interpreted (art. 4.1)?",
       "kind": "truth",
       "predicate": "contract_interpreted_by",
       "parameters": [
@@ -416,14 +373,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART4_1_EN",
-        "PICC_ART4_1_RU"
+        "PICC_ART4_1_EN"
       ]
     },
     {
       "id": "contract-takes-effect",
       "task": "content",
-      "question": "Вступает ли договор в силу при наступлении отлагательного условия (ст. 5.3.2)?",
+      "question": "Does the contract take effect on the occurrence of a suspensive condition (art. 5.3.2)?",
       "kind": "truth",
       "predicate": "contract_takes_effect",
       "parameters": [
@@ -448,14 +404,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_3_2_EN",
-        "PICC_ART5_3_2_RU"
+        "PICC_ART5_3_2_EN"
       ]
     },
     {
       "id": "contract-terminated-by-notice",
       "task": "content",
-      "question": "Прекращён ли бессрочный договор извещением (ст. 5.1.8)?",
+      "question": "Has a contract for an indefinite period been terminated by notice (art. 5.1.8)?",
       "kind": "truth",
       "predicate": "contract_terminated_by_notice",
       "parameters": [
@@ -475,14 +430,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_1_8_EN",
-        "PICC_ART5_1_8_RU"
+        "PICC_ART5_1_8_EN"
       ]
     },
     {
       "id": "contractual-obligation",
       "task": "content",
-      "question": "Является ли обязательство договорным (ст. 5.1.1)?",
+      "question": "Is the obligation an express contractual obligation (art. 5.1.1)?",
       "kind": "truth",
       "predicate": "contractual_obligation",
       "parameters": [
@@ -512,14 +466,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_1_1_EN",
-        "PICC_ART5_1_1_RU"
+        "PICC_ART5_1_1_EN"
       ]
     },
     {
       "id": "court-includes-arbitral-tribunal",
       "task": "general-provisions",
-      "question": "Включает ли суд арбитраж для целей Принципов (ст. 1.11)?",
+      "question": "Does \"court\" include an arbitral tribunal for the purposes of the Principles (art. 1.11)?",
       "kind": "truth",
       "predicate": "court_includes_arbitral_tribunal",
       "parameters": [
@@ -537,7 +490,7 @@
     {
       "id": "defence-available-against-beneficiary",
       "task": "content",
-      "question": "Может ли промитент заявить возражение против выгодоприобретателя (ст. 5.2.4)?",
+      "question": "May the promisor assert a defence against the beneficiary (art. 5.2.4)?",
       "kind": "truth",
       "predicate": "defence_available_against_beneficiary",
       "parameters": [
@@ -562,14 +515,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_2_4_EN",
-        "PICC_ART5_2_4_RU"
+        "PICC_ART5_2_4_EN"
       ]
     },
     {
       "id": "derogation-effective",
       "task": "general-provisions",
-      "question": "Действует ли отступление сторон от положения Принципов (ст. 1.5)?",
+      "question": "Is a derogation by the parties from a provision of the Principles effective (art. 1.5)?",
       "kind": "truth",
       "predicate": "derogation_effective",
       "parameters": [
@@ -599,14 +551,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART1_5_EN",
-        "PICC_ART1_5_RU"
+        "PICC_ART1_5_EN"
       ]
     },
     {
       "id": "exclusion-of-good-faith-ineffective",
       "task": "general-provisions",
-      "question": "Имеет ли силу попытка исключить обязанность добросовестности (ст. 1.7 п. 2)?",
+      "question": "Does an attempt to exclude the duty of good faith have effect (art. 1.7(2))?",
       "kind": "truth",
       "predicate": "exclusion_of_good_faith_ineffective",
       "parameters": [
@@ -621,14 +572,13 @@
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
       "source_units": [
-        "PICC_ART1_7_EN",
-        "PICC_ART1_7_RU"
+        "PICC_ART1_7_EN"
       ]
     },
     {
       "id": "factor-determines-kind-of-duty",
       "task": "content",
-      "question": "Учитывается ли фактор при определении рода обязанности (ст. 5.1.5)?",
+      "question": "Is the factor taken into account in determining the kind of duty (art. 5.1.5)?",
       "kind": "truth",
       "predicate": "factor_determines_kind_of_duty",
       "parameters": [
@@ -648,14 +598,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_1_5_EN",
-        "PICC_ART5_1_5_RU"
+        "PICC_ART5_1_5_EN"
       ]
     },
     {
       "id": "form-not-required",
       "task": "general-provisions",
-      "question": "Требуют ли Принципы особой формы договора (ст. 1.2)?",
+      "question": "Do the Principles require any particular form of contract (art. 1.2)?",
       "kind": "truth",
       "predicate": "form_not_required",
       "parameters": [
@@ -670,14 +619,13 @@
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
       "source_units": [
-        "PICC_ART1_2_EN",
-        "PICC_ART1_2_RU"
+        "PICC_ART1_2_EN"
       ]
     },
     {
       "id": "implied-obligation",
       "task": "content",
-      "question": "Является ли обязательство подразумеваемым (ст. 5.1.2)?",
+      "question": "Is the obligation an implied one (art. 5.1.2)?",
       "kind": "truth",
       "predicate": "implied_obligation",
       "parameters": [
@@ -715,14 +663,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_1_2_EN",
-        "PICC_ART5_1_2_RU"
+        "PICC_ART5_1_2_EN"
       ]
     },
     {
       "id": "inconsistent-behaviour-barred",
       "task": "general-provisions",
-      "question": "Может ли сторона действовать вопреки вызванному ею пониманию (ст. 1.8)?",
+      "question": "May a party act inconsistently with an understanding it has caused (art. 1.8)?",
       "kind": "truth",
       "predicate": "inconsistent_behaviour_barred",
       "parameters": [
@@ -742,14 +689,13 @@
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
       "source_units": [
-        "PICC_ART1_8_EN",
-        "PICC_ART1_8_RU"
+        "PICC_ART1_8_EN"
       ]
     },
     {
       "id": "may-not-rely-on-fulfilment",
       "task": "content",
-      "question": "Лишена ли сторона права ссылаться на наступление условия (ст. 5.3.3 п. 2)?",
+      "question": "Is a party deprived of the right to rely on the fulfilment of a condition (art. 5.3.3(2))?",
       "kind": "truth",
       "predicate": "may_not_rely_on_fulfilment",
       "parameters": [
@@ -774,14 +720,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_3_3_EN",
-        "PICC_ART5_3_3_RU"
+        "PICC_ART5_3_3_EN"
       ]
     },
     {
       "id": "may-not-rely-on-non-fulfilment",
       "task": "content",
-      "question": "Лишена ли сторона права ссылаться на ненаступление условия (ст. 5.3.3 п. 1)?",
+      "question": "Is a party deprived of the right to rely on the non-fulfilment of a condition (art. 5.3.3(1))?",
       "kind": "truth",
       "predicate": "may_not_rely_on_non_fulfilment",
       "parameters": [
@@ -806,14 +751,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_3_3_EN",
-        "PICC_ART5_3_3_RU"
+        "PICC_ART5_3_3_EN"
       ]
     },
     {
       "id": "notice-effective",
       "task": "general-provisions",
-      "question": "Вступило ли извещение в силу (ст. 1.10)?",
+      "question": "Has the notice become effective (art. 1.10)?",
       "kind": "truth",
       "predicate": "notice_effective",
       "parameters": [
@@ -833,14 +777,13 @@
         "PICC-GEN-04-NOTICE-USAGES-AND-TIME"
       ],
       "source_units": [
-        "PICC_ART1_10_EN",
-        "PICC_ART1_10_RU"
+        "PICC_ART1_10_EN"
       ]
     },
     {
       "id": "obligation-performed",
       "task": "content",
-      "question": "Исполнено ли обязательство по мере своего рода (ст. 5.1.4)?",
+      "question": "Is the obligation performed by the measure of its kind (art. 5.1.4)?",
       "kind": "truth",
       "predicate": "obligation_performed",
       "parameters": [
@@ -870,14 +813,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_1_4_EN",
-        "PICC_ART5_1_4_RU"
+        "PICC_ART5_1_4_EN"
       ]
     },
     {
       "id": "parties-free-to-contract",
       "task": "content",
-      "question": "Свободны ли лица заключить договор и определить его содержание (ст. 1.1)?",
+      "question": "Are the persons free to conclude a contract and to determine its content (art. 1.1)?",
       "kind": "truth",
       "predicate": "parties_free_to_contract",
       "parameters": [
@@ -897,14 +839,13 @@
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
       "source_units": [
-        "PICC_ART1_1_EN",
-        "PICC_ART1_1_RU"
+        "PICC_ART1_1_EN"
       ]
     },
     {
       "id": "period-ends-on",
       "task": "computation-of-time",
-      "question": "Каким днём истекает срок, установленный стороной (ст. 1.12)?",
+      "question": "On which day does a period set by a party end (art. 1.12)?",
       "kind": "truth",
       "predicate": "period_ends_on",
       "parameters": [
@@ -942,14 +883,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART1_12_EN",
-        "PICC_ART1_12_RU"
+        "PICC_ART1_12_EN"
       ]
     },
     {
       "id": "principles-do-not-restrict-mandatory-rule",
       "task": "general-provisions",
-      "question": "Ограничивают ли Принципы применение императивной нормы (ст. 1.4)?",
+      "question": "Do the Principles restrict the application of a mandatory rule (art. 1.4)?",
       "kind": "truth",
       "predicate": "principles_do_not_restrict_mandatory_rule",
       "parameters": [
@@ -964,14 +904,13 @@
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
       "source_units": [
-        "PICC_ART1_4_EN",
-        "PICC_ART1_4_RU"
+        "PICC_ART1_4_EN"
       ]
     },
     {
       "id": "quality-sufficient",
       "task": "content",
-      "question": "Отвечает ли качество исполнения статье 5.1.6?",
+      "question": "Does the quality of performance satisfy article 5.1.6?",
       "kind": "truth",
       "predicate": "quality_sufficient",
       "parameters": [
@@ -991,14 +930,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_1_6_EN",
-        "PICC_ART5_1_6_RU"
+        "PICC_ART5_1_6_EN"
       ]
     },
     {
       "id": "reading-conforms-to-canons",
       "task": "interpretation",
-      "question": "Отвечает ли прочтение канонам статей 4.4 и 4.5?",
+      "question": "Does the reading conform to the canons of articles 4.4 and 4.5?",
       "kind": "truth",
       "predicate": "reading_conforms_to_canons",
       "parameters": [
@@ -1025,7 +963,7 @@
     {
       "id": "reading-preferred",
       "task": "interpretation",
-      "question": "Какое прочтение предпочитается (ст. 4.6, 4.7)?",
+      "question": "Which reading is preferred (art. 4.6, 4.7)?",
       "kind": "truth",
       "predicate": "reading_preferred",
       "parameters": [
@@ -1056,15 +994,13 @@
       ],
       "source_units": [
         "PICC_ART4_6_EN",
-        "PICC_ART4_6_RU",
-        "PICC_ART4_7_EN",
-        "PICC_ART4_7_RU"
+        "PICC_ART4_7_EN"
       ]
     },
     {
       "id": "relevant-place-of-business",
       "task": "general-provisions",
-      "question": "Какое коммерческое предприятие стороны принимается во внимание (ст. 1.11)?",
+      "question": "Which place of business of a party is the relevant one (art. 1.11)?",
       "kind": "truth",
       "predicate": "relevant_place_of_business",
       "parameters": [
@@ -1098,14 +1034,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART1_11_EN",
-        "PICC_ART1_11_RU"
+        "PICC_ART1_11_EN"
       ]
     },
     {
       "id": "relevant-time-zone",
       "task": "computation-of-time",
-      "question": "Какой часовой пояс применяется к сроку (ст. 1.12 п. 3)?",
+      "question": "Which time zone applies to the period (art. 1.12(3))?",
       "kind": "truth",
       "predicate": "relevant_time_zone",
       "parameters": [
@@ -1135,14 +1070,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART1_12_EN",
-        "PICC_ART1_12_RU"
+        "PICC_ART1_12_EN"
       ]
     },
     {
       "id": "restitution-rules-apply-with-adaptations",
       "task": "content",
-      "question": "Применяются ли правила о реституции при отменительном условии (ст. 5.3.5)?",
+      "question": "Do the rules on restitution apply to a resolutive condition (art. 5.3.5)?",
       "kind": "truth",
       "predicate": "restitution_rules_apply_with_adaptations",
       "parameters": [
@@ -1157,14 +1091,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_3_5_EN",
-        "PICC_ART5_3_5_RU"
+        "PICC_ART5_3_5_EN"
       ]
     },
     {
       "id": "right-released",
       "task": "content",
-      "question": "Прекращено ли право кредитора освобождением (ст. 5.1.9)?",
+      "question": "Has the obligee's right been discharged by a release (art. 5.1.9)?",
       "kind": "truth",
       "predicate": "right_released",
       "parameters": [
@@ -1198,14 +1131,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_1_9_EN",
-        "PICC_ART5_1_9_RU"
+        "PICC_ART5_1_9_EN"
       ]
     },
     {
       "id": "rights-may-be-revoked",
       "task": "content",
-      "question": "Можно ли ещё отозвать права, предоставленные третьему лицу (ст. 5.2.5)?",
+      "question": "May the rights conferred on a third party still be revoked (art. 5.2.5)?",
       "kind": "truth",
       "predicate": "rights_may_be_revoked",
       "parameters": [
@@ -1235,14 +1167,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_2_5_EN",
-        "PICC_ART5_2_5_RU"
+        "PICC_ART5_2_5_EN"
       ]
     },
     {
       "id": "settled-by-underlying-general-principles",
       "task": "general-provisions",
-      "question": "Разрешается ли вопрос по общим принципам, на которых основаны Принципы (ст. 1.6)?",
+      "question": "Is the question settled by the general principles on which the Principles are based (art. 1.6)?",
       "kind": "truth",
       "predicate": "settled_by_underlying_general_principles",
       "parameters": [
@@ -1257,14 +1188,13 @@
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
       "source_units": [
-        "PICC_ART1_6_EN",
-        "PICC_ART1_6_RU"
+        "PICC_ART1_6_EN"
       ]
     },
     {
       "id": "statement-interpreted-by-intention",
       "task": "interpretation",
-      "question": "Толкуется ли заявление по намерению стороны (ст. 4.2 п. 1)?",
+      "question": "Is the statement interpreted according to the party's intention (art. 4.2(1))?",
       "kind": "truth",
       "predicate": "statement_interpreted_by_intention",
       "parameters": [
@@ -1279,14 +1209,13 @@
         "PICC-GEN-02-INTERPRETATION"
       ],
       "source_units": [
-        "PICC_ART4_2_EN",
-        "PICC_ART4_2_RU"
+        "PICC_ART4_2_EN"
       ]
     },
     {
       "id": "statement-interpreted-by-reasonable-person",
       "task": "interpretation",
-      "question": "Толкуется ли заявление по пониманию разумного лица (ст. 4.2 п. 2)?",
+      "question": "Is the statement interpreted by the understanding of a reasonable person (art. 4.2(2))?",
       "kind": "truth",
       "predicate": "statement_interpreted_by_reasonable_person",
       "parameters": [
@@ -1311,14 +1240,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART4_2_EN",
-        "PICC_ART4_2_RU"
+        "PICC_ART4_2_EN"
       ]
     },
     {
       "id": "term-supplied",
       "task": "interpretation",
-      "question": "Восполняется ли пропущенное условие договора (ст. 4.8)?",
+      "question": "Is an omitted term of the contract supplied (art. 4.8)?",
       "kind": "truth",
       "predicate": "term_supplied",
       "parameters": [
@@ -1338,14 +1266,13 @@
         "PICC-GEN-02-INTERPRETATION"
       ],
       "source_units": [
-        "PICC_ART4_8_EN",
-        "PICC_ART4_8_RU"
+        "PICC_ART4_8_EN"
       ]
     },
     {
       "id": "valid-condition",
       "task": "content",
-      "question": "Является ли условие условием в смысле статьи 5.3.1?",
+      "question": "Is the term a condition within the meaning of article 5.3.1?",
       "kind": "truth",
       "predicate": "valid_condition",
       "parameters": [
@@ -1365,14 +1292,13 @@
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
       "source_units": [
-        "PICC_ART5_3_1_EN",
-        "PICC_ART5_3_1_RU"
+        "PICC_ART5_3_1_EN"
       ]
     },
     {
       "id": "validly-modified-or-terminated",
       "task": "general-provisions",
-      "question": "Правомерно ли договор изменён или прекращён (ст. 1.3)?",
+      "question": "Has the contract been validly modified or terminated (art. 1.3)?",
       "kind": "truth",
       "predicate": "validly_modified_or_terminated",
       "parameters": [
@@ -1401,19 +1327,18 @@
         }
       ],
       "source_units": [
-        "PICC_ART1_3_EN",
-        "PICC_ART1_3_RU"
+        "PICC_ART1_3_EN"
       ]
     },
     {
       "id": "pozitsii-cooperate",
       "task": "content",
-      "question": "Активна ли обязанность сотрудничать с другой стороной (ст. 5.1.3)?",
+      "question": "Is the duty to co-operate with the other party active (art. 5.1.3)?",
       "kind": "positions",
       "norms": [
         "Cooperate"
       ],
-      "template": "evaluate positions(); expect position(Cooperate, <статус>);",
+      "template": "evaluate positions(); expect position(Cooperate, <status>);",
       "tests": [
         "PICC-GEN-03-CONTENT-AND-PRICE"
       ],
@@ -1424,19 +1349,18 @@
         }
       ],
       "source_units": [
-        "PICC_ART5_1_3_EN",
-        "PICC_ART5_1_3_RU"
+        "PICC_ART5_1_3_EN"
       ]
     },
     {
       "id": "pozitsii-good-faith",
       "task": "general-provisions",
-      "question": "Активна ли обязанность действовать добросовестно (ст. 1.7)?",
+      "question": "Is the duty to act in good faith active (art. 1.7)?",
       "kind": "positions",
       "norms": [
         "GoodFaith"
       ],
-      "template": "evaluate positions(); expect position(GoodFaith, <статус>);",
+      "template": "evaluate positions(); expect position(GoodFaith, <status>);",
       "tests": [
         "PICC-GEN-01-FREEDOM-AND-BINDING"
       ],
@@ -1447,94 +1371,82 @@
         }
       ],
       "source_units": [
-        "PICC_ART1_7_EN",
-        "PICC_ART1_7_RU"
+        "PICC_ART1_7_EN"
       ]
     }
   ],
   "boundaries": [
     {
-      "id": "gr-ne-pravo-gosudarstva",
+      "id": "br-not-the-law-of-a-state",
       "task": "general-provisions",
       "reason_kind": "source_delegates",
-      "question": "Какие императивные нормы применимы к договору и каким правом они установлены?",
+      "question": "Which mandatory rules apply to the contract and by which law are they laid down?",
       "source_units": [
         "PICC_ART1_4_EN"
       ],
-      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились (преамбула), либо когда суд или арбитраж берёт их как общие принципы права. Норму государства они не заменяют: статья 1.4 прямо оставляет за императивными нормами их силу, а какие нормы императивны — вопрос применимого права, вход дела."
+      "limitation": "THIS IS NOT THE LAW OF A STATE. The Principles apply when the parties have agreed on them (Preamble), or when a court or arbitral tribunal takes them as general principles of law. They do not replace the rule of a state: article 1.4 expressly preserves mandatory rules, and which rules are mandatory is a question of the applicable law — an input of the case."
     },
     {
-      "id": "gr-otsenochnye-picc",
+      "id": "br-evaluative-elements",
       "task": "interpretation",
       "reason_kind": "case_data",
-      "question": "Каков смысл, который придали бы договору разумные лица, и неясно ли условие?",
+      "question": "What meaning would reasonable persons give to the contract, and is the term ambiguous?",
       "source_units": [
         "PICC_ART4_1_EN",
         "PICC_ART4_6_EN"
       ],
-      "limitation": "ОЦЕНОЧНЫЕ ПРИЗНАКИ главы 1, 4 и 5 идут каналом суждения §47.3 с органом `Tribunal`: добросовестность (1.7), разумность расчёта на понимание (1.8), неразумность применения обычая (1.9), наиболее тесная связь предприятия (1.11), смысл разумных лиц (4.1, 4.2), неясность условия (4.6), надлежащность восполняемого условия (4.8), разумность усилий (5.1.4), качество не ниже среднего (5.1.6), явная неразумность определения цены (5.1.7), разумность срока извещения (5.1.8)."
+      "limitation": "THE EVALUATIVE ELEMENTS of chapters 1, 4 and 5 go through the §47.3 judgment channel with the organ `Tribunal`: good faith (1.7), reasonable reliance on an understanding (1.8), unreasonableness of applying a usage (1.9), the closest relationship of a place of business (1.11), the meaning of reasonable persons (4.1, 4.2), ambiguity of a term (4.6), appropriateness of a supplied term (4.8), reasonable efforts (5.1.4), quality no less than average (5.1.6), a manifestly unreasonable determination of price (5.1.7), a reasonable time for notice (5.1.8)."
     },
     {
-      "id": "gr-organ-picc",
+      "id": "br-organ",
       "task": "general-provisions",
       "reason_kind": "source_delegates",
-      "question": "Какой суд или арбитраж устанавливает оценочные признаки?",
+      "question": "Which court or arbitral tribunal establishes the evaluative elements?",
       "source_units": [
         "PICC_ART1_11_EN"
       ],
-      "limitation": "ОРГАН НАЗВАН САМИМ ИНСТРУМЕНТОМ: статья 1.11 определяет, что «court» включает арбитраж. `authority Tribunal` — цитата определения, а не выбор формализатора."
+      "limitation": "THE ORGAN IS NAMED BY THE INSTRUMENT ITSELF: article 1.11 provides that \"court\" includes an arbitral tribunal. `authority Tribunal` quotes that definition rather than choosing one."
     },
     {
-      "id": "gr-prazdnik-otlichie",
+      "id": "br-holiday-proviso",
       "task": "computation-of-time",
       "reason_kind": "case_data",
-      "question": "Указывают ли обстоятельства на иное, чем продление срока на праздник?",
+      "question": "Do the circumstances indicate otherwise than the extension over an official holiday?",
       "source_units": [
         "PICC_ART1_12_EN"
       ],
-      "limitation": "ПРОДЛЕНИЕ СРОКА НА ПРАЗДНИК (ст. 1.12 п. 2) СНАБЖЕНО ОГОВОРКОЙ «unless the circumstances indicate otherwise», которой у статьи 20 пункта 2 Конвенции НЕТ: там продление безусловно. Две нормы о праздниках объединять нельзя, и различие проверяется делом 04, а не комментарием."
+      "limitation": "THE EXTENSION FOR AN OFFICIAL HOLIDAY (article 1.12(2)) CARRIES THE PROVISO \"unless the circumstances indicate otherwise\", WHICH ARTICLE 20(2) OF THE CONVENTION DOES NOT HAVE: there the extension is unconditional. The two rules must not be merged, and the difference is checked by case 04 rather than by a comment."
     },
     {
-      "id": "gr-kalendar-picc",
+      "id": "br-calendar-and-zone",
       "task": "computation-of-time",
       "reason_kind": "case_data",
-      "question": "Какие дни нерабочие в месте исполнения и какой часовой пояс применяется?",
+      "question": "Which days are non-business days at the place of performance and which time zone applies?",
       "source_units": [
         "PICC_ART1_12_EN"
       ],
-      "limitation": "КАЛЕНДАРЯ И ЧАСОВЫХ ПОЯСОВ У ПРИНЦИПОВ НЕТ: какие дни нерабочие в месте исполнения и какой пояс у места коммерческого предприятия — факты дела. Политика §86 пакета считает календарными днями, а продление выражено нормой над фактами (политика с переносом потребовала бы календарного снимка §85 в самом пакете)."
+      "limitation": "THE PRINCIPLES HAVE NO CALENDAR AND NO TIME ZONES: which days are non-business days at the place of performance, and the zone of a place of business, are facts of the case. The §86 policy of the package counts calendar days, and the extension is expressed as a rule over those facts (a policy with a roll would require a §85 calendar snapshot inside the package)."
     },
     {
-      "id": "gr-sosednie-glavy",
+      "id": "br-neighbouring-chapters",
       "task": "content",
       "reason_kind": "source_delegates",
-      "question": "Где живут нормы о заключении договора, действительности, исполнении и неисполнении?",
+      "question": "Where do the rules on formation, validity, performance and non-performance live?",
       "source_units": [
         "PICC_ART5_1_1_EN"
       ],
-      "limitation": "ГЛАВЫ 2, 3, 6, 7, 8–11 живут в соседних пакетах группы `unidroit.picc*`; хаб держит главы 1, 4, 5 и типы, которыми пользуются все. Перечень раскладки — DECISION-0318, развилка Р3."
+      "limitation": "CHAPTERS 2, 3, 6, 7 AND 8–11 LIVE IN THE NEIGHBOURING PACKAGES of the `unidroit.picc*` group; the hub holds chapters 1, 4 and 5 and the types that all of them use."
     },
     {
-      "id": "gr-perechni-otkryty",
+      "id": "br-open-lists",
       "task": "interpretation",
       "reason_kind": "case_data",
-      "question": "Учитывается ли обстоятельство или фактор рода, не названного перечнем?",
+      "question": "Is a circumstance or a factor of a kind not named in the list taken into account?",
       "source_units": [
         "PICC_ART4_3_EN",
         "PICC_ART5_1_5_EN"
       ],
-      "limitation": "ПЕРЕЧНИ СТАТЕЙ 4.3 И 5.1.5 НЕ ИСЧЕРПЫВАЮЩИЕ («among other factors»): правило признаёт обстоятельство или фактор названного рода, а прочие роды остаются оценке органа и в модель отдельными посылками не входят."
-    },
-    {
-      "id": "gr-russkiy-yakor",
-      "task": "general-provisions",
-      "reason_kind": "source_delegates",
-      "question": "Каков официальный текст статьи и чем отличается русская публикация?",
-      "source_units": [
-        "PICC_ART1_1_EN",
-        "PICC_ART1_1_RU"
-      ],
-      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский. Русская публикация несёт четыре класса квирков нумерации, объявленных в sources/picc-ru/articles.json; из-за одного из них (статья 3.1.1 напечатана как «Статья 3.1») номера единиц двух документов совпадают не полностью."
+      "limitation": "THE LISTS IN ARTICLES 4.3 AND 5.1.5 ARE NOT EXHAUSTIVE (\"among other factors\"): the rule recognises a circumstance or a factor of a named kind, while other kinds are left to the assessment of the organ and do not enter the model as separate premises."
     }
   ],
   "internal": []

@@ -1,26 +1,24 @@
-// Source-модель Принципов международных коммерческих договоров УНИДРУА
-// (редакция 2016 года): закреплённые байты black-letter rules и постатейные
-// фрагменты §194 охвата ЭТОГО пакета.
+// Source model of the UNIDROIT Principles of International Commercial Contracts
+// (2016 edition): the pinned bytes of the black-letter rules and the §194
+// article fragments within the scope of THIS package.
 //
-// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
-// `corpus/tools/sources/sync/sync_unidroit_picc_fragments.py`; сверка без
-// записи — его же ключом `--check`.
+// GENERATED FILE. It is written by its generator only; the generator verifies
+// it without writing under its own `--check` key.
 //
-// ПРАВО НА ВОСПРОИЗВЕДЕНИЕ ПОЛУЧЕНО У ИЗДАТЕЛЯ. Раздел «Copyright notice»
-// правовой страницы УНИДРУА (`unidroit.org/disclaimer/`, проверено
-// 17.09.2026): «Reproduction of the information is authorised, except for
-// commercial purposes, provided the source is duly acknowledged».
+// PERMISSION TO REPRODUCE COMES FROM THE PUBLISHER. The "Copyright notice"
+// section of the UNIDROIT legal page (`unidroit.org/disclaimer/`, checked
+// 17.09.2026): "Reproduction of the information is authorised, except for
+// commercial purposes, provided the source is duly acknowledged".
 //
-// ПОЧЕМУ ТЕКСТ ОФИЦИАЛЬНЫЙ, А КОПИЯ — НЕТ. `officiality official` говорит о
-// ТЕКСТЕ: английский — один из двух официальных языков инструмента.
-// `materialization_status PINNED_UNOFFICIAL_COPY` говорит о БАЙТАХ:
-// закреплено извлечение из PDF портала издателя. Русский текст — парный
-// `unofficial` якорь: официальным языком инструмента он не является.
+// WHY THE TEXT IS OFFICIAL AND THE COPY IS NOT. `officiality official` speaks
+// of the TEXT: English is one of the two official languages of the instrument.
+// `materialization_status PINNED_UNOFFICIAL_COPY` speaks of the BYTES: what is
+// pinned is an extraction from the PDF on the publisher's portal.
 //
-// КОММЕНТАРИИ И ИЛЛЮСТРАЦИИ ИЗДАТЕЛЯ В ЗАКРЕПЛЕНИЕ НЕ ВХОДЯТ: закреплены
-// black-letter rules — сам текст статей.
+// THE PUBLISHER'S COMMENTS AND ILLUSTRATIONS ARE NOT PINNED: what is pinned is
+// the black-letter rules — the text of the articles themselves.
 //
-// `retrieved_at` — константа, а не момент сборки (DECISION-0005 п. 6).
+// `retrieved_at` is a constant, not the moment of the build (DECISION-0005 §6).
 
 language "law.core" version "0.2";
 package unidroit.picc_formation version "0.1.0";
@@ -31,7 +29,6 @@ source PICC_2016 {
     jurisdiction International;
     number "UNIDROIT Principles of International Commercial Contracts 2016";
     label en official "UNIDROIT Principles of International Commercial Contracts";
-    label ru unofficial "Принципы международных коммерческих договоров УНИДРУА";
 }
 
 edition PICC_2016_EN of PICC_2016 {
@@ -50,24 +47,6 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
     local_path "sources/picc-en/en.txt";
 }
-
-edition PICC_2016_RU of PICC_2016 {
-    label ru unofficial "Русский текст black-letter rules, редакция 2016 года";
-    language ru;
-    officiality unofficial;
-    adopted @2016-05-10;
-    in_force @2016-05-10;
-    materialization_status PINNED_UNOFFICIAL_COPY;
-}
-
-publication PICC_2016_RU_TEXT of PICC_2016_RU {
-    media_type "text/plain; charset=utf-8";
-    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf";
-    retrieved_at @2026-09-17T12:30:00Z;
-    content_hash "sha256:89f86961c82987fe324c43d46146cc31aa20e8965511158dcf7fe5b43012066a";
-    local_path "sources/picc-ru/ru.txt";
-}
-
 // Article 2.1.1 (English black-letter rules)
 fragment PICC_ART2_1_1_EN in PICC_2016_EN {
     kind article;
@@ -77,17 +56,6 @@ fragment PICC_ART2_1_1_EN in PICC_2016_EN {
 A contract may be concluded either by the acceptance of an offer or by conduct of
 the parties that is sufficient to show agreement.""";
     content_hash "sha256:90236277527e71649c6da0ccd022470eb7de50b10a14c558866d31bcfa3f89a6";
-}
-
-// Статья 2.1.1 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_1";
-    text ru unofficial """Статья 2.1.1
-(Способ заключения договора)
-Договор может быть заключен путем акцепта оферты либо в
-результате поведения сторон, достаточно свидетельствующего о соглашении.""";
-    content_hash "sha256:a6d0037250820b41deb1ef8830b45a82d0992ed5d65c2a215c8be0b6d64f95f6";
 }
 
 // Article 2.1.2 (English black-letter rules)
@@ -101,18 +69,6 @@ and indicates the intention of the offeror to be bound in case of acceptance."""
     content_hash "sha256:f417d254da2d6e8be45131e6ada8d44f4e8c2b08b3ab2048b68aa7a99eb9a750";
 }
 
-// Статья 2.1.2 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_2";
-    text ru unofficial """Статья 2.1.2
-(Определение оферты)
-Предложение о заключении договора является офертой, если оно
-достаточно определенно и выражает намерение оферента считать себя
-связанным в случае акцепта.""";
-    content_hash "sha256:7400d20e29be3fb2c1f8842a91669d3c50a44a1677047b931409e3f1c81adbc3";
-}
-
 // Article 2.1.3 (English black-letter rules)
 fragment PICC_ART2_1_3_EN in PICC_2016_EN {
     kind article;
@@ -123,19 +79,6 @@ fragment PICC_ART2_1_3_EN in PICC_2016_EN {
 (2) An offer, even if it is irrevocable, may be withdrawn if the withdrawal reaches
 the offeree before or at the same time as the offer.""";
     content_hash "sha256:145f3097131d61a9220efad611a2badf4fb546a8fd7d6cc86f50f746300d7aef";
-}
-
-// Статья 2.1.3 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_3";
-    text ru unofficial """Статья 2.1.3
-(Отмена оферты)
-(1) Оферта вступает в силу, когда она получена адресатом оферты.
-(2) Оферта, даже когда она является безотзывной, может быть
-отменена оферентом, если сообщение об отмене получено адресатом оферты
-раньше, чем сама оферта, или одновременно с ней.""";
-    content_hash "sha256:14fc1008505d24154fda05a99c7eb5fd8f110a39eaa8a60103783e690c3acf51";
 }
 
 // Article 2.1.4 (English black-letter rules)
@@ -154,23 +97,6 @@ the offeree has acted in reliance on the offer.""";
     content_hash "sha256:891a6dc5848947b4db124a2e0a3bd3c1b4e5dfe9e1ff696a7c1df27fa8e2f06b";
 }
 
-// Статья 2.1.4 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_4";
-    text ru unofficial """Статья 2.1.4
-(Отзыв оферты)
-(1) Пока договор не заключен, оферта может быть отозвана, если
-сообщение об отзыве будет получено адресатом оферты до отправления им
-акцепта.
-(2) Однако, оферта не может быть отозвана:
-(а) если в оферте указывается путем установления определенного
-срока для акцепта или иным образом, что она является безотзывной; или
-(b) если для адресата оферты было разумным рассматривать оферту
-как безотзывную и адресат оферты действовал, полагаясь на оферту.""";
-    content_hash "sha256:72fbf4de284cc6dbb17bf6a500b0d245f2570b09c9364599995e87be44317fad";
-}
-
 // Article 2.1.5 (English black-letter rules)
 fragment PICC_ART2_1_5_EN in PICC_2016_EN {
     kind article;
@@ -179,17 +105,6 @@ fragment PICC_ART2_1_5_EN in PICC_2016_EN {
 (Rejection of offer)
 An offer is terminated when a rejection reaches the offeror.""";
     content_hash "sha256:ad0d169d11d43687df21ba954a2f47d21927fc70dfa54b1cdb513dbfd1f3b9bb";
-}
-
-// Статья 2.1.5 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_5";
-    text ru unofficial """Статья 2.1.5
-(Отклонение оферты)
-Оферта теряет силу, когда сообщение об отклонении оферты получено
-оферентом.""";
-    content_hash "sha256:255383dc0b4683efa9e343e99f7e934fae4a5e118b9b5a856ebb3983ae981376";
 }
 
 // Article 2.1.6 (English black-letter rules)
@@ -209,24 +124,6 @@ is performed.""";
     content_hash "sha256:fe346ef207fe3e5c07a53a316c9a0097721d02bc90e754664ef7ab9f95e0efd3";
 }
 
-// Статья 2.1.6 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_6";
-    text ru unofficial """Статья 2.1.6
-(Разновидности акцепта)
-(1) Заявление или иное поведение адресата оферты, выражающее его
-согласие с офертой, является акцептом. Молчание или бездействие само по
-себе не является акцептом.
-(2) Акцепт оферты вступает в силу, когда указанное согласие получено
-оферентом.
-(3) Однако, если в силу оферты или в результате практики, которую
-стороны установили в своих взаимоотношениях, или обычая адресат оферты
-может, не извещая оферента, выразить согласие путем совершения какого-то
-действия, акцепт вступает в силу в момент совершения такого действия.""";
-    content_hash "sha256:484cf4fdcc542ac053084a83a65c6e6c8e0b14ca3bbb7643f4e419e822ca9895";
-}
-
 // Article 2.1.7 (English black-letter rules)
 fragment PICC_ART2_1_7_EN in PICC_2016_EN {
     kind article;
@@ -240,20 +137,6 @@ accepted immediately unless the circumstances indicate otherwise.""";
     content_hash "sha256:677750c6af0168b73c1513d9486c46ce3c6757c285ea91c225bf04ea9229274d";
 }
 
-// Статья 2.1.7 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_7_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_7";
-    text ru unofficial """Статья 2.1.7
-(Момент акцепта)
-Оферта должна быть акцептована в течение времени, указанного
-оферентом, или, если такой срок не указан, в течение разумного срока с
-учетом конкретных обстоятельств, включая скорость средства связи,
-использованного оферентом. Устная оферта должна быть акцептована
-немедленно, если обстоятельства не говорят об ином.""";
-    content_hash "sha256:47e7cb4dec0f79bb6cc0355f094bdfd6137389ffff386ce23f3f4e1cf939715a";
-}
-
 // Article 2.1.8 (English black-letter rules)
 fragment PICC_ART2_1_8_EN in PICC_2016_EN {
     kind article;
@@ -264,18 +147,6 @@ A period of acceptance fixed by the offeror begins to run from the time that the
 is dispatched. A time indicated in the offer is deemed to be the time of dispatch unless
 the circumstances indicate otherwise.""";
     content_hash "sha256:2a0f934fcc7b50b50ed25e9142b53dc9407f40574f9bac90ab6a66f1ac8af022";
-}
-
-// Статья 2.1.8 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_8_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_8";
-    text ru unofficial """Статья 2.1.8
-(Акцепт в указанный срок)
-Указанный оферентом срок для акцепта оферты начинает течь с
-момента, когда оферта отправлена. Срок, указанный в оферте, читается
-сроком отправки оферты, если иное не следует из обстоятельств.""";
-    content_hash "sha256:939d1aa7cb7784528beffcebd8dbb865ab8d32cfe308d278a9a6d3035f678723";
 }
 
 // Article 2.1.9 (English black-letter rules)
@@ -293,24 +164,6 @@ undue delay, the offeror informs the offeree that it considers the offer as havi
     content_hash "sha256:149c288fcca8ab3a6732f75527b57d15d5bf02c86f776dc2f83fb6f9567ee527";
 }
 
-// Статья 2.1.9 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_9_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_9";
-    text ru unofficial """Статья 2.1.9
-(Запоздавший акцепт. Задержка при пересылке)
-(1) Запоздавший акцепт, тем не менее, сохраняет силу акцепта, если
-оферент без неоправданной задержки сообщит об этом адресату оферты или
-направит ему соответствующее уведомление.
-(2) Когда из сообщения, содержащего запоздавший акцепт, видно, что
-оно было отправлено при таких обстоятельствах, что если бы его пересылка
-была бы нормальной, оно было бы получено оферентом своевременно,
-запоздавший акцепт сохраняет силу акцепта, если только оферент без
-неоправданной задержки не известит адресата, что он считает свою оферту
-утратившей силу.""";
-    content_hash "sha256:5966707d4f453b4bc746863068215168d169a2c496fcc8f4a719c890eb2d9c17";
-}
-
 // Article 2.1.10 (English black-letter rules)
 fragment PICC_ART2_1_10_EN in PICC_2016_EN {
     kind article;
@@ -320,18 +173,6 @@ fragment PICC_ART2_1_10_EN in PICC_2016_EN {
 An acceptance may be withdrawn if the withdrawal reaches the offeror before or at
 the same time as the acceptance would have become effective.""";
     content_hash "sha256:3026d4820b0d1a0568f9cf42e4b847b8fa2253da243972650af5504c18859e86";
-}
-
-// Статья 2.1.10 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_10_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_10";
-    text ru unofficial """Статья 2.1.10
-(Отмена акцепта)
-Акцепт может быть отменен, если сообщение об отмене получено
-оферентом раньше того момента или в тот же момент, когда акцепт должен
-был вступить в силу.""";
-    content_hash "sha256:ac5602df3f60a73a1b7d9b7b1e16eabca69dbce2af1873934004e5f6ae894f41";
 }
 
 // Article 2.1.11 (English black-letter rules)
@@ -350,24 +191,6 @@ offer with the modifications contained in the acceptance.""";
     content_hash "sha256:f77608ed132ab0c98978372206159801db1a4fc5b2f452bd3c12e442e1229b7c";
 }
 
-// Статья 2.1.11 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_11_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_11";
-    text ru unofficial """Статья 2.1.11
-(Акцепт с оговорками)
-(1) Ответ на оферту, который имеет целью служить акцептом, но
-содержит дополнения, ограничения или иные изменения, является
-отклонением оферты и представляет собой встречную оферту.
-(2) Однако, ответ на оферту, который имеет целью служить акцептом,
-но содержит дополнительные или отличающиеся условия, не меняющие
-существенно условий оферты, является акцептом, если только оферент без
-неоправданной задержки не возразит против этих расхождений. Если он
-этого не сделает, то условиями договора будут являться условия оферты с
-изменениями, содержащимися в акцепте.""";
-    content_hash "sha256:0f6b3d7a78b624d30e9deca1bbe399db73b8473127d3070421a9910d8cd98ab0";
-}
-
 // Article 2.1.12 (English black-letter rules)
 fragment PICC_ART2_1_12_EN in PICC_2016_EN {
     kind article;
@@ -381,21 +204,6 @@ contract or the recipient, without undue delay, objects to the discrepancy.""";
     content_hash "sha256:5c193ef1601da24644558b4055141ba1b3893179a27a3a63f38cb0f0e2ed550b";
 }
 
-// Статья 2.1.12 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_12_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_12";
-    text ru unofficial """Статья 2.1.12
-(Письменные подтверждения)
-Если в письменном сообщении, посланном в течение разумного
-времени после заключения договора и имеющем целью быть
-подтверждением договора, содержатся дополнительные или отличающиеся
-условия, такие условия становятся частью договора, если только они
-существенно не изменяют договор или получатель без неоправданной
-задержки не возражает против расхождений.""";
-    content_hash "sha256:792e5515f4126e35416b08eea759d0bd60c0c499caf4035dc44576c341edc025";
-}
-
 // Article 2.1.13 (English black-letter rules)
 fragment PICC_ART2_1_13_EN in PICC_2016_EN {
     kind article;
@@ -407,21 +215,6 @@ Where in the course of negotiations one of the parties insists that the contract
 concluded until there is agreement on specific matters or in a particular form, no
 contract is concluded before agreement is reached on those matters or in that form.""";
     content_hash "sha256:938b82033d4dc8fb922a77663f51f4f6059e32ad1e3ac95700db4e46b8e7d000";
-}
-
-// Статья 2.1.13 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_13_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_13";
-    text ru unofficial """Статья 2.1.13
-(Заключение договора, зависящее от соглашения по конкретным вопросам или
-соблюдения особой формы)
-Если в ходе переговоров одна из сторон настаивает на том, что договор
-не будет заключен до того, пока не будет достигнуто соглашения по
-конкретным вопросам или соблюдена особая форма соглашения, договор не
-является заключенным до того, пока не будет достигнуто соглашения по
-этим вопросам или оно не будет соответствующим образом оформлено.""";
-    content_hash "sha256:635f8c66f217d69ee36f4c40175e981f0b39fb0a397f0ff9e370d6b629947d22";
 }
 
 // Article 2.1.14 (English black-letter rules)
@@ -442,26 +235,6 @@ reasonable in the circumstances, having regard to the intention of the parties."
     content_hash "sha256:3fd8ef8dc988b0ae698d580fb57c100ddc80e65eac6f601cacc1711546581d07";
 }
 
-// Статья 2.1.14 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_14_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_14";
-    text ru unofficial """Статья 2.1.14
-(Договор с умышленно открытыми условиями)
-(1) Если стороны намерены заключить договор, обстоятельство, что
-они умышленно оставили какое-то условие для согласования в ходе будущих
-переговоров или подлежащим определению одной из сторон или третьим
-лицом, не является препятствием для возникновения договора.
-(2) Существование договора не затрагивается тем, что впоследствии:
-(а) стороны не достигли согласия по такому условию;
-(b)сторона, которая должна была определить условие, не сделала
-этого; или
-(с) третье лицо не определило это условие, если имеется иное средство
-сделать это условие определенным, которое является разумным при
-существующих обстоятельствах, принимая во внимание намерения сторон.""";
-    content_hash "sha256:dc2e28eb054191cb256bedd6f62830984b0c8c8d123d660ae76b4cd7a64e2ac1";
-}
-
 // Article 2.1.15 (English black-letter rules)
 fragment PICC_ART2_1_15_EN in PICC_2016_EN {
     kind article;
@@ -474,23 +247,6 @@ liable for the losses caused to the other party.
 (3) It is bad faith, in particular, for a party to enter into or continue negotiations
 when intending not to reach an agreement with the other party.""";
     content_hash "sha256:0fd445bbb8b8d2cc17153a6df99180686733cfce14a435ff86d7f03da425c294";
-}
-
-// Статья 2.1.15 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_15_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_15";
-    text ru unofficial """Статья 2.1.15
-(Недобросовестные переговоры)
-(1) Сторона свободна проводить переговоры и не несет
-ответственности за не достижение согласия.
-(2) Однако, сторона, которая ведет или прерывает переговоры
-недобросовестно, является ответственной за потери, причиненные другой
-стороне.
-(3) Недобросовестным, в частности является вступление стороной в
-переговоры или их продолжение при отсутствии намерения достичь
-соглашения с другой стороной.""";
-    content_hash "sha256:242897698738b1e8bf87cf8a405d407cd7852b579be7d245d5053dc27ec30ca8";
 }
 
 // Article 2.1.16 (English black-letter rules)
@@ -507,22 +263,6 @@ on the benefit received by the other party.""";
     content_hash "sha256:62a8afd29365753d67423e8fa61af3461f24e63245030c5125691a24db45a1a7";
 }
 
-// Статья 2.1.16 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_16_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_16";
-    text ru unofficial """Статья 2.1.16
-(Обязанность конфиденциальности)
-Если информация передается одной стороной в качестве
-конфиденциальной в процессе переговоров, другая сторона обязана не
-раскрывать эту информацию или не использовать ее ненадлежащим образом
-для собственных целей, независимо от того, заключен ли впоследствии
-договор. В надлежащих случаях средства правовой защиты при нарушении
-этой обязанности могут включать компенсацию, основанную на выгоде,
-полученной другой стороной.""";
-    content_hash "sha256:db74b97498ad805d8b6e419c63e76c66611db549df203bbfa1e67c9b6ebafa61";
-}
-
 // Article 2.1.17 (English black-letter rules)
 fragment PICC_ART2_1_17_EN in PICC_2016_EN {
     kind article;
@@ -536,20 +276,6 @@ or agreements may be used to interpret the writing.""";
     content_hash "sha256:7eade383024488d29be0bb11d3f421235ffa11685d0e8441275ff380ca2143a6";
 }
 
-// Статья 2.1.17 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_17_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_17";
-    text ru unofficial """Статья 2.1.17
-(Оговорки о поглощении)
-Договор в письменной форме, содержащий оговорку о том, что договор
-полностью охватывает условия, согласованные сторонами, не может быть
-оспорен или дополнен представлением предшествующих заявлений или
-соглашений. Однако такие заявления или соглашения могут быть
-использованы для толкования письменного договора.""";
-    content_hash "sha256:c500bd015f5f706735ecb79567b32f95ff5c86bde5d07cab49c7e0aebf96fb45";
-}
-
 // Article 2.1.18 (English black-letter rules)
 fragment PICC_ART2_1_18_EN in PICC_2016_EN {
     kind article;
@@ -561,22 +287,6 @@ termination by agreement to be in a particular form may not be otherwise modifie
 terminated. However, a party may be precluded by its conduct from asserting such a
 clause to the extent that the other party has reasonably acted in reliance on that conduct.""";
     content_hash "sha256:a6d68bbdb174ec2cd3d0a7c01db62802551939c4adea9742fc82ee8fc2b2eedb";
-}
-
-// Статья 2.1.18 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_18_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_18";
-    text ru unofficial """Статья 2.1.18
-(Изменение договора в особой форме)
-Договор в письменной форме, содержащий оговорку о том, что любое
-согласованное изменение или
-прекращение договора должно
-осуществляться в особой форме, не может быть изменен или прекращен
-иным образом. Однако сторона может своим поведением быть лишена
-возможности полагаться на эту оговорку в той мере, в которой другая
-сторона действовала разумно, полагаясь на такое поведение.""";
-    content_hash "sha256:1857dc902dc691b23723642b7effaee82e84ef8fb45b315114e7a92ed7a92d5a";
 }
 
 // Article 2.1.19 (English black-letter rules)
@@ -593,21 +303,6 @@ party.""";
     content_hash "sha256:78ee4e36d650b01eb5fc06c7e29e2b3135878261097252563527f72bb160ba7d";
 }
 
-// Статья 2.1.19 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_19_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_19";
-    text ru unofficial """Статья 2.1.19
-(Договоренность на стандартных условиях)
-(1) Если одна или обе стороны используют стандартные условия при
-заключении договора, то применяются общие положения о заключении
-договора с учетом статей 2.1.20 - 2.1.22.
-(2) Стандартными условиями являются положения, подготовленные
-одной стороной предварительно для общего и неоднократного использования
-и применяемые фактически без переговоров с другой стороной.""";
-    content_hash "sha256:b24b2ef0a2e206bb03a2327181399597ae6b37d71680afd901fba1a6bcaf9a72";
-}
-
 // Article 2.1.20 (English black-letter rules)
 fragment PICC_ART2_1_20_EN in PICC_2016_EN {
     kind article;
@@ -622,21 +317,6 @@ content, language and presentation.""";
     content_hash "sha256:fa67e3e0c42b085bfe226fd9f14f96451a612214d801ae103c604bf8925c5ada";
 }
 
-// Статья 2.1.20 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_20_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_20";
-    text ru unofficial """Статья 2.1.20
-(Неожиданное условие)
-(1) Условие, включенное в число стандартных и которое имеет такой
-характер, что другая сторона не могла бы разумно его ожидать, является
-недействительным, если только это условие не было явно принято этой
-стороной.
-(2) При установлении, имеет ли условие такой характер, необходимо
-принимать во внимание его содержание, формулировку и способ выражения.""";
-    content_hash "sha256:eddef8c4ca818df5246bb777bac1a5d4fa906eef70427ead43e07ab12418f233";
-}
-
 // Article 2.1.21 (English black-letter rules)
 fragment PICC_ART2_1_21_EN in PICC_2016_EN {
     kind article;
@@ -646,17 +326,6 @@ fragment PICC_ART2_1_21_EN in PICC_2016_EN {
 In case of conflict between a standard term and a term which is not a standard term
 the latter prevails.""";
     content_hash "sha256:cb3a2635f0fe1f7ccc6e7f2627280e2dec7e8b236338de8e3a7d8f40e4733622";
-}
-
-// Статья 2.1.21 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_21_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_21";
-    text ru unofficial """Статья 2.1.21
-(Противоречие между стандартными и нестандартными условиями)
-В случае противоречия между стандартным условием и условием, не
-являющимся стандартным, преимущество имеет последнее.""";
-    content_hash "sha256:04be6424d88d174b0341cdf720cc9508b1b2177bd454582e5f4acf039c18f5cc";
 }
 
 // Article 2.1.22 (English black-letter rules)
@@ -671,22 +340,6 @@ are common in substance unless one party clearly indicates in advance, or later 
 without undue delay informs the other party, that it does not intend to be bound by such
 a contract.""";
     content_hash "sha256:5a3f1bf09fabf7e449f3ef8707779444561e8d6d6846f0e9238fc6259053131c";
-}
-
-// Статья 2.1.22 (русский парный якорь, unofficial)
-fragment PICC_ART2_1_22_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_1_22";
-    text ru unofficial """Статья 2.1.22
-(Конфликт проформ)
-Если обе стороны используют стандартные условия и достигают
-соглашения за рамками этих стандартных условий, договор считается
-заключенным на основе согласованных условий и тех стандартных условий,
-которые являются совпадающими по существу, кроме случая, когда сторона
-предварительно ясно указывает, что она не намерена быть связанной таким
-договором, либо впоследствии без неоправданной задержки информирует об
-этом другую сторону.""";
-    content_hash "sha256:8240e2044c1e0087e7d282fc793e150618613d6cf1121401d0eb9095f4e4c531";
 }
 
 // Article 2.2.1 (English black-letter rules)
@@ -705,30 +358,6 @@ agent appointed by a public or judicial authority.""";
     content_hash "sha256:efd148c03fe76628e45f74d36f5635e11b3409b4fba39652f700e18a2be6c222";
 }
 
-// Статья 2.2.1 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_1";
-    text ru unofficial """Статья 2.2.1
-(Сфера применения настоящего Раздела)
-(1) Настоящий Раздел регулирует полномочия лица («представителя»)
-влиять на правовые отношения другого лица («принципала») совершением
-договора или действиями в отношении договора с третьим лицом,
-независимо от того, действует ли представитель от своего имени или от
-имени принципала.
-(2) Раздел регулирует только отношения между принципалом и
-представителем, с одной стороны, и третьим лицом, с другой стороны.
-(3)
-Раздел
-не
-затрагивает
-полномочия
-представителя,
-предоставленные ему в силу закона, или полномочия представителя,
-назначенного государственным или судебным органом""";
-    content_hash "sha256:f0d1b73c4239f7be37076207153dfe6d68be15d82e78b6e7afee679e51e89eed";
-}
-
 // Article 2.2.2 (English black-letter rules)
 fragment PICC_ART2_2_2_EN in PICC_2016_EN {
     kind article;
@@ -739,20 +368,6 @@ fragment PICC_ART2_2_2_EN in PICC_2016_EN {
 (2) The agent has authority to perform all acts necessary in the circumstances to
 achieve the purposes for which the authority was granted.""";
     content_hash "sha256:157344479289e887683dee2a3ca2adbec5fd4b874f4e4b21fa4d3319c61448c4";
-}
-
-// Статья 2.2.2 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_2";
-    text ru unofficial """Статья 2.2.2
-(Установление и объем полномочий представителя)
-(1) Предоставление принципалом полномочий представителю может
-быть прямо выражено или подразумеваться.
-(2) Представитель обладает полномочиями совершать любые
-действия, необходимые в конкретных обстоятельствах для достижения
-целей, в связи которыми полномочия были предоставлены.""";
-    content_hash "sha256:17dba875adf02928cf06bcf48462f2788587fd773d4b9ba2a6b5a4b861198ca0";
 }
 
 // Article 2.2.3 (English black-letter rules)
@@ -771,23 +386,6 @@ become the party to the contract.""";
     content_hash "sha256:1948bb8c3fb978502dbd7ea54643bff6ab1738f400a0f0fbb02ea71b2fb232e5";
 }
 
-// Статья 2.2.3 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_3";
-    text ru unofficial """Статья 2.2.3
-(Раскрытое представительство)
-(1) Если представитель действует в пределах своих полномочий, и
-третье лицо знало или должно было знать о том, что представитель
-действовал в данном качестве, его действия непосредственно влияют на
-правовые отношения между принципалом и третьим лицом; при этом
-правовых отношений между представителем и третьим лицом не возникает.
-(2) Однако, если представитель с согласия принципала принял
-обязательство стать стороной договора, действия представителя влияют
-только на правовые отношения между представителем и третьим лицом.""";
-    content_hash "sha256:d1c86054af5577ee57e962212036ff5abd3e1b84f57da7daff1a6881871d0954";
-}
-
 // Article 2.2.4 (English black-letter rules)
 fragment PICC_ART2_2_4_EN in PICC_2016_EN {
     kind article;
@@ -802,24 +400,6 @@ behalf of a business, represents itself to be the owner of that business, the th
 upon discovery of the real owner of the business, may exercise also against the latter the
 rights it has against the agent.""";
     content_hash "sha256:0e444b6652bbd2606de08f25f06694a9cae8f195fdbf347d2de3d3dc1852a515";
-}
-
-// Статья 2.2.4 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_4";
-    text ru unofficial """Статья 2.2.4
-(Скрытое представительство)
-(1) Если представитель действует в пределах своих полномочий, и
-третье лицо не знало и не должно было знать, что представитель действовал
-в данном качестве, действия представителя обязывают только его и третье
-лицо.
-(2) Однако, если такой представитель, заключая договор с третьим
-лицом от имени предприятия, заявляет о себе как о собственнике данного
-предприятия, то третье лицо, обнаружив действительного собственника
-предприятия, вправе также осуществлять в отношении последнего те же
-права, что и в отношении представителя.""";
-    content_hash "sha256:d3aa9d623294ae065018d081f713304d1134eb17c9d6f63799b81bc3fe19488c";
 }
 
 // Article 2.2.5 (English black-letter rules)
@@ -837,24 +417,6 @@ the lack of authority of the agent.""";
     content_hash "sha256:c1e365e92e83ee5469b7a647d9a8b58ac6ee661c4ef30fbe174586b273b8ebce";
 }
 
-// Статья 2.2.5 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_5";
-    text ru unofficial """Статья 2.2.5
-(Представитель, действующий без полномочий или
-с превышением полномочий)
-(1) Если представитель действует без полномочий или с превышением
-полномочий, его действия не влияют на правовые отношения между
-принципалом и третьим лицом.
-(2) Однако, если принципал приводит к тому, что у третьего лица
-разумно возникает убеждение, что представитель имеет полномочия
-действовать от имени принципала и действует в пределах своих полномочий,
-принципал не может в отношениях с третьим лицом ссылаться на отсутствие
-у представителя полномочий.""";
-    content_hash "sha256:70757d02e1793f309c613b242a626c2db9ca4b7dc81122de610c3a93153d0e46";
-}
-
 // Article 2.2.6 (English black-letter rules)
 fragment PICC_ART2_2_6_EN in PICC_2016_EN {
     kind article;
@@ -867,24 +429,6 @@ position as if the agent had acted with authority and not exceeded its authority
 (2) However, the agent is not liable if the third party knew or ought to have
 known that the agent had no authority or was exceeding its authority.""";
     content_hash "sha256:cbbb0080ae40fef095f6bd6e61c597f961d593cc742a91b2c91d356ed28db224";
-}
-
-// Статья 2.2.6 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_6";
-    text ru unofficial """Статья 2.2.6
-(Ответственность представителя, действующего без полномочий или с
-превышением полномочий)
-(1) Представитель, действующий в отсутствие или в превышение
-полномочий в случае отсутствия последующего одобрения со стороны
-принципала, обязан возместить третьему лицу убытки с тем, чтобы
-последнее оказалось в том же положении, как если бы представитель
-действовал, имея полномочия и не превышая их.
-(2) Однако, представитель не несет ответственности, если третье лицо
-знало или должно было знать, что представитель действовал без полномочий
-или с превышением полномочий.""";
-    content_hash "sha256:9c4bd32d5bbd8777ac514a56ef3a79dc4bbafe6b4aa977b926d38971fc45da6c";
 }
 
 // Article 2.2.7 (English black-letter rules)
@@ -905,24 +449,6 @@ had not objected within a reasonable time.""";
     content_hash "sha256:aedac6c0212d0ef99495c5d026e49f89d36118bfba5ff4dde1fdfaad12ce69b1";
 }
 
-// Статья 2.2.7 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_7_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_7";
-    text ru unofficial """Статья 2.2.7
-(Конфликт интересов)
-(1) Если договор, заключенный представителем, приводит его к
-конфликту интересов с принципалом, о котором третье лицо знало или
-должно было знать, принципал может отказаться от договора. Право на
-отказ осуществляется согласно статьям 3.12 и 3.14 – 3.17.
-(2) Однако, принципал не может отказаться от договора
-(а) если принципал согласился с конфликтом интересов
-представителя, либо знал или должен был знать об этом; или
-(b) если представитель сообщил принципалу о конфликте интересов, а
-принципал в разумный срок не сообщил о своих возражениях.""";
-    content_hash "sha256:e42c29fedd094dbdfae3b881bd9e1900540e986821ae178b9fb3377c356e2e10";
-}
-
 // Article 2.2.8 (English black-letter rules)
 fragment PICC_ART2_2_8_EN in PICC_2016_EN {
     kind article;
@@ -933,20 +459,6 @@ An agent has implied authority to appoint a sub-agent to perform acts which it i
 reasonable to expect the agent to perform itself. The rules of this Section apply to the
 sub-agency.""";
     content_hash "sha256:8eb15c6998e5c41902d31de7e08e5e36ebbf2a779db297b50ac84d63f991cf8e";
-}
-
-// Статья 2.2.8 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_8_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_8";
-    text ru unofficial """Статья 2.2.8
-(Передоверие)
-Представитель обладает подразумеваемым полномочием назначить
-представителя в порядке передоверия для совершения действий, в
-отношении которых было бы неразумно ожидать совершения самим
-представителем. Положения настоящего Раздела применимы к назначению
-представителя в порядке передоверия.""";
-    content_hash "sha256:4c31397cb31dc59c2c356fefe53e866a47ba6d6320eb6aaa9d0d887ad6095f0e";
 }
 
 // Article 2.2.9 (English black-letter rules)
@@ -967,27 +479,6 @@ principal indicate its refusal to become bound by a ratification.""";
     content_hash "sha256:d6b3af14d1bab6188d444508a4dac9b1db143974c79cb3b33c887f5fba55791a";
 }
 
-// Статья 2.2.9 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_9_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_9";
-    text ru unofficial """Статья 2.2.9
-(Последующее одобрение)
-(1) Действие, совершенное представителем без полномочий или в
-превышение полномочий может быть впоследствии одобрено принципалом.
-Одобренное действие имеет ту же силу, как если бы оно изначально было
-совершено в пределах полномочий.
-(2) Третье лицо может направить принципалу уведомление, установив
-разумный срок для одобрения действия представителя. Если в течение
-указанного срока принципал не дает своего одобрения, он в дальнейшем не
-может сделать это.
-(3) Если во время совершения представителем действия третье лицо
-не знало или не обязано было знать об отсутствии полномочий, оно может в
-любой момент до одобрения действия уведомить принципала о своем отказе
-быть связанным одобрением.""";
-    content_hash "sha256:671b3f6e18552954f3e96a02f2bee5effbbbd7bfde5febecce5b75f02c367beb";
-}
-
 // Article 2.2.10 (English black-letter rules)
 fragment PICC_ART2_2_10_EN in PICC_2016_EN {
     kind article;
@@ -999,19 +490,4 @@ third party knew or ought to have known of it.
 (2) Notwithstanding the termination of its authority, an agent remains authorised
 to perform the acts that are necessary to prevent harm to the principal’s interests.""";
     content_hash "sha256:da09c1cc29a62e62d11c708135e1b6e26aaa0fb61cbb2129e585e81df318598b";
-}
-
-// Статья 2.2.10 (русский парный якорь, unofficial)
-fragment PICC_ART2_2_10_RU in PICC_2016_RU {
-    kind article;
-    locator "article/2_2_10";
-    text ru unofficial """Статья 2.2.10.
-(Прекращение полномочий)
-(1) Прекращение полномочий представителя не затрагивает третье
-лицо, если только третье лицо не знало или не должно было знать о
-прекращении.
-(2) Несмотря на прекращение полномочий, представитель вправе
-совершать действия, которые необходимы для предотвращения ущерба
-интересам принципала.""";
-    content_hash "sha256:9ece9e6fd74b26a1fad75e912b433fbe375991c1283e91c047ff62f4d19d4026";
 }

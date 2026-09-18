@@ -1,0 +1,147 @@
+language "law.core" version "0.2";
+package unidroit.picc_non_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-non-performance";
+
+// Case 3. Termination of the contract (7.3.1-7.3.7).
+//
+// THE DIFFERENCE FROM ARTICLE 25 OF THE CONVENTION IS PRESENTED DIRECTLY: the
+// fundamental character follows from four different circumstances of paragraph 2,
+// while the fifth — disproportionate loss to the non-performing party — works
+// AGAINST it and removes the conclusion.
+
+test "PICCN-03-TERMINATION" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": obligation_of(entity_ref("urn:case:piccn:o-3"), entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a1": non_performance_of(entity_ref("urn:case:piccn:n-deprive"), entity_ref("urn:case:piccn:o-3"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a2": failure_to_perform(entity_ref("urn:case:piccn:n-deprive")) { origin case_input; }
+        assert "a3": substantially_deprives_of_expectation(entity_ref("urn:case:piccn:n-deprive")) { origin adjudicated; }
+        assert "a4": obligation_of(entity_ref("urn:case:piccn:o-3b"), entity_ref("urn:case:piccn:contract-3b"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a5": non_performance_of(entity_ref("urn:case:piccn:n-essence"), entity_ref("urn:case:piccn:o-3b"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a6": failure_to_perform(entity_ref("urn:case:piccn:n-essence")) { origin case_input; }
+        assert "a7": strict_compliance_of_essence(entity_ref("urn:case:piccn:n-essence")) { origin case_input; }
+        assert "a8": obligation_of(entity_ref("urn:case:piccn:o-3c"), entity_ref("urn:case:piccn:contract-3c"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a9": non_performance_of(entity_ref("urn:case:piccn:n-intent"), entity_ref("urn:case:piccn:o-3c"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a10": failure_to_perform(entity_ref("urn:case:piccn:n-intent")) { origin case_input; }
+        assert "a11": non_performance_intentional_or_reckless(entity_ref("urn:case:piccn:n-intent")) { origin case_input; }
+        assert "a12": disproportionate_loss_on_termination(entity_ref("urn:case:piccn:n-intent")) { origin adjudicated; }
+        assert "a13": obligation_of(entity_ref("urn:case:piccn:o-3d"), entity_ref("urn:case:piccn:contract-3d"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a14": non_performance_of(entity_ref("urn:case:piccn:n-trust"), entity_ref("urn:case:piccn:o-3d"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "a15": failure_to_perform(entity_ref("urn:case:piccn:n-trust")) { origin case_input; }
+        assert "a16": no_reliance_on_future_performance(entity_ref("urn:case:piccn:n-trust")) { origin case_input; }
+        assert "a17": termination_notice_given_by(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a18": clear_that_fundamental_non_performance_will_occur(entity_ref("urn:case:piccn:contract-3e")) { origin case_input; }
+        assert "a19": reasonable_belief_of_fundamental_non_performance(entity_ref("urn:case:piccn:contract-3f"), entity_ref("urn:case:piccn:buyer")) { origin adjudicated; }
+        assert "a20": assurance_demanded(entity_ref("urn:case:piccn:contract-3f"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a21": dispute_settlement_provision(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:term-3")) { origin case_input; }
+        assert "a22": contract_to_be_performed_at_one_time(entity_ref("urn:case:piccn:contract-3")) { origin case_input; }
+        assert "a23": supplied_under_contract(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "a24": makes_concurrent_restitution(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "b0": party_to_contract(entity_ref("urn:case:piccn:contract-3e"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "b1": party_to_contract(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "b2": result_not_foreseeable(entity_ref("urn:case:piccn:n-essence")) { origin case_input; }
+
+        assert "c0": aggrieved_party(entity_ref("urn:case:piccn:n-deprive"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c1": aggrieved_party(entity_ref("urn:case:piccn:n-essence"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c2": aggrieved_party(entity_ref("urn:case:piccn:n-intent"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+        assert "c3": aggrieved_party(entity_ref("urn:case:piccn:n-trust"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+
+        assert "d0": long_term_and_divisible(entity_ref("urn:case:piccn:contract-3")) { origin case_input; }
+
+        assert "e0": restitution_in_kind_impossible(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "e1": allowance_in_money_reasonable(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:seller")) { origin adjudicated; }
+        assert "e2": restitution_in_kind_impossible(entity_ref("urn:case:piccn:contract-3g"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "e3": allowance_in_money_reasonable(entity_ref("urn:case:piccn:contract-3g"), entity_ref("urn:case:piccn:seller")) { origin adjudicated; }
+        assert "e4": impossibility_attributable_to_other_party(entity_ref("urn:case:piccn:contract-3g"), entity_ref("urn:case:piccn:seller")) { origin case_input; }
+        assert "e5": expenses_reasonably_required(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")) { origin case_input; }
+
+    }
+
+    // The judgment channel on disproportionate loss stays open, and the document
+    // honestly says REQUIRES_JUDGMENT: the fundamental character is established, but
+    // the question of paragraph 2(e) has not yet been put to the organ.
+    evaluate truth(fundamental_non_performance(entity_ref("urn:case:piccn:n-deprive")));
+    expect evaluation_status == REQUIRES_JUDGMENT;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FundamentalByDeprivation);
+
+    evaluate truth(fundamental_non_performance(entity_ref("urn:case:piccn:n-essence")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FundamentalByEssence);
+
+    evaluate truth(fundamental_non_performance(entity_ref("urn:case:piccn:n-trust")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(FundamentalByLossOfConfidence);
+
+    // Disproportionate loss to the non-performing party removes the fundamental
+    // character, although the non-performance is intentional.
+    evaluate truth(fundamental_non_performance(entity_ref("urn:case:piccn:n-intent")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(may_terminate_contract(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationForFundamentalNonPerformance);
+
+    evaluate positions();
+    expect position(TerminateByNotice, ACTIVE);
+
+    evaluate truth(contract_terminated(entity_ref("urn:case:piccn:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NoticeTerminatesContract);
+
+    evaluate truth(may_terminate_contract(entity_ref("urn:case:piccn:contract-3e"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AnticipatoryNonPerformance);
+
+    evaluate truth(may_withhold_pending_assurance(entity_ref("urn:case:piccn:contract-3f"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(WithholdingPendingAssurance);
+
+    evaluate truth(may_terminate_contract(entity_ref("urn:case:piccn:contract-3f"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationForMissingAssurance);
+
+    evaluate truth(released_from_future_performance(entity_ref("urn:case:piccn:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationReleasesFuturePerformance);
+
+    evaluate truth(damages_claim_preserved(entity_ref("urn:case:piccn:contract-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TerminationPreservesDamages);
+
+    evaluate truth(surviving_term(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:term-3")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(DisputeClausesSurviveTermination);
+
+    evaluate truth(may_claim_restitution(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RestitutionOnTerminationAtOneTime);
+
+    // A long-term divisible contract: restitution only for the period AFTER termination.
+    evaluate truth(restitution_only_after_termination(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RestitutionOnLongTermContract);
+
+    // Article 7.3.6(2)-(3): an allowance in money instead of restitution in kind, but
+    // not where the impossibility is caused by the other party.
+    evaluate truth(allowance_in_money_due(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AllowanceInMoneyOnTermination);
+
+    evaluate truth(allowance_in_money_due(entity_ref("urn:case:piccn:contract-3g"), entity_ref("urn:case:piccn:seller")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(expenses_compensable(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PreservationExpensesOnTermination);
+
+    // Article 7.3.7(2): article 7.3.6 applies to restitution under a long-term contract.
+    evaluate truth(may_claim_restitution(entity_ref("urn:case:piccn:contract-3"), entity_ref("urn:case:piccn:buyer")));
+    expect any_applied(LongTermRestitutionFollowsArticle736);
+}

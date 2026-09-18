@@ -1,58 +1,39 @@
 {
-  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "$comment": "Catalogue of questions of the package (DECISION-0190): each card is a parameterised §172 query template with its evidence of execution, the boundaries carry the verbatim limitation from package-info.json. Gate: check_package_questions.py --only <package> --emit.",
   "format": "law.package-questions/0.1",
   "package": "unidroit.picc_performance",
+  "language": "en",
   "tasks": [
     {
       "id": "ispolnenie",
-      "title": "Исполнение обязательств: срок, порядок, место, платёж, отнесение платежей и публичное разрешение (ст. 6.1.1–6.1.17)",
+      "title": "Performance of obligations: time, order, place, payment, imputation of payments and public permission (art. 6.1.1–6.1.17)",
       "source_units": [
         "PICC_ART6_1_10_EN",
-        "PICC_ART6_1_10_RU",
         "PICC_ART6_1_11_EN",
-        "PICC_ART6_1_11_RU",
         "PICC_ART6_1_12_EN",
-        "PICC_ART6_1_12_RU",
         "PICC_ART6_1_13_EN",
-        "PICC_ART6_1_13_RU",
         "PICC_ART6_1_14_EN",
-        "PICC_ART6_1_14_RU",
         "PICC_ART6_1_15_EN",
-        "PICC_ART6_1_15_RU",
         "PICC_ART6_1_16_EN",
-        "PICC_ART6_1_16_RU",
         "PICC_ART6_1_17_EN",
-        "PICC_ART6_1_17_RU",
         "PICC_ART6_1_1_EN",
-        "PICC_ART6_1_1_RU",
         "PICC_ART6_1_2_EN",
-        "PICC_ART6_1_2_RU",
         "PICC_ART6_1_3_EN",
-        "PICC_ART6_1_3_RU",
         "PICC_ART6_1_4_EN",
-        "PICC_ART6_1_4_RU",
         "PICC_ART6_1_5_EN",
-        "PICC_ART6_1_5_RU",
         "PICC_ART6_1_6_EN",
-        "PICC_ART6_1_6_RU",
         "PICC_ART6_1_7_EN",
-        "PICC_ART6_1_7_RU",
         "PICC_ART6_1_8_EN",
-        "PICC_ART6_1_8_RU",
-        "PICC_ART6_1_9_EN",
-        "PICC_ART6_1_9_RU"
+        "PICC_ART6_1_9_EN"
       ]
     },
     {
       "id": "zatrudnenie",
-      "title": "Затруднения: договор соблюдается, состав затруднения и последствия (ст. 6.2.1–6.2.3)",
+      "title": "Hardship: the contract is to be observed, the definition of hardship and its effects (art. 6.2.1–6.2.3)",
       "source_units": [
         "PICC_ART6_2_1_EN",
-        "PICC_ART6_2_1_RU",
         "PICC_ART6_2_2_EN",
-        "PICC_ART6_2_2_RU",
-        "PICC_ART6_2_3_EN",
-        "PICC_ART6_2_3_RU"
+        "PICC_ART6_2_3_EN"
       ]
     }
   ],
@@ -60,7 +41,7 @@
     {
       "id": "acceptance-conditional-on-honour",
       "task": "ispolnenie",
-      "question": "Принят ли чек или иной инструмент лишь под условием его оплаты (ст. 6.1.7 п. 2)?",
+      "question": "Is a cheque or other instrument accepted only on condition that it will be honoured (art. 6.1.7(2))?",
       "kind": "truth",
       "predicate": "acceptance_conditional_on_honour",
       "parameters": [
@@ -75,14 +56,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_7_EN",
-        "PICC_ART6_1_7_RU"
+        "PICC_ART6_1_7_EN"
       ]
     },
     {
       "id": "bound-to-perform-first",
       "task": "ispolnenie",
-      "question": "Обязана ли сторона, исполнение которой требует времени, исполнить первой (ст. 6.1.4 п. 2)?",
+      "question": "Is the party whose performance requires a period of time bound to perform first (art. 6.1.4(2))?",
       "kind": "truth",
       "predicate": "bound_to_perform_first",
       "parameters": [
@@ -107,14 +87,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_4_EN",
-        "PICC_ART6_1_4_RU"
+        "PICC_ART6_1_4_EN"
       ]
     },
     {
       "id": "bound-to-perform-nevertheless",
       "task": "zatrudnenie",
-      "question": "Обязана ли сторона исполнять, если исполнение стало более обременительным (ст. 6.2.1)?",
+      "question": "Is a party bound to perform where performance has become more onerous (art. 6.2.1)?",
       "kind": "truth",
       "predicate": "bound_to_perform_nevertheless",
       "parameters": [
@@ -134,14 +113,13 @@
         "PICCP-04-HARDSHIP"
       ],
       "source_units": [
-        "PICC_ART6_2_1_EN",
-        "PICC_ART6_2_1_RU"
+        "PICC_ART6_2_1_EN"
       ]
     },
     {
       "id": "bound-to-perform-simultaneously",
       "task": "ispolnenie",
-      "question": "Обязаны ли стороны исполнить одновременно (ст. 6.1.4 п. 1)?",
+      "question": "Are the parties bound to perform simultaneously (art. 6.1.4(1))?",
       "kind": "truth",
       "predicate": "bound_to_perform_simultaneously",
       "parameters": [
@@ -166,14 +144,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_4_EN",
-        "PICC_ART6_1_4_RU"
+        "PICC_ART6_1_4_EN"
       ]
     },
     {
       "id": "contract-adapted-by-court",
       "task": "zatrudnenie",
-      "question": "Адаптирован ли договор судом при затруднении (ст. 6.2.3 п. 4 подпункт b)?",
+      "question": "Has the contract been adapted by the court on hardship (art. 6.2.3(4)(b))?",
       "kind": "truth",
       "predicate": "contract_adapted_by_court",
       "parameters": [
@@ -198,14 +175,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_2_3_EN",
-        "PICC_ART6_2_3_RU"
+        "PICC_ART6_2_3_EN"
       ]
     },
     {
       "id": "contract-terminated-by-court",
       "task": "zatrudnenie",
-      "question": "Прекращён ли договор судом при затруднении (ст. 6.2.3 п. 4 подпункт a)?",
+      "question": "Has the contract been terminated by the court on hardship (art. 6.2.3(4)(a))?",
       "kind": "truth",
       "predicate": "contract_terminated_by_court",
       "parameters": [
@@ -220,14 +196,13 @@
         "PICCP-04-HARDSHIP"
       ],
       "source_units": [
-        "PICC_ART6_2_3_EN",
-        "PICC_ART6_2_3_RU"
+        "PICC_ART6_2_3_EN"
       ]
     },
     {
       "id": "contract-void-for-refusal",
       "task": "ispolnenie",
-      "question": "Ничтожен ли договор из-за отказа в публичном разрешении (ст. 6.1.17 п. 1)?",
+      "question": "Is the contract void because a public permission was refused (art. 6.1.17(1))?",
       "kind": "truth",
       "predicate": "contract_void_for_refusal",
       "parameters": [
@@ -257,14 +232,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_17_EN",
-        "PICC_ART6_1_17_RU"
+        "PICC_ART6_1_17_EN"
       ]
     },
     {
       "id": "costs-borne-by-performing-party",
       "task": "ispolnenie",
-      "question": "Кто несёт издержки исполнения обязательства (ст. 6.1.11)?",
+      "question": "Who bears the costs of performing an obligation (art. 6.1.11)?",
       "kind": "truth",
       "predicate": "costs_borne_by_performing_party",
       "parameters": [
@@ -279,14 +253,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_11_EN",
-        "PICC_ART6_1_11_RU"
+        "PICC_ART6_1_11_EN"
       ]
     },
     {
       "id": "either-party-may-terminate",
       "task": "ispolnenie",
-      "question": "Вправе ли каждая сторона прекратить договор, если разрешение не дано и не отклонено (ст. 6.1.16 п. 1)?",
+      "question": "May either party terminate the contract where the permission is neither granted nor refused (art. 6.1.16(1))?",
       "kind": "truth",
       "predicate": "either_party_may_terminate",
       "parameters": [
@@ -316,14 +289,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_16_EN",
-        "PICC_ART6_1_16_RU"
+        "PICC_ART6_1_16_EN"
       ]
     },
     {
       "id": "entitled-to-request-renegotiation",
       "task": "zatrudnenie",
-      "question": "Вправе ли потерпевшая сторона требовать пересмотра договора (ст. 6.2.3 п. 1)?",
+      "question": "Is the disadvantaged party entitled to request renegotiation of the contract (art. 6.2.3(1))?",
       "kind": "truth",
       "predicate": "entitled_to_request_renegotiation",
       "parameters": [
@@ -343,14 +315,13 @@
         "PICCP-04-HARDSHIP"
       ],
       "source_units": [
-        "PICC_ART6_2_3_EN",
-        "PICC_ART6_2_3_RU"
+        "PICC_ART6_2_3_EN"
       ]
     },
     {
       "id": "expenses-borne-by-obligor",
       "task": "ispolnenie",
-      "question": "Кто несёт дополнительные расходы от частичного или досрочного исполнения (ст. 6.1.3 п. 2, 6.1.5 п. 3)?",
+      "question": "Who bears the additional expenses caused by partial or earlier performance (art. 6.1.3(2), 6.1.5(3))?",
       "kind": "truth",
       "predicate": "expenses_borne_by_obligor",
       "parameters": [
@@ -372,7 +343,7 @@
     {
       "id": "hardship-exists",
       "task": "zatrudnenie",
-      "question": "Имеет ли место затруднение (ст. 6.2.2)?",
+      "question": "Is there a case of hardship (art. 6.2.2)?",
       "kind": "truth",
       "predicate": "hardship_exists",
       "parameters": [
@@ -392,14 +363,13 @@
         "PICCP-04-HARDSHIP"
       ],
       "source_units": [
-        "PICC_ART6_2_2_EN",
-        "PICC_ART6_2_2_RU"
+        "PICC_ART6_2_2_EN"
       ]
     },
     {
       "id": "increase-in-expenses-borne-by-party",
       "task": "ispolnenie",
-      "question": "Кто несёт увеличение расходов от переезда коммерческого предприятия (ст. 6.1.6 п. 2)?",
+      "question": "Who bears the increase in expenses caused by a change of a place of business (art. 6.1.6(2))?",
       "kind": "truth",
       "predicate": "increase_in_expenses_borne_by_party",
       "parameters": [
@@ -414,14 +384,13 @@
         "PICCP-01-TIME-ORDER-AND-PLACE"
       ],
       "source_units": [
-        "PICC_ART6_1_6_EN",
-        "PICC_ART6_1_6_RU"
+        "PICC_ART6_1_6_EN"
       ]
     },
     {
       "id": "may-pay-in-currency-of-place",
       "task": "ispolnenie",
-      "question": "Может ли должник уплатить в валюте места платежа (ст. 6.1.9 п. 1)?",
+      "question": "May the obligor pay in the currency of the place for payment (art. 6.1.9(1))?",
       "kind": "truth",
       "predicate": "may_pay_in_currency_of_place",
       "parameters": [
@@ -436,14 +405,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_9_EN",
-        "PICC_ART6_1_9_RU"
+        "PICC_ART6_1_9_EN"
       ]
     },
     {
       "id": "may-perform-within-period",
       "task": "ispolnenie",
-      "question": "Может ли сторона исполнить в любой момент внутри установленного периода (ст. 6.1.1 подпункт b)?",
+      "question": "May a party perform at any time within the period fixed (art. 6.1.1(b))?",
       "kind": "truth",
       "predicate": "may_perform_within_period",
       "parameters": [
@@ -468,14 +436,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_1_EN",
-        "PICC_ART6_1_1_RU"
+        "PICC_ART6_1_1_EN"
       ]
     },
     {
       "id": "may-reject-earlier-performance",
       "task": "ispolnenie",
-      "question": "Может ли кредитор отклонить досрочное исполнение (ст. 6.1.5 п. 1)?",
+      "question": "May the obligee reject an earlier performance (art. 6.1.5(1))?",
       "kind": "truth",
       "predicate": "may_reject_earlier_performance",
       "parameters": [
@@ -500,14 +467,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_5_EN",
-        "PICC_ART6_1_5_RU"
+        "PICC_ART6_1_5_EN"
       ]
     },
     {
       "id": "may-reject-partial-performance",
       "task": "ispolnenie",
-      "question": "Может ли кредитор отклонить предложение исполнить частично (ст. 6.1.3 п. 1)?",
+      "question": "May the obligee reject an offer of partial performance (art. 6.1.3(1))?",
       "kind": "truth",
       "predicate": "may_reject_partial_performance",
       "parameters": [
@@ -532,14 +498,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_3_EN",
-        "PICC_ART6_1_3_RU"
+        "PICC_ART6_1_3_EN"
       ]
     },
     {
       "id": "may-resort-to-court",
       "task": "zatrudnenie",
-      "question": "Может ли сторона обратиться в суд, если пересмотр не удался (ст. 6.2.3 п. 3)?",
+      "question": "May a party resort to the court where renegotiation has failed (art. 6.2.3(3))?",
       "kind": "truth",
       "predicate": "may_resort_to_court",
       "parameters": [
@@ -559,14 +524,13 @@
         "PICCP-04-HARDSHIP"
       ],
       "source_units": [
-        "PICC_ART6_2_3_EN",
-        "PICC_ART6_2_3_RU"
+        "PICC_ART6_2_3_EN"
       ]
     },
     {
       "id": "must-bear-permission-expenses",
       "task": "ispolnenie",
-      "question": "Кто несёт расходы на получение публичного разрешения (ст. 6.1.15 п. 1)?",
+      "question": "Who bears the expenses of obtaining a public permission (art. 6.1.15(1))?",
       "kind": "truth",
       "predicate": "must_bear_permission_expenses",
       "parameters": [
@@ -586,14 +550,13 @@
         "PICCP-03-IMPUTATION-AND-PERMISSION"
       ],
       "source_units": [
-        "PICC_ART6_1_15_EN",
-        "PICC_ART6_1_15_RU"
+        "PICC_ART6_1_15_EN"
       ]
     },
     {
       "id": "must-notify-of-outcome",
       "task": "ispolnenie",
-      "question": "Обязана ли сторона известить о предоставлении разрешения или отказе (ст. 6.1.15 п. 2)?",
+      "question": "Must a party give notice of the grant or the refusal of the permission (art. 6.1.15(2))?",
       "kind": "truth",
       "predicate": "must_notify_of_outcome",
       "parameters": [
@@ -613,14 +576,13 @@
         "PICCP-03-IMPUTATION-AND-PERMISSION"
       ],
       "source_units": [
-        "PICC_ART6_1_15_EN",
-        "PICC_ART6_1_15_RU"
+        "PICC_ART6_1_15_EN"
       ]
     },
     {
       "id": "must-perform-at-fixed-time",
       "task": "ispolnenie",
-      "question": "Должна ли сторона исполнить в установленный договором срок (ст. 6.1.1 подпункт a)?",
+      "question": "Must a party perform at the time fixed by the contract (art. 6.1.1(a))?",
       "kind": "truth",
       "predicate": "must_perform_at_fixed_time",
       "parameters": [
@@ -635,14 +597,13 @@
         "PICCP-01-TIME-ORDER-AND-PLACE"
       ],
       "source_units": [
-        "PICC_ART6_1_1_EN",
-        "PICC_ART6_1_1_RU"
+        "PICC_ART6_1_1_EN"
       ]
     },
     {
       "id": "must-perform-at-one-time",
       "task": "ispolnenie",
-      "question": "Должна ли сторона исполнить единовременно (ст. 6.1.2)?",
+      "question": "Must a party perform at one time (art. 6.1.2)?",
       "kind": "truth",
       "predicate": "must_perform_at_one_time",
       "parameters": [
@@ -657,14 +618,13 @@
         "PICCP-01-TIME-ORDER-AND-PLACE"
       ],
       "source_units": [
-        "PICC_ART6_1_2_EN",
-        "PICC_ART6_1_2_RU"
+        "PICC_ART6_1_2_EN"
       ]
     },
     {
       "id": "must-perform-within-reasonable-time",
       "task": "ispolnenie",
-      "question": "Должна ли сторона исполнить в разумный срок после заключения договора (ст. 6.1.1 подпункт c)?",
+      "question": "Must a party perform within a reasonable time after the conclusion of the contract (art. 6.1.1(c))?",
       "kind": "truth",
       "predicate": "must_perform_within_reasonable_time",
       "parameters": [
@@ -679,14 +639,13 @@
         "PICCP-01-TIME-ORDER-AND-PLACE"
       ],
       "source_units": [
-        "PICC_ART6_1_1_EN",
-        "PICC_ART6_1_1_RU"
+        "PICC_ART6_1_1_EN"
       ]
     },
     {
       "id": "must-take-measures-for-permission",
       "task": "ispolnenie",
-      "question": "Кто обязан принять меры для получения публичного разрешения (ст. 6.1.14)?",
+      "question": "Who must take the measures necessary to obtain a public permission (art. 6.1.14)?",
       "kind": "truth",
       "predicate": "must_take_measures_for_permission",
       "parameters": [
@@ -716,14 +675,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_1_14_EN",
-        "PICC_ART6_1_14_RU"
+        "PICC_ART6_1_14_EN"
       ]
     },
     {
       "id": "obligation-discharged",
       "task": "ispolnenie",
-      "question": "Прекратилось ли денежное обязательство исполнением (ст. 6.1.8 п. 2)?",
+      "question": "Is the monetary obligation discharged by performance (art. 6.1.8(2))?",
       "kind": "truth",
       "predicate": "obligation_discharged",
       "parameters": [
@@ -738,14 +696,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_8_EN",
-        "PICC_ART6_1_8_RU"
+        "PICC_ART6_1_8_EN"
       ]
     },
     {
       "id": "obligee-may-choose-rate",
       "task": "ispolnenie",
-      "question": "Может ли кредитор выбрать курс обмена после просрочки должника (ст. 6.1.9 п. 4)?",
+      "question": "May the obligee choose the rate of exchange after the obligor's delay (art. 6.1.9(4))?",
       "kind": "truth",
       "predicate": "obligee_may_choose_rate",
       "parameters": [
@@ -760,14 +717,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_9_EN",
-        "PICC_ART6_1_9_RU"
+        "PICC_ART6_1_9_EN"
       ]
     },
     {
       "id": "obligee-may-require-currency-of-place",
       "task": "ispolnenie",
-      "question": "Может ли кредитор потребовать платежа в валюте места платежа (ст. 6.1.9 п. 2)?",
+      "question": "May the obligee require payment in the currency of the place for payment (art. 6.1.9(2))?",
       "kind": "truth",
       "predicate": "obligee_may_require_currency_of_place",
       "parameters": [
@@ -782,14 +738,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_9_EN",
-        "PICC_ART6_1_9_RU"
+        "PICC_ART6_1_9_EN"
       ]
     },
     {
       "id": "only-terms-void",
       "task": "ispolnenie",
-      "question": "Ничтожны ли только затронутые отказом условия договора (ст. 6.1.17 п. 1)?",
+      "question": "Are only the terms affected by the refusal void (art. 6.1.17(1))?",
       "kind": "truth",
       "predicate": "only_terms_void",
       "parameters": [
@@ -809,14 +764,13 @@
         "PICCP-03-IMPUTATION-AND-PERMISSION"
       ],
       "source_units": [
-        "PICC_ART6_1_17_EN",
-        "PICC_ART6_1_17_RU"
+        "PICC_ART6_1_17_EN"
       ]
     },
     {
       "id": "own-performance-time-unaffected",
       "task": "ispolnenie",
-      "question": "Затрагивает ли принятие досрочного исполнения срок собственных обязательств (ст. 6.1.5 п. 2)?",
+      "question": "Does accepting an earlier performance affect the time for the party's own obligations (art. 6.1.5(2))?",
       "kind": "truth",
       "predicate": "own_performance_time_unaffected",
       "parameters": [
@@ -831,14 +785,13 @@
         "PICCP-01-TIME-ORDER-AND-PLACE"
       ],
       "source_units": [
-        "PICC_ART6_1_5_EN",
-        "PICC_ART6_1_5_RU"
+        "PICC_ART6_1_5_EN"
       ]
     },
     {
       "id": "payment-imputed-to",
       "task": "ispolnenie",
-      "question": "К какому обязательству относится платёж (ст. 6.1.12, 6.1.13)?",
+      "question": "To which obligation is the payment imputed (art. 6.1.12, 6.1.13)?",
       "kind": "truth",
       "predicate": "payment_imputed_to",
       "parameters": [
@@ -897,15 +850,13 @@
       ],
       "source_units": [
         "PICC_ART6_1_12_EN",
-        "PICC_ART6_1_12_RU",
-        "PICC_ART6_1_13_EN",
-        "PICC_ART6_1_13_RU"
+        "PICC_ART6_1_13_EN"
       ]
     },
     {
       "id": "payment-in-currency-of-place-required",
       "task": "ispolnenie",
-      "question": "В какой валюте платить, если она не названа обязательством (ст. 6.1.10)?",
+      "question": "In which currency is payment to be made where the obligation does not name one (art. 6.1.10)?",
       "kind": "truth",
       "predicate": "payment_in_currency_of_place_required",
       "parameters": [
@@ -920,14 +871,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_10_EN",
-        "PICC_ART6_1_10_RU"
+        "PICC_ART6_1_10_EN"
       ]
     },
     {
       "id": "payment-may-be-made-in-this-form",
       "task": "ispolnenie",
-      "question": "Может ли платёж быть произведён в этой форме (ст. 6.1.7 п. 1, 6.1.8 п. 1)?",
+      "question": "May payment be made in this form (art. 6.1.7(1), 6.1.8(1))?",
       "kind": "truth",
       "predicate": "payment_may_be_made_in_this_form",
       "parameters": [
@@ -953,15 +903,13 @@
       ],
       "source_units": [
         "PICC_ART6_1_7_EN",
-        "PICC_ART6_1_7_RU",
-        "PICC_ART6_1_8_EN",
-        "PICC_ART6_1_8_RU"
+        "PICC_ART6_1_8_EN"
       ]
     },
     {
       "id": "performed-at-obligee-place",
       "task": "ispolnenie",
-      "question": "Исполняется ли денежное обязательство в месте предприятия кредитора (ст. 6.1.6 п. 1 подпункт a)?",
+      "question": "Is a monetary obligation to be performed at the obligee's place of business (art. 6.1.6(1)(a))?",
       "kind": "truth",
       "predicate": "performed_at_obligee_place",
       "parameters": [
@@ -976,14 +924,13 @@
         "PICCP-01-TIME-ORDER-AND-PLACE"
       ],
       "source_units": [
-        "PICC_ART6_1_6_EN",
-        "PICC_ART6_1_6_RU"
+        "PICC_ART6_1_6_EN"
       ]
     },
     {
       "id": "performed-at-obligor-place",
       "task": "ispolnenie",
-      "question": "Исполняется ли неденежное обязательство в месте предприятия должника (ст. 6.1.6 п. 1 подпункт b)?",
+      "question": "Is a non-monetary obligation to be performed at the obligor's place of business (art. 6.1.6(1)(b))?",
       "kind": "truth",
       "predicate": "performed_at_obligor_place",
       "parameters": [
@@ -998,14 +945,13 @@
         "PICCP-01-TIME-ORDER-AND-PLACE"
       ],
       "source_units": [
-        "PICC_ART6_1_6_EN",
-        "PICC_ART6_1_6_RU"
+        "PICC_ART6_1_6_EN"
       ]
     },
     {
       "id": "rate-prevailing-when-due-applies",
       "task": "ispolnenie",
-      "question": "Какой курс обмена применяется к платежу (ст. 6.1.9 п. 3)?",
+      "question": "Which rate of exchange applies to the payment (art. 6.1.9(3))?",
       "kind": "truth",
       "predicate": "rate_prevailing_when_due_applies",
       "parameters": [
@@ -1020,14 +966,13 @@
         "PICCP-02-PAYMENT-AND-CURRENCY"
       ],
       "source_units": [
-        "PICC_ART6_1_9_EN",
-        "PICC_ART6_1_9_RU"
+        "PICC_ART6_1_9_EN"
       ]
     },
     {
       "id": "request-does-not-entitle-to-withhold",
       "task": "zatrudnenie",
-      "question": "Даёт ли просьба о пересмотре право приостановить исполнение (ст. 6.2.3 п. 2)?",
+      "question": "Does a request for renegotiation entitle the party to withhold performance (art. 6.2.3(2))?",
       "kind": "truth",
       "predicate": "request_does_not_entitle_to_withhold",
       "parameters": [
@@ -1047,14 +992,13 @@
         "PICCP-04-HARDSHIP"
       ],
       "source_units": [
-        "PICC_ART6_2_3_EN",
-        "PICC_ART6_2_3_RU"
+        "PICC_ART6_2_3_EN"
       ]
     },
     {
       "id": "rules-on-non-performance-apply",
       "task": "ispolnenie",
-      "question": "Применяются ли правила о неисполнении при отказе в разрешении (ст. 6.1.17 п. 2)?",
+      "question": "Do the rules on non-performance apply where the permission is refused (art. 6.1.17(2))?",
       "kind": "truth",
       "predicate": "rules_on_non_performance_apply",
       "parameters": [
@@ -1074,19 +1018,18 @@
         "PICCP-03-IMPUTATION-AND-PERMISSION"
       ],
       "source_units": [
-        "PICC_ART6_1_17_EN",
-        "PICC_ART6_1_17_RU"
+        "PICC_ART6_1_17_EN"
       ]
     },
     {
       "id": "pozitsii-adapt-or-terminate-for-hardship",
       "task": "zatrudnenie",
-      "question": "Активна ли власть суда прекратить или адаптировать договор при затруднении (ст. 6.2.3 п. 4)?",
+      "question": "Is the power of the court to terminate or adapt the contract on hardship active (art. 6.2.3(4))?",
       "kind": "positions",
       "norms": [
         "AdaptOrTerminateForHardship"
       ],
-      "template": "evaluate positions(); expect position(AdaptOrTerminateForHardship, <статус>);",
+      "template": "evaluate positions(); expect position(AdaptOrTerminateForHardship, <status>);",
       "tests": [
         "PICCP-04-HARDSHIP"
       ],
@@ -1097,84 +1040,72 @@
         }
       ],
       "source_units": [
-        "PICC_ART6_2_3_EN",
-        "PICC_ART6_2_3_RU"
+        "PICC_ART6_2_3_EN"
       ]
     }
   ],
   "boundaries": [
     {
-      "id": "gr-ne-pravo-gosudarstva-p",
+      "id": "br-not-the-law-of-a-state",
       "task": "ispolnenie",
       "reason_kind": "source_delegates",
-      "question": "Какие императивные нормы применимого права ограничивают исполнение договора?",
+      "question": "Which mandatory rules of the applicable law restrict the performance of the contract?",
       "source_units": [
         "PICC_ART6_1_14_EN"
       ],
-      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`)."
+      "limitation": "THIS IS NOT THE LAW OF A STATE. The Principles apply when the parties have agreed on them, or when a court or arbitral tribunal takes them as general principles of law; they do not replace the mandatory rules of the applicable law (article 1.4, hub `unidroit.picc`)."
     },
     {
-      "id": "gr-hardship-net-u-konvencii",
+      "id": "br-convention-has-no-hardship",
       "task": "zatrudnenie",
       "reason_kind": "source_delegates",
-      "question": "Что отвечает Конвенция о пересмотре договора при резком удорожании исполнения?",
+      "question": "What does the Convention answer on renegotiation where performance becomes far more onerous?",
       "source_units": [
         "PICC_ART6_2_2_EN"
       ],
-      "limitation": "ЗАТРУДНЕНИЯ — ТО, ЧЕГО У КОНВЕНЦИИ НЕТ НОРМОЙ. Статья 79 Конвенции знает освобождение от ответственности при препятствии вне контроля, но ни пересмотра договора, ни его адаптации судом не предусматривает. Статьи 6.2.1–6.2.3 дают и то и другое; на одних фактах два инструмента отвечают по-разному, и это наблюдается делом 04."
+      "limitation": "HARDSHIP IS WHAT THE CONVENTION DOES NOT HAVE AS A RULE. Article 79 of the Convention knows an exemption from liability for an impediment beyond control, but provides for neither renegotiation nor adaptation of the contract by a court. Articles 6.2.1–6.2.3 give both; on the same facts the two instruments answer differently, and this is observed by case 04."
     },
     {
-      "id": "gr-otsenochnye-p",
+      "id": "br-evaluative-elements",
       "task": "zatrudnenie",
       "reason_kind": "case_data",
-      "question": "Существенно ли изменилось равновесие договора и разумно ли его адаптировать?",
+      "question": "Has the equilibrium of the contract been fundamentally altered and is it reasonable to adapt it?",
       "source_units": [
         "PICC_ART6_2_2_EN",
         "PICC_ART6_2_3_EN"
       ],
-      "limitation": "ОЦЕНОЧНЫЕ ПРИЗНАКИ ГЛАВЫ 6 ИДУТ КАНАЛОМ СУЖДЕНИЯ §47.3 с органом `Tribunal`: отсутствие законного интереса кредитора в отклонении исполнения (6.1.3, 6.1.5), разумность сохранения остальной части договора при частичном разрешении (6.1.16, 6.1.17), существенное изменение равновесия договора и невозможность учесть события при заключении (6.2.2), разумность прекращения или адаптации (6.2.3 п. 4). Модель их не решает и догадку не подставляет."
+      "limitation": "THE EVALUATIVE ELEMENTS OF CHAPTER 6 GO THROUGH THE §47.3 JUDGMENT CHANNEL with the organ `Tribunal`: the absence of a legitimate interest of the obligee in refusing performance (6.1.3, 6.1.5), the reasonableness of upholding the remaining contract where a permission affects some terms only (6.1.16, 6.1.17), a fundamental alteration of the equilibrium of the contract and the impossibility of taking the events into account at the time of conclusion (6.2.2), the reasonableness of termination or adaptation (6.2.3(4)). The model neither decides them nor substitutes a guess."
     },
     {
-      "id": "gr-kurs-i-razreshenie",
+      "id": "br-rate-and-permission",
       "task": "ispolnenie",
       "reason_kind": "case_data",
-      "question": "Каков применимый курс обмена и что требует публичное разрешение конкретного государства?",
+      "question": "What is the applicable rate of exchange and what does the public permission of a particular state require?",
       "source_units": [
         "PICC_ART6_1_9_EN",
         "PICC_ART6_1_14_EN"
       ],
-      "limitation": "КУРС ОБМЕНА И СОДЕРЖАНИЕ ПУБЛИЧНОГО РАЗРЕШЕНИЯ — ВХОД ДЕЛА: статьи 6.1.9 и 6.1.14–6.1.17 называют ПРАВИЛО ВЫБОРА (какой курс применяется, кто обязан хлопотать о разрешении), а само число курса и требования конкретного государства приносит дело."
+      "limitation": "THE RATE OF EXCHANGE AND THE CONTENT OF A PUBLIC PERMISSION ARE INPUTS OF THE CASE: articles 6.1.9 and 6.1.14–6.1.17 name the RULE OF CHOICE (which rate applies, who is to take the measures necessary to obtain the permission), while the number itself and the requirements of a particular state are brought by the case."
     },
     {
-      "id": "gr-otnesenie-proporcionalno",
+      "id": "br-proportional-imputation",
       "task": "ispolnenie",
       "reason_kind": "case_data",
-      "question": "Как отнести платёж, если ни один критерий очереди не применим?",
+      "question": "How is a payment imputed where no criterion of the sequence applies?",
       "source_units": [
         "PICC_ART6_1_12_EN"
       ],
-      "limitation": "ОЧЕРЕДЬ ОТНЕСЕНИЯ ПЛАТЕЖЕЙ ЗАПИСАНА ПРИОРИТЕТАМИ §116, А НЕ ПОРЯДКОМ ЧТЕНИЯ: расходы и проценты идут впереди указания должника (ст. 6.1.12 п. 1), а четыре критерия пункта 3 вытесняют друг друга в объявленном источником порядке. Пропорциональное отнесение «при неприменимости всех критериев» в модель не входит: это арифметика по неопределённому составу долгов, и дело её не предъявляет."
+      "limitation": "THE ORDER OF IMPUTATION IS WRITTEN AS §116 PRIORITIES, NOT AS READING ORDER: expenses and interest come before the obligor's indication (article 6.1.12(1)), and the four criteria of paragraph 3 displace one another in the order the source declares. Proportional imputation where no criterion applies is not in the model: that is arithmetic over an indeterminate set of debts, and no case presents it."
     },
     {
-      "id": "gr-razumnyj-srok-p",
+      "id": "br-reasonable-time",
       "task": "ispolnenie",
       "reason_kind": "case_data",
-      "question": "Какой срок является разумным для исполнения после заключения договора?",
+      "question": "What is a reasonable time for performance after the conclusion of the contract?",
       "source_units": [
         "PICC_ART6_1_1_EN"
       ],
-      "limitation": "КАЛЕНДАРЯ У ПРИНЦИПОВ НЕТ: «разумный срок» статьи 6.1.1 подпункта c не переводится в дни моделью — он остаётся оценочным признаком или фактом дела."
-    },
-    {
-      "id": "gr-russkij-tekst-p",
-      "task": "ispolnenie",
-      "reason_kind": "source_delegates",
-      "question": "Каков официальный текст статьи главы 6?",
-      "source_units": [
-        "PICC_ART6_1_1_EN",
-        "PICC_ART6_1_1_RU"
-      ],
-      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский; первичный якорь §194 — английский black-letter текст."
+      "limitation": "THE PRINCIPLES HAVE NO CALENDAR: the \"reasonable time\" of article 6.1.1(c) is not converted into days by the model — it remains an evaluative element or a fact of the case."
     }
   ],
   "internal": []

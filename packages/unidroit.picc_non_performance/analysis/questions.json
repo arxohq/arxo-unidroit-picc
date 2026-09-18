@@ -1,94 +1,63 @@
 {
-  "$comment": "ЗАГОТОВКА scaffold_questions.py: поля с `TODO:` пишет автор — формулировки, объединение норм в карточки positions, границы с типом причины и дословным ограничением из package-info.json, причины internal. Ворота: check_package_questions.py --only <пакет> --emit.",
+  "$comment": "Catalogue of questions of the package (DECISION-0190): each card is a parameterised §172 query template with its evidence of execution, the boundaries carry the verbatim limitation from package-info.json. Gate: check_package_questions.py --only <package> --emit.",
   "format": "law.package-questions/0.1",
   "package": "unidroit.picc_non_performance",
+  "language": "en",
   "tasks": [
     {
       "id": "obschie",
-      "title": "Неисполнение в целом: определение, вмешательство, приостановление, исправление, дополнительный срок, оговорки и непреодолимая сила (ст. 7.1.1–7.1.7)",
+      "title": "Non-performance in general: definition, interference, withholding, cure, an additional period, exemption clauses and force majeure (art. 7.1.1–7.1.7)",
       "source_units": [
         "PICC_ART7_1_1_EN",
-        "PICC_ART7_1_1_RU",
         "PICC_ART7_1_2_EN",
-        "PICC_ART7_1_2_RU",
         "PICC_ART7_1_3_EN",
-        "PICC_ART7_1_3_RU",
         "PICC_ART7_1_4_EN",
-        "PICC_ART7_1_4_RU",
         "PICC_ART7_1_5_EN",
-        "PICC_ART7_1_5_RU",
         "PICC_ART7_1_6_EN",
-        "PICC_ART7_1_6_RU",
-        "PICC_ART7_1_7_EN",
-        "PICC_ART7_1_7_RU"
+        "PICC_ART7_1_7_EN"
       ]
     },
     {
       "id": "pravo-na-ispolnenie",
-      "title": "Право требовать исполнения и смена средства защиты (ст. 7.2.1–7.2.5)",
+      "title": "The right to performance and the change of remedy (art. 7.2.1–7.2.5)",
       "source_units": [
         "PICC_ART7_2_1_EN",
-        "PICC_ART7_2_1_RU",
         "PICC_ART7_2_2_EN",
-        "PICC_ART7_2_2_RU",
         "PICC_ART7_2_3_EN",
-        "PICC_ART7_2_3_RU",
         "PICC_ART7_2_4_EN",
-        "PICC_ART7_2_4_RU",
-        "PICC_ART7_2_5_EN",
-        "PICC_ART7_2_5_RU"
+        "PICC_ART7_2_5_EN"
       ]
     },
     {
       "id": "prekraschenie",
-      "title": "Прекращение договора и его последствия (ст. 7.3.1–7.3.7)",
+      "title": "Termination of the contract and its effects (art. 7.3.1–7.3.7)",
       "source_units": [
         "PICC_ART7_3_1_EN",
-        "PICC_ART7_3_1_RU",
         "PICC_ART7_3_2_EN",
-        "PICC_ART7_3_2_RU",
         "PICC_ART7_3_3_EN",
-        "PICC_ART7_3_3_RU",
         "PICC_ART7_3_4_EN",
-        "PICC_ART7_3_4_RU",
         "PICC_ART7_3_5_EN",
-        "PICC_ART7_3_5_RU",
         "PICC_ART7_3_6_EN",
-        "PICC_ART7_3_6_RU",
-        "PICC_ART7_3_7_EN",
-        "PICC_ART7_3_7_RU"
+        "PICC_ART7_3_7_EN"
       ]
     },
     {
       "id": "ubytki",
-      "title": "Убытки и проценты (ст. 7.4.1–7.4.13)",
+      "title": "Damages and interest (art. 7.4.1–7.4.13)",
       "source_units": [
         "PICC_ART7_4_10_EN",
-        "PICC_ART7_4_10_RU",
         "PICC_ART7_4_11_EN",
-        "PICC_ART7_4_11_RU",
         "PICC_ART7_4_12_EN",
-        "PICC_ART7_4_12_RU",
         "PICC_ART7_4_13_EN",
-        "PICC_ART7_4_13_RU",
         "PICC_ART7_4_1_EN",
-        "PICC_ART7_4_1_RU",
         "PICC_ART7_4_2_EN",
-        "PICC_ART7_4_2_RU",
         "PICC_ART7_4_3_EN",
-        "PICC_ART7_4_3_RU",
         "PICC_ART7_4_4_EN",
-        "PICC_ART7_4_4_RU",
         "PICC_ART7_4_5_EN",
-        "PICC_ART7_4_5_RU",
         "PICC_ART7_4_6_EN",
-        "PICC_ART7_4_6_RU",
         "PICC_ART7_4_7_EN",
-        "PICC_ART7_4_7_RU",
         "PICC_ART7_4_8_EN",
-        "PICC_ART7_4_8_RU",
-        "PICC_ART7_4_9_EN",
-        "PICC_ART7_4_9_RU"
+        "PICC_ART7_4_9_EN"
       ]
     }
   ],
@@ -96,7 +65,7 @@
     {
       "id": "additional-damages-for-non-payment",
       "task": "ubytki",
-      "question": "Причитаются ли дополнительные убытки сверх процентов (ст. 7.4.9 п. 3)?",
+      "question": "Are additional damages due beyond the interest (art. 7.4.9(3))?",
       "kind": "truth",
       "predicate": "additional_damages_for_non_payment",
       "parameters": [
@@ -116,14 +85,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_9_EN",
-        "PICC_ART7_4_9_RU"
+        "PICC_ART7_4_9_EN"
       ]
     },
     {
       "id": "agreed-sum-payable",
       "task": "ubytki",
-      "question": "Причитается ли согласованная сумма за неисполнение (ст. 7.4.13 п. 1)?",
+      "question": "Is the agreed sum for non-performance payable (art. 7.4.13(1))?",
       "kind": "truth",
       "predicate": "agreed_sum_payable",
       "parameters": [
@@ -143,14 +111,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_13_EN",
-        "PICC_ART7_4_13_RU"
+        "PICC_ART7_4_13_EN"
       ]
     },
     {
       "id": "agreed-sum-reduced-to-reasonable-amount",
       "task": "ubytki",
-      "question": "Может ли явно чрезмерная согласованная сумма быть уменьшена (ст. 7.4.13 п. 2)?",
+      "question": "May a grossly excessive agreed sum be reduced (art. 7.4.13(2))?",
       "kind": "truth",
       "predicate": "agreed_sum_reduced_to_reasonable_amount",
       "parameters": [
@@ -170,14 +137,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_13_EN",
-        "PICC_ART7_4_13_RU"
+        "PICC_ART7_4_13_EN"
       ]
     },
     {
       "id": "allowance-in-money-due",
       "task": "prekraschenie",
-      "question": "Причитается ли денежное возмещение вместо реституции в натуре (ст. 7.3.6 пп. 2, 3)?",
+      "question": "Is an allowance in money due instead of restitution in kind (art. 7.3.6(2)-(3))?",
       "kind": "truth",
       "predicate": "allowance_in_money_due",
       "parameters": [
@@ -207,14 +173,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_3_6_EN",
-        "PICC_ART7_3_6_RU"
+        "PICC_ART7_3_6_EN"
       ]
     },
     {
       "id": "assessment-at-discretion-of-court",
       "task": "ubytki",
-      "question": "Относится ли оценка размера убытков к усмотрению суда (ст. 7.4.3 п. 3)?",
+      "question": "Is the assessment of the amount of damages at the discretion of the court (art. 7.4.3(3))?",
       "kind": "truth",
       "predicate": "assessment_at_discretion_of_court",
       "parameters": [
@@ -229,14 +194,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_3_EN",
-        "PICC_ART7_4_3_RU"
+        "PICC_ART7_4_3_EN"
       ]
     },
     {
       "id": "clause-may-not-be-invoked",
       "task": "obschie",
-      "question": "Можно ли ссылаться на оговорку об освобождении от ответственности (ст. 7.1.6)?",
+      "question": "May an exemption clause be invoked (art. 7.1.6)?",
       "kind": "truth",
       "predicate": "clause_may_not_be_invoked",
       "parameters": [
@@ -256,14 +220,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_6_EN",
-        "PICC_ART7_1_6_RU"
+        "PICC_ART7_1_6_EN"
       ]
     },
     {
       "id": "compensation-for-loss-of-chance",
       "task": "ubytki",
-      "question": "Компенсируется ли утрата возможности (ст. 7.4.3 п. 2)?",
+      "question": "Is the loss of a chance compensated (art. 7.4.3(2))?",
       "kind": "truth",
       "predicate": "compensation_for_loss_of_chance",
       "parameters": [
@@ -283,14 +246,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_3_EN",
-        "PICC_ART7_4_3_RU"
+        "PICC_ART7_4_3_EN"
       ]
     },
     {
       "id": "contract-terminated",
       "task": "prekraschenie",
-      "question": "Прекращён ли договор извещением (ст. 7.3.2)?",
+      "question": "Has the contract been terminated by notice (art. 7.3.2)?",
       "kind": "truth",
       "predicate": "contract_terminated",
       "parameters": [
@@ -315,14 +277,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_3_2_EN",
-        "PICC_ART7_3_2_RU"
+        "PICC_ART7_3_2_EN"
       ]
     },
     {
       "id": "current-price-is",
       "task": "ubytki",
-      "question": "Какая цена является текущей для расчёта убытков (ст. 7.4.6 п. 2)?",
+      "question": "Which price is the current one for assessing damages (art. 7.4.6(2))?",
       "kind": "truth",
       "predicate": "current_price_is",
       "parameters": [
@@ -347,14 +308,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_4_6_EN",
-        "PICC_ART7_4_6_RU"
+        "PICC_ART7_4_6_EN"
       ]
     },
     {
       "id": "damages-assessed-in-currency-of-harm",
       "task": "ubytki",
-      "question": "Исчисляются ли убытки в валюте, в которой понесён вред (ст. 7.4.12)?",
+      "question": "Are the damages assessed in the currency in which the harm was suffered (art. 7.4.12)?",
       "kind": "truth",
       "predicate": "damages_assessed_in_currency_of_harm",
       "parameters": [
@@ -369,14 +329,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_12_EN",
-        "PICC_ART7_4_12_RU"
+        "PICC_ART7_4_12_EN"
       ]
     },
     {
       "id": "damages-assessed-in-currency-of-obligation",
       "task": "ubytki",
-      "question": "Исчисляются ли убытки в валюте денежного обязательства (ст. 7.4.12)?",
+      "question": "Are the damages assessed in the currency of the monetary obligation (art. 7.4.12)?",
       "kind": "truth",
       "predicate": "damages_assessed_in_currency_of_obligation",
       "parameters": [
@@ -391,14 +350,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_12_EN",
-        "PICC_ART7_4_12_RU"
+        "PICC_ART7_4_12_EN"
       ]
     },
     {
       "id": "damages-claim-preserved",
       "task": "prekraschenie",
-      "question": "Сохраняется ли требование убытков после прекращения договора (ст. 7.3.5 п. 2)?",
+      "question": "Is the claim for damages preserved after the termination of the contract (art. 7.3.5(2))?",
       "kind": "truth",
       "predicate": "damages_claim_preserved",
       "parameters": [
@@ -413,14 +371,13 @@
         "PICCN-03-TERMINATION"
       ],
       "source_units": [
-        "PICC_ART7_3_5_EN",
-        "PICC_ART7_3_5_RU"
+        "PICC_ART7_3_5_EN"
       ]
     },
     {
       "id": "damages-paid-in-lump-sum",
       "task": "ubytki",
-      "question": "Уплачиваются ли убытки единовременной суммой (ст. 7.4.11 п. 1)?",
+      "question": "Are the damages to be paid in a lump sum (art. 7.4.11(1))?",
       "kind": "truth",
       "predicate": "damages_paid_in_lump_sum",
       "parameters": [
@@ -435,14 +392,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_11_EN",
-        "PICC_ART7_4_11_RU"
+        "PICC_ART7_4_11_EN"
       ]
     },
     {
       "id": "damages-payable-in-instalments",
       "task": "ubytki",
-      "question": "Могут ли убытки уплачиваться по частям (ст. 7.4.11)?",
+      "question": "May the damages be payable in instalments (art. 7.4.11)?",
       "kind": "truth",
       "predicate": "damages_payable_in_instalments",
       "parameters": [
@@ -457,14 +413,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_11_EN",
-        "PICC_ART7_4_11_RU"
+        "PICC_ART7_4_11_EN"
       ]
     },
     {
       "id": "damages-reduced-for-contribution",
       "task": "ubytki",
-      "question": "Уменьшается ли размер убытков из-за вклада потерпевшей стороны (ст. 7.4.7)?",
+      "question": "Are the damages reduced by the contribution of the aggrieved party (art. 7.4.7)?",
       "kind": "truth",
       "predicate": "damages_reduced_for_contribution",
       "parameters": [
@@ -484,14 +439,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_7_EN",
-        "PICC_ART7_4_7_RU"
+        "PICC_ART7_4_7_EN"
       ]
     },
     {
       "id": "damages-retained-despite-cure",
       "task": "obschie",
-      "question": "Сохраняются ли убытки за просрочку несмотря на исправление (ст. 7.1.4 п. 5)?",
+      "question": "Are damages for delay retained despite the cure (art. 7.1.4(5))?",
       "kind": "truth",
       "predicate": "damages_retained_despite_cure",
       "parameters": [
@@ -511,14 +465,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_4_EN",
-        "PICC_ART7_1_4_RU"
+        "PICC_ART7_1_4_EN"
       ]
     },
     {
       "id": "difference-to-current-price-recoverable",
       "task": "ubytki",
-      "question": "Взыскивается ли разница с текущей ценой (ст. 7.4.6 п. 1)?",
+      "question": "Is the difference to the current price recoverable (art. 7.4.6(1))?",
       "kind": "truth",
       "predicate": "difference_to_current_price_recoverable",
       "parameters": [
@@ -538,14 +491,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_6_EN",
-        "PICC_ART7_4_6_RU"
+        "PICC_ART7_4_6_EN"
       ]
     },
     {
       "id": "difference-to-replacement-recoverable",
       "task": "ubytki",
-      "question": "Взыскивается ли разница с ценой заменяющей сделки (ст. 7.4.5)?",
+      "question": "Is the difference to the price of the replacement transaction recoverable (art. 7.4.5)?",
       "kind": "truth",
       "predicate": "difference_to_replacement_recoverable",
       "parameters": [
@@ -565,14 +517,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_5_EN",
-        "PICC_ART7_4_5_RU"
+        "PICC_ART7_4_5_EN"
       ]
     },
     {
       "id": "entitled-to-interest",
       "task": "ubytki",
-      "question": "Имеет ли кредитор право на проценты за неплатёж (ст. 7.4.9 п. 1)?",
+      "question": "Is the obligee entitled to interest for failure to pay (art. 7.4.9(1))?",
       "kind": "truth",
       "predicate": "entitled_to_interest",
       "parameters": [
@@ -592,14 +543,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_9_EN",
-        "PICC_ART7_4_9_RU"
+        "PICC_ART7_4_9_EN"
       ]
     },
     {
       "id": "excuse-limited-to-reasonable-period",
       "task": "obschie",
-      "question": "Ограничено ли освобождение разумным периодом при временном препятствии (ст. 7.1.7 п. 2)?",
+      "question": "Is the excuse limited to a reasonable period where the impediment is temporary (art. 7.1.7(2))?",
       "kind": "truth",
       "predicate": "excuse_limited_to_reasonable_period",
       "parameters": [
@@ -614,14 +564,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_7_EN",
-        "PICC_ART7_1_7_RU"
+        "PICC_ART7_1_7_EN"
       ]
     },
     {
       "id": "expenses-compensable",
       "task": "prekraschenie",
-      "question": "Возмещаются ли расходы на сохранение полученного исполнения (ст. 7.3.6 п. 4)?",
+      "question": "Are the expenses of preserving what was received recoverable (art. 7.3.6(4))?",
       "kind": "truth",
       "predicate": "expenses_compensable",
       "parameters": [
@@ -641,14 +590,13 @@
         "PICCN-03-TERMINATION"
       ],
       "source_units": [
-        "PICC_ART7_3_6_EN",
-        "PICC_ART7_3_6_RU"
+        "PICC_ART7_3_6_EN"
       ]
     },
     {
       "id": "full-compensation-due",
       "task": "ubytki",
-      "question": "Причитается ли полная компенсация понесённого вреда (ст. 7.4.2)?",
+      "question": "Is full compensation for the harm sustained due (art. 7.4.2)?",
       "kind": "truth",
       "predicate": "full_compensation_due",
       "parameters": [
@@ -668,14 +616,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_2_EN",
-        "PICC_ART7_4_2_RU"
+        "PICC_ART7_4_2_EN"
       ]
     },
     {
       "id": "fundamental-non-performance",
       "task": "prekraschenie",
-      "question": "Является ли неисполнение существенным (ст. 7.3.1 п. 2)?",
+      "question": "Is the non-performance fundamental (art. 7.3.1(2))?",
       "kind": "truth",
       "predicate": "fundamental_non_performance",
       "parameters": [
@@ -712,14 +659,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_3_1_EN",
-        "PICC_ART7_3_1_RU"
+        "PICC_ART7_3_1_EN"
       ]
     },
     {
       "id": "harm-within-foreseeable-scope",
       "task": "ubytki",
-      "question": "Отвечает ли сторона за этот вред как предвидимый (ст. 7.4.4)?",
+      "question": "Is the party liable for this harm as foreseeable (art. 7.4.4)?",
       "kind": "truth",
       "predicate": "harm_within_foreseeable_scope",
       "parameters": [
@@ -739,14 +685,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_4_EN",
-        "PICC_ART7_4_4_RU"
+        "PICC_ART7_4_4_EN"
       ]
     },
     {
       "id": "inconsistent-rights-suspended",
       "task": "obschie",
-      "question": "Приостановлены ли несовместимые с исправлением права потерпевшей стороны (ст. 7.1.4 п. 3)?",
+      "question": "Are the rights of the aggrieved party inconsistent with the cure suspended (art. 7.1.4(3))?",
       "kind": "truth",
       "predicate": "inconsistent_rights_suspended",
       "parameters": [
@@ -761,14 +706,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_4_EN",
-        "PICC_ART7_1_4_RU"
+        "PICC_ART7_1_4_EN"
       ]
     },
     {
       "id": "interest-accrues-from-non-performance",
       "task": "ubytki",
-      "question": "С какого момента начисляются проценты на убытки (ст. 7.4.10)?",
+      "question": "From which moment does interest on damages accrue (art. 7.4.10)?",
       "kind": "truth",
       "predicate": "interest_accrues_from_non_performance",
       "parameters": [
@@ -783,14 +727,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_10_EN",
-        "PICC_ART7_4_10_RU"
+        "PICC_ART7_4_10_EN"
       ]
     },
     {
       "id": "is-non-performance",
       "task": "obschie",
-      "question": "Является ли нарушение неисполнением (ст. 7.1.1)?",
+      "question": "Is the breach a non-performance (art. 7.1.1)?",
       "kind": "truth",
       "predicate": "is_non_performance",
       "parameters": [
@@ -805,14 +748,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_1_EN",
-        "PICC_ART7_1_1_RU"
+        "PICC_ART7_1_1_EN"
       ]
     },
     {
       "id": "liable-for-damages-from-non-receipt",
       "task": "obschie",
-      "question": "Отвечает ли сторона за убытки от неполучения извещения о препятствии (ст. 7.1.7 п. 3)?",
+      "question": "Is the party liable for the damage caused by the non-receipt of a notice of the impediment (art. 7.1.7(3))?",
       "kind": "truth",
       "predicate": "liable_for_damages_from_non_receipt",
       "parameters": [
@@ -832,14 +774,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_7_EN",
-        "PICC_ART7_1_7_RU"
+        "PICC_ART7_1_7_EN"
       ]
     },
     {
       "id": "may-claim-restitution",
       "task": "prekraschenie",
-      "question": "Может ли сторона требовать возврата предоставленного после прекращения (ст. 7.3.6 п. 1)?",
+      "question": "May a party claim restitution of what it has supplied after termination (art. 7.3.6(1))?",
       "kind": "truth",
       "predicate": "may_claim_restitution",
       "parameters": [
@@ -870,15 +811,13 @@
       ],
       "source_units": [
         "PICC_ART7_3_6_EN",
-        "PICC_ART7_3_6_RU",
-        "PICC_ART7_3_7_EN",
-        "PICC_ART7_3_7_RU"
+        "PICC_ART7_3_7_EN"
       ]
     },
     {
       "id": "may-cure",
       "task": "obschie",
-      "question": "Может ли неисполнившая сторона исправить неисполнение (ст. 7.1.4 п. 1)?",
+      "question": "May the non-performing party cure the non-performance (art. 7.1.4(1))?",
       "kind": "truth",
       "predicate": "may_cure",
       "parameters": [
@@ -898,14 +837,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_4_EN",
-        "PICC_ART7_1_4_RU"
+        "PICC_ART7_1_4_EN"
       ]
     },
     {
       "id": "may-invoke-another-remedy",
       "task": "pravo-na-ispolnenie",
-      "question": "Может ли потерпевшая сторона перейти к другому средству защиты (ст. 7.2.5)?",
+      "question": "May the aggrieved party change to another remedy (art. 7.2.5)?",
       "kind": "truth",
       "predicate": "may_invoke_another_remedy",
       "parameters": [
@@ -935,14 +873,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_2_5_EN",
-        "PICC_ART7_2_5_RU"
+        "PICC_ART7_2_5_EN"
       ]
     },
     {
       "id": "may-rely-on-non-performance",
       "task": "obschie",
-      "question": "Может ли сторона ссылаться на неисполнение другой стороны (ст. 7.1.2)?",
+      "question": "May a party rely on the other party's non-performance (art. 7.1.2)?",
       "kind": "truth",
       "predicate": "may_rely_on_non_performance",
       "parameters": [
@@ -972,14 +909,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_1_2_EN",
-        "PICC_ART7_1_2_RU"
+        "PICC_ART7_1_2_EN"
       ]
     },
     {
       "id": "may-require-payment",
       "task": "pravo-na-ispolnenie",
-      "question": "Может ли кредитор требовать платежа (ст. 7.2.1)?",
+      "question": "May the obligee require payment (art. 7.2.1)?",
       "kind": "truth",
       "predicate": "may_require_payment",
       "parameters": [
@@ -999,14 +935,13 @@
         "PICCN-02-RIGHT-TO-PERFORMANCE"
       ],
       "source_units": [
-        "PICC_ART7_2_1_EN",
-        "PICC_ART7_2_1_RU"
+        "PICC_ART7_2_1_EN"
       ]
     },
     {
       "id": "may-require-performance",
       "task": "pravo-na-ispolnenie",
-      "question": "Может ли кредитор требовать исполнения неденежного обязательства (ст. 7.2.2)?",
+      "question": "May the obligee require performance of a non-monetary obligation (art. 7.2.2)?",
       "kind": "truth",
       "predicate": "may_require_performance",
       "parameters": [
@@ -1052,14 +987,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_2_2_EN",
-        "PICC_ART7_2_2_RU"
+        "PICC_ART7_2_2_EN"
       ]
     },
     {
       "id": "may-require-repair-or-replacement",
       "task": "pravo-na-ispolnenie",
-      "question": "Может ли кредитор требовать исправления или замены (ст. 7.2.3)?",
+      "question": "May the obligee require repair or replacement (art. 7.2.3)?",
       "kind": "truth",
       "predicate": "may_require_repair_or_replacement",
       "parameters": [
@@ -1079,14 +1013,13 @@
         "PICCN-02-RIGHT-TO-PERFORMANCE"
       ],
       "source_units": [
-        "PICC_ART7_2_3_EN",
-        "PICC_ART7_2_3_RU"
+        "PICC_ART7_2_3_EN"
       ]
     },
     {
       "id": "may-resort-to-any-remedy",
       "task": "obschie",
-      "question": "Открыты ли все средства защиты после истечения дополнительного срока (ст. 7.1.5 п. 2)?",
+      "question": "Are all remedies open after the additional period has expired (art. 7.1.5(2))?",
       "kind": "truth",
       "predicate": "may_resort_to_any_remedy",
       "parameters": [
@@ -1106,14 +1039,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_5_EN",
-        "PICC_ART7_1_5_RU"
+        "PICC_ART7_1_5_EN"
       ]
     },
     {
       "id": "may-terminate-after-additional-period",
       "task": "obschie",
-      "question": "Может ли потерпевшая сторона прекратить договор по окончании дополнительного срока (ст. 7.1.5 п. 3)?",
+      "question": "May the aggrieved party terminate the contract at the end of the additional period (art. 7.1.5(3))?",
       "kind": "truth",
       "predicate": "may_terminate_after_additional_period",
       "parameters": [
@@ -1143,14 +1075,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_1_5_EN",
-        "PICC_ART7_1_5_RU"
+        "PICC_ART7_1_5_EN"
       ]
     },
     {
       "id": "may-terminate-contract",
       "task": "prekraschenie",
-      "question": "Может ли сторона прекратить договор (ст. 7.3.1, 7.3.3, 7.3.4)?",
+      "question": "May a party terminate the contract (art. 7.3.1, 7.3.3, 7.3.4)?",
       "kind": "truth",
       "predicate": "may_terminate_contract",
       "parameters": [
@@ -1193,19 +1124,15 @@
       ],
       "source_units": [
         "PICC_ART7_3_1_EN",
-        "PICC_ART7_3_1_RU",
         "PICC_ART7_3_2_EN",
-        "PICC_ART7_3_2_RU",
         "PICC_ART7_3_3_EN",
-        "PICC_ART7_3_3_RU",
-        "PICC_ART7_3_4_EN",
-        "PICC_ART7_3_4_RU"
+        "PICC_ART7_3_4_EN"
       ]
     },
     {
       "id": "may-withhold-and-claim-damages-only",
       "task": "obschie",
-      "question": "Ограничены ли средства защиты на время дополнительного срока (ст. 7.1.5 п. 2)?",
+      "question": "Are the remedies limited while the additional period runs (art. 7.1.5(2))?",
       "kind": "truth",
       "predicate": "may_withhold_and_claim_damages_only",
       "parameters": [
@@ -1225,14 +1152,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_5_EN",
-        "PICC_ART7_1_5_RU"
+        "PICC_ART7_1_5_EN"
       ]
     },
     {
       "id": "may-withhold-pending-assurance",
       "task": "prekraschenie",
-      "question": "Может ли сторона приостановить исполнение до получения заверений (ст. 7.3.4)?",
+      "question": "May a party withhold performance pending adequate assurance (art. 7.3.4)?",
       "kind": "truth",
       "predicate": "may_withhold_pending_assurance",
       "parameters": [
@@ -1252,14 +1178,13 @@
         "PICCN-03-TERMINATION"
       ],
       "source_units": [
-        "PICC_ART7_3_4_EN",
-        "PICC_ART7_3_4_RU"
+        "PICC_ART7_3_4_EN"
       ]
     },
     {
       "id": "may-withhold-pending-cure",
       "task": "obschie",
-      "question": "Может ли потерпевшая сторона приостановить исполнение на время исправления (ст. 7.1.4 п. 4)?",
+      "question": "May the aggrieved party withhold performance while cure is pending (art. 7.1.4(4))?",
       "kind": "truth",
       "predicate": "may_withhold_pending_cure",
       "parameters": [
@@ -1279,14 +1204,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_4_EN",
-        "PICC_ART7_1_4_RU"
+        "PICC_ART7_1_4_EN"
       ]
     },
     {
       "id": "may-withhold-performance",
       "task": "obschie",
-      "question": "Может ли сторона приостановить своё исполнение (ст. 7.1.3)?",
+      "question": "May a party withhold its own performance (art. 7.1.3)?",
       "kind": "truth",
       "predicate": "may_withhold_performance",
       "parameters": [
@@ -1316,14 +1240,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_1_3_EN",
-        "PICC_ART7_1_3_RU"
+        "PICC_ART7_1_3_EN"
       ]
     },
     {
       "id": "mitigation-expenses-recoverable",
       "task": "ubytki",
-      "question": "Взыскиваются ли расходы на уменьшение вреда (ст. 7.4.8 п. 2)?",
+      "question": "Are the expenses of mitigating the harm recoverable (art. 7.4.8(2))?",
       "kind": "truth",
       "predicate": "mitigation_expenses_recoverable",
       "parameters": [
@@ -1343,14 +1266,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_8_EN",
-        "PICC_ART7_4_8_RU"
+        "PICC_ART7_4_8_EN"
       ]
     },
     {
       "id": "non-performance-excused",
       "task": "obschie",
-      "question": "Освобождается ли неисполнение непреодолимой силой (ст. 7.1.7 п. 1)?",
+      "question": "Is the non-performance excused by force majeure (art. 7.1.7(1))?",
       "kind": "truth",
       "predicate": "non_performance_excused",
       "parameters": [
@@ -1370,14 +1292,13 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_7_EN",
-        "PICC_ART7_1_7_RU"
+        "PICC_ART7_1_7_EN"
       ]
     },
     {
       "id": "not-liable-for-avoidable-harm",
       "task": "ubytki",
-      "question": "Отвечает ли сторона за вред, который можно было уменьшить (ст. 7.4.8 п. 1)?",
+      "question": "Is the party liable for harm that could have been reduced (art. 7.4.8(1))?",
       "kind": "truth",
       "predicate": "not_liable_for_avoidable_harm",
       "parameters": [
@@ -1397,14 +1318,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_8_EN",
-        "PICC_ART7_4_8_RU"
+        "PICC_ART7_4_8_EN"
       ]
     },
     {
       "id": "penalty-may-be-ordered",
       "task": "pravo-na-ispolnenie",
-      "question": "Может ли суд предписать неустойку на случай неисполнения его решения (ст. 7.2.4 п. 1)?",
+      "question": "May the court order a penalty for failure to comply with its order (art. 7.2.4(1))?",
       "kind": "truth",
       "predicate": "penalty_may_be_ordered",
       "parameters": [
@@ -1419,14 +1339,13 @@
         "PICCN-02-RIGHT-TO-PERFORMANCE"
       ],
       "source_units": [
-        "PICC_ART7_2_4_EN",
-        "PICC_ART7_2_4_RU"
+        "PICC_ART7_2_4_EN"
       ]
     },
     {
       "id": "penalty-paid-to-aggrieved-party",
       "task": "pravo-na-ispolnenie",
-      "question": "Кому уплачивается судебная неустойка (ст. 7.2.4 п. 2)?",
+      "question": "To whom is the judicial penalty paid (art. 7.2.4(2))?",
       "kind": "truth",
       "predicate": "penalty_paid_to_aggrieved_party",
       "parameters": [
@@ -1456,14 +1375,13 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_2_4_EN",
-        "PICC_ART7_2_4_RU"
+        "PICC_ART7_2_4_EN"
       ]
     },
     {
       "id": "rate-is-bank-rate-at-place-of-payment",
       "task": "ubytki",
-      "question": "Применяется ли банковская ставка места платежа (ст. 7.4.9 п. 2)?",
+      "question": "Does the bank rate at the place for payment apply (art. 7.4.9(2))?",
       "kind": "truth",
       "predicate": "rate_is_bank_rate_at_place_of_payment",
       "parameters": [
@@ -1478,14 +1396,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_9_EN",
-        "PICC_ART7_4_9_RU"
+        "PICC_ART7_4_9_EN"
       ]
     },
     {
       "id": "rate-is-bank-rate-in-state-of-currency",
       "task": "ubytki",
-      "question": "Применяется ли банковская ставка государства валюты платежа (ст. 7.4.9 п. 2)?",
+      "question": "Does the bank rate in the state of the currency of payment apply (art. 7.4.9(2))?",
       "kind": "truth",
       "predicate": "rate_is_bank_rate_in_state_of_currency",
       "parameters": [
@@ -1500,14 +1417,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_9_EN",
-        "PICC_ART7_4_9_RU"
+        "PICC_ART7_4_9_EN"
       ]
     },
     {
       "id": "rate-is-fixed-by-law-of-currency-state",
       "task": "ubytki",
-      "question": "Применяется ли ставка, установленная правом государства валюты платежа (ст. 7.4.9 п. 2)?",
+      "question": "Does the rate fixed by the law of the state of the currency of payment apply (art. 7.4.9(2))?",
       "kind": "truth",
       "predicate": "rate_is_fixed_by_law_of_currency_state",
       "parameters": [
@@ -1522,14 +1438,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_9_EN",
-        "PICC_ART7_4_9_RU"
+        "PICC_ART7_4_9_EN"
       ]
     },
     {
       "id": "released-from-future-performance",
       "task": "prekraschenie",
-      "question": "Освобождены ли стороны от будущего исполнения после прекращения (ст. 7.3.5 п. 1)?",
+      "question": "Are the parties released from future performance after termination (art. 7.3.5(1))?",
       "kind": "truth",
       "predicate": "released_from_future_performance",
       "parameters": [
@@ -1544,14 +1459,13 @@
         "PICCN-03-TERMINATION"
       ],
       "source_units": [
-        "PICC_ART7_3_5_EN",
-        "PICC_ART7_3_5_RU"
+        "PICC_ART7_3_5_EN"
       ]
     },
     {
       "id": "restitution-only-after-termination",
       "task": "prekraschenie",
-      "question": "Ограничена ли реституция периодом после прекращения долгосрочного договора (ст. 7.3.7 п. 1)?",
+      "question": "Is restitution limited to the period after the termination of a long-term contract (art. 7.3.7(1))?",
       "kind": "truth",
       "predicate": "restitution_only_after_termination",
       "parameters": [
@@ -1571,14 +1485,13 @@
         "PICCN-03-TERMINATION"
       ],
       "source_units": [
-        "PICC_ART7_3_7_EN",
-        "PICC_ART7_3_7_RU"
+        "PICC_ART7_3_7_EN"
       ]
     },
     {
       "id": "right-to-damages",
       "task": "ubytki",
-      "question": "Имеет ли потерпевшая сторона право на убытки (ст. 7.4.1)?",
+      "question": "Is the aggrieved party entitled to damages (art. 7.4.1)?",
       "kind": "truth",
       "predicate": "right_to_damages",
       "parameters": [
@@ -1598,14 +1511,13 @@
         "PICCN-04-DAMAGES-AND-INTEREST"
       ],
       "source_units": [
-        "PICC_ART7_4_1_EN",
-        "PICC_ART7_4_1_RU"
+        "PICC_ART7_4_1_EN"
       ]
     },
     {
       "id": "surviving-term",
       "task": "prekraschenie",
-      "question": "Продолжает ли действовать условие договора после его прекращения (ст. 7.3.5 п. 3)?",
+      "question": "Does a term of the contract survive its termination (art. 7.3.5(3))?",
       "kind": "truth",
       "predicate": "surviving_term",
       "parameters": [
@@ -1625,14 +1537,13 @@
         "PICCN-03-TERMINATION"
       ],
       "source_units": [
-        "PICC_ART7_3_5_EN",
-        "PICC_ART7_3_5_RU"
+        "PICC_ART7_3_5_EN"
       ]
     },
     {
       "id": "termination-and-interest-preserved",
       "task": "obschie",
-      "question": "Сохраняются ли прекращение договора и проценты несмотря на освобождение (ст. 7.1.7 п. 4)?",
+      "question": "Are termination and interest preserved despite the excuse (art. 7.1.7(4))?",
       "kind": "truth",
       "predicate": "termination_and_interest_preserved",
       "parameters": [
@@ -1652,19 +1563,18 @@
         "PICCN-01-NON-PERFORMANCE-AND-CURE"
       ],
       "source_units": [
-        "PICC_ART7_1_7_EN",
-        "PICC_ART7_1_7_RU"
+        "PICC_ART7_1_7_EN"
       ]
     },
     {
       "id": "pozitsii-terminate-by-notice",
       "task": "prekraschenie",
-      "question": "Активна ли власть стороны прекратить договор извещением (ст. 7.3.2 п. 1)?",
+      "question": "Is the power of a party to terminate the contract by notice active (art. 7.3.2(1))?",
       "kind": "positions",
       "norms": [
         "TerminateByNotice"
       ],
-      "template": "evaluate positions(); expect position(TerminateByNotice, <статус>);",
+      "template": "evaluate positions(); expect position(TerminateByNotice, <status>);",
       "tests": [
         "PICCN-03-TERMINATION"
       ],
@@ -1675,86 +1585,74 @@
         }
       ],
       "source_units": [
-        "PICC_ART7_3_2_EN",
-        "PICC_ART7_3_2_RU"
+        "PICC_ART7_3_2_EN"
       ]
     }
   ],
   "boundaries": [
     {
-      "id": "gr-ne-pravo-gosudarstva-n",
+      "id": "br-not-the-law-of-a-state",
       "task": "obschie",
       "reason_kind": "source_delegates",
-      "question": "Какие императивные нормы применимого права ограничивают средства защиты?",
+      "question": "Which mandatory rules of the applicable law restrict the remedies?",
       "source_units": [
         "PICC_ART7_1_6_EN"
       ],
-      "limitation": "ЭТО НЕ ПРАВО ГОСУДАРСТВА. Принципы применяются, когда стороны о них договорились, либо когда суд или арбитраж берёт их как общие принципы права; императивные нормы применимого права они не заменяют (ст. 1.4 хаба `unidroit.picc`)."
+      "limitation": "THIS IS NOT THE LAW OF A STATE. The Principles apply when the parties have agreed on them, or when a court or arbitral tribunal takes them as general principles of law; they do not replace the mandatory rules of the applicable law (article 1.4, hub `unidroit.picc`)."
     },
     {
-      "id": "gr-stavka-procentov",
+      "id": "br-rate-of-interest",
       "task": "ubytki",
       "reason_kind": "case_data",
-      "question": "Какова величина банковской ставки для валюты платежа в месте платежа?",
+      "question": "What is the value of the bank rate for the currency of payment at the place for payment?",
       "source_units": [
         "PICC_ART7_4_9_EN"
       ],
-      "limitation": "СТАВКА ПРОЦЕНТОВ НАЗВАНА ИСТОЧНИКОМ, А ЧИСЛО — НЕТ. Статья 7.4.9 пункт 2 даёт ПРАВИЛО ВЫБОРА ставки тремя ступенями (банковская ставка места платежа, та же ставка в государстве валюты платежа, ставка по праву этого государства); само значение ставки приносит дело. Статья 78 Конвенции не называет и правила — в этом и состоит ответ Принципов по статье 7(2) Конвенции."
+      "limitation": "THE SOURCE NAMES THE RATE OF INTEREST, NOT THE NUMBER. Article 7.4.9(2) gives a RULE OF CHOICE in three steps (the bank rate at the place for payment, the same rate in the state of the currency of payment, the rate under the law of that state); the value of the rate is brought by the case. Article 78 of the Convention names not even a rule — and that is what the Principles answer under article 7(2) of the Convention."
     },
     {
-      "id": "gr-sushestvennost-vs-25",
+      "id": "br-fundamental-vs-article-25",
       "task": "prekraschenie",
       "reason_kind": "case_data",
-      "question": "Существенно ли неисполнение по Конвенции на тех же фактах?",
+      "question": "Is the non-performance fundamental under the Convention on the same facts?",
       "source_units": [
         "PICC_ART7_3_1_EN"
       ],
-      "limitation": "СУЩЕСТВЕННОСТЬ НЕИСПОЛНЕНИЯ ЗДЕСЬ НЕ ОПРЕДЕЛЕНИЕ, А ПЯТЬ ОБСТОЯТЕЛЬСТВ (ст. 7.3.1 п. 2), причём пятое — несоразмерная потеря неисполнившей стороны — работает ПРОТИВ прекращения. Статья 25 Конвенции устроена иначе: одно определение с предвидимостью. Инструменты на одних фактах отвечают по-разному, и это наблюдается делом 03."
+      "limitation": "FUNDAMENTAL NON-PERFORMANCE IS NOT A DEFINITION HERE BUT FIVE CIRCUMSTANCES (article 7.3.1(2)), the fifth of which — disproportionate loss to the non-performing party — works AGAINST termination. Article 25 of the Convention is built differently: one definition with foreseeability. The instruments answer differently on the same facts, and this is observed by case 03."
     },
     {
-      "id": "gr-otsenochnye-n",
+      "id": "br-evaluative-elements",
       "task": "obschie",
       "reason_kind": "case_data",
-      "question": "Уместно ли исправление, предвидим ли вред и непреодолимо ли препятствие?",
+      "question": "Is the cure appropriate, is the harm foreseeable and is the impediment insurmountable?",
       "source_units": [
         "PICC_ART7_1_4_EN",
         "PICC_ART7_1_7_EN",
         "PICC_ART7_4_4_EN"
       ],
-      "limitation": "ОЦЕНОЧНЫЕ ПРИЗНАКИ ГЛАВЫ 7 ИДУТ КАНАЛОМ СУЖДЕНИЯ §47.3 с органом `Tribunal`: уместность исправления и законный интерес в отказе от него (7.1.4), разумность дополнительного срока (7.1.5), крайняя несправедливость ссылки на оговорку (7.1.6), непредвидимость и непреодолимость препятствия (7.1.7), обременительность исполнения и доступность его из другого источника (7.2.2), лишение ожидаемого по договору и несоразмерная потеря (7.3.1), разумность веры в будущее существенное неисполнение (7.3.4), предвидимость вреда (7.4.4), разумность места-ориентира текущей цены (7.4.6), уместность валюты вреда (7.4.12) и явная чрезмерность согласованной суммы (7.4.13)."
+      "limitation": "THE EVALUATIVE ELEMENTS OF CHAPTER 7 GO THROUGH THE §47.3 JUDGMENT CHANNEL with the organ `Tribunal`: the appropriateness of cure and a legitimate interest in refusing it (7.1.4), a reasonable additional period (7.1.5), the gross unfairness of invoking an exemption clause (7.1.6), the unforeseeability and insurmountability of an impediment (7.1.7), an unreasonably burdensome performance and its availability from another source (7.2.2), substantial deprivation of what was expected and disproportionate loss (7.3.1), a reasonable belief in a future fundamental non-performance (7.3.4), foreseeability of the harm (7.4.4), the reasonableness of the place taken as a benchmark for the current price (7.4.6), the appropriateness of the currency of the harm (7.4.12), and a grossly excessive agreed sum (7.4.13)."
     },
     {
-      "id": "gr-razmer-ubytkov",
+      "id": "br-amount-of-damages",
       "task": "ubytki",
       "reason_kind": "case_data",
-      "question": "Каков размер убытков в деньгах?",
+      "question": "What is the amount of the damages in money?",
       "source_units": [
         "PICC_ART7_4_2_EN",
         "PICC_ART7_4_3_EN"
       ],
-      "limitation": "РАЗМЕР УБЫТКОВ МОДЕЛЬ НЕ СЧИТАЕТ: статьи 7.4.2–7.4.7 называют, ЧТО возмещается и чем ограничено, но числа (разница цен, доля вклада потерпевшей стороны, величина процентов) приносит дело. Пропорция при утрате возможности (7.4.3 п. 2) по той же причине остаётся за судом."
+      "limitation": "THE MODEL DOES NOT COMPUTE THE AMOUNT OF DAMAGES: articles 7.4.2–7.4.7 name WHAT is recoverable and what limits it, while the numbers (the difference in prices, the contribution of the aggrieved party, the amount of interest) are brought by the case. The proportion for the loss of a chance (7.4.3(2)) is left to the court for the same reason."
     },
     {
-      "id": "gr-rezhim-dogovora",
+      "id": "br-contract-regime",
       "task": "prekraschenie",
       "reason_kind": "case_data",
-      "question": "Единовременный ли это договор или долгосрочный и делимый?",
+      "question": "Is this a contract to be performed at one time or a long-term divisible one?",
       "source_units": [
         "PICC_ART7_3_6_EN",
         "PICC_ART7_3_7_EN"
       ],
-      "limitation": "СТАТЬИ 7.3.6 И 7.3.7 О РЕСТИТУЦИИ ОТСЫЛАЮТ К РАЗДЕЛЬНЫМ РЕЖИМАМ ДОГОВОРОВ: единовременного и долгосрочного делимого. Какой из них перед нами — факт дела, а не вывод модели."
-    },
-    {
-      "id": "gr-russkij-tekst-n",
-      "task": "obschie",
-      "reason_kind": "source_delegates",
-      "question": "Каков официальный текст статьи главы 7?",
-      "source_units": [
-        "PICC_ART7_1_1_EN",
-        "PICC_ART7_1_1_RU"
-      ],
-      "limitation": "РУССКИЙ ТЕКСТ — ПАРНЫЙ UNOFFICIAL ЯКОРЬ: официальные языки инструмента английский и французский; первичный якорь §194 — английский black-letter текст."
+      "limitation": "ARTICLES 7.3.6 AND 7.3.7 ON RESTITUTION REFER TO SEPARATE REGIMES for contracts to be performed at one time and for long-term contracts to be performed over a period of time. Which one is before us is a fact of the case, not a conclusion of the model."
     }
   ],
   "internal": []

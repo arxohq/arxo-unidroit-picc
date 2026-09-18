@@ -1,0 +1,58 @@
+language "law.core" version "0.2";
+package unidroit.picc_limitation version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-limitation";
+
+// Case 3. Effects of the expiry of the limitation period (10.9-10.11).
+//
+// THE POINT: EXPIRY DOES NOT EXTINGUISH THE RIGHT. It operates only as a defence
+// invoked by the obligor; an expiry not invoked means nothing, and even after it
+// is invoked the right remains available as a defence and for a set-off declared
+// before.
+
+test "PICCL-03-EFFECTS-OF-EXPIRATION" {
+    given {
+        context {
+            deadline_policy PICC_LIMITATION;
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": right_of(entity_ref("urn:case:piccl:right-x"), entity_ref("urn:case:piccl:contract-x"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a1": limitation_expired(entity_ref("urn:case:piccl:right-x")) { origin case_input; }
+        assert "a2": expiration_asserted_as_defence(entity_ref("urn:case:piccl:right-x")) { origin case_input; }
+        assert "a3": right_relied_on_as_defence(entity_ref("urn:case:piccl:right-x")) { origin case_input; }
+        assert "a4": right_of(entity_ref("urn:case:piccl:right-y"), entity_ref("urn:case:piccl:contract-y"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a5": limitation_expired(entity_ref("urn:case:piccl:right-y")) { origin case_input; }
+        assert "a6": right_of(entity_ref("urn:case:piccl:right-s"), entity_ref("urn:case:piccl:contract-s"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a7": set_off_exercised(entity_ref("urn:case:piccl:right-s")) { origin case_input; }
+        assert "a8": right_of(entity_ref("urn:case:piccl:right-p"), entity_ref("urn:case:piccl:contract-p"), entity_ref("urn:case:piccl:obligee"), entity_ref("urn:case:piccl:obligor")) { origin case_input; }
+        assert "a9": performance_rendered_after_expiration(entity_ref("urn:case:piccl:right-p")) { origin case_input; }
+    }
+
+    evaluate truth(right_not_extinguished(entity_ref("urn:case:piccl:right-x")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ExpirationDoesNotExtinguishRight);
+
+    evaluate truth(exercise_barred(entity_ref("urn:case:piccl:right-x")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ExpirationNeedsToBeAsserted);
+
+    // The period has expired, but the obligor has NOT invoked it — exercise is not barred.
+    evaluate truth(exercise_barred(entity_ref("urn:case:piccl:right-y")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(defence_still_available(entity_ref("urn:case:piccl:right-x")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RightStillAvailableAsDefence);
+
+    evaluate truth(set_off_still_available(entity_ref("urn:case:piccl:right-s")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(SetOffUntilExpirationAsserted);
+
+    evaluate truth(no_restitution_for_expired_right(entity_ref("urn:case:piccl:right-p")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(NoRestitutionAfterExpiration);
+}

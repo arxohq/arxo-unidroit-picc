@@ -1,179 +1,157 @@
-// Статьи 2.1.11, 2.1.13–2.1.22. Изменённый акцепт, открытые условия,
-// недобросовестные переговоры, конфиденциальность, оговорки о слиянии и
-// форме, стандартные условия и «битва форм».
+// Articles 2.1.11, 2.1.13–2.1.22. Modified acceptance, terms deliberately left
+// open, negotiations in bad faith, confidentiality, merger and no-oral-
+// modification clauses, standard terms and the "battle of forms".
 //
-// «БИТВА ФОРМ» ЗДЕСЬ — НОРМА, А НЕ ПРОЧТЕНИЕ, И В ЭТОМ ГЛАВНОЕ ОТЛИЧИЕ ОТ
-// КОНВЕНЦИИ. Статья 2.1.22 прямо говорит: при обмене стандартными условиями
-// договор заключается на согласованных условиях и на тех стандартных, которые
-// СОВПАДАЮТ ПО СУЩЕСТВУ, — knock-out. У статьи 19 Конвенции такого правила
-// нет вовсе, и практика читает её двояко: два прочтения §152 объявлены в
-// `intl.uncitral.cisg_formation`. Сравнение двух инструментов на одних и тех
-// же фактах — предмет сквозного семейства этапа В8.
+// THE "BATTLE OF FORMS" IS A RULE HERE, NOT A READING, AND THAT IS THE MAIN
+// DIFFERENCE FROM THE CONVENTION. Article 2.1.22 says outright: where both
+// parties use standard terms, the contract is concluded on the terms agreed and
+// on those standard terms that are COMMON IN SUBSTANCE — knock-out. Article 19
+// of the Convention has no such rule at all, and practice reads it in two ways:
+// two §152 readings are declared in `intl.uncitral.cisg_formation`. Comparing
+// the two instruments on the same facts is the subject of the cross-cutting
+// family of the comparison stage.
 //
-// НЕДОБРОСОВЕСТНЫЕ ПЕРЕГОВОРЫ (2.1.15) — НОРМА, КОТОРОЙ У КОНВЕНЦИИ НЕТ:
-// сторона свободна вести переговоры и не отвечает за недостижение соглашения,
-// но отвечает за убытки, если ведёт или прерывает их недобросовестно. Сама
-// недобросовестность оценочна (канал §47.3), а один её случай текст называет
-// прямо: вступать в переговоры или продолжать их, не намереваясь достичь
-// соглашения.
+// NEGOTIATIONS IN BAD FAITH (2.1.15) ARE A RULE THE CONVENTION DOES NOT HAVE: a
+// party is free to negotiate and is not liable for failure to reach an
+// agreement, but is liable for the losses caused if it negotiates or breaks off
+// negotiations in bad faith. Bad faith itself is evaluative (the §47.3 channel),
+// while the text names one instance of it expressly: entering into or continuing
+// negotiations intending not to reach an agreement.
 
 language "law.core" version "0.2";
 package unidroit.picc_formation version "0.1.0";
 namespace "urn:org:unidroit:clir:picc-formation";
 
-// --- Статья 2.1.11: изменённый акцепт -----------------------------------------
+// --- Article 2.1.11: modified acceptance --------------------------------------
 
 pub relation reply_contains_modifications(a: Acceptance) kind empirical {
     label en official "the reply purports to be an acceptance but contains additions, limitations or other modifications";
-    label ru unofficial "ответ имеет целью служить акцептом, но содержит дополнения, ограничения или иные изменения";
 }
 
 pub external judgment relation materially_alters_the_offer(a: Acceptance) {
     authority Tribunal;
     label en official "the additional or different terms materially alter the terms of the offer";
-    label ru unofficial "дополнительные или отличные условия существенно изменяют условия оферты";
 }
 
 pub relation offeror_objected_to_discrepancy(a: Acceptance) kind empirical {
     label en official "the offeror, without undue delay, objects to the discrepancy";
-    label ru unofficial "оферент без неоправданной задержки возразил против расхождения";
 }
 
 pub relation counter_offer(a: Acceptance) kind institutional {
     label en official "the reply is a rejection of the offer and constitutes a counter-offer (article 2.1.11(1))";
-    label ru unofficial "ответ является отклонением оферты и встречной офертой (статья 2.1.11 пункт 1)";
 }
 
 pub relation acceptance_with_modifications(a: Acceptance) kind institutional {
     label en official "the reply with non-material modifications constitutes an acceptance (article 2.1.11(2))";
-    label ru unofficial "ответ с несущественными изменениями является акцептом (статья 2.1.11 пункт 2)";
 }
 
-@source(PICC_ART2_1_11_EN, PICC_ART2_1_11_RU)
+@source(PICC_ART2_1_11_EN)
 rule MaterialReplyIsCounterOffer(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.11(1). A reply which purports to be an acceptance but contains modifications is a rejection of the offer and constitutes a counter-offer";
-    label ru unofficial "Статья 2.1.11 пункт 1. Ответ с изменениями является отклонением оферты и встречной офертой";
     when reply_to(a, o)
         and reply_contains_modifications(a)
         and materially_alters_the_offer(a);
     then counter_offer(a);
 }
 
-@source(PICC_ART2_1_11_EN, PICC_ART2_1_11_RU)
+@source(PICC_ART2_1_11_EN)
 rule NonMaterialReplyIsAcceptance(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.11(2). A reply with additional or different terms which do not materially alter the offer constitutes an acceptance unless the offeror objects without undue delay";
-    label ru unofficial "Статья 2.1.11 пункт 2. Ответ с условиями, существенно не меняющими оферту, является акцептом, если оферент без неоправданной задержки не возразит";
     when reply_to(a, o)
         and reply_contains_modifications(a)
         and not_known(materially_alters_the_offer(a));
     then acceptance_with_modifications(a);
-    // Связывающий конъюнкт — в самой оговорке (§149-§150, E-0099).
+    // The binding conjunct belongs in the clause itself (§149-§150, E-0099).
     unless reply_to(a, o)
         and offeror_objected_to_discrepancy(a);
 }
 
-// --- Статьи 2.1.13 и 2.1.14: условия, оставленные открытыми --------------------
+// --- Articles 2.1.13 and 2.1.14: terms deliberately left open -----------------
 
 pub relation party_insists_on_agreement_on_matters(c: Contract) kind empirical {
     label en official "in the course of negotiations one of the parties insists that the contract is not concluded until there is agreement on specific matters or in a particular form";
-    label ru unofficial "в ходе переговоров сторона настаивает, что договор не заключён до соглашения по определённым вопросам или в определённой форме";
 }
 
 pub relation agreement_on_those_matters_reached(c: Contract) kind empirical {
     label en official "agreement has been reached on those matters or in that form";
-    label ru unofficial "соглашение по этим вопросам или в этой форме достигнуто";
 }
 
 pub relation term_deliberately_left_open(c: Contract, t: Term) kind empirical {
     label en official "the parties intentionally left a term to be agreed upon in further negotiations or to be determined by one of the parties or by a third person";
-    label ru unofficial "стороны намеренно оставили условие для согласования в дальнейших переговорах либо для определения одной стороной или третьим лицом";
 }
 
 pub relation intend_to_conclude_contract(c: Contract) kind empirical {
     label en official "the parties intend to conclude a contract";
-    label ru unofficial "стороны намерены заключить договор";
 }
 
 pub relation contract_exists_despite_open_term(c: Contract) kind institutional {
     label en official "the open term does not prevent a contract from coming into existence (article 2.1.14(1))";
-    label ru unofficial "оставленное открытым условие не препятствует возникновению договора (статья 2.1.14 пункт 1)";
 }
 
-@source(PICC_ART2_1_13_EN, PICC_ART2_1_13_RU)
+@source(PICC_ART2_1_13_EN)
 rule NoContractBeforeAgreementOnMatters(c: Contract) defeater {
     label en official "Article 2.1.13. Where a party insists that the contract is not concluded until agreement on specific matters is reached, no contract is concluded before that";
-    label ru unofficial "Статья 2.1.13. Если сторона настаивает, что договор не заключён до соглашения по определённым вопросам, до него договор не заключается";
     when party_insists_on_agreement_on_matters(c)
         and not_known(agreement_on_those_matters_reached(c));
     defeat contract_concluded(c);
 }
 
-@source(PICC_ART2_1_14_EN, PICC_ART2_1_14_RU)
+@source(PICC_ART2_1_14_EN)
 rule OpenTermDoesNotPreventContract(c: Contract, t: Term) strict {
     label en official "Article 2.1.14(1). If the parties intend to conclude a contract, an intentionally open term does not prevent the contract from coming into existence";
-    label ru unofficial "Статья 2.1.14 пункт 1. Если стороны намерены заключить договор, намеренно оставленное открытым условие не препятствует его возникновению";
     when intend_to_conclude_contract(c)
         and term_deliberately_left_open(c, t);
     then contract_exists_despite_open_term(c);
 }
 
-// --- Статья 2.1.15: недобросовестные переговоры --------------------------------
+// --- Article 2.1.15: negotiations in bad faith --------------------------------
 
 pub relation negotiations_broken_off(p: Party, other: Party, c: Contract) kind empirical {
     label en official "the party negotiated with, or broke off negotiations with, the other party";
-    label ru unofficial "сторона вела переговоры с другой стороной или прервала их";
 }
 
 pub relation entered_negotiations_without_intention_to_agree(p: Party, c: Contract) kind empirical {
     label en official "the party entered into or continued negotiations when intending not to reach an agreement";
-    label ru unofficial "сторона вступила в переговоры или продолжала их, не намереваясь достичь соглашения";
 }
 
 pub external judgment relation negotiated_in_bad_faith(p: Party, c: Contract) {
     authority Tribunal;
     label en official "the party negotiated or broke off negotiations in bad faith";
-    label ru unofficial "сторона вела переговоры или прервала их недобросовестно";
 }
 
 pub relation liable_for_negotiation_losses(p: Party, other: Party, c: Contract) kind institutional {
     label en official "the party is liable for the losses caused to the other party (article 2.1.15(2))";
-    label ru unofficial "сторона отвечает за убытки, причинённые другой стороне (статья 2.1.15 пункт 2)";
 }
 
-@source(PICC_ART2_1_15_EN, PICC_ART2_1_15_RU)
+@source(PICC_ART2_1_15_EN)
 rule LiableForBadFaithNegotiations(p: Party, other: Party, c: Contract) defeasible {
     label en official "Article 2.1.15(2). A party who negotiates or breaks off negotiations in bad faith is liable for the losses caused to the other party";
-    label ru unofficial "Статья 2.1.15 пункт 2. Сторона, ведущая переговоры или прерывающая их недобросовестно, отвечает за причинённые другой стороне убытки";
     when negotiations_broken_off(p, other, c)
         and negotiated_in_bad_faith(p, c);
     then liable_for_negotiation_losses(p, other, c);
 }
 
-@source(PICC_ART2_1_15_EN, PICC_ART2_1_15_RU)
+@source(PICC_ART2_1_15_EN)
 rule BadFaithByNoIntentionToAgree(p: Party, other: Party, c: Contract) defeasible {
     label en official "Article 2.1.15(3). It is bad faith, in particular, for a party to enter into or continue negotiations when intending not to reach an agreement";
-    label ru unofficial "Статья 2.1.15 пункт 3. Недобросовестно, в частности, вступать в переговоры или продолжать их, не намереваясь достичь соглашения";
     when negotiations_broken_off(p, other, c)
         and entered_negotiations_without_intention_to_agree(p, c);
     then liable_for_negotiation_losses(p, other, c);
 }
 
-// --- Статья 2.1.16: конфиденциальность ------------------------------------------
+// --- Article 2.1.16: duty of confidentiality ----------------------------------
 
 pub relation information_given_as_confidential(p: Party, other: Party, c: Contract) kind empirical {
     label en official "information was given as confidential by one party in the course of negotiations";
-    label ru unofficial "сведения переданы одной стороной как конфиденциальные в ходе переговоров";
 }
 
 pub relation information_kept_confidential(other: Party, c: Contract) kind empirical {
     label en official "the other party did not disclose the information or use it improperly for its own purposes";
-    label ru unofficial "другая сторона не раскрыла сведения и не использовала их ненадлежащим образом в своих целях";
 }
 
-@source(PICC_ART2_1_16_EN, PICC_ART2_1_16_RU)
+@source(PICC_ART2_1_16_EN)
 rule DutyOfConfidentiality(p: Party, other: Party, c: Contract) strict {
     label en official "Article 2.1.16. Where information is given as confidential in the course of negotiations, the other party is under a duty not to disclose it or use it improperly, whether or not a contract is subsequently concluded";
-    label ru unofficial "Статья 2.1.16. Если сведения переданы как конфиденциальные в ходе переговоров, другая сторона обязана не раскрывать их и не использовать ненадлежащим образом независимо от того, заключён ли договор";
     when information_given_as_confidential(p, other, c);
     then duty KeepConfidential {
         bearer other;
@@ -185,27 +163,23 @@ rule DutyOfConfidentiality(p: Party, other: Party, c: Contract) strict {
     };
 }
 
-// --- Статьи 2.1.17 и 2.1.18: оговорки о слиянии и о форме ------------------------
+// --- Articles 2.1.17 and 2.1.18: merger and no-oral-modification clauses ------
 
 pub relation merger_clause_present(c: Contract) kind empirical {
     label en official "the contract in writing contains a clause indicating that the writing completely embodies the terms agreed";
-    label ru unofficial "письменный договор содержит оговорку о том, что он полностью воплощает согласованные условия";
 }
 
 pub relation prior_statement_offered_as_evidence(c: Contract, t: Term) kind empirical {
     label en official "evidence of a prior statement or agreement is offered to contradict or supplement the writing";
-    label ru unofficial "доказательство прежнего заявления или соглашения предъявлено, чтобы опровергнуть или дополнить письменный текст";
 }
 
 pub relation prior_statement_inadmissible(c: Contract, t: Term) kind institutional {
     label en official "the writing cannot be contradicted or supplemented by that evidence (article 2.1.17)";
-    label ru unofficial "письменный текст не может быть опровергнут или дополнен этим доказательством (статья 2.1.17)";
 }
 
-@source(PICC_ART2_1_17_EN, PICC_ART2_1_17_RU)
+@source(PICC_ART2_1_17_EN)
 rule MergerClauseExcludesPriorStatements(c: Contract, t: Term) strict {
     label en official "Article 2.1.17. A contract in writing with a merger clause cannot be contradicted or supplemented by evidence of prior statements or agreements";
-    label ru unofficial "Статья 2.1.17. Письменный договор с оговоркой о слиянии не может быть опровергнут или дополнен доказательствами прежних заявлений или соглашений";
     when merger_clause_present(c)
         and prior_statement_offered_as_evidence(c, t);
     then prior_statement_inadmissible(c, t);
@@ -213,29 +187,24 @@ rule MergerClauseExcludesPriorStatements(c: Contract, t: Term) strict {
 
 pub relation form_clause_present(c: Contract) kind empirical {
     label en official "the contract in writing contains a clause requiring any modification or termination by agreement to be in a particular form";
-    label ru unofficial "письменный договор содержит оговорку о том, что изменение или прекращение соглашением должно быть в определённой форме";
 }
 
 pub relation modification_in_required_form(c: Contract) kind empirical {
     label en official "the modification or termination was made in the required form";
-    label ru unofficial "изменение или прекращение совершено в требуемой форме";
 }
 
 pub external judgment relation reasonably_acted_in_reliance_on_conduct(other: Party, c: Contract) {
     authority Tribunal;
     label en official "the other party has reasonably acted in reliance on that conduct";
-    label ru unofficial "другая сторона разумно действовала, полагаясь на это поведение";
 }
 
 pub relation informal_modification_ineffective(c: Contract) kind institutional {
     label en official "the contract may not be otherwise modified or terminated (article 2.1.18)";
-    label ru unofficial "договор не может быть изменён или прекращён иным образом (статья 2.1.18)";
 }
 
-@source(PICC_ART2_1_18_EN, PICC_ART2_1_18_RU)
+@source(PICC_ART2_1_18_EN)
 rule FormClauseBlocksInformalModification(c: Contract, other: Party) defeasible {
     label en official "Article 2.1.18. A contract in writing with a form clause may not be otherwise modified or terminated";
-    label ru unofficial "Статья 2.1.18. Письменный договор с оговоркой о форме не может быть изменён или прекращён иным образом";
     when form_clause_present(c)
         and not_known(modification_in_required_form(c));
     then informal_modification_ineffective(c);
@@ -243,33 +212,28 @@ rule FormClauseBlocksInformalModification(c: Contract, other: Party) defeasible 
         and reasonably_acted_in_reliance_on_conduct(other, c);
 }
 
-// --- Статьи 2.1.19–2.1.22: стандартные условия -----------------------------------
+// --- Articles 2.1.19–2.1.22: standard terms -----------------------------------
 
 pub relation standard_term(t: Term, c: Contract) kind empirical {
     label en official "the term is a provision prepared in advance for general and repeated use by one party and actually used without negotiation with the other party";
-    label ru unofficial "условие подготовлено заранее для общего и неоднократного использования одной стороной и применено без переговоров с другой";
 }
 
 pub external judgment relation term_could_not_reasonably_be_expected(t: Term, c: Contract) {
     authority Tribunal;
     label en official "the term is of such a character that the other party could not reasonably have expected it, regard being had to its content, language and presentation";
-    label ru unofficial "условие таково, что другая сторона не могла разумно его ожидать, с учётом содержания, языка и оформления";
 }
 
 pub relation term_expressly_accepted(t: Term, c: Contract) kind empirical {
     label en official "the term has been expressly accepted by that party";
-    label ru unofficial "условие прямо принято этой стороной";
 }
 
 pub relation term_ineffective(t: Term, c: Contract) kind institutional {
     label en official "the surprising term is not effective (article 2.1.20)";
-    label ru unofficial "неожиданное условие силы не имеет (статья 2.1.20)";
 }
 
-@source(PICC_ART2_1_20_EN, PICC_ART2_1_20_RU)
+@source(PICC_ART2_1_20_EN)
 rule SurprisingTermIneffective(t: Term, c: Contract) defeasible {
     label en official "Article 2.1.20. No term contained in standard terms which the other party could not reasonably have expected is effective unless expressly accepted";
-    label ru unofficial "Статья 2.1.20. Условие стандартных условий, которого другая сторона не могла разумно ожидать, силы не имеет, если только оно не принято прямо";
     when standard_term(t, c)
         and term_could_not_reasonably_be_expected(t, c);
     then term_ineffective(t, c);
@@ -279,101 +243,86 @@ rule SurprisingTermIneffective(t: Term, c: Contract) defeasible {
 
 pub relation conflict_with_non_standard_term(t: Term, other: Term, c: Contract) kind empirical {
     label en official "the standard term conflicts with a term which is not a standard term";
-    label ru unofficial "стандартное условие противоречит условию, которое стандартным не является";
 }
 
 pub relation non_standard_term_prevails(other: Term, t: Term, c: Contract) kind institutional {
     label en official "the non-standard term prevails (article 2.1.21)";
-    label ru unofficial "нестандартное условие имеет преимущество (статья 2.1.21)";
 }
 
-@source(PICC_ART2_1_21_EN, PICC_ART2_1_21_RU)
+@source(PICC_ART2_1_21_EN)
 rule NonStandardTermPrevails(t: Term, other: Term, c: Contract) strict {
     label en official "Article 2.1.21. In case of conflict between a standard term and a term which is not a standard term the latter prevails";
-    label ru unofficial "Статья 2.1.21. При противоречии стандартного условия и нестандартного преимущество имеет нестандартное";
     when conflict_with_non_standard_term(t, other, c);
     then non_standard_term_prevails(other, t, c);
 }
 
-// --- Статья 2.1.22: «битва форм» НОРМОЙ ------------------------------------------
+// --- Article 2.1.22: the "battle of forms" AS A RULE ---------------------------
 
 pub relation both_parties_use_standard_terms(c: Contract) kind empirical {
     label en official "both parties use standard terms and reach agreement except on those terms";
-    label ru unofficial "обе стороны используют стандартные условия и достигают соглашения, кроме как по этим условиям";
 }
 
 pub relation standard_terms_common_in_substance(t: Term, c: Contract) kind empirical {
     label en official "the standard term is common in substance with the standard terms of the other party";
-    label ru unofficial "стандартное условие совпадает по существу со стандартными условиями другой стороны";
 }
 
 pub relation party_indicated_not_bound(c: Contract) kind empirical {
     label en official "a party clearly indicates in advance, or later and without undue delay informs the other party, that it does not intend to be bound by such a contract";
-    label ru unofficial "сторона заранее ясно указала либо позднее без неоправданной задержки известила другую сторону, что не намерена быть связанной таким договором";
 }
 
 pub relation contract_on_common_terms(c: Contract) kind institutional {
     label en official "a contract is concluded on the basis of the agreed terms and of the standard terms common in substance (article 2.1.22)";
-    label ru unofficial "договор заключается на согласованных условиях и на стандартных условиях, совпадающих по существу (статья 2.1.22)";
 }
 
 pub relation standard_term_is_part_of_contract(t: Term, c: Contract) kind institutional {
     label en official "the standard term becomes part of the contract under the knock-out rule (article 2.1.22)";
-    label ru unofficial "стандартное условие входит в договор по правилу взаимного уничтожения (статья 2.1.22)";
 }
 
-@source(PICC_ART2_1_22_EN, PICC_ART2_1_22_RU)
+@source(PICC_ART2_1_22_EN)
 rule KnockOutRule(c: Contract) defeasible {
     label en official "Article 2.1.22. Where both parties use standard terms and reach agreement except on those terms, a contract is concluded on the basis of the agreed terms and of any standard terms which are common in substance";
-    label ru unofficial "Статья 2.1.22. Если обе стороны используют стандартные условия и достигают соглашения, кроме как по ним, договор заключается на согласованных условиях и на стандартных, совпадающих по существу";
     when both_parties_use_standard_terms(c);
     then contract_on_common_terms(c);
     unless both_parties_use_standard_terms(c)
         and party_indicated_not_bound(c);
 }
 
-@source(PICC_ART2_1_22_EN, PICC_ART2_1_22_RU)
+@source(PICC_ART2_1_22_EN)
 rule CommonStandardTermsSurvive(t: Term, c: Contract) defeasible {
     label en official "Article 2.1.22. Standard terms which are common in substance form part of the contract; the rest knock each other out";
-    label ru unofficial "Статья 2.1.22. Стандартные условия, совпадающие по существу, входят в договор; остальные взаимно уничтожаются";
     when contract_on_common_terms(c)
         and standard_term(t, c)
         and standard_terms_common_in_substance(t, c);
     then standard_term_is_part_of_contract(t, c);
 }
 
-// --- Статья 2.1.19: общие правила применяются к стандартным условиям --------------
+// --- Article 2.1.19: the general rules apply to standard terms ----------------
 
 pub relation general_rules_on_formation_apply(c: Contract) kind institutional {
     label en official "the general rules on formation apply, subject to articles 2.1.20-2.1.22 (article 2.1.19(1))";
-    label ru unofficial "общие правила о заключении договора применяются с учётом статей 2.1.20–2.1.22 (статья 2.1.19 пункт 1)";
 }
 
-@source(PICC_ART2_1_19_EN, PICC_ART2_1_19_RU)
+@source(PICC_ART2_1_19_EN)
 rule GeneralRulesApplyToStandardTerms(c: Contract, t: Term) strict {
     label en official "Article 2.1.19(1). Where one party or both parties use standard terms in concluding a contract, the general rules on formation apply";
-    label ru unofficial "Статья 2.1.19 пункт 1. Если одна или обе стороны используют стандартные условия, применяются общие правила о заключении договора";
     when standard_term(t, c);
     then general_rules_on_formation_apply(c);
 }
 
-// --- Статья 2.1.14 пункт 2: последующая неопределённость условия ------------------
+// --- Article 2.1.14(2): a term left open that remains undetermined ------------
 
 pub relation term_not_determined_afterwards(c: Contract, t: Term) kind empirical {
     label en official "the parties subsequently reach no agreement on the term, or the party or third person who is to determine it does not do so";
-    label ru unofficial "стороны впоследствии не достигли соглашения по условию либо сторона или третье лицо, которые должны были его определить, этого не сделали";
 }
 
 pub external judgment relation alternative_means_reasonable(c: Contract, t: Term) {
     authority Tribunal;
     label en official "there is an alternative means of rendering the term definite that is reasonable in the circumstances, having regard to the intention of the parties";
-    label ru unofficial "имеется иной способ сделать условие определённым, разумный при данных обстоятельствах с учётом намерения сторон";
 }
 
-@source(PICC_ART2_1_14_EN, PICC_ART2_1_14_RU)
+@source(PICC_ART2_1_14_EN)
 rule ContractSurvivesUndeterminedTerm(c: Contract, t: Term) strict {
     label en official "Article 2.1.14(2). The existence of the contract is not affected by a later failure to agree on or determine the term, provided that there is a reasonable alternative means of rendering it definite";
-    label ru unofficial "Статья 2.1.14 пункт 2. Последующее отсутствие соглашения или определения условия не затрагивает существования договора, если есть разумный иной способ сделать условие определённым";
     when intend_to_conclude_contract(c)
         and term_deliberately_left_open(c, t)
         and term_not_determined_afterwards(c, t)
@@ -381,16 +330,16 @@ rule ContractSurvivesUndeterminedTerm(c: Contract, t: Term) strict {
     then contract_exists_despite_open_term(c);
 }
 
-// --- Статья 2.1.15 пункт 1: свобода переговоров ----------------------------------
+// --- Article 2.1.15(1): freedom to negotiate ----------------------------------
 //
-// Пункт 1 — не декларация, а норма с отрицательной головой: за недостижение
-// соглашения сторона НЕ отвечает. Пункты 2 и 3 её вытесняют, и вытеснение
-// объявлено приоритетом §116, а не порядком чтения.
+// Paragraph 1 is not a declaration but a rule with a negative head: a party is
+// NOT liable for a failure to reach an agreement. Paragraphs 2 and 3 displace
+// it, and the displacement is declared by a §116 priority rather than by
+// reading order.
 
-@source(PICC_ART2_1_15_EN, PICC_ART2_1_15_RU)
+@source(PICC_ART2_1_15_EN)
 rule FreeToNegotiateNotLiable(p: Party, other: Party, c: Contract) defeasible {
     label en official "Article 2.1.15(1). A party is free to negotiate and is not liable for failure to reach an agreement";
-    label ru unofficial "Статья 2.1.15 пункт 1. Сторона свободна вести переговоры и не отвечает за недостижение соглашения";
     when negotiations_broken_off(p, other, c)
         and not_known(entered_negotiations_without_intention_to_agree(p, c));
     then not liable_for_negotiation_losses(p, other, c);
@@ -406,30 +355,27 @@ priority NoIntentionOverFreedomToNegotiate {
     reason lex_specialis;
 }
 
-// --- Статья 2.1.19 пункт 2: что такое стандартное условие -------------------------
+// --- Article 2.1.19(2): what a standard term is -------------------------------
 //
-// Определение источника записано нормой, а не комментарием: два признака дают
-// квалификацию, и дело может предъявить их вместо готового вывода.
+// The definition from the source is written as a rule rather than a comment:
+// two features give the qualification, and a case may present them instead of
+// a ready-made conclusion.
 
 pub relation prepared_in_advance_for_general_use(t: Term, c: Contract) kind empirical {
     label en official "the provision is prepared in advance for general and repeated use by one party";
-    label ru unofficial "положение подготовлено заранее для общего и неоднократного использования одной стороной";
 }
 
 pub relation used_without_negotiation(t: Term, c: Contract) kind empirical {
     label en official "the provision is actually used without negotiation with the other party";
-    label ru unofficial "положение фактически применено без переговоров с другой стороной";
 }
 
 pub relation term_qualifies_as_standard_term(t: Term, c: Contract) kind institutional {
     label en official "the provision qualifies as a standard term (article 2.1.19(2))";
-    label ru unofficial "положение является стандартным условием (статья 2.1.19 пункт 2)";
 }
 
-@source(PICC_ART2_1_19_EN, PICC_ART2_1_19_RU)
+@source(PICC_ART2_1_19_EN)
 rule ProvisionQualifiesAsStandardTerm(t: Term, c: Contract) strict {
     label en official "Article 2.1.19(2). Standard terms are provisions prepared in advance for general and repeated use by one party and actually used without negotiation with the other party";
-    label ru unofficial "Статья 2.1.19 пункт 2. Стандартными являются условия, подготовленные заранее для общего и неоднократного использования одной стороной и применённые без переговоров с другой";
     when prepared_in_advance_for_general_use(t, c)
         and used_without_negotiation(t, c);
     then term_qualifies_as_standard_term(t, c);

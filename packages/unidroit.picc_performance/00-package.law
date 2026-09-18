@@ -1,14 +1,15 @@
-// Глава 6 Принципов: исполнение договора и затруднения (hardship).
+// Chapter 6 of the Principles: performance of the contract and hardship.
 //
-// ЗАТРУДНЕНИЕ — ТО, ЧЕГО У КОНВЕНЦИИ НЕТ НОРМОЙ. Статья 79 Конвенции знает
-// освобождение от ответственности за неисполнение при препятствии вне
-// контроля, но НЕ знает ни пересмотра договора, ни его адаптации судом.
-// Статьи 6.2.1-6.2.3 дают именно это, и потому глава 6 — главный ответ на
-// вопрос, ради которого стороны берут Принципы вместе с Конвенцией по её
-// же статье 7(2).
+// HARDSHIP IS WHAT THE CONVENTION DOES NOT HAVE AS A RULE. Article 79 of the
+// Convention knows an exemption from liability for non-performance due to an
+// impediment beyond control, but knows NEITHER renegotiation NOR adaptation of
+// the contract by a court. Articles 6.2.1-6.2.3 give exactly that, which makes
+// chapter 6 the principal answer to the question for which the parties take the
+// Principles together with the Convention under its own article 7(2).
 //
-// ПОРЯДОК, МЕСТО И ВАЛЮТА ИСПОЛНЕНИЯ ЗАПИСАНЫ ФАКТАМИ ДЕЛА, А НЕ РАСЧЁТОМ:
-// применимый курс обмена и содержание публичного разрешения приносит дело.
+// THE ORDER, PLACE AND CURRENCY OF PERFORMANCE ARE WRITTEN AS FACTS OF THE
+// CASE, NOT AS A COMPUTATION: the applicable rate of exchange and the content
+// of a public permission are brought by the case.
 
 language "law.core" version "0.2";
 package unidroit.picc_performance version "0.1.0";
@@ -23,25 +24,20 @@ type Organ = unidroit.picc::Organ;
 
 const Tribunal: Organ = entity_ref("urn:org:unidroit:clir:picc#Tribunal") {
     label en official "the court or arbitral tribunal seised of the dispute (article 1.11)";
-    label ru unofficial "суд или арбитраж, рассматривающий спор (статья 1.11)";
 };
 
 pub entity Obligation {
     label en official "Obligation under the contract";
-    label ru unofficial "Обязательство по договору";
 }
 
 pub entity Payment {
     label en official "Payment";
-    label ru unofficial "Платёж";
 }
 
 pub entity Permission {
     label en official "Public permission";
-    label ru unofficial "Публичное разрешение";
 }
 
 pub relation obligation_of(o: Obligation, c: Contract, p: Party) kind empirical {
     label en official "the obligation arises under the contract and is owed by the party";
-    label ru unofficial "обязательство возникает из договора и лежит на стороне";
 }

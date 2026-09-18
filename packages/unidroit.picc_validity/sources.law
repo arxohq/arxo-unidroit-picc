@@ -1,26 +1,24 @@
-// Source-модель Принципов международных коммерческих договоров УНИДРУА
-// (редакция 2016 года): закреплённые байты black-letter rules и постатейные
-// фрагменты §194 охвата ЭТОГО пакета.
+// Source model of the UNIDROIT Principles of International Commercial Contracts
+// (2016 edition): the pinned bytes of the black-letter rules and the §194
+// article fragments within the scope of THIS package.
 //
-// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
-// `corpus/tools/sources/sync/sync_unidroit_picc_fragments.py`; сверка без
-// записи — его же ключом `--check`.
+// GENERATED FILE. It is written by its generator only; the generator verifies
+// it without writing under its own `--check` key.
 //
-// ПРАВО НА ВОСПРОИЗВЕДЕНИЕ ПОЛУЧЕНО У ИЗДАТЕЛЯ. Раздел «Copyright notice»
-// правовой страницы УНИДРУА (`unidroit.org/disclaimer/`, проверено
-// 17.09.2026): «Reproduction of the information is authorised, except for
-// commercial purposes, provided the source is duly acknowledged».
+// PERMISSION TO REPRODUCE COMES FROM THE PUBLISHER. The "Copyright notice"
+// section of the UNIDROIT legal page (`unidroit.org/disclaimer/`, checked
+// 17.09.2026): "Reproduction of the information is authorised, except for
+// commercial purposes, provided the source is duly acknowledged".
 //
-// ПОЧЕМУ ТЕКСТ ОФИЦИАЛЬНЫЙ, А КОПИЯ — НЕТ. `officiality official` говорит о
-// ТЕКСТЕ: английский — один из двух официальных языков инструмента.
-// `materialization_status PINNED_UNOFFICIAL_COPY` говорит о БАЙТАХ:
-// закреплено извлечение из PDF портала издателя. Русский текст — парный
-// `unofficial` якорь: официальным языком инструмента он не является.
+// WHY THE TEXT IS OFFICIAL AND THE COPY IS NOT. `officiality official` speaks
+// of the TEXT: English is one of the two official languages of the instrument.
+// `materialization_status PINNED_UNOFFICIAL_COPY` speaks of the BYTES: what is
+// pinned is an extraction from the PDF on the publisher's portal.
 //
-// КОММЕНТАРИИ И ИЛЛЮСТРАЦИИ ИЗДАТЕЛЯ В ЗАКРЕПЛЕНИЕ НЕ ВХОДЯТ: закреплены
-// black-letter rules — сам текст статей.
+// THE PUBLISHER'S COMMENTS AND ILLUSTRATIONS ARE NOT PINNED: what is pinned is
+// the black-letter rules — the text of the articles themselves.
 //
-// `retrieved_at` — константа, а не момент сборки (DECISION-0005 п. 6).
+// `retrieved_at` is a constant, not the moment of the build (DECISION-0005 §6).
 
 language "law.core" version "0.2";
 package unidroit.picc_validity version "0.1.0";
@@ -31,7 +29,6 @@ source PICC_2016 {
     jurisdiction International;
     number "UNIDROIT Principles of International Commercial Contracts 2016";
     label en official "UNIDROIT Principles of International Commercial Contracts";
-    label ru unofficial "Принципы международных коммерческих договоров УНИДРУА";
 }
 
 edition PICC_2016_EN of PICC_2016 {
@@ -50,24 +47,6 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
     local_path "sources/picc-en/en.txt";
 }
-
-edition PICC_2016_RU of PICC_2016 {
-    label ru unofficial "Русский текст black-letter rules, редакция 2016 года";
-    language ru;
-    officiality unofficial;
-    adopted @2016-05-10;
-    in_force @2016-05-10;
-    materialization_status PINNED_UNOFFICIAL_COPY;
-}
-
-publication PICC_2016_RU_TEXT of PICC_2016_RU {
-    media_type "text/plain; charset=utf-8";
-    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf";
-    retrieved_at @2026-09-17T12:30:00Z;
-    content_hash "sha256:89f86961c82987fe324c43d46146cc31aa20e8965511158dcf7fe5b43012066a";
-    local_path "sources/picc-ru/ru.txt";
-}
-
 // Article 3.1.1 (English black-letter rules)
 fragment PICC_ART3_1_1_EN in PICC_2016_EN {
     kind article;
@@ -76,18 +55,6 @@ fragment PICC_ART3_1_1_EN in PICC_2016_EN {
 (Matters not covered)
 This Chapter does not deal with lack of capacity.""";
     content_hash "sha256:1e99a89e99a3a1a4b245aa23cf541d43daf3b4caa7e22c987a21dca430a761be";
-}
-
-// Статья 3.1.1 (русский парный якорь, unofficial) (номер русской публикации — 3.1)
-fragment PICC_ART3_1_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_1";
-    text ru unofficial """Статья 3.1
-(Незатрагиваемые вопросы)
-Настоящая Глава не затрагивает вопросы,
-неправоспособностью.
-связанные""";
-    content_hash "sha256:21f55c13c2c481826e82e0c76988a67b947393e6c6746361ffa4e4259f177ff2";
 }
 
 // Article 3.1.2 (English black-letter rules)
@@ -99,19 +66,6 @@ fragment PICC_ART3_1_2_EN in PICC_2016_EN {
 A contract is concluded, modified or terminated by the mere agreement of the
 parties, without any further requirement.""";
     content_hash "sha256:03eaf56d44ded6cc114e0e4a312f0bd17e42dfa2fe52ab3a3fa0610b0d0f3829";
-}
-
-// Статья 3.1.2 (русский парный якорь, unofficial)
-fragment PICC_ART3_1_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_1_2";
-    text ru unofficial """Статья 3.1.2
-(Действительность простого соглашения)
-Договор заключается, изменяется или прекращается
-соглашением сторон без каких-либо дополнительных требований.
-с
-простым""";
-    content_hash "sha256:2c5be188d2c9caa67c66351e0fa8e1c862612a993c4484cb4436bbec1d490503";
 }
 
 // Article 3.1.3 (English black-letter rules)
@@ -129,21 +83,6 @@ of the contract.""";
     content_hash "sha256:cd5ca14afc2755fbe8beb02da5e8fcc83cdd8bc9212b87da98a7fc1700113acc";
 }
 
-// Статья 3.1.3 (русский парный якорь, unofficial)
-fragment PICC_ART3_1_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_1_3";
-    text ru unofficial """Статья 3.1.3
-(Первоначальная невозможность исполнения)
-(1) Само по себе обстоятельство, что в момент заключения договора
-исполнение принятого обязательства было невозможным, не влияет на
-действительность договора.
-(2) Само по себе обстоятельство, что в момент заключения договора
-сторона не была уполномочена распоряжаться имуществом, к которому
-относится договор, не влияет на действительность договора.""";
-    content_hash "sha256:74f34dbf66611c9cf7d500ebedb593f1ec825715f9df592f25aeea77851d4356";
-}
-
 // Article 3.1.4 (English black-letter rules)
 fragment PICC_ART3_1_4_EN in PICC_2016_EN {
     kind article;
@@ -155,17 +94,6 @@ Chapter are mandatory.""";
     content_hash "sha256:2854c0dccb3d5f506f2c0e6023d709a7d4d3a77fe49bd16d9c3740e38b30e60d";
 }
 
-// Статья 3.1.4 (русский парный якорь, unofficial)
-fragment PICC_ART3_1_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_1_4";
-    text ru unofficial """Статья 3.1.4
-(Императивный характер положений)
-Положения настоящей Главы об обмане, угрозе, существенном
-неравновесии и противоправности являются императивными.""";
-    content_hash "sha256:b29502d09f278db64bdf4adb6c02e8b6d7bdba11d5a6a6b3e64040e4fdcfe994";
-}
-
 // Article 3.2.1 (English black-letter rules)
 fragment PICC_ART3_2_1_EN in PICC_2016_EN {
     kind article;
@@ -175,18 +103,6 @@ fragment PICC_ART3_2_1_EN in PICC_2016_EN {
 Mistake is an erroneous assumption relating to facts or to law existing when the
 contract was concluded.""";
     content_hash "sha256:06c6426b9d948a0bffeed9e6a22f8146c6ca9d4db82259c90ce836ae3b929fbd";
-}
-
-// Статья 3.2.1 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_1";
-    text ru unofficial """Статья 3.2.1
-(Понятие заблуждения)
-Заблуждением является ошибочное предположение, относящееся к
-фактам или правовым нормам, существующим в момент заключения
-договора.""";
-    content_hash "sha256:06a6d657ce4a80355e763ee5ead0f40b9835b4763db9d459fa51e845e6df343b";
 }
 
 // Article 3.2.2 (English black-letter rules)
@@ -211,31 +127,6 @@ the contract.
     content_hash "sha256:d451a1069e323e8b6a25f52d69b00dacee9aabf952fc47057508aeab23e84f1a";
 }
 
-// Статья 3.2.2 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_2";
-    text ru unofficial """Статья 3.2.2
-(Характер заблуждения)
-(1) Сторона может оспорить договор в связи с заблуждением, если в
-момент заключения договора, заблуждение было настолько значительным,
-что разумное лицо в аналогичной ситуации, что и заблуждавшаяся сторона,
-заключило бы договор на существенно иных условиях или не заключило бы
-его вообще, если бы было известно истинное положение вещей, и:
-(а) другая сторона также заблуждалась либо вызвала заблуждение,
-либо знала или должна была знать о заблуждении, и оставление
-заблуждающейся стороны в таком состоянии противоречило бы разумным
-коммерческим стандартам честной деловой практики; или
-(b) другая сторона не действовала разумно в момент отказа от
-договора, основываясь на договоре.
-(2) Сторона, однако, не может оспорить договор, если:
-(а) заблуждение возникло в результате ее грубой небрежности; или
-(b) заблуждение относится к вопросу, в отношении которого
-заблуждающейся стороной был принят риск заблуждения, или, с учетом
-конкретных обстоятельств, риск должен быть возложен на нее.""";
-    content_hash "sha256:2773c887d69e6f40abb0112878889a32d69de1a402faa84418102851f4a34387";
-}
-
 // Article 3.2.3 (English black-letter rules)
 fragment PICC_ART3_2_3_EN in PICC_2016_EN {
     kind article;
@@ -245,17 +136,6 @@ fragment PICC_ART3_2_3_EN in PICC_2016_EN {
 An error occurring in the expression or transmission of a declaration is considered to
 be a mistake of the person from whom the declaration emanated.""";
     content_hash "sha256:1f98f010871c8ea2c8aa4d0c5c680c2eed277582292e289b7a5c0981899c571c";
-}
-
-// Статья 3.2.3 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_3";
-    text ru unofficial """Статья 3.2.3
-(Ошибка в выражении или при передаче)
-Ошибка в выражении или при передаче заявления относится к
-заблуждению лица, от которого исходит заявление.""";
-    content_hash "sha256:6dd2adf97bea273775dc955e5032818e8cd76ba0d942dba9b9512577821f6aba";
 }
 
 // Article 3.2.4 (English black-letter rules)
@@ -268,18 +148,6 @@ A party is not entitled to avoid the contract on the ground of mistake if the
 circumstances on which that party relies afford, or could have afforded, a remedy for
 non-performance.""";
     content_hash "sha256:f2318403e432c8b478011330de2aa4e607b27bdba9143e4b550211299e8f33bd";
-}
-
-// Статья 3.2.4 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_4";
-    text ru unofficial """Статья 3.2.4
-(Правовые средства защиты в связи с неисполнением)
-Сторона не вправе оспорить договор на основании заблуждения, если
-обстоятельства, на которые она полагается, допускают или могли бы
-допускать правовую защиту в связи с его неисполнением.""";
-    content_hash "sha256:cbdbb59628fc050e61447954a13520771413be74847f6370bd3db6b61c793f7c";
 }
 
 // Article 3.2.5 (English black-letter rules)
@@ -295,20 +163,6 @@ of fair dealing, the latter party should have disclosed.""";
     content_hash "sha256:5750c3a2305e10e81c6c6312beebe30692cd6d26fca7383d907dcd93b7cc467f";
 }
 
-// Статья 3.2.5 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_5";
-    text ru unofficial """Статья 3.2.5
-(Обман)
-Сторона может оспорить договор, если договор был заключен в
-результате обманных заявлений другой стороны, включая язык выражения
-или образ действия, или в результате сокрытия обманным путем фактов,
-которые в соответствии с разумными коммерческими стандартами честной
-деловой практики, должны были быть раскрыты этой стороной.""";
-    content_hash "sha256:208a51e196ab4a4a685db95ddcc5b52f0b2e8f1db3abac15a51307ba4e21c46c";
-}
-
 // Article 3.2.6 (English black-letter rules)
 fragment PICC_ART3_2_6_EN in PICC_2016_EN {
     kind article;
@@ -322,22 +176,6 @@ threat is unjustified if the act or omission with which a party has been threate
 wrongful in itself, or it is wrongful to use it as a means to obtain the conclusion of the
 contract.""";
     content_hash "sha256:8211c3870e28ae54272d95c80ece6f9841db88367509a56c4bed998ec43abd51";
-}
-
-// Статья 3.2.6 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_6";
-    text ru unofficial """Статья 3.2.6
-(Угроза)
-Сторона может оспорить договор, если договор был заключен ею в
-результате последовавшей от другой стороны неоправданной угрозы,
-которая с учетом конкретных обстоятельств, является настолько реальной и
-серьезной, что не оставляет другой стороне разумной альтернативы. В
-частности, угроза является неоправданной, если угрожаемое действие или
-бездействие является само по себе неправомерным, или неправомерным
-является использование его в качестве средства для заключения договора.""";
-    content_hash "sha256:ce949b75c30cada83713882599311ed2f3d23f90899c95a3f00775fbe5d57c8d";
 }
 
 // Article 3.2.7 (English black-letter rules)
@@ -363,39 +201,6 @@ acted in reliance on it. Article 3.2.10(2) applies accordingly.""";
     content_hash "sha256:f601fcaf1de9e3e8ce0a563e327799f849d123f1176d99c2603f7b38594ff169";
 }
 
-// Статья 3.2.7 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_7_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_7";
-    text ru unofficial """Статья 3.2.7
-(Существенное неравновесие)
-(1) Сторона может оспорить договор или отдельное его условие, если в
-момент его заключения договор или какое-либо его условие неоправданно
-создавало чрезмерное преимущество для другой стороны. Помимо прочего во
-внимание должно быть принято:
-(а) факт недобросовестного использования одной стороной
-зависимости от нее другой стороны, экономической слабости последней или
-чрезвычайных
-нужд,
-или
-ее
-непредусмотрительности,
-неинформированности, неопытности или отсутствия навыков вести
-переговоры, а также
-(b) характер и цель договора.
-(2) По просьбе стороны, имеющей право оспорить договор, суд вправе
-изменить договор или отдельное его положение с тем, чтобы привести его в
-соответствие с разумными коммерческими стандартами честной деловой
-практики.
-(3) Суд также может изменить договор или отдельное его положение по
-просьбе стороны, получившей уведомление об оспаривании договора, при
-условии, что эта сторона проинформирует другую сторону о своей просьбе
-сразу же после получения такого уведомления и до того, как другая сторона
-совершила какие-либо действия, полагаясь на него. Положение статьи
-3.2.10(2) применяется соответственно.""";
-    content_hash "sha256:e7ca07904e5e99ccd51ea5850aa18f9e4b237243110c386790f616e083c47db5";
-}
-
 // Article 3.2.8 (English black-letter rules)
 fragment PICC_ART3_2_8_EN in PICC_2016_EN {
     kind article;
@@ -413,25 +218,6 @@ reasonably acted in reliance on the contract.""";
     content_hash "sha256:99c998e03342cd38c1e3ab52048e1cdf022ebe541acd44b6e35f1de079530ee1";
 }
 
-// Статья 3.2.8 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_8_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_8";
-    text ru unofficial """Статья 3.2.8
-(Третьи лица)
-(1) Если обман, угроза, существенное неравновесие или заблуждение
-стороны вызваны третьим лицом, за которое отвечает другая сторона, или
-это третье лицо знает об этом или должно было знать, договор может быть
-оспорен, как если бы соответствующее поведение или информация исходили
-от самой стороны.
-(2) Если обман, угроза, существенное неравновесие вызваны третьим
-лицом, за которое другая сторона не отвечает, договор может быть оспорен,
-если эта сторона знала или должна была знать об обмане, угрозах или
-существенном неравновесии или во время оспаривания договора, она
-разумно не совершала действий, основываясь на договоре.""";
-    content_hash "sha256:03609e192fbd4a3695ed25a01fadb350d79fab83ca0c62b442c3c7af4eb722a0";
-}
-
 // Article 3.2.9 (English black-letter rules)
 fragment PICC_ART3_2_9_EN in PICC_2016_EN {
     kind article;
@@ -442,19 +228,6 @@ If the party entitled to avoid the contract expressly or impliedly confirms the
 contract after the period of time for giving notice of avoidance has begun to run,
 avoidance of the contract is excluded.""";
     content_hash "sha256:6d9128837179a2efce275992afb46860bb6e548833b5c19f1fbee6fd9b6cbfb8";
-}
-
-// Статья 3.2.9 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_9_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_9";
-    text ru unofficial """Статья 3.2.9
-(Подтверждение)
-Если сторона, которая имеет право оспорить договор, прямо или в
-подразумеваемом виде подтверждает договор после того, как начал течь
-период времени для уведомления об оспаривании, оспаривание договора не
-допускается.""";
-    content_hash "sha256:fc422f50e6c7b07e582cdccd98ae2b69db57db7ab2f7f8394130a02c3df23cf6";
 }
 
 // Article 3.2.10 (English black-letter rules)
@@ -475,28 +248,6 @@ earlier notice of avoidance is ineffective.""";
     content_hash "sha256:b68d3a46a8ed6d6ec23121d0b45b7bd686df399ce94fdc5067b7bcc5b1338e6a";
 }
 
-// Статья 3.2.10 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_10_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_10";
-    text ru unofficial """Статья 3.2.10
-(Утрата права на оспаривание)
-(1) Если сторона имеет право оспорить договор в связи с
-заблуждением, однако, другая сторона заявляет о своей готовности
-исполнить договор или в действительности исполняет его таким образом,
-как это понималось стороной, имеющей право оспорить его, договор
-считается заключенным как это понималось этой стороной. Другая сторона
-должна сделать такое заявление или осуществить такое исполнение сразу
-после того, как она была проинформирована о том, как понимался этот
-договор стороной, имеющей право оспорить его, и до того, как эта сторона
-разумно совершила какие-либо действия, полагаясь на уведомление об
-оспаривании договора.
-(2) После такого заявления или исполнения право оспорить договор
-утрачивается, и никакое предшествующее уведомление об оспаривании не
-имеет силы.""";
-    content_hash "sha256:91f123c17aa02866b160b853a3041e2653757ff0b705b2416ca851ba99858690";
-}
-
 // Article 3.2.11 (English black-letter rules)
 fragment PICC_ART3_2_11_EN in PICC_2016_EN {
     kind article;
@@ -505,17 +256,6 @@ fragment PICC_ART3_2_11_EN in PICC_2016_EN {
 (Notice of avoidance)
 The right of a party to avoid the contract is exercised by notice to the other party.""";
     content_hash "sha256:839d739369b34f5e07f0ae00b212347fee7711f6cbfda33ea4e5cd9d77e91443";
-}
-
-// Статья 3.2.11 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_11_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_11";
-    text ru unofficial """Статья 3.2.11
-(Уведомление об оспаривании)
-Право стороны оспорить договор реализуется путем уведомления
-другой стороны.""";
-    content_hash "sha256:98600028181676feb73912917314d5a45bca9e582480f83e443ddf9625c2e29c";
 }
 
 // Article 3.2.12 (English black-letter rules)
@@ -533,23 +273,6 @@ term is asserted by the other party.""";
     content_hash "sha256:7cf72fa4a1d70fea26d5cdb2d874b681a34cff063889aa5593c5bf02d76b898b";
 }
 
-// Статья 3.2.12 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_12_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_12";
-    text ru unofficial """Статья 3.2.12
-(Ограничение сроков)
-(1) Уведомление об оспаривании должно быть дано в течение
-разумного срока, с учетом обстоятельств, после того, как оспаривающая
-договор сторона узнала или не могла не узнать о соответствующих фактах и
-получила возможность действовать по своему усмотрению.
-(2) Если речь идет об оспаривании отдельного положения договора в
-соответствии со ст. 3.2.7, срок для уведомления об оспаривании начинает
-течь с момента, когда на это положение стало использоваться другой
-стороной.""";
-    content_hash "sha256:51a8b7267b766fddce06a22b5483caa484a860307297fd742e89d87cabce6aa1";
-}
-
 // Article 3.2.13 (English black-letter rules)
 fragment PICC_ART3_2_13_EN in PICC_2016_EN {
     kind article;
@@ -562,19 +285,6 @@ unreasonable to uphold the remaining contract.""";
     content_hash "sha256:23271664a65dfa320c1e9a5729179845ef07c9543f60f2ae8bf71d1a647c3906";
 }
 
-// Статья 3.2.13 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_13_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_13";
-    text ru unofficial """Статья 3.2.13
-(Частичное оспаривание)
-Если основание оспаривания затрагивает только отдельные
-положения договора, последствия оспаривания ограничиваются этими
-положениями, если только, принимая во внимание обстоятельства, не
-представляется неразумным сохранить в силе оставшуюся часть договора.""";
-    content_hash "sha256:2991600740b3b03b20165291d1ec4d3941b07d588f1bd1b057824507405645fd";
-}
-
 // Article 3.2.14 (English black-letter rules)
 fragment PICC_ART3_2_14_EN in PICC_2016_EN {
     kind article;
@@ -583,16 +293,6 @@ fragment PICC_ART3_2_14_EN in PICC_2016_EN {
 (Retroactive effect of avoidance)
 Avoidance takes effect retroactively.""";
     content_hash "sha256:6c50dc8d6396c631b803e3390bd0f5f77808686d05cc65993c351092eda805f9";
-}
-
-// Статья 3.2.14 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_14_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_14";
-    text ru unofficial """Статья 3.2.14
-(Обратная сила оспаривания)
-Оспаривание имеет обратную силу.""";
-    content_hash "sha256:9a1e0879d9b246b1762dab5de9718af56915eafe637b99990938c26ff1857fd5";
 }
 
 // Article 3.2.15 (English black-letter rules)
@@ -613,26 +313,6 @@ maintain the performance received.""";
     content_hash "sha256:28f53226af397622cfe55966fa27e549dcb7b1975989d34db07734d2a21c8f76";
 }
 
-// Статья 3.2.15 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_15_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_15";
-    text ru unofficial """Статья 3.2.15
-(Реституция)
-(1) При оспаривании любая сторона может требовать возврата всего,
-что было поставлено по договору или его оспариваемой части, при условии,
-что она одновременно осуществит возврат всего, что она получила по
-договору или его оспариваемой части.
-(2) Если возврат в натуре невозможен или неуместен, выплата должна
-быть осуществлена в денежной форме, когда это является разумным.
-(3) Получатель исполнения не обязан выплачивать денежное
-возмещение, если невозможность возврата в натуре возникла по причинам,
-зависящим от другой стороны.
-(4) За расходы, разумно необходимые для сохранения и содержания
-полученного исполнения, может быть потребована компенсация.""";
-    content_hash "sha256:8497f40f318cc87bf306ce59ede0033eb5aa08c79309e7ea31d4fdab024fa5ea";
-}
-
 // Article 3.2.16 (English black-letter rules)
 fragment PICC_ART3_2_16_EN in PICC_2016_EN {
     kind article;
@@ -646,19 +326,6 @@ contract.""";
     content_hash "sha256:fa4fc33f058d86bf5ace7423fe47183ca4b5587b62259994bc5f1e6d2285b92e";
 }
 
-// Статья 3.2.16 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_16_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_16";
-    text ru unofficial """Статья 3.2.16
-(Убытки)
-Независимо от того, был ли договор оспорен, сторона, которая знала
-или должна была знать об основаниях оспаривания, является ответственной
-за убытки, возмещение которых должно поставить другую сторону в
-положение, в котором она находилась бы, если бы она не заключила договор.""";
-    content_hash "sha256:3af8bc5318c0e9e151077607aceea5dfbaa295f6448488a5d8c8277fdd0fa1e1";
-}
-
 // Article 3.2.17 (English black-letter rules)
 fragment PICC_ART3_2_17_EN in PICC_2016_EN {
     kind article;
@@ -667,18 +334,6 @@ fragment PICC_ART3_2_17_EN in PICC_2016_EN {
 (Unilateral declarations)
 The provisions of this Chapter apply with appropriate adaptations to any communication of intention addressed by one party to the other.""";
     content_hash "sha256:fc34f06c7a7385c7165d3cc6e775c98c2f1b5078c6040ec3dd57f55164cd752c";
-}
-
-// Статья 3.2.17 (русский парный якорь, unofficial)
-fragment PICC_ART3_2_17_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_2_17";
-    text ru unofficial """Статья 3.2.17
-(Односторонние заявления)
-Положения настоящей Главы применяются с соответствующими
-поправками к любому сообщению намерения, адресованному одной стороной
-другой.""";
-    content_hash "sha256:f7326e00c3c1100454f4e5ff1502b72c9d630300ee0440b53e36d1bd6cb2c3bb";
 }
 
 // Article 3.3.1 (English black-letter rules)
@@ -705,36 +360,6 @@ the contract as in the circumstances are reasonable.
     content_hash "sha256:552a46fe0700f90785225203d61fb6f16213cfeddabfb0dfc2a9904ee85f0c49";
 }
 
-// Статья 3.3.1 (русский парный якорь, unofficial)
-fragment PICC_ART3_3_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_3_1";
-    text ru unofficial """Статья 3.3.1.
-(Договоры, нарушающие императивные нормы)
-(1) Если договор нарушает императивные нормы национального,
-международного или наднационального происхождения, подлежащие
-применению в соответствии со статьей 1.4. настоящих Принципов, то в
-отношении договора наступают последствия такого нарушения, которые
-прямо установлены этими императивными нормами, если таковые вообще
-предусмотрены.
-(2) Если императивная норма прямо не предусматривает последствия
-ее нарушения для договора, стороны вправе воспользоваться такими
-правовыми средствами, предусмотренными договором, которые являются
-разумными при данных обстоятельствах.
-(3) При определении разумности должны быть приняты во внимание,
-в частности,
-(а) цель нормы, которая была нарушена;
-(b) категория лиц, для защиты которых;
-(c) любая санкция, которая может быть наложена за нарушение
-нормы;
-(d) серьезность нарушения;
-(e) знала или должна была знать одна или обе стороны о нарушении;
-(f) было ли нарушение необходимым для исполнения договора; а
-также
-(g) разумные ожидания сторон.""";
-    content_hash "sha256:8b74b9115ea331ee92f77ff74e7f5b446a501d51a0c5de0363691ba00b0d2176";
-}
-
 // Article 3.3.2 (English black-letter rules)
 fragment PICC_ART3_3_2_EN in PICC_2016_EN {
     kind article;
@@ -749,20 +374,4 @@ adaptations, to the criteria referred to in Article 3.3.1(3).
 (3) If restitution is granted, the rules set out in Article 3.2.15 apply with
 appropriate adaptations.""";
     content_hash "sha256:a9ab6bc6ec01c654cc20b13467e6991af96f3a305ef821e4a5f26772069591a1";
-}
-
-// Статья 3.3.2 (русский парный якорь, unofficial)
-fragment PICC_ART3_3_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/3_3_2";
-    text ru unofficial """Статья 3.3.2
-(Реституция)
-(1) Если исполнение договора, нарушающего императивную норму,
-предусмотренную статьей 3.3.1, имело место, то реституция допускается, если
-это будет разумным с учетом имеющихся обстоятельств.
-(2) При определении разумности, должны быть приняты во внимание
-критерии, упомянутые в статье 3.3.1(3), с соответствующими поправками.
-(3) Если реституция будет разрешена, положения, предусмотренные в
-статье 3.2.15, подлежат применению с соответствующими поправками.""";
-    content_hash "sha256:7cda9eb038657bd3539401050a7445a24149fd1616ac45b8dd50201791b5bfe9";
 }

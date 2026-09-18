@@ -1,0 +1,72 @@
+language "law.core" version "0.2";
+package unidroit.picc_validity version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-validity";
+
+// Case 2. Fraud (3.2.5), threat (3.2.6), gross disparity (3.2.7) and third
+// persons (3.2.8). Three different grounds share one head "may avoid", but each
+// has premises of its own, and the applied rules show it.
+
+test "PICCV-02-FRAUD-THREAT-GROSS-DISPARITY" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": fraudulent_representation_or_non_disclosure(entity_ref("urn:case:piccv:contract-2a"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a1": threat_made(entity_ref("urn:case:piccv:contract-2b"), entity_ref("urn:case:piccv:seller")) { origin case_input; }
+        assert "a2": threatened_act_wrongful(entity_ref("urn:case:piccv:contract-2b"), entity_ref("urn:case:piccv:seller")) { origin case_input; }
+        assert "a3": threat_imminent_and_serious(entity_ref("urn:case:piccv:contract-2b"), entity_ref("urn:case:piccv:seller")) { origin adjudicated; }
+        assert "a4": excessive_advantage_claimed(entity_ref("urn:case:piccv:contract-2c"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a5": took_unfair_advantage(entity_ref("urn:case:piccv:contract-2c")) { origin case_input; }
+        assert "a6": advantage_excessive_and_unjustifiable(entity_ref("urn:case:piccv:contract-2c")) { origin adjudicated; }
+        assert "a7": term_asserted_by_other_party(entity_ref("urn:case:piccv:term-2c"), entity_ref("urn:case:piccv:contract-2c")) { origin case_input; }
+        assert "a8": adaptation_requested_by_entitled_party(entity_ref("urn:case:piccv:contract-2c"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a9": adaptation_requested_after_notice(entity_ref("urn:case:piccv:contract-2d")) { origin case_input; }
+        assert "a10": adaptation_ordered(entity_ref("urn:case:piccv:contract-2d")) { origin case_input; }
+        assert "a11": ground_imputable_to_third_person(entity_ref("urn:case:piccv:contract-2e"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a12": other_party_responsible_for_third_person(entity_ref("urn:case:piccv:contract-2e")) { origin case_input; }
+        assert "a13": ground_imputable_to_third_person(entity_ref("urn:case:piccv:contract-2f"), entity_ref("urn:case:piccv:buyer")) { origin case_input; }
+        assert "a14": other_party_knew_of_ground(entity_ref("urn:case:piccv:contract-2f")) { origin case_input; }
+    }
+
+    evaluate truth(may_avoid_contract(entity_ref("urn:case:piccv:contract-2a"), entity_ref("urn:case:piccv:buyer")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AvoidanceForFraud);
+
+    evaluate truth(threat_unjustified(entity_ref("urn:case:piccv:contract-2b"), entity_ref("urn:case:piccv:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ThreatIsUnjustified);
+
+    evaluate truth(may_avoid_contract(entity_ref("urn:case:piccv:contract-2b"), entity_ref("urn:case:piccv:seller")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AvoidanceForThreat);
+
+    evaluate truth(may_avoid_contract(entity_ref("urn:case:piccv:contract-2c"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AvoidanceForGrossDisparity);
+
+    // An individual TERM may be avoided, not only the contract as a whole.
+    evaluate truth(may_avoid_term(entity_ref("urn:case:piccv:term-2c"), entity_ref("urn:case:piccv:contract-2c"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AvoidanceOfIndividualTermForGrossDisparity);
+
+    // Adaptation of the contract by the court is a §127 power with the organ of article 1.11.
+    evaluate positions();
+    expect position(AdaptContract, ACTIVE);
+
+    evaluate truth(contract_adapted_to_fair_dealing(entity_ref("urn:case:piccv:contract-2d")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(AdaptationOnRequestOfNotifiedParty);
+
+    evaluate truth(may_avoid_contract(entity_ref("urn:case:piccv:contract-2e"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ThirdPersonForWhomPartyIsResponsible);
+
+    evaluate truth(may_avoid_contract(entity_ref("urn:case:piccv:contract-2f"), entity_ref("urn:case:piccv:buyer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ThirdPersonOutsideResponsibility);
+}

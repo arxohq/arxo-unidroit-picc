@@ -1,26 +1,24 @@
-// Source-модель Принципов международных коммерческих договоров УНИДРУА
-// (редакция 2016 года): закреплённые байты black-letter rules и постатейные
-// фрагменты §194 охвата ЭТОГО пакета.
+// Source model of the UNIDROIT Principles of International Commercial Contracts
+// (2016 edition): the pinned bytes of the black-letter rules and the §194
+// article fragments within the scope of THIS package.
 //
-// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
-// `corpus/tools/sources/sync/sync_unidroit_picc_fragments.py`; сверка без
-// записи — его же ключом `--check`.
+// GENERATED FILE. It is written by its generator only; the generator verifies
+// it without writing under its own `--check` key.
 //
-// ПРАВО НА ВОСПРОИЗВЕДЕНИЕ ПОЛУЧЕНО У ИЗДАТЕЛЯ. Раздел «Copyright notice»
-// правовой страницы УНИДРУА (`unidroit.org/disclaimer/`, проверено
-// 17.09.2026): «Reproduction of the information is authorised, except for
-// commercial purposes, provided the source is duly acknowledged».
+// PERMISSION TO REPRODUCE COMES FROM THE PUBLISHER. The "Copyright notice"
+// section of the UNIDROIT legal page (`unidroit.org/disclaimer/`, checked
+// 17.09.2026): "Reproduction of the information is authorised, except for
+// commercial purposes, provided the source is duly acknowledged".
 //
-// ПОЧЕМУ ТЕКСТ ОФИЦИАЛЬНЫЙ, А КОПИЯ — НЕТ. `officiality official` говорит о
-// ТЕКСТЕ: английский — один из двух официальных языков инструмента.
-// `materialization_status PINNED_UNOFFICIAL_COPY` говорит о БАЙТАХ:
-// закреплено извлечение из PDF портала издателя. Русский текст — парный
-// `unofficial` якорь: официальным языком инструмента он не является.
+// WHY THE TEXT IS OFFICIAL AND THE COPY IS NOT. `officiality official` speaks
+// of the TEXT: English is one of the two official languages of the instrument.
+// `materialization_status PINNED_UNOFFICIAL_COPY` speaks of the BYTES: what is
+// pinned is an extraction from the PDF on the publisher's portal.
 //
-// КОММЕНТАРИИ И ИЛЛЮСТРАЦИИ ИЗДАТЕЛЯ В ЗАКРЕПЛЕНИЕ НЕ ВХОДЯТ: закреплены
-// black-letter rules — сам текст статей.
+// THE PUBLISHER'S COMMENTS AND ILLUSTRATIONS ARE NOT PINNED: what is pinned is
+// the black-letter rules — the text of the articles themselves.
 //
-// `retrieved_at` — константа, а не момент сборки (DECISION-0005 п. 6).
+// `retrieved_at` is a constant, not the moment of the build (DECISION-0005 §6).
 
 language "law.core" version "0.2";
 package unidroit.picc_limitation version "0.1.0";
@@ -31,7 +29,6 @@ source PICC_2016 {
     jurisdiction International;
     number "UNIDROIT Principles of International Commercial Contracts 2016";
     label en official "UNIDROIT Principles of International Commercial Contracts";
-    label ru unofficial "Принципы международных коммерческих договоров УНИДРУА";
 }
 
 edition PICC_2016_EN of PICC_2016 {
@@ -50,24 +47,6 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     content_hash "sha256:2eec79015fdbad525967fbb8b9e377c69e74479af2a43cc06ce62ede6802327e";
     local_path "sources/picc-en/en.txt";
 }
-
-edition PICC_2016_RU of PICC_2016 {
-    label ru unofficial "Русский текст black-letter rules, редакция 2016 года";
-    language ru;
-    officiality unofficial;
-    adopted @2016-05-10;
-    in_force @2016-05-10;
-    materialization_status PINNED_UNOFFICIAL_COPY;
-}
-
-publication PICC_2016_RU_TEXT of PICC_2016_RU {
-    media_type "text/plain; charset=utf-8";
-    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-Russian-bl.pdf";
-    retrieved_at @2026-09-17T12:30:00Z;
-    content_hash "sha256:89f86961c82987fe324c43d46146cc31aa20e8965511158dcf7fe5b43012066a";
-    local_path "sources/picc-ru/ru.txt";
-}
-
 // Article 10.1 (English black-letter rules)
 fragment PICC_ART10_1_EN in PICC_2016_EN {
     kind article;
@@ -81,22 +60,6 @@ under the Principles, as a condition for the acquisition or exercise of its righ
 notice to the other party or to perform any act other than the institution of legal
 proceedings.""";
     content_hash "sha256:3e96ab7f9e8930ff8098ec96425f9648ad34b92064ce8d5afa7d239c191195c1";
-}
-
-// Статья 10.1 (русский парный якорь, unofficial)
-fragment PICC_ART10_1_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_1";
-    text ru unofficial """Статья 10.1
-(Сфера применения настоящей Главы)
-(1) Права, регулируемые настоящими Принципами, не действуют по
-истечении срока, именуемого «сроком исковой давности», как это
-установлено настоящей Главой.
-(2) Настоящая глава не затрагивает сроков, в течение которых одна
-сторона, в качестве условия приобретения права или его осуществления,
-обязана, согласно Принципам, направить уведомление другой стороне либо
-совершить любое иное действие, кроме обращения в суд.""";
-    content_hash "sha256:c18fb0eb212a6472966b967628af0f6396e4b529d98451437f5dff0d539be2d1";
 }
 
 // Article 10.2 (English black-letter rules)
@@ -118,22 +81,6 @@ after the day the right can be exercised.
     content_hash "sha256:901a757439ad1830c6eb68ae398663fb0e9f62f05c7bb065733d287dbc0f1393";
 }
 
-// Статья 10.2 (русский парный якорь, unofficial)
-fragment PICC_ART10_2_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_2";
-    text ru unofficial """Статья 10.2
-(Сроки исковой давности)
-(1) Общий срок исковой давности составляет три года и начинается с
-дня, следующего за днем, когда кредитор узнал или должен был узнать о
-событиях, в результате которых кредитор может воспользоваться своим
-правом.
-(2) В любом случае, максимальный срок исковой давности составляет
-десять лет, начиная со дня, следующего за днем, когда стало возможным
-воспользоваться правом.""";
-    content_hash "sha256:d2744537971e85e5b461e7eb72e581995c51a47967567b39f42d79c210c76545";
-}
-
 // Article 10.3 (English black-letter rules)
 fragment PICC_ART10_3_EN in PICC_2016_EN {
     kind article;
@@ -148,23 +95,6 @@ extend the maximum limitation period to more than fifteen years.""";
     content_hash "sha256:b993f9a4e9720da7cfb0f86f2d1a1998528deb844a1b6e2406021431f8601c40";
 }
 
-// Статья 10.3 (русский парный якорь, unofficial)
-fragment PICC_ART10_3_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_3";
-    text ru unofficial """Статья 10.3
-(Изменение сторонами сроков исковой давности)
-(1) Стороны могут изменить сроки исковой давности.
-(2) Тем не менее, стороны не могут
-(а) уменьшить общий срок исковой давности до продолжительности
-менее одного года;
-(b) уменьшить максимальный срок исковой давности до
-продолжительности менее четырех лет;
-(c) продлить максимальный срок исковой давности свыше
-пятнадцати лет.""";
-    content_hash "sha256:08f102697403ce5a93859838cc1db741d13d2df44250fbd3346523dfdec1ae00";
-}
-
 // Article 10.4 (English black-letter rules)
 fragment PICC_ART10_4_EN in PICC_2016_EN {
     kind article;
@@ -177,21 +107,6 @@ after the day of the acknowledgement.
 (2) The maximum limitation period does not begin to run again, but may be
 exceeded by the beginning of a new general limitation period under Article 10.2(1).""";
     content_hash "sha256:e31a71259527a900fb92e30096ecbde55b98c2d5ce873d2d0a0a1fa23be8ae7b";
-}
-
-// Статья 10.4 (русский парный якорь, unofficial)
-fragment PICC_ART10_4_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_4";
-    text ru unofficial """Статья 10.4.
-(Установление нового срока исковой давности признанием)
-(1) Если должником признается право кредитора до истечения общего
-срока исковой давности, новый общий срок исковой давности начинает
-исчисляться со дня, следующего за днем признания.
-(2) Максимальный срок исковой давности не исчисляется заново, но
-может быть превышен началом течения нового общего срока исковой
-давности в соответствии со статьей 10.2(1).""";
-    content_hash "sha256:ac0e063f983d285dd37ea1a6ceea72151b528667407ec9351e9e05b77fbc9d65";
 }
 
 // Article 10.5 (English black-letter rules)
@@ -213,29 +128,6 @@ have been otherwise terminated.""";
     content_hash "sha256:63fab4a21b6dcbbd26a073f5691fee96cf25a27745eadd7970eef2b77c1f6fae";
 }
 
-// Статья 10.5 (русский парный якорь, unofficial)
-fragment PICC_ART10_5_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_5";
-    text ru unofficial """Статья 10.5
-(Остановка течения срока исковой давности судебным разбирательством)
-(1) Течение срока исковой давности останавливается
-(а) когда кредитор совершает любое действие, возбуждая судебное
-разбирательств, либо совершая действие в рамках уже ведущегося судебного
-разбирательства, которое признается по праву страны места нахождения
-суда, как заявление кредитора о своем праве в отношении должника;
-(b) в случае неплатежеспособности должника – когда кредитор
-заявляет о своем праве в рамках производства в связи с
-неплатежеспособностью, или
-c) в случае судебного производства в связи с прекращении
-юридического лица, являющегося должником, заявлением кредитора о своем
-праве в указанной процедуре.
-(2) Остановка течения срока исковой давности продолжается до
-вынесения окончательного решения или до завершения разбирательства
-иным образом.""";
-    content_hash "sha256:a9314f9afc2d6d7741e24f3b7335b64e88d1b06fd1a588dfb84b3e2509ff7ded";
-}
-
 // Article 10.6 (English black-letter rules)
 fragment PICC_ART10_6_EN in PICC_2016_EN {
     kind article;
@@ -254,32 +146,6 @@ proceedings have been otherwise terminated.""";
     content_hash "sha256:99cbc814708fe65ffa56095087498cbbd4ebf55f191c00afcf28bf2f1a73a7c7";
 }
 
-// Статья 10.6 (русский парный якорь, unofficial)
-fragment PICC_ART10_6_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_6";
-    text ru unofficial """Статья 10.6
-(Остановка течения срока исковой давности арбитражным разбирательством)
-(1) Течение срока исковой давности останавливается совершением
-кредитором
-любого
-действия
-по
-возбуждению
-арбитражного
-разбирательства, либо в рамках уже ведущегося арбитражного
-разбирательства, которое по регулирующему деятельность арбитражного
-суда праву, признается заявлением кредитора о своем праве в отношении
-должника. В отсутствие норм, регулирующих арбитражное разбирательство,
-либо в отсутствие положений, устанавливающих точную дату начала
-арбитражного разбирательства, разбирательство считается начатым в день,
-когда заявление о разбирательстве, касающемся права, в отношении
-которого возник спор, получено должником.
-(2) Остановка срока исковой давности длится до вынесения
-окончательного решения или до завершения разбирательства иным образом.""";
-    content_hash "sha256:089c91b7296b6bf67432666d5c2114c8cc01c2f70265e77c7f6f5c1a488a83ae";
-}
-
 // Article 10.7 (English black-letter rules)
 fragment PICC_ART10_7_EN in PICC_2016_EN {
     kind article;
@@ -290,19 +156,6 @@ The provisions of Articles 10.5 and 10.6 apply with appropriate modifications to
 other proceedings whereby the parties request a third person to assist them in their
 attempt to reach an amicable settlement of their dispute.""";
     content_hash "sha256:58deefc79147134fb39f67be3b69d64cca277acdc3d5c9130b1445371e43bec9";
-}
-
-// Статья 10.7 (русский парный якорь, unofficial)
-fragment PICC_ART10_7_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_7";
-    text ru unofficial """Статья 10.7.
-(Альтернативное разрешение споров)
-Положения статей 10.5 и 10.6 применяются с соответствующими
-поправками к другим процедурам, в рамках которых стороны обращаются к
-третьему лицу за содействием в их попытке достичь мирного
-урегулирования их спора.""";
-    content_hash "sha256:21e1e5cf58830e513bb80c66188087accaccd05c959dece19322907c43920bc9";
 }
 
 // Article 10.8 (English black-letter rules)
@@ -323,28 +176,6 @@ position. The additional one-year period under paragraph (1) applies accordingly
     content_hash "sha256:b9a54dd91dfc79ec4bf98444cb5b58126378b1e1786a32452fab0a98aa96a7cb";
 }
 
-// Статья 10.8 (русский парный якорь, unofficial)
-fragment PICC_ART10_8_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_8";
-    text ru unofficial """Статья 10.8.
-(Остановка течения срока исковой давности в случаях непреодолимой силы,
-смерти или недееспособности)
-(1) Если кредитор в силу препятствия вне его контроля, которое он не
-мог избежать или преодолеть, был лишен возможности совершить действия,
-необходимые для остановки течения срока исковой давности в соответствии
-с предыдущими статьями, течение общего срока исковой давности
-останавливается таким образом, чтобы он не мог закончиться ранее, чем
-через один год после устранения соответствующего препятствия.
-(2) Если препятствие состоит в недееспособности или смерти
-кредитора или должника, остановка течения срока исковой давности
-перестает действовать, когда назначен представитель недееспособного или
-скончавшегося лица, либо имущества такого лица, или когда наследник
-вступил в права соответствующего лица. Дополнительный годичный период,
-установленный пунктом (1), применяется соответственно.""";
-    content_hash "sha256:181cedae20c77da67b6505bcb30168b61d5cb446b109965125a9976392b9f3d4";
-}
-
 // Article 10.9 (English black-letter rules)
 fragment PICC_ART10_9_EN in PICC_2016_EN {
     kind article;
@@ -359,21 +190,6 @@ limitation period for that right has been asserted.""";
     content_hash "sha256:88a854749716a48eb1dce761802f51e9c586a310ee9e0377758d0973b7ecd006";
 }
 
-// Статья 10.9 (русский парный якорь, unofficial)
-fragment PICC_ART10_9_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_9";
-    text ru unofficial """Статья 10.9
-(Последствия истечения срока исковой давности)
-(1) Истечение срока исковой давности не погашает права.
-(2) Для наступления последствий истечения срока исковой давности
-должник должен заявить об этом в качестве своей защиты.
-(3) Право может быть использовано в качестве защиты даже после
-того, как было сделано заявление об истечении срока исковой давности в
-отношении этого права.""";
-    content_hash "sha256:a1169df138b87253a4738f58e959ed9a7214024f591197551b10f4b51ea0f0cc";
-}
-
 // Article 10.10 (English black-letter rules)
 fragment PICC_ART10_10_EN in PICC_2016_EN {
     kind article;
@@ -385,17 +201,6 @@ expiration of the limitation period.""";
     content_hash "sha256:9ca2c723d947b3a87453fcc025bc1b9fccccf79568af6805178a40c27dad1ec3";
 }
 
-// Статья 10.10 (русский парный якорь, unofficial)
-fragment PICC_ART10_10_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_10";
-    text ru unofficial """Статья 10.10
-(Право зачета)
-Кредитор может использовать право зачета до того момента, пока
-должник не заявит об истечении срока исковой давности.""";
-    content_hash "sha256:f1178107e72fca1120e842ced78e1af7fba40acb203117ee85ef2c493b1e7ca4";
-}
-
 // Article 10.11 (English black-letter rules)
 fragment PICC_ART10_11_EN in PICC_2016_EN {
     kind article;
@@ -405,16 +210,4 @@ fragment PICC_ART10_11_EN in PICC_2016_EN {
 Where there has been performance in order to discharge an obligation, there is no
 right of restitution merely because the limitation period has expired.""";
     content_hash "sha256:ab4522d7bdffdd8286be68b952ec76de9a3a9c7c80b017723a49fe222093c9ef";
-}
-
-// Статья 10.11 (русский парный якорь, unofficial)
-fragment PICC_ART10_11_RU in PICC_2016_RU {
-    kind article;
-    locator "article/10_11";
-    text ru unofficial """Статья 10.11
-(Возврат исполнения)
-В случае, если обязательство было исполнено с целью его
-прекращения, право потребовать возврат исполненного отсутствует, если
-оно основывается лишь на истечении срока исковой давности.""";
-    content_hash "sha256:6c0c81106ad91484979dd3bc8793494b046cf87582a86c512ba1e954817dddd8";
 }

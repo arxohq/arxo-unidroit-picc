@@ -1,0 +1,80 @@
+// Articles 3.1.1-3.1.4. General provisions of the chapter on validity.
+
+language "law.core" version "0.2";
+package unidroit.picc_validity version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-validity";
+
+// --- Article 3.1.1: what the chapter does NOT cover ---------------------------
+
+pub relation capacity_not_governed(c: Contract) kind institutional {
+    label en official "this Chapter does not deal with lack of capacity (article 3.1.1)";
+}
+
+@source(PICC_ART3_1_1_EN)
+rule ChapterDoesNotDealWithCapacity(c: Contract) strict {
+    label en official "Article 3.1.1. This Chapter does not deal with lack of capacity";
+    when contract_under_consideration(c);
+    then capacity_not_governed(c);
+}
+
+// --- Article 3.1.2: the mere agreement suffices -------------------------------
+
+pub relation mere_agreement_of_parties(c: Contract) kind empirical {
+    label en official "the parties have reached mere agreement on the conclusion, modification or termination";
+}
+
+pub relation valid_without_further_requirement(c: Contract) kind institutional {
+    label en official "the contract is concluded, modified or terminated by the mere agreement of the parties, without any further requirement (article 3.1.2)";
+}
+
+@source(PICC_ART3_1_2_EN)
+rule MereAgreementSuffices(c: Contract) strict {
+    label en official "Article 3.1.2. A contract is concluded, modified or terminated by the mere agreement of the parties, without any further requirement";
+    when mere_agreement_of_parties(c);
+    then valid_without_further_requirement(c);
+}
+
+// --- Article 3.1.3: initial impossibility -------------------------------------
+
+pub relation performance_initially_impossible(c: Contract) kind empirical {
+    label en official "at the time of the conclusion of the contract the performance of the obligation assumed was impossible";
+}
+
+pub relation party_not_entitled_to_dispose(c: Contract) kind empirical {
+    label en official "at the time of the conclusion of the contract a party was not entitled to dispose of the assets to which the contract relates";
+}
+
+pub relation validity_unaffected(c: Contract) kind institutional {
+    label en official "the validity of the contract is not affected (article 3.1.3)";
+}
+
+@source(PICC_ART3_1_3_EN)
+rule InitialImpossibilityDoesNotAffectValidity(c: Contract) strict {
+    label en official "Article 3.1.3(1). The mere fact that at the time of the conclusion of the contract the performance of the obligation assumed was impossible does not affect the validity of the contract";
+    when performance_initially_impossible(c);
+    then validity_unaffected(c);
+}
+
+@source(PICC_ART3_1_3_EN)
+rule NoRightToDisposeDoesNotAffectValidity(c: Contract) strict {
+    label en official "Article 3.1.3(2). The mere fact that at the time of the conclusion of the contract a party was not entitled to dispose of the assets does not affect the validity of the contract";
+    when party_not_entitled_to_dispose(c);
+    then validity_unaffected(c);
+}
+
+// --- Article 3.1.4: the mandatory character of part of the chapter ------------
+
+pub relation exclusion_of_chapter_attempted(c: Contract, t: Term) kind empirical {
+    label en official "the parties attempted by a term to exclude or vary the provisions on fraud, threat, gross disparity or illegality";
+}
+
+pub relation exclusion_of_chapter_ineffective(c: Contract, t: Term) kind institutional {
+    label en official "the attempted exclusion is ineffective because the provisions are mandatory (article 3.1.4)";
+}
+
+@source(PICC_ART3_1_4_EN)
+rule MandatoryProvisionsResistExclusion(c: Contract, t: Term) strict {
+    label en official "Article 3.1.4. The provisions on fraud, threat, gross disparity and illegality contained in this Chapter are mandatory";
+    when exclusion_of_chapter_attempted(c, t);
+    then exclusion_of_chapter_ineffective(c, t);
+}

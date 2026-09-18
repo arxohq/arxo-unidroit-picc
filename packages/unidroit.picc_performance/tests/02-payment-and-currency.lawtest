@@ -1,0 +1,90 @@
+language "law.core" version "0.2";
+package unidroit.picc_performance version "0.1.0";
+namespace "urn:org:unidroit:clir:picc-performance";
+
+// Case 2. Form of payment (6.1.7), payment by funds transfer (6.1.8), currency
+// of payment (6.1.9, 6.1.10) and costs of performance (6.1.11).
+
+test "PICCP-02-PAYMENT-AND-CURRENCY" {
+    given {
+        context {
+            decision_time @2026-09-17T12:00:00Z;
+            knowledge_time @2026-09-17T12:00:00Z;
+            legal_time @2026-09-17;
+            timezone "UTC";
+        }
+
+        assert "a0": obligation_of(entity_ref("urn:case:piccp:o-money"), entity_ref("urn:case:piccp:contract-2"), entity_ref("urn:case:piccp:buyer")) { origin case_input; }
+        assert "a1": monetary_obligation(entity_ref("urn:case:piccp:o-money")) { origin case_input; }
+        assert "a2": payment_of(entity_ref("urn:case:piccp:pay-cheque"), entity_ref("urn:case:piccp:o-money")) { origin case_input; }
+        assert "a3": form_used_in_ordinary_course(entity_ref("urn:case:piccp:pay-cheque")) { origin case_input; }
+        assert "a4": instrument_accepted_by_obligee(entity_ref("urn:case:piccp:pay-cheque")) { origin case_input; }
+        assert "a5": payment_of(entity_ref("urn:case:piccp:pay-transfer"), entity_ref("urn:case:piccp:o-money")) { origin case_input; }
+        assert "a6": institution_made_known_by_obligee(entity_ref("urn:case:piccp:pay-transfer")) { origin case_input; }
+        assert "a7": transfer_to_institution_effective(entity_ref("urn:case:piccp:pay-transfer")) { origin case_input; }
+        assert "a8": payment_of(entity_ref("urn:case:piccp:pay-wrong"), entity_ref("urn:case:piccp:o-money2")) { origin case_input; }
+        assert "a9": institution_made_known_by_obligee(entity_ref("urn:case:piccp:pay-wrong")) { origin case_input; }
+        assert "a10": account_indicated_by_obligee(entity_ref("urn:case:piccp:pay-wrong")) { origin case_input; }
+        assert "a11": expressed_in_foreign_currency(entity_ref("urn:case:piccp:o-money")) { origin case_input; }
+        assert "a12": obligor_did_not_pay_when_due(entity_ref("urn:case:piccp:o-money")) { origin case_input; }
+        assert "a13": obligation_of(entity_ref("urn:case:piccp:o-locked"), entity_ref("urn:case:piccp:contract-2b"), entity_ref("urn:case:piccp:buyer")) { origin case_input; }
+        assert "a14": expressed_in_foreign_currency(entity_ref("urn:case:piccp:o-locked")) { origin case_input; }
+        assert "a15": parties_agreed_on_currency_of_expression(entity_ref("urn:case:piccp:o-locked")) { origin case_input; }
+        assert "a16": payment_in_currency_of_expression_impossible(entity_ref("urn:case:piccp:o-locked")) { origin case_input; }
+        assert "a17": obligation_of(entity_ref("urn:case:piccp:o-nocur"), entity_ref("urn:case:piccp:contract-2c"), entity_ref("urn:case:piccp:buyer")) { origin case_input; }
+        assert "a18": currency_not_expressed(entity_ref("urn:case:piccp:o-nocur")) { origin case_input; }
+        assert "a19": costs_of_performance_incurred(entity_ref("urn:case:piccp:o-money")) { origin case_input; }
+    }
+
+    evaluate truth(payment_may_be_made_in_this_form(entity_ref("urn:case:piccp:pay-cheque")));
+    expect evaluation_status == COMPUTED;
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PaymentInOrdinaryForm);
+
+    // A cheque is accepted only on condition that it will be honoured — a presumption of the source.
+    evaluate truth(acceptance_conditional_on_honour(entity_ref("urn:case:piccp:pay-cheque")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(InstrumentAcceptedOnConditionOfHonour);
+
+    evaluate truth(payment_may_be_made_in_this_form(entity_ref("urn:case:piccp:pay-transfer")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PaymentByTransferToKnownInstitution);
+
+    // An account specified by the obligee removes the freedom to choose the institution.
+    evaluate truth(payment_may_be_made_in_this_form(entity_ref("urn:case:piccp:pay-wrong")));
+    expect truth_status == NEITHER;
+
+    evaluate truth(obligation_discharged(entity_ref("urn:case:piccp:o-money")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(TransferDischargesObligation);
+
+    evaluate truth(may_pay_in_currency_of_place(entity_ref("urn:case:piccp:o-money")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(PaymentInCurrencyOfPlace);
+
+    evaluate truth(rate_prevailing_when_due_applies(entity_ref("urn:case:piccp:o-money")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(RatePrevailingWhenDue);
+
+    // The obligor's delay gives the obligee a CHOICE of rate — a rule, not a computation.
+    evaluate truth(obligee_may_choose_rate(entity_ref("urn:case:piccp:o-money")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ObligeeChoosesRateAfterDefault);
+
+    // An agreement on the currency of expression removes the right to pay in the currency of the place...
+    evaluate truth(may_pay_in_currency_of_place(entity_ref("urn:case:piccp:o-locked")));
+    expect truth_status == NEITHER;
+
+    // ...but impossibility of payment in the currency of expression gives the obligee a claim.
+    evaluate truth(obligee_may_require_currency_of_place(entity_ref("urn:case:piccp:o-locked")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(ObligeeMayRequireCurrencyOfPlace);
+
+    evaluate truth(payment_in_currency_of_place_required(entity_ref("urn:case:piccp:o-nocur")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(CurrencyNotExpressed);
+
+    evaluate truth(costs_borne_by_performing_party(entity_ref("urn:case:piccp:o-money")));
+    expect truth_status == TRUE_ONLY;
+    expect any_applied(EachPartyBearsItsCosts);
+}
