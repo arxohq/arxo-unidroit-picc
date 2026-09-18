@@ -102,21 +102,21 @@ rule TransferByObligorsWithConsent(o: Obligation, original: Party, new_obligor: 
     then transfer_effective(o);
 }
 
-@source(PICC_ART9_2_1_EN)
+@source(PICC_ART9_2_1_EN, PICC_ART9_2_1_FR)
 rule AssumptionByObligeeAgreement(o: Obligation, obligee: Party, new_obligor: Party) defeasible {
     label en official "Article 9.2.1(b). An obligation may be transferred by an agreement between the obligee and the new obligor by which the new obligor assumes the obligation";
     when assumption_by_obligee_agreement(o, obligee, new_obligor);
     then transfer_effective(o);
 }
 
-@source(PICC_ART9_2_2_EN)
+@source(PICC_ART9_2_2_EN, PICC_ART9_2_2_FR)
 rule BusinessTransferExcluded(o: Obligation) defeater {
     label en official "Article 9.2.2. This Section does not apply to transfers of obligations made in the course of transferring a business";
     when business_transfer_rules_apply(o);
     defeat transfer_effective(o);
 }
 
-@source(PICC_ART9_2_4_EN)
+@source(PICC_ART9_2_4_EN, PICC_ART9_2_4_FR)
 rule AdvanceConsentEffectiveOnNotice(o: Obligation, original: Party, new_obligor: Party) defeasible {
     label en official "Article 9.2.4. If the obligee has given its consent in advance, the transfer becomes effective when a notice of the transfer is given to the obligee or when the obligee acknowledges it";
     when transfer_by_obligors_agreement(o, original, new_obligor)
@@ -125,7 +125,7 @@ rule AdvanceConsentEffectiveOnNotice(o: Obligation, original: Party, new_obligor
     then transfer_effective(o);
 }
 
-@source(PICC_ART9_2_5_EN)
+@source(PICC_ART9_2_5_EN, PICC_ART9_2_5_FR)
 rule JointAndSeveralLiabilityAfterTransfer(o: Obligation) defeasible {
     label en official "Article 9.2.5(3). Otherwise the original obligor and the new obligor are jointly and severally liable";
     when transfer_effective(o)
@@ -134,7 +134,7 @@ rule JointAndSeveralLiabilityAfterTransfer(o: Obligation) defeasible {
     then obligors_jointly_and_severally_liable(o);
 }
 
-@source(PICC_ART9_2_6_EN)
+@source(PICC_ART9_2_6_EN, PICC_ART9_2_6_FR)
 rule ThirdPartyPerformanceWithoutConsent(o: Obligation, other: Party) defeasible {
     label en official "Article 9.2.6(1). Without the obligee's consent, the obligor may contract with another person to perform the obligation in its place, unless the obligation has an essentially personal character";
     when third_party_performance_agreed(o, other)
@@ -142,14 +142,14 @@ rule ThirdPartyPerformanceWithoutConsent(o: Obligation, other: Party) defeasible
     then third_party_may_perform(o, other);
 }
 
-@source(PICC_ART9_2_6_EN)
+@source(PICC_ART9_2_6_EN, PICC_ART9_2_6_FR)
 rule ObligeeRetainsClaimDespiteThirdParty(o: Obligation, other: Party) strict {
     label en official "Article 9.2.6(2). The obligee retains its claim against the obligor";
     when third_party_performance_agreed(o, other);
     then obligee_retains_claim_against_obligor(o);
 }
 
-@source(PICC_ART9_2_7_EN)
+@source(PICC_ART9_2_7_EN, PICC_ART9_2_7_FR)
 rule NewObligorAssertsDefences(o: Obligation) defeasible {
     label en official "Article 9.2.7(1). The new obligor may assert against the obligee all defences which the original obligor could assert";
     when transfer_effective(o)
@@ -157,7 +157,7 @@ rule NewObligorAssertsDefences(o: Obligation) defeasible {
     then new_obligor_may_assert_defence(o);
 }
 
-@source(PICC_ART9_2_7_EN)
+@source(PICC_ART9_2_7_EN, PICC_ART9_2_7_FR)
 rule NewObligorCannotSetOff(o: Obligation) defeasible {
     label en official "Article 9.2.7(2). The new obligor may not exercise against the obligee any right of set-off available to the original obligor";
     when transfer_effective(o)
@@ -165,14 +165,14 @@ rule NewObligorCannotSetOff(o: Obligation) defeasible {
     then new_obligor_may_not_set_off(o);
 }
 
-@source(PICC_ART9_2_8_EN)
+@source(PICC_ART9_2_8_EN, PICC_ART9_2_8_FR)
 rule ObligeeRightsAgainstNewObligor(o: Obligation) defeasible {
     label en official "Article 9.2.8(1). The obligee may assert against the new obligor all its rights to payment or other performance under the contract in respect of the obligation transferred";
     when transfer_effective(o);
     then obligee_rights_against_new_obligor(o);
 }
 
-@source(PICC_ART9_2_8_EN)
+@source(PICC_ART9_2_8_EN, PICC_ART9_2_8_FR)
 rule SecurityOfThirdPersonDischarged(o: Obligation) defeasible {
     label en official "Article 9.2.8(2). If the original obligor is discharged, a security granted by any person other than the new obligor is discharged, unless that person agrees that it should continue";
     when original_obligor_discharged_by_obligee(o)
@@ -243,14 +243,14 @@ rule ContractAssignmentRequiresConsent(c: Contract, assignor: Party, assignee: P
     then contract_assignment_effective(c);
 }
 
-@source(PICC_ART9_3_2_EN)
+@source(PICC_ART9_3_2_EN, PICC_ART9_3_2_FR)
 rule BusinessContractTransferExcluded(c: Contract) defeater {
     label en official "Article 9.3.2. This Section does not apply to the assignment of contracts made in the course of transferring a business";
     when business_transfer_of_contract(c);
     defeat contract_assignment_effective(c);
 }
 
-@source(PICC_ART9_3_4_EN)
+@source(PICC_ART9_3_4_EN, PICC_ART9_3_4_FR)
 rule AdvanceConsentToContractAssignment(c: Contract, assignor: Party, assignee: Party, other: Party) defeasible {
     label en official "Article 9.3.4. If the other party has given its consent in advance, the assignment becomes effective when a notice is given to the other party or when it acknowledges the assignment";
     when contract_assignment(c, assignor, assignee, other)
@@ -259,7 +259,7 @@ rule AdvanceConsentToContractAssignment(c: Contract, assignor: Party, assignee: 
     then contract_assignment_effective(c);
 }
 
-@source(PICC_ART9_3_5_EN)
+@source(PICC_ART9_3_5_EN, PICC_ART9_3_5_FR)
 rule AssignorAndAssigneeJointlyLiable(c: Contract) defeasible {
     label en official "Article 9.3.5(3). Otherwise the assignor and the assignee are jointly and severally liable";
     when contract_assignment_effective(c)
@@ -268,7 +268,7 @@ rule AssignorAndAssigneeJointlyLiable(c: Contract) defeasible {
     then assignor_and_assignee_jointly_liable(c);
 }
 
-@source(PICC_ART9_3_6_EN)
+@source(PICC_ART9_3_6_EN, PICC_ART9_3_6_FR)
 rule RightsRulesApplyToContractAssignment(c: Contract) defeasible {
     label en official "Articles 9.3.6(1) and 9.3.7(1). To the extent that the assignment involves an assignment of rights, the rules on defences, set-off and related rights apply accordingly";
     when contract_assignment_effective(c)
@@ -276,7 +276,7 @@ rule RightsRulesApplyToContractAssignment(c: Contract) defeasible {
     then rules_on_rights_apply(c);
 }
 
-@source(PICC_ART9_3_7_EN)
+@source(PICC_ART9_3_7_EN, PICC_ART9_3_7_FR)
 rule ObligationRulesApplyToContractAssignment(c: Contract) defeasible {
     label en official "Articles 9.3.6(2) and 9.3.7(2). To the extent that the assignment involves a transfer of obligations, the rules on defences and related rights of the obligee apply accordingly";
     when contract_assignment_effective(c)

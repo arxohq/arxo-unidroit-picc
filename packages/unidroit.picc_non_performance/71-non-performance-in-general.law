@@ -14,7 +14,7 @@ pub relation is_non_performance(n: NonPerformance) kind institutional {
     label en official "the failure constitutes non-performance (article 7.1.1)";
 }
 
-@source(PICC_ART7_1_1_EN)
+@source(PICC_ART7_1_1_EN, PICC_ART7_1_1_FR)
 rule FailureIsNonPerformance(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.1.1. Non-performance is failure by a party to perform any of its obligations under the contract, including defective performance or late performance";
     when non_performance_of(n, o, p)
@@ -32,7 +32,7 @@ pub relation may_rely_on_non_performance(n: NonPerformance, p: Party) kind insti
     label en official "the party may rely on the non-performance of the other party (article 7.1.2)";
 }
 
-@source(PICC_ART7_1_2_EN)
+@source(PICC_ART7_1_2_EN, PICC_ART7_1_2_FR)
 rule RelianceOnNonPerformance(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
     label en official "Article 7.1.2. A party may rely on the non-performance of the other party";
     when is_non_performance(n)
@@ -66,7 +66,7 @@ pub relation may_withhold_performance(c: Contract, p: Party) kind institutional 
     label en official "the party may withhold its performance (article 7.1.3)";
 }
 
-@source(PICC_ART7_1_3_EN)
+@source(PICC_ART7_1_3_EN, PICC_ART7_1_3_FR)
 rule WithholdingOnSimultaneousPerformance(c: Contract, p: Party) defeasible {
     label en official "Article 7.1.3(1). Where the parties are to perform simultaneously, either party may withhold performance until the other party tenders its performance";
     when party_to_contract(c, p)
@@ -75,7 +75,7 @@ rule WithholdingOnSimultaneousPerformance(c: Contract, p: Party) defeasible {
     then may_withhold_performance(c, p);
 }
 
-@source(PICC_ART7_1_3_EN)
+@source(PICC_ART7_1_3_EN, PICC_ART7_1_3_FR)
 rule WithholdingOnConsecutivePerformance(c: Contract, p: Party) defeasible {
     label en official "Article 7.1.3(2). Where the parties are to perform consecutively, the party that is to perform later may withhold its performance until the first party has performed";
     when party_to_contract(c, p)
@@ -128,7 +128,7 @@ pub relation damages_retained_despite_cure(n: NonPerformance, p: Party) kind ins
     label en official "notwithstanding cure, the aggrieved party retains the right to claim damages for delay and for harm caused or not prevented by the cure (article 7.1.4(5))";
 }
 
-@source(PICC_ART7_1_4_EN)
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_FR)
 rule RightToCure(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.1.4(1). The non-performing party may at its own expense cure any non-performance where notice is given without undue delay, cure is appropriate, the aggrieved party has no legitimate interest in refusing it and cure is effected promptly";
     when non_performance_of(n, o, p)
@@ -142,14 +142,14 @@ rule RightToCure(n: NonPerformance, o: Obligation, p: Party) defeasible {
     // the rule itself.
 }
 
-@source(PICC_ART7_1_4_EN)
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_FR)
 rule CureSuspendsInconsistentRights(n: NonPerformance, p: Party) defeasible {
     label en official "Article 7.1.4(3). Upon effective notice of cure, rights of the aggrieved party that are inconsistent with the non-performing party's performance are suspended until the time for cure has expired";
     when may_cure(n, p);
     then inconsistent_rights_suspended(n);
 }
 
-@source(PICC_ART7_1_4_EN)
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_FR)
 rule DamagesRetainedDespiteCure(n: NonPerformance, o: Obligation, p: Party, other: Party) strict {
     label en official "Article 7.1.4(5). Notwithstanding cure, the aggrieved party retains the right to claim damages for delay as well as for any harm caused or not prevented by the cure";
     when non_performance_of(n, o, p)
@@ -193,7 +193,7 @@ pub relation may_terminate_after_additional_period(n: NonPerformance, p: Party) 
     label en official "the aggrieved party may terminate the contract at the end of the additional period (article 7.1.5(3))";
 }
 
-@source(PICC_ART7_1_5_EN)
+@source(PICC_ART7_1_5_EN, PICC_ART7_1_5_FR)
 rule RemediesLimitedDuringAdditionalPeriod(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
     label en official "Article 7.1.5(2). During the additional period the aggrieved party may withhold performance of its own reciprocal obligations and may claim damages but may not resort to any other remedy";
     when non_performance_of(n, o, p)
@@ -203,7 +203,7 @@ rule RemediesLimitedDuringAdditionalPeriod(n: NonPerformance, o: Obligation, p: 
     then may_withhold_and_claim_damages_only(n, other);
 }
 
-@source(PICC_ART7_1_5_EN)
+@source(PICC_ART7_1_5_EN, PICC_ART7_1_5_FR)
 rule RemediesRevivedAfterAdditionalPeriod(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
     label en official "Article 7.1.5(2). If performance has not been made upon expiry of the additional period, the aggrieved party may resort to any of the remedies available under this Chapter";
     when non_performance_of(n, o, p)
@@ -213,7 +213,7 @@ rule RemediesRevivedAfterAdditionalPeriod(n: NonPerformance, o: Obligation, p: P
     then may_resort_to_any_remedy(n, other);
 }
 
-@source(PICC_ART7_1_5_EN)
+@source(PICC_ART7_1_5_EN, PICC_ART7_1_5_FR)
 rule TerminationAfterAdditionalPeriodForDelay(n: NonPerformance, o: Obligation, p: Party, other: Party) defeasible {
     label en official "Article 7.1.5(3). Where in a case of delay which is not fundamental the aggrieved party has given notice allowing an additional period of reasonable length, it may terminate the contract at the end of that period";
     when non_performance_of(n, o, p)
@@ -243,7 +243,7 @@ pub relation clause_may_not_be_invoked(c: Contract, t: Term) kind institutional 
     label en official "the exemption clause may not be invoked (article 7.1.6)";
 }
 
-@source(PICC_ART7_1_6_EN)
+@source(PICC_ART7_1_6_EN, PICC_ART7_1_6_FR)
 rule GrosslyUnfairExemptionClause(c: Contract, t: Term) defeasible {
     label en official "Article 7.1.6. A clause which limits or excludes liability for non-performance may not be invoked if it would be grossly unfair to do so, having regard to the purpose of the contract";
     when exemption_clause_present(c, t)
@@ -291,7 +291,7 @@ pub relation termination_and_interest_preserved(n: NonPerformance, p: Party) kin
     label en official "nothing prevents a party from exercising a right to terminate the contract, to withhold performance or to request interest on money due (article 7.1.7(4))";
 }
 
-@source(PICC_ART7_1_7_EN)
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_FR)
 rule ForceMajeureExcusesNonPerformance(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.1.7(1). Non-performance is excused if the party proves that it was due to an impediment beyond its control which it could not reasonably be expected to have taken into account, avoided or overcome";
     when non_performance_of(n, o, p)
@@ -300,7 +300,7 @@ rule ForceMajeureExcusesNonPerformance(n: NonPerformance, o: Obligation, p: Part
     then non_performance_excused(n, p);
 }
 
-@source(PICC_ART7_1_7_EN)
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_FR)
 rule TemporaryImpedimentLimitsExcuse(n: NonPerformance, p: Party) defeasible {
     label en official "Article 7.1.7(2). When the impediment is only temporary, the excuse shall have effect for such period as is reasonable";
     when non_performance_excused(n, p)
@@ -308,7 +308,7 @@ rule TemporaryImpedimentLimitsExcuse(n: NonPerformance, p: Party) defeasible {
     then excuse_limited_to_reasonable_period(n);
 }
 
-@source(PICC_ART7_1_7_EN)
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_FR)
 rule LiabilityForLateNoticeOfImpediment(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.1.7(3). If the notice of the impediment is not received within a reasonable time, the party is liable for damages resulting from such non-receipt";
     when non_performance_of(n, o, p)
@@ -317,7 +317,7 @@ rule LiabilityForLateNoticeOfImpediment(n: NonPerformance, o: Obligation, p: Par
     then liable_for_damages_from_non_receipt(n, p);
 }
 
-@source(PICC_ART7_1_7_EN)
+@source(PICC_ART7_1_7_EN, PICC_ART7_1_7_FR)
 rule ExcuseDoesNotBarTerminationOrInterest(n: NonPerformance, p: Party) defeasible {
     label en official "Article 7.1.7(4). Nothing in this Article prevents a party from exercising a right to terminate the contract or to withhold performance or request interest on money due";
     when non_performance_excused(n, p);
@@ -330,7 +330,7 @@ pub relation may_withhold_pending_cure(n: NonPerformance, p: Party) kind institu
     label en official "the aggrieved party may withhold performance pending cure (article 7.1.4(4))";
 }
 
-@source(PICC_ART7_1_4_EN)
+@source(PICC_ART7_1_4_EN, PICC_ART7_1_4_FR)
 rule WithholdingPendingCure(n: NonPerformance, p: Party, other: Party) defeasible {
     label en official "Article 7.1.4(4). The aggrieved party may withhold performance pending cure";
     when may_cure(n, p)

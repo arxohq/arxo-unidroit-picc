@@ -42,7 +42,7 @@ pub relation arbitral_proceedings_deemed_commenced(r: Right) kind institutional 
     label en official "the arbitral proceedings are deemed to commence on the date on which the request reaches the obligor (article 10.6(1))";
 }
 
-@source(PICC_ART10_5_EN)
+@source(PICC_ART10_5_EN, PICC_ART10_5_FR)
 rule SuspensionByJudicialAct(r: Right) defeasible {
     label en official "Article 10.5(1)(a). The running of the limitation period is suspended when the obligee performs an act recognised by the law of the court as asserting its right";
     when judicial_act_asserting_right(r)
@@ -50,7 +50,7 @@ rule SuspensionByJudicialAct(r: Right) defeasible {
     then limitation_suspended(r);
 }
 
-@source(PICC_ART10_5_EN)
+@source(PICC_ART10_5_EN, PICC_ART10_5_FR)
 rule SuspensionByInsolvencyClaim(r: Right) defeasible {
     label en official "Article 10.5(1)(b). The running of the limitation period is suspended where the obligee has asserted its rights in the insolvency proceedings";
     when right_asserted_in_insolvency(r)
@@ -58,7 +58,7 @@ rule SuspensionByInsolvencyClaim(r: Right) defeasible {
     then limitation_suspended(r);
 }
 
-@source(PICC_ART10_5_EN)
+@source(PICC_ART10_5_EN, PICC_ART10_5_FR)
 rule SuspensionByDissolutionClaim(r: Right) defeasible {
     label en official "Article 10.5(1)(c). The running of the limitation period is suspended where the obligee has asserted its rights in proceedings for dissolution of the obligor";
     when right_asserted_in_dissolution(r)
@@ -66,7 +66,7 @@ rule SuspensionByDissolutionClaim(r: Right) defeasible {
     then limitation_suspended(r);
 }
 
-@source(PICC_ART10_6_EN)
+@source(PICC_ART10_6_EN, PICC_ART10_6_FR)
 rule SuspensionByArbitralAct(r: Right) defeasible {
     label en official "Article 10.6(1). The running of the limitation period is suspended when the obligee performs an act recognised by the law of the arbitral tribunal as asserting its right";
     when arbitral_act_asserting_right(r)
@@ -74,14 +74,14 @@ rule SuspensionByArbitralAct(r: Right) defeasible {
     then limitation_suspended(r);
 }
 
-@source(PICC_ART10_6_EN)
+@source(PICC_ART10_6_EN, PICC_ART10_6_FR)
 rule ArbitrationCommencesOnRequest(r: Right) strict {
     label en official "Article 10.6(1). In the absence of provisions determining the exact date of commencement, arbitral proceedings are deemed to commence on the date on which the request reaches the obligor";
     when request_for_adjudication_reached_obligor(r);
     then arbitral_proceedings_deemed_commenced(r);
 }
 
-@source(PICC_ART10_7_EN)
+@source(PICC_ART10_7_EN, PICC_ART10_7_FR)
 rule SuspensionByAmicableSettlementProceedings(r: Right) defeasible {
     label en official "Article 10.7. Articles 10.5 and 10.6 apply with appropriate modifications to proceedings whereby the parties request a third person to assist them in reaching an amicable settlement";
     when amicable_settlement_proceedings(r)
@@ -111,7 +111,7 @@ pub relation general_period_not_expiring_before(r: Right, day: Date) kind derive
     label en official "the general limitation period is suspended so as not to expire before one year after the impediment has ceased (article 10.8)";
 }
 
-@source(PICC_ART10_8_EN)
+@source(PICC_ART10_8_EN, PICC_ART10_8_FR)
 rule SuspensionByImpediment(r: Right, day: Date, span: Quantity) defeasible {
     label en official "Article 10.8(1). Where the obligee has been prevented by an impediment beyond its control, the general limitation period is suspended so as not to expire before one year after the impediment has ceased to exist";
     when impediment_beyond_control(r)
@@ -120,7 +120,7 @@ rule SuspensionByImpediment(r: Right, day: Date, span: Quantity) defeasible {
     then general_period_not_expiring_before(r, add_calendar_period(day, span));
 }
 
-@source(PICC_ART10_8_EN)
+@source(PICC_ART10_8_EN, PICC_ART10_8_FR)
 rule SuspensionByIncapacityEndsOnAppointment(r: Right) defeasible {
     label en official "Article 10.8(2). Where the impediment consists of the incapacity or death of a party, suspension ceases when a representative or successor has been appointed; the additional one-year period applies accordingly";
     when impediment_beyond_control(r)
@@ -170,14 +170,14 @@ pub relation no_restitution_for_expired_right(r: Right) kind institutional {
     label en official "there is no right of restitution merely because the limitation period had expired (article 10.11)";
 }
 
-@source(PICC_ART10_9_EN)
+@source(PICC_ART10_9_EN, PICC_ART10_9_FR)
 rule ExpirationDoesNotExtinguishRight(r: Right) strict {
     label en official "Article 10.9(1). The expiration of the limitation period does not extinguish the right";
     when limitation_expired(r);
     then right_not_extinguished(r);
 }
 
-@source(PICC_ART10_9_EN)
+@source(PICC_ART10_9_EN, PICC_ART10_9_FR)
 rule ExpirationNeedsToBeAsserted(r: Right) defeasible {
     label en official "Article 10.9(2). For the expiration of the limitation period to have effect, the obligor must assert it as a defence";
     when limitation_expired(r)
@@ -185,7 +185,7 @@ rule ExpirationNeedsToBeAsserted(r: Right) defeasible {
     then exercise_barred(r);
 }
 
-@source(PICC_ART10_9_EN)
+@source(PICC_ART10_9_EN, PICC_ART10_9_FR)
 rule RightStillAvailableAsDefence(r: Right) defeasible {
     label en official "Article 10.9(3). A right may still be relied on as a defence even though the expiration of the limitation period for that right has been asserted";
     when right_relied_on_as_defence(r)
@@ -193,7 +193,7 @@ rule RightStillAvailableAsDefence(r: Right) defeasible {
     then defence_still_available(r);
 }
 
-@source(PICC_ART10_10_EN)
+@source(PICC_ART10_10_EN, PICC_ART10_10_FR)
 rule SetOffUntilExpirationAsserted(r: Right) defeasible {
     label en official "Article 10.10. The obligee may exercise the right of set-off until the obligor has asserted the expiration of the limitation period";
     when set_off_exercised(r)
@@ -201,7 +201,7 @@ rule SetOffUntilExpirationAsserted(r: Right) defeasible {
     then set_off_still_available(r);
 }
 
-@source(PICC_ART10_11_EN)
+@source(PICC_ART10_11_EN, PICC_ART10_11_FR)
 rule NoRestitutionAfterExpiration(r: Right) strict {
     label en official "Article 10.11. Where there has been performance in order to discharge an obligation, there is no right of restitution merely because the limitation period has expired";
     when performance_rendered_after_expiration(r);

@@ -45,7 +45,7 @@ pub relation affects_agent_and_third_party_only(x: Act) kind institutional {
     label en official "the acts of the agent affect only the relations between the agent and the third party (article 2.2.4(1))";
 }
 
-@source(PICC_ART2_2_3_EN)
+@source(PICC_ART2_2_3_EN, PICC_ART2_2_3_FR)
 rule AgencyDisclosed(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
     label en official "Article 2.2.3(1). Where an agent acts within the scope of its authority and the third party knew or ought to have known of the agency, the acts directly affect the relations between principal and third party";
     when act_of_agent(x, ag, pr, tp)
@@ -54,7 +54,7 @@ rule AgencyDisclosed(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasibl
     then affects_principal_and_third_party(x);
 }
 
-@source(PICC_ART2_2_4_EN)
+@source(PICC_ART2_2_4_EN, PICC_ART2_2_4_FR)
 rule AgencyUndisclosed(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
     label en official "Article 2.2.4(1). Where the third party neither knew nor ought to have known of the agency, the acts affect only the relations between the agent and the third party";
     when act_of_agent(x, ag, pr, tp)
@@ -78,14 +78,14 @@ pub relation no_effect_on_principal(x: Act) kind institutional {
     label en official "the acts do not affect the legal relations between the principal and the third party (article 2.2.5(1))";
 }
 
-@source(PICC_ART2_2_5_EN)
+@source(PICC_ART2_2_5_EN, PICC_ART2_2_5_FR)
 rule ActsWithoutAuthority(x: Act) defeasible {
     label en official "Article 2.2.5(1). Where an agent acts without authority or exceeds its authority, its acts do not affect the legal relations between the principal and the third party";
     when acts_without_or_exceeding_authority(x);
     then no_effect_on_principal(x);
 }
 
-@source(PICC_ART2_2_5_EN)
+@source(PICC_ART2_2_5_EN, PICC_ART2_2_5_FR)
 rule ApparentAuthorityBindsPrincipal(x: Act) defeater {
     label en official "Article 2.2.5(2). Where the principal causes the third party reasonably to believe that the agent has authority, the principal may not invoke the lack of authority";
     when acts_without_or_exceeding_authority(x)
@@ -107,7 +107,7 @@ pub relation agent_liable_for_damages(x: Act, ag: Agent, tp: ThirdParty) kind in
     label en official "the agent is liable for damages that will place the third party in the same position as if the agent had acted with authority (article 2.2.6(1))";
 }
 
-@source(PICC_ART2_2_6_EN)
+@source(PICC_ART2_2_6_EN, PICC_ART2_2_6_FR)
 rule AgentLiableWithoutAuthority(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
     label en official "Article 2.2.6(1). An agent that acts without authority or exceeds it is, failing ratification, liable for damages placing the third party in the same position as if the agent had acted with authority";
     when act_of_agent(x, ag, pr, tp)
@@ -133,7 +133,7 @@ pub relation principal_may_avoid_contract(x: Act, pr: Principal) kind institutio
     label en official "the principal may avoid the contract (article 2.2.7(1))";
 }
 
-@source(PICC_ART2_2_7_EN)
+@source(PICC_ART2_2_7_EN, PICC_ART2_2_7_FR)
 rule ConflictOfInterestsAllowsAvoidance(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
     label en official "Article 2.2.7(1). If a contract concluded by an agent involves a conflict of interests of which the third party knew or ought to have known, the principal may avoid the contract";
     when act_of_agent(x, ag, pr, tp)
@@ -154,7 +154,7 @@ pub relation implied_authority_to_appoint_sub_agent(x: Act, ag: Agent) kind inst
     label en official "the agent has implied authority to appoint a sub-agent (article 2.2.8)";
 }
 
-@source(PICC_ART2_2_8_EN)
+@source(PICC_ART2_2_8_EN, PICC_ART2_2_8_FR)
 rule ImpliedAuthorityForSubAgent(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
     label en official "Article 2.2.8. An agent has implied authority to appoint a sub-agent to perform acts which it is not reasonable to expect the agent to perform itself";
     when act_of_agent(x, ag, pr, tp)
@@ -168,7 +168,7 @@ pub relation act_produces_effects_as_authorised(x: Act) kind institutional {
     label en official "on ratification the act produces the same effects as if it had initially been carried out with authority (article 2.2.9(1))";
 }
 
-@source(PICC_ART2_2_9_EN)
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_FR)
 rule RatificationPower(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) strict {
     label en official "Article 2.2.9(1). An act by an agent that acts without authority may be ratified by the principal";
     when act_of_agent(x, ag, pr, tp)
@@ -182,7 +182,7 @@ rule RatificationPower(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) strict 
     };
 }
 
-@source(PICC_ART2_2_9_EN)
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_FR)
 rule RatifiedActIsAuthorised(x: Act) defeasible {
     label en official "Article 2.2.9(1). On ratification the act produces the same effects as if it had been carried out with authority";
     when ratified_by_principal(x);
@@ -211,7 +211,7 @@ pub relation agent_remains_authorised(x: Act) kind institutional {
     label en official "the agent remains authorised to perform acts necessary to prevent harm to the principal's interests (article 2.2.10(2))";
 }
 
-@source(PICC_ART2_2_10_EN)
+@source(PICC_ART2_2_10_EN, PICC_ART2_2_10_FR)
 rule TerminationEffectiveOnlyIfKnown(x: Act) strict {
     label en official "Article 2.2.10(1). Termination of authority is not effective in relation to the third party unless the third party knew or ought to have known of it";
     when authority_terminated(x)
@@ -219,7 +219,7 @@ rule TerminationEffectiveOnlyIfKnown(x: Act) strict {
     then termination_effective_against_third_party(x);
 }
 
-@source(PICC_ART2_2_10_EN)
+@source(PICC_ART2_2_10_EN, PICC_ART2_2_10_FR)
 rule AgentRemainsAuthorisedToPreventHarm(x: Act) strict {
     label en official "Article 2.2.10(2). Notwithstanding the termination of its authority, an agent remains authorised to perform the acts necessary to prevent harm to the principal's interests";
     when authority_terminated(x)
@@ -233,7 +233,7 @@ pub relation external_relations_governed(x: Act) kind institutional {
     label en official "this Section governs the relations between the principal or the agent and the third party (article 2.2.1)";
 }
 
-@source(PICC_ART2_2_1_EN)
+@source(PICC_ART2_2_1_EN, PICC_ART2_2_1_FR)
 rule SectionGovernsExternalRelations(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) strict {
     label en official "Article 2.2.1. This Section governs the authority of an agent to affect the legal relations of the principal with respect to a contract with a third party";
     when act_of_agent(x, ag, pr, tp);
@@ -250,7 +250,7 @@ pub relation authority_covers_necessary_acts(x: Act) kind institutional {
     label en official "the agent has authority to perform all acts necessary in the circumstances to achieve the purposes for which the authority was granted (article 2.2.2(2))";
 }
 
-@source(PICC_ART2_2_2_EN)
+@source(PICC_ART2_2_2_EN, PICC_ART2_2_2_FR)
 rule AuthorityCoversNecessaryActs(x: Act) strict {
     label en official "Article 2.2.2. The agent has authority to perform all acts necessary in the circumstances to achieve the purposes for which the authority was granted";
     when authority_granted_expressly_or_impliedly(x);
@@ -263,7 +263,7 @@ pub relation agent_undertakes_to_be_party(x: Act) kind empirical {
     label en official "the agent, with the consent of the principal, undertakes to become the party to the contract";
 }
 
-@source(PICC_ART2_2_3_EN)
+@source(PICC_ART2_2_3_EN, PICC_ART2_2_3_FR)
 rule AgentBecomesPartyItself(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeasible {
     label en official "Article 2.2.3(2). Where the agent with the consent of the principal undertakes to become the party to the contract, the acts affect only the relations between the agent and the third party";
     when act_of_agent(x, ag, pr, tp)
@@ -271,7 +271,7 @@ rule AgentBecomesPartyItself(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) d
     then affects_agent_and_third_party_only(x);
 }
 
-@source(PICC_ART2_2_3_EN)
+@source(PICC_ART2_2_3_EN, PICC_ART2_2_3_FR)
 rule UndertakingDisplacesDisclosedAgency(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeater {
     label en official "Article 2.2.3(2). Where the agent undertakes to become the party, the acts do not directly affect the relations between principal and third party";
     when act_of_agent(x, ag, pr, tp)
@@ -293,7 +293,7 @@ pub relation rights_exercisable_against_owner(x: Act) kind institutional {
     label en official "the third party may exercise also against the real owner the rights it has against the agent (article 2.2.4(2))";
 }
 
-@source(PICC_ART2_2_4_EN)
+@source(PICC_ART2_2_4_EN, PICC_ART2_2_4_FR)
 rule RightsAgainstRealOwner(x: Act) strict {
     label en official "Article 2.2.4(2). Upon discovery of the real owner of the business the third party may exercise against the latter the rights it has against the agent";
     when agent_represented_itself_as_owner(x)
@@ -307,7 +307,7 @@ pub relation conflict_disclosed_without_objection(x: Act) kind empirical {
     label en official "the agent had disclosed the conflict of interests to the principal and the latter had not objected within a reasonable time";
 }
 
-@source(PICC_ART2_2_7_EN)
+@source(PICC_ART2_2_7_EN, PICC_ART2_2_7_FR)
 rule DisclosedConflictBarsAvoidance(x: Act, ag: Agent, pr: Principal, tp: ThirdParty) defeater {
     label en official "Article 2.2.7(2)(b). The principal may not avoid the contract if the agent had disclosed the conflict of interests and the principal had not objected within a reasonable time";
     when act_of_agent(x, ag, pr, tp)
@@ -329,7 +329,7 @@ pub relation ratification_no_longer_possible(x: Act) kind institutional {
     label en official "the principal can no longer ratify the act (article 2.2.9(2))";
 }
 
-@source(PICC_ART2_2_9_EN)
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_FR)
 rule RatificationPeriodExpired(x: Act) strict {
     label en official "Article 2.2.9(2). If the principal does not ratify within the period specified by the third party it can no longer do so";
     when ratification_period_specified(x)
@@ -349,7 +349,7 @@ pub relation ratification_ineffective_against_third_party(x: Act) kind instituti
     label en official "the ratification does not bind the third party which refused it before ratification (article 2.2.9(3))";
 }
 
-@source(PICC_ART2_2_9_EN)
+@source(PICC_ART2_2_9_EN, PICC_ART2_2_9_FR)
 rule RefusalBeforeRatification(x: Act) strict {
     label en official "Article 2.2.9(3). A third party that neither knew nor ought to have known of the lack of authority may, before ratification, indicate its refusal to become bound by a ratification";
     when third_party_unaware_of_lack_of_authority(x)

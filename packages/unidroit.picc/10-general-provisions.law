@@ -53,28 +53,28 @@ pub relation validly_modified_or_terminated(c: Contract) kind institutional {
     label en official "the contract has been validly modified or terminated (article 1.3)";
 }
 
-@source(PICC_ART1_3_EN)
+@source(PICC_ART1_3_EN, PICC_ART1_3_FR)
 rule ContractIsBinding(c: Contract) defeasible {
     label en official "Article 1.3. A contract validly entered into is binding upon the parties";
     when contract_validly_entered_into(c);
     then binding_upon_parties(c);
 }
 
-@source(PICC_ART1_3_EN)
+@source(PICC_ART1_3_EN, PICC_ART1_3_FR)
 rule ModificationByTerms(c: Contract) strict {
     label en official "Article 1.3. The contract can be modified or terminated in accordance with its terms";
     when modified_by_its_terms(c);
     then validly_modified_or_terminated(c);
 }
 
-@source(PICC_ART1_3_EN)
+@source(PICC_ART1_3_EN, PICC_ART1_3_FR)
 rule ModificationByAgreement(c: Contract) strict {
     label en official "Article 1.3. The contract can be modified or terminated by agreement";
     when modified_by_agreement(c);
     then validly_modified_or_terminated(c);
 }
 
-@source(PICC_ART1_3_EN)
+@source(PICC_ART1_3_EN, PICC_ART1_3_FR)
 rule ModificationAsProvided(c: Contract) strict {
     label en official "Article 1.3. The contract can be modified or terminated as otherwise provided in these Principles";
     when modified_as_provided_by_principles(c);
@@ -87,7 +87,7 @@ pub relation form_not_required(c: Contract) kind institutional {
     label en official "nothing requires the contract to be made in or evidenced by a particular form (article 1.2)";
 }
 
-@source(PICC_ART1_2_EN)
+@source(PICC_ART1_2_EN, PICC_ART1_2_FR)
 rule NoFormRequired(c: Contract) defeasible {
     label en official "Article 1.2. Nothing in these Principles requires a contract to be made in or evidenced by a particular form";
     when contract_validly_entered_into(c);
@@ -104,7 +104,7 @@ pub relation principles_do_not_restrict_mandatory_rule(c: Contract) kind institu
     label en official "these Principles do not restrict the application of the mandatory rule (article 1.4)";
 }
 
-@source(PICC_ART1_4_EN)
+@source(PICC_ART1_4_EN, PICC_ART1_4_FR)
 rule MandatoryRulesUnrestricted(c: Contract) strict {
     label en official "Article 1.4. Nothing in these Principles restricts the application of mandatory rules";
     when mandatory_rule_applies(c);
@@ -129,7 +129,7 @@ pub relation derogation_effective(c: Contract, t: Term) kind institutional {
     label en official "the derogation by the parties is effective (article 1.5)";
 }
 
-@source(PICC_ART1_5_EN)
+@source(PICC_ART1_5_EN, PICC_ART1_5_FR)
 rule DerogationEffective(c: Contract, t: Term) defeasible {
     label en official "Article 1.5. The parties may derogate from or vary the effect of any of the provisions, except as otherwise provided";
     when parties_derogated_from_provision(c, t);
@@ -159,7 +159,7 @@ pub relation settled_by_underlying_general_principles(i: Issue) kind institution
     label en official "the issue is to be settled in accordance with the underlying general principles (article 1.6(2))";
 }
 
-@source(PICC_ART1_6_EN)
+@source(PICC_ART1_6_EN, PICC_ART1_6_FR)
 rule GapSettledByUnderlyingPrinciples(i: Issue, c: Contract) strict {
     label en official "Article 1.6(2). Issues within the scope of these Principles but not expressly settled by them are as far as possible to be settled in accordance with their underlying general principles";
     when issue_of(i, c)
@@ -179,7 +179,7 @@ pub relation duty_of_good_faith_excluded(c: Contract) kind empirical {
     label en official "the parties purported to exclude or limit the duty of good faith and fair dealing";
 }
 
-@source(PICC_ART1_7_EN)
+@source(PICC_ART1_7_EN, PICC_ART1_7_FR)
 rule DutyOfGoodFaith(c: Contract, p: Party, other: Party) strict {
     label en official "Article 1.7(1). Each party must act in accordance with good faith and fair dealing in international trade";
     when party_of(p, c)
@@ -199,7 +199,7 @@ pub relation exclusion_of_good_faith_ineffective(c: Contract) kind institutional
     label en official "the purported exclusion of the duty of good faith is ineffective (article 1.7(2))";
 }
 
-@source(PICC_ART1_7_EN)
+@source(PICC_ART1_7_EN, PICC_ART1_7_FR)
 rule GoodFaithCannotBeExcluded(c: Contract) strict {
     label en official "Article 1.7(2). The parties may not exclude or limit the duty of good faith and fair dealing";
     when duty_of_good_faith_excluded(c);
@@ -225,7 +225,7 @@ pub relation inconsistent_behaviour_barred(p: Party, c: Contract) kind instituti
     label en official "the party cannot act inconsistently with the understanding it has caused (article 1.8)";
 }
 
-@source(PICC_ART1_8_EN)
+@source(PICC_ART1_8_EN, PICC_ART1_8_FR)
 rule InconsistentBehaviourBarred(p: Party, other: Party, c: Contract) strict {
     label en official "Article 1.8. A party cannot act inconsistently with an understanding it has caused the other party to have and upon which that other party reasonably has acted in reliance to its detriment";
     when caused_understanding(p, other, c)
@@ -257,21 +257,21 @@ pub relation bound_by_usage(u: Usage, c: Contract) kind institutional {
     label en official "the parties are bound by the usage or practice (article 1.9)";
 }
 
-@source(PICC_ART1_9_EN)
+@source(PICC_ART1_9_EN, PICC_ART1_9_FR)
 rule BoundByAgreedUsage(u: Usage, c: Contract) strict {
     label en official "Article 1.9(1). The parties are bound by any usage to which they have agreed";
     when usage_agreed(u, c);
     then bound_by_usage(u, c);
 }
 
-@source(PICC_ART1_9_EN)
+@source(PICC_ART1_9_EN, PICC_ART1_9_FR)
 rule BoundByEstablishedPractice(u: Usage, c: Contract) strict {
     label en official "Article 1.9(1). The parties are bound by practices which they have established between themselves";
     when practice_established(u, c);
     then bound_by_usage(u, c);
 }
 
-@source(PICC_ART1_9_EN)
+@source(PICC_ART1_9_EN, PICC_ART1_9_FR)
 rule BoundByWidelyKnownUsage(u: Usage, c: Contract) defeasible {
     label en official "Article 1.9(2). The parties are bound by a usage widely known and regularly observed in the trade concerned, except where its application would be unreasonable";
     when usage_widely_known_in_trade(u, c);
@@ -294,7 +294,7 @@ pub relation notice_effective(n: Notice, p: Party) kind institutional {
     label en official "the notice is effective (article 1.10(2))";
 }
 
-@source(PICC_ART1_10_EN)
+@source(PICC_ART1_10_EN, PICC_ART1_10_FR)
 rule NoticeEffectiveOnReceipt(n: Notice, p: Party, c: Contract) strict {
     label en official "Article 1.10(2)-(3). A notice is effective when it reaches the person to whom it is given";
     when notice_given_by_appropriate_means(n, c)
@@ -328,7 +328,7 @@ pub relation relevant_place_of_business(p: Party, s: State) kind institutional {
     label en official "the relevant place of business of the party (article 1.11)";
 }
 
-@source(PICC_ART1_11_EN)
+@source(PICC_ART1_11_EN, PICC_ART1_11_FR)
 rule SinglePlaceIsRelevant(p: Party, s: State) defeasible {
     label en official "Article 1.11. Where a party has a single place of business that place is the relevant one";
     when place_of_business_in(p, s);
@@ -337,7 +337,7 @@ rule SinglePlaceIsRelevant(p: Party, s: State) defeasible {
         and has_multiple_places_of_business(p);
 }
 
-@source(PICC_ART1_11_EN)
+@source(PICC_ART1_11_EN, PICC_ART1_11_FR)
 rule ClosestPlaceIsRelevant(p: Party, s: State) defeasible {
     label en official "Article 1.11. Where a party has more than one place of business the relevant one is that which has the closest relationship to the contract and its performance";
     when has_multiple_places_of_business(p)

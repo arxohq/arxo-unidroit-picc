@@ -66,35 +66,35 @@ pub relation principles_may_interpret_or_supplement(l: LawText) kind institution
     label en official "these Principles may be used to interpret or supplement the text (Preamble, fifth and sixth paragraphs)";
 }
 
-@source(PICC_PREAMBLE_EN)
+@source(PICC_PREAMBLE_EN, PICC_PREAMBLE_FR)
 rule PrinciplesGovernByAgreement(c: Contract) strict {
     label en official "Preamble. These Principles shall be applied when the parties have agreed that their contract be governed by them";
     when parties_agreed_principles_govern(c);
     then principles_govern_contract(c);
 }
 
-@source(PICC_PREAMBLE_EN)
+@source(PICC_PREAMBLE_EN, PICC_PREAMBLE_FR)
 rule MayApplyOnChoiceOfGeneralPrinciples(c: Contract) strict {
     label en official "Preamble. These Principles may be applied when the parties have agreed that their contract be governed by general principles of law, the lex mercatoria or the like";
     when parties_agreed_general_principles(c);
     then principles_may_be_applied(c);
 }
 
-@source(PICC_PREAMBLE_EN)
+@source(PICC_PREAMBLE_EN, PICC_PREAMBLE_FR)
 rule MayApplyWhereNoLawChosen(c: Contract) strict {
     label en official "Preamble. These Principles may be applied when the parties have not chosen any law to govern their contract";
     when no_law_chosen(c);
     then principles_may_be_applied(c);
 }
 
-@source(PICC_PREAMBLE_EN)
+@source(PICC_PREAMBLE_EN, PICC_PREAMBLE_FR)
 rule MayInterpretUniformLaw(l: LawText) strict {
     label en official "Preamble. These Principles may be used to interpret or supplement international uniform law instruments";
     when uniform_law_instrument(l);
     then principles_may_interpret_or_supplement(l);
 }
 
-@source(PICC_PREAMBLE_EN)
+@source(PICC_PREAMBLE_EN, PICC_PREAMBLE_FR)
 rule MayInterpretDomesticLaw(l: LawText) strict {
     label en official "Preamble. These Principles may be used to interpret or supplement domestic law";
     when domestic_law(l);

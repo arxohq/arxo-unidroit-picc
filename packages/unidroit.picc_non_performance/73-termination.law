@@ -44,7 +44,7 @@ pub relation may_terminate_contract(c: Contract, p: Party) kind institutional {
     label en official "the party may terminate the contract (articles 7.3.1, 7.3.3, 7.3.4)";
 }
 
-@source(PICC_ART7_3_1_EN)
+@source(PICC_ART7_3_1_EN, PICC_ART7_3_1_FR)
 rule FundamentalByDeprivation(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.3.1(2)(a). Regard is to be had to whether the non-performance substantially deprives the aggrieved party of what it was entitled to expect, unless that result was not foreseeable";
     when non_performance_of(n, o, p)
@@ -53,7 +53,7 @@ rule FundamentalByDeprivation(n: NonPerformance, o: Obligation, p: Party) defeas
     then fundamental_non_performance(n);
 }
 
-@source(PICC_ART7_3_1_EN)
+@source(PICC_ART7_3_1_EN, PICC_ART7_3_1_FR)
 rule FundamentalByEssence(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.3.1(2)(b). Regard is to be had to whether strict compliance with the obligation is of essence under the contract";
     when non_performance_of(n, o, p)
@@ -61,7 +61,7 @@ rule FundamentalByEssence(n: NonPerformance, o: Obligation, p: Party) defeasible
     then fundamental_non_performance(n);
 }
 
-@source(PICC_ART7_3_1_EN)
+@source(PICC_ART7_3_1_EN, PICC_ART7_3_1_FR)
 rule FundamentalByIntent(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.3.1(2)(c). Regard is to be had to whether the non-performance is intentional or reckless";
     when non_performance_of(n, o, p)
@@ -69,7 +69,7 @@ rule FundamentalByIntent(n: NonPerformance, o: Obligation, p: Party) defeasible 
     then fundamental_non_performance(n);
 }
 
-@source(PICC_ART7_3_1_EN)
+@source(PICC_ART7_3_1_EN, PICC_ART7_3_1_FR)
 rule FundamentalByLossOfConfidence(n: NonPerformance, o: Obligation, p: Party) defeasible {
     label en official "Article 7.3.1(2)(d). Regard is to be had to whether the non-performance gives the aggrieved party reason to believe that it cannot rely on the other party's future performance";
     when non_performance_of(n, o, p)
@@ -77,7 +77,7 @@ rule FundamentalByLossOfConfidence(n: NonPerformance, o: Obligation, p: Party) d
     then fundamental_non_performance(n);
 }
 
-@source(PICC_ART7_3_1_EN)
+@source(PICC_ART7_3_1_EN, PICC_ART7_3_1_FR)
 rule DisproportionateLossAgainstFundamentality(n: NonPerformance, o: Obligation, p: Party) defeater {
     label en official "Article 7.3.1(2)(e). Regard is to be had to whether the non-performing party will suffer disproportionate loss as a result of the preparation or performance if the contract is terminated";
     when non_performance_of(n, o, p)
@@ -85,7 +85,7 @@ rule DisproportionateLossAgainstFundamentality(n: NonPerformance, o: Obligation,
     defeat fundamental_non_performance(n);
 }
 
-@source(PICC_ART7_3_1_EN)
+@source(PICC_ART7_3_1_EN, PICC_ART7_3_1_FR)
 rule TerminationForFundamentalNonPerformance(n: NonPerformance, o: Obligation, c: Contract, p: Party, other: Party) defeasible {
     label en official "Article 7.3.1(1). A party may terminate the contract where the failure of the other party amounts to a fundamental non-performance";
     when obligation_of(o, c, p)
@@ -95,7 +95,7 @@ rule TerminationForFundamentalNonPerformance(n: NonPerformance, o: Obligation, c
     then may_terminate_contract(c, other);
 }
 
-@source(PICC_ART7_3_1_EN)
+@source(PICC_ART7_3_1_EN, PICC_ART7_3_1_FR)
 rule TerminationAfterAdditionalPeriodForDelayCase(n: NonPerformance, o: Obligation, c: Contract, p: Party, other: Party) defeasible {
     label en official "Article 7.3.1(3). In the case of delay the aggrieved party may also terminate the contract if the other party fails to perform before the time allowed under Article 7.1.5 has expired";
     when obligation_of(o, c, p)
@@ -125,7 +125,7 @@ pub relation termination_notice_given_by(c: Contract, p: Party) kind empirical {
     label en official "the party has given notice of termination to the other party";
 }
 
-@source(PICC_ART7_3_2_EN)
+@source(PICC_ART7_3_2_EN, PICC_ART7_3_2_FR)
 rule TerminationExercisedByNotice(c: Contract, p: Party) strict {
     label en official "Article 7.3.2(1). The right of a party to terminate the contract is exercised by notice to the other party";
     when may_terminate_contract(c, p);
@@ -138,7 +138,7 @@ rule TerminationExercisedByNotice(c: Contract, p: Party) strict {
     };
 }
 
-@source(PICC_ART7_3_2_EN)
+@source(PICC_ART7_3_2_EN, PICC_ART7_3_2_FR)
 rule NoticeTerminatesContract(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.2. On notice to the other party the contract is terminated";
     when may_terminate_contract(c, p)
@@ -146,7 +146,7 @@ rule NoticeTerminatesContract(c: Contract, p: Party) defeasible {
     then contract_terminated(c);
 }
 
-@source(PICC_ART7_3_2_EN)
+@source(PICC_ART7_3_2_EN, PICC_ART7_3_2_FR)
 rule LateNoticeLosesRightToTerminate(n: NonPerformance, o: Obligation, c: Contract, p: Party, other: Party) defeater {
     label en official "Article 7.3.2(2). If performance has been offered late or otherwise does not conform to the contract, the aggrieved party loses its right to terminate unless it gives notice within a reasonable time";
     when obligation_of(o, c, p)
@@ -180,7 +180,7 @@ pub relation may_withhold_pending_assurance(c: Contract, p: Party) kind institut
     label en official "the party demanding assurance may meanwhile withhold its own performance (article 7.3.4)";
 }
 
-@source(PICC_ART7_3_3_EN)
+@source(PICC_ART7_3_3_EN, PICC_ART7_3_3_FR)
 rule AnticipatoryNonPerformance(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.3. Where prior to the date for performance it is clear that there will be a fundamental non-performance, the other party may terminate the contract";
     when party_to_contract(c, p)
@@ -188,7 +188,7 @@ rule AnticipatoryNonPerformance(c: Contract, p: Party) defeasible {
     then may_terminate_contract(c, p);
 }
 
-@source(PICC_ART7_3_4_EN)
+@source(PICC_ART7_3_4_EN, PICC_ART7_3_4_FR)
 rule WithholdingPendingAssurance(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.4. A party who reasonably believes that there will be a fundamental non-performance may demand adequate assurance of due performance and may meanwhile withhold its own performance";
     when reasonable_belief_of_fundamental_non_performance(c, p)
@@ -196,7 +196,7 @@ rule WithholdingPendingAssurance(c: Contract, p: Party) defeasible {
     then may_withhold_pending_assurance(c, p);
 }
 
-@source(PICC_ART7_3_4_EN)
+@source(PICC_ART7_3_4_EN, PICC_ART7_3_4_FR)
 rule TerminationForMissingAssurance(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.4. Where the assurance is not provided within a reasonable time the party demanding it may terminate the contract";
     when assurance_demanded(c, p)
@@ -246,21 +246,21 @@ pub relation restitution_only_after_termination(c: Contract, p: Party) kind inst
     label en official "on termination of a long-term contract restitution can only be claimed for the period after termination has taken effect, provided the contract is divisible (article 7.3.7(1))";
 }
 
-@source(PICC_ART7_3_5_EN)
+@source(PICC_ART7_3_5_EN, PICC_ART7_3_5_FR)
 rule TerminationReleasesFuturePerformance(c: Contract) defeasible {
     label en official "Article 7.3.5(1). Termination of the contract releases both parties from their obligation to effect and to receive future performance";
     when contract_terminated(c);
     then released_from_future_performance(c);
 }
 
-@source(PICC_ART7_3_5_EN)
+@source(PICC_ART7_3_5_EN, PICC_ART7_3_5_FR)
 rule TerminationPreservesDamages(c: Contract) defeasible {
     label en official "Article 7.3.5(2). Termination does not preclude a claim for damages for non-performance";
     when contract_terminated(c);
     then damages_claim_preserved(c);
 }
 
-@source(PICC_ART7_3_5_EN)
+@source(PICC_ART7_3_5_EN, PICC_ART7_3_5_FR)
 rule DisputeClausesSurviveTermination(c: Contract, t: Term) defeasible {
     label en official "Article 7.3.5(3). Termination does not affect any provision in the contract for the settlement of disputes or any other term which is to operate even after termination";
     when contract_terminated(c)
@@ -268,7 +268,7 @@ rule DisputeClausesSurviveTermination(c: Contract, t: Term) defeasible {
     then surviving_term(c, t);
 }
 
-@source(PICC_ART7_3_6_EN)
+@source(PICC_ART7_3_6_EN, PICC_ART7_3_6_FR)
 rule RestitutionOnTerminationAtOneTime(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.6(1). On termination of a contract to be performed at one time either party may claim restitution of whatever it has supplied, provided that it concurrently makes restitution of whatever it has received";
     when contract_terminated(c)
@@ -278,7 +278,7 @@ rule RestitutionOnTerminationAtOneTime(c: Contract, p: Party) defeasible {
     then may_claim_restitution(c, p);
 }
 
-@source(PICC_ART7_3_7_EN)
+@source(PICC_ART7_3_7_EN, PICC_ART7_3_7_FR)
 rule RestitutionOnLongTermContract(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.7(1). On termination of a long-term contract restitution can only be claimed for the period after termination has taken effect, provided the contract is divisible";
     when contract_terminated(c)
@@ -314,7 +314,7 @@ pub relation expenses_compensable(c: Contract, p: Party) kind institutional {
     label en official "compensation may be claimed for expenses reasonably required to preserve or maintain the performance received (article 7.3.6(4))";
 }
 
-@source(PICC_ART7_3_6_EN)
+@source(PICC_ART7_3_6_EN, PICC_ART7_3_6_FR)
 rule AllowanceInMoneyOnTermination(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.6(2). If restitution in kind is not possible or appropriate, an allowance has to be made in money whenever reasonable";
     when contract_terminated(c)
@@ -327,7 +327,7 @@ rule AllowanceInMoneyOnTermination(c: Contract, p: Party) defeasible {
         and impossibility_attributable_to_other_party(c, p);
 }
 
-@source(PICC_ART7_3_6_EN)
+@source(PICC_ART7_3_6_EN, PICC_ART7_3_6_FR)
 rule PreservationExpensesOnTermination(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.6(4). Compensation may be claimed for expenses reasonably required to preserve or maintain the performance received";
     when contract_terminated(c)
@@ -335,7 +335,7 @@ rule PreservationExpensesOnTermination(c: Contract, p: Party) defeasible {
     then expenses_compensable(c, p);
 }
 
-@source(PICC_ART7_3_7_EN)
+@source(PICC_ART7_3_7_EN, PICC_ART7_3_7_FR)
 rule LongTermRestitutionFollowsArticle736(c: Contract, p: Party) defeasible {
     label en official "Article 7.3.7(2). As far as restitution has to be made on termination of a long-term contract, the provisions of Article 7.3.6 apply";
     when restitution_only_after_termination(c, p)

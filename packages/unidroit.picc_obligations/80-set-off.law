@@ -72,7 +72,7 @@ pub relation set_off_effective_from_notice(n: Notice) kind institutional {
     label en official "set-off takes effect as from the time of notice (article 8.5(3))";
 }
 
-@source(PICC_ART8_1_EN)
+@source(PICC_ART8_1_EN, PICC_ART8_1_FR)
 rule SetOffConditions(own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.1(1). Where two parties owe each other performances of the same kind, either may set off if it is entitled to perform its own obligation and the other party's obligation is ascertained and due";
     when mutual_obligations(own, other)
@@ -81,7 +81,7 @@ rule SetOffConditions(own: Obligation, other: Obligation) defeasible {
     then may_set_off(own, other);
 }
 
-@source(PICC_ART8_1_EN)
+@source(PICC_ART8_1_EN, PICC_ART8_1_FR)
 rule SetOffWithinSameContract(own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.1(2). If the obligations arise from the same contract, the first party may also set off against an obligation which is not ascertained as to its existence or amount";
     when mutual_obligations(own, other)
@@ -90,7 +90,7 @@ rule SetOffWithinSameContract(own: Obligation, other: Obligation) defeasible {
     then may_set_off(own, other);
 }
 
-@source(PICC_ART8_2_EN)
+@source(PICC_ART8_2_EN, PICC_ART8_2_FR)
 rule ForeignCurrencySetOff(own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.2. Where the obligations are to pay money in different currencies, set-off may be exercised provided that both currencies are freely convertible and no single currency was agreed";
     when different_currencies(own, other)
@@ -101,7 +101,7 @@ rule ForeignCurrencySetOff(own: Obligation, other: Obligation) defeasible {
     then may_set_off(own, other);
 }
 
-@source(PICC_ART8_3_EN)
+@source(PICC_ART8_3_EN, PICC_ART8_3_FR)
 rule SetOffExercisedByNotice(own: Obligation, other: Obligation, obligor: Party, obligee: Party) strict {
     label en official "Article 8.3. The right of set-off is exercised by notice to the other party";
     when may_set_off(own, other)
@@ -119,7 +119,7 @@ pub relation notice_of_set_off_sent(own: Obligation, other: Obligation) kind emp
     label en official "the first party has sent the notice of set-off to the other party";
 }
 
-@source(PICC_ART8_4_EN)
+@source(PICC_ART8_4_EN, PICC_ART8_4_FR)
 rule NoticeSpecifiesObligation(n: Notice, own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.4(1). The notice must specify the obligations to which it relates";
     when set_off_notice_given(n, own, other)
@@ -127,7 +127,7 @@ rule NoticeSpecifiesObligation(n: Notice, own: Obligation, other: Obligation) de
     then set_off_relates_to(n, other);
 }
 
-@source(PICC_ART8_4_EN)
+@source(PICC_ART8_4_EN, PICC_ART8_4_FR)
 rule DeclarationByOtherParty(n: Notice, own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.4(2). If the notice does not specify the obligation, the other party may within a reasonable time declare the obligation to which the set-off relates";
     when set_off_notice_given(n, own, other)
@@ -136,7 +136,7 @@ rule DeclarationByOtherParty(n: Notice, own: Obligation, other: Obligation) defe
     then set_off_relates_to(n, other);
 }
 
-@source(PICC_ART8_4_EN)
+@source(PICC_ART8_4_EN, PICC_ART8_4_FR)
 rule ProportionalSetOff(n: Notice, own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.4(2). If no such declaration is made, the set-off relates to all the obligations proportionally";
     when set_off_notice_given(n, own, other)
@@ -145,7 +145,7 @@ rule ProportionalSetOff(n: Notice, own: Obligation, other: Obligation) defeasibl
     then set_off_relates_proportionally(n);
 }
 
-@source(PICC_ART8_5_EN)
+@source(PICC_ART8_5_EN, PICC_ART8_5_FR)
 rule SetOffDischargesObligations(own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.5(1). Set-off discharges the obligations";
     when may_set_off(own, other)
@@ -153,7 +153,7 @@ rule SetOffDischargesObligations(own: Obligation, other: Obligation) defeasible 
     then obligations_discharged_by_set_off(own, other);
 }
 
-@source(PICC_ART8_5_EN)
+@source(PICC_ART8_5_EN, PICC_ART8_5_FR)
 rule SetOffUpToLesserAmount(own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.5(2). If obligations differ in amount, set-off discharges them up to the amount of the lesser obligation";
     when obligations_discharged_by_set_off(own, other)
@@ -161,7 +161,7 @@ rule SetOffUpToLesserAmount(own: Obligation, other: Obligation) defeasible {
     then discharged_up_to_lesser_amount(own, other);
 }
 
-@source(PICC_ART8_5_EN)
+@source(PICC_ART8_5_EN, PICC_ART8_5_FR)
 rule SetOffEffectiveFromNotice(n: Notice, own: Obligation, other: Obligation) defeasible {
     label en official "Article 8.5(3). Set-off takes effect as from the time of notice";
     when set_off_notice_given(n, own, other)

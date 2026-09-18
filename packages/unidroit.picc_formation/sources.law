@@ -48,6 +48,23 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     local_path "sources/picc-en/en.txt";
 }
 
+edition PICC_2016_FR of PICC_2016 {
+    label en official "French black-letter rules, 2016 edition";
+    language fr;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_FR_TEXT of PICC_2016_FR {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-French-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:cd037861ab3255634993de457b14556dd2a7a7d38fb37270cb4618dfd2304907";
+    local_path "sources/picc-fr/fr.txt";
+}
+
 // Article 2.1.1 (English black-letter rules)
 fragment PICC_ART2_1_1_EN in PICC_2016_EN {
     kind article;
@@ -57,6 +74,17 @@ fragment PICC_ART2_1_1_EN in PICC_2016_EN {
 A contract may be concluded either by the acceptance of an offer or by conduct of
 the parties that is sufficient to show agreement.""";
     content_hash "sha256:90236277527e71649c6da0ccd022470eb7de50b10a14c558866d31bcfa3f89a6";
+}
+
+// Article 2.1.1 (French black-letter rules)
+fragment PICC_ART2_1_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_1";
+    text fr official """ARTICLE 2.1.1
+(Mode de formation)
+Le contrat se conclut soit par l’acceptation d’une offre, soit par un comportement des
+parties qui indique suffisamment leur accord.""";
+    content_hash "sha256:0e5d531a2b099c20ad085603d268c3369cafbdcaa6da1a03ef51b4af4a3a18ec";
 }
 
 // Article 2.1.2 (English black-letter rules)
@@ -70,6 +98,17 @@ and indicates the intention of the offeror to be bound in case of acceptance."""
     content_hash "sha256:f417d254da2d6e8be45131e6ada8d44f4e8c2b08b3ab2048b68aa7a99eb9a750";
 }
 
+// Article 2.1.2 (French black-letter rules)
+fragment PICC_ART2_1_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_2";
+    text fr official """ARTICLE 2.1.2
+(Définition de l’offre)
+Une proposition de conclure un contrat constitue une offre si elle est suffisamment
+précise et si elle indique la volonté de son auteur d’être lié en cas d’acceptation.""";
+    content_hash "sha256:ef64ecfcf5954651a75ebb2a30c5ece3308bd6a06b40d986df8828c7a9742f15";
+}
+
 // Article 2.1.3 (English black-letter rules)
 fragment PICC_ART2_1_3_EN in PICC_2016_EN {
     kind article;
@@ -80,6 +119,20 @@ fragment PICC_ART2_1_3_EN in PICC_2016_EN {
 (2) An offer, even if it is irrevocable, may be withdrawn if the withdrawal reaches
 the offeree before or at the same time as the offer.""";
     content_hash "sha256:145f3097131d61a9220efad611a2badf4fb546a8fd7d6cc86f50f746300d7aef";
+}
+
+// Article 2.1.3 (French black-letter rules)
+fragment PICC_ART2_1_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_3";
+    text fr official """ARTICLE 2.1.3
+(Rétractation de l’offre)
+1)
+L’offre prend effet lorsqu’elle parvient au destinataire.
+2)
+L’offre, même irrévocable, peut être rétractée si la rétractation parvient au
+destinataire avant ou en même temps que l’offre.""";
+    content_hash "sha256:e6d9f85d5703bb7fbd40aed207b34f5b64f28a411c8a832a10f201835817fc41";
 }
 
 // Article 2.1.4 (English black-letter rules)
@@ -98,6 +151,26 @@ the offeree has acted in reliance on the offer.""";
     content_hash "sha256:891a6dc5848947b4db124a2e0a3bd3c1b4e5dfe9e1ff696a7c1df27fa8e2f06b";
 }
 
+// Article 2.1.4 (French black-letter rules)
+fragment PICC_ART2_1_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_4";
+    text fr official """ARTICLE 2.1.4
+(Révocation de l’offre)
+1)
+Jusqu’à ce que le contrat ait été conclu, l’offre peut être révoquée si la révocation
+parvient au destinataire avant que celui-ci ait expédié son acceptation.
+2)
+Cependant, l’offre ne peut être révoquée:
+a)
+si elle indique, en fixant un délai déterminé pour l’acceptation ou autrement,
+qu’elle est irrévocable; ou
+b)
+si le destinataire était raisonnablement fondé à croire que l’offre était
+irrévocable et s’il a agi en conséquence.""";
+    content_hash "sha256:cab3986a9a7a0f452c02336ae76b9cf595eb5fedae2158964d2ee3a9697a2e21";
+}
+
 // Article 2.1.5 (English black-letter rules)
 fragment PICC_ART2_1_5_EN in PICC_2016_EN {
     kind article;
@@ -106,6 +179,16 @@ fragment PICC_ART2_1_5_EN in PICC_2016_EN {
 (Rejection of offer)
 An offer is terminated when a rejection reaches the offeror.""";
     content_hash "sha256:ad0d169d11d43687df21ba954a2f47d21927fc70dfa54b1cdb513dbfd1f3b9bb";
+}
+
+// Article 2.1.5 (French black-letter rules)
+fragment PICC_ART2_1_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_5";
+    text fr official """ARTICLE 2.1.5
+(Rejet de l’offre)
+L’offre prend fin lorsque son rejet parvient à son auteur.""";
+    content_hash "sha256:d3f2143908595eee9afc91ce37dfa7277769458d08ef58f64c8357be89e499aa";
 }
 
 // Article 2.1.6 (English black-letter rules)
@@ -125,6 +208,21 @@ is performed.""";
     content_hash "sha256:fe346ef207fe3e5c07a53a316c9a0097721d02bc90e754664ef7ab9f95e0efd3";
 }
 
+// Article 2.1.6 (French black-letter rules)
+fragment PICC_ART2_1_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_6";
+    text fr official """ARTICLE 2.1.6
+(Mode d’acceptation)
+1) Constitue une acceptation toute déclaration ou autre comportement du destinataire indiquant qu’il acquiesce à l’offre. Le silence ou l’inaction ne peuvent à eux seuls
+valoir acceptation.
+2) L’acceptation d’une offre prend effet au moment où l’indication d’acquiescement parvient à l’auteur de l’offre.
+3) Cependant, si, en vertu de l’offre, des pratiques établies entre les parties ou des
+usages, le destinataire peut, sans notification à l’auteur de l’offre, indiquer qu’il acquiesce
+en accomplissant un acte, l’acceptation prend effet au moment où cet acte est accompli.""";
+    content_hash "sha256:a9c7f9c7249bf92d68bc95cc6ae0f11dbe39c643cde4fb0aa5e59c33ab3ed3c1";
+}
+
 // Article 2.1.7 (English black-letter rules)
 fragment PICC_ART2_1_7_EN in PICC_2016_EN {
     kind article;
@@ -138,6 +236,19 @@ accepted immediately unless the circumstances indicate otherwise.""";
     content_hash "sha256:677750c6af0168b73c1513d9486c46ce3c6757c285ea91c225bf04ea9229274d";
 }
 
+// Article 2.1.7 (French black-letter rules)
+fragment PICC_ART2_1_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_7";
+    text fr official """ARTICLE 2.1.7
+(Délai d’acceptation)
+L’offre doit être acceptée dans le délai stipulé par l’auteur de l’offre ou, à défaut d’une
+telle stipulation, dans un délai raisonnable, compte tenu des circonstances, notamment de
+la rapidité des moyens de communication utilisés par l’auteur de l’offre. Une offre verbale
+doit être acceptée immédiatement, à moins que les circonstances n’indiquent le contraire.""";
+    content_hash "sha256:4e2b658bc6f246113c49597e60364869a49757ab83c579565fa4fd5b10f9c6a1";
+}
+
 // Article 2.1.8 (English black-letter rules)
 fragment PICC_ART2_1_8_EN in PICC_2016_EN {
     kind article;
@@ -148,6 +259,18 @@ A period of acceptance fixed by the offeror begins to run from the time that the
 is dispatched. A time indicated in the offer is deemed to be the time of dispatch unless
 the circumstances indicate otherwise.""";
     content_hash "sha256:2a0f934fcc7b50b50ed25e9142b53dc9407f40574f9bac90ab6a66f1ac8af022";
+}
+
+// Article 2.1.8 (French black-letter rules)
+fragment PICC_ART2_1_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_8";
+    text fr official """ARTICLE 2.1.8
+(Délai déterminé d’acceptation)
+Le délai d’acceptation fixé par l’auteur de l’offre commence à courir au moment où
+l’offre est expédiée. La date indiquée dans l’offre est présumée être celle de l’expédition,
+à moins que les circonstances n’indiquent le contraire.""";
+    content_hash "sha256:c39e16189ba4ae20e87dd03d479cf0660e72f6600a59412fd1b2ec35fe4a6d97";
 }
 
 // Article 2.1.9 (English black-letter rules)
@@ -165,6 +288,22 @@ undue delay, the offeror informs the offeree that it considers the offer as havi
     content_hash "sha256:149c288fcca8ab3a6732f75527b57d15d5bf02c86f776dc2f83fb6f9567ee527";
 }
 
+// Article 2.1.9 (French black-letter rules)
+fragment PICC_ART2_1_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_9";
+    text fr official """ARTICLE 2.1.9
+(Acceptation tardive. Retard dans la transmission)
+1) Une acceptation tardive produit néanmoins effet en tant qu’acceptation si, sans
+retard indu, l’auteur de l’offre en informe le destinataire ou lui adresse une notification à
+cet effet.
+2) Une communication contenant une acceptation tardive, expédiée dans des
+circonstances telles que si sa transmission avait été régulière, elle serait parvenue à temps à
+l’auteur de l’offre, produit effet en tant qu’acceptation, à moins que, sans retard indu, l’auteur
+de l’offre n’informe le destinataire qu’il considère celle-ci comme ayant pris fin.""";
+    content_hash "sha256:658082c33362190e20ae015c2548542135dc86b2ccdd9d6fb5e2e84097af064d";
+}
+
 // Article 2.1.10 (English black-letter rules)
 fragment PICC_ART2_1_10_EN in PICC_2016_EN {
     kind article;
@@ -174,6 +313,17 @@ fragment PICC_ART2_1_10_EN in PICC_2016_EN {
 An acceptance may be withdrawn if the withdrawal reaches the offeror before or at
 the same time as the acceptance would have become effective.""";
     content_hash "sha256:3026d4820b0d1a0568f9cf42e4b847b8fa2253da243972650af5504c18859e86";
+}
+
+// Article 2.1.10 (French black-letter rules)
+fragment PICC_ART2_1_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_10";
+    text fr official """ARTICLE 2.1.10
+(Rétractation de l’acceptation)
+L’acceptation peut être rétractée pourvu que la rétractation parvienne à l’auteur de
+l’offre au plus tard au moment où l’acceptation aurait pris effet.""";
+    content_hash "sha256:3e41306baba19e4b3fbe73cfcbf7fc28b201cc79719f17da62deff8033729520";
 }
 
 // Article 2.1.11 (English black-letter rules)
@@ -192,6 +342,23 @@ offer with the modifications contained in the acceptance.""";
     content_hash "sha256:f77608ed132ab0c98978372206159801db1a4fc5b2f452bd3c12e442e1229b7c";
 }
 
+// Article 2.1.11 (French black-letter rules)
+fragment PICC_ART2_1_11_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_11";
+    text fr official """ARTICLE 2.1.11
+(Modification de l’acceptation)
+1) La réponse à une offre qui se veut acceptation de cette offre, mais qui contient
+des additions, des limitations ou d’autres modifications, vaut rejet de l’offre et constitue
+une contre-proposition.
+2) Toutefois, la réponse qui se veut acceptation, mais qui contient des éléments
+complémentaires ou différents n’altérant pas substantiellement les termes de l’offre,
+constitue une acceptation, à moins que l’auteur de l’offre, sans retard indu, n’exprime son
+désaccord sur ces éléments. S’il ne le fait pas, les termes du contrat sont ceux de l’offre
+avec les modifications énoncées dans l’acceptation.""";
+    content_hash "sha256:5d1973502613614e6bd7556fc6abc2cc6ae6cb7fe89bf558a32de9c80f932c69";
+}
+
 // Article 2.1.12 (English black-letter rules)
 fragment PICC_ART2_1_12_EN in PICC_2016_EN {
     kind article;
@@ -205,6 +372,19 @@ contract or the recipient, without undue delay, objects to the discrepancy.""";
     content_hash "sha256:5c193ef1601da24644558b4055141ba1b3893179a27a3a63f38cb0f0e2ed550b";
 }
 
+// Article 2.1.12 (French black-letter rules)
+fragment PICC_ART2_1_12_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_12";
+    text fr official """ARTICLE 2.1.12
+(Confirmation écrite)
+Si un écrit qui se veut confirmation d’un contrat, tout en contenant des éléments
+complémentaires ou différents, est expédié dans un délai raisonnable après sa conclusion,
+ces éléments font partie du contrat, à moins qu’ils n’en altèrent la substance ou que le
+destinataire, sans retard indu, n’exprime son désaccord sur ces éléments.""";
+    content_hash "sha256:5ca7c933b2a706b6669cde7207efa2c450264f2fed7ed3bef67b2e663f8677c3";
+}
+
 // Article 2.1.13 (English black-letter rules)
 fragment PICC_ART2_1_13_EN in PICC_2016_EN {
     kind article;
@@ -216,6 +396,19 @@ Where in the course of negotiations one of the parties insists that the contract
 concluded until there is agreement on specific matters or in a particular form, no
 contract is concluded before agreement is reached on those matters or in that form.""";
     content_hash "sha256:938b82033d4dc8fb922a77663f51f4f6059e32ad1e3ac95700db4e46b8e7d000";
+}
+
+// Article 2.1.13 (French black-letter rules)
+fragment PICC_ART2_1_13_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_13";
+    text fr official """ARTICLE 2.1.13
+(Contrat subordonné à un accord sur certaines
+questions relatives au fond ou à la forme)
+Lorsqu’une partie, au cours des négociations, exige que la conclusion du contrat soit
+subordonnée à un accord sur certaines questions relatives au fond ou à la forme, le contrat
+n’est conclu que si les parties parviennent à un accord sur ces questions.""";
+    content_hash "sha256:b2335afdcd25909be167067ddeb75263cadcc0dcf03836109abdf702956f1024";
 }
 
 // Article 2.1.14 (English black-letter rules)
@@ -236,6 +429,29 @@ reasonable in the circumstances, having regard to the intention of the parties."
     content_hash "sha256:3fd8ef8dc988b0ae698d580fb57c100ddc80e65eac6f601cacc1711546581d07";
 }
 
+// Article 2.1.14 (French black-letter rules)
+fragment PICC_ART2_1_14_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_14";
+    text fr official """ARTICLE 2.1.14
+(Clause à déterminer ultérieurement)
+1)
+Dès lors que les parties entendent conclure un contrat, le fait qu’elles renvoient
+la détermination d’une clause à un accord ultérieur ou à la décision de l’une des parties
+ou d’un tiers ne fait pas obstacle à la conclusion du contrat.
+2)
+L’existence du contrat n’est pas compromise du fait que, par la suite
+a)
+les parties ne sont pas parvenues à un accord; ou
+b)
+la partie devant prendre la décision ne l’a pas fait; ou
+c)
+le tiers n’a pas pris de décision,
+à condition qu’il y ait un autre moyen de déterminer cette clause qui soit raisonnable dans
+les circonstances en tenant compte de l’intention des parties.""";
+    content_hash "sha256:a9b72ccd4b39b1a8f2d727700f220fb50112cfa1076f53beee4a3e125e01eb53";
+}
+
 // Article 2.1.15 (English black-letter rules)
 fragment PICC_ART2_1_15_EN in PICC_2016_EN {
     kind article;
@@ -248,6 +464,21 @@ liable for the losses caused to the other party.
 (3) It is bad faith, in particular, for a party to enter into or continue negotiations
 when intending not to reach an agreement with the other party.""";
     content_hash "sha256:0fd445bbb8b8d2cc17153a6df99180686733cfce14a435ff86d7f03da425c294";
+}
+
+// Article 2.1.15 (French black-letter rules)
+fragment PICC_ART2_1_15_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_15";
+    text fr official """ARTICLE 2.1.15
+(Mauvaise foi dans les négociations)
+1) Les parties sont libres de négocier et ne peuvent être tenues pour responsables
+si elles ne parviennent pas à un accord.
+2) Toutefois, la partie qui, dans la conduite ou la rupture des négociations, agit de
+mauvaise foi est responsable du préjudice qu’elle cause à l’autre partie.
+3) Est, notamment, de mauvaise foi la partie qui entame ou poursuit des
+négociations sachant qu’elle n’a pas l’intention de parvenir à un accord.""";
+    content_hash "sha256:06c9e92543930bb9f6fb4465b1a227ae28768b8303b6e65b0132b02165189b09";
 }
 
 // Article 2.1.16 (English black-letter rules)
@@ -264,6 +495,20 @@ on the benefit received by the other party.""";
     content_hash "sha256:62a8afd29365753d67423e8fa61af3461f24e63245030c5125691a24db45a1a7";
 }
 
+// Article 2.1.16 (French black-letter rules)
+fragment PICC_ART2_1_16_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_16";
+    text fr official """ARTICLE 2.1.16
+(Devoir de confidentialité)
+Qu’il y ait ou non conclusion du contrat, la partie qui, au cours des négociations, reçoit
+une information donnée à titre confidentiel par l’autre partie, est tenue de ne pas la
+divulguer ni l’utiliser de façon indue à des fins personnelles. Le manquement à ce devoir
+est susceptible de donner lieu à une indemnité comprenant, le cas échéant, le bénéfice
+qu’en aura retiré l’autre partie.""";
+    content_hash "sha256:795a12c714e0d017d5c3f62112f5394771d839f139176f6dfc63cb3cf1e101dc";
+}
+
 // Article 2.1.17 (English black-letter rules)
 fragment PICC_ART2_1_17_EN in PICC_2016_EN {
     kind article;
@@ -277,6 +522,19 @@ or agreements may be used to interpret the writing.""";
     content_hash "sha256:7eade383024488d29be0bb11d3f421235ffa11685d0e8441275ff380ca2143a6";
 }
 
+// Article 2.1.17 (French black-letter rules)
+fragment PICC_ART2_1_17_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_17";
+    text fr official """ARTICLE 2.1.17
+(Clauses d’intégralité)
+Le contrat écrit qui contient une clause stipulant que le document renferme toutes les
+conditions dont les parties sont convenues ne peut être contredit ou complété par la preuve
+de déclarations ou d’accords antérieurs. Ces déclarations ou accords peuvent cependant
+servir à l’interprétation du document.""";
+    content_hash "sha256:1feabac62628b68eea7292e80e6f93a66ee84e675292c6d119eda4becb5d770a";
+}
+
 // Article 2.1.18 (English black-letter rules)
 fragment PICC_ART2_1_18_EN in PICC_2016_EN {
     kind article;
@@ -288,6 +546,19 @@ termination by agreement to be in a particular form may not be otherwise modifie
 terminated. However, a party may be precluded by its conduct from asserting such a
 clause to the extent that the other party has reasonably acted in reliance on that conduct.""";
     content_hash "sha256:a6d68bbdb174ec2cd3d0a7c01db62802551939c4adea9742fc82ee8fc2b2eedb";
+}
+
+// Article 2.1.18 (French black-letter rules)
+fragment PICC_ART2_1_18_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_18";
+    text fr official """ARTICLE 2.1.18
+(Modification sous une forme particulière)
+Le contrat écrit qui contient une clause stipulant que toute modification ou révocation
+amiable doit être faite sous une forme particulière ne peut être modifié ou révoqué sous une
+autre forme. Toutefois, une partie peut être privée du bénéfice de cette disposition si son
+comportement a incité l’autre partie à agir raisonnablement en conséquence.""";
+    content_hash "sha256:bb13736ff6d177bb7957d472782e54967a2a47da4165638cf3d4fead6f2fdc50";
 }
 
 // Article 2.1.19 (English black-letter rules)
@@ -304,6 +575,21 @@ party.""";
     content_hash "sha256:78ee4e36d650b01eb5fc06c7e29e2b3135878261097252563527f72bb160ba7d";
 }
 
+// Article 2.1.19 (French black-letter rules)
+fragment PICC_ART2_1_19_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_19";
+    text fr official """ARTICLE 2.1.19
+(Clauses-types)
+1) Les règles générales relatives à la formation du contrat s’appliquent lorsque
+l’une des parties ou les deux utilisent des clauses-types, sous réserve des articles 2.1.20 à
+2.1.22.
+2) Sont des clauses-types les dispositions établies à l’avance par l’une des parties
+pour un usage général et répété et effectivement utilisées sans négociation avec l’autre
+partie.""";
+    content_hash "sha256:c2b9dc74954b20d72f62cb4c6ebe9e06645cc16a1894935c7e588e934b8ed02d";
+}
+
 // Article 2.1.20 (English black-letter rules)
 fragment PICC_ART2_1_20_EN in PICC_2016_EN {
     kind article;
@@ -318,6 +604,22 @@ content, language and presentation.""";
     content_hash "sha256:fa67e3e0c42b085bfe226fd9f14f96451a612214d801ae103c604bf8925c5ada";
 }
 
+// Article 2.1.20 (French black-letter rules)
+fragment PICC_ART2_1_20_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_20";
+    text fr official """ARTICLE 2.1.20
+(Clauses inhabituelles)
+1)
+Une clause reproduisant une clause-type est sans effet lorsqu’elle est d’une
+nature telle que l’autre partie ne pouvait raisonnablement s’attendre à la voir figurer au
+contrat, à moins que celle-ci n’y consente expressément.
+2)
+Pour déterminer si une clause est d’une telle nature, on prend en considération
+son contenu, le langage employé ou sa présentation.""";
+    content_hash "sha256:66d037aca1b48588230ba16763d98ad58ca0d0851fa46c330383cc48d14f4626";
+}
+
 // Article 2.1.21 (English black-letter rules)
 fragment PICC_ART2_1_21_EN in PICC_2016_EN {
     kind article;
@@ -327,6 +629,18 @@ fragment PICC_ART2_1_21_EN in PICC_2016_EN {
 In case of conflict between a standard term and a term which is not a standard term
 the latter prevails.""";
     content_hash "sha256:cb3a2635f0fe1f7ccc6e7f2627280e2dec7e8b236338de8e3a7d8f40e4733622";
+}
+
+// Article 2.1.21 (French black-letter rules)
+fragment PICC_ART2_1_21_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_21";
+    text fr official """ARTICLE 2.1.21
+(Conflit entre clauses-types et clauses
+qui ne le sont pas)
+En cas d’incompatibilité entre une clause-type et une clause qui ne l’est pas, cette
+dernière l’emporte.""";
+    content_hash "sha256:3294be9c8ae46ac212ddb1818804200c0f96543b590e9a75c02557b5eda448d3";
 }
 
 // Article 2.1.22 (English black-letter rules)
@@ -341,6 +655,20 @@ are common in substance unless one party clearly indicates in advance, or later 
 without undue delay informs the other party, that it does not intend to be bound by such
 a contract.""";
     content_hash "sha256:5a3f1bf09fabf7e449f3ef8707779444561e8d6d6846f0e9238fc6259053131c";
+}
+
+// Article 2.1.22 (French black-letter rules)
+fragment PICC_ART2_1_22_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_1_22";
+    text fr official """ARTICLE 2.1.22
+(Désaccord sur les clauses-types)
+Lorsque les parties utilisent des clauses-types sans parvenir à un accord sur celles-ci,
+le contrat est néanmoins conclu sur la base des clauses convenues et des clauses-types qui,
+pour l’essentiel, sont communes aux parties, à moins que l’une d’elles ne signifie à l’autre,
+soit à l’avance, soit ultérieurement et sans retard indu, qu’elle n’entend pas être liée par
+un tel contrat.""";
+    content_hash "sha256:21dab417163e6e70de349af064a19e59057f18a8e67b1623065c6f3f3cf45e69";
 }
 
 // Article 2.2.1 (English black-letter rules)
@@ -359,6 +687,23 @@ agent appointed by a public or judicial authority.""";
     content_hash "sha256:efd148c03fe76628e45f74d36f5635e11b3409b4fba39652f700e18a2be6c222";
 }
 
+// Article 2.2.1 (French black-letter rules)
+fragment PICC_ART2_2_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_1";
+    text fr official """ARTICLE 2.2.1
+(Objet de la Section)
+1) La présente Section régit le pouvoir d’une personne (le “représentant”) de
+produire des effets dans la situation juridique d’une autre personne (le “représenté”)
+relativement à la conclusion ou à l’exécution d’un contrat avec un tiers. Le représentant
+agit en son propre nom ou au nom du représenté.
+2) Elle ne régit que les rapports entre, d’une part, le représenté ou le représentant
+et, d’autre part, le tiers.
+3) Elle ne régit pas le pouvoir conféré par la loi à un représentant, ni celui d’un
+représentant nommé par une autorité publique ou judiciaire.""";
+    content_hash "sha256:4188ab68c6123e1ec7fb4033aa0385073116183abf5c53842d36b629390d0c28";
+}
+
 // Article 2.2.2 (English black-letter rules)
 fragment PICC_ART2_2_2_EN in PICC_2016_EN {
     kind article;
@@ -369,6 +714,20 @@ fragment PICC_ART2_2_2_EN in PICC_2016_EN {
 (2) The agent has authority to perform all acts necessary in the circumstances to
 achieve the purposes for which the authority was granted.""";
     content_hash "sha256:157344479289e887683dee2a3ca2adbec5fd4b874f4e4b21fa4d3319c61448c4";
+}
+
+// Article 2.2.2 (French black-letter rules)
+fragment PICC_ART2_2_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_2";
+    text fr official """ARTICLE 2.2.2
+(Constitution et étendue du pouvoir de représentation)
+L’attribution par le représenté du pouvoir de représentation peut être expresse ou
+1)
+implicite.
+2) Le représentant a le pouvoir d’accomplir tous les actes nécessaires à l’exécution
+de sa mission, compte tenu des circonstances.""";
+    content_hash "sha256:16f5d4ebecea72a4798e693e2990914ab4db9ff2a5bd7b1ef60d4d22a6026c5d";
 }
 
 // Article 2.2.3 (English black-letter rules)
@@ -387,6 +746,19 @@ become the party to the contract.""";
     content_hash "sha256:1948bb8c3fb978502dbd7ea54643bff6ab1738f400a0f0fbb02ea71b2fb232e5";
 }
 
+// Article 2.2.3 (French black-letter rules)
+fragment PICC_ART2_2_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_3";
+    text fr official """ARTICLE 2.2.3
+(Divulgation de la représentation)
+1) Les actes accomplis par le représentant dans la limite de ses pouvoirs, alors que
+le tiers savait ou aurait dû savoir qu’il agissait en cette qualité, engagent directement le
+représenté et le tiers. Aucun rapport juridique n’est créé entre le représentant et le tiers.
+2) Toutefois, le représentant qui, avec le consentement du représenté, devient luimême partie au contrat, n’engage que lui-même envers le tiers.""";
+    content_hash "sha256:504556cdb13256363a377da903f0fdee1ffa12d00c2e299bad72c03d820f73d7";
+}
+
 // Article 2.2.4 (English black-letter rules)
 fragment PICC_ART2_2_4_EN in PICC_2016_EN {
     kind article;
@@ -401,6 +773,22 @@ behalf of a business, represents itself to be the owner of that business, the th
 upon discovery of the real owner of the business, may exercise also against the latter the
 rights it has against the agent.""";
     content_hash "sha256:0e444b6652bbd2606de08f25f06694a9cae8f195fdbf347d2de3d3dc1852a515";
+}
+
+// Article 2.2.4 (French black-letter rules)
+fragment PICC_ART2_2_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_4";
+    text fr official """ARTICLE 2.2.4
+(Non divulgation de la représentation)
+1) Les actes accomplis par le représentant dans la limite de ses pouvoirs, alors que
+le tiers ne savait ni n’aurait dû savoir que le représentant agissait en cette qualité,
+n’engagent que lui-même et le tiers.
+2) Toutefois, si le représentant, en contractant avec le tiers pour le compte d’une
+entreprise, se présente comme en étant le propriétaire, le tiers qui découvre le véritable
+propriétaire peut aussi exercer, à l’encontre de ce dernier, les droits qu’il détient à
+l’encontre du représentant.""";
+    content_hash "sha256:faac9a199b8aea5bcccb911e6f5eae9d528756cc4f1a4c570686259638447ec6";
 }
 
 // Article 2.2.5 (English black-letter rules)
@@ -418,6 +806,22 @@ the lack of authority of the agent.""";
     content_hash "sha256:c1e365e92e83ee5469b7a647d9a8b58ac6ee661c4ef30fbe174586b273b8ebce";
 }
 
+// Article 2.2.5 (French black-letter rules)
+fragment PICC_ART2_2_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_5";
+    text fr official """ARTICLE 2.2.5
+(Représentant agissant sans pouvoir
+ou au-delà de ses pouvoirs)
+1) Une personne qui agit en qualité de représentant, mais sans pouvoir ou au-delà
+de ses pouvoirs, n’engage ni le représenté ni le tiers.
+2) Toutefois, lorsque le comportement du représenté conduit le tiers à croire
+raisonnablement que le représentant a le pouvoir d’agir pour le compte du représenté et
+qu’il agit dans la limite de ce pouvoir, le représenté ne peut se prévaloir à l’égard du tiers
+du défaut de pouvoir du représentant.""";
+    content_hash "sha256:3e6c06411102b16e1feb504c79e2f9bbb0e440c605320291cde249e60fc71d15";
+}
+
 // Article 2.2.6 (English black-letter rules)
 fragment PICC_ART2_2_6_EN in PICC_2016_EN {
     kind article;
@@ -430,6 +834,22 @@ position as if the agent had acted with authority and not exceeded its authority
 (2) However, the agent is not liable if the third party knew or ought to have
 known that the agent had no authority or was exceeding its authority.""";
     content_hash "sha256:cbbb0080ae40fef095f6bd6e61c597f961d593cc742a91b2c91d356ed28db224";
+}
+
+// Article 2.2.6 (French black-letter rules)
+fragment PICC_ART2_2_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_6";
+    text fr official """ARTICLE 2.2.6
+(Responsabilité du représentant agissant sans
+pouvoir ou au-delà de ses pouvoirs)
+1) Le représentant qui agit sans pouvoir ou au-delà de ses pouvoirs est tenu, en
+l’absence de ratification par le représenté, de payer au tiers les dommages-intérêts qui
+placeront ce dernier dans la situation où il se serait trouvé si le représentant avait agi en
+vertu d’un pouvoir ou s’il n’avait pas agi au-delà de ses pouvoirs.
+2) Toutefois, le représentant n’y sera pas tenu si le tiers savait ou aurait dû savoir
+que le représentant agissait sans pouvoir ou au-delà de ses pouvoirs.""";
+    content_hash "sha256:4f1a3f2f65ee99cdbdb272f98d04d4aed3bd60fa65c9b69800a97a172c1386c8";
 }
 
 // Article 2.2.7 (English black-letter rules)
@@ -450,6 +870,25 @@ had not objected within a reasonable time.""";
     content_hash "sha256:aedac6c0212d0ef99495c5d026e49f89d36118bfba5ff4dde1fdfaad12ce69b1";
 }
 
+// Article 2.2.7 (French black-letter rules)
+fragment PICC_ART2_2_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_7";
+    text fr official """ARTICLE 2.2.7
+(Conflit d’intérêts)
+1) Si le contrat conclu par le représentant implique celui-ci dans un conflit
+d’intérêts avec le représenté, que le tiers connaissait ou aurait dû connaître, le représenté
+peut annuler le contrat, conformément aux dispositions des articles 3.2.9 et 3.2.11 à
+3.2.15.
+2) Toutefois, le représenté ne peut annuler le contrat
+a)
+s’il a consenti à l’implication du représentant dans le conflit d’intérêts, ou s’il le
+connaissait ou aurait dû le connaître; ou
+b) si le représentant a révélé le conflit au représenté et que ce dernier n’a pas
+soulevé d’objection dans un délai raisonnable.""";
+    content_hash "sha256:e385ced3035a1a26fcc407a613c53be668b7254367d40f73d17c99f5f433cf67";
+}
+
 // Article 2.2.8 (English black-letter rules)
 fragment PICC_ART2_2_8_EN in PICC_2016_EN {
     kind article;
@@ -460,6 +899,18 @@ An agent has implied authority to appoint a sub-agent to perform acts which it i
 reasonable to expect the agent to perform itself. The rules of this Section apply to the
 sub-agency.""";
     content_hash "sha256:8eb15c6998e5c41902d31de7e08e5e36ebbf2a779db297b50ac84d63f991cf8e";
+}
+
+// Article 2.2.8 (French black-letter rules)
+fragment PICC_ART2_2_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_8";
+    text fr official """ARTICLE 2.2.8
+(Substitution de représentant)
+Le représentant a le pouvoir implicite de désigner un représentant substitué pour accomplir
+les actes dont il n’est pas raisonnable de penser qu’il les accomplira personnellement. Les règles
+de la présente Section s’appliquent à la représentation par substitution.""";
+    content_hash "sha256:6f1f0e978246be0d8f0004396dbd4e40af902fcd0174921457d8312d2db9babe";
 }
 
 // Article 2.2.9 (English black-letter rules)
@@ -480,6 +931,25 @@ principal indicate its refusal to become bound by a ratification.""";
     content_hash "sha256:d6b3af14d1bab6188d444508a4dac9b1db143974c79cb3b33c887f5fba55791a";
 }
 
+// Article 2.2.9 (French black-letter rules)
+fragment PICC_ART2_2_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_9";
+    text fr official """ARTICLE 2.2.9
+(Ratification)
+1) Le représenté peut ratifier l’acte accompli par une personne qui a agi en qualité de
+représentant, sans en avoir le pouvoir ou au-delà de ses pouvoirs. Une fois ratifié, l’acte
+produit les mêmes effets que s’il avait été, dès l’origine, accompli en vertu d’un pouvoir.
+2) Le tiers peut, par voie de notification, accorder au représenté un délai
+raisonnable pour la ratification. Si, dans ce délai, le représenté ne ratifie pas l’acte, il ne
+pourra plus le faire.
+3) Lorsque, au moment de l’acte accompli par le représentant, le tiers ne
+connaissait et n’aurait pas dû connaître le défaut de pouvoir, il peut, à tout moment avant
+la ratification, indiquer au représenté par voie de notification son refus d’être lié par la
+ratification.""";
+    content_hash "sha256:8ca62428e29524e38f9240001105792040f63b342f8009e4b78ea2065191c7b0";
+}
+
 // Article 2.2.10 (English black-letter rules)
 fragment PICC_ART2_2_10_EN in PICC_2016_EN {
     kind article;
@@ -491,4 +961,17 @@ third party knew or ought to have known of it.
 (2) Notwithstanding the termination of its authority, an agent remains authorised
 to perform the acts that are necessary to prevent harm to the principal’s interests.""";
     content_hash "sha256:da09c1cc29a62e62d11c708135e1b6e26aaa0fb61cbb2129e585e81df318598b";
+}
+
+// Article 2.2.10 (French black-letter rules)
+fragment PICC_ART2_2_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/2_2_10";
+    text fr official """ARTICLE 2.2.10
+(Extinction du pouvoir)
+1) L’extinction du pouvoir n’a d’effet à l’égard du tiers que s’il en avait ou aurait
+dû en avoir connaissance.
+2) Nonobstant l’extinction de son pouvoir, le représentant demeure habilité à
+accomplir les actes nécessaires afin d’éviter toute atteinte aux intérêts du représenté.""";
+    content_hash "sha256:8246b6fce5663a5a52551600615ef049729a93fb615f73ba7b21468873403e72";
 }

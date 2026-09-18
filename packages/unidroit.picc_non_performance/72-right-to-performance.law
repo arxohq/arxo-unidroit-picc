@@ -96,7 +96,7 @@ pub relation may_invoke_another_remedy(o: Obligation, p: Party) kind institution
     label en official "the aggrieved party may invoke any other remedy (article 7.2.5)";
 }
 
-@source(PICC_ART7_2_1_EN)
+@source(PICC_ART7_2_1_EN, PICC_ART7_2_1_FR)
 rule PaymentMayBeRequired(o: Obligation, c: Contract, p: Party, other: Party) strict {
     label en official "Article 7.2.1. Where a party who is obliged to pay money does not do so, the other party may require payment";
     when obligation_of(o, c, p)
@@ -106,7 +106,7 @@ rule PaymentMayBeRequired(o: Obligation, c: Contract, p: Party, other: Party) st
     then may_require_payment(o, other);
 }
 
-@source(PICC_ART7_2_2_EN)
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_FR)
 rule PerformanceMayBeRequired(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
     label en official "Article 7.2.2. Where a party who owes an obligation other than one to pay money does not perform, the other party may require performance";
     when obligation_of(o, c, p)
@@ -115,7 +115,7 @@ rule PerformanceMayBeRequired(o: Obligation, c: Contract, p: Party, other: Party
     then may_require_performance(o, other);
 }
 
-@source(PICC_ART7_2_2_EN)
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_FR)
 rule ImpossibilityBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     label en official "Article 7.2.2(a). Performance may not be required where performance is impossible in law or in fact";
     when obligee_of(o, p)
@@ -123,7 +123,7 @@ rule ImpossibilityBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     defeat may_require_performance(o, p);
 }
 
-@source(PICC_ART7_2_2_EN)
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_FR)
 rule BurdenBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     label en official "Article 7.2.2(b). Performance may not be required where performance or enforcement is unreasonably burdensome or expensive";
     when obligee_of(o, p)
@@ -131,7 +131,7 @@ rule BurdenBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     defeat may_require_performance(o, p);
 }
 
-@source(PICC_ART7_2_2_EN)
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_FR)
 rule CoverBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     label en official "Article 7.2.2(c). Performance may not be required where the party entitled to performance may reasonably obtain it from another source";
     when obligee_of(o, p)
@@ -139,7 +139,7 @@ rule CoverBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     defeat may_require_performance(o, p);
 }
 
-@source(PICC_ART7_2_2_EN)
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_FR)
 rule PersonalCharacterBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     label en official "Article 7.2.2(d). Performance may not be required where performance is of an exclusively personal character";
     when obligee_of(o, p)
@@ -147,7 +147,7 @@ rule PersonalCharacterBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     defeat may_require_performance(o, p);
 }
 
-@source(PICC_ART7_2_2_EN)
+@source(PICC_ART7_2_2_EN, PICC_ART7_2_2_FR)
 rule LateDemandBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     label en official "Article 7.2.2(e). Performance may not be required where the party entitled to performance does not require it within a reasonable time after becoming aware of the non-performance";
     when obligee_of(o, p)
@@ -155,7 +155,7 @@ rule LateDemandBarsPerformanceClaim(o: Obligation, p: Party) defeater {
     defeat may_require_performance(o, p);
 }
 
-@source(PICC_ART7_2_3_EN)
+@source(PICC_ART7_2_3_EN, PICC_ART7_2_3_FR)
 rule RepairAndReplacement(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
     label en official "Article 7.2.3. The right to performance includes in appropriate cases the right to require repair, replacement, or other cure of defective performance";
     when obligation_of(o, c, p)
@@ -165,14 +165,14 @@ rule RepairAndReplacement(o: Obligation, c: Contract, p: Party, other: Party) de
     then may_require_repair_or_replacement(o, other);
 }
 
-@source(PICC_ART7_2_4_EN)
+@source(PICC_ART7_2_4_EN, PICC_ART7_2_4_FR)
 rule JudicialPenalty(o: Obligation) strict {
     label en official "Article 7.2.4(1). Where the court orders a party to perform, it may also direct that this party pay a penalty if it does not comply with the order";
     when court_ordered_performance(o);
     then penalty_may_be_ordered(o);
 }
 
-@source(PICC_ART7_2_4_EN)
+@source(PICC_ART7_2_4_EN, PICC_ART7_2_4_FR)
 rule PenaltyGoesToAggrievedParty(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
     label en official "Article 7.2.4(2). The penalty shall be paid to the aggrieved party unless mandatory provisions of the law of the forum provide otherwise";
     when obligation_of(o, c, p)
@@ -183,7 +183,7 @@ rule PenaltyGoesToAggrievedParty(o: Obligation, c: Contract, p: Party, other: Pa
         and forum_law_directs_penalty_elsewhere(o);
 }
 
-@source(PICC_ART7_2_5_EN)
+@source(PICC_ART7_2_5_EN, PICC_ART7_2_5_FR)
 rule ChangeOfRemedyAfterDelay(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
     label en official "Article 7.2.5(1). An aggrieved party who has required performance of a non-monetary obligation and has not received it within a fixed or reasonable period may invoke any other remedy";
     when obligation_of(o, c, p)
@@ -192,7 +192,7 @@ rule ChangeOfRemedyAfterDelay(o: Obligation, c: Contract, p: Party, other: Party
     then may_invoke_another_remedy(o, other);
 }
 
-@source(PICC_ART7_2_5_EN)
+@source(PICC_ART7_2_5_EN, PICC_ART7_2_5_FR)
 rule ChangeOfRemedyWhenUnenforceable(o: Obligation, c: Contract, p: Party, other: Party) defeasible {
     label en official "Article 7.2.5(2). Where the decision of a court for performance of a non-monetary obligation cannot be enforced, the aggrieved party may invoke any other remedy";
     when obligation_of(o, c, p)

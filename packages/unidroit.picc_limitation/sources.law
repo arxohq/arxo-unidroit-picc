@@ -48,6 +48,23 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     local_path "sources/picc-en/en.txt";
 }
 
+edition PICC_2016_FR of PICC_2016 {
+    label en official "French black-letter rules, 2016 edition";
+    language fr;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_FR_TEXT of PICC_2016_FR {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-French-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:cd037861ab3255634993de457b14556dd2a7a7d38fb37270cb4618dfd2304907";
+    local_path "sources/picc-fr/fr.txt";
+}
+
 // Article 10.1 (English black-letter rules)
 fragment PICC_ART10_1_EN in PICC_2016_EN {
     kind article;
@@ -61,6 +78,21 @@ under the Principles, as a condition for the acquisition or exercise of its righ
 notice to the other party or to perform any act other than the institution of legal
 proceedings.""";
     content_hash "sha256:3e96ab7f9e8930ff8098ec96425f9648ad34b92064ce8d5afa7d239c191195c1";
+}
+
+// Article 10.1 (French black-letter rules)
+fragment PICC_ART10_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_1";
+    text fr official """ARTICLE 10.1
+(Portée du Chapitre)
+1) Les droits régis par ces Principes ne peuvent plus être exercés après l’expiration
+d’un certain laps de temps, appelé “délai de prescription”, selon les règles du présent
+Chapitre.
+2) Le présent Chapitre ne régit pas le délai pendant lequel, en vertu de ces
+Principes, une partie doit, pour acquérir ou exercer son droit, adresser une notification à
+l’autre partie ou accomplir un acte autre que l’engagement d’une procédure.""";
+    content_hash "sha256:08080abb132fd8d9196a1a702f8fe3f48a1ee5c98daab2551300846e09a147f9";
 }
 
 // Article 10.2 (English black-letter rules)
@@ -82,6 +114,25 @@ after the day the right can be exercised.
     content_hash "sha256:901a757439ad1830c6eb68ae398663fb0e9f62f05c7bb065733d287dbc0f1393";
 }
 
+// Article 10.2 (French black-letter rules)
+fragment PICC_ART10_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_2";
+    text fr official """ARTICLE 10.2
+(Délais de prescription)
+1) Le délai de prescription de droit commun est de trois ans à partir du lendemain
+du jour où le créancier a connu ou devait connaître les faits lui permettant d’exercer son
+droit.
+2) En toute hypothèse, le délai maximum de prescription est de dix ans à partir du
+lendemain du jour où le droit pouvait être exercé.
+1)
+2)
+a)
+b)
+c)""";
+    content_hash "sha256:d445d12f691725afa80c2a9b5e0c9a9cb56bdfc98282e5a98b08409cfd8beddb";
+}
+
 // Article 10.3 (English black-letter rules)
 fragment PICC_ART10_3_EN in PICC_2016_EN {
     kind article;
@@ -96,6 +147,20 @@ extend the maximum limitation period to more than fifteen years.""";
     content_hash "sha256:b993f9a4e9720da7cfb0f86f2d1a1998528deb844a1b6e2406021431f8601c40";
 }
 
+// Article 10.3 (French black-letter rules)
+fragment PICC_ART10_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_3";
+    text fr official """ARTICLE 10.3
+(Modification des délais de prescription par les parties)
+Les parties peuvent modifier les délais de prescription.
+Toutefois, elles ne peuvent pas
+abréger le délai de prescription de droit commun à moins d’un an;
+abréger le délai maximum de prescription à moins de 4 ans;
+allonger le délai maximum de prescription à plus de 15 ans.""";
+    content_hash "sha256:3b6ff5f867f41c3d7300be43e3608ab60c1923fb76317e14d4c3e59658d26487";
+}
+
 // Article 10.4 (English black-letter rules)
 fragment PICC_ART10_4_EN in PICC_2016_EN {
     kind article;
@@ -108,6 +173,22 @@ after the day of the acknowledgement.
 (2) The maximum limitation period does not begin to run again, but may be
 exceeded by the beginning of a new general limitation period under Article 10.2(1).""";
     content_hash "sha256:e31a71259527a900fb92e30096ecbde55b98c2d5ce873d2d0a0a1fa23be8ae7b";
+}
+
+// Article 10.4 (French black-letter rules)
+fragment PICC_ART10_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_4";
+    text fr official """ARTICLE 10.4
+(Nouveau délai de prescription
+par reconnaissance du droit)
+1) Lorsque, avant l’expiration du délai de prescription de droit commun, le
+débiteur reconnaît le droit du créancier, un nouveau délai de prescription de droit commun
+court à partir du lendemain du jour de la reconnaissance.
+2) Le délai maximum de prescription demeure inchangé, mais il peut être dépassé
+par le cours d’un nouveau délai de prescription de droit commun visé au paragraphe 1 de
+l’article 10.2.""";
+    content_hash "sha256:e1043053dbc468ef3e862af2d834570c6a5990ce6fbd43726d42bee96cebe35a";
 }
 
 // Article 10.5 (English black-letter rules)
@@ -129,6 +210,30 @@ have been otherwise terminated.""";
     content_hash "sha256:63fab4a21b6dcbbd26a073f5691fee96cf25a27745eadd7970eef2b77c1f6fae";
 }
 
+// Article 10.5 (French black-letter rules)
+fragment PICC_ART10_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_5";
+    text fr official """ARTICLE 10.5
+(Suspension par les procédures judiciaires)
+1)
+Le délai de prescription est suspendu
+a)
+lorsque le créancier, en intentant une procédure judiciaire ou au cours d’une
+procédure judiciaire déjà engagée, accomplit tout acte qui, d’après la loi de la juridiction
+saisie, est considéré comme faisant valoir son droit envers le débiteur;
+b)
+lorsque le créancier, en cas d’insolvabilité du débiteur, fait valoir son droit dans
+la procédure d’insolvabilité; ou
+c)
+lorsque le créancier, en cas de procédure en dissolution de l’entité débitrice, fait
+valoir son droit dans cette procédure.
+2)
+La suspension se prolonge jusqu’à ce qu’une décision définitive ait été rendue
+ou que la procédure ait pris fin d’une autre façon.""";
+    content_hash "sha256:bf4dc25c5cbbf05ba27a035646329ab8befbb14733e8043ebd42150692bd1d2b";
+}
+
 // Article 10.6 (English black-letter rules)
 fragment PICC_ART10_6_EN in PICC_2016_EN {
     kind article;
@@ -147,6 +252,25 @@ proceedings have been otherwise terminated.""";
     content_hash "sha256:99cbc814708fe65ffa56095087498cbbd4ebf55f191c00afcf28bf2f1a73a7c7";
 }
 
+// Article 10.6 (French black-letter rules)
+fragment PICC_ART10_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_6";
+    text fr official """ARTICLE 10.6
+(Suspension par les procédures arbitrales)
+1)
+Le délai de prescription est suspendu lorsque le créancier, en intentant une
+procédure arbitrale ou au cours d’une procédure arbitrale déjà engagée, accomplit tout
+acte qui, d’après la loi du tribunal arbitral saisi, est considéré comme faisant valoir son
+droit envers le débiteur. En l’absence de règlement de la procédure arbitrale ou de
+dispositions déterminant la date exacte du début de la procédure arbitrale, cette procédure
+est réputée engagée à la date à laquelle le débiteur reçoit une requête en arbitrage.
+2)
+La suspension se prolonge jusqu’à ce qu’une décision obligatoire ait été rendue
+ou que la procédure ait pris fin d’une autre façon.""";
+    content_hash "sha256:9aecdaca29fa1d8b88c1ae18755d318e704ad996473cc3e250e223e5e04b3166";
+}
+
 // Article 10.7 (English black-letter rules)
 fragment PICC_ART10_7_EN in PICC_2016_EN {
     kind article;
@@ -157,6 +281,18 @@ The provisions of Articles 10.5 and 10.6 apply with appropriate modifications to
 other proceedings whereby the parties request a third person to assist them in their
 attempt to reach an amicable settlement of their dispute.""";
     content_hash "sha256:58deefc79147134fb39f67be3b69d64cca277acdc3d5c9130b1445371e43bec9";
+}
+
+// Article 10.7 (French black-letter rules)
+fragment PICC_ART10_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_7";
+    text fr official """ARTICLE 10.7
+(Règlements alternatifs des différends)
+Les dispositions des articles 10.5 et 10.6 s’appliquent, avec les adaptations
+nécessaires, aux autres procédures dans lesquelles les parties demandent à une tierce
+personne de les aider dans leurs efforts pour parvenir à un règlement amiable du litige.""";
+    content_hash "sha256:ba755b022324894bb6094b148b17d2a9c1a3b2247ba44eb467de329429d91517";
 }
 
 // Article 10.8 (English black-letter rules)
@@ -177,6 +313,26 @@ position. The additional one-year period under paragraph (1) applies accordingly
     content_hash "sha256:b9a54dd91dfc79ec4bf98444cb5b58126378b1e1786a32452fab0a98aa96a7cb";
 }
 
+// Article 10.8 (French black-letter rules)
+fragment PICC_ART10_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_8";
+    text fr official """ARTICLE 10.8
+(Suspension en cas de force majeure,
+de décès ou d’incapacité)
+1) Lorsque, par un événement échappant à son contrôle et qu’il ne pouvait ni
+prévenir ni surmonter, le créancier a été empêché d’arrêter le cours d’un délai de
+prescription en vertu des articles précédents, le délai de prescription de droit commun est
+suspendu et il ne pourra prendre fin avant une année après que l’empêchement ait cessé
+d’exister.
+2) Lorsque l’empêchement résulte de l’incapacité ou du décès du créancier ou du
+débiteur, la suspension cesse lorsqu’a été désigné un représentant de la personne incapable
+ou un exécuteur de la personne décédée ou de sa succession, ou lorsqu’un héritier aura
+repris le patrimoine de la personne décédée; le délai additionnel d’un an prévu au
+paragraphe précédent est alors applicable.""";
+    content_hash "sha256:a3798a058ee6aa7412f1921f609a887379c33efea3487ade8281e79e671662db";
+}
+
 // Article 10.9 (English black-letter rules)
 fragment PICC_ART10_9_EN in PICC_2016_EN {
     kind article;
@@ -191,6 +347,23 @@ limitation period for that right has been asserted.""";
     content_hash "sha256:88a854749716a48eb1dce761802f51e9c586a310ee9e0377758d0973b7ecd006";
 }
 
+// Article 10.9 (French black-letter rules)
+fragment PICC_ART10_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_9";
+    text fr official """ARTICLE 10.9
+(Effet de l’expiration du délai)
+1)
+L’expiration du délai de prescription n’éteint pas le droit.
+2)
+L’expiration du délai de prescription n’a d’effet que si le débiteur l’invoque
+comme moyen de défense.
+3)
+Un droit peut toujours être invoqué comme moyen de défense, même si
+l’expiration du délai de prescription a été soulevée.""";
+    content_hash "sha256:234d9a881e76dcd6d82c945bdbc2c3b643e0a5d6f6d9b4c2a2d8d58296ecfdcd";
+}
+
 // Article 10.10 (English black-letter rules)
 fragment PICC_ART10_10_EN in PICC_2016_EN {
     kind article;
@@ -202,6 +375,17 @@ expiration of the limitation period.""";
     content_hash "sha256:9ca2c723d947b3a87453fcc025bc1b9fccccf79568af6805178a40c27dad1ec3";
 }
 
+// Article 10.10 (French black-letter rules)
+fragment PICC_ART10_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_10";
+    text fr official """ARTICLE 10.10
+(Droit de compensation)
+Le créancier peut exercer le droit de compensation jusqu’à ce que le débiteur ait
+soulevé l’expiration du délai de prescription.""";
+    content_hash "sha256:670ae1429309e42722b6b2d5385150690a606e0c6473a281d09cf167427629b0";
+}
+
 // Article 10.11 (English black-letter rules)
 fragment PICC_ART10_11_EN in PICC_2016_EN {
     kind article;
@@ -211,4 +395,15 @@ fragment PICC_ART10_11_EN in PICC_2016_EN {
 Where there has been performance in order to discharge an obligation, there is no
 right of restitution merely because the limitation period has expired.""";
     content_hash "sha256:ab4522d7bdffdd8286be68b952ec76de9a3a9c7c80b017723a49fe222093c9ef";
+}
+
+// Article 10.11 (French black-letter rules)
+fragment PICC_ART10_11_FR in PICC_2016_FR {
+    kind article;
+    locator "article/10_11";
+    text fr official """ARTICLE 10.11
+(Restitution)
+Lorsqu’une prestation a été fournie en exécution d’une obligation, la seule expiration
+du délai de prescription n’ouvre aucun droit à restitution.""";
+    content_hash "sha256:f8c5a9ef7c364fe784ee5e3e9fb3031f3c86f929e2728db44a969cb91ab69631";
 }

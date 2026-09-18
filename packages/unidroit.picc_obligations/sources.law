@@ -48,6 +48,23 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     local_path "sources/picc-en/en.txt";
 }
 
+edition PICC_2016_FR of PICC_2016 {
+    label en official "French black-letter rules, 2016 edition";
+    language fr;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_FR_TEXT of PICC_2016_FR {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-French-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:cd037861ab3255634993de457b14556dd2a7a7d38fb37270cb4618dfd2304907";
+    local_path "sources/picc-fr/fr.txt";
+}
+
 // Article 8.1 (English black-letter rules)
 fragment PICC_ART8_1_EN in PICC_2016_EN {
     kind article;
@@ -66,6 +83,28 @@ ascertained as to its existence or to its amount.""";
     content_hash "sha256:5354ab6044dec82e75b970f8d01c92e7049356e2d451ec03b852c6e6e96e23f7";
 }
 
+// Article 8.1 (French black-letter rules)
+fragment PICC_ART8_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/8_1";
+    text fr official """ARTICLE 8.1
+(Conditions de la compensation)
+1)
+Lorsque deux personnes sont réciproquement débitrices de sommes d’argent ou
+de dettes de même nature, l’une d’entre elles (“la première partie”) peut compenser la
+dette qu’elle a envers son créancier (“l’autre partie”) si, au moment de la compensation,
+a)
+la première partie a le droit de payer sa dette;
+b)
+la dette de l’autre partie est certaine, dans son existence et dans son montant, et
+est exigible.
+2)
+Si les dettes des deux parties proviennent du même contrat, la première partie
+peut compenser sa dette avec une dette de l’autre partie, qui n’est pas certaine dans son
+existence ou dans son montant.""";
+    content_hash "sha256:260ad2dadad7736fac3ca2656e2209f3a6e9fd23f29480207ea939ae78433a27";
+}
+
 // Article 8.2 (English black-letter rules)
 fragment PICC_ART8_2_EN in PICC_2016_EN {
     kind article;
@@ -78,6 +117,19 @@ have not agreed that the first party shall pay only in a specified currency.""";
     content_hash "sha256:8734fa0ee7351393a8d3efb6e572376a8d3a9ebab4fc196d703b25df2076fe60";
 }
 
+// Article 8.2 (French black-letter rules)
+fragment PICC_ART8_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/8_2";
+    text fr official """ARTICLE 8.2
+(Compensation de dettes en monnaie étrangère)
+Lorsque des dettes de sommes d’argent doivent être payées dans des monnaies
+différentes, la compensation ne peut s’exercer que si les deux monnaies sont librement
+convertibles et si les parties n’ont pas convenu que la première partie paierait sa dette
+exclusivement dans une monnaie déterminée.""";
+    content_hash "sha256:2e56972de47dd57102f801af430f120756450e0496977ce1432f815262cc88c4";
+}
+
 // Article 8.3 (English black-letter rules)
 fragment PICC_ART8_3_EN in PICC_2016_EN {
     kind article;
@@ -86,6 +138,16 @@ fragment PICC_ART8_3_EN in PICC_2016_EN {
 (Set-off by notice)
 The right of set-off is exercised by notice to the other party.""";
     content_hash "sha256:5f2e260bf786e65f69af24067d7feb4cc16d09d4aeb7783ca88d2357453199cc";
+}
+
+// Article 8.3 (French black-letter rules)
+fragment PICC_ART8_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/8_3";
+    text fr official """ARTICLE 8.3
+(Compensation par notification)
+La compensation s’exerce par notification à l’autre partie.""";
+    content_hash "sha256:62a702e72e7ef269eef7fcd2bed3f8ca88ae2b3d7367c7a2b13a3924c6e6a571";
 }
 
 // Article 8.4 (English black-letter rules)
@@ -102,6 +164,23 @@ obligations proportionally.""";
     content_hash "sha256:53a6756d64f1a7426c4a6d27d25fc090c3f002e591151ca29d288f8eec2b003c";
 }
 
+// Article 8.4 (French black-letter rules)
+fragment PICC_ART8_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/8_4";
+    text fr official """ARTICLE 8.4
+(Contenu de la notification)
+1)
+La notification doit indiquer, de manière suffisamment précise, les dettes
+concernées par la compensation.
+2)
+Si la notification n’indique pas les dettes à l’égard desquelles la compensation
+est exercée, l’autre partie peut, dans un délai raisonnable, déclarer à la première partie la
+ou les dettes qu’elle entend compenser. A défaut d’une telle déclaration, la compensation
+s’exerce proportionnellement à l’égard de toutes les dettes.""";
+    content_hash "sha256:c5ef9fbd716dcefc0c103be60ec75037f5f024a94fbaf7f940668416179e21af";
+}
+
 // Article 8.5 (English black-letter rules)
 fragment PICC_ART8_5_EN in PICC_2016_EN {
     kind article;
@@ -115,6 +194,19 @@ amount of the lesser obligation.
     content_hash "sha256:483f3bf9bf8396d55c18cd928751763cb88ce1fb4bcbc245bd4fb64fafb4df04";
 }
 
+// Article 8.5 (French black-letter rules)
+fragment PICC_ART8_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/8_5";
+    text fr official """ARTICLE 8.5
+(Effets de la compensation)
+1) La compensation éteint les dettes.
+2) Si les dettes diffèrent dans leur montant, la compensation les éteint à
+concurrence du montant de la dette la moins élevée.
+3) La compensation prend effet au jour de la notification.""";
+    content_hash "sha256:50d155723438bdc470b32e83e97a467c7ce009a75e1f317061ef5a0ace25e083";
+}
+
 // Article 9.1.1 (English black-letter rules)
 fragment PICC_ART9_1_1_EN in PICC_2016_EN {
     kind article;
@@ -126,6 +218,19 @@ fragment PICC_ART9_1_1_EN in PICC_2016_EN {
 the assignor’s right to payment of a monetary sum or other performance from a third
 person (“the obligor”).""";
     content_hash "sha256:7f65d81f1b187b9058eb6bb3db3b1fb3553bd27846569582c956d1392b5af62d";
+}
+
+// Article 9.1.1 (French black-letter rules)
+fragment PICC_ART9_1_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_1";
+    text fr official """ARTICLE 9.1.1
+(Définitions)
+Une “cession de créance” est le transfert par convention, effectué par une personne
+(le “cédant”) à une autre personne (le “cessionnaire”), d’une créance du cédant contre un
+tiers (le “débiteur”), relative au paiement d’une somme d’argent ou à l’exécution d’une
+autre prestation. Le transfert peut être fait à titre de garantie.""";
+    content_hash "sha256:2e9e5517fdaf55f775d54dc18ff20c8f68a06caa399cd10255c228dadea5edc8";
 }
 
 // Article 9.1.2 (English black-letter rules)
@@ -142,6 +247,20 @@ instruments, or
     content_hash "sha256:82a7867f63f00adab7799898f7b0aa6a40b89b30fca191dbcb3008eeeaf7e9dc";
 }
 
+// Article 9.1.2 (French black-letter rules)
+fragment PICC_ART9_1_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_2";
+    text fr official """ARTICLE 9.1.2
+(Exclusions)
+La présente Section ne régit pas les transferts réalisés selon les règles particulières
+applicables aux transferts:
+a) d’instruments tels que des titres négociables, des titres de propriété et des
+instruments financiers, ou
+b) de créances dans le cadre d’un transfert d’entreprise.""";
+    content_hash "sha256:f39e9329acd82ea93cc029d70122409ca750c719701369a816dce1068c65b100";
+}
+
 // Article 9.1.3 (English black-letter rules)
 fragment PICC_ART9_1_3_EN in PICC_2016_EN {
     kind article;
@@ -151,6 +270,17 @@ fragment PICC_ART9_1_3_EN in PICC_2016_EN {
 A right to non-monetary performance may be assigned only if the assignment does
 not render the obligation significantly more burdensome.""";
     content_hash "sha256:1dd6ac17bb31ec1230aca2348bd6b597b3cba0ea01b6901f5620a21368c72f61";
+}
+
+// Article 9.1.3 (French black-letter rules)
+fragment PICC_ART9_1_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_3";
+    text fr official """ARTICLE 9.1.3
+(Cessibilité de créances non pécuniaires)
+Une créance relative à l’exécution d’une prestation non pécuniaire ne peut être cédée
+que si la cession ne rend pas l’obligation substantiellement plus onéreuse.""";
+    content_hash "sha256:631b4a461a20812f78f4bd2845ff810b9913e64221fecab5cd325a0aa616dfc3";
 }
 
 // Article 9.1.4 (English black-letter rules)
@@ -165,6 +295,22 @@ and the assignment does not render the obligation significantly more burdensome.
     content_hash "sha256:0a972829315bd8799974e1c0d42a4d4067607b403b962573dc9793145da9cea2";
 }
 
+// Article 9.1.4 (French black-letter rules)
+fragment PICC_ART9_1_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_4";
+    text fr official """ARTICLE 9.1.4
+(Cession partielle)
+1)
+Une créance relative au paiement d’une somme d’argent peut être cédée
+partiellement.
+2)
+Une créance relative à l’exécution d’une prestation non pécuniaire ne peut être
+cédée partiellement que si elle est divisible et si la cession ne rend pas l’obligation
+substantiellement plus onéreuse.""";
+    content_hash "sha256:b554d62250673487029ee01c67c31e19edddc7846b1a6ebe86f0c94455fc418b";
+}
+
 // Article 9.1.5 (English black-letter rules)
 fragment PICC_ART9_1_5_EN in PICC_2016_EN {
     kind article;
@@ -175,6 +321,17 @@ A future right is deemed to be transferred at the time of the agreement, provide
 right, when it comes into existence, can be identified as the right to which the
 assignment relates.""";
     content_hash "sha256:b294f3ecf852359c77ff23d4358e9ae179c30424d61c1f5f6c7a9c618b193393";
+}
+
+// Article 9.1.5 (French black-letter rules)
+fragment PICC_ART9_1_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_5";
+    text fr official """ARTICLE 9.1.5
+(Créances futures)
+Une créance future est réputée cédée au moment de la convention, à condition que la
+créance, lorsqu’elle naît, puisse être identifiée comme la créance cédée.""";
+    content_hash "sha256:50058669a4742317ea165f8fd6b7c09d1ee49eebe94086932d9e4f3640300190";
 }
 
 // Article 9.1.6 (English black-letter rules)
@@ -189,6 +346,18 @@ assignment or when they come into existence.""";
     content_hash "sha256:fafcd030d6638d51337bb33117c0d5038751ffb5dda8f8649f37a63c900b6b49";
 }
 
+// Article 9.1.6 (French black-letter rules)
+fragment PICC_ART9_1_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_6";
+    text fr official """ARTICLE 9.1.6
+(Créances cédées sans désignation individuelle)
+Plusieurs créances peuvent être cédées ensemble sans désignation individuelle, à
+condition que ces créances puissent être identifiées comme les créances cédées au moment
+de la cession ou lorsque les créances viennent à naître.""";
+    content_hash "sha256:fab5229b998ec85862b404fa73ce34a6d29303ac50fbe684d60078672bb9c528";
+}
+
 // Article 9.1.7 (English black-letter rules)
 fragment PICC_ART9_1_7_EN in PICC_2016_EN {
     kind article;
@@ -201,6 +370,21 @@ without notice to the obligor.
     content_hash "sha256:dd33187be75c74a203c63bede046c2d5af001d982bf0400e7e791a4655b7093e";
 }
 
+// Article 9.1.7 (French black-letter rules)
+fragment PICC_ART9_1_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_7";
+    text fr official """ARTICLE 9.1.7
+(Convention entre cédant et cessionnaire suffisante)
+1)
+Une créance est cédée par la seule convention entre cédant et cessionnaire, sans
+notification au débiteur.
+2)
+Le consentement du débiteur n’est pas requis, sauf si l’obligation, selon les
+circonstances, revêt un caractère essentiellement personnel.""";
+    content_hash "sha256:110b9a3edc51d5d316ae869042136fdc41ba632b17059aa1d6bed599a61e847e";
+}
+
 // Article 9.1.8 (English black-letter rules)
 fragment PICC_ART9_1_8_EN in PICC_2016_EN {
     kind article;
@@ -210,6 +394,17 @@ fragment PICC_ART9_1_8_EN in PICC_2016_EN {
 The obligor has a right to be compensated by the assignor or the assignee for any
 additional costs caused by the assignment.""";
     content_hash "sha256:581b3d40698f9029e9051cdf3bbdbc162974b3360aa1865a7a68f37a1b638739";
+}
+
+// Article 9.1.8 (French black-letter rules)
+fragment PICC_ART9_1_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_8";
+    text fr official """ARTICLE 9.1.8
+(Frais supplémentaires pour le débiteur)
+Le débiteur a droit à être indemnisé par le cédant ou par le cessionnaire de tous les
+frais supplémentaires occasionnés par la cession.""";
+    content_hash "sha256:5da718fcb3096ebcdcddf225706eb6e921effa1407f0cae8bf44735895de80aa";
 }
 
 // Article 9.1.9 (English black-letter rules)
@@ -230,6 +425,26 @@ then be liable to the obligor for breach of contract.""";
     content_hash "sha256:f2d94d9d3f84b9d3b6275c809fa6e2b42913d83eb3766b10984a76fe433b61d7";
 }
 
+// Article 9.1.9 (French black-letter rules)
+fragment PICC_ART9_1_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_9";
+    text fr official """ARTICLE 9.1.9
+(Clauses d’incessibilité)
+1)
+La cession d’une créance relative au paiement d’une somme d’argent est valable
+malgré l’existence d’un accord entre le cédant et le débiteur limitant ou interdisant une
+telle cession. Toutefois, le cédant peut être responsable envers le débiteur pour
+inexécution du contrat.
+2)
+La cession d’une créance relative à l’exécution d’une autre prestation n’est pas
+valable, si elle enfreint un accord entre le cédant et le débiteur limitant ou interdisant une
+telle cession. Toutefois, la cession est valable si le cessionnaire, au moment de la cession,
+ne connaissait pas et n’aurait pas dû connaître l’existence de cet accord. Dans ce cas, le
+cédant peut être responsable envers le débiteur pour inexécution du contrat.""";
+    content_hash "sha256:9db7c6612a95c35e8208a2cc8fd928d19ddae12d3f02fb597f1fc1fedc9302b9";
+}
+
 // Article 9.1.10 (English black-letter rules)
 fragment PICC_ART9_1_10_EN in PICC_2016_EN {
     kind article;
@@ -243,6 +458,19 @@ assignee.""";
     content_hash "sha256:371460bdcae0b75fd120a62d2e8804d707b365012a66af63272c813dd4c93ab9";
 }
 
+// Article 9.1.10 (French black-letter rules)
+fragment PICC_ART9_1_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_10";
+    text fr official """ARTICLE 9.1.10
+(Notification au débiteur)
+1) Tant que la cession ne lui a pas été notifiée par le cédant ou par le cessionnaire,
+le débiteur se libère en payant le cédant.
+2) Après avoir reçu cette notification, le débiteur ne peut plus se libérer qu’en
+payant le cessionnaire.""";
+    content_hash "sha256:6cdec35c9dfbf5c2980dd27891926064e09c69d40134379f22b0d7bbf1c18b5b";
+}
+
 // Article 9.1.11 (English black-letter rules)
 fragment PICC_ART9_1_11_EN in PICC_2016_EN {
     kind article;
@@ -253,6 +481,17 @@ If the same right has been assigned by the same assignor to two or more successi
 assignees, the obligor is discharged by paying according to the order in which the
 notices were received.""";
     content_hash "sha256:a6e37557864be1f2d08de9bbf7ca3d7ce70289fd31c0a81f225a8c0c46dfb9fe";
+}
+
+// Article 9.1.11 (French black-letter rules)
+fragment PICC_ART9_1_11_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_11";
+    text fr official """ARTICLE 9.1.11
+(Cessions successives)
+Si le cédant cède une même créance à deux ou plusieurs cessionnaires successifs,
+le débiteur se libère en payant selon l’ordre dans lequel les notifications ont été reçues.""";
+    content_hash "sha256:240263440caf0b9ea7c13795bc2785d706d8b9bd539149ed870225233aa630c4";
 }
 
 // Article 9.1.12 (English black-letter rules)
@@ -271,6 +510,23 @@ assignor and indicating that the assignment has taken place.""";
     content_hash "sha256:a7344043bd8f09d81778d9f767362b8952953fee6a7fced30ddd46409f56ecd1";
 }
 
+// Article 9.1.12 (French black-letter rules)
+fragment PICC_ART9_1_12_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_12";
+    text fr official """ARTICLE 9.1.12
+(Preuve suffisante de la cession)
+1) Si la notification de la cession est faite par le cessionnaire, le débiteur peut
+demander au cessionnaire de lui produire, dans un délai raisonnable, une preuve suffisante
+de la réalité de la cession.
+2) Tant qu’il n’a pas reçu cette preuve suffisante, le débiteur peut suspendre le
+paiement.
+3) La notification est sans effet si la preuve suffisante n’est pas produite.
+4) Une preuve suffisante peut, notamment, consister en un écrit émanant du cédant
+et indiquant que la cession a eu lieu.""";
+    content_hash "sha256:55823d16df8af9fbe8afadf7901ab05e0b8ee4294f8ba8c125badbedaf36e3ae";
+}
+
 // Article 9.1.13 (English black-letter rules)
 fragment PICC_ART9_1_13_EN in PICC_2016_EN {
     kind article;
@@ -284,6 +540,20 @@ the obligor against the assignor up to the time notice of assignment was receive
     content_hash "sha256:b990af445f1a33a63ef4a5c46b646baa59ac9ae0e3d38aabc51f4fed81056152";
 }
 
+// Article 9.1.13 (French black-letter rules)
+fragment PICC_ART9_1_13_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_13";
+    text fr official """ARTICLE 9.1.13
+(Moyens de défense et compensation)
+1) Le débiteur peut opposer au cessionnaire tous les moyens de défense qu’il
+pourrait opposer au cédant.
+2) Le débiteur peut exercer à l’encontre du cessionnaire tout droit de compensation
+dont il disposait à l’égard du cédant jusqu’au moment où il a reçu notification de la
+cession.""";
+    content_hash "sha256:25c282337890352ee5963f5a742f3c1afc16ea1a478932c516ba501cf6b4aea9";
+}
+
 // Article 9.1.14 (English black-letter rules)
 fragment PICC_ART9_1_14_EN in PICC_2016_EN {
     kind article;
@@ -295,6 +565,19 @@ The assignment of a right transfers to the assignee:
 respect of the right assigned, and
 (b) all rights securing performance of the right assigned.""";
     content_hash "sha256:d327cb5a6579bc4157bc3269d7f1a7144d4fb94a3e6f48edab92436e2d6351b4";
+}
+
+// Article 9.1.14 (French black-letter rules)
+fragment PICC_ART9_1_14_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_14";
+    text fr official """ARTICLE 9.1.14
+(Droits relatifs à la créance cédée)
+Une cession de créance transfère au cessionnaire:
+a) tous les droits du cédant à un paiement ou à une autre prestation prévus par le
+contrat relatifs à la créance cédée, et
+b) tous les droits garantissant le paiement de la créance cédée.""";
+    content_hash "sha256:810033ec2721bdb18179b02efdbc0486048e928c845926ed96a5180a4a239560";
 }
 
 // Article 9.1.15 (English black-letter rules)
@@ -318,6 +601,30 @@ obligor before notice of the assignment was given.""";
     content_hash "sha256:b4c9e5fa597188e0f2091791b3b67c04f16b25192ab3a626c9a6984a3ffb8f90";
 }
 
+// Article 9.1.15 (French black-letter rules)
+fragment PICC_ART9_1_15_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_1_15";
+    text fr official """ARTICLE 9.1.15
+(Garanties dues par le cédant)
+Sauf indication contraire, le cédant garantit au cessionnaire que:
+a) la créance cédée existe au moment de la cession, à moins qu’il ne s’agisse d’une
+créance future;
+b) le cédant a le droit de céder la créance;
+c)
+la créance n’a pas été précédemment cédée à un autre cessionnaire, et elle est
+libre de tout droit ou prétention d’un tiers;
+d)
+le débiteur ne peut opposer aucun moyen de défense;
+e)
+ni le débiteur ni le cédant n’ont notifié la compensation de la créance cédée et
+ne procéderont pas à une telle notification;
+f)
+le cédant remboursera au cessionnaire tout paiement reçu du débiteur avant que
+la cession ait été notifiée.""";
+    content_hash "sha256:3dae29e86a8467853de1581b8526f34632b6ad86cae576d02149d5062084e130";
+}
+
 // Article 9.2.1 (English black-letter rules)
 fragment PICC_ART9_2_1_EN in PICC_2016_EN {
     kind article;
@@ -333,6 +640,22 @@ obligor assumes the obligation.""";
     content_hash "sha256:661923f2b4e343959d204d4e667d55644289666c292de3e535ec87e42c30d37c";
 }
 
+// Article 9.2.1 (French black-letter rules)
+fragment PICC_ART9_2_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_1";
+    text fr official """ARTICLE 9.2.1
+(Modalités de la cession)
+Une obligation de payer une somme d’argent ou d’exécuter une autre prestation peut
+être cédée par une personne (le “débiteur originaire”) à une autre (le “nouveau débiteur”)
+soit
+a) par une convention entre le débiteur originaire et le nouveau débiteur, sous
+réserve de l’article 9.2.3, soit
+b) par une convention entre le créancier et le nouveau débiteur, par laquelle le
+nouveau débiteur assume l’obligation.""";
+    content_hash "sha256:d6673713bd80f637c34476dbbaec75269c46026ddd22ddb4300a78407b757c5c";
+}
+
 // Article 9.2.2 (English black-letter rules)
 fragment PICC_ART9_2_2_EN in PICC_2016_EN {
     kind article;
@@ -344,6 +667,17 @@ governing transfers of obligations in the course of transferring a business.""";
     content_hash "sha256:287594c54a57d01460b1066cc4180c25f844c9374ddfc6adc1d49dc76906a84d";
 }
 
+// Article 9.2.2 (French black-letter rules)
+fragment PICC_ART9_2_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_2";
+    text fr official """ARTICLE 9.2.2
+(Exclusion)
+La présente Section ne régit pas les cessions de dettes réalisées selon les règles
+particulières applicables aux cessions de dettes dans le cadre d’un transfert d’entreprise.""";
+    content_hash "sha256:49f0c4cb45e0fdd106c32a367d0d80055963070a7530eb9e936b7e48a42e2427";
+}
+
 // Article 9.2.3 (English black-letter rules)
 fragment PICC_ART9_2_3_EN in PICC_2016_EN {
     kind article;
@@ -353,6 +687,17 @@ fragment PICC_ART9_2_3_EN in PICC_2016_EN {
 The transfer of an obligation by an agreement between the original obligor and the
 new obligor requires the consent of the obligee.""";
     content_hash "sha256:2107ccc2daee8ba5be2a4e4beb50ff46708919f6626f3f6d9bca69c803893c1b";
+}
+
+// Article 9.2.3 (French black-letter rules)
+fragment PICC_ART9_2_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_3";
+    text fr official """ARTICLE 9.2.3
+(Exigence du consentement du créancier à la cession)
+La cession d’une dette par convention entre le débiteur originaire et le nouveau
+débiteur requiert le consentement du créancier.""";
+    content_hash "sha256:eb062ecf14da3305c3b42c708174d3d9f8a74cdada7321f949ac194dcdd38bdb";
 }
 
 // Article 9.2.4 (English black-letter rules)
@@ -369,6 +714,19 @@ obligee acknowledges it.
     content_hash "sha256:baf10bd1f065976470cbc8420b95a5f83f6c5e05d488f219a4a8429ebc7c5a71";
 }
 
+// Article 9.2.4 (French black-letter rules)
+fragment PICC_ART9_2_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_4";
+    text fr official """ARTICLE 9.2.4
+(Consentement anticipé du créancier)
+1) Le créancier peut donner son consentement de manière anticipée.
+2) Si le créancier a donné son consentement de manière anticipée, la cession de la
+dette produit ses effets lorsque la cession est notifiée au créancier ou lorsque le créancier
+la reconnaît.""";
+    content_hash "sha256:dac643f8a8e47abf5898374c0c0de716da75b941dd514c386c262c25ed12d96a";
+}
+
 // Article 9.2.5 (English black-letter rules)
 fragment PICC_ART9_2_5_EN in PICC_2016_EN {
     kind article;
@@ -381,6 +739,20 @@ obligor does not perform properly.
 (3) Otherwise the original obligor and the new obligor are jointly and severally
 liable.""";
     content_hash "sha256:3ef4a0c33a1598929bdabda451ff8f321247468aef46e92a35f84a60ce80cb1f";
+}
+
+// Article 9.2.5 (French black-letter rules)
+fragment PICC_ART9_2_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_5";
+    text fr official """ARTICLE 9.2.5
+(Libération du débiteur originaire)
+1) Le créancier peut libérer le débiteur originaire.
+2) Le créancier peut également conserver le débiteur originaire comme débiteur
+pour le cas où le nouveau débiteur n’exécuterait pas correctement son obligation.
+3) En tout autre cas, le débiteur originaire et le nouveau débiteur sont engagés
+solidairement.""";
+    content_hash "sha256:9c8cea8b4c30befe2de305935835fd05fae26ebacffb405954ab1f55ef195cf4";
 }
 
 // Article 9.2.6 (English black-letter rules)
@@ -396,6 +768,19 @@ circumstances has an essentially personal character.
     content_hash "sha256:a5244ef218831aeff47d8e0a33ad4c4cc9a33b3f97f4612ec9ec4739cd030c66";
 }
 
+// Article 9.2.6 (French black-letter rules)
+fragment PICC_ART9_2_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_6";
+    text fr official """ARTICLE 9.2.6
+(Exécution par un tiers)
+1) Sans le consentement du créancier, le débiteur peut convenir avec une autre
+personne que cette dernière exécutera l’obligation à la place du débiteur, à moins que
+l’obligation, selon les circonstances, ne revête un caractère essentiellement personnel.
+2) Le créancier conserve son recours contre le débiteur.""";
+    content_hash "sha256:65748c9b8e4e342b54e2e2a59ef14c6d68b1f67038405608d9c9b3faf65744be";
+}
+
 // Article 9.2.7 (English black-letter rules)
 fragment PICC_ART9_2_7_EN in PICC_2016_EN {
     kind article;
@@ -407,6 +792,19 @@ obligor could assert against the obligee.
 (2) The new obligor may not exercise against the obligee any right of set-off
 available to the original obligor against the obligee.""";
     content_hash "sha256:05e12cbfa95b38c9536fb2880f4c1dd68b598e280d4bcc0adf8c766ab732f3c2";
+}
+
+// Article 9.2.7 (French black-letter rules)
+fragment PICC_ART9_2_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_7";
+    text fr official """ARTICLE 9.2.7
+(Moyens de défense et compensation)
+1) Le nouveau débiteur peut opposer au créancier tous les moyens de défense que
+le débiteur originaire pourrait opposer au créancier.
+2) Le nouveau débiteur ne peut pas exercer à l’encontre du créancier un droit de
+compensation dont disposait le débiteur originaire à l’égard du créancier.""";
+    content_hash "sha256:913710213e77b8ea350833a51d1bc15596bec4cc5e417beea8d00b528be64af5";
 }
 
 // Article 9.2.8 (English black-letter rules)
@@ -428,6 +826,25 @@ and the new obligor.""";
     content_hash "sha256:2fb728694e6eff3ad564d4211c13b70fa4a18d541c33a0b6c8900ebca57ecede";
 }
 
+// Article 9.2.8 (French black-letter rules)
+fragment PICC_ART9_2_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_2_8";
+    text fr official """ARTICLE 9.2.8
+(Droits relatifs à la dette cédée)
+1) Le créancier peut se prévaloir à l’égard du nouveau débiteur de tous ses droits à
+un paiement ou à une autre prestation prévus par le contrat relativement à la dette cédée.
+2) Si le débiteur originaire est libéré en vertu du paragraphe 1 de l’article 9.2.5,
+toute personne autre que le nouveau débiteur ayant garanti le paiement de la dette est
+libérée, à moins que cette autre personne n’accepte de maintenir la garantie en faveur du
+créancier.
+3) La libération du débiteur originaire entraîne également l’extinction de toute
+sûreté donnée par le débiteur originaire au créancier en garantie de l’exécution de
+l’obligation, à moins que la sûreté ne porte sur un bien transféré dans le cadre d’une
+opération intervenue entre le débiteur originaire et le nouveau débiteur.""";
+    content_hash "sha256:695d9d06820b135ec157414bbe1785473c6fe519d3c7685daf887cad6e2ae4b4";
+}
+
 // Article 9.3.1 (English black-letter rules)
 fragment PICC_ART9_3_1_EN in PICC_2016_EN {
     kind article;
@@ -438,6 +855,18 @@ fragment PICC_ART9_3_1_EN in PICC_2016_EN {
 “assignor”) to another person (the “assignee”) of the assignor’s rights and obligations
 arising out of a contract with another person (the “other party”).""";
     content_hash "sha256:4e89126106a88acb3f8d78e62b90b414af384be6ea4f742bbb75ae422f987bd0";
+}
+
+// Article 9.3.1 (French black-letter rules)
+fragment PICC_ART9_3_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_3_1";
+    text fr official """ARTICLE 9.3.1
+(Définitions)
+Une “cession de contrat” est le transfert par convention effectué par une personne (le
+“cédant”) à une autre (le “cessionnaire”) des droits et obligations du cédant nés d’un
+contrat avec une autre personne (l’ “autre partie”).""";
+    content_hash "sha256:d4be8bf1beba19170d0c2ed46d109770e2a2a3bec4f5aa9b6f0ac3e267aad8ec";
 }
 
 // Article 9.3.2 (English black-letter rules)
@@ -451,6 +880,17 @@ rules governing transfers of contracts in the course of transferring a business.
     content_hash "sha256:b93dfaa86861f8dd82c6f4ee6076f7ebdff9530034426bfdde356fa26c5fb06e";
 }
 
+// Article 9.3.2 (French black-letter rules)
+fragment PICC_ART9_3_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_3_2";
+    text fr official """ARTICLE 9.3.2
+(Exclusion)
+La présente Section ne régit pas les cessions de contrats réalisées selon les règles
+particulières applicables aux cessions de contrats dans le cadre d’un transfert d’entreprise.""";
+    content_hash "sha256:397e5a6136277e0d1579c971654c7a4136c23532c1825339424b4271726eb693";
+}
+
 // Article 9.3.3 (English black-letter rules)
 fragment PICC_ART9_3_3_EN in PICC_2016_EN {
     kind article;
@@ -460,6 +900,16 @@ fragment PICC_ART9_3_3_EN in PICC_2016_EN {
 The assignment of a contract requires the consent of the other party.
 (1)""";
     content_hash "sha256:4f2ad457f9b4d56ed58e7a5b0c8e3fe9cf8ddff23736361dfef4f0af13cb1064";
+}
+
+// Article 9.3.3 (French black-letter rules)
+fragment PICC_ART9_3_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_3_3";
+    text fr official """ARTICLE 9.3.3
+(Exigence du consentement de l’autre partie)
+La cession d’un contrat requiert le consentement de l’autre partie.""";
+    content_hash "sha256:229f2dc68012792fcebf852cd157d3cd387b772878d2e4f67370f08e1764dac0";
 }
 
 // Article 9.3.4 (English black-letter rules)
@@ -475,6 +925,19 @@ when the other party acknowledges it.""";
     content_hash "sha256:743654937be296cb2bd3ff2b7e0eec53e67926eb5043e6645491dde27230a2d9";
 }
 
+// Article 9.3.4 (French black-letter rules)
+fragment PICC_ART9_3_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_3_4";
+    text fr official """ARTICLE 9.3.4
+(Consentement anticipé de l’autre partie)
+1) L’autre partie peut donner son consentement de manière anticipée.
+2) Si l’autre partie a donné son consentement de manière anticipée, la cession du
+contrat produit ses effets lorsque la cession est notifiée à l’autre partie ou lorsque l’autre
+partie la reconnaît.""";
+    content_hash "sha256:345adc53dac1014d64cb5b5d026bdb8d4e402c1b6910560dfe8507aa9a3fbab6";
+}
+
 // Article 9.3.5 (English black-letter rules)
 fragment PICC_ART9_3_5_EN in PICC_2016_EN {
     kind article;
@@ -486,6 +949,19 @@ fragment PICC_ART9_3_5_EN in PICC_2016_EN {
 does not perform properly.
 (3) Otherwise the assignor and the assignee are jointly and severally liable.""";
     content_hash "sha256:81e85e98644ae28454368e43238318ac297bd16743922a8762e0f4881ca4e52e";
+}
+
+// Article 9.3.5 (French black-letter rules)
+fragment PICC_ART9_3_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_3_5";
+    text fr official """ARTICLE 9.3.5
+(Libération du cédant)
+1) L’autre partie peut libérer le cédant.
+2) L’autre partie peut également conserver le cédant comme débiteur pour le cas
+où le cessionnaire n’exécuterait pas correctement ses obligations.
+3) En tout autre cas, le cédant et le cessionnaire sont engagés solidairement.""";
+    content_hash "sha256:5354be92f8deeca47c7e2eb10bfdbd26c3f793a4f29bd8205bbf6f30cea27358";
 }
 
 // Article 9.3.6 (English black-letter rules)
@@ -501,6 +977,21 @@ obligations, Article 9.2.7 applies accordingly.""";
     content_hash "sha256:c73830be3a59dc8ac7e7e7d507bfe0b95578069bc724273d7b35ace442ca17b5";
 }
 
+// Article 9.3.6 (French black-letter rules)
+fragment PICC_ART9_3_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_3_6";
+    text fr official """ARTICLE 9.3.6
+(Moyens de défense et compensation)
+1)
+Dans la mesure où la cession d’un contrat comporte une cession de créances,
+l’article 9.1.13 est alors applicable.
+2)
+Dans la mesure où la cession d’un contrat comporte une cession de dettes,
+l’article 9.2.7 est alors applicable.""";
+    content_hash "sha256:7a2ca233bf47eee44d364147a68d4db923c273902e9852e604823b2d4178b825";
+}
+
 // Article 9.3.7 (English black-letter rules)
 fragment PICC_ART9_3_7_EN in PICC_2016_EN {
     kind article;
@@ -512,6 +1003,21 @@ rights, Article 9.1.14 applies accordingly.
 (2) To the extent that the assignment of a contract involves a transfer of
 obligations, Article 9.2.8 applies accordingly.""";
     content_hash "sha256:788c822fea35c2fa502f479cff57eb58d7011e3d5829fcfe5882b62f5867e48e";
+}
+
+// Article 9.3.7 (French black-letter rules)
+fragment PICC_ART9_3_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/9_3_7";
+    text fr official """ARTICLE 9.3.7
+(Droits transférés avec le contrat)
+1)
+Dans la mesure où la cession d’un contrat comporte une cession de créances,
+l’article 9.1.14 est alors applicable.
+2)
+Dans la mesure où la cession d’un contrat comporte une cession de dettes,
+l’article 9.2.8 est alors applicable.""";
+    content_hash "sha256:a36b4f8df0a948a9792cbc151e6841c3fa931af7321af9a219332454178163db";
 }
 
 // Article 11.1.1 (English black-letter rules)
@@ -527,6 +1033,19 @@ obligation;
     content_hash "sha256:544115badd8f95df2a8dba9acfe7cae5f15e3561b750824d4fe9654c9c4e4dc9";
 }
 
+// Article 11.1.1 (French black-letter rules)
+fragment PICC_ART11_1_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_1";
+    text fr official """ARTICLE 11.1.1
+(Définitions)
+Lorsque plusieurs débiteurs sont tenus de la même obligation envers un créancier:
+a) les obligations sont solidaires lorsque chaque débiteur est tenu pour le tout;
+b) les obligations sont séparées lorsque chaque débiteur est tenu seulement pour
+sa part.""";
+    content_hash "sha256:3d30d05210e9d8641b4792ced8c96fe271c2b0e97290876dc565188fb64b6942";
+}
+
 // Article 11.1.2 (English black-letter rules)
 fragment PICC_ART11_1_2_EN in PICC_2016_EN {
     kind article;
@@ -539,6 +1058,17 @@ otherwise.""";
     content_hash "sha256:9450a6f5b7b62b8eed6d0d9cf676fa8b6b7754eadc4e6dec6008955e1acca7b3";
 }
 
+// Article 11.1.2 (French black-letter rules)
+fragment PICC_ART11_1_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_2";
+    text fr official """ARTICLE 11.1.2
+(Présomption de solidarité)
+Lorsque plusieurs débiteurs sont tenus de la même obligation envers un créancier, ils
+sont présumés solidairement tenus, à moins que les circonstances n’indiquent le contraire.""";
+    content_hash "sha256:4efb5e3d3b0ab34a3b32920229b1e56f333e6290ac523eb4ae830831d724dbf5";
+}
+
 // Article 11.1.3 (English black-letter rules)
 fragment PICC_ART11_1_3_EN in PICC_2016_EN {
     kind article;
@@ -548,6 +1078,17 @@ fragment PICC_ART11_1_3_EN in PICC_2016_EN {
 When obligors are jointly and severally bound, the obligee may require performance
 from any one of them, until full performance has been received.""";
     content_hash "sha256:b1e9fd7ff7f93cf4fee7d5cafac362c3a251dae36d48ab39f16a5d2feaddaf18";
+}
+
+// Article 11.1.3 (French black-letter rules)
+fragment PICC_ART11_1_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_3";
+    text fr official """ARTICLE 11.1.3
+(Droits du créancier envers les débiteurs solidaires)
+Lorsque des débiteurs sont solidairement tenus, le créancier peut réclamer l’exécution
+à n’importe lequel d’entre eux, jusqu’à ce qu’il ait reçu pleine exécution.""";
+    content_hash "sha256:12ff614eabf7d36d5f44af6f8435e80ff1dca25e2d217541cfe492c4e400b09d";
 }
 
 // Article 11.1.4 (English black-letter rules)
@@ -563,6 +1104,20 @@ several of the other co-obligors.""";
     content_hash "sha256:231f35dcd6d5a7e8c569cadac75a1831c268c35c093d2c08b58f0c637ce20eff";
 }
 
+// Article 11.1.4 (French black-letter rules)
+fragment PICC_ART11_1_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_4";
+    text fr official """ARTICLE 11.1.4
+(Moyens de défense et compensation)
+Un débiteur solidaire contre qui le créancier exerce un recours peut invoquer tous
+moyens de défense et exercer tous droits de compensation qui lui sont personnels ou qui
+sont communs à tous les coobligés, mais il ne peut ni invoquer les moyens de défense ni
+exercer les droits de compensation qui sont personnels à un ou plusieurs des autres
+coobligés.""";
+    content_hash "sha256:95d6f625f449e73d3ff59741dd28c337670d3e00fc0c0cc45ffa1e537c7daea0";
+}
+
 // Article 11.1.5 (English black-letter rules)
 fragment PICC_ART11_1_5_EN in PICC_2016_EN {
     kind article;
@@ -573,6 +1128,18 @@ Performance or set-off by a joint and several obligor or set-off by the obligee 
 one joint and several obligor discharges the other obligors in relation to the obligee to
 the extent of the performance or set-off.""";
     content_hash "sha256:cf95306ec2809f36c5678d87a6e75f08beca7712e4c75ff2f10222c1cfaca269";
+}
+
+// Article 11.1.5 (French black-letter rules)
+fragment PICC_ART11_1_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_5";
+    text fr official """ARTICLE 11.1.5
+(Effets de l’exécution ou de la compensation)
+L’exécution ou la compensation de l’obligation par un débiteur solidaire, ou la
+compensation exercée par le créancier envers un débiteur solidaire, libère les autres
+coobligés à l’égard du créancier, dans la mesure de l’exécution ou de la compensation.""";
+    content_hash "sha256:ed19b8250c75b1d3107a627b018c91301c084879f850761a743463fdebc0a53d";
 }
 
 // Article 11.1.6 (English black-letter rules)
@@ -590,6 +1157,20 @@ they no longer have a contributory claim against the released obligor under Arti
     content_hash "sha256:36046c700ea7acf14393ffbc765e579280fbaedbb25d13ea63f0585c2d7728b9";
 }
 
+// Article 11.1.6 (French black-letter rules)
+fragment PICC_ART11_1_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_6";
+    text fr official """ARTICLE 11.1.6
+(Effets de la remise ou de la transaction)
+1) La remise de dette accordée à un débiteur solidaire, ou la transaction avec un
+débiteur solidaire, libère tous les autres débiteurs de la part du débiteur concerné, à moins
+que les circonstances n’indiquent le contraire.
+2) Lorsque les autres débiteurs sont libérés de la part du débiteur concerné, ils ne
+disposent plus envers ce dernier du recours contributoire prévu à l’article 11.1.10.""";
+    content_hash "sha256:0e8bf729fb7f3730234cbad2506535ebcf4dbc44aa11ec2a69117096bb9db513";
+}
+
 // Article 11.1.7 (English black-letter rules)
 fragment PICC_ART11_1_7_EN in PICC_2016_EN {
     kind article;
@@ -605,6 +1186,22 @@ several obligor does not affect:
 one joint and several obligor, the running of the limitation period is also suspended
 against the other joint and several obligors.""";
     content_hash "sha256:731fe98cf6fb7d373817ebd5597995ee0790c1f53def688a2adaddcd80123e4e";
+}
+
+// Article 11.1.7 (French black-letter rules)
+fragment PICC_ART11_1_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_7";
+    text fr official """ARTICLE 11.1.7
+(Effets de l’expiration ou de la suspension du délai de prescription)
+1) L’expiration du délai de prescription des droits du créancier envers un débiteur
+solidaire n’affecte ni:
+a) les obligations envers le créancier des autres débiteurs solidaires; ni
+b) les droits de recours entre les débiteurs solidaires prévus à l’article 11.1.10.
+2) Si le créancier intente une procédure contre un débiteur solidaire dans le cadre
+des articles 10.5, 10.6 ou 10.7, le cours de la prescription est également suspendu à l’égard
+des autres débiteurs solidaires.""";
+    content_hash "sha256:cf299c09bdcb53e52aa93a337fd7acda69853b9519aa9261dc61753255d5f289";
 }
 
 // Article 11.1.8 (English black-letter rules)
@@ -625,6 +1222,23 @@ affected accordingly.""";
     content_hash "sha256:34ea25241395fc085eb9363900866ce1a6c4b49a5f061bf47d3be6a9d8445b96";
 }
 
+// Article 11.1.8 (French black-letter rules)
+fragment PICC_ART11_1_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_8";
+    text fr official """ARTICLE 11.1.8
+(Effets des jugements)
+1) Une décision rendue par un tribunal concernant la responsabilité envers le
+créancier d’un débiteur solidaire n’affecte ni:
+a) les obligations envers le créancier des autres débiteurs solidaires; ni
+b) les droits de recours entre les débiteurs solidaires prévus à l’article 11.1.10.
+2) Toutefois, les autres débiteurs solidaires peuvent eux-mêmes se prévaloir d’une
+telle décision, sauf si elle était basée sur des motifs personnels au débiteur concerné. En
+ce cas, les droits de recours entre les débiteurs solidaires prévus à l’article 11.1.10 sont
+affectés en conséquence.""";
+    content_hash "sha256:10884b20f312fcbb5471cc50143012d4b7ed5d9667095b026ac2740d9fb42c35";
+}
+
 // Article 11.1.9 (English black-letter rules)
 fragment PICC_ART11_1_9_EN in PICC_2016_EN {
     kind article;
@@ -636,6 +1250,17 @@ the circumstances indicate otherwise.""";
     content_hash "sha256:da39dcc21002ec16462c25b75ae61a303ddd9b04dcacb7b34cd7efd52d4ed408";
 }
 
+// Article 11.1.9 (French black-letter rules)
+fragment PICC_ART11_1_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_9";
+    text fr official """ARTICLE 11.1.9
+(Répartition entre débiteurs solidaires)
+Dans leurs rapports entre eux, les débiteurs solidaires sont tenus par parts égales, à
+moins que les circonstances n’indiquent le contraire.""";
+    content_hash "sha256:6d55163c4b09d5a1f24db985404a47c447ea987f20be728622e361f288541b95";
+}
+
 // Article 11.1.10 (English black-letter rules)
 fragment PICC_ART11_1_10_EN in PICC_2016_EN {
     kind article;
@@ -645,6 +1270,17 @@ fragment PICC_ART11_1_10_EN in PICC_2016_EN {
 A joint and several obligor who has performed more than its share may claim the
 excess from any of the other obligors to the extent of each obligor’s unperformed share.""";
     content_hash "sha256:c14f7eb530bb23e90145a6b71260b06c75ea54285fe0a1f6310580b6d3167648";
+}
+
+// Article 11.1.10 (French black-letter rules)
+fragment PICC_ART11_1_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_10";
+    text fr official """ARTICLE 11.1.10
+(Etendue du recours contributoire)
+Un débiteur solidaire qui a payé plus que sa part peut réclamer la différence de tout
+autre débiteur solidaire dans la mesure de la part impayée de chacun.""";
+    content_hash "sha256:ec708a14480e770db0f5af9383e701dbc5e1234c2b0bf4e3d1808f61973fc74b";
 }
 
 // Article 11.1.11 (English black-letter rules)
@@ -663,6 +1299,21 @@ exercising contributory claims.""";
     content_hash "sha256:f0155c50984da6038e62d19fa7e685462f84eee6f311c269459e5fc479bd8671";
 }
 
+// Article 11.1.11 (French black-letter rules)
+fragment PICC_ART11_1_11_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_11";
+    text fr official """ARTICLE 11.1.11
+(Droits du créancier)
+1) Un débiteur solidaire à qui s’applique l’article 11.1.10 peut également exercer
+les droits du créancier, y compris les droits garantissant le paiement, en vue de recouvrer
+la différence de tout autre débiteur solidaire dans la mesure de la part impayée de chacun.
+2) Un créancier qui n’a pas reçu entier paiement conserve ses droits envers les
+coobligés dans la mesure de l’impayé, de préférence aux coobligés exerçant des recours
+contributoires.""";
+    content_hash "sha256:d929fdd8644de9bef7125350e273783c4cccdf75df8b76e2f77b38d49c5d6735";
+}
+
 // Article 11.1.12 (English black-letter rules)
 fragment PICC_ART11_1_12_EN in PICC_2016_EN {
     kind article;
@@ -679,6 +1330,23 @@ several of the other co-obligors.""";
     content_hash "sha256:ba5a5eeae6503033bd666afec9e77dff9062dd8b5f8dab40de5b5a8df345068c";
 }
 
+// Article 11.1.12 (French black-letter rules)
+fragment PICC_ART11_1_12_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_12";
+    text fr official """ARTICLE 11.1.12
+(Moyens de défense dans les recours contributoires)
+Un débiteur solidaire contre qui un recours est exercé par le coobligé qui a exécuté
+l’obligation:
+a) peut invoquer tous moyens de défense et exercer tous droits de compensation
+qui sont communs à tous les coobligés et qui pouvaient être invoqués ou exercés par le
+coobligé envers le créancier;
+b) peut invoquer tous moyens de défense qui lui sont personnels;
+c) ne peut pas invoquer les moyens de défense ou exercer les droits de
+compensation qui sont personnels à un ou plusieurs des autres coobligés.""";
+    content_hash "sha256:ed6580ad4abc30740a910654cdd8f56c294d89b1ef524adc606fd13f082ab339";
+}
+
 // Article 11.1.13 (English black-letter rules)
 fragment PICC_ART11_1_13_EN in PICC_2016_EN {
     kind article;
@@ -690,6 +1358,19 @@ unable, despite all reasonable efforts, to recover contribution from another joi
 several obligor, the share of the others, including the one who has performed, is
 increased proportionally.""";
     content_hash "sha256:afdc9cb3cf6badd393d980b2e98cd803bb85db4b6b8f9ee4cfa68e2e52bb43a3";
+}
+
+// Article 11.1.13 (French black-letter rules)
+fragment PICC_ART11_1_13_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_1_13";
+    text fr official """ARTICLE 11.1.13
+(Incapacité de recouvrer)
+Lorsqu’un débiteur solidaire qui a payé plus que sa part est incapable, en dépit d’avoir
+exercé tous efforts raisonnables, de recouvrer la contribution d’un autre débiteur solidaire,
+la part des autres débiteurs, y compris celle du débiteur qui a payé, est augmentée en
+proportion.""";
+    content_hash "sha256:32379f40532f9d4e40eba4101ec8f3678cbf4fc4df33c4d0a2b1b4e4c871cdf2";
 }
 
 // Article 11.2.1 (English black-letter rules)
@@ -707,6 +1388,23 @@ performance;
     content_hash "sha256:2269a074848b2f01d830c1ae6b7cc5c8c677da323e7c1b4d7576d3c1cf0eae48";
 }
 
+// Article 11.2.1 (French black-letter rules)
+fragment PICC_ART11_2_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_2_1";
+    text fr official """ARTICLE 11.2.1
+(Définitions)
+Lorsque plusieurs créanciers peuvent exiger d’un débiteur l’exécution d’une même
+obligation:
+a) les créances sont séparées lorsque chaque créancier peut seulement exiger sa
+part;
+b) les créances sont solidaires lorsque chaque créancier peut exiger l’ensemble de
+la prestation;
+c) les créances sont communes lorsque tous les créanciers sont tenus d’exiger
+ensemble la prestation.""";
+    content_hash "sha256:a7d0549db02fe5b316cd3a6ed6c74776873eb4fe926d62c705cac399cd060c7e";
+}
+
 // Article 11.2.2 (English black-letter rules)
 fragment PICC_ART11_2_2_EN in PICC_2016_EN {
     kind article;
@@ -716,6 +1414,17 @@ fragment PICC_ART11_2_2_EN in PICC_2016_EN {
 Full performance of an obligation in favour of one of the joint and several obligees
 discharges the obligor towards the other obligees.""";
     content_hash "sha256:2086f59f35a77bfa93e95b331c2adf050f68129b87ef1a97ec0b36e906913ae8";
+}
+
+// Article 11.2.2 (French black-letter rules)
+fragment PICC_ART11_2_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_2_2";
+    text fr official """ARTICLE 11.2.2
+(Effets des créances solidaires)
+L’exécution totale en faveur de l’un des créanciers solidaires libère le débiteur envers
+les autres créanciers.""";
+    content_hash "sha256:5f288ec6fc6ec7e4b50f0b2c578a77f1cf071874498eb86f22aa4a76b22e2503";
 }
 
 // Article 11.2.3 (English black-letter rules)
@@ -733,6 +1442,22 @@ appropriate adaptations, to joint and several claims.""";
     content_hash "sha256:cc4ebe4139ef822f949b503f9c47f59684f9854efe272cc9eacec38ecd4e4a1f";
 }
 
+// Article 11.2.3 (French black-letter rules)
+fragment PICC_ART11_2_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_2_3";
+    text fr official """ARTICLE 11.2.3
+(Moyens de défense envers les créanciers solidaires)
+1) Le débiteur peut invoquer envers tout créancier solidaire tous moyens de
+défense et exercer tous droits de compensation qui sont personnels à sa relation avec ce
+créancier ou qu’il peut invoquer envers tous les créanciers, mais il ne peut ni invoquer les
+moyens de défense ni exercer les droits de compensation qui sont personnels à sa relation
+avec un ou plusieurs des autres créanciers.
+2) Les dispositions des articles 11.1.5, 11.1.6, 11.1.7 et 11.1.8 s’appliquent aux
+créances solidaires, avec les adaptations nécessaires.""";
+    content_hash "sha256:976d3733cc5b17c466ea8a1800807caed0ef349a316c197e20c4ab2578a2c755";
+}
+
 // Article 11.2.4 (English black-letter rules)
 fragment PICC_ART11_2_4_EN in PICC_2016_EN {
     kind article;
@@ -744,4 +1469,17 @@ unless the circumstances indicate otherwise.
 (2) An obligee who has received more than its share must transfer the excess to
 the other obligees to the extent of their respective shares.""";
     content_hash "sha256:e738a6222e41f848e388d603f151080edfcd63d31244f5a7a584be028926cf67";
+}
+
+// Article 11.2.4 (French black-letter rules)
+fragment PICC_ART11_2_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/11_2_4";
+    text fr official """ARTICLE 11.2.4
+(Répartition entre créanciers solidaires)
+1) Dans leurs rapports entre eux, les créanciers solidaires ont droit à des parts
+égales, à moins que les circonstances n’indiquent le contraire.
+2) Un créancier qui a reçu plus que sa part doit transmettre l’excédent aux autres
+créanciers, dans la mesure de leurs parts respectives.""";
+    content_hash "sha256:7cdafb9d1bfeb52492989e04e4cdc160e50d37aeff8cc6ba5c070cd920367bda";
 }

@@ -46,7 +46,7 @@ pub relation contract_interpreted_by(r: Reading, c: Contract) kind institutional
     label en official "the contract is to be interpreted according to that reading (article 4.1)";
 }
 
-@source(PICC_ART4_1_EN)
+@source(PICC_ART4_1_EN, PICC_ART4_1_FR)
 rule InterpretedByCommonIntention(r: Reading, c: Contract) defeasible {
     label en official "Article 4.1(1). A contract shall be interpreted according to the common intention of the parties";
     when reading_of_contract(r, c)
@@ -54,7 +54,7 @@ rule InterpretedByCommonIntention(r: Reading, c: Contract) defeasible {
     then contract_interpreted_by(r, c);
 }
 
-@source(PICC_ART4_1_EN)
+@source(PICC_ART4_1_EN, PICC_ART4_1_FR)
 rule InterpretedByReasonablePersons(r: Reading, c: Contract) defeasible {
     label en official "Article 4.1(2). If the common intention cannot be established, the contract shall be interpreted according to the meaning reasonable persons of the same kind would give it";
     when reading_of_contract(r, c)
@@ -62,7 +62,7 @@ rule InterpretedByReasonablePersons(r: Reading, c: Contract) defeasible {
     then contract_interpreted_by(r, c);
 }
 
-@source(PICC_ART4_1_EN)
+@source(PICC_ART4_1_EN, PICC_ART4_1_FR)
 rule CommonIntentionDisplacesReasonablePersons(r: Reading, other: Reading, c: Contract) defeater {
     label en official "Article 4.1(2) (opening words). Where the common intention can be established, the reasonable-persons reading does not apply";
     // The defeater strikes ONLY the reading by reasonable persons, and only
@@ -100,7 +100,7 @@ pub relation statement_interpreted_by_reasonable_person(st: Statement) kind inst
     label en official "the statement is to be interpreted according to the understanding of a reasonable person (article 4.2(2))";
 }
 
-@source(PICC_ART4_2_EN)
+@source(PICC_ART4_2_EN, PICC_ART4_2_FR)
 rule StatementByIntention(st: Statement, p: Party, c: Contract) defeasible {
     label en official "Article 4.2(1). Statements and other conduct shall be interpreted according to the party's intention if the other party knew or could not have been unaware of it";
     when statement_by_party(st, p, c)
@@ -108,7 +108,7 @@ rule StatementByIntention(st: Statement, p: Party, c: Contract) defeasible {
     then statement_interpreted_by_intention(st);
 }
 
-@source(PICC_ART4_2_EN)
+@source(PICC_ART4_2_EN, PICC_ART4_2_FR)
 rule StatementByReasonablePerson(st: Statement, p: Party, c: Contract) defeasible {
     label en official "Article 4.2(2). If the preceding paragraph is not applicable, statements shall be interpreted according to the meaning a reasonable person would give them";
     when statement_by_party(st, p, c)
@@ -116,7 +116,7 @@ rule StatementByReasonablePerson(st: Statement, p: Party, c: Contract) defeasibl
     then statement_interpreted_by_reasonable_person(st);
 }
 
-@source(PICC_ART4_2_EN)
+@source(PICC_ART4_2_EN, PICC_ART4_2_FR)
 rule IntentionDisplacesReasonablePerson(st: Statement) defeater {
     label en official "Article 4.2(2) (opening words). Where the intention was known to the other party, the reasonable-person reading does not apply";
     when intention_known_to_other(st);
@@ -164,7 +164,7 @@ pub relation reading_preferred(r: Reading, t: Term) kind institutional {
     label en official "the reading is preferred (articles 4.6 and 4.7)";
 }
 
-@source(PICC_ART4_6_EN)
+@source(PICC_ART4_6_EN, PICC_ART4_6_FR)
 rule ContraProferentem(r: Reading, t: Term, p: Party) defeasible {
     label en official "Article 4.6. If contract terms supplied by one party are unclear, an interpretation against that party is preferred";
     when term_supplied_by_party(t, p)
@@ -187,7 +187,7 @@ pub relation reading_follows_original_version(r: Reading, t: Term, c: Contract) 
     label en official "the reading follows the version in which the contract was originally drawn up";
 }
 
-@source(PICC_ART4_7_EN)
+@source(PICC_ART4_7_EN, PICC_ART4_7_FR)
 rule OriginalVersionPreferred(r: Reading, t: Term, c: Contract) defeasible {
     label en official "Article 4.7. In case of discrepancy between equally authoritative versions there is a preference for the interpretation according to the original version";
     when drawn_up_in_several_equally_authoritative_versions(c)
@@ -219,7 +219,7 @@ pub relation term_supplied(c: Contract, t: Term) kind institutional {
     label en official "an appropriate term is supplied (article 4.8)";
 }
 
-@source(PICC_ART4_8_EN)
+@source(PICC_ART4_8_EN, PICC_ART4_8_FR)
 rule SupplyOmittedTerm(c: Contract, t: Term) defeasible {
     label en official "Article 4.8(1). Where the parties have not agreed with respect to an important term, a term which is appropriate in the circumstances shall be supplied";
     when term_important_but_not_agreed(c, t)

@@ -26,7 +26,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:6816a11b28c4585f43cb887334221dffdd3c54892d04690a34fb0679b293292c",
+      "contentHash": "sha256:d6b1f7b44a69113ed494c0d865ea8fea5349c9820aa496e156d940582fc2c9ae",
       "features": [
         "core-executable"
       ],
@@ -35,7 +35,7 @@
       "version": "0.1.0"
     },
     {
-      "contentHash": "sha256:1cc4d504b99c657627472b5eb2dc11777e0fd161d1770b45c842778e6d153d36",
+      "contentHash": "sha256:8f3df5d5f07f0abdc056193a09dcc7e844a5c0581487d83c8f933733afe29308",
       "features": [
         "core-executable"
       ],
@@ -44,7 +44,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:e1119a7efdaff48ad49b1d01b78a94df9e66859468e94dd7a418463817dc0e71",
+  "resolutionHash": "sha256:1a78ecc4285941467b7c78d763fcc686f157065c1bb053cc4f4edae657753f00",
   "root": {
     "contentHash": "sha256:6831578691a5043024ef43f7056461c6a988fefd1896ad9b0993d51175cf39a7",
     "name": "examples.unidroit.battle_of_forms",

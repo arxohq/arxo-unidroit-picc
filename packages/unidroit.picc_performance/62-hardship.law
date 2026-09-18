@@ -24,7 +24,7 @@ pub relation bound_to_perform_nevertheless(c: Contract, p: Party) kind instituti
     label en official "that party is nevertheless bound to perform its obligations, subject to the provisions on hardship (article 6.2.1)";
 }
 
-@source(PICC_ART6_2_1_EN)
+@source(PICC_ART6_2_1_EN, PICC_ART6_2_1_FR)
 rule ContractToBeObserved(c: Contract, p: Party) strict {
     label en official "Article 6.2.1. Where the performance of a contract becomes more onerous for one of the parties, that party is nevertheless bound to perform its obligations subject to the following provisions on hardship";
     when performance_became_more_onerous(c, p);
@@ -59,7 +59,7 @@ pub relation hardship_exists(c: Contract, p: Party) kind institutional {
     label en official "there is hardship (article 6.2.2)";
 }
 
-@source(PICC_ART6_2_2_EN)
+@source(PICC_ART6_2_2_EN, PICC_ART6_2_2_FR)
 rule HardshipExists(c: Contract, p: Party) defeasible {
     label en official "Article 6.2.2. There is hardship where events fundamentally alter the equilibrium of the contract and the four conditions (a) to (d) are met";
     when performance_became_more_onerous(c, p)
@@ -118,7 +118,7 @@ pub relation court_adapted(c: Contract) kind empirical {
     label en official "the court has ordered adaptation of the contract";
 }
 
-@source(PICC_ART6_2_3_EN)
+@source(PICC_ART6_2_3_EN, PICC_ART6_2_3_FR)
 rule RenegotiationMayBeRequested(c: Contract, p: Party) defeasible {
     label en official "Article 6.2.3(1). In case of hardship the disadvantaged party is entitled to request renegotiations; the request shall be made without undue delay and indicate the grounds on which it is based";
     when hardship_exists(c, p)
@@ -126,14 +126,14 @@ rule RenegotiationMayBeRequested(c: Contract, p: Party) defeasible {
     then entitled_to_request_renegotiation(c, p);
 }
 
-@source(PICC_ART6_2_3_EN)
+@source(PICC_ART6_2_3_EN, PICC_ART6_2_3_FR)
 rule RequestDoesNotSuspendPerformance(c: Contract, p: Party) defeasible {
     label en official "Article 6.2.3(2). The request for renegotiation does not in itself entitle the disadvantaged party to withhold performance";
     when entitled_to_request_renegotiation(c, p);
     then request_does_not_entitle_to_withhold(c, p);
 }
 
-@source(PICC_ART6_2_3_EN)
+@source(PICC_ART6_2_3_EN, PICC_ART6_2_3_FR)
 rule ResortToCourtOnFailure(c: Contract, p: Party) defeasible {
     label en official "Article 6.2.3(3). Upon failure to reach agreement within a reasonable time either party may resort to the court";
     when entitled_to_request_renegotiation(c, p)
@@ -141,7 +141,7 @@ rule ResortToCourtOnFailure(c: Contract, p: Party) defeasible {
     then may_resort_to_court(c, p);
 }
 
-@source(PICC_ART6_2_3_EN)
+@source(PICC_ART6_2_3_EN, PICC_ART6_2_3_FR)
 rule CourtPowerOnHardship(c: Contract, p: Party) strict {
     label en official "Article 6.2.3(4). If the court finds hardship it may, if reasonable, terminate the contract at a date and on terms to be fixed, or adapt the contract with a view to restoring its equilibrium";
     when may_resort_to_court(c, p);
@@ -154,7 +154,7 @@ rule CourtPowerOnHardship(c: Contract, p: Party) strict {
     };
 }
 
-@source(PICC_ART6_2_3_EN)
+@source(PICC_ART6_2_3_EN, PICC_ART6_2_3_FR)
 rule CourtTerminatesForHardship(c: Contract, p: Party) defeasible {
     label en official "Article 6.2.3(4)(a). The court may terminate the contract at a date and on terms to be fixed";
     when may_resort_to_court(c, p)
@@ -163,7 +163,7 @@ rule CourtTerminatesForHardship(c: Contract, p: Party) defeasible {
     then contract_terminated_by_court(c);
 }
 
-@source(PICC_ART6_2_3_EN)
+@source(PICC_ART6_2_3_EN, PICC_ART6_2_3_FR)
 rule CourtAdaptsForHardship(c: Contract, p: Party) defeasible {
     label en official "Article 6.2.3(4)(b). The court may adapt the contract with a view to restoring its equilibrium";
     when may_resort_to_court(c, p)

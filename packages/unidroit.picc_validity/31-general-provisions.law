@@ -10,7 +10,7 @@ pub relation capacity_not_governed(c: Contract) kind institutional {
     label en official "this Chapter does not deal with lack of capacity (article 3.1.1)";
 }
 
-@source(PICC_ART3_1_1_EN)
+@source(PICC_ART3_1_1_EN, PICC_ART3_1_1_FR)
 rule ChapterDoesNotDealWithCapacity(c: Contract) strict {
     label en official "Article 3.1.1. This Chapter does not deal with lack of capacity";
     when contract_under_consideration(c);
@@ -27,7 +27,7 @@ pub relation valid_without_further_requirement(c: Contract) kind institutional {
     label en official "the contract is concluded, modified or terminated by the mere agreement of the parties, without any further requirement (article 3.1.2)";
 }
 
-@source(PICC_ART3_1_2_EN)
+@source(PICC_ART3_1_2_EN, PICC_ART3_1_2_FR)
 rule MereAgreementSuffices(c: Contract) strict {
     label en official "Article 3.1.2. A contract is concluded, modified or terminated by the mere agreement of the parties, without any further requirement";
     when mere_agreement_of_parties(c);
@@ -48,14 +48,14 @@ pub relation validity_unaffected(c: Contract) kind institutional {
     label en official "the validity of the contract is not affected (article 3.1.3)";
 }
 
-@source(PICC_ART3_1_3_EN)
+@source(PICC_ART3_1_3_EN, PICC_ART3_1_3_FR)
 rule InitialImpossibilityDoesNotAffectValidity(c: Contract) strict {
     label en official "Article 3.1.3(1). The mere fact that at the time of the conclusion of the contract the performance of the obligation assumed was impossible does not affect the validity of the contract";
     when performance_initially_impossible(c);
     then validity_unaffected(c);
 }
 
-@source(PICC_ART3_1_3_EN)
+@source(PICC_ART3_1_3_EN, PICC_ART3_1_3_FR)
 rule NoRightToDisposeDoesNotAffectValidity(c: Contract) strict {
     label en official "Article 3.1.3(2). The mere fact that at the time of the conclusion of the contract a party was not entitled to dispose of the assets does not affect the validity of the contract";
     when party_not_entitled_to_dispose(c);
@@ -72,7 +72,7 @@ pub relation exclusion_of_chapter_ineffective(c: Contract, t: Term) kind institu
     label en official "the attempted exclusion is ineffective because the provisions are mandatory (article 3.1.4)";
 }
 
-@source(PICC_ART3_1_4_EN)
+@source(PICC_ART3_1_4_EN, PICC_ART3_1_4_FR)
 rule MandatoryProvisionsResistExclusion(c: Contract, t: Term) strict {
     label en official "Article 3.1.4. The provisions on fraud, threat, gross disparity and illegality contained in this Chapter are mandatory";
     when exclusion_of_chapter_attempted(c, t);

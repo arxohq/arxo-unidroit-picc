@@ -12,7 +12,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:6816a11b28c4585f43cb887334221dffdd3c54892d04690a34fb0679b293292c",
+      "contentHash": "sha256:d6b1f7b44a69113ed494c0d865ea8fea5349c9820aa496e156d940582fc2c9ae",
       "features": [
         "core-executable"
       ],
@@ -23,7 +23,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:3438b3da049c759c0865bbe32242f998a1b2053e3794487ab163413306335412",
+  "resolutionHash": "sha256:edb3ce5a4ae16d2838c4f4996887ae6741d29c27c700cb827e15d101d6194a47",
   "root": {
     "contentHash": "sha256:26ae770dd3272c13ba9c9d5f418b47afa2d6811ddfa020f61e328b2ad3c94226",
     "name": "unidroit.picc_formation",

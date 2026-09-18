@@ -48,6 +48,23 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     local_path "sources/picc-en/en.txt";
 }
 
+edition PICC_2016_FR of PICC_2016 {
+    label en official "French black-letter rules, 2016 edition";
+    language fr;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_FR_TEXT of PICC_2016_FR {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-French-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:cd037861ab3255634993de457b14556dd2a7a7d38fb37270cb4618dfd2304907";
+    local_path "sources/picc-fr/fr.txt";
+}
+
 // Article 6.1.1 (English black-letter rules)
 fragment PICC_ART6_1_1_EN in PICC_2016_EN {
     kind article;
@@ -62,6 +79,24 @@ within that period unless circumstances indicate that the other party is to choo
     content_hash "sha256:bff8fd006e4612f1a281fcf268d2e7d3eaa8a2ddc876d02082829dce799b77d0";
 }
 
+// Article 6.1.1 (French black-letter rules)
+fragment PICC_ART6_1_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_1";
+    text fr official """ARTICLE 6.1.1
+(Moment de l’exécution)
+Le débiteur est tenu d’exécuter ses obligations:
+a) si une date est fixée par le contrat ou déterminable en vertu de celui-ci, à cette
+date;
+b)
+si une période de temps est fixée par le contrat ou déterminable en vertu de
+celui-ci, à un moment quelconque au cours de cette période, à moins qu’il ne résulte des
+circonstances que le choix du moment appartienne à l’autre partie;
+c)
+à défaut, dans un délai raisonnable à partir de la conclusion du contrat.""";
+    content_hash "sha256:fcd4a8462ddb24a41862eb79cb3a78e7cc574c9135713a15bc6361463577ea50";
+}
+
 // Article 6.1.2 (English black-letter rules)
 fragment PICC_ART6_1_2_EN in PICC_2016_EN {
     kind article;
@@ -72,6 +107,18 @@ In cases under Article 6.1.1(b) or (c), a party must perform its obligations at 
 time if that performance can be rendered at one time and the circumstances do not
 indicate otherwise.""";
     content_hash "sha256:7f0aab24fb8756c9c152157c1d3542baf1f0964c13456766fb9ac6f01972008f";
+}
+
+// Article 6.1.2 (French black-letter rules)
+fragment PICC_ART6_1_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_2";
+    text fr official """ARTICLE 6.1.2
+(Exécution en une seule fois ou échelonnée)
+Dans les cas prévus à l’article 6.1.1 b) et c), le débiteur doit, dans la mesure du possible
+et sauf indication contraire découlant des circonstances, exécuter ses obligations en une
+seule fois.""";
+    content_hash "sha256:f9fac416034a9ae86406eb90e9bd109a7ce2efafdd15eaf9798a9cf1883c9d28";
 }
 
 // Article 6.1.3 (English black-letter rules)
@@ -88,6 +135,20 @@ borne by the obligor without prejudice to any other remedy.""";
     content_hash "sha256:25765229586b96fa2a6c2b7162b2dc928b500904e27f33f00363fc9870a52367";
 }
 
+// Article 6.1.3 (French black-letter rules)
+fragment PICC_ART6_1_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_3";
+    text fr official """ARTICLE 6.1.3
+(Exécution partielle)
+1) Le créancier peut, à l’échéance, refuser d’accepter une offre d’exécution
+partielle, qu’elle soit ou non accompagnée d’une assurance de bonne exécution du solde,
+à moins de n’avoir aucun intérêt légitime à le faire.
+2) Les frais supplémentaires occasionnés au créancier du fait de l’exécution
+partielle sont à la charge du débiteur, sans préjudice de tout autre moyen.""";
+    content_hash "sha256:070987c86a1cc05455b927e6f86e863d592fe5232fce9c311af5778096d44248";
+}
+
 // Article 6.1.4 (English black-letter rules)
 fragment PICC_ART6_1_4_EN in PICC_2016_EN {
     kind article;
@@ -101,6 +162,23 @@ circumstances indicate otherwise.
 that party is bound to render its performance first, unless the circumstances indicate
 otherwise.""";
     content_hash "sha256:c52985dea3ab664710f5e3a647e55ea6b626932a52752cf0338f75bc14b9646f";
+}
+
+// Article 6.1.4 (French black-letter rules)
+fragment PICC_ART6_1_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_4";
+    text fr official """ARTICLE 6.1.4
+(Ordre des prestations)
+1)
+Dans la mesure où les prestations de chaque partie peuvent être exécutées
+simultanément, les parties sont tenues de les exécuter ainsi, à moins de circonstances
+indiquant le contraire.
+2)
+Dans la mesure où la prestation d’une seule partie exige un délai d’exécution,
+cette partie est tenue de l’exécuter en premier, à moins de circonstances indiquant le
+contraire.""";
+    content_hash "sha256:cff3699796e3d3149ff7d78044bc421433e4096a82df98d3a6a0804d4d32f25f";
 }
 
 // Article 6.1.5 (English black-letter rules)
@@ -119,6 +197,25 @@ borne by the obligor, without prejudice to any other remedy.""";
     content_hash "sha256:f053053ef0ba717722d4525bc0e4f7fdad103f68f92c4155117c38db25148c49";
 }
 
+// Article 6.1.5 (French black-letter rules)
+fragment PICC_ART6_1_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_5";
+    text fr official """ARTICLE 6.1.5
+(Exécution avant l’échéance)
+1)
+Le créancier peut refuser l’exécution avant l’échéance, à moins de n’avoir aucun
+intérêt légitime à le faire.
+2)
+L’acceptation par une partie d’une exécution avant l’échéance n’a aucun effet
+sur la date à laquelle elle doit exécuter ses propres obligations, dès lors que cette date a
+été fixée sans tenir compte de l’exécution des obligations de l’autre partie.
+3)
+Les frais supplémentaires occasionnés au créancier du fait de l’exécution avant
+l’échéance sont à la charge du débiteur, sans préjudice de tout autre moyen.""";
+    content_hash "sha256:ff1b0a6035434991b3411fd5a0aed5522ca961752c6309ea73d8cfd5593c6f7a";
+}
+
 // Article 6.1.6 (English black-letter rules)
 fragment PICC_ART6_1_6_EN in PICC_2016_EN {
     kind article;
@@ -135,6 +232,25 @@ contract.""";
     content_hash "sha256:e1bca1109f6e2bb2b62f2b88de96b1727490d0c42d7a78bc81559f174bad270b";
 }
 
+// Article 6.1.6 (French black-letter rules)
+fragment PICC_ART6_1_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_6";
+    text fr official """ARTICLE 6.1.6
+(Lieu d’exécution)
+1)
+Lorsque le lieu d’exécution de l’obligation n’est pas fixé par le contrat ou
+déterminable en vertu de celui-ci, l’exécution s’effectue:
+a)
+pour une obligation de somme d’argent, au lieu de l’établissement du créancier;
+b)
+pour toute autre obligation, au lieu de l’établissement du débiteur.
+2)
+La partie qui change d’établissement après la conclusion du contrat supporte
+l’augmentation des frais liés à l’exécution qu’un tel changement a pu occasionner.""";
+    content_hash "sha256:d610058670b3a997d25afdf2e94acc62d063e580512f124823c4e39ab45874e3";
+}
+
 // Article 6.1.7 (English black-letter rules)
 fragment PICC_ART6_1_7_EN in PICC_2016_EN {
     kind article;
@@ -149,6 +265,22 @@ only on condition that it will be honoured.""";
     content_hash "sha256:5a6ff38bf6e67b062015b4f639fdc997e3cf64880d2f044e1cad1d089ce290b0";
 }
 
+// Article 6.1.7 (French black-letter rules)
+fragment PICC_ART6_1_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_7";
+    text fr official """ARTICLE 6.1.7
+(Paiement par chèque ou autres instruments)
+1)
+Le paiement peut être effectué par tout moyen en usage dans les conditions
+normales du commerce au lieu de paiement.
+2)
+Toutefois, le créancier qui, en vertu du paragraphe précédent ou volontairement,
+accepte un chèque, un autre ordre de paiement ou un engagement de payer n’est présumé
+le faire qu’à la condition que ces instruments seront honorés.""";
+    content_hash "sha256:26eb5eab5d436addeba888576fff29b25ec8d0f6474a49ea01b04ea8849b599e";
+}
+
 // Article 6.1.8 (English black-letter rules)
 fragment PICC_ART6_1_8_EN in PICC_2016_EN {
     kind article;
@@ -161,6 +293,22 @@ that it has an account.
 (2) In case of payment by a transfer the obligation of the obligor is discharged
 when the transfer to the obligee’s financial institution becomes effective.""";
     content_hash "sha256:e6306723884ee47c83f0017303d2bf66d18dc5e5ec4f19dc91a12f10070fc9bf";
+}
+
+// Article 6.1.8 (French black-letter rules)
+fragment PICC_ART6_1_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_8";
+    text fr official """ARTICLE 6.1.8
+(Paiement par transfert de fonds)
+1)
+A moins que le créancier n’ait indiqué un compte particulier, le paiement peut
+être effectué par transfert à l’un quelconque des établissements financiers où le créancier
+a fait savoir qu’il possède un compte.
+2)
+En cas de paiement par transfert, le débiteur est libéré de son obligation à la date
+à laquelle le transfert à l’établissement financier du créancier prend effet.""";
+    content_hash "sha256:e66dc8bafa29a53f73c4308e254ae5bd51f20598fb8b35cbb8aa94da50db67e4";
 }
 
 // Article 6.1.9 (English black-letter rules)
@@ -186,6 +334,34 @@ either when payment is due or at the time of actual payment.""";
     content_hash "sha256:8a514c98b59bbf77b38a33df2a6b296127efa71c1fac5fe101ae57f0db9a8e13";
 }
 
+// Article 6.1.9 (French black-letter rules)
+fragment PICC_ART6_1_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_9";
+    text fr official """ARTICLE 6.1.9
+(Monnaie de paiement)
+1)
+Le débiteur d’une obligation de somme d’argent exprimée dans une monnaie
+autre que celle du lieu de paiement, peut se libérer dans cette dernière monnaie, à moins:
+a)
+que cette monnaie ne soit pas librement convertible; ou
+b)
+que les parties aient convenu que le paiement sera effectué uniquement dans la
+monnaie dans laquelle l’obligation est exprimée.
+2)
+Lorsque le débiteur se trouve dans l’impossibilité d’effectuer un paiement dans
+la monnaie dans laquelle l’obligation est exprimée, le créancier peut, même dans le cas
+visé à l’alinéa b) du paragraphe 1 b), exiger le paiement dans la monnaie du lieu où le
+paiement doit être effectué.
+3)
+Le paiement dans la monnaie du lieu où le paiement doit être effectué se fait
+selon le taux de change qui y est fixé à l’échéance.
+4)
+Toutefois, si le débiteur n’a pas payé à l’échéance, le créancier peut exiger le
+paiement selon le taux de change fixé soit à l’échéance, soit au moment du paiement.""";
+    content_hash "sha256:b2919d510a9353573094b378131e6eabfd10dd283c642f8f03046d7d5b4555b8";
+}
+
 // Article 6.1.10 (English black-letter rules)
 fragment PICC_ART6_1_10_EN in PICC_2016_EN {
     kind article;
@@ -197,6 +373,17 @@ be made in the currency of the place where payment is to be made.""";
     content_hash "sha256:9ef6585464a66e3c397e9af195452677ebcce17ff43731e904e916112e709854";
 }
 
+// Article 6.1.10 (French black-letter rules)
+fragment PICC_ART6_1_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_10";
+    text fr official """ARTICLE 6.1.10
+(Monnaie non précisée)
+Lorsque la monnaie d’une obligation de somme d’argent n’est pas précisée, le
+paiement a lieu dans la monnaie du lieu où il doit être effectué.""";
+    content_hash "sha256:21c214cb6f8ac342928927c5ba61253aeee02ad240a2049dbda4e3bfeabf0d14";
+}
+
 // Article 6.1.11 (English black-letter rules)
 fragment PICC_ART6_1_11_EN in PICC_2016_EN {
     kind article;
@@ -205,6 +392,16 @@ fragment PICC_ART6_1_11_EN in PICC_2016_EN {
 (Costs of performance)
 Each party shall bear the costs of performance of its obligations.""";
     content_hash "sha256:383722e046a6161d0e04c95384bd2993716406441f8475219a2e8023ab7f67ee";
+}
+
+// Article 6.1.11 (French black-letter rules)
+fragment PICC_ART6_1_11_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_11";
+    text fr official """ARTICLE 6.1.11
+(Coût de l’exécution)
+Chaque partie supporte les frais de l’exécution de ses obligations.""";
+    content_hash "sha256:89fc3ccd148b038ed34ac1255ab940974fd304f45b4296e08ccabde1e9a2562c";
 }
 
 // Article 6.1.12 (English black-letter rules)
@@ -231,6 +428,36 @@ proportionally.""";
     content_hash "sha256:cc8eecf6ca7bd1075e6cab74e485c008901dab745c4929b00f357d375c90a399";
 }
 
+// Article 6.1.12 (French black-letter rules)
+fragment PICC_ART6_1_12_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_12";
+    text fr official """ARTICLE 6.1.12
+(Imputation des paiements)
+1)
+Le débiteur tenu de plusieurs dettes de sommes d’argent à l’égard d’un même
+créancier peut indiquer, au moment du paiement, sur quelle dette il entend l’imputer.
+Toutefois, le paiement est imputé d’abord sur les frais, puis sur les intérêts échus et, enfin,
+sur le capital.
+2)
+A défaut d’indication par le débiteur, le créancier peut, dans un délai raisonnable
+après le paiement, indiquer au débiteur la dette sur laquelle il l’impute, pourvu que celleci soit exigible et non litigieuse.
+3)
+A défaut d’imputation en vertu de l’un des paragraphes précédents, le paiement
+est imputé sur la dette qui satisfait à l’un des critères suivants dans l’ordre fixé ci-après:
+a)
+une dette échue ou à échoir en premier;
+b)
+la dette pour laquelle le créancier a la garantie la plus faible;
+c)
+la dette la plus onéreuse pour le débiteur;
+d)
+la dette la plus ancienne.
+Si aucun des critères précédents ne s’applique, l’imputation se fait proportionnellement
+sur toutes les dettes.""";
+    content_hash "sha256:051fad95f0302a9853c202c3f6c2b6d01ca3cac42197089d8348dce00a0d81bf";
+}
+
 // Article 6.1.13 (English black-letter rules)
 fragment PICC_ART6_1_13_EN in PICC_2016_EN {
     kind article;
@@ -240,6 +467,17 @@ fragment PICC_ART6_1_13_EN in PICC_2016_EN {
 Article 6.1.12 applies with appropriate adaptations to the imputation of performance
 of non-monetary obligations.""";
     content_hash "sha256:64bf773e8be27cc5530fce973cfe0909f9b1bc472520a413c4425aaf60bc9ba4";
+}
+
+// Article 6.1.13 (French black-letter rules)
+fragment PICC_ART6_1_13_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_13";
+    text fr official """ARTICLE 6.1.13
+(Imputation en cas d’obligations non pécuniaires)
+L’article 6.1.12 s’applique, avec les adaptations nécessaires, à l’imputation du
+paiement d’obligations non pécuniaires.""";
+    content_hash "sha256:2e62f8de6ce0f23488a9c3a94039d86838b6e364c200ae2101fa77ebe7119cf0";
 }
 
 // Article 6.1.14 (English black-letter rules)
@@ -257,6 +495,22 @@ the necessary measures.""";
     content_hash "sha256:b69218dc0f21dbaba8706ed2f8453ca58bfd02f8180281d24db2023f999b2613";
 }
 
+// Article 6.1.14 (French black-letter rules)
+fragment PICC_ART6_1_14_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_14";
+    text fr official """ARTICLE 6.1.14
+(Demande d’autorisation publique)
+A moins de dispositions ou de circonstances contraires, lorsqu’une autorisation
+publique touchant la validité ou l’exécution du contrat est exigée par la loi d’un Etat, il
+revient:
+a) à la partie qui a seule son établissement dans cet Etat de prendre les mesures
+nécessaires à l’obtention d’une telle autorisation;
+b) dans tout autre cas, à la partie dont l’exécution de l’obligation exige une
+autorisation, de prendre les mesures nécessaires.""";
+    content_hash "sha256:f6bf76ab3250c524c31eb2e1fd4ef1030955cd386f711c39d9fd46b0632a5c65";
+}
+
 // Article 6.1.15 (English black-letter rules)
 fragment PICC_ART6_1_15_EN in PICC_2016_EN {
     kind article;
@@ -268,6 +522,21 @@ shall do so without undue delay and shall bear any expenses incurred.
 (2) That party shall whenever appropriate give the other party notice of the grant
 or refusal of such permission without undue delay.""";
     content_hash "sha256:dd27e797a15ba17cf39cbfaa0147715d7d1d81f7960f263aaf0e91832e0d220a";
+}
+
+// Article 6.1.15 (French black-letter rules)
+fragment PICC_ART6_1_15_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_15";
+    text fr official """ARTICLE 6.1.15
+(Procédure d’obtention de l’autorisation)
+1)
+La partie qui doit prendre les mesures nécessaires à l’obtention de l’autorisation
+doit le faire sans retard indu et en supporter les frais.
+2)
+Elle doit, s’il y a lieu, informer sans retard indu l’autre partie de l’octroi ou du
+refus de l’autorisation.""";
+    content_hash "sha256:28d916ba298f7c7c8f8525315543b0ac3f3391ae81d8d3727cf5e61e191c16f9";
 }
 
 // Article 6.1.16 (English black-letter rules)
@@ -286,6 +555,24 @@ even if the permission is refused.""";
     content_hash "sha256:58679220e59fd1edb0d50f29a79e7607cbfa1a3e5e6e1deafe6de97ea07596cb";
 }
 
+// Article 6.1.16 (French black-letter rules)
+fragment PICC_ART6_1_16_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_16";
+    text fr official """ARTICLE 6.1.16
+(Autorisation ni accordée ni refusée)
+1)
+L’une ou l’autre des parties peut mettre fin au contrat si, bien que toutes les
+mesures requises aient été prises par la partie qui y est tenue, l’autorisation n’est ni
+accordée ni refusée dans le délai fixé ou, à défaut, dans un délai raisonnable à partir de la
+conclusion du contrat.
+2)
+Le paragraphe précédent ne s’applique pas lorsque l’autorisation ne concerne
+que certaines clauses du contrat et que, même dans l’éventualité d’un refus, il paraît
+raisonnable, eu égard aux circonstances, de maintenir les autres clauses.""";
+    content_hash "sha256:222eee9101869bfd7235c6432d8965db4a7c6782aaf7a321e6a70c3fb8e26cbe";
+}
+
 // Article 6.1.17 (English black-letter rules)
 fragment PICC_ART6_1_17_EN in PICC_2016_EN {
     kind article;
@@ -301,6 +588,23 @@ impossible in whole or in part, the rules on non-performance apply.""";
     content_hash "sha256:f61b9a1cac70f042aae53f2ac8fbcb89757222172ef7ac9e53613bb7fff51498";
 }
 
+// Article 6.1.17 (French black-letter rules)
+fragment PICC_ART6_1_17_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_1_17";
+    text fr official """ARTICLE 6.1.17
+(Refus d’autorisation)
+1)
+Le refus d’une autorisation touchant la validité du contrat emporte la nullité du
+contrat. La nullité n’est que partielle lorsque le refus invalide seulement certaines clauses
+du contrat et que, eu égard aux circonstances, il paraît raisonnable de maintenir les autres
+clauses.
+2)
+Les règles relatives à l’inexécution s’appliquent lorsque le refus d’autorisation
+rend impossible l’exécution totale ou partielle du contrat.""";
+    content_hash "sha256:97b178f12059f85fd4b71caf307fb3760aa32d434082ab9abc4581aab62c0b20";
+}
+
 // Article 6.2.1 (English black-letter rules)
 fragment PICC_ART6_2_1_EN in PICC_2016_EN {
     kind article;
@@ -311,6 +615,17 @@ Where the performance of a contract becomes more onerous for one of the parties,
 that party is nevertheless bound to perform its obligations subject to the following
 provisions on hardship.""";
     content_hash "sha256:b593edafa6273ce950ad6fbbe6513714e34df0658a89940007a82115d9fedce6";
+}
+
+// Article 6.2.1 (French black-letter rules)
+fragment PICC_ART6_2_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_2_1";
+    text fr official """ARTICLE 6.2.1
+(Respect du contrat)
+Les parties sont tenues de remplir leurs obligations, quand bien même l’exécution en
+serait devenue plus onéreuse, sous réserve des dispositions suivantes relatives au hardship.""";
+    content_hash "sha256:b9a46d79e34f498e473d7a3e6c71c07631bae83560535b18e90a7b76d8241fa0";
 }
 
 // Article 6.2.2 (English black-letter rules)
@@ -326,6 +641,24 @@ because the value of the performance a party receives has diminished, and
 (c) the events are beyond the control of the disadvantaged party; and
 (d) the risk of the events was not assumed by the disadvantaged party.""";
     content_hash "sha256:0fae6c85ffb47fd090bbd8b0cd86d0e050e1881bfd8c16849aa6fbb5139628e7";
+}
+
+// Article 6.2.2 (French black-letter rules)
+fragment PICC_ART6_2_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_2_2";
+    text fr official """ARTICLE 6.2.2
+(Définition)
+Il y a hardship lorsque surviennent des événements qui altèrent fondamentalement
+l’équilibre des prestations, soit que le coût de l’exécution des obligations ait augmenté,
+soit que la valeur de la contre-prestation ait diminué, et
+a) que ces événements sont survenus ou ont été connus de la partie lésée après la
+conclusion du contrat;
+b) que la partie lésée n’a pu, lors de la conclusion du contrat, raisonnablement
+prendre de tels événements en considération;
+c) que ces événements échappent au contrôle de la partie lésée; et
+d) que le risque de ces événements n’a pas été assumé par la partie lésée.""";
+    content_hash "sha256:68863d041202f8c81fb23c4cfd7cf3aaddf84212f4831f9bd0ae749a5d2b99fc";
 }
 
 // Article 6.2.3 (English black-letter rules)
@@ -344,4 +677,29 @@ resort to the court.
 (a) terminate the contract at a date and on terms to be fixed, or
 (b) adapt the contract with a view to restoring its equilibrium.""";
     content_hash "sha256:3a7f20b6022dc4918d4e5f679ef599c2e28c4e78d44b1023f850849574914a2e";
+}
+
+// Article 6.2.3 (French black-letter rules)
+fragment PICC_ART6_2_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/6_2_3";
+    text fr official """ARTICLE 6.2.3
+(Effets)
+1)
+En cas de hardship, la partie lésée peut demander l’ouverture de renégociations.
+La demande doit être faite sans retard indu et être motivée.
+2)
+La demande ne donne pas par elle-même à la partie lésée le droit de suspendre
+l’exécution de ses obligations.
+3)
+Faute d’accord entre les parties dans un délai raisonnable, l’une ou l’autre peut
+saisir le tribunal.
+4)
+Le tribunal qui conclut à l’existence d’un cas de hardship peut, s’il l’estime
+raisonnable:
+a)
+mettre fin au contrat à la date et aux conditions qu’il fixe; ou
+b)
+adapter le contrat en vue de rétablir l’équilibre des prestations.""";
+    content_hash "sha256:b01bc6d56e0b71321e7fd9a325cc95953cfcc5b2ca38072e9c496dc47cc04402";
 }

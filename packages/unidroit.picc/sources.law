@@ -48,6 +48,23 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     local_path "sources/picc-en/en.txt";
 }
 
+edition PICC_2016_FR of PICC_2016 {
+    label en official "French black-letter rules, 2016 edition";
+    language fr;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_FR_TEXT of PICC_2016_FR {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-French-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:cd037861ab3255634993de457b14556dd2a7a7d38fb37270cb4618dfd2304907";
+    local_path "sources/picc-fr/fr.txt";
+}
+
 // Preamble (Purpose of the Principles). The unit of the instrument that
 // says WHEN the Principles apply at all; it is not an article and carries
 // no number, so the article split does not see it.
@@ -68,6 +85,26 @@ They may be used to interpret or supplement domestic law.
 They may serve as a model for national and international legislators.""";
     content_hash "sha256:e07bc3244f2c94a5e38b08b78a8e6a22a8ce0ffe8eade6e5d2640380641526a1";
 }
+
+// Préambule (Objet des Principes) — the paired official anchor.
+fragment PICC_PREAMBLE_FR in PICC_2016_FR {
+    kind preamble;
+    locator "preamble";
+    text fr official """PRÉAMBULE
+(Objet des Principes)
+Les Principes qui suivent énoncent des règles générales propres à régir les contrats du
+commerce international.
+Ils s’appliquent lorsque les parties acceptent d’y soumettre leur contrat (*)
+Ils peuvent s’appliquer lorsque les parties acceptent que leur contrat soit régi par les
+principes généraux du droit, la lex mercatoria ou autre formule similaire.
+Ils peuvent s’appliquer lorsque les parties n’ont pas choisi une loi particulière devant
+régir leur contrat.
+Ils peuvent être utilisés afin d’interpréter ou de compléter d’autres instruments du
+droit international uniforme.
+Ils peuvent être utilisés afin d’interpréter ou de compléter le droit national.
+Ils peuvent servir de modèle aux législateurs nationaux et internationaux.""";
+    content_hash "sha256:1979b941fd7c0c084004dacc4dc5411a5b457badc4133e47162ddd35a4aec0ea";
+}
 // Article 1.1 (English black-letter rules)
 fragment PICC_ART1_1_EN in PICC_2016_EN {
     kind article;
@@ -76,6 +113,16 @@ fragment PICC_ART1_1_EN in PICC_2016_EN {
 (Freedom of contract)
 The parties are free to enter into a contract and to determine its content.""";
     content_hash "sha256:ccfb452be654cb7859eb3cff10a279d03c64407b2f31c6e2f4a583ae929a7ccf";
+}
+
+// Article 1.1 (French black-letter rules)
+fragment PICC_ART1_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_1";
+    text fr official """ARTICLE 1.1
+(Liberté contractuelle)
+Les parties sont libres de conclure un contrat et d’en fixer le contenu.""";
+    content_hash "sha256:a89c59273e0c4409372654fb5c236671974ab12c6dee76337cc285141acc041c";
 }
 
 // Article 1.2 (English black-letter rules)
@@ -90,6 +137,18 @@ witnesses.""";
     content_hash "sha256:25c081f39d2ee05202b3f19401aff1b9f39b6c9295915ba8df40631118216df0";
 }
 
+// Article 1.2 (French black-letter rules)
+fragment PICC_ART1_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_2";
+    text fr official """ARTICLE 1.2
+(Forme du contrat)
+Ces Principes n’imposent pas que le contrat, la déclaration ou tout autre acte soit
+conclu ou constaté sous une forme particulière. Il peut être prouvé par tous moyens, y
+compris par témoins.""";
+    content_hash "sha256:a8f4e853f9f6cf9fb922fe562aae6472840f512942fec8012580118d52410e04";
+}
+
 // Article 1.3 (English black-letter rules)
 fragment PICC_ART1_3_EN in PICC_2016_EN {
     kind article;
@@ -102,6 +161,18 @@ these Principles.""";
     content_hash "sha256:60371b0c3c97bcafd04abaef63213228dc4139218943d8468617bdb171c77ce2";
 }
 
+// Article 1.3 (French black-letter rules)
+fragment PICC_ART1_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_3";
+    text fr official """ARTICLE 1.3
+(Force obligatoire du contrat)
+Le contrat valablement formé lie ceux qui l’ont conclu. Les parties ne peuvent le
+modifier ou y mettre fin que selon ses dispositions, d’un commun accord ou encore pour
+les causes énoncées dans ces Principes.""";
+    content_hash "sha256:eeff10b9afa43327c6a5c7f707f6bd12e330be43197d798fd1c0e807f9d40583";
+}
+
 // Article 1.4 (English black-letter rules)
 fragment PICC_ART1_4_EN in PICC_2016_EN {
     kind article;
@@ -112,6 +183,18 @@ Nothing in these Principles shall restrict the application of mandatory rules, w
 of national, international or supranational origin, which are applicable in accordance
 with the relevant rules of private international law.""";
     content_hash "sha256:e815a446c6e48c433f36f1d2d1c6d28cb5a0d00f6049a63011013fe7f5bd39ed";
+}
+
+// Article 1.4 (French black-letter rules)
+fragment PICC_ART1_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_4";
+    text fr official """ARTICLE 1.4
+(Règles impératives)
+Ces Principes ne limitent pas l’application des règles impératives, d’origine nationale,
+internationale ou supranationale, applicables selon les règles pertinentes du droit
+international privé.""";
+    content_hash "sha256:35f481d5773f5d6c0b2defcadb3f55809d66db96a67721811c1e846f11091206";
 }
 
 // Article 1.5 (English black-letter rules)
@@ -128,6 +211,22 @@ the Model Clauses for the use of the UNIDROIT Principles of International Commer
     content_hash "sha256:2e6f1a50701e5080862acaacb6b4fc7e8e11110d5f9a8719986514df7d3cfb68";
 }
 
+// Article 1.5 (French black-letter rules)
+fragment PICC_ART1_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_5";
+    text fr official """ARTICLE 1.5
+(Exclusion ou modification conventionnelles)
+Les parties peuvent exclure l’application de ces Principes, déroger à l’une quelconque
+de leurs dispositions ou en modifier les effets, à moins que ces Principes n’en disposent
+autrement.
+(*)
+Les parties qui souhaitent prévoir que leur contrat sera soumis aux Principes pourraient utiliser
+l’une des Clauses types pour l’utilisation des Principes d’UNIDROIT relatifs aux contrats du commerce
+international (voir : http://www.unidroit.org/fr/instruments/contrats-du-commerce-international/piccclauses-types).""";
+    content_hash "sha256:0b4ba57e5d1773087c8095f99ccaf3307ed2c7d8a7eee139267edb499948491d";
+}
+
 // Article 1.6 (English black-letter rules)
 fragment PICC_ART1_6_EN in PICC_2016_EN {
     kind article;
@@ -142,6 +241,23 @@ are as far as possible to be settled in accordance with their underlying general
     content_hash "sha256:d3fc2cb2f29764ce5fd5f5aca515dd473f4d4566e2f3438547a0747719a1b9f0";
 }
 
+// Article 1.6 (French black-letter rules)
+fragment PICC_ART1_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_6";
+    text fr official """ARTICLE 1.6
+(Interprétation et comblement des lacunes)
+1)
+Pour l’interprétation de ces Principes, il sera tenu compte de leur caractère
+international et de leur finalité, notamment de la nécessité de promouvoir l’uniformité de
+leur application.
+2)
+Les questions qui entrent dans le champ d’application de ces Principes, mais
+que ceux-ci ne tranchent pas expressément, sont, dans la mesure du possible, réglées
+conformément aux principes généraux dont ils s’inspirent.""";
+    content_hash "sha256:0a9126012ca70657ab836f2bc7d9dfced8c3ebc5a373aca30a4d275cb1db7b79";
+}
+
 // Article 1.7 (English black-letter rules)
 fragment PICC_ART1_7_EN in PICC_2016_EN {
     kind article;
@@ -154,6 +270,20 @@ international trade.
     content_hash "sha256:03517edcfe3b83b31293674f2d66d9994ccf9b488bb268e08419aff43a8d8cd3";
 }
 
+// Article 1.7 (French black-letter rules)
+fragment PICC_ART1_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_7";
+    text fr official """ARTICLE 1.7
+(Bonne foi)
+1)
+Les parties sont tenues de se conformer aux exigences de la bonne foi dans le
+commerce international.
+2)
+Elles ne peuvent exclure cette obligation ni en limiter la portée.""";
+    content_hash "sha256:729c188a162290cf9d8cea2e793d4f2a04a065d64796de63fd1cdd669ab75624";
+}
+
 // Article 1.8 (English black-letter rules)
 fragment PICC_ART1_8_EN in PICC_2016_EN {
     kind article;
@@ -163,6 +293,18 @@ fragment PICC_ART1_8_EN in PICC_2016_EN {
 A party cannot act inconsistently with an understanding it has caused the other party
 to have and upon which that other party reasonably has acted in reliance to its detriment.""";
     content_hash "sha256:25b250f491d21560ed8a8e6d3078090cc419d96660bb3fd874c491b93f12b1c8";
+}
+
+// Article 1.8 (French black-letter rules)
+fragment PICC_ART1_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_8";
+    text fr official """ARTICLE 1.8
+(Interdiction de se contredire)
+Une partie ne peut agir en contradiction avec une attente qu’elle a suscitée chez l’autre
+partie lorsque cette dernière a cru raisonnablement à cette attente et a agi en conséquence
+à son désavantage.""";
+    content_hash "sha256:d4ced69d29dcb624c2ced344a5d180f8afc4da9d0250a2a44c9a6b2e2a99e01d";
 }
 
 // Article 1.9 (English black-letter rules)
@@ -179,6 +321,22 @@ the application of such a usage would be unreasonable.""";
     content_hash "sha256:6eaa1ca642b646a04e303f769b9ee2d0215e16e478ff9b9d73392598a4976cf9";
 }
 
+// Article 1.9 (French black-letter rules)
+fragment PICC_ART1_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_9";
+    text fr official """ARTICLE 1.9
+(Usages et pratiques)
+1)
+Les parties sont liées par les usages auxquels elles ont consenti, ainsi que par les
+pratiques qu’elles ont établies entre elles.
+2)
+Elles sont liées par tout usage qui, dans le commerce international, est largement
+connu et régulièrement observé par les parties à des contrats dans la branche commerciale
+considérée, à moins que son application ne soit déraisonnable.""";
+    content_hash "sha256:ea6ec42c25becea15f5227a9f59e54ece48cf4aa7dd70b2ce93a811bf434325b";
+}
+
 // Article 1.10 (English black-letter rules)
 fragment PICC_ART1_10_EN in PICC_2016_EN {
     kind article;
@@ -193,6 +351,27 @@ that person orally or delivered at that person’s place of business or mailing 
 (4) For the purpose of this Article “notice” includes a declaration, demand,
 request or any other communication of intention.""";
     content_hash "sha256:f1b9cbacb9c75a46c21b6742fdc448c08384bb93152d0d8fb204142c12e94b87";
+}
+
+// Article 1.10 (French black-letter rules)
+fragment PICC_ART1_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_10";
+    text fr official """ARTICLE 1.10
+(Notification)
+1)
+Une notification, lorsqu’elle est requise, peut se faire par tout moyen approprié
+aux circonstances.
+2)
+Elle prend effet au moment où elle parvient au destinataire.
+3)
+Aux fins du paragraphe précédent, une notification parvient à son destinataire
+lorsqu’elle lui est faite verbalement ou est délivrée à son établissement ou à son adresse
+postale.
+4)
+Aux fins du présent article, le terme “notification” s’applique aussi à une
+déclaration, demande, requête ou autre communication d’intention.""";
+    content_hash "sha256:c5706f0aad7592856d0c037a0d4895462894f3e9d26edcb026c7fd3b63d9cfc7";
 }
 
 // Article 1.11 (English black-letter rules)
@@ -222,6 +401,34 @@ information contained therein and is capable of being reproduced in tangible for
     content_hash "sha256:32fe9bfd9c087bd82be091182f046e70c75f00c990ff89a41d5b53e38f39a672";
 }
 
+// Article 1.11 (French black-letter rules)
+fragment PICC_ART1_11_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_11";
+    text fr official """ARTICLE 1.11
+(Définitions)
+Aux fins de ces Principes:
+–
+le terme “tribunal” s’applique au tribunal arbitral;
+–
+lorsqu’une partie a plus d’un établissement, l’ “établissement” à prendre en
+considération est celui qui a la relation la plus étroite avec le contrat et son exécution, eu
+égard aux circonstances connues des parties ou envisagées par elles à un moment
+quelconque avant la conclusion ou lors de la conclusion du contrat;
+–
+“contrat à long terme” désigne un contrat dont l’exécution se prolonge dans le
+temps, et qui implique habituellement, à des degrés variables, une complexité de
+l’opération et une relation continue entre les parties;
+–
+le terme “débiteur” désigne la partie qui est tenue d’exécuter l’obligation et le
+terme “créancier” désigne la partie qui peut en réclamer l’exécution;
+–
+le terme “écrit” s’entend de tout mode de communication qui permet de
+conserver l’information qui y est contenue et qui est de nature à laisser une trace
+matérielle.""";
+    content_hash "sha256:01e5149c5efa54ac4621c02144d9542097c76dd71ce22d0ef95787116b146c92";
+}
+
 // Article 1.12 (English black-letter rules)
 fragment PICC_ART1_12_EN in PICC_2016_EN {
     kind article;
@@ -236,6 +443,25 @@ the first business day which follows, unless the circumstances indicate otherwis
 (3) The relevant time zone is that of the place of business of the party setting the
 time, unless the circumstances indicate otherwise.""";
     content_hash "sha256:1e1ef7047821d8e9fc18f761c4bddb0737fdff028383a9b4ada59264ef3cd227";
+}
+
+// Article 1.12 (French black-letter rules)
+fragment PICC_ART1_12_FR in PICC_2016_FR {
+    kind article;
+    locator "article/1_12";
+    text fr official """ARTICLE 1.12
+(Computation des délais fixés par les parties)
+1)
+Les jours fériés ou chômés qui tombent pendant que court le délai fixé par les
+parties pour l’accomplissement d’un acte sont comptés dans le calcul de ce délai.
+2)
+Toutefois, le délai qui expirerait un jour qui est férié ou chômé au lieu
+d’établissement de la partie qui doit accomplir un acte, est prorogé jusqu’au premier jour
+ouvrable suivant, à moins que les circonstances n’indiquent le contraire.
+3)
+La zone horaire est celle du lieu d’établissement de la partie qui fixe le délai, à
+moins que les circonstances n’indiquent le contraire.""";
+    content_hash "sha256:2bc6bafd57d492f83d708c98c9436231bca2c90cad83b8ea73165ca1fa72a71b";
 }
 
 // Article 4.1 (English black-letter rules)
@@ -253,6 +479,18 @@ give to it in the same circumstances.""";
     content_hash "sha256:745496f6633e99926c50f3bfbd388d95fa3274108f55825ce2d820150ca80c34";
 }
 
+// Article 4.1 (French black-letter rules)
+fragment PICC_ART4_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_1";
+    text fr official """ARTICLE 4.1
+(Intention des parties)
+1) Le contrat s’interprète selon la commune intention des parties.
+2) Faute de pouvoir déceler la commune intention des parties, le contrat s’interprète selon le sens que lui donnerait une personne raisonnable de même qualité placée
+dans la même situation.""";
+    content_hash "sha256:7cf64780bf5df0c78a37b51eb1d490267e791d457d4e137cd817c4e0b8b49d09";
+}
+
 // Article 4.2 (English black-letter rules)
 fragment PICC_ART4_2_EN in PICC_2016_EN {
     kind article;
@@ -266,6 +504,21 @@ intention.
 shall be interpreted according to the meaning that a reasonable person of the same kind
 as the other party would give to it in the same circumstances.""";
     content_hash "sha256:f5be70d03fd5d4683267c30e3a235af5befa51e946aa2618d881e5a4a96158c3";
+}
+
+// Article 4.2 (French black-letter rules)
+fragment PICC_ART4_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_2";
+    text fr official """ARTICLE 4.2
+(Interprétation des déclarations et des comportements)
+1)
+Les déclarations et le comportement d’une partie s’interprètent selon l’intention
+de leur auteur lorsque l’autre partie connaissait ou ne pouvait ignorer cette intention.
+2)
+A défaut d’application du paragraphe précédent, ils s’interprètent selon le sens que
+lui donnerait une personne raisonnable de même qualité placée dans la même situation.""";
+    content_hash "sha256:a8a4deb0cadc6986e09326af3e50b4ca2cc452601bfb777d1cf00a8620b5865f";
 }
 
 // Article 4.3 (English black-letter rules)
@@ -285,6 +538,25 @@ including
     content_hash "sha256:184c0408a9cd98237eab348222e9b0ea8276e8e9999cf25054fa348fe0013736";
 }
 
+// Article 4.3 (French black-letter rules)
+fragment PICC_ART4_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_3";
+    text fr official """ARTICLE 4.3
+(Circonstances pertinentes)
+Pour l’application des articles 4.1 et 4.2, on prend en considération toutes les
+circonstances, notamment:
+a) les négociations préliminaires entre les parties;
+b) les pratiques établies entre les parties;
+c) le comportement des parties postérieur à la conclusion du contrat;
+d) la nature et le but du contrat;
+e) le sens généralement attribué aux clauses et aux expressions dans la branche
+commerciale concernée;
+f)
+les usages.""";
+    content_hash "sha256:c1507c1b6be834e6015283b1f86513830a874845bfef40e4e2edf88e7d3f1558";
+}
+
 // Article 4.4 (English black-letter rules)
 fragment PICC_ART4_4_EN in PICC_2016_EN {
     kind article;
@@ -294,6 +566,17 @@ fragment PICC_ART4_4_EN in PICC_2016_EN {
 Terms and expressions shall be interpreted in the light of the whole contract or
 statement in which they appear.""";
     content_hash "sha256:fde11ae5a0cc1193ec46ca226c38cd5b95a2b77406f93f50c29f8a6aa8112fa6";
+}
+
+// Article 4.4 (French black-letter rules)
+fragment PICC_ART4_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_4";
+    text fr official """ARTICLE 4.4
+(Cohérence du contrat)
+Les clauses et les expressions s’interprètent en fonction de l’ensemble du contrat ou
+de la déclaration où elles figurent.""";
+    content_hash "sha256:86ecd2d6271fb085703913be85e1da871681d1c5731ae91a6891a531df1d5c3a";
 }
 
 // Article 4.5 (English black-letter rules)
@@ -307,6 +590,17 @@ deprive some of them of effect.""";
     content_hash "sha256:e6aa96b13450899ce660662222842cfdc51c5d87dc9623bad66f67d782abe5e2";
 }
 
+// Article 4.5 (French black-letter rules)
+fragment PICC_ART4_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_5";
+    text fr official """ARTICLE 4.5
+(Interprétation utile)
+Les clauses d’un contrat s’interprètent dans le sens avec lequel elles peuvent toutes
+avoir quelque effet, plutôt que dans le sens avec lequel certaines n’en auraient aucun.""";
+    content_hash "sha256:9df792025e8e23e8f9987b1b0a9fdf0ad335448ffb5a9cae34cc945c6863ba49";
+}
+
 // Article 4.6 (English black-letter rules)
 fragment PICC_ART4_6_EN in PICC_2016_EN {
     kind article;
@@ -316,6 +610,17 @@ fragment PICC_ART4_6_EN in PICC_2016_EN {
 If contract terms supplied by one party are unclear, an interpretation against that
 party is preferred.""";
     content_hash "sha256:42798b90407c68cf4b377c726180f319bed4a520b43a8653c4fd778acffde7ed";
+}
+
+// Article 4.6 (French black-letter rules)
+fragment PICC_ART4_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_6";
+    text fr official """ARTICLE 4.6
+(Règle contra proferentem)
+En cas d’ambiguïté, les clauses d’un contrat s’interprètent de préférence contre celui
+qui les a proposées.""";
+    content_hash "sha256:89653024aedb5bc8c5aaed7ac552f220a6e8ac368ff5d47c46445db34a28277c";
 }
 
 // Article 4.7 (English black-letter rules)
@@ -328,6 +633,17 @@ Where a contract is drawn up in two or more language versions which are equally
 authoritative there is, in case of discrepancy between the versions, a preference for the
 interpretation according to a version in which the contract was originally drawn up.""";
     content_hash "sha256:15f60bbf6f02742d5c0e43f477f494a3eb242eab1e817147c6f0e4cc37d07dd2";
+}
+
+// Article 4.7 (French black-letter rules)
+fragment PICC_ART4_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_7";
+    text fr official """ARTICLE 4.7
+(Divergences linguistiques)
+En cas de divergence entre deux ou plusieurs versions linguistiques faisant également
+foi, préférence est accordée à l’interprétation fondée sur une version d’origine.""";
+    content_hash "sha256:35dddea22aa66aa24f76e55feb540bc124b43caf4f499d71a68233ce6d8169b0";
 }
 
 // Article 4.8 (English black-letter rules)
@@ -348,6 +664,25 @@ factors, to
     content_hash "sha256:86646cb219d6d667a1c741a80ff8779993077a661111a0a1e039bda8624a9ea1";
 }
 
+// Article 4.8 (French black-letter rules)
+fragment PICC_ART4_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/4_8";
+    text fr official """ARTICLE 4.8
+(Omissions)
+1)
+A défaut d’accord entre les parties quant à une clause qui est importante pour la
+détermination de leurs droits et obligations, on y supplée par une clause appropriée.
+2)
+Pour déterminer ce qui constitue une clause appropriée, on prend en
+considération, notamment:
+a) l’intention des parties;
+b) la nature et le but du contrat;
+c) la bonne foi;
+d) ce qui est raisonnable.""";
+    content_hash "sha256:c40364ede5d787fcd598b4fc8fd939b680af6f071e2af62675c570cab3591d7e";
+}
+
 // Article 5.1.1 (English black-letter rules)
 fragment PICC_ART5_1_1_EN in PICC_2016_EN {
     kind article;
@@ -356,6 +691,16 @@ fragment PICC_ART5_1_1_EN in PICC_2016_EN {
 (Express and implied obligations)
 The contractual obligations of the parties may be express or implied.""";
     content_hash "sha256:2c5a275e66aac586fcc5e7c549b127955c2b026587b9206b59234b3895b71420";
+}
+
+// Article 5.1.1 (French black-letter rules)
+fragment PICC_ART5_1_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_1";
+    text fr official """ARTICLE 5.1.1
+(Obligations expresses et implicites)
+Les obligations contractuelles des parties sont expresses ou implicites.""";
+    content_hash "sha256:8c085a2cc811bd56057e1a61a0718c7c8983b2e3f853213bc4aae96d75272533";
 }
 
 // Article 5.1.2 (English black-letter rules)
@@ -372,6 +717,20 @@ Implied obligations stem from
     content_hash "sha256:e8225dece81b7ed4fb6b937462db303d2979c801037ca2487557b3374fe1e0f2";
 }
 
+// Article 5.1.2 (French black-letter rules)
+fragment PICC_ART5_1_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_2";
+    text fr official """ARTICLE 5.1.2
+(Obligations implicites)
+Les obligations implicites découlent:
+a) de la nature et du but du contrat;
+b) des pratiques établies entre les parties et des usages;
+c) de la bonne foi;
+d) de ce qui est raisonnable.""";
+    content_hash "sha256:78e38d63877d686e38cf732ce03f7eecd6d926a2f7710b15299f7b2d8d167289";
+}
+
 // Article 5.1.3 (English black-letter rules)
 fragment PICC_ART5_1_3_EN in PICC_2016_EN {
     kind article;
@@ -381,6 +740,17 @@ fragment PICC_ART5_1_3_EN in PICC_2016_EN {
 Each party shall cooperate with the other party when such co-operation may
 reasonably be expected for the performance of that party’s obligations.""";
     content_hash "sha256:66e4928018d097f4f2bf9040115d0639703eefb1ded7b0afdd249b82649a8f12";
+}
+
+// Article 5.1.3 (French black-letter rules)
+fragment PICC_ART5_1_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_3";
+    text fr official """ARTICLE 5.1.3
+(Devoir de coopération)
+Les parties ont entre elles un devoir de coopération lorsque l’on peut raisonnablement
+s’y attendre dans l’exécution de leurs obligations.""";
+    content_hash "sha256:14281b0713edf8bb771dd7eb059c5056d4cac5166a99af3b18a7c5a0c4c109c7";
 }
 
 // Article 5.1.4 (English black-letter rules)
@@ -396,6 +766,21 @@ result, that party is bound to achieve that result.
 performance of an activity, that party is bound to make such efforts as would be made
 by a reasonable person of the same kind in the same circumstances.""";
     content_hash "sha256:afc2057c2b7325786fe526acfae229ffdded3de46bb5f29d1233d567006c52c6";
+}
+
+// Article 5.1.4 (French black-letter rules)
+fragment PICC_ART5_1_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_4";
+    text fr official """ARTICLE 5.1.4
+(Obligation de résultat et obligation de moyens)
+1)
+Le débiteur d’une obligation de résultat est tenu de fournir le résultat promis.
+2)
+Le débiteur d’une obligation de moyens est tenu d’apporter à l’exécution de sa
+prestation la prudence et la diligence d’une personne raisonnable de même qualité placée
+dans la même situation.""";
+    content_hash "sha256:2e3f7a38b10dbe3bcd5630555a9a2a2f7380f6a6aa2908c569d0600dae9532d2";
 }
 
 // Article 5.1.5 (English black-letter rules)
@@ -414,6 +799,21 @@ shall be had, among other factors, to
     content_hash "sha256:f2b55e3f16c06da858add7c84d510240b46a4ac300a4a08aa88662fe9dda08c7";
 }
 
+// Article 5.1.5 (French black-letter rules)
+fragment PICC_ART5_1_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_5";
+    text fr official """ARTICLE 5.1.5
+(Détermination du type d’obligation)
+Pour déterminer si l’obligation est de moyens ou de résultat, on prend en
+considération, notamment:
+a) la manière dont l’obligation est exprimée dans le contrat;
+b) le prix et les autres éléments du contrat;
+c) le degré d’aléa normalement présent dans la poursuite du résultat recherché;
+d) l’influence que peut exercer l’autre partie sur l’exécution de l’obligation.""";
+    content_hash "sha256:abbfccd03e78950ff29e5821e08254727460ff086e6edb302b183cc69e162b7e";
+}
+
 // Article 5.1.6 (English black-letter rules)
 fragment PICC_ART5_1_6_EN in PICC_2016_EN {
     kind article;
@@ -424,6 +824,18 @@ Where the quality of performance is neither fixed by, nor determinable from, the
 contract a party is bound to render a performance of a quality that is reasonable and not
 less than average in the circumstances.""";
     content_hash "sha256:a05edb480340c6d58771dfba691b450286043a86db915dd1dc76e462da4ba80b";
+}
+
+// Article 5.1.6 (French black-letter rules)
+fragment PICC_ART5_1_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_6";
+    text fr official """ARTICLE 5.1.6
+(Détermination de la qualité de la prestation)
+Lorsque la qualité de la prestation n’est pas fixée par le contrat ou déterminable en
+vertu de celui-ci, une partie est tenue de fournir une prestation de qualité raisonnable et,
+eu égard aux circonstances, au moins égale à la moyenne.""";
+    content_hash "sha256:b192854c2e310911df4920d3400a5807dc92c4877030659fd0c87aeb2713c963";
 }
 
 // Article 5.1.7 (English black-letter rules)
@@ -448,6 +860,32 @@ substitute.""";
     content_hash "sha256:8438ba0fa8ad1ef34f7ab247b9003fcbd012a490826a74a0a6408356d748b5d0";
 }
 
+// Article 5.1.7 (French black-letter rules)
+fragment PICC_ART5_1_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_7";
+    text fr official """ARTICLE 5.1.7
+(Fixation du prix)
+1)
+Lorsque le contrat ne fixe pas de prix ou ne prévoit pas le moyen de le
+déterminer, les parties sont réputées, sauf indication contraire, s’être référées au prix
+habituellement pratiqué lors de la conclusion du contrat, dans la branche commerciale
+considérée, pour les mêmes prestations effectuées dans des circonstances comparables ou,
+à défaut d’un tel prix, à un prix raisonnable.
+2)
+Lorsque le prix qui doit être fixé par une partie s’avère manifestement
+déraisonnable, il lui est substitué un prix raisonnable, nonobstant toute stipulation
+contraire.
+3)
+Lorsque le prix doit être fixé par une partie ou par un tiers et que cette partie ou
+ce tiers ne le fait pas, il est fixé un prix raisonnable.
+4)
+Lorsque le prix doit être fixé par référence à un facteur qui n’existe pas, a cessé
+d’exister ou d’être accessible, celui-ci est remplacé par le facteur qui s’en rapproche le
+plus.""";
+    content_hash "sha256:60b86c456487be6073204c48ad7c745c48324119fb8a499c5d1ddf47f4241478";
+}
+
 // Article 5.1.8 (English black-letter rules)
 fragment PICC_ART5_1_8_EN in PICC_2016_EN {
     kind article;
@@ -460,6 +898,18 @@ restitution, the provisions in Articles 7.3.5 and 7.3.7 apply.""";
     content_hash "sha256:53f1ad8407f7a80b3843d2fd1abe068fc7a1895381f32aa6cf94d9bac01ccf8c";
 }
 
+// Article 5.1.8 (French black-letter rules)
+fragment PICC_ART5_1_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_8";
+    text fr official """ARTICLE 5.1.8
+(Résolution d’un contrat à durée indéterminée)
+Chacune des parties peut mettre fin à un contrat à durée indéterminée en notifiant un
+préavis d’une durée raisonnable. Pour ce qui est des effets de la résolution en général, et
+en ce qui concerne la restitution, les dispositions des articles 7.3.5 et 7.3.7 s’appliquent.""";
+    content_hash "sha256:c7f0deef29304305bd1ff6191d001ed965a97eca8e783723ddaa96934188593b";
+}
+
 // Article 5.1.9 (English black-letter rules)
 fragment PICC_ART5_1_9_EN in PICC_2016_EN {
     kind article;
@@ -470,6 +920,20 @@ fragment PICC_ART5_1_9_EN in PICC_2016_EN {
 (2) An offer to release a right gratuitously shall be deemed accepted if the obligor
 does not reject the offer without delay after having become aware of it.""";
     content_hash "sha256:dcb9a2d0fcfafd01f69379204c2f44482a1d5b27b71779420412315f4741c4e0";
+}
+
+// Article 5.1.9 (French black-letter rules)
+fragment PICC_ART5_1_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_1_9";
+    text fr official """ARTICLE 5.1.9
+(Renonciation par convention)
+1)
+Un créancier peut renoncer à son droit par convention avec le débiteur.
+2)
+L’offre à titre gratuit de renoncer à un droit est présumée acceptée si le débiteur
+ne la rejette pas immédiatement après en avoir eu connaissance.""";
+    content_hash "sha256:42befcf4396bf39008563616f6c9566a854ff031616bafaddb37b246a383cdb7";
 }
 
 // Article 5.2.1 (English black-letter rules)
@@ -486,6 +950,22 @@ limitations under the agreement.""";
     content_hash "sha256:7570b5389fbcabf40a266e1e5909e24b83052dd3ba712959746caca92f69e235";
 }
 
+// Article 5.2.1 (French black-letter rules)
+fragment PICC_ART5_2_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_2_1";
+    text fr official """ARTICLE 5.2.1
+(Stipulation pour autrui)
+1)
+Les parties (le “promettant” et le “stipulant”) peuvent, par un accord exprès ou
+tacite, conférer un droit à un tiers (le “bénéficiaire”).
+2)
+L’existence et le contenu du droit que le bénéficiaire peut exercer à l’encontre
+du promettant sont déterminés par l’accord des parties et soumis aux conditions ou autres
+limitations prévues dans l’accord.""";
+    content_hash "sha256:6779e5189c75b0180fb5c7c83413496433bfed34f17851030c0a5a61e09ba180";
+}
+
 // Article 5.2.2 (English black-letter rules)
 fragment PICC_ART5_2_2_EN in PICC_2016_EN {
     kind article;
@@ -495,6 +975,17 @@ fragment PICC_ART5_2_2_EN in PICC_2016_EN {
 The beneficiary must be identifiable with adequate certainty by the contract but need
 not be in existence at the time the contract is made.""";
     content_hash "sha256:74bf890ac6f2359e206b7a4860532decf6581d79de8b66ad77a5255de45d8ca5";
+}
+
+// Article 5.2.2 (French black-letter rules)
+fragment PICC_ART5_2_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_2_2";
+    text fr official """ARTICLE 5.2.2
+(Tiers identifiable)
+Le bénéficiaire doit être identifiable avec une certitude suffisante dans le contrat, mais
+il peut ne pas exister au moment de la conclusion du contrat.""";
+    content_hash "sha256:3f2d36c8369845e96898053c08c1051c6b861af92779f30e9dbd46c7b473fc8b";
 }
 
 // Article 5.2.3 (English black-letter rules)
@@ -508,6 +999,17 @@ the contract which excludes or limits the liability of the beneficiary.""";
     content_hash "sha256:daceeadc10c2170c61d6530e85e47af2e6159534d8da2445c703332a7252d198";
 }
 
+// Article 5.2.3 (French black-letter rules)
+fragment PICC_ART5_2_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_2_3";
+    text fr official """ARTICLE 5.2.3
+(Clauses exonératoires et limitatives)
+Les droits conférés au bénéficiaire comprennent celui d’invoquer une clause du
+contrat qui exclut ou limite la responsabilité du bénéficiaire.""";
+    content_hash "sha256:5ea2f29adb28258f635b7b6e6d2fe729b90ea2d85a18ebb5aabd2d4f445e8e95";
+}
+
 // Article 5.2.4 (English black-letter rules)
 fragment PICC_ART5_2_4_EN in PICC_2016_EN {
     kind article;
@@ -517,6 +1019,17 @@ fragment PICC_ART5_2_4_EN in PICC_2016_EN {
 The promisor may assert against the beneficiary all defences which the promisor
 could assert against the promisee.""";
     content_hash "sha256:a5f5a87464f59f4c3bdcb5316a7b02c5f237aa10a9f4efb70cb3d4fa601b8b78";
+}
+
+// Article 5.2.4 (French black-letter rules)
+fragment PICC_ART5_2_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_2_4";
+    text fr official """ARTICLE 5.2.4
+(Moyens de défense)
+Le promettant peut opposer au bénéficiaire tous les moyens de défense qu’il pourrait
+opposer au stipulant.""";
+    content_hash "sha256:25367f29c6369854b26768faec524e23059cf7bd778ba0105dfc5163af3df408";
 }
 
 // Article 5.2.5 (English black-letter rules)
@@ -531,6 +1044,18 @@ them.""";
     content_hash "sha256:8af280b56d6e500313811a17fb03e19b7ece890c7b75c8e6fc405e0262d4c4d1";
 }
 
+// Article 5.2.5 (French black-letter rules)
+fragment PICC_ART5_2_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_2_5";
+    text fr official """ARTICLE 5.2.5
+(Révocation)
+Les parties peuvent modifier ou révoquer les droits conférés par le contrat au
+bénéficiaire, tant que ce dernier ne les a pas acceptés ou n’a pas agi raisonnablement en
+conséquence.""";
+    content_hash "sha256:c8f4528c1590fac342e445d1f02d07f5ead7f7338162080521972923fceca182";
+}
+
 // Article 5.2.6 (English black-letter rules)
 fragment PICC_ART5_2_6_EN in PICC_2016_EN {
     kind article;
@@ -539,6 +1064,16 @@ fragment PICC_ART5_2_6_EN in PICC_2016_EN {
 (Renunciation)
 The beneficiary may renounce a right conferred on it.""";
     content_hash "sha256:77ef1cd8ebfd717102b59b981bfedd274903ef1a1146a738784400bae9731409";
+}
+
+// Article 5.2.6 (French black-letter rules)
+fragment PICC_ART5_2_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_2_6";
+    text fr official """ARTICLE 5.2.6
+(Renonciation)
+Le bénéficiaire peut renoncer à un droit qui lui a été conféré.""";
+    content_hash "sha256:ef65586fbe2a6d063de0e6bf489f5faf6ea0b31f30b09e4887af6dfa4bd62052";
 }
 
 // Article 5.3.1 (English black-letter rules)
@@ -554,6 +1089,19 @@ effect if the event occurs (suspensive condition) or comes to an end if the even
     content_hash "sha256:ff2d9c2be36cbc902cea931ea6efe49fd1a6df03c73e38293e97222527ee1b10";
 }
 
+// Article 5.3.1 (French black-letter rules)
+fragment PICC_ART5_3_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_3_1";
+    text fr official """ARTICLE 5.3.1
+(Types de conditions)
+Un contrat ou une obligation contractuelle peuvent être rendus conditionnels si on les
+fait dépendre de la réalisation d’un événement futur et incertain, de sorte que le contrat ou
+l’obligation contractuelle ne prennent effet (condition suspensive) ou ne prennent fin
+(condition résolutoire) que si l’événement se réalise.""";
+    content_hash "sha256:acde49c821a490bf2e023bbfa66370e19242fc1fd672fe16f61c48c452d3781b";
+}
+
 // Article 5.3.2 (English black-letter rules)
 fragment PICC_ART5_3_2_EN in PICC_2016_EN {
     kind article;
@@ -566,6 +1114,20 @@ suspensive condition;
 (b) the relevant contract or contractual obligation comes to an end upon fulfilment
 of a resolutive condition.""";
     content_hash "sha256:622588927aba3224ee992f443605902157322c56cfc1abcbcb92fe5347dfcb9c";
+}
+
+// Article 5.3.2 (French black-letter rules)
+fragment PICC_ART5_3_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_3_2";
+    text fr official """ARTICLE 5.3.2
+(Effet des conditions)
+A moins que les parties n’en disposent autrement:
+a) le contrat ou l’obligation contractuelle concernés prennent effet au moment de
+la réalisation d’une condition suspensive;
+b) le contrat ou l’obligation contractuelle concernés prennent fin au moment de la
+réalisation d’une condition résolutoire.""";
+    content_hash "sha256:4f8d0aef4df6997ae1214fe78f6e46ead9218a76c47f2f1fcdec06db836c9eea";
 }
 
 // Article 5.3.3 (English black-letter rules)
@@ -583,6 +1145,23 @@ fulfilment of the condition.""";
     content_hash "sha256:2550217f895266d6538181ca342e6d43916317ee86426161a90fad124b07bfb2";
 }
 
+// Article 5.3.3 (French black-letter rules)
+fragment PICC_ART5_3_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_3_3";
+    text fr official """ARTICLE 5.3.3
+(Immixtion dans le jeu de la condition)
+1)
+Si la réalisation d’une condition est empêchée par une partie, contrairement au
+devoir de bonne foi ou de coopération, cette partie ne peut pas invoquer la non-réalisation
+de la condition.
+2)
+Si la réalisation d’une condition est provoquée par une partie, contrairement au
+devoir de bonne foi ou de coopération, cette partie ne peut pas invoquer la réalisation de
+la condition.""";
+    content_hash "sha256:b7169c90a95135cafa0596a9b25ad7373b83bb1eb855ae9011e965409a62aada";
+}
+
 // Article 5.3.4 (English black-letter rules)
 fragment PICC_ART5_3_4_EN in PICC_2016_EN {
     kind article;
@@ -593,6 +1172,18 @@ Pending fulfilment of a condition, a party may not, contrary to the duty to act 
 accordance with good faith and fair dealing, act so as to prejudice the other party’s
 rights in case of fulfilment of the condition.""";
     content_hash "sha256:206a5dd5b2bb2d11b29984ecc25d95863eec863ccf4210e15ea889a60da42f14";
+}
+
+// Article 5.3.4 (French black-letter rules)
+fragment PICC_ART5_3_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_3_4";
+    text fr official """ARTICLE 5.3.4
+(Obligation de préserver les droits)
+Avant la réalisation de la condition, une partie ne peut pas, contrairement au devoir
+d’agir de bonne foi, faire en sorte de porter atteinte aux droits de l’autre partie pour le cas
+où la condition se réaliserait.""";
+    content_hash "sha256:616c02e28d76f04707fde6d21b94778284c125aa38fc9b90ee1ec9dcb471c740";
 }
 
 // Article 5.3.5 (English black-letter rules)
@@ -607,4 +1198,20 @@ Articles 7.3.6 and 7.3.7 apply with appropriate adaptations.
 retroactively, the rules on restitution set out in Article 3.2.15 apply with appropriate
 adaptations.""";
     content_hash "sha256:df006651f4e2a86c153aede91dbd6904d424ddeda2c2fb79d61a2da49c882350";
+}
+
+// Article 5.3.5 (French black-letter rules)
+fragment PICC_ART5_3_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/5_3_5";
+    text fr official """ARTICLE 5.3.5
+(Restitution en cas de réalisation d’une condition résolutoire)
+1)
+Lors de la réalisation d’une condition résolutoire, les règles sur la restitution des
+articles 7.3.6 et 7.3.7 s’appliquent avec les adaptations nécessaires.
+2)
+Si les parties sont convenues qu’une condition résolutoire aura un effet
+rétroactif, les règles sur la restitution de l’article 3.2.15 s’appliquent avec les adaptations
+nécessaires.""";
+    content_hash "sha256:c2a461abc23aa3688850cc7a143ba2e1643976e28c8dc5fccd55cef4a4ef4c1e";
 }

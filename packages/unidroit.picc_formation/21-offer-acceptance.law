@@ -47,7 +47,7 @@ pub relation is_offer(o: Offer) kind institutional {
     label en official "the proposal constitutes an offer (article 2.1.2)";
 }
 
-@source(PICC_ART2_1_2_EN)
+@source(PICC_ART2_1_2_EN, PICC_ART2_1_2_FR)
 rule ProposalIsOffer(o: Offer) defeasible {
     label en official "Article 2.1.2. A proposal for concluding a contract constitutes an offer if it is sufficiently definite and indicates the intention of the offeror to be bound";
     when proposal_sufficiently_definite(o)
@@ -69,14 +69,14 @@ pub relation offer_effective(o: Offer) kind institutional {
     label en official "the offer becomes effective (article 2.1.3(1))";
 }
 
-@source(PICC_ART2_1_3_EN)
+@source(PICC_ART2_1_3_EN, PICC_ART2_1_3_FR)
 rule OfferBecomesEffective(o: Offer) defeasible {
     label en official "Article 2.1.3(1). An offer becomes effective when it reaches the offeree";
     when offer_reached_offeree(o);
     then offer_effective(o);
 }
 
-@source(PICC_ART2_1_3_EN)
+@source(PICC_ART2_1_3_EN, PICC_ART2_1_3_FR)
 rule OfferWithdrawn(o: Offer) defeater {
     label en official "Article 2.1.3(2). An offer, even if irrevocable, may be withdrawn if the withdrawal reaches the offeree before or at the same time as the offer";
     when withdrawal_reached_before_or_with_offer(o);
@@ -110,21 +110,21 @@ pub relation offer_revoked(o: Offer) kind institutional {
     label en official "the offer is revoked (article 2.1.4(1))";
 }
 
-@source(PICC_ART2_1_4_EN)
+@source(PICC_ART2_1_4_EN, PICC_ART2_1_4_FR)
 rule OfferRevoked(o: Offer) defeasible {
     label en official "Article 2.1.4(1). Until a contract is concluded an offer may be revoked if the revocation reaches the offeree before it has dispatched an acceptance";
     when revocation_reached_before_dispatch_of_acceptance(o);
     then offer_revoked(o);
 }
 
-@source(PICC_ART2_1_4_EN)
+@source(PICC_ART2_1_4_EN, PICC_ART2_1_4_FR)
 rule IrrevocableByItsTerms(o: Offer) defeater {
     label en official "Article 2.1.4(2)(a). An offer cannot be revoked if it indicates that it is irrevocable";
     when offer_states_irrevocability(o);
     defeat offer_revoked(o);
 }
 
-@source(PICC_ART2_1_4_EN)
+@source(PICC_ART2_1_4_EN, PICC_ART2_1_4_FR)
 rule IrrevocableByReliance(o: Offer) defeater {
     label en official "Article 2.1.4(2)(b). An offer cannot be revoked if it was reasonable for the offeree to rely on it as being irrevocable and the offeree has acted in reliance";
     when reasonable_to_rely_on_irrevocability(o)
@@ -132,7 +132,7 @@ rule IrrevocableByReliance(o: Offer) defeater {
     defeat offer_revoked(o);
 }
 
-@source(PICC_ART2_1_5_EN)
+@source(PICC_ART2_1_5_EN, PICC_ART2_1_5_FR)
 rule OfferTerminatedByRejection(o: Offer) defeater {
     label en official "Article 2.1.5. An offer is terminated when a rejection reaches the offeror";
     when rejection_reached_offeror(o);
@@ -165,7 +165,7 @@ pub relation acceptance_effective(a: Acceptance) kind institutional {
     label en official "the acceptance becomes effective (article 2.1.6(2))";
 }
 
-@source(PICC_ART2_1_6_EN)
+@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_FR)
 rule AssentIsAcceptance(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.6(1). A statement made by or other conduct of the offeree indicating assent to an offer is an acceptance";
     when reply_to(a, o)
@@ -173,7 +173,7 @@ rule AssentIsAcceptance(a: Acceptance, o: Offer) defeasible {
     then is_acceptance(a);
 }
 
-@source(PICC_ART2_1_6_EN)
+@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_FR)
 rule SilenceIsNotAcceptance(a: Acceptance, o: Offer) strict {
     label en official "Article 2.1.6(1). Silence or inactivity does not in itself amount to acceptance";
     when reply_to(a, o)
@@ -210,14 +210,14 @@ pub relation acceptance_period_ends_on(o: Offer, day: Date) kind derived {
     label en official "the last day of the period of acceptance";
 }
 
-@source(PICC_ART2_1_8_EN)
+@source(PICC_ART2_1_8_EN, PICC_ART2_1_8_FR)
 rule PeriodRunsFromDispatch(o: Offer, day: Date) defeasible {
     label en official "Article 2.1.8. A period of acceptance fixed by the offeror begins to run from the time that the offer is dispatched";
     when offer_dispatched_on(o, day);
     then acceptance_period_runs_from(o, day);
 }
 
-@source(PICC_ART2_1_8_EN)
+@source(PICC_ART2_1_8_EN, PICC_ART2_1_8_FR)
 rule IndicatedTimeIsDispatch(o: Offer, day: Date) defeasible {
     label en official "Article 2.1.8. A time indicated in the offer is deemed to be the time of dispatch unless the circumstances indicate otherwise";
     when time_indicated_in_offer(o, day);
@@ -249,7 +249,7 @@ pub relation acceptance_in_time(a: Acceptance, o: Offer) kind institutional {
     label en official "the acceptance was made within the time allowed (article 2.1.7)";
 }
 
-@source(PICC_ART2_1_7_EN)
+@source(PICC_ART2_1_7_EN, PICC_ART2_1_7_FR)
 rule AcceptanceWithinFixedPeriod(a: Acceptance, o: Offer, received: Date, last: Date) defeasible {
     label en official "Article 2.1.7. An offer must be accepted within the time the offeror has fixed";
     when reply_to(a, o)
@@ -259,7 +259,7 @@ rule AcceptanceWithinFixedPeriod(a: Acceptance, o: Offer, received: Date, last: 
     then acceptance_in_time(a, o);
 }
 
-@source(PICC_ART2_1_7_EN)
+@source(PICC_ART2_1_7_EN, PICC_ART2_1_7_FR)
 rule AcceptanceWithinReasonableTime(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.7. If no time is fixed, the offer must be accepted within a reasonable time";
     when reply_to(a, o)
@@ -297,7 +297,7 @@ pub external judgment relation offeror_objected_without_undue_delay(a: Acceptanc
     label en official "the offeror without undue delay informs the offeree that it considers its offer as having lapsed";
 }
 
-@source(PICC_ART2_1_9_EN)
+@source(PICC_ART2_1_9_EN, PICC_ART2_1_9_FR)
 rule LateAcceptanceSavedByOfferor(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.9(1). A late acceptance is nevertheless effective if without undue delay the offeror so informs the offeree";
     when reply_to(a, o)
@@ -306,7 +306,7 @@ rule LateAcceptanceSavedByOfferor(a: Acceptance, o: Offer) defeasible {
     then is_acceptance(a);
 }
 
-@source(PICC_ART2_1_9_EN)
+@source(PICC_ART2_1_9_EN, PICC_ART2_1_9_FR)
 rule LateAcceptanceSavedByNormalTransmission(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.9(2). A late acceptance which would have arrived in due time is effective unless the offeror without undue delay objects";
     when reply_to(a, o)
@@ -323,14 +323,14 @@ pub relation acceptance_withdrawal_in_time(a: Acceptance) kind empirical {
     label en official "the withdrawal reaches the offeror before or at the same time as the acceptance would have become effective";
 }
 
-@source(PICC_ART2_1_10_EN)
+@source(PICC_ART2_1_10_EN, PICC_ART2_1_10_FR)
 rule AcceptanceWithdrawn(a: Acceptance) defeater {
     label en official "Article 2.1.10. An acceptance may be withdrawn if the withdrawal reaches the offeror before or at the same time as the acceptance would have become effective";
     when acceptance_withdrawal_in_time(a);
     defeat acceptance_effective(a);
 }
 
-@source(PICC_ART2_1_1_EN)
+@source(PICC_ART2_1_1_EN, PICC_ART2_1_1_FR)
 rule ConcludedByAcceptance(c: Contract, a: Acceptance) defeasible {
     label en official "Article 2.1.1. A contract may be concluded by the acceptance of an offer";
     when concluded_by_acceptance(c, a)
@@ -338,7 +338,7 @@ rule ConcludedByAcceptance(c: Contract, a: Acceptance) defeasible {
     then contract_concluded(c);
 }
 
-@source(PICC_ART2_1_1_EN)
+@source(PICC_ART2_1_1_EN, PICC_ART2_1_1_FR)
 rule ConcludedByConduct(c: Contract) defeasible {
     label en official "Article 2.1.1. A contract may be concluded by conduct of the parties that is sufficient to show agreement";
     when conduct_sufficient_to_show_agreement(c);
@@ -368,7 +368,7 @@ pub relation term_becomes_part_of_contract(t: Term, c: Contract) kind institutio
     label en official "the term becomes part of the contract (article 2.1.12)";
 }
 
-@source(PICC_ART2_1_12_EN)
+@source(PICC_ART2_1_12_EN, PICC_ART2_1_12_FR)
 rule ConfirmationTermBecomesPart(t: Term, c: Contract) defeasible {
     label en official "Article 2.1.12. Additional or different terms in a writing in confirmation become part of the contract unless they materially alter it or the recipient objects without undue delay";
     when confirmation_sent_within_reasonable_time(c, t)
@@ -393,7 +393,7 @@ pub relation act_of_assent_performed(a: Acceptance) kind empirical {
     label en official "the act indicating assent has been performed";
 }
 
-@source(PICC_ART2_1_6_EN)
+@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_FR)
 rule AssentByPerformedActIsAcceptance(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.6(3). Where the offeree may indicate assent by performing an act without notice, performing that act is an acceptance";
     when reply_to(a, o)
@@ -402,7 +402,7 @@ rule AssentByPerformedActIsAcceptance(a: Acceptance, o: Offer) defeasible {
     then is_acceptance(a);
 }
 
-@source(PICC_ART2_1_6_EN)
+@source(PICC_ART2_1_6_EN, PICC_ART2_1_6_FR)
 rule AcceptanceEffectiveOnPerformance(a: Acceptance, o: Offer) defeasible {
     label en official "Article 2.1.6(3). The acceptance is effective when the act is performed";
     when reply_to(a, o)

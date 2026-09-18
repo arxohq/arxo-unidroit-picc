@@ -12,7 +12,7 @@
   "lockVersion": "0.1",
   "packages": [
     {
-      "contentHash": "sha256:6816a11b28c4585f43cb887334221dffdd3c54892d04690a34fb0679b293292c",
+      "contentHash": "sha256:d6b1f7b44a69113ed494c0d865ea8fea5349c9820aa496e156d940582fc2c9ae",
       "features": [
         "core-executable"
       ],
@@ -23,7 +23,7 @@
       "version": "0.1.0"
     }
   ],
-  "resolutionHash": "sha256:a224cb49b72f9f2fcd77f779dd4e9ba0e28125f9e9f6cb4ac43b882a12b52de0",
+  "resolutionHash": "sha256:b06cd96c80f00b6df73107fc5c7f05d650750a61b09e5c85a2ff8d0d4c8aa5ad",
   "root": {
     "contentHash": "sha256:c2370cc8263b520edd57295a8bf863b3fe3c0350469aa48055e0355af2d7023a",
     "name": "unidroit.picc_validity",

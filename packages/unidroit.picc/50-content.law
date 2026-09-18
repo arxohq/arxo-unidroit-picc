@@ -58,42 +58,42 @@ pub relation contractual_obligation(o: Obligation, c: Contract) kind institution
     label en official "the obligation is a contractual obligation of the parties (article 5.1.1)";
 }
 
-@source(PICC_ART5_1_2_EN)
+@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_FR)
 rule ImpliedFromNatureAndPurpose(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(a). Implied obligations stem from the nature and purpose of the contract";
     when stems_from_nature_and_purpose(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_2_EN)
+@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_FR)
 rule ImpliedFromPracticesAndUsages(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(b). Implied obligations stem from practices established between the parties and usages";
     when stems_from_practices_and_usages(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_2_EN)
+@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_FR)
 rule ImpliedFromGoodFaith(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(c). Implied obligations stem from good faith and fair dealing";
     when stems_from_good_faith(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_2_EN)
+@source(PICC_ART5_1_2_EN, PICC_ART5_1_2_FR)
 rule ImpliedFromReasonableness(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.2(d). Implied obligations stem from reasonableness";
     when stems_from_reasonableness(o, c);
     then implied_obligation(o, c);
 }
 
-@source(PICC_ART5_1_1_EN)
+@source(PICC_ART5_1_1_EN, PICC_ART5_1_1_FR)
 rule ExpressIsContractual(o: Obligation, c: Contract) strict {
     label en official "Article 5.1.1. The contractual obligations of the parties may be express";
     when express_obligation(o, c);
     then contractual_obligation(o, c);
 }
 
-@source(PICC_ART5_1_1_EN)
+@source(PICC_ART5_1_1_EN, PICC_ART5_1_1_FR)
 rule ImpliedIsContractual(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.1. The contractual obligations of the parties may be implied";
     when implied_obligation(o, c);
@@ -111,7 +111,7 @@ pub relation co_operated(p: Party, c: Contract) kind empirical {
     label en official "the party co-operated with the other party";
 }
 
-@source(PICC_ART5_1_3_EN)
+@source(PICC_ART5_1_3_EN, PICC_ART5_1_3_FR)
 rule DutyToCooperate(p: Party, other: Party, c: Contract) strict {
     label en official "Article 5.1.3. Each party shall co-operate with the other party when such co-operation may reasonably be expected for the performance of that party's obligations";
     when party_of(p, c)
@@ -151,7 +151,7 @@ pub relation obligation_performed(o: Obligation, c: Contract) kind institutional
     label en official "the obligation has been performed as required by article 5.1.4";
 }
 
-@source(PICC_ART5_1_4_EN)
+@source(PICC_ART5_1_4_EN, PICC_ART5_1_4_FR)
 rule ResultDutyPerformed(o: Obligation, c: Contract) strict {
     label en official "Article 5.1.4(1). To the extent that an obligation involves a duty to achieve a specific result, that party is bound to achieve that result";
     when duty_to_achieve_result(o, c)
@@ -159,7 +159,7 @@ rule ResultDutyPerformed(o: Obligation, c: Contract) strict {
     then obligation_performed(o, c);
 }
 
-@source(PICC_ART5_1_4_EN)
+@source(PICC_ART5_1_4_EN, PICC_ART5_1_4_FR)
 rule BestEffortsDutyPerformed(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.4(2). To the extent that an obligation involves a duty of best efforts, that party is bound to make such efforts as would be made by a reasonable person of the same kind";
     when duty_of_best_efforts(o, c)
@@ -182,7 +182,7 @@ pub relation quality_sufficient(o: Obligation, c: Contract) kind institutional {
     label en official "the quality of performance satisfies article 5.1.6";
 }
 
-@source(PICC_ART5_1_6_EN)
+@source(PICC_ART5_1_6_EN, PICC_ART5_1_6_FR)
 rule QualityWhereNotFixed(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.6. Where the quality of performance is neither fixed by nor determinable from the contract, a party is bound to render a performance of a quality that is reasonable and not less than average in the circumstances";
     when not_known(quality_fixed_by_contract(o, c))
@@ -220,7 +220,7 @@ pub relation applicable_price(c: Contract, amount: Money) kind institutional {
     label en official "the price applicable to the contract (article 5.1.7)";
 }
 
-@source(PICC_ART5_1_7_EN)
+@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_FR)
 rule PriceByMarket(c: Contract, amount: Money) defeasible {
     label en official "Article 5.1.7(1). Where a contract does not fix the price, the parties are considered to have made reference to the price generally charged in comparable circumstances";
     when price_generally_charged(c, amount)
@@ -228,7 +228,7 @@ rule PriceByMarket(c: Contract, amount: Money) defeasible {
     then applicable_price(c, amount);
 }
 
-@source(PICC_ART5_1_7_EN)
+@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_FR)
 rule PriceReasonableWhereNoMarket(c: Contract, amount: Money) defeasible {
     label en official "Article 5.1.7(1). If no such price is available, a reasonable price applies";
     when reasonable_price(c, amount)
@@ -236,7 +236,7 @@ rule PriceReasonableWhereNoMarket(c: Contract, amount: Money) defeasible {
     then applicable_price(c, amount);
 }
 
-@source(PICC_ART5_1_7_EN)
+@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_FR)
 rule ManifestlyUnreasonableDeterminationReplaced(c: Contract, p: Party, amount: Money) defeasible {
     label en official "Article 5.1.7(2). Where the price is to be determined by one party and that determination is manifestly unreasonable, a reasonable price shall be substituted notwithstanding any contract term to the contrary";
     when determination_manifestly_unreasonable(c, p)
@@ -244,7 +244,7 @@ rule ManifestlyUnreasonableDeterminationReplaced(c: Contract, p: Party, amount: 
     then applicable_price(c, amount);
 }
 
-@source(PICC_ART5_1_7_EN)
+@source(PICC_ART5_1_7_EN, PICC_ART5_1_7_FR)
 rule UnreasonableDeterminationDisplaced(c: Contract, p: Party, amount: Money) defeater {
     label en official "Article 5.1.7(2). A manifestly unreasonable determination does not stand as the applicable price";
     when price_determined_by_one_party(c, p, amount)
@@ -267,7 +267,7 @@ pub relation contract_terminated_by_notice(c: Contract, p: Party) kind instituti
     label en official "the contract is terminated by notice (article 5.1.8)";
 }
 
-@source(PICC_ART5_1_8_EN)
+@source(PICC_ART5_1_8_EN, PICC_ART5_1_8_FR)
 rule TerminationOfIndefiniteContract(c: Contract, p: Party) defeasible {
     label en official "Article 5.1.8. A contract for an indefinite period may be terminated by either party by giving notice a reasonable time in advance";
     when contract_for_indefinite_period(c)
@@ -294,14 +294,14 @@ pub relation right_released(o: Obligation, c: Contract) kind institutional {
     label en official "the obligee's right has been released (article 5.1.9)";
 }
 
-@source(PICC_ART5_1_9_EN)
+@source(PICC_ART5_1_9_EN, PICC_ART5_1_9_FR)
 rule ReleaseByAgreement(o: Obligation, c: Contract) strict {
     label en official "Article 5.1.9(1). An obligee may release its right by agreement with the obligor";
     when release_agreed(o, c);
     then right_released(o, c);
 }
 
-@source(PICC_ART5_1_9_EN)
+@source(PICC_ART5_1_9_EN, PICC_ART5_1_9_FR)
 rule GratuitousReleaseDeemedAccepted(o: Obligation, c: Contract) defeasible {
     label en official "Article 5.1.9(2). An offer to release a right gratuitously shall be deemed accepted if the obligor does not reject it without delay";
     when gratuitous_release_offered(o, c);
@@ -346,14 +346,14 @@ rule BeneficiaryRightExists(b: Beneficiary, c: Contract) defeasible {
     then beneficiary_right_exists(b, c);
 }
 
-@source(PICC_ART5_2_6_EN)
+@source(PICC_ART5_2_6_EN, PICC_ART5_2_6_FR)
 rule RenunciationEndsBeneficiaryRight(b: Beneficiary, c: Contract) defeater {
     label en official "Article 5.2.6. The beneficiary may renounce a right conferred on it";
     when beneficiary_renounced(b, c);
     defeat beneficiary_right_exists(b, c);
 }
 
-@source(PICC_ART5_2_5_EN)
+@source(PICC_ART5_2_5_EN, PICC_ART5_2_5_FR)
 rule RevocationUntilAcceptance(b: Beneficiary, c: Contract) defeasible {
     label en official "Article 5.2.5. The parties may modify or revoke the rights conferred until the beneficiary has accepted them or reasonably acted in reliance on them";
     when right_conferred_on_beneficiary(b, c);
@@ -390,7 +390,7 @@ pub relation contract_comes_to_an_end(c: Contract) kind institutional {
     label en official "the contract or contractual obligation comes to an end (article 5.3.2(b))";
 }
 
-@source(PICC_ART5_3_2_EN)
+@source(PICC_ART5_3_2_EN, PICC_ART5_3_2_FR)
 rule SuspensiveConditionTakesEffect(cond: Condition, c: Contract) defeasible {
     label en official "Article 5.3.2(a). The relevant contract or contractual obligation takes effect upon fulfilment of a suspensive condition";
     when suspensive_condition(cond, c)
@@ -400,7 +400,7 @@ rule SuspensiveConditionTakesEffect(cond: Condition, c: Contract) defeasible {
         and parties_agreed_otherwise_on_conditions(c);
 }
 
-@source(PICC_ART5_3_2_EN)
+@source(PICC_ART5_3_2_EN, PICC_ART5_3_2_FR)
 rule ResolutiveConditionEndsContract(cond: Condition, c: Contract) defeasible {
     label en official "Article 5.3.2(b). The relevant contract or contractual obligation comes to an end upon fulfilment of a resolutive condition";
     when resolutive_condition(cond, c)
@@ -428,14 +428,14 @@ pub relation may_not_rely_on_fulfilment(p: Party, cond: Condition, c: Contract) 
     label en official "that party may not rely on the fulfilment of the condition (article 5.3.3(2))";
 }
 
-@source(PICC_ART5_3_3_EN)
+@source(PICC_ART5_3_3_EN, PICC_ART5_3_3_FR)
 rule CannotRelyOnPreventedCondition(p: Party, cond: Condition, c: Contract) strict {
     label en official "Article 5.3.3(1). A party who prevented fulfilment contrary to good faith may not rely on the non-fulfilment of the condition";
     when prevented_fulfilment_contrary_to_good_faith(p, cond, c);
     then may_not_rely_on_non_fulfilment(p, cond, c);
 }
 
-@source(PICC_ART5_3_3_EN)
+@source(PICC_ART5_3_3_EN, PICC_ART5_3_3_FR)
 rule CannotRelyOnProcuredCondition(p: Party, cond: Condition, c: Contract) strict {
     label en official "Article 5.3.3(2). A party who brought about fulfilment contrary to good faith may not rely on the fulfilment of the condition";
     when brought_about_fulfilment_contrary_to_good_faith(p, cond, c);
@@ -452,7 +452,7 @@ pub relation breached_duty_to_preserve_rights(p: Party, cond: Condition, c: Cont
     label en official "the party breached the duty to preserve the other party's rights (article 5.3.4)";
 }
 
-@source(PICC_ART5_3_4_EN)
+@source(PICC_ART5_3_4_EN, PICC_ART5_3_4_FR)
 rule DutyToPreserveRightsBreached(p: Party, cond: Condition, c: Contract) strict {
     label en official "Article 5.3.4. Pending fulfilment of a condition, a party may not, contrary to good faith, act so as to prejudice the other party's rights in case of fulfilment";
     when acted_to_prejudice_rights_pending_condition(p, cond, c);
@@ -469,7 +469,7 @@ pub relation restitution_rules_apply_with_adaptations(c: Contract) kind institut
     label en official "the rules on restitution apply with appropriate adaptations (article 5.3.5)";
 }
 
-@source(PICC_ART5_3_5_EN)
+@source(PICC_ART5_3_5_EN, PICC_ART5_3_5_FR)
 rule RestitutionOnResolutiveCondition(cond: Condition, c: Contract) strict {
     label en official "Article 5.3.5. On fulfilment of a resolutive condition the rules on restitution apply with appropriate adaptations";
     when resolutive_condition(cond, c)
@@ -496,7 +496,7 @@ pub relation negotiating(p: Party, other: Party) kind empirical {
     label en official "the persons are negotiating with each other";
 }
 
-@source(PICC_ART1_1_EN)
+@source(PICC_ART1_1_EN, PICC_ART1_1_FR)
 rule FreedomOfContract(p: Party, other: Party) strict {
     label en official "Article 1.1. The parties are free to enter into a contract and to determine its content";
     when negotiating(p, other);
@@ -517,7 +517,7 @@ pub relation circumstance_to_be_regarded(x: Circumstance, c: Contract) kind inst
     label en official "regard shall be had to that circumstance in applying articles 4.1 and 4.2 (article 4.3)";
 }
 
-@source(PICC_ART4_3_EN)
+@source(PICC_ART4_3_EN, PICC_ART4_3_FR)
 rule CircumstanceToBeRegarded(x: Circumstance, c: Contract) strict {
     label en official "Article 4.3. In applying Articles 4.1 and 4.2, regard shall be had to all the circumstances, including those listed";
     when circumstance_of_listed_kind(x, c);
@@ -536,7 +536,7 @@ pub relation factor_determines_kind_of_duty(x: Circumstance, o: Obligation) kind
     label en official "regard shall be had to that factor in determining the kind of duty involved (article 5.1.5)";
 }
 
-@source(PICC_ART5_1_5_EN)
+@source(PICC_ART5_1_5_EN, PICC_ART5_1_5_FR)
 rule FactorDeterminesKindOfDuty(x: Circumstance, o: Obligation) strict {
     label en official "Article 5.1.5. In determining the extent to which an obligation involves a duty of best efforts or a duty to achieve a specific result, regard shall be had to the listed factors";
     when factor_of_listed_kind(x, o);
@@ -553,7 +553,7 @@ pub relation beneficiary_may_invoke_clause(b: Beneficiary, t: Term, c: Contract)
     label en official "the beneficiary may invoke the exclusion or limitation clause (article 5.2.3)";
 }
 
-@source(PICC_ART5_2_3_EN)
+@source(PICC_ART5_2_3_EN, PICC_ART5_2_3_FR)
 rule BeneficiaryMayInvokeClause(b: Beneficiary, t: Term, c: Contract) defeasible {
     label en official "Article 5.2.3. The conferment of rights in the beneficiary includes the right to invoke a clause in the contract which excludes or limits the liability of the beneficiary";
     when beneficiary_right_exists(b, c)
@@ -572,7 +572,7 @@ pub relation defence_available_against_beneficiary(d: Defence, b: Beneficiary, c
     label en official "the promisor may assert that defence against the beneficiary (article 5.2.4)";
 }
 
-@source(PICC_ART5_2_4_EN)
+@source(PICC_ART5_2_4_EN, PICC_ART5_2_4_FR)
 rule DefencesAgainstBeneficiary(d: Defence, b: Beneficiary, c: Contract) defeasible {
     label en official "Article 5.2.4. The promisor may assert against the beneficiary all defences which the promisor could assert against the promisee";
     when beneficiary_right_exists(b, c)
@@ -590,7 +590,7 @@ pub relation valid_condition(cond: Condition, c: Contract) kind institutional {
     label en official "the condition is a condition within the meaning of article 5.3.1";
 }
 
-@source(PICC_ART5_3_1_EN)
+@source(PICC_ART5_3_1_EN, PICC_ART5_3_1_FR)
 rule ValidCondition(cond: Condition, c: Contract) strict {
     label en official "Article 5.3.1. A contract or a contractual obligation may be made conditional upon the occurrence of a future uncertain event";
     when future_uncertain_event(cond, c);

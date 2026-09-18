@@ -164,7 +164,7 @@ pub relation excess_transferred_to_obligees(o: Obligation, obligee: Party) kind 
     label en official "an obligee who has received more than its share must transfer the excess to the other obligees (article 11.2.4(2))";
 }
 
-@source(PICC_ART11_1_1_EN)
+@source(PICC_ART11_1_1_EN, PICC_ART11_1_1_FR)
 rule ObligationsSeparateWhenEachBoundForShare(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.1(b). The obligations are separate when each obligor is bound only for its share";
     when several_obligors_bound(o, obligor)
@@ -172,7 +172,7 @@ rule ObligationsSeparateWhenEachBoundForShare(o: Obligation, obligor: Party) def
     then separate_obligation(o, obligor);
 }
 
-@source(PICC_ART11_1_2_EN)
+@source(PICC_ART11_1_2_EN, PICC_ART11_1_2_FR)
 rule PresumptionOfJointAndSeveralObligations(o: Obligation, obligor: Party) defeasible {
     label en official "Articles 11.1.1(a) and 11.1.2. When several obligors are bound by the same obligation they are presumed to be jointly and severally bound, unless the circumstances indicate otherwise";
     when several_obligors_bound(o, obligor);
@@ -181,7 +181,7 @@ rule PresumptionOfJointAndSeveralObligations(o: Obligation, obligor: Party) defe
         and circumstances_indicate_separate(o);
 }
 
-@source(PICC_ART11_1_3_EN)
+@source(PICC_ART11_1_3_EN, PICC_ART11_1_3_FR)
 rule ObligeeMayRequireFromAnyObligor(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.3. When obligors are jointly and severally bound, the obligee may require performance from any one of them until full performance has been received";
     when joint_and_several_obligation(o, obligor)
@@ -199,7 +199,7 @@ rule DefencesOfJointObligor(o: Obligation, obligor: Party) defeasible {
         and defence_personal_to_other_obligor(o, obligor);
 }
 
-@source(PICC_ART11_1_5_EN)
+@source(PICC_ART11_1_5_EN, PICC_ART11_1_5_FR)
 rule PerformanceDischargesOthers(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.5. Performance or set-off by a joint and several obligor discharges the other obligors to the extent of the performance or set-off";
     when joint_and_several_obligation(o, obligor)
@@ -207,7 +207,7 @@ rule PerformanceDischargesOthers(o: Obligation, obligor: Party) defeasible {
     then others_discharged_by_performance(o, obligor);
 }
 
-@source(PICC_ART11_1_6_EN)
+@source(PICC_ART11_1_6_EN, PICC_ART11_1_6_FR)
 rule ReleaseDischargesForShare(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.6(1). Release of or settlement with one joint and several obligor discharges the other obligors for the share of that obligor, unless the circumstances indicate otherwise";
     when joint_and_several_obligation(o, obligor)
@@ -217,28 +217,28 @@ rule ReleaseDischargesForShare(o: Obligation, obligor: Party) defeasible {
         and circumstances_indicate_no_discharge(o);
 }
 
-@source(PICC_ART11_1_7_EN)
+@source(PICC_ART11_1_7_EN, PICC_ART11_1_7_FR)
 rule ExpirationAgainstOneDoesNotAffectOthers(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.7(1). Expiration of the limitation period against one joint and several obligor does not affect the obligations of the other obligors or the rights of recourse";
     when limitation_expired_against_one(o, obligor);
     then other_obligations_unaffected(o, obligor);
 }
 
-@source(PICC_ART11_1_7_EN)
+@source(PICC_ART11_1_7_EN, PICC_ART11_1_7_FR)
 rule SuspensionAgainstOneExtendsToOthers(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.7(2). If the obligee initiates proceedings against one joint and several obligor, the running of the limitation period is also suspended against the others";
     when proceedings_against_one_obligor(o, obligor);
     then suspension_extends_to_others(o, obligor);
 }
 
-@source(PICC_ART11_1_8_EN)
+@source(PICC_ART11_1_8_EN, PICC_ART11_1_8_FR)
 rule JudgmentOnOneDoesNotAffectOthers(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.8(1). A decision as to the liability of one joint and several obligor does not affect the obligations of the other obligors or the rights of recourse";
     when judgment_on_one_obligor(o, obligor);
     then other_obligations_unaffected(o, obligor);
 }
 
-@source(PICC_ART11_1_8_EN)
+@source(PICC_ART11_1_8_EN, PICC_ART11_1_8_FR)
 rule OthersMayRelyOnJudgment(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.8(2). The other joint and several obligors may rely on such a decision, except if it was based on grounds personal to the obligor concerned";
     when judgment_on_one_obligor(o, obligor)
@@ -246,7 +246,7 @@ rule OthersMayRelyOnJudgment(o: Obligation, obligor: Party) defeasible {
     then judgment_may_be_relied_on(o, obligor);
 }
 
-@source(PICC_ART11_1_9_EN)
+@source(PICC_ART11_1_9_EN, PICC_ART11_1_9_FR)
 rule EqualSharesAmongObligors(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.9. As among themselves, joint and several obligors are bound in equal shares, unless the circumstances indicate otherwise";
     when joint_and_several_obligation(o, obligor);
@@ -255,7 +255,7 @@ rule EqualSharesAmongObligors(o: Obligation, obligor: Party) defeasible {
         and circumstances_indicate_unequal_shares(o);
 }
 
-@source(PICC_ART11_1_12_EN)
+@source(PICC_ART11_1_12_EN, PICC_ART11_1_12_FR)
 rule DefencesInContributoryClaim(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.12. An obligor against whom a contributory claim is made may raise common defences and rights of set-off available against the obligee and defences personal to itself, but not those personal to other co-obligors";
     when contributory_claim(o, obligor)
@@ -265,7 +265,7 @@ rule DefencesInContributoryClaim(o: Obligation, obligor: Party) defeasible {
         and defence_personal_to_other_obligor(o, obligor);
 }
 
-@source(PICC_ART11_1_10_EN)
+@source(PICC_ART11_1_10_EN, PICC_ART11_1_10_FR)
 rule ContributoryClaimOfPerformingObligor(o: Obligation, obligor: Party) defeasible {
     label en official "Articles 11.1.10 and 11.1.11(1). An obligor who has performed more than its share may claim the excess from the other obligors and may also exercise the rights of the obligee to recover it";
     when joint_and_several_obligation(o, obligor)
@@ -273,7 +273,7 @@ rule ContributoryClaimOfPerformingObligor(o: Obligation, obligor: Party) defeasi
     then contributory_claim(o, obligor);
 }
 
-@source(PICC_ART11_1_11_EN)
+@source(PICC_ART11_1_11_EN, PICC_ART11_1_11_FR)
 rule ObligeePrecedenceOverContribution(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.11(2). An obligee who has not received full performance retains its rights against the co-obligors with precedence over co-obligors exercising contributory claims";
     when contributory_claim(o, obligor)
@@ -281,7 +281,7 @@ rule ObligeePrecedenceOverContribution(o: Obligation, obligor: Party) defeasible
     then obligee_has_precedence(o, obligor);
 }
 
-@source(PICC_ART11_1_13_EN)
+@source(PICC_ART11_1_13_EN, PICC_ART11_1_13_FR)
 rule SharesIncreasedWhenRecoveryImpossible(o: Obligation, obligor: Party) defeasible {
     label en official "Article 11.1.13. If an obligor who performed more than its share cannot recover contribution, the shares of the others, including the one who performed, are increased proportionally";
     when contributory_claim(o, obligor)
@@ -289,7 +289,7 @@ rule SharesIncreasedWhenRecoveryImpossible(o: Obligation, obligor: Party) defeas
     then shares_increased_proportionally(o, obligor);
 }
 
-@source(PICC_ART11_2_1_EN)
+@source(PICC_ART11_2_1_EN, PICC_ART11_2_1_FR)
 rule JointAndSeveralClaims(o: Obligation, obligee: Party) defeasible {
     label en official "Article 11.2.1(b). The claims are joint and several when each obligee can claim the whole performance";
     when several_obligees(o, obligee)
@@ -297,7 +297,7 @@ rule JointAndSeveralClaims(o: Obligation, obligee: Party) defeasible {
     then joint_and_several_claim(o, obligee);
 }
 
-@source(PICC_ART11_2_2_EN)
+@source(PICC_ART11_2_2_EN, PICC_ART11_2_2_FR)
 rule PerformanceToOneObligeeDischarges(o: Obligation, obligee: Party) defeasible {
     label en official "Article 11.2.2. Full performance in favour of one of the joint and several obligees discharges the obligor towards the other obligees";
     when joint_and_several_claim(o, obligee)
@@ -305,7 +305,7 @@ rule PerformanceToOneObligeeDischarges(o: Obligation, obligee: Party) defeasible
     then obligor_discharged_towards_others(o, obligee);
 }
 
-@source(PICC_ART11_2_3_EN)
+@source(PICC_ART11_2_3_EN, PICC_ART11_2_3_FR)
 rule DefencesAgainstJointObligee(o: Obligation, obligee: Party) defeasible {
     label en official "Article 11.2.3(1). The obligor may assert against any of the joint and several obligees the defences and rights of set-off personal to its relationship with that obligee or assertable against all co-obligees";
     when joint_and_several_claim(o, obligee)
@@ -313,7 +313,7 @@ rule DefencesAgainstJointObligee(o: Obligation, obligee: Party) defeasible {
     then defence_assertable_against_obligee(o, obligee);
 }
 
-@source(PICC_ART11_2_4_EN)
+@source(PICC_ART11_2_4_EN, PICC_ART11_2_4_FR)
 rule EqualSharesAmongObligees(o: Obligation, obligee: Party) defeasible {
     label en official "Article 11.2.4(1). As among themselves, joint and several obligees are entitled to equal shares, unless the circumstances indicate otherwise";
     when joint_and_several_claim(o, obligee);
@@ -322,7 +322,7 @@ rule EqualSharesAmongObligees(o: Obligation, obligee: Party) defeasible {
         and circumstances_indicate_unequal_shares(o);
 }
 
-@source(PICC_ART11_2_4_EN)
+@source(PICC_ART11_2_4_EN, PICC_ART11_2_4_FR)
 rule ExcessTransferredToOtherObligees(o: Obligation, obligee: Party) defeasible {
     label en official "Article 11.2.4(2). An obligee who has received more than its share must transfer the excess to the other obligees to the extent of their respective shares";
     when joint_and_several_claim(o, obligee)

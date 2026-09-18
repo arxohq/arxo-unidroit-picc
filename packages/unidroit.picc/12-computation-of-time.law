@@ -45,7 +45,7 @@ pub relation period_ends_on(c: Contract, day: Date) kind derived {
     label en official "the last day of the period set by the party (article 1.12)";
 }
 
-@source(PICC_ART1_12_EN)
+@source(PICC_ART1_12_EN, PICC_ART1_12_FR)
 rule PeriodEndsOn(c: Contract, setter: Party, start: Date, span: Quantity) defeasible {
     label en official "Article 1.12(1). Official holidays or non-business days occurring during the period are included in calculating it";
     when period_runs_from(c, start)
@@ -65,7 +65,7 @@ pub relation circumstances_indicate_otherwise(c: Contract) kind empirical {
     label en official "the circumstances indicate otherwise";
 }
 
-@source(PICC_ART1_12_EN)
+@source(PICC_ART1_12_EN, PICC_ART1_12_FR)
 rule PeriodExtendedByHoliday(c: Contract, setter: Party, start: Date,
                              span: Quantity, next_day: Date) defeasible {
     label en official "Article 1.12(2). If the last day of the period is a holiday or a non-business day at the place of business of the party to perform, the period is extended until the first business day which follows";
@@ -83,7 +83,7 @@ rule PeriodExtendedByHoliday(c: Contract, setter: Party, start: Date,
         and circumstances_indicate_otherwise(c);
 }
 
-@source(PICC_ART1_12_EN)
+@source(PICC_ART1_12_EN, PICC_ART1_12_FR)
 rule ComputedLastDayYieldsToHoliday(c: Contract, setter: Party, start: Date,
                                     span: Quantity) defeater {
     label en official "Article 1.12(2). The computed last day does not stand where it is a holiday at the place of performance";
@@ -105,7 +105,7 @@ pub relation relevant_time_zone(c: Contract, zone: Text) kind institutional {
     label en official "the relevant time zone (article 1.12(3))";
 }
 
-@source(PICC_ART1_12_EN)
+@source(PICC_ART1_12_EN, PICC_ART1_12_FR)
 rule RelevantTimeZone(c: Contract, setter: Party, zone: Text) defeasible {
     label en official "Article 1.12(3). The relevant time zone is that of the place of business of the party setting the time, unless the circumstances indicate otherwise";
     when time_zone_of_setter(c, setter, zone);

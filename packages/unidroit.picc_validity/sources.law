@@ -48,6 +48,23 @@ publication PICC_2016_EN_TEXT of PICC_2016_EN {
     local_path "sources/picc-en/en.txt";
 }
 
+edition PICC_2016_FR of PICC_2016 {
+    label en official "French black-letter rules, 2016 edition";
+    language fr;
+    officiality official;
+    adopted @2016-05-10;
+    in_force @2016-05-10;
+    materialization_status PINNED_UNOFFICIAL_COPY;
+}
+
+publication PICC_2016_FR_TEXT of PICC_2016_FR {
+    media_type "text/plain; charset=utf-8";
+    uri "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-French-bl.pdf";
+    retrieved_at @2026-09-17T12:30:00Z;
+    content_hash "sha256:cd037861ab3255634993de457b14556dd2a7a7d38fb37270cb4618dfd2304907";
+    local_path "sources/picc-fr/fr.txt";
+}
+
 // Article 3.1.1 (English black-letter rules)
 fragment PICC_ART3_1_1_EN in PICC_2016_EN {
     kind article;
@@ -56,6 +73,16 @@ fragment PICC_ART3_1_1_EN in PICC_2016_EN {
 (Matters not covered)
 This Chapter does not deal with lack of capacity.""";
     content_hash "sha256:1e99a89e99a3a1a4b245aa23cf541d43daf3b4caa7e22c987a21dca430a761be";
+}
+
+// Article 3.1.1 (French black-letter rules)
+fragment PICC_ART3_1_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_1_1";
+    text fr official """ARTICLE 3.1.1
+(Matières non traitées)
+Le présent Chapitre ne traite pas de l’incapacité des parties.""";
+    content_hash "sha256:fcbe87e6edf470e9b6ebefcc9efde14d50b4db738366995dbc3093dac4c9e093";
 }
 
 // Article 3.1.2 (English black-letter rules)
@@ -67,6 +94,17 @@ fragment PICC_ART3_1_2_EN in PICC_2016_EN {
 A contract is concluded, modified or terminated by the mere agreement of the
 parties, without any further requirement.""";
     content_hash "sha256:03eaf56d44ded6cc114e0e4a312f0bd17e42dfa2fe52ab3a3fa0610b0d0f3829";
+}
+
+// Article 3.1.2 (French black-letter rules)
+fragment PICC_ART3_1_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_1_2";
+    text fr official """ARTICLE 3.1.2
+(Validité par seul accord)
+Pour conclure, modifier un contrat ou y mettre fin, il suffit de l’accord des parties et
+de lui seul.""";
+    content_hash "sha256:d939c9e75ee200bbdf12b920183c87d1df2180f8c733c4162d076de8e8b94b6a";
 }
 
 // Article 3.1.3 (English black-letter rules)
@@ -84,6 +122,19 @@ of the contract.""";
     content_hash "sha256:cd5ca14afc2755fbe8beb02da5e8fcc83cdd8bc9212b87da98a7fc1700113acc";
 }
 
+// Article 3.1.3 (French black-letter rules)
+fragment PICC_ART3_1_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_1_3";
+    text fr official """ARTICLE 3.1.3
+(Impossibilité initiale)
+1) Le seul fait que, lors de la conclusion du contrat, l’une des parties était dans
+l’impossibilité d’exécuter ses obligations ne porte pas atteinte à la validité du contrat.
+2) Il en est de même si, lors de la conclusion du contrat, l’une des parties ne pouvait
+disposer des biens qui en faisaient l’objet.""";
+    content_hash "sha256:d0a09f3b2a0c70a37653813e6c57eed86583f84e582056c2b169c8ce29670aec";
+}
+
 // Article 3.1.4 (English black-letter rules)
 fragment PICC_ART3_1_4_EN in PICC_2016_EN {
     kind article;
@@ -95,6 +146,17 @@ Chapter are mandatory.""";
     content_hash "sha256:2854c0dccb3d5f506f2c0e6023d709a7d4d3a77fe49bd16d9c3740e38b30e60d";
 }
 
+// Article 3.1.4 (French black-letter rules)
+fragment PICC_ART3_1_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_1_4";
+    text fr official """ARTICLE 3.1.4
+(Caractère impératif des dispositions)
+Les dispositions relatives au dol, à la contrainte, à l’avantage excessif et à l’illicéité
+contenues dans le présent Chapitre sont impératives.""";
+    content_hash "sha256:044da500364f0229c535b7269d1e75ec5123a7452c4dccb086e64f050fd5e8fb";
+}
+
 // Article 3.2.1 (English black-letter rules)
 fragment PICC_ART3_2_1_EN in PICC_2016_EN {
     kind article;
@@ -104,6 +166,17 @@ fragment PICC_ART3_2_1_EN in PICC_2016_EN {
 Mistake is an erroneous assumption relating to facts or to law existing when the
 contract was concluded.""";
     content_hash "sha256:06c6426b9d948a0bffeed9e6a22f8146c6ca9d4db82259c90ce836ae3b929fbd";
+}
+
+// Article 3.2.1 (French black-letter rules)
+fragment PICC_ART3_2_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_1";
+    text fr official """ARTICLE 3.2.1
+(Définition de l’erreur)
+L’erreur est une fausse croyance relative aux faits ou au droit existant au moment de
+la conclusion du contrat.""";
+    content_hash "sha256:99ed5914ae9f369d33596e4f1cc6313be901316c04dad8a842a12b863b229e82";
 }
 
 // Article 3.2.2 (English black-letter rules)
@@ -128,6 +201,29 @@ the contract.
     content_hash "sha256:d451a1069e323e8b6a25f52d69b00dacee9aabf952fc47057508aeab23e84f1a";
 }
 
+// Article 3.2.2 (French black-letter rules)
+fragment PICC_ART3_2_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_2";
+    text fr official """ARTICLE 3.2.2
+(Nullité pour erreur)
+1) La nullité pour cause d’erreur ne peut être invoquée par une partie que si, lors
+de la conclusion du contrat, l’erreur était d’une importance telle qu’une personne
+raisonnable, placée dans les mêmes circonstances, ne se serait pas engagée ou ne se serait
+engagée qu’à des conditions substantiellement différentes si elle avait eu connaissance de
+la situation véritable, et que l’autre partie:
+a) a commis la même erreur ou a été à l’origine de celle-ci ou encore a connu ou
+aurait dû connaître son existence et qu’il était contraire aux exigences de la bonne foi en
+matière commerciale de laisser la victime dans l’erreur; ou
+b) n’a pas agi raisonnablement, au moment de l’annulation, en se prévalant des
+dispositions du contrat.
+2) En outre, la nullité pour cause d’erreur ne peut être invoquée lorsque:
+a) l’erreur découle de la faute lourde de la partie qui l’a commise; ou
+b) l’erreur porte sur une matière dans laquelle le risque d’erreur avait été assumé ou,
+eu égard aux circonstances, devait être assumé par la partie qui est dans l’erreur.""";
+    content_hash "sha256:f51e5db772cf8f315c30ff52f5fbf98c63d1034ee9d8273aa6ca7caa2155f292";
+}
+
 // Article 3.2.3 (English black-letter rules)
 fragment PICC_ART3_2_3_EN in PICC_2016_EN {
     kind article;
@@ -137,6 +233,17 @@ fragment PICC_ART3_2_3_EN in PICC_2016_EN {
 An error occurring in the expression or transmission of a declaration is considered to
 be a mistake of the person from whom the declaration emanated.""";
     content_hash "sha256:1f98f010871c8ea2c8aa4d0c5c680c2eed277582292e289b7a5c0981899c571c";
+}
+
+// Article 3.2.3 (French black-letter rules)
+fragment PICC_ART3_2_3_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_3";
+    text fr official """ARTICLE 3.2.3
+(Erreur dans l’expression ou la transmission)
+L’erreur commise dans l’expression ou la transmission d’une déclaration est
+imputable à l’auteur de cette déclaration.""";
+    content_hash "sha256:8747f5b69037aeaea8c1fc09fa1548a177db6993ea5f00db61221b90696af64a";
 }
 
 // Article 3.2.4 (English black-letter rules)
@@ -149,6 +256,18 @@ A party is not entitled to avoid the contract on the ground of mistake if the
 circumstances on which that party relies afford, or could have afforded, a remedy for
 non-performance.""";
     content_hash "sha256:f2318403e432c8b478011330de2aa4e607b27bdba9143e4b550211299e8f33bd";
+}
+
+// Article 3.2.4 (French black-letter rules)
+fragment PICC_ART3_2_4_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_4";
+    text fr official """ARTICLE 3.2.4
+(Moyens ouverts en cas d’inexécution)
+La nullité du contrat pour cause d’erreur ne peut être invoquée par une partie lorsque
+les circonstances donnent ou auraient pu donner ouverture à un moyen fondé sur
+l’inexécution.""";
+    content_hash "sha256:3f3506568bf8780faa111301fb6ff30f0cd06476cd35e8c78068739da254471b";
 }
 
 // Article 3.2.5 (English black-letter rules)
@@ -164,6 +283,20 @@ of fair dealing, the latter party should have disclosed.""";
     content_hash "sha256:5750c3a2305e10e81c6c6312beebe30692cd6d26fca7383d907dcd93b7cc467f";
 }
 
+// Article 3.2.5 (French black-letter rules)
+fragment PICC_ART3_2_5_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_5";
+    text fr official """ARTICLE 3.2.5
+(Dol)
+La nullité du contrat pour cause de dol peut être invoquée par une partie lorsque son
+engagement a été déterminé par les manœuvres frauduleuses de l’autre partie, notamment
+son langage ou ses actes, ou lorsque cette dernière, contrairement aux exigences de la
+bonne foi en matière commerciale, a omis frauduleusement de faire part à la première de
+circonstances particulières qu’elle aurait dû révéler.""";
+    content_hash "sha256:c99e71f340bbfb0a466bcdf80c96c10aa0a7650252f518df47806b54e391a140";
+}
+
 // Article 3.2.6 (English black-letter rules)
 fragment PICC_ART3_2_6_EN in PICC_2016_EN {
     kind article;
@@ -177,6 +310,21 @@ threat is unjustified if the act or omission with which a party has been threate
 wrongful in itself, or it is wrongful to use it as a means to obtain the conclusion of the
 contract.""";
     content_hash "sha256:8211c3870e28ae54272d95c80ece6f9841db88367509a56c4bed998ec43abd51";
+}
+
+// Article 3.2.6 (French black-letter rules)
+fragment PICC_ART3_2_6_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_6";
+    text fr official """ARTICLE 3.2.6
+(Contrainte)
+La nullité du contrat pour cause de contrainte peut être invoquée par une partie lorsque
+son engagement a été déterminé par les menaces injustifiées de l’autre partie, dont
+l’imminence et la gravité, eu égard aux circonstances, ne laissent à la première aucune
+autre issue raisonnable. Une menace est, notamment, injustifiée lorsque l’acte ou
+l’omission dont une partie est menacée est en soi illicite, ou qu’est illicite le recours à une
+telle menace en vue d’obtenir la conclusion du contrat.""";
+    content_hash "sha256:83307ae23fc1e1480c154e284c92dbe9a95a562cd9c1363978b07a5ed8f0d1ca";
 }
 
 // Article 3.2.7 (English black-letter rules)
@@ -202,6 +350,29 @@ acted in reliance on it. Article 3.2.10(2) applies accordingly.""";
     content_hash "sha256:f601fcaf1de9e3e8ce0a563e327799f849d123f1176d99c2603f7b38594ff169";
 }
 
+// Article 3.2.7 (French black-letter rules)
+fragment PICC_ART3_2_7_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_7";
+    text fr official """ARTICLE 3.2.7
+(Avantage excessif)
+1) La nullité du contrat ou de l’une de ses clauses pour cause de lésion peut être
+invoquée par une partie lorsqu’au moment de sa conclusion, le contrat ou la clause accorde
+injustement un avantage excessif à l’autre partie. On doit, notamment, prendre en
+considération:
+a) le fait que l’autre partie a profité d’une manière déloyale de l’état de
+dépendance, de la détresse économique, de l’urgence des besoins, de l’imprévoyance, de
+l’ignorance, de l’inexpérience ou de l’inaptitude à la négociation de la première; et
+b) la nature et le but du contrat.
+2) Le tribunal peut, à la demande de la partie lésée, adapter le contrat ou la clause
+afin de le rendre conforme aux exigences de la bonne foi en matière commerciale.
+3) Le tribunal peut également adapter le contrat ou la clause à la demande de la
+partie ayant reçu une notification d’annulation pourvu que l’expéditeur de la notification
+en soit informé sans tarder et qu’il n’ait pas agi raisonnablement en conséquence. Le
+paragraphe 2 de l’article 3.2.10 est alors applicable.""";
+    content_hash "sha256:d53ea402afdf61de157205f496d74cdd33adef21098966a1f5e4d39b331bb898";
+}
+
 // Article 3.2.8 (English black-letter rules)
 fragment PICC_ART3_2_8_EN in PICC_2016_EN {
     kind article;
@@ -219,6 +390,23 @@ reasonably acted in reliance on the contract.""";
     content_hash "sha256:99c998e03342cd38c1e3ab52048e1cdf022ebe541acd44b6e35f1de079530ee1";
 }
 
+// Article 3.2.8 (French black-letter rules)
+fragment PICC_ART3_2_8_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_8";
+    text fr official """ARTICLE 3.2.8
+(Tiers)
+1) La victime du dol, de la contrainte, de l’avantage excessif ou de l’erreur
+imputables à un tiers, ou qui sont connus ou devraient être connus d’un tiers, pour les
+actes dont l’autre partie répond, peut annuler le contrat au même titre que si ces vices
+avaient été le fait de l’autre partie elle-même.
+2) La victime du dol, de la contrainte ou de l’avantage excessif imputables à un tiers
+pour les actes dont l’autre partie ne répond pas, peut annuler le contrat lorsque l’autre partie
+avait, ou aurait dû avoir, connaissance de ces vices ou que, au moment de l’annulation, elle
+n’a pas agi raisonnablement en se prévalant des dispositions du contrat.""";
+    content_hash "sha256:a5a096c37df6ff3c63570885e787b136491e4dff5fbc5c9bfd35053b4298975b";
+}
+
 // Article 3.2.9 (English black-letter rules)
 fragment PICC_ART3_2_9_EN in PICC_2016_EN {
     kind article;
@@ -229,6 +417,18 @@ If the party entitled to avoid the contract expressly or impliedly confirms the
 contract after the period of time for giving notice of avoidance has begun to run,
 avoidance of the contract is excluded.""";
     content_hash "sha256:6d9128837179a2efce275992afb46860bb6e548833b5c19f1fbee6fd9b6cbfb8";
+}
+
+// Article 3.2.9 (French black-letter rules)
+fragment PICC_ART3_2_9_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_9";
+    text fr official """ARTICLE 3.2.9
+(Confirmation)
+Le contrat ne peut être annulé lorsque la partie en droit de le faire confirme
+expressément ou implicitement ce contrat dès que le délai pour la notification de
+l’annulation a commencé à courir.""";
+    content_hash "sha256:e3ad805caf27583462d2f58e9f13a5f13f610535015faba5f8f2764d5031800b";
 }
 
 // Article 3.2.10 (English black-letter rules)
@@ -249,6 +449,23 @@ earlier notice of avoidance is ineffective.""";
     content_hash "sha256:b68d3a46a8ed6d6ec23121d0b45b7bd686df399ce94fdc5067b7bcc5b1338e6a";
 }
 
+// Article 3.2.10 (French black-letter rules)
+fragment PICC_ART3_2_10_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_10";
+    text fr official """ARTICLE 3.2.10
+(Perte du droit à l’annulation)
+1) En dépit de l’erreur autorisant une partie à annuler le contrat, celui-ci n’en est
+pas moins conclu tel que cette partie l’avait envisagé, si l’autre partie manifeste l’intention
+de s’y conformer ou qu’elle exécute ses obligations ainsi que la victime de l’erreur
+l’entendait. La partie qui entend agir de la sorte doit le faire promptement après avoir été
+informée de l’erreur commise par l’autre partie et avant que cette dernière n’ait donné
+raisonnablement suite à la notification d’annulation.
+2) La victime de l’erreur perd alors le droit d’annuler le contrat et toute notification
+antérieure d’annulation est sans effet.""";
+    content_hash "sha256:9e93d701aaeedd2e4efef8bb306f0e5103e3961acad8131a5d38ddcb93b97176";
+}
+
 // Article 3.2.11 (English black-letter rules)
 fragment PICC_ART3_2_11_EN in PICC_2016_EN {
     kind article;
@@ -257,6 +474,16 @@ fragment PICC_ART3_2_11_EN in PICC_2016_EN {
 (Notice of avoidance)
 The right of a party to avoid the contract is exercised by notice to the other party.""";
     content_hash "sha256:839d739369b34f5e07f0ae00b212347fee7711f6cbfda33ea4e5cd9d77e91443";
+}
+
+// Article 3.2.11 (French black-letter rules)
+fragment PICC_ART3_2_11_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_11";
+    text fr official """ARTICLE 3.2.11
+(Annulation par notification)
+L’annulation du contrat par une partie se fait par voie de notification à l’autre.""";
+    content_hash "sha256:c641507dde7801c19f66120751338f95caf1729b834ad270f82bf07ca873285c";
 }
 
 // Article 3.2.12 (English black-letter rules)
@@ -274,6 +501,20 @@ term is asserted by the other party.""";
     content_hash "sha256:7cf72fa4a1d70fea26d5cdb2d874b681a34cff063889aa5593c5bf02d76b898b";
 }
 
+// Article 3.2.12 (French black-letter rules)
+fragment PICC_ART3_2_12_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_12";
+    text fr official """ARTICLE 3.2.12
+(Délais)
+1) L’annulation doit être notifiée dans un délai raisonnable, eu égard aux
+circonstances, à partir du moment où la partie en droit d’annuler le contrat soit connaissait
+les causes de l’annulation ou ne pouvait les ignorer, soit pouvait agir librement.
+2) Le délai de notification visant l’annulation d’une clause particulière du contrat en
+vertu de l’article 3.2.7 court à partir du moment où l’autre partie s’en prévaut.""";
+    content_hash "sha256:7d1dc6324063bf254be0a8e59f1939ba94f1ae2e6c8eb10eb1bc19f49b084f9e";
+}
+
 // Article 3.2.13 (English black-letter rules)
 fragment PICC_ART3_2_13_EN in PICC_2016_EN {
     kind article;
@@ -286,6 +527,18 @@ unreasonable to uphold the remaining contract.""";
     content_hash "sha256:23271664a65dfa320c1e9a5729179845ef07c9543f60f2ae8bf71d1a647c3906";
 }
 
+// Article 3.2.13 (French black-letter rules)
+fragment PICC_ART3_2_13_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_13";
+    text fr official """ARTICLE 3.2.13
+(Annulation partielle)
+L’annulation se limite aux seules clauses du contrat visées par la cause d’annulation,
+à moins que, eu égard aux circonstances, il ne soit déraisonnable de maintenir les autres
+dispositions du contrat.""";
+    content_hash "sha256:096c1a36485570bc926d086e4cbe2f346305b9bbd7954f8b40dade5ab812b27a";
+}
+
 // Article 3.2.14 (English black-letter rules)
 fragment PICC_ART3_2_14_EN in PICC_2016_EN {
     kind article;
@@ -294,6 +547,16 @@ fragment PICC_ART3_2_14_EN in PICC_2016_EN {
 (Retroactive effect of avoidance)
 Avoidance takes effect retroactively.""";
     content_hash "sha256:6c50dc8d6396c631b803e3390bd0f5f77808686d05cc65993c351092eda805f9";
+}
+
+// Article 3.2.14 (French black-letter rules)
+fragment PICC_ART3_2_14_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_14";
+    text fr official """ARTICLE 3.2.14
+(Effet rétroactif de l’annulation)
+L’annulation a un effet rétroactif.""";
+    content_hash "sha256:03024ec70cc3b2e5e87c8c19a732809c807163188f7dae8fdd336a02b230b5e5";
 }
 
 // Article 3.2.15 (English black-letter rules)
@@ -314,6 +577,24 @@ maintain the performance received.""";
     content_hash "sha256:28f53226af397622cfe55966fa27e549dcb7b1975989d34db07734d2a21c8f76";
 }
 
+// Article 3.2.15 (French black-letter rules)
+fragment PICC_ART3_2_15_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_15";
+    text fr official """ARTICLE 3.2.15
+(Restitution)
+1) L’annulation permet à chaque partie de demander la restitution de ce qu’elle a
+fourni en exécution du contrat ou des clauses annulées, pourvu qu’elle procède
+simultanément à la restitution de ce qu’elle a reçu.
+2) Si la restitution en nature s’avère impossible ou n’est pas appropriée, elle doit,
+si cela est raisonnable, être exécutée en valeur.
+3) Celui qui a reçu l’exécution n’est pas tenu de restituer en valeur si l’impossibilité
+de restituer en nature est imputable à l’autre partie.
+4) Une indemnité peut être demandée pour les frais raisonnablement nécessaires
+pour préserver ou conserver ce qui a été reçu.""";
+    content_hash "sha256:7e28fc4a83093509bbd6d2d3489e74693850adeac521d1aa718d022e61ab1e7d";
+}
+
 // Article 3.2.16 (English black-letter rules)
 fragment PICC_ART3_2_16_EN in PICC_2016_EN {
     kind article;
@@ -327,6 +608,18 @@ contract.""";
     content_hash "sha256:fa4fc33f058d86bf5ace7423fe47183ca4b5587b62259994bc5f1e6d2285b92e";
 }
 
+// Article 3.2.16 (French black-letter rules)
+fragment PICC_ART3_2_16_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_16";
+    text fr official """ARTICLE 3.2.16
+(Dommages-intérêts)
+Que le contrat ait été annulé ou non, la partie qui connaissait ou aurait dû connaître la
+cause d’annulation est tenue à des dommages-intérêts de manière à replacer l’autre partie
+dans l’état où elle se serait trouvée si le contrat n’avait pas été conclu.""";
+    content_hash "sha256:83f6ae9a25c76593bbb79f4b0dec6b50ce5156b4f98f735ef32a52634f2d47a0";
+}
+
 // Article 3.2.17 (English black-letter rules)
 fragment PICC_ART3_2_17_EN in PICC_2016_EN {
     kind article;
@@ -335,6 +628,17 @@ fragment PICC_ART3_2_17_EN in PICC_2016_EN {
 (Unilateral declarations)
 The provisions of this Chapter apply with appropriate adaptations to any communication of intention addressed by one party to the other.""";
     content_hash "sha256:fc34f06c7a7385c7165d3cc6e775c98c2f1b5078c6040ec3dd57f55164cd752c";
+}
+
+// Article 3.2.17 (French black-letter rules)
+fragment PICC_ART3_2_17_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_2_17";
+    text fr official """ARTICLE 3.2.17
+(Déclarations unilatérales)
+Les dispositions du présent Chapitre s’appliquent, avec les adaptations nécessaires, à
+toute communication d’intention qu’une partie adresse à l’autre.""";
+    content_hash "sha256:37615b239a3a5a9903bc75332ae5dde8834bba8f7c135284a40618afaa976d37";
 }
 
 // Article 3.3.1 (English black-letter rules)
@@ -361,6 +665,35 @@ the contract as in the circumstances are reasonable.
     content_hash "sha256:552a46fe0700f90785225203d61fb6f16213cfeddabfb0dfc2a9904ee85f0c49";
 }
 
+// Article 3.3.1 (French black-letter rules)
+fragment PICC_ART3_3_1_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_3_1";
+    text fr official """ARTICLE 3.3.1
+(Contrat violant une règle impérative)
+1)
+La violation d’une règle impérative d’origine nationale, internationale ou
+supranationale qui s’applique en vertu de l’article 1.4 produit sur le contrat les effets que
+ladite règle a pu prescrire expressément.
+2)
+Lorsque la règle impérative ne prescrit pas expressément les effets de sa
+violation sur le contrat, les parties peuvent exercer les moyens fondés sur l’inexécution
+du contrat qui sont raisonnables dans les circonstances.
+3)
+Pour déterminer ce qui est raisonnable, il sera tenu compte, notamment:
+a) du but de la règle violée;
+b) de la catégorie de personnes que la règle entend protéger;
+c) de toute sanction qui pourrait être imposée en vertu de la règle violée;
+d) de la gravité de la violation;
+e) du fait que la violation était connue ou aurait dû être connue de l’une des parties
+ou des deux;
+f)
+du fait que l’exécution du contrat requiert la violation; et
+g)
+des attentes raisonnables des parties.""";
+    content_hash "sha256:b2d3f952df93b1bf94375d650ee3a3c06c0530208673c3d0cfcd5d0c56a0c737";
+}
+
 // Article 3.3.2 (English black-letter rules)
 fragment PICC_ART3_3_2_EN in PICC_2016_EN {
     kind article;
@@ -375,4 +708,19 @@ adaptations, to the criteria referred to in Article 3.3.1(3).
 (3) If restitution is granted, the rules set out in Article 3.2.15 apply with
 appropriate adaptations.""";
     content_hash "sha256:a9ab6bc6ec01c654cc20b13467e6991af96f3a305ef821e4a5f26772069591a1";
+}
+
+// Article 3.3.2 (French black-letter rules)
+fragment PICC_ART3_3_2_FR in PICC_2016_FR {
+    kind article;
+    locator "article/3_3_2";
+    text fr official """ARTICLE 3.3.2
+(Restitution)
+1) Lorsqu’un contrat violant une règle impérative au sens de l’article 3.3.1 a été
+exécuté, la restitution peut être permise si cela est raisonnable dans les circonstances.
+2) Pour déterminer ce qui est raisonnable, il sera tenu compte, avec les adaptations
+nécessaires, des critères visés au paragraphe 3 de l’article 3.3.1.
+3) Si la restitution est permise, les règles énoncées à l’article 3.2.15 s’appliquent
+avec les adaptations nécessaires.""";
+    content_hash "sha256:af488a779ac0b5973f4f68b53d264102e45aaa88e6a015ad64bcc208ce789f0d";
 }

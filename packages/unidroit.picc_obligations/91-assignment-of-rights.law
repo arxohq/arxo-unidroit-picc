@@ -160,21 +160,21 @@ pub relation assignor_reimburses_payment(r: Right) kind institutional {
     label en official "the assignor will reimburse the assignee for any payment received from the obligor before notice of the assignment (article 9.1.15(f))";
 }
 
-@source(PICC_ART9_1_1_EN)
+@source(PICC_ART9_1_1_EN, PICC_ART9_1_1_FR)
 rule AssignmentIsTransferByAgreement(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.1. Assignment of a right means the transfer by agreement of the assignor's right to payment or other performance from a third person";
     when assignment_of(r, assignor, assignee, obligor);
     then section_applies_to_assignment(r);
 }
 
-@source(PICC_ART9_1_2_EN)
+@source(PICC_ART9_1_2_EN, PICC_ART9_1_2_FR)
 rule SpecialRulesExcludeSection(r: Right) defeater {
     label en official "Article 9.1.2. This Section does not apply to transfers made under the special rules governing instruments or the transfer of a business";
     when special_transfer_rules_apply(r);
     defeat section_applies_to_assignment(r);
 }
 
-@source(PICC_ART9_1_3_EN)
+@source(PICC_ART9_1_3_EN, PICC_ART9_1_3_FR)
 rule NonMonetaryRightAssignable(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.3. A right to non-monetary performance may be assigned only if the assignment does not render the obligation significantly more burdensome";
     when assignment_of(r, assignor, assignee, obligor)
@@ -183,7 +183,7 @@ rule NonMonetaryRightAssignable(r: Right, assignor: Party, assignee: Party, obli
     then right_assignable(r);
 }
 
-@source(PICC_ART9_1_4_EN)
+@source(PICC_ART9_1_4_EN, PICC_ART9_1_4_FR)
 rule MonetaryRightAssignablePartially(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.4(1). A right to the payment of a monetary sum may be assigned partially";
     when assignment_of(r, assignor, assignee, obligor)
@@ -192,7 +192,7 @@ rule MonetaryRightAssignablePartially(r: Right, assignor: Party, assignee: Party
     then right_assignable(r);
 }
 
-@source(PICC_ART9_1_4_EN)
+@source(PICC_ART9_1_4_EN, PICC_ART9_1_4_FR)
 rule NonMonetaryPartialAssignment(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.4(2). A right to other performance may be assigned partially only if it is divisible and the assignment does not render the obligation significantly more burdensome";
     when assignment_of(r, assignor, assignee, obligor)
@@ -203,7 +203,7 @@ rule NonMonetaryPartialAssignment(r: Right, assignor: Party, assignee: Party, ob
     then right_assignable(r);
 }
 
-@source(PICC_ART9_1_5_EN)
+@source(PICC_ART9_1_5_EN, PICC_ART9_1_5_FR)
 rule FutureRightTransferredAtAgreement(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.5. A future right is deemed to be transferred at the time of the agreement, provided it can be identified as the right to which the assignment relates";
     when assignment_of(r, assignor, assignee, obligor)
@@ -211,7 +211,7 @@ rule FutureRightTransferredAtAgreement(r: Right, assignor: Party, assignee: Part
     then future_right_transferred_at_agreement(r);
 }
 
-@source(PICC_ART9_1_6_EN)
+@source(PICC_ART9_1_6_EN, PICC_ART9_1_6_FR)
 rule BulkAssignment(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.6. A number of rights may be assigned without individual specification, provided such rights can be identified";
     when assignment_of(r, assignor, assignee, obligor)
@@ -219,7 +219,7 @@ rule BulkAssignment(r: Right, assignor: Party, assignee: Party, obligor: Party) 
     then bulk_assignment_effective(r);
 }
 
-@source(PICC_ART9_1_7_EN)
+@source(PICC_ART9_1_7_EN, PICC_ART9_1_7_FR)
 rule AgreementSufficientWithoutObligorConsent(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.7. A right is assigned by mere agreement between the assignor and the assignee; the consent of the obligor is not required unless the obligation is of an essentially personal character";
     when assignment_of(r, assignor, assignee, obligor)
@@ -227,14 +227,14 @@ rule AgreementSufficientWithoutObligorConsent(r: Right, assignor: Party, assigne
     then obligor_consent_not_required(r);
 }
 
-@source(PICC_ART9_1_8_EN)
+@source(PICC_ART9_1_8_EN, PICC_ART9_1_8_FR)
 rule ObligorCompensatedForCosts(r: Right) strict {
     label en official "Article 9.1.8. The obligor has a right to be compensated by the assignor or the assignee for any additional costs caused by the assignment";
     when additional_costs_caused_to_obligor(r);
     then obligor_entitled_to_costs(r);
 }
 
-@source(PICC_ART9_1_9_EN)
+@source(PICC_ART9_1_9_EN, PICC_ART9_1_9_FR)
 rule MonetaryAssignmentEffectiveDespiteClause(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.9(1). The assignment of a right to the payment of a monetary sum is effective notwithstanding an agreement limiting or prohibiting such assignment";
     when assignment_of(r, assignor, assignee, obligor)
@@ -243,7 +243,7 @@ rule MonetaryAssignmentEffectiveDespiteClause(r: Right, assignor: Party, assigne
     then assignment_effective_despite_clause(r);
 }
 
-@source(PICC_ART9_1_9_EN)
+@source(PICC_ART9_1_9_EN, PICC_ART9_1_9_FR)
 rule NonMonetaryAssignmentEffectiveIfAssigneeUnaware(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.9(2). The assignment of a right to other performance contrary to a non-assignment agreement is nevertheless effective if the assignee neither knew nor ought to have known of the agreement";
     when assignment_of(r, assignor, assignee, obligor)
@@ -253,7 +253,7 @@ rule NonMonetaryAssignmentEffectiveIfAssigneeUnaware(r: Right, assignor: Party, 
     then assignment_effective_despite_clause(r);
 }
 
-@source(PICC_ART9_1_10_EN)
+@source(PICC_ART9_1_10_EN, PICC_ART9_1_10_FR)
 rule DischargeByPayingAssignorBeforeNotice(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.10(1). Until the obligor receives a notice of the assignment, it is discharged by paying the assignor";
     when assignment_of(r, assignor, assignee, obligor)
@@ -261,7 +261,7 @@ rule DischargeByPayingAssignorBeforeNotice(r: Right, assignor: Party, assignee: 
     then discharged_by_paying_assignor(r);
 }
 
-@source(PICC_ART9_1_10_EN)
+@source(PICC_ART9_1_10_EN, PICC_ART9_1_10_FR)
 rule DischargeByPayingAssigneeAfterNotice(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.10(2). After the obligor receives such a notice, it is discharged only by paying the assignee";
     when assignment_of(r, assignor, assignee, obligor)
@@ -269,14 +269,14 @@ rule DischargeByPayingAssigneeAfterNotice(r: Right, assignor: Party, assignee: P
     then discharged_by_paying_assignee(r);
 }
 
-@source(PICC_ART9_1_11_EN)
+@source(PICC_ART9_1_11_EN, PICC_ART9_1_11_FR)
 rule SuccessiveAssignmentsByNoticeOrder(r: Right, earlier: Right) defeasible {
     label en official "Article 9.1.11. If the same right has been assigned to successive assignees, the obligor is discharged by paying according to the order in which the notices were received";
     when successive_assignment_notice_order(r, earlier);
     then discharged_by_order_of_notices(r, earlier);
 }
 
-@source(PICC_ART9_1_12_EN)
+@source(PICC_ART9_1_12_EN, PICC_ART9_1_12_FR)
 rule WithholdingPendingProofOfAssignment(r: Right) defeasible {
     label en official "Article 9.1.12. Where notice is given by the assignee, the obligor may request adequate proof and may withhold payment until it is provided; unless it is provided, the notice is not effective";
     when notice_given_by_assignee(r)
@@ -284,21 +284,21 @@ rule WithholdingPendingProofOfAssignment(r: Right) defeasible {
     then may_withhold_payment_pending_proof(r);
 }
 
-@source(PICC_ART9_1_13_EN)
+@source(PICC_ART9_1_13_EN, PICC_ART9_1_13_FR)
 rule DefencesAgainstAssignee(r: Right) defeasible {
     label en official "Article 9.1.13(1). The obligor may assert against the assignee all defences that it could assert against the assignor";
     when defence_against_assignor(r);
     then defence_assertable_against_assignee(r);
 }
 
-@source(PICC_ART9_1_13_EN)
+@source(PICC_ART9_1_13_EN, PICC_ART9_1_13_FR)
 rule SetOffAgainstAssignee(r: Right) defeasible {
     label en official "Article 9.1.13(2). The obligor may exercise against the assignee any right of set-off available against the assignor up to the time notice of assignment was received";
     when set_off_available_before_notice(r);
     then set_off_assertable_against_assignee(r);
 }
 
-@source(PICC_ART9_1_14_EN)
+@source(PICC_ART9_1_14_EN, PICC_ART9_1_14_FR)
 rule SecurityFollowsAssignedRight(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.14. The assignment of a right transfers to the assignee all rights securing performance of the right assigned";
     when assignment_of(r, assignor, assignee, obligor)
@@ -306,7 +306,7 @@ rule SecurityFollowsAssignedRight(r: Right, assignor: Party, assignee: Party, ob
     then security_transferred_with_right(r);
 }
 
-@source(PICC_ART9_1_15_EN)
+@source(PICC_ART9_1_15_EN, PICC_ART9_1_15_FR)
 rule AssignorUndertakings(r: Right, assignor: Party, assignee: Party, obligor: Party) defeasible {
     label en official "Article 9.1.15. The assignor undertakes towards the assignee, except as otherwise disclosed, that the right exists, is assignable and free from third-party claims";
     when assignment_of(r, assignor, assignee, obligor)
@@ -314,7 +314,7 @@ rule AssignorUndertakings(r: Right, assignor: Party, assignee: Party, obligor: P
     then assignor_undertakes_existence(r);
 }
 
-@source(PICC_ART9_1_15_EN)
+@source(PICC_ART9_1_15_EN, PICC_ART9_1_15_FR)
 rule AssignorReimbursesEarlyPayment(r: Right) strict {
     label en official "Article 9.1.15(f). The assignor will reimburse the assignee for any payment received from the obligor before notice of the assignment was given";
     when payment_received_before_notice(r);

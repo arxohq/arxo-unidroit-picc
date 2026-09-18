@@ -32,7 +32,7 @@ pub relation remedies_under_contract_available(c: Contract) kind institutional {
     label en official "the parties have the right to exercise such remedies under the contract as in the circumstances are reasonable (article 3.3.1(2))";
 }
 
-@source(PICC_ART3_3_1_EN)
+@source(PICC_ART3_3_1_EN, PICC_ART3_3_1_FR)
 rule EffectsPrescribedByTheRule(c: Contract) strict {
     label en official "Article 3.3.1(1). Where a contract infringes a mandatory rule, the effects of that infringement are the effects expressly prescribed by that rule";
     when infringes_mandatory_rule(c)
@@ -40,7 +40,7 @@ rule EffectsPrescribedByTheRule(c: Contract) strict {
     then effects_are_those_of_the_rule(c);
 }
 
-@source(PICC_ART3_3_1_EN)
+@source(PICC_ART3_3_1_EN, PICC_ART3_3_1_FR)
 rule ReasonableRemediesWhereRuleSilent(c: Contract) defeasible {
     label en official "Article 3.3.1(2). Where the mandatory rule does not expressly prescribe the effects, the parties have the right to exercise such remedies under the contract as in the circumstances are reasonable";
     when infringes_mandatory_rule(c)
@@ -64,7 +64,7 @@ pub relation restitution_may_be_granted(c: Contract, p: Party) kind institutiona
     label en official "restitution may be granted (article 3.3.2(1))";
 }
 
-@source(PICC_ART3_3_2_EN)
+@source(PICC_ART3_3_2_EN, PICC_ART3_3_2_FR)
 rule RestitutionForIllegality(c: Contract, p: Party) defeasible {
     label en official "Article 3.3.2(1). Where there has been performance under a contract infringing a mandatory rule, restitution may be granted where this would be reasonable in the circumstances";
     when infringes_mandatory_rule(c)
@@ -73,7 +73,7 @@ rule RestitutionForIllegality(c: Contract, p: Party) defeasible {
     then restitution_may_be_granted(c, p);
 }
 
-@source(PICC_ART3_3_2_EN)
+@source(PICC_ART3_3_2_EN, PICC_ART3_3_2_FR)
 rule IllegalityRestitutionFollowsArticle3215(c: Contract, p: Party) defeasible {
     label en official "Article 3.3.2(3). If restitution is granted, the rules set out in Article 3.2.15 apply with appropriate adaptations";
     when restitution_may_be_granted(c, p)
