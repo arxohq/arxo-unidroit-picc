@@ -1,0 +1,12 @@
+{
+  "queryId": "contract-adapted-by-court",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-performance#contract_adapted_by_court",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:hardship:contract" }
+    ]
+  }
+}

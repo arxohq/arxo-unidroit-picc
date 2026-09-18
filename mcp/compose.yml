@@ -1,0 +1,14 @@
+# Local MCP over the packages of this repository (offline: nothing leaves
+# the machine). The image carries this slice of the canon, the engine and no
+# sources of the oracle; the pin it must match is mcp/pin.json.
+services:
+  mcp:
+    image: ghcr.io/arxohq/arxo-mcp-picc
+    platform: linux/amd64
+    ports:
+      - "8722:8722"
+    environment:
+      LAW_MCP_HOST: 0.0.0.0
+      LAW_MCP_PORT: "8722"
+    read_only: true
+    restart: unless-stopped

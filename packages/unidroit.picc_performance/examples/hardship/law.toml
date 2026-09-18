@@ -1,0 +1,26 @@
+# Worked cases over the pinned canon of chapter 6 of the UNIDROIT Principles.
+# The norms stay with their owner package; here there are only facts,
+# questions and answers.
+[package]
+name = "examples.unidroit.hardship"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:law:examples:unidroit:hardship"
+
+[dependencies]
+"unidroit.picc" = "0.1.0"
+"unidroit.picc_performance" = "0.1.0"
+
+[[cases]]
+name = "HardshipAndAdaptation"
+path = "cases/01-hardship-and-adaptation.lawcase"
+
+[[cases]]
+name = "RiskAssumed"
+path = "cases/02-risk-assumed.lawcase"
+
+[metadata]
+act = "unidroit-picc-2016-examples-hardship"
+title = "Worked cases: hardship, renegotiation and adaptation of the contract by the court (articles 6.2.1-6.2.3)"
+jurisdiction = "International"
+instrument = "case-collection"

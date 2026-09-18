@@ -33,6 +33,20 @@ python3 /tmp/law-tools/package.py packages/<name> \
 
 Dependency bytes are pinned under `packages/<name>/deps/` and verified against the `contentHash` recorded in `law.lock`: the build and the CI are offline.
 
+## Asking these packages
+
+Two ways, the same slice of the canon and the same engine; the
+difference is whose machine evaluates.
+
+- **Hosted**: `https://mcp.arxo.io/mcp/picc` — requests are evaluated on Arxo infrastructure.
+- **Local**: `docker compose -f mcp/compose.yml up` — nothing leaves the machine.
+
+`mcp/pin.json` records what either one must answer from: the
+content hash of the canon profile, the pinned packages, the ABI
+version of the engine and the availability of the hosted endpoint.
+An answer that cannot be traced to that pin is not this repository's
+answer.
+
 ## Rights
 
 Code and model: see `LICENSE`. The pinned texts of the publishers keep their

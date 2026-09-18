@@ -1,0 +1,38 @@
+language "law.core" version "0.2";
+package examples.unidroit.hardship version "0.1.0";
+namespace "urn:law:examples:unidroit:hardship";
+
+// Case 2. The same events, one fact more: the party had assumed the risk.
+//
+// ARTICLE 6.2.2(d) IS A CONDITION OF HARDSHIP, NOT A COMMENT ON IT. Where the
+// risk of the events was assumed by the disadvantaged party, there is no
+// hardship however severe the events are — and with it fall the right to
+// request renegotiation, the way to the court and any adaptation. The duty to
+// perform (article 6.2.1) is untouched: it never depended on hardship.
+//
+// The case exists to show the boundary by an answer rather than by prose: the
+// question about hardship comes back NEITHER, not FALSE, because the model
+// states no positive conclusion that hardship is absent.
+
+case RiskAssumed {
+    context {
+        legal_time @2026-09-18;
+        knowledge_time @2026-09-18T12:00:00Z;
+        decision_time @2026-09-18T12:00:00Z;
+        timezone "UTC";
+    }
+
+    const contract: unidroit.picc::Contract = entity_ref("urn:example:picc:risk:contract");
+    const supplier: unidroit.picc::Party = entity_ref("urn:example:picc:risk:supplier");
+
+    assert "onerous": unidroit.picc_performance::performance_became_more_onerous(contract, supplier) { origin case_input; }
+    assert "equilibrium": unidroit.picc_performance::equilibrium_fundamentally_altered(contract, supplier) { origin adjudicated; }
+    assert "after": unidroit.picc_performance::events_after_conclusion_or_later_known(contract, supplier) { origin case_input; }
+    assert "unforeseen": unidroit.picc_performance::events_could_not_be_taken_into_account(contract, supplier) { origin adjudicated; }
+    assert "beyond-control": unidroit.picc_performance::events_beyond_control(contract, supplier) { origin case_input; }
+
+    // Article 6.2.2(d): the risk was assumed by the disadvantaged party.
+    assert "risk-assumed": unidroit.picc_performance::risk_of_events_assumed(contract, supplier) { origin case_input; }
+
+    assert "renegotiation": unidroit.picc_performance::renegotiation_requested_without_undue_delay(contract, supplier) { origin case_input; }
+}

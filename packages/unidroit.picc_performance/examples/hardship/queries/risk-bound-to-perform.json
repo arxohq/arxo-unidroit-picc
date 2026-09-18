@@ -1,0 +1,13 @@
+{
+  "queryId": "risk-bound-to-perform",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-performance#bound_to_perform_nevertheless",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:risk:contract" },
+      { "kind": "entity_ref", "id": "urn:example:picc:risk:supplier" }
+    ]
+  }
+}

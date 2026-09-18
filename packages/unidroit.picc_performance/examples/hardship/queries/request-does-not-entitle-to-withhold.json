@@ -1,0 +1,13 @@
+{
+  "queryId": "request-does-not-entitle-to-withhold",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-performance#request_does_not_entitle_to_withhold",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:hardship:contract" },
+      { "kind": "entity_ref", "id": "urn:example:picc:hardship:supplier" }
+    ]
+  }
+}

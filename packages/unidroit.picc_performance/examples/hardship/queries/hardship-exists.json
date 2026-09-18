@@ -1,0 +1,13 @@
+{
+  "queryId": "hardship-exists",
+  "kind": "truth",
+  "literal": {
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:org:unidroit:clir:picc-performance#hardship_exists",
+    "args": [
+      { "kind": "entity_ref", "id": "urn:example:picc:hardship:contract" },
+      { "kind": "entity_ref", "id": "urn:example:picc:hardship:supplier" }
+    ]
+  }
+}
