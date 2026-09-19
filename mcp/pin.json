@@ -1,0 +1,63 @@
+{
+  "format": "law.mcp-pin/0.1",
+  "profile": "picc",
+  "serverName": "law-dsl-picc",
+  "remote": {
+    "url": "https://mcp.arxo.io/mcp/picc",
+    "health": "https://mcp.arxo.io/healthz/picc",
+    "thirdPartyCompute": true,
+    "notice": "Requests to this endpoint are evaluated on Arxo infrastructure. The packages in this repository are the same bytes the endpoint answers from; run the image below to keep evaluation local.",
+    "availability": "best effort, no SLA; the image below is the offline path"
+  },
+  "image": {
+    "reference": "ghcr.io/arxohq/arxo-mcp-picc",
+    "platform": "linux/amd64",
+    "digest": "sha256:c4c083c14c92125af201ab87ea8127ceb1acb08533da682ffc3c6b9dc05e7332",
+    "note": "mcp/compose.yml pulls exactly this digest"
+  },
+  "canon": {
+    "id": "unidroit.picc/2016",
+    "contentHash": "sha256:34f335e75c0dd16055ea97fa46209417b011464f552dc58d61e22c34f9683c8f",
+    "packages": [
+      {
+        "name": "unidroit.picc",
+        "version": "0.1.0",
+        "contentHash": "sha256:239ee9cd1f5d68803385c9d3e920400ce50e05341ff3d5ebd231bf37cbca2d0b"
+      },
+      {
+        "name": "unidroit.picc_formation",
+        "version": "0.1.0",
+        "contentHash": "sha256:ba3ba7688c665e955727e0fcb90ffe5cab587a4e9b6dc60f1471c870dd9c982f"
+      },
+      {
+        "name": "unidroit.picc_limitation",
+        "version": "0.1.0",
+        "contentHash": "sha256:ac062d4eb2aba4c793ba5c71e82d66024d69c40934ce3a59d8650585c72ab6a2"
+      },
+      {
+        "name": "unidroit.picc_non_performance",
+        "version": "0.1.0",
+        "contentHash": "sha256:ca2ff9392bd2c40b9ce26dce38a74f10970372dbba95c6bfc5f0fae171404309"
+      },
+      {
+        "name": "unidroit.picc_obligations",
+        "version": "0.1.0",
+        "contentHash": "sha256:451c71bea261667133b2e235e77ffe5623020da25a23880a318b9435a6d040f8"
+      },
+      {
+        "name": "unidroit.picc_performance",
+        "version": "0.1.0",
+        "contentHash": "sha256:80ff3bf7692c1db896fd51174828031a2c3fe0778ca1beea64cb00df4487ac97"
+      },
+      {
+        "name": "unidroit.picc_validity",
+        "version": "0.1.0",
+        "contentHash": "sha256:9d36526d80b02d18e0aa1450ec976d54af4706dc6e258ed3b84ad8eeca00a1ac"
+      }
+    ]
+  },
+  "engine": {
+    "abiVersion": 2,
+    "semanticsRevision": "0.2.0"
+  }
+}
